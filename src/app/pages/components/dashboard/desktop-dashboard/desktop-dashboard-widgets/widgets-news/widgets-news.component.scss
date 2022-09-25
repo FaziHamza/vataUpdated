@@ -1,0 +1,53 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-news {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .news-tabs {
+        position: relative;
+        .fields-scroll {
+            height: 65vh;
+            min-height: 65vh;
+            overflow-y: auto;
+            p {
+                &.heading {
+                    color: $black;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+                &.content {
+                    color: $dark-gray;
+                    font-size: 12px;
+                    line-height: 1.6;
+                }
+            }
+        }
+        .read-more {
+            a {
+                color: $pink;
+                font-size: 12px;
+            }
+        }
+    }
+}

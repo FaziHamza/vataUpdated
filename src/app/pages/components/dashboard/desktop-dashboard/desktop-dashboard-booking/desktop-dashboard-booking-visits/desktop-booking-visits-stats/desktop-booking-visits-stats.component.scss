@@ -1,0 +1,227 @@
+@import '../../../../../../../../styles.scss';
+
+.desktop-booking-visits-stats {
+    .date-header-bar {
+        border-radius: 10px;
+        background: $white;
+        .left-side {
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 40px 0 40px;
+                    border-right: 1px solid $dark-gray;
+                    // &:nth-last-child(3) {
+                    //     border-left: 0px;
+                    // }
+                    a {
+                        color: $dark-gray;
+                        font-size: 13px;
+                        font-weight: 100;
+                        &.date {
+                            color: $black;
+                            font-size: 16px;
+                        }
+                        &.active {
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .calendar-sections {
+        .left-section {
+            .calendar {
+                border-radius: 10px;
+                background: $white;
+            }
+
+            .visits {
+                border-radius: 10px;
+                background: $white;
+                position: relative;
+
+                .header-bar {
+                    font-size: 17px;
+                    color: $black;
+                }
+
+                .users-scroll {
+                    height: 150px;
+                    min-height: 150px;
+                    overflow-y: auto;
+
+                    .user {
+                        p {
+                            font-size: 14px;
+                            color: $black;
+                            padding-top: 12px;
+                        }
+                    }
+                }
+
+                .fields-scroll {
+                    height: 70vh;
+                    min-height: 70vh;
+                    overflow-y: auto;
+
+                    .visit-field {
+                        .field-detail {
+                            border-radius: 10px;
+                            border: 1px solid $ligher-gray;
+                            p {
+                                color: $black;
+                                font-size: 15px;
+                                padding-bottom: 6px;
+                            }
+                            span {
+                                color: $dark-gray;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+
+                .invite-client-btn {
+                    span {
+                        &.icon-add-button-inside-black-circle-1 {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .week {
+                    .fields-scroll {
+                        height: 70vh;
+                        min-height: 70vh;
+                        overflow-y: auto;
+    
+                        .visit-field {
+                            .header-bar {
+                                position: relative;
+                                p {
+                                    font-size: 15px;
+                                    color: $black;
+                                }
+
+                                span {
+                                    &.online {
+                                        width: 10px;
+                                        height: 10px;
+                                        border-radius: 10px;
+                                        background: $pink;
+                                        top: 19px;
+                                        left: 27%;
+                                        position: absolute;
+                                    }
+                                }
+                            }
+
+                            .field-detail {
+                                border-radius: 10px;
+                                border: 1px solid $ligher-gray;
+                                p {
+                                    color: $black;
+                                    font-size: 15px;
+                                    padding-bottom: 6px;
+                                }
+                                span {
+                                    color: $dark-gray;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-section {
+            border-radius: 10px;
+            background: $white;
+        }
+    }
+}
+
+::ng-deep .tui-view-7,
+::ng-deep .tui-view-8,
+::ng-deep .tui-view-9,
+::ng-deep .tui-view-10,
+::ng-deep .tui-view-11,
+::ng-deep .tui-view-12 {
+  display: none;
+}
+
+::ng-deep .tui-full-calendar-timegrid-right {
+  border: solid 1px #E7E7E7;
+  margin-left: 100px !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-hour span {
+  right: 33px !important;
+  font-size: 12px;
+  color: #8A8A8A;
+  font-weight: 700;
+}
+
+::ng-deep .tui-full-calendar-timegrid-hourmarker-time {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding-top: 17px;
+  color: #FB3B71 !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-hourmarker-line-left,
+::ng-deep .tui-full-calendar-timegrid-todaymarker {
+  background: #FB3B71 !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-hourmarker-line-today {
+  border-top: 1px solid #fb3b71 !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-hour>span {
+  display: block !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-timezone {
+  border: none !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-timezone>.tui-full-calendar-timegrid-hourmarker {
+  right: -20px !important;
+  width: 0;
+  padding: 10px 0;
+}
+
+::ng-deep .tui-full-calendar-timegrid-timezone>.tui-full-calendar-timegrid-hourmarker>.tui-full-calendar-timegrid-hourmarker-time {
+  padding: 5px;
+  background: #fb3b71;
+  color: white !important;
+  border-radius: 10px;
+  line-height: 16px;
+}
+
+::ng-deep .tui-full-calendar-timegrid-timezone>.tui-full-calendar-timegrid-hour:first-child>span {
+  display: none !important;
+}
+
+::ng-deep .tui-full-calendar-time-date {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+::ng-deep .tui-full-calendar-time-schedule-content {
+  border: none;
+}
+
+::ng-deep .tui-full-calendar-dayname-leftmargin{
+  margin-left: 100px !important;
+}
+
+::ng-deep .tui-full-calendar-timegrid-container {
+    overflow: visible !important;
+    overflow-y: unset !important;
+}

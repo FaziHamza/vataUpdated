@@ -1,0 +1,23 @@
+<div class="ask-question-modal">
+    <div class="container">
+
+        <h5 class="heading text-center position-relative pb-2" [ngClass]="{ 'bordered-header': inputData.type == 'border' }">{{inputData.title}}</h5>
+
+        <p *ngIf="inputData.subTitle" class="text-center pt-4 sub-heading">{{inputData.subTitle}}</p>
+
+        <div fxLayout="row" class="pt-5">
+            <form class="w-100">
+                <mat-form-field class="w-100">
+                    <mat-label>Question</mat-label>
+                    <textarea name="question"
+                    [(ngModel)]="questionModal.question" matInput type="text"></textarea>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div fxLayout="row" class="button pt-3 justify-content-center">
+            <a (click)="onConfirmClick()" class="rounded-bt pink-b">Send</a>
+        </div>
+
+    </div>
+</div>

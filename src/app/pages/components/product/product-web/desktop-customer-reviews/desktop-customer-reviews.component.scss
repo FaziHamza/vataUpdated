@@ -1,0 +1,140 @@
+@import "../../../../../../styles.scss";
+
+.customer-reviews {
+  .container .no-data {
+    color: $black;
+}
+  .heading {
+    h5 {
+      font-size: 23px;
+      color: $black;
+      span {
+        border: 1px solid $light-gray;
+        font-size: 20px;
+        border-radius: 15px;
+        padding: 1px 1px;
+      }
+    }
+  }
+
+  .review-btn {
+    a {
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 7px;
+    }
+  }
+
+  .feedback {
+    .heading {
+      h6 {
+        color: $black;
+        font-size: 14px;
+      }
+    }
+
+    .next-row {
+      .sub-heading {
+        color: $light-gray;
+        font-size: 12px;
+        font-weight: 100;
+      }
+
+      .rating {
+        position: relative;
+        left: 0px;
+        top: -5px;
+        span {
+          font-size: 11px;
+          color: $light-gray;
+          &.checked {
+            color: $pink-dark;
+            &::before {
+              color: $pink-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .review-msg {
+      p {
+        font-size: 12px;
+        color: $black;
+        line-height: 1.5;
+      }
+    }
+
+    .review-img {
+      img {
+        width: 100px;
+        border-radius: 5px;
+        height: 45px;
+      }
+    }
+
+    .review-reply {
+      a {
+        text-decoration: none;
+        font-size: 13px;
+        color: $black;
+        cursor: pointer;
+      }
+      .reply-input {
+        border: 1px solid $ligher-gray;
+        border-radius: 25px;
+        padding: 5px 20px;
+        margin: 0 10px 0 0;
+        height: 20px;
+        width: 90%;
+        &::placeholder {
+            color: $black;
+          }
+      }
+      .send-button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 0 0 10px;
+      }
+    }
+    .reply-container {
+      border: 1px solid $ligher-gray;
+      padding: 10px;
+      border-radius: 10px;
+      .replied-comment {
+        .username {
+          color: $black;
+          font-size: 14px;
+          text-transform: capitalize;
+        }
+        .date {
+          color: $light-gray;
+          font-size: 12px;
+          font-weight: 100;
+          padding: 0 0 0 10px;
+        }
+        .reply-desc {
+          font-size: 12px;
+          color: $black;
+          line-height: 1.5;
+        }
+        .time-ago {
+          color: $light-gray;
+          font-size: 12px;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+
+  .more-reviews {
+    a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
+}

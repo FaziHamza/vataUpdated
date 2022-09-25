@@ -1,0 +1,6 @@
+<ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+    <app-mobile-add-product-variation></app-mobile-add-product-variation>
+</ng-container>
+<ng-template #desktop>
+    <app-desktop-add-product-variation></app-desktop-add-product-variation>
+</ng-template>

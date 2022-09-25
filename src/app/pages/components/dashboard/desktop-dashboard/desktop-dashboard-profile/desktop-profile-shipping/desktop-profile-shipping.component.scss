@@ -1,0 +1,734 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-shipping {
+    .my-orders {
+        .heading {
+            h5 {
+                font-size: 22px;
+                color: $dark-gray;
+                position: relative;
+                top: -2px;
+            }
+            span {
+                &.icon-baseline-keyboard_arrow_down-24px-12 {
+                    font-size: 20px;
+                    border-radius: 50px;
+                    border: 1px solid $light-gray;
+                    padding: 2px;
+                    &::before {
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+
+        .left-side {
+            .order-img {
+                img {
+                    width: auto;
+                    height: 50px;
+                    border-radius: 12px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .right-side {
+            .left-side-order-detail {
+                h6 {
+                    font-size: 14px;
+                    color: $black;
+                    span {
+                        &.discount {
+                            border: 1px dashed $pink;
+                            border-radius: 9px;
+                            font-size: 12px;
+                            font-weight: 100;
+                            padding: 4px 8px;
+                            color: $pink;
+                            position: relative;
+                            top: 10px;
+                            margin-left: 8px;
+                        }
+                    }
+                }
+                
+                p {
+                    &.date-id {
+                        span {
+                            &.date {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                            &.id {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-side-order-amount {
+                p {
+                    &.fix {
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: $dark-gray;
+                        position: relative;
+                        top: 5px;
+                    }
+                }
+
+                del {
+                    &.cutted {
+                        font-size: 17px;
+                        color: $light-gray;
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+
+                span {
+                    &.price {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: $pink;
+                    }
+                }
+            }
+        }
+
+        .tracking-section {
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(5) {
+                        border-right: 0px;
+                    } 
+
+                    .tracking-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                            
+                            &.size {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+                            
+                            &.quantity {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+
+                            &.icon-Visa {
+                                font-size: 15px;
+                            }
+
+                            &.add-btn {
+                                padding: 5px 25px;
+                                border-radius: 6px;
+                            }
+                        }
+
+                        input {
+                            border: 1px solid $light-gray;
+                            padding: 5px 0px 5px 10px;
+                            border-radius: 6px;
+                            width: 300px;
+                        }
+                    }
+
+                    .tracking-color-wrapper {
+                        display: flex;
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                        }
+
+                        p {
+                            &.color {
+                                width: 20px;
+                                height: 20px;
+                                background-color: $green;
+                                border-radius: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .customer-detail-section {
+            border-radius: 10px;
+            border: 1px dashed $light-gray;
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 120px 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(6) {
+                        border-right: 0px;
+                    } 
+
+                    .customer-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                            }
+                        }
+
+                        p {
+                            padding-top: 8px;
+                            &.name {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.address {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.no {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.city {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.code {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.flag {
+                                display: flex;
+                                img {
+                                    width: 30px;
+                                    height: 18px;
+                                }
+                                span {
+                                    &.country-name {
+                                        padding-left: 15px;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .placed-orders {
+        .heading {
+            h5 {
+                font-size: 22px;
+                color: $dark-gray;
+                position: relative;
+                top: -2px;
+            }
+            span {
+                &.icon-baseline-keyboard_arrow_down-24px-12 {
+                    font-size: 20px;
+                    border-radius: 50px;
+                    border: 1px solid $light-gray;
+                    padding: 2px;
+                    &::before {
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+
+        .left-side {
+            .order-img {
+                img {
+                    width: auto;
+                    height: 50px;
+                    border-radius: 12px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .right-side {
+            .left-side-order-detail {
+                h6 {
+                    font-size: 14px;
+                    color: $black;
+                    // span {
+                    //     &.discount {
+                    //         border: 1px dashed $pink;
+                    //         border-radius: 9px;
+                    //         font-size: 12px;
+                    //         font-weight: 100;
+                    //         padding: 4px 8px;
+                    //         color: $pink;
+                    //         position: relative;
+                    //         top: 10px;
+                    //         margin-left: 8px;
+                    //     }
+                    // }
+                }
+                
+                p {
+                    &.date-id {
+                        span {
+                            &.date {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                            &.id {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-side-order-amount {
+                .left {
+                    span {
+                        &.text {
+                            font-size: 14px;
+                            color: $dark-gray;
+                        }
+                        &.black {
+                            color: $black;
+                            font-size: 22px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .right {
+                    span {
+                        &.text {
+                            font-size: 14px;
+                            color: $dark-gray;
+                        }
+                        &.pink {
+                            color: $pink;
+                            font-size: 22px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tracking-section {
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(5) {
+                        border-right: 0px;
+                    } 
+
+                    .tracking-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                            
+                            &.size {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+                            
+                            &.quantity {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+
+                            &.icon-Visa {
+                                font-size: 15px;
+                            }
+                        }
+
+                        input {
+                            border: 1px solid $light-gray;
+                            padding: 5px 0px 5px 10px;
+                            border-radius: 6px;
+                            width: 400px;
+                        }
+                    }
+
+                    .tracking-color-wrapper {
+                        display: flex;
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                        }
+
+                        p {
+                            &.color {
+                                width: 20px;
+                                height: 20px;
+                                background-color: $green;
+                                border-radius: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .customer-detail-section {
+            border-radius: 10px;
+            border: 1px dashed $light-gray;
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 120px 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(6) {
+                        border-right: 0px;
+                    } 
+
+                    .customer-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                            }
+                        }
+
+                        p {
+                            padding-top: 8px;
+                            &.name {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.address {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.no {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.city {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.code {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.flag {
+                                display: flex;
+                                img {
+                                    width: 30px;
+                                    height: 18px;
+                                }
+                                span {
+                                    &.country-name {
+                                        padding-left: 15px;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .completed-orders {
+        .heading {
+            h5 {
+                font-size: 22px;
+                color: $dark-gray;
+                position: relative;
+                top: -2px;
+            }
+            span {
+                &.icon-baseline-keyboard_arrow_down-24px-12 {
+                    font-size: 20px;
+                    border-radius: 50px;
+                    border: 1px solid $light-gray;
+                    padding: 2px;
+                    &::before {
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+
+        .left-side {
+            .order-img {
+                img {
+                    width: auto;
+                    height: 50px;
+                    border-radius: 12px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .right-side {
+            .left-side-order-detail {
+                h6 {
+                    font-size: 14px;
+                    color: $black;
+                    span {
+                        &.discount {
+                            border: 1px dashed $green;
+                            border-radius: 9px;
+                            font-size: 12px;
+                            font-weight: 100;
+                            padding: 4px 8px;
+                            color: $green;
+                            position: relative;
+                            top: 10px;
+                            margin-left: 8px;
+                        }
+                    }
+                }
+                
+                p {
+                    &.date-id {
+                        span {
+                            &.date {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                            &.id {
+                                font-size: 12px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-side-order-amount {
+                .left {
+                    span {
+                        &.text {
+                            font-size: 14px;
+                            color: $dark-gray;
+                        }
+                        &.black {
+                            color: $black;
+                            font-size: 22px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .right {
+                    span {
+                        &.text {
+                            font-size: 14px;
+                            color: $dark-gray;
+                        }
+                        &.pink {
+                            color: $pink;
+                            font-size: 22px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tracking-section {
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(5) {
+                        border-right: 0px;
+                    } 
+
+                    .tracking-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                            
+                            &.size {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+                            
+                            &.quantity {
+                                color: $black;
+                                font-size: 13px;
+                                border-radius: 5px;
+                                border: 1px solid $light-gray;
+                                padding: 3px 15px;
+                            }
+
+                            &.icon-Visa {
+                                font-size: 15px;
+                            }
+                        }
+
+                        input {
+                            border: 1px solid $light-gray;
+                            padding: 5px 0px 5px 10px;
+                            border-radius: 6px;
+                            width: 400px;
+                        }
+                    }
+
+                    .tracking-color-wrapper {
+                        display: flex;
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                                padding-right: 15px;
+                            }
+                        }
+
+                        p {
+                            &.color {
+                                width: 20px;
+                                height: 20px;
+                                background-color: $green;
+                                border-radius: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .customer-detail-section {
+            border-radius: 10px;
+            border: 1px dashed $light-gray;
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 0 120px 0 20px;
+                    border-right: 1px solid $light-gray;
+                    &:nth-child(6) {
+                        border-right: 0px;
+                    } 
+
+                    .customer-wrapper {
+                        span {
+                            &.title-text {
+                                color: $dark-gray;
+                                font-size: 14px;
+                            }
+                        }
+
+                        p {
+                            padding-top: 8px;
+                            &.name {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.address {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.no {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.city {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.code {
+                                color: $black;
+                                font-size: 14px;
+                            }
+
+                            &.flag {
+                                display: flex;
+                                img {
+                                    width: 30px;
+                                    height: 18px;
+                                }
+                                span {
+                                    &.country-name {
+                                        padding-left: 15px;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .mat-expansion-panel-header-description  {
+        width: 85%;
+    }
+}

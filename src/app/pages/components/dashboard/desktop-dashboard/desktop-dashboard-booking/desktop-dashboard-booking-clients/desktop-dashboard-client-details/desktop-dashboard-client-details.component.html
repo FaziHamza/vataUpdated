@@ -1,0 +1,82 @@
+<div class="desktop-dashboard-client-details" *ngIf="dataClient">
+    <div fxLayout="row" class="client-info">
+        <div fxFlex="10%" class="img-section mr-4">
+            <img src="{{dataClient.client_pic}}">
+        </div>
+
+        <div fxFlex="40%" class="detail-section">
+            <h6>{{dataClient.client_name}}</h6>
+            <a class="edit-btn" (click)="onSelectType('edit')">
+                <img src="../../../../../../../assets/img/writing-public.png">
+            </a>
+            <p class="pt-2">{{dataClient.phone_isd}} {{dataClient.phone_number}}</p>
+            <p class="pt-1">{{dataClient.email}}</p>
+        </div>
+
+        <div fxFlex="50%" class="product-brief-section">
+            <div fxLayout="row">
+                <div fxFlex="25%" class="product-box p-3 mr-3">
+                    <h6>{{dataClient.bookings_count}}</h6>
+                    <p>Bookings</p>
+                </div>
+                <div fxFlex="25%" class="product-box p-3 mr-3">
+                    <h6>{{dataClient.finished}}</h6>
+                    <p>Finished</p>
+                </div>
+                <div fxFlex="25%" class="product-box p-3 mr-3">
+                    <h6>{{dataClient.cancelled}}</h6>
+                    <p>Cancelled</p>
+                </div>
+                <div fxFlex="25%" class="product-box p-3">
+                    <h6>{{dataClient.no_shows}}</h6>
+                    <p>No Shows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="total-bar mt-4 p-3">
+        <div fxFlex="35%">
+            <p class="text">Total revenue from client</p>
+        </div>
+        <div fxFlex="28%">
+            <span class="amount">{{dataClient.total_revenue}}</span>
+        </div>
+        <div fxFlex="25%">
+            <p class="text">Discount</p>
+        </div>
+        <div fxFlex="12%" class="text-right">
+            <span class="amount">{{dataClient.discount}}</span>
+        </div>
+    </div>
+
+    <div class="service-status">
+        <div class="service py-4 border-bottom" *ngFor="let item of dataClient.services">
+            <div fxLayout="row" class="field-row">
+                <div fxFlex="80%" class="left-side">
+                    <p>{{item.service_name}}</p>
+                </div>
+                <div fxFlex="20%" class="right-side text-right">
+                    <p *ngIf="!item.cancel || !item.finished">${{item.price}}</p>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="time-row mt-1">
+                <div fxFlex="80%" class="left-side">
+                    <span class="pr-3">{{item.book_date | date:'fullDate'}}</span>
+                    <span class="pr-3">{{item.to_time}} - {{item.from_time}}</span>
+                    <span>From Martin</span>
+                </div>
+                <div fxFlex="20%" class="right-side text-right">
+                    <span *ngIf="!item.cancel || !item.finished">{{item.service_duration_minutes}} min</span>
+                    <p class="pink-text" *ngIf="item.cancel">Cancelled</p>
+                    <p class="pink-text" *ngIf="item.finished">Finished</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!dataClient">
+    <h4>Select Any Client From List.</h4>
+</div>

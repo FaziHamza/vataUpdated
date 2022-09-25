@@ -1,0 +1,34 @@
+@import '../../../../../../../../styles.scss';
+
+h5 {
+    &.heading {
+    color: $black;
+    }
+}
+p {
+    &.sub-heading {
+    color: $black;
+    }
+}
+.toggle-text {
+    color: $black;
+}
+
+
+.mat-card {
+    background: $white;
+}
+.add-from-comp-bottom .product-img {
+    height: 100px;
+}
+
+.img-container {
+    float: left;
+        position: relative;
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+      }
+}

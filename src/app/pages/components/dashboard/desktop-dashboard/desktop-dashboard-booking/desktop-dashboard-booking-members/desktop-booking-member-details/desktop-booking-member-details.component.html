@@ -1,0 +1,68 @@
+<div class="dashboard-booking-member-details" *ngIf="dataMember">
+    <div fxLayout="row" class="profile">
+        <div fxFlex="12%" class="member-img">
+            <img src="{{dataMember.photo}}">
+        </div>
+        <div fxFlex="22%" class="contact ml-1">
+            <h6>{{dataMember.member_name}}</h6>
+            <p>{{dataMember.phone_isd}} {{dataMember.phone_number}}</p>
+            <p>{{dataMember.email}}</p>
+        </div>
+        <div fxFlex="6%" class="edit" (click)="onSelectType('edit')">
+            <img src="../../../../../../../../assets/img/writing-public.png">
+        </div>
+        <div fxFlex="60%" class="calendar text-right">
+            <a>
+                <img src="../../../../../../../../assets/img/calendar-pink.png">
+                <span>Show Calendar</span>
+            </a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="details-tabs mt-3">
+        <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+            <mat-tab label="Services Performed ({{dataMember.my_services_list.length}})">
+                <div class="all-services">
+                    <div class="services-scroll pr-3">
+                        <div class="service-fields">
+                            <div fxLaytout="row" class="heading-bar py-3 border-bottom">
+                                <div fxFlex="85%" class="left-side">
+                                    <p>All Categories ({{dataMember.my_services_list.length}})</p>
+                                </div>
+                                <div fxFlex="15%" class="right-side text-right">
+                                    <span>Select All</span>
+                                    <mat-checkbox (change)="selectAllServices('all')"></mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div fxLaytout="row" class="field py-3 border-bottom" *ngFor="let item of dataMember.my_services_list">
+                                <div fxFlex="85%" class="left-side">
+                                    <p>{{item.service_name}}</p>
+                                </div>
+                                <div fxFlex="15%" class="right-side text-right">
+                                    <mat-checkbox [checked]="selectAll" (change)="selectService(item.id)"></mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div *ngIf="!dataMember">
+                    <h4 class="pt-4">Select Any Member From List.</h4>
+                </div>
+            </mat-tab>
+        
+            <mat-tab label="Working Hours">
+                Content 2
+            </mat-tab>
+        
+            <mat-tab label="Last Minute Discount">
+                Contet 3
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+
+<div *ngIf="!dataMember">
+    <h4>Select Any Member From List.</h4>
+</div>

@@ -1,0 +1,97 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-communication {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .communication-tabs {
+        .message-tab {
+            position: relative;
+
+            .fields-scroll {
+                height: 65vh;
+                min-height: 65vh;
+                overflow-y: auto;
+
+                .message-field {
+                    .heading-bar {
+                        .left-side {
+                            .heading {
+                                p {
+                                    position: relative;
+                                    padding-left: 20px;
+                                    &.online {
+
+                                        &::after {
+                                            content: "";
+                                            position: absolute;
+                                            top: 5px;
+                                            left: 0px;
+                                            width: 10px;
+                                            height: 10px;
+                                            background: $pink;
+                                            border-radius: 50px;
+                                        }
+                                    }
+                                }
+    
+                                p {
+                                    &.text {
+                                        color: $black;
+                                        font-size: 14px;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
+    
+                        .right-side {
+                            p {
+                                &.date-time {
+                                    color: $dark-gray;
+                                    font-size: 12px;
+                                    padding-top: 1px;
+                                }
+                            }
+                        }
+                    }
+
+                    .msg-text {
+                        p {
+                            font-size: 12px;
+                            color: $dark-gray;
+                            line-height: 1.6;
+                        }
+                    }
+
+                    .reply-btn {
+                        a {
+                            color: $pink;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

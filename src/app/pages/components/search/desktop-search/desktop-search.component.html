@@ -1,0 +1,261 @@
+
+
+<div *ngIf="keyword && productData">
+    <div class="sub-categories-desktop">
+        
+        <div *ngIf="!appSize.getIsMobileResolution()">        
+            <div *ngIf="selectedCategory" class="stepper">
+                <p style="cursor: pointer;"> <span (click)="_router.navigateByUrl('/marketplace')">Marketplace</span> 
+                    <span *ngFor="let parent of selectedCategory.ancestors" (click)="getCategoriesById(parent.id)"> &nbsp; > &nbsp;{{parent.name}}</span> &nbsp; > &nbsp; <span class="active-cat">{{selectedCategory.name}}</span> 
+                </p>
+            </div>
+            <div class="btns border-bottom pb-4 pt-3">
+                <div class="container">
+                    <div fxLayout="row">
+                        <div fxFlex="70%" class="mr-3">
+                            <div class="basic-container px-3 mb-2">
+                                <button type="button" style="min-width: fit-content !important;" class="px-3" mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+                                  <!-- {{selectedFilter.category ? selectedFilter.category.name : 'All Categories'}} -->
+                                  <mat-icon>expand_more</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                  <button style="padding: 10px !important;" (click)="selectedCategory = null; subcategories = []; attributes = []; getSearchResults()" mat-menu-item >All Categories</button>
+                                  <button style="padding: 10px !important;" (click)="selectedCategory = cat; subcategories = cat.childrens; attributes = []; getSearchResults()" mat-menu-item *ngFor="let cat of categoryData">{{cat.name}}</button>
+                                </mat-menu>
+                                <!-- <app-menu-item #menu [items]="categoryData"></app-menu-item> -->
+                            </div>
+                            <div style="display: inline-block;">        
+                                <div *ngFor="let key of subcategories, let i=index" class="rounded-bt category chip" style="display: inline-block;">
+                                    <span style="cursor: pointer;" (click)="getCategoriesById(key.id)">{{key.name}}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 px-3 border-right" style="display: inline-block;" *ngFor="let attr of attributes">
+                                <h5>{{attr.name}}</h5>
+                                <div style="display: inline-block !important;"
+                                    class="mat-checkbox-sec m-2 ml-0"
+                                    *ngFor="let option of attr.values; index as i"
+                                    >
+                                    <mat-checkbox
+                                        (change)="onAttributeSelect($event)"
+                                        [name]="option.name"
+                                        [value]="option"
+                                    >
+                                        {{ option.name }}
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div fxFlex="275px" class="ml-3">
+                            <div class="clear-save">
+                                <div fxLayout="row" style="display: flex; justify-content: space-between;">
+                                    <div fxFlex="45%">
+                                        <a mat-button class="text-center rounded-bt clear px-3" (click)="clearAll()">Clear All</a>
+                                    </div>
+                                    <div fxFlex="45%" class="mr-2">
+                                        <a #trigger="matMenuTrigger" mat-button class="text-center rounded-bt save px-3" [matMenuTriggerFor]="menu">Save Search</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-menu #menu="matMenu" class="my-menu">
+                                <div class="main" (click)="$event.stopPropagation();">
+                                    <form [formGroup]="saveSearchForm" class="form">
+                                        <div fxLayout="row">
+                                            <mat-form-field class="w-100 form-section">
+                                                <mat-label>Searching</mat-label>
+                                                <input formControlName="searchTitle" matInput type="text">
+                                                <mat-error *ngIf="saveSearchForm.controls['searchTitle'].errors?.required">
+                                                    Title is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </form>
+                                    
+                                    <div fxLayout="row">
+                                        <div *ngFor="let key of keylist" class="rounded-bt chip">
+                                            <span>{{key}}</span>
+                                        </div>
+                                    </div>
+            
+                                    <div fxLayout="row" class="mt-2" style="flex-wrap: wrap;">
+                                        <mat-chip-list fxLayout="row" #chipList aria-label="Fruit selection">
+                                            <mat-chip *ngFor="let selection of filterTags; index as i"
+                                                     [removable]="false">
+                                              {{selection}}
+                                            </mat-chip>
+                                          </mat-chip-list>
+                                    </div>
+                                    <div fxLayout="row" class="justify-content-center border-top p-2">
+                                        <a (click)="onSaveSearch()" mat-button class="rounded-bt w-50 pink-b">Save</a>
+                                    </div>
+                                </div>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        
+            <div class="filter-bar pt-4">
+                <div class="container">
+                    <div fxLayout="row">
+            
+                        <div fxFlex="40%">
+                            <div class="head w-100">
+                                <h4 fxLayout="row">
+                                    <span>Top {{keyword}}</span>
+                                    <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+                                </h4>
+                                <p class="pt-3">{{filterProductData().length}} Results &nbsp; &nbsp; <span *ngIf="selectedCategory">in {{selectedCategory.name}}</span></p>
+                            </div>
+                        </div>
+            
+                        <div fxFlex="60%">
+                            <div class="clear-save">
+                                <div fxLayout="row" fxLayoutAlign="end center" class="row-right">
+                                    
+                                    <div fxFlex="6%" class="py-3">
+                                        <span class="sort-label">Sort:</span>
+                                    </div>
+            
+                                    <div fxFlex="30%" class="mx-3">
+                                        <div class="form">
+                                            <mat-form-field class="rounded-bt d-block">
+                                                <mat-select (selectionChange)="onSort($event.value)">
+                                                    <mat-option value="&ordering=-price,-shipping_price">Price+Shipping: Highest first</mat-option>
+                                                    <mat-option value="&ordering=price,shipping_price">Price+Shipping: Lowest first</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+            
+                                    <div (click)="openDialog()" fxFlex="15%" class="mx-3 my-2">
+                                        <a mat-button class="text-center rounded-bt filter">
+                                            <img class="filter" src="../../../../../../assets/img/SVG-Marketplace/filter.svg">
+                                            <span class="pl-3">Filter</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="list-cards pb-5">
+                <div class="container">
+                    <h3 class="text-center no-data" *ngIf="viewType === 'card' && filterProductData() && !filterProductData().length">Oops, No products found.</h3>        
+                    <div *ngIf="viewType === 'card'" fxLayout="row" class="px-5 products-card-view" id="top-products">
+                        <div fxFlex="20%" *ngFor="let product of filterProductData()">
+                            <div class="card-block">
+                              <app-marketplace-product-card [routerLink]="['/product', product.id]"  [product]="product"></app-marketplace-product-card>
+                            </div>
+                          </div>
+                    </div>
+                    <div *ngIf="viewType === 'list'"  fxLayout="column" class="px-5">
+                        <h3 class="text-center no-data" *ngIf="filterProductData() && !filterProductData().length">Oops, No products found.</h3>
+                        <div *ngFor="let product of filterProductData()">
+                            <div class="card-block">
+                                <app-marketplace-card-list-view [routerLink]="['/product', product.id]" [product]="product"></app-marketplace-card-list-view>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-categories-mobile">
+        <div *ngIf="appSize.getIsMobileResolution()">
+            <div class="chips-row">
+                <div class="container">
+                    <div fxLayout="row">
+                        <div fxFlex="40%" *ngFor="let key of keylist, let i=index" class="rounded-bt category chip mr-3">
+                            <span (click)="selectSearchChip(key)">{{key}}</span>
+                            <a class="cross-btn ml-2" (click)="keylist.splice(i,1)">&#215;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear-save border-bottom">
+                <div class="container">
+                    <div fxLayout="row" class="row-right">
+                        <a mat-button class="clear" (click)="clearAll()">Clear All</a>
+                        <a mat-button class="save" #trigger="matMenuTrigger" [matMenuTriggerFor]="menu">Save Search</a>
+                    </div>
+                </div>
+            </div>
+    
+            <mat-menu #menu="matMenu" class="my-menu">
+                <div class="main" (click)="$event.stopPropagation();">
+                    <form [formGroup]="saveSearchForm" class="form">
+                        <div fxLayout="row">
+                            <mat-form-field class="w-100 form-section">
+                                <mat-label>Searching</mat-label>
+                                <input formControlName="searchTitle" matInput type="text">
+                                <mat-error *ngIf="saveSearchForm.controls['searchTitle'].errors?.required">
+                                    Title is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                    
+                    <div fxLayout="row">
+                        <div *ngFor="let key of keylist" class="rounded-bt purple chip">
+                            <span>{{key}}</span>
+                        </div>
+                    </div>
+            
+                    <div fxLayout="row" class="mt-2" style="flex-wrap: wrap;">
+                        <mat-chip-list fxLayout="row" #chipList aria-label="Fruit selection">
+                            <mat-chip *ngFor="let selection of filterTags; index as i"
+                                     [removable]="false">
+                              {{selection}}
+                            </mat-chip>
+                          </mat-chip-list>
+                    </div>
+                    <div fxLayout="row" class="justify-content-center border-top p-2">
+                        <a (click)="onSaveSearch()" mat-button class="rounded-bt w-50 pink-b">Save</a>
+                    </div>
+                </div>
+            </mat-menu>
+            
+            <div class="price-filter py-3">
+                <div class="container" fxLayoutAlign="center">
+                    <div fxFlex="30%" class="mx-2">
+                        <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+                    </div>
+                    <div fxLayout="row">
+                        <div fxFlex="70%">
+                            <div class="form">
+                                <mat-form-field class="rounded-bt d-block">
+                                    <mat-select (selectionChange)="onSort($event.value)">
+                                        <mat-option value="&ordering=-price,-shipping_price">Price+Shipping: Highest first</mat-option>
+                                        <mat-option value="&ordering=price,shipping_price">Price+Shipping: Lowest first</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                
+                        <div fxFlex="20%" class="mx-2">
+                            <a mat-button class="text-center rounded-bt filter" (click)="openDialog()">
+                                <span class="icon-filter"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="products">
+                    <div *ngIf="viewType === 'card'" fxLayout="row wrap" class="marketplace-cards border-top pt-5 px-2">
+                        <app-marketplace-product-card class="p-3" fxFlex="50%" *ngFor="let product of filterProductData()" [product]="product"></app-marketplace-product-card>
+                    </div>
+                    <div *ngIf="viewType === 'list'"  fxLayout="column" class="px-2">
+                        <div *ngFor="let product of filterProductData()">
+                            <div class="card-block">
+                                <app-marketplace-card-list-view [product]="product"></app-marketplace-card-list-view>
+                            </div>
+                          </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>

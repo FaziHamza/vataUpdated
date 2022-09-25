@@ -1,0 +1,34 @@
+<div class="desktop-widgets-donate-pot p-3 mt-4">
+    <div fxLayout="row" class="top-bar pb-2 border-bottom">
+        <div fxFlex="70%" class="heading">
+            <p>Donate Pot</p>
+        </div>
+
+        <div fxFlex="30%" class="more-btn text-right">
+            <a>
+                <img src="../../../../../../../assets/img/circlebtns.png">
+            </a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="duration-bar border-bottom">
+        <div fxFlex="20%" class="left-side">
+            <p>Duration:</p>
+        </div>
+        <div fxFlex="80%" class="tabs">
+            <div class="float-right">
+                <ul>
+                    <li [ngClass]="{'active': durationType == 'day'}"><a (click)="changeType('day')">Day</a></li>
+                    <li [ngClass]="{'active': durationType == 'week'}"><a (click)="changeType('week')">Week</a></li>
+                    <li [ngClass]="{'active': durationType == 'month'}"><a (click)="changeType('month')">Month</a></li>
+                    <li [ngClass]="{'active': durationType == 'year'}"><a (click)="changeType('year')">Year</a></li>
+                    <li [ngClass]="{'active': durationType == 'none' }"><a (click)="changeType('none')">All Time</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart pt-3">
+        <img src="../../../../../../../assets/img/graph_donate.JPG">
+    </div>
+</div>

@@ -1,0 +1,123 @@
+@import '../../../../../../styles.scss';
+
+.login {
+    background-color: $white;
+    height: 100vh;
+}
+
+.top-bar {
+    padding: 15px 0;
+    img {
+        width: 100px;
+    }
+}
+
+.login-form {
+    .title {
+        position: relative;
+        padding: 0 0 15px 0;
+        font-size: 24px;
+        color: $black;
+        font-weight: 700;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background-color: $pink-dark;
+            height: 3px;
+            width: 100px;
+        }
+    }
+    .submit-b {
+        background-color: $pink;
+        width: 100%;
+        color: $white;
+    }
+    .forgot {
+        padding: 15px 0 0 0;
+        a {
+            color: $black;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            position: relative;
+            top: 1px;
+        }
+    }
+    .form{
+        position: relative;
+        img{
+            &.corner-t {
+                position: absolute;
+                top: -15%;
+                left: -15%;
+                width: 65px;
+                transform: rotate(180deg);
+            }
+            &.corner-b{
+                position: absolute;
+                z-index: 0;
+                bottom: -15%;
+                right: -20%;
+                width: 65px;
+            }
+        }
+        .title {
+            font-weight: 600;
+        }
+        .sub-title {
+            padding: 5px 0 0 0;
+            font-size: 14px;
+            line-height: 24px;
+            color: $dark-gray;
+            font-weight: 500;
+        }
+        .eye-b {
+            color: $light-gray;
+            position: absolute;
+            top: 9px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .checkbox-custom {
+            font-size: 14px;
+            color: $black;
+            font-weight: 500;
+        }
+
+    }
+}
+
+.dont-have-account {
+    position: relative;
+    padding: 5% 0 0 0;
+    p {
+        font-size: 14px;
+        color: $black;
+        font-weight: 600;
+        a {
+            font-size: 14px;
+            color: $black;
+            font-weight: 600;
+        }
+    }
+}
+
+input {
+    &.mat-input-element {
+        font-size: 16px;
+        color: $black;
+    }
+}
+
+.login-button {
+    margin-top: 1rem;
+}
+
+.custom-control {
+    a {
+        color: $black;
+    }
+}

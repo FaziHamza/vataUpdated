@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #637381;
+      }
+
+      .cls-2 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-3 {
+        fill: #121212;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_content_filter_list_24px" data-name="icon/content/filter_list_24px" class="cls-1" d="M11.074,11.44H7.047V9.533h4.026v1.906ZM15.1,6.674H3.02V4.767H15.1V6.673Zm3.02-4.767H0V0H18.121V1.906Z" transform="translate(0 0)"/>
+    </clipPath>
+  </defs>
+  <g id="filter" transform="translate(-213 -1317)">
+    <rect id="icon_action_compare_arrows_24px_background" data-name="icon/action/compare_arrows_24px background" class="cls-2" width="24" height="24" transform="translate(213 1317)"/>
+    <path id="icon_content_filter_list_24px-2" data-name="icon/content/filter_list_24px" class="cls-3" d="M11,11H7V9.167h4V11Zm4-4.583H3V4.584H15V6.416Zm3-4.584H0V0H18V1.832Z" transform="translate(216 1323.5)"/>
+  </g>
+</svg>

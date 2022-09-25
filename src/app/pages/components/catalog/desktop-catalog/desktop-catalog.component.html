@@ -1,0 +1,257 @@
+<app-old-layout-header></app-old-layout-header>
+
+<div class="catalog-desktop position-relative">
+
+    <div class="btns position-absolute float-right">
+        <div class="categories">
+            <a class="mx-2 px-2" [ngClass]="{'active': !categoryType}" mat-button (click)="changeCategoryType()">Categories</a>
+            <a class="mx-2 px-2" [ngClass]="{'active': categoryType}" mat-button (click)="changeCategoryType()">ABC</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div fxLayout="row">
+
+            <div fxFlex="100%" class="pt-1">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                    <mat-tab label="All Categories">
+                        <div *ngIf="!categoryType">
+                            <h2 class="section-title border-bottom p-3 pt-5" *ngIf="marketplaceCategories.length">Marketplace</h2>
+                            <div *ngFor="let cat of marketplaceCategories" fxLayout="row" class="marketplace">
+                                 <div fxFlex="20%" class="border-right">
+                                     <div [routerLink]="['/marketplace',cat.id]" class="img-section text-center">
+                                         <span class="cat-img-cus" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                                         <h5 class="pt-3">{{cat.name}}</h5>
+                                     </div>
+                                 </div>
+                                 <div fxFlex="80%">
+                                     <div class="links-section sub-catagory">
+                                        <div class="pt-3" *ngFor="let child of cat.childrens">
+                                            <div [routerLink]="['/marketplace',child.id]" class="sub-img-section border-bottom">
+                                                <span class="cat-img-cus" [innerHTML]="(child.icon_content ? child.icon_content : subNotFound) | sanitize"></span>
+                                                <h5>{{child.name}}</h5>
+                                            </div>
+                                            <div>
+                                                <div class="links pt-2">
+                                                    <ul>
+                                                        <li *ngFor="let grandchild of child.childrens" [routerLink]="['/marketplace',cat.id,grandchild.id]"><a>{{grandchild.name}}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
+                                     </div>
+                                 </div>
+                            </div>
+                            <div fxLayout="row" class="show-more-container" *ngIf="marketplaceCategories.length">
+                                <button class="mx-2 px-2 show-more" [class.spinner]="loading" [disabled]="loading" mat-button (click)="showMoreMarketplaceCategories()">Show More</button>
+                            </div>
+
+                            <h2 class="section-title border-bottom p-3 pt-5" *ngIf="bookingCategories.length">Booking</h2>
+                            <div *ngIf="!categoryType">
+                                <div *ngFor="let cat of bookingCategories" fxLayout="row" class="marketplace pt-5">
+                                    <div fxFlex="20%" class="border-right">
+                                        <div [routerLink]="['/bookings',cat.id]" class="img-section text-center">
+                                            <span class="cat-img-cus" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                                            <h5 class="pt-3">{{cat.name}}</h5>
+                                        </div>
+                                    </div>
+                                    <div fxFlex="80%">
+                                        <div class="links-section sub-catagory">
+                                        <div class="pt-3" *ngFor="let child of cat.childrens">
+                                            <div [routerLink]="['/bookings',child.id]" class="sub-img-section border-bottom">
+                                                <span class="cat-img-cus" [innerHTML]="(child.icon_content ? child.icon_content : subNotFound) | sanitize"></span>
+                                                <h5>{{child.name}}</h5>
+                                            </div>
+                                            <div>
+                                                <div class="links pt-2">
+                                                    <ul>
+                                                        <li *ngFor="let grandchild of child.childrens" [routerLink]="['/bookings',cat.id,grandchild.id]"><a>{{grandchild.name}}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="show-more-container" *ngIf="bookingCategories.length">
+                                <a class="mx-2 px-2 show-more" [class.spinner]="loading" [disabled]="loading" mat-button (click)="showMoreBookingCategories()">Show More</a>
+                            </div>
+                        </div>
+
+                        
+
+                       <div class="abc-section pt-5"  *ngIf="categoryType">
+                            <div class="abc">
+                                <div class="container">
+                                    <div fxLayout="row">
+                                        <div class="links py-3">
+                                            <ul>
+                                                <li *ngFor="let char of allChars" (click)="addToSelection(char, true, true)"><a [class.active]="char.selected">{{char.value}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="abc-fields">
+                                <div class="container">
+                        
+                                    <div *ngFor="let cat of categoryAlphaDataMarketplace | keyvalue; let i = index;" class="section">
+                                        <div fxLayout="row">
+                                            <p class="border-bottom pb-3 pt-5 w-100">{{cat.key}}</p>
+                                        </div>
+                                        <div fxLayout="row" class="pt-3">
+                                            <div fxFlex="16.6%" class="mr-4">
+                                                <div *ngIf="cat.value.length">
+                                                    <h4 class="abc-sub-head pt-3">Marketplace</h4>
+                                                    <a [routerLink]="['/marketplace',catVal.id]" *ngFor="let catVal of cat.value">{{catVal.name}}</a>
+                                                </div>
+                                                <div *ngIf="categoryAlphaDataBooking[cat.key].length">
+                                                    <h4 class="abc-sub-head pt-3">Booking</h4>
+                                                    <a [routerLink]="['/bookings',catVal.id]" *ngFor="let catVal of categoryAlphaDataBooking[cat.key]">{{catVal.name}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+
+                    </mat-tab>
+
+                    <mat-tab label="Marketplace">
+                        <div *ngIf="!categoryType">
+                            <div *ngFor="let cat of marketplaceCategories" fxLayout="row" class="marketplace pt-5">
+                                 <div fxFlex="20%" class="border-right">
+                                     <div [routerLink]="['/marketplace',cat.id]" class="img-section text-center">
+                                         <span class="cat-img-cus" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                                         <h5 class="pt-3">{{cat.name}}</h5>
+                                     </div>
+                                 </div>
+                                 <div fxFlex="80%">
+                                    <div class="links-section sub-catagory">
+                                       <div class="pt-3" *ngFor="let child of cat.childrens">
+                                           <div [routerLink]="['/marketplace',child.id]" class="sub-img-section border-bottom">
+                                               <span class="cat-img-cus" [innerHTML]="(child.icon_content ? child.icon_content : subNotFound) | sanitize"></span>
+                                               <h5>{{child.name}}</h5>
+                                           </div>
+                                           <div>
+                                               <div class="links pt-2">
+                                                   <ul>
+                                                        <li *ngFor="let grandchild of child.childrens" [routerLink]="['/marketplace',cat.id,grandchild.id]"><a>{{grandchild.name}}</a></li>
+                                                    </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="show-more-container" *ngIf="marketplaceCategories.length">
+                                <button class="mx-2 px-2 show-more" [class.spinner]="loading" [disabled]="loading" mat-button (click)="showMoreMarketplaceCategories()">Show More</button>
+                            </div>
+                        </div>
+
+                       <div class="abc-section pt-5"  *ngIf="categoryType">
+                            <div class="abc">
+                                <div class="container">
+                                    <div fxLayout="row">
+                                        <div class="links py-3">
+                                            <ul>
+                                                <li *ngFor="let char of allChars" (click)="addToSelection(char, true)"><a [class.active]="char.selected">{{char.value}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="abc-fields">
+                                <div class="container">
+                        
+                                    <div *ngFor="let cat of categoryAlphaDataMarketplace | keyvalue; let i = index;" class="section">
+                                        <div fxLayout="row">
+                                            <p class="border-bottom pb-3 pt-5 w-100">{{cat.key}}</p>
+                                        </div>
+                                        <div fxLayout="row" class="pt-3">
+                                            <div fxFlex="16.6%" class="mr-4">
+                                                <a [routerLink]="['/marketplace',catVal.id]" *ngFor="let catVal of cat.value">{{catVal.name}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </mat-tab>
+
+                    <mat-tab label="Booking">
+                        <div *ngIf="!categoryType">
+                            <div *ngFor="let cat of bookingCategories" fxLayout="row" class="marketplace pt-5">
+                                 <div fxFlex="20%" class="border-right">
+                                     <div [routerLink]="['/bookings',cat.id]" class="img-section text-center">
+                                         <span class="cat-img-cus" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                                         <h5 class="pt-3">{{cat.name}}</h5>
+                                     </div>
+                                 </div>
+                                 <div fxFlex="80%">
+                                    <div class="links-section sub-catagory">
+                                       <div class="pt-3" *ngFor="let child of cat.childrens">
+                                           <div [routerLink]="['/bookings',child.id]" class="sub-img-section border-bottom">
+                                               <span class="cat-img-cus" [innerHTML]="(child.icon_content ? child.icon_content : subNotFound) | sanitize"></span>
+                                               <h5>{{child.name}}</h5>
+                                           </div>
+                                           <div>
+                                               <div class="links pt-2">
+                                                   <ul>
+                                                        <li *ngFor="let grandchild of child.childrens" [routerLink]="['/bookings',cat.id,grandchild.id]"><a>{{grandchild.name}}</a></li>
+                                                    </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="show-more-container" *ngIf="bookingCategories.length">
+                                <a class="mx-2 px-2 show-more" [class.spinner]="loading" [disabled]="loading" mat-button (click)="showMoreBookingCategories()">Show More</a>
+                            </div>
+                        </div>
+
+                       <div class="abc-section pt-5"  *ngIf="categoryType">
+                            <div class="abc">
+                                <div class="container">
+                                    <div fxLayout="row">
+                                        <div class="links py-3">
+                                            <ul>
+                                                <li *ngFor="let char of allChars" (click)="addToSelection(char, false, true)"><a [class.active]="char.selected">{{char.value}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="abc-fields">
+                                <div class="container">
+                        
+                                    <div *ngFor="let cat of categoryAlphaDataBooking | keyvalue; let i = index;" class="section">
+                                        <div fxLayout="row">
+                                            <p class="border-bottom pb-3 pt-5 w-100">{{cat.key}}</p>
+                                        </div>
+                                        <div fxLayout="row" class="pt-3">
+                                            <div fxFlex="16.6%" class="mr-4">
+                                                <a [routerLink]="['/bookings',catVal.id]" *ngFor="let catVal of cat.value">{{catVal.name}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </mat-tab>
+                  </mat-tab-group>
+            </div>
+
+        </div>
+    </div>
+</div>

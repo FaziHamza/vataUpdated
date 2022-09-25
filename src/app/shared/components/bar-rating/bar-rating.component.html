@@ -1,0 +1,36 @@
+<!-- for desktop  -->
+<div class="progress-bar" *ngIf="deviceType == 'desktop'">
+    <div class="side">
+        <div>{{star}} star</div>
+    </div>
+    <div class="middle">
+        <div class="bar-container">
+            <div [style.width.%]="percentage" class="bar"></div>
+        </div>
+    </div>
+    <div class="side right">
+        <div>{{times}} Times ({{percentage}}%)</div>
+    </div>
+</div>
+
+ <!-- for mobile  -->
+<div class="progress-bar" *ngIf="deviceType == 'mobile'">
+    <div fxLayout="row">
+        <div class="middle w-100">
+            <div class="bar-container">
+                <div [style.width.%]="percentage" class="bar"></div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="30%" class="side">
+            <div>{{star}} star</div>
+        </div>
+
+        <div fxFlex="70%" class="side">
+            <div class="right w-100">
+                <div class="text-right">{{times}} Times ({{percentage}}%)</div>
+            </div>
+        </div>
+    </div>
+</div>

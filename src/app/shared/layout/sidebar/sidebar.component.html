@@ -1,0 +1,36 @@
+<div class="sidebar">
+    
+    <div class="logo">
+        <img *ngIf="!isThemeDark" class="logo" src="/assets/img/front-img/home/Logo.png" />
+        <img *ngIf="isThemeDark" class="logo" src="/assets/img/logo-white.svg" />
+    </div>
+
+    <div class="links text-center">
+        <div class="link-section pt-4">
+            <p class="active para-1">Create an Account</p>
+            <ul>
+                <li class="active">User Info</li>
+                <li [ngClass]="{'active': Step >= 2}">Business Info</li>
+            </ul>
+        </div>
+        <div class="link-section pt-5">
+            <p class="para-2" [ngClass]="{'active': Step >= 3}">Verify an Account</p>
+            <ul>
+                <li [ngClass]="{'active': Step >= 4}">Payment Address</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="account">
+        <p class="py-3 border-top border-bottom text-right pr-3">
+            Already have an account? 
+            <u><a routerLink="/auth/login">Login</a></u>
+        </p>
+        <div class="terms text-right pr-3 py-2">
+            By creating an account, you agree
+            <p>
+                <u><a href="#">Terms of Use & Private Policy</a></u>
+            </p>
+        </div>
+    </div>
+</div>

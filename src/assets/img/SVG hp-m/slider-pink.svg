@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 10">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f5f5f5;
+      }
+
+      .cls-2 {
+        fill: #b246ce;
+      }
+    </style>
+  </defs>
+  <g id="slider-pink" transform="translate(-890 -1849)">
+    <g id="Group_126" data-name="Group 126" transform="translate(281 -486)">
+      <rect id="Rectangle_171" data-name="Rectangle 171" class="cls-1" width="10" height="10" rx="5" transform="translate(609 2335)"/>
+      <rect id="Rectangle_174" data-name="Rectangle 174" class="cls-1" width="10" height="10" rx="5" transform="translate(661 2335)"/>
+      <rect id="Rectangle_176" data-name="Rectangle 176" class="cls-1" width="10" height="10" rx="5" transform="translate(713 2335)"/>
+      <rect id="Rectangle_172" data-name="Rectangle 172" class="cls-1" width="10" height="10" rx="5" transform="translate(635 2335)"/>
+      <rect id="Rectangle_173" data-name="Rectangle 173" class="cls-2" width="10" height="10" rx="5" transform="translate(687 2335)"/>
+      <rect id="Rectangle_175" data-name="Rectangle 175" class="cls-1" width="10" height="10" rx="5" transform="translate(739 2335)"/>
+    </g>
+  </g>
+</svg>

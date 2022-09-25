@@ -1,0 +1,39 @@
+@import '../../../../../../styles.scss';
+
+.top-bar {
+    padding: 15px 0;
+    .logo {
+        img {
+            width: 100px;
+        }
+    }
+    .catalog {
+        border: 1px solid $light-gray;
+        padding: 6px 10px;
+        border-radius: 25px;
+        color: $dark-gray;
+        font-size: 14px;
+        font-weight: 500;
+        display: block;
+        img {
+            width: 20px;
+            height: auto;
+            float: left;
+        }
+    }
+    .search {
+        border: 1px solid $light-gray;
+        padding: 8px 7px;
+        border-radius: 50%;
+        position: relative;
+        // top: 5px;
+        img {
+            width: 22px;
+            height: auto;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+}
+

@@ -1,0 +1,128 @@
+@import '../../../../../../styles.scss';
+
+.booking-tab {
+
+    .left-side-booking {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+
+        .left-inputs {
+
+            .duration {
+                .heading-form-field {
+                    span {
+                        color: $dark-gray;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .members {
+
+                .left-sec {
+                    h2 {
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: $black;
+                    }
+                }
+
+                .right-sec {
+                    a {
+                        text-decoration: none;
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: $black;
+                    }
+                }
+
+                .left-img-sec {
+                    img {
+                        width: 35px;
+                        height: auto;
+                        position: relative;
+                        top: -9px;                    
+                    }
+                     h6 {
+                        &.text {
+                            color: $black;
+                            font-size: 16px;
+                            font-weight: 100;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .right-side-booking {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+
+        .advanced-toggle-inputs {
+
+            .heading {
+                h2 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: $black;
+                }
+            }
+
+            .heading-form-field {
+                span {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+.tabs {
+    text-align: center;
+    padding: 2% 0 5% 0;
+    a {
+        text-decoration: none;
+        border: 1px solid $light-gray;
+        color: $dark-gray;
+        padding: 4% 25%;
+        font-size: 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        &.active {
+            border: 1px solid $pink;
+        }
+    }
+}
+
+.text-field {
+    
+    .word-no {
+        span {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            font-size: 15px;
+            color: $dark-gray;
+        }
+    }
+    .brief-no {
+        span {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            font-size: 15px;
+            color: $dark-gray;
+            &.text-no {
+            top: 80px;
+            }
+        }
+    }
+}

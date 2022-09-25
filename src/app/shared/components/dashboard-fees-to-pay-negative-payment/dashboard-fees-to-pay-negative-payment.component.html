@@ -1,0 +1,98 @@
+<div class="desktop-dashboard-profile-fees-to-pay-negative-payment-modal">
+	<div class="heading text-center pb-4">
+		<h6>Make Payment</h6>
+	</div>
+    <mat-tab-group selectedIndex="0" animationDuration="0ms">
+        <mat-tab label="Credit Card">
+			<div class="credit-card-tab">
+				<div fxLayout="row" class="pt-3">
+					<mat-form-field class="form-section w-100">
+						<mat-label>Cardholder Name</mat-label>
+						<input matInput type="text">
+					</mat-form-field>
+				</div>
+				<div fxLayout="row">
+					<mat-form-field class="form-section w-100">
+						<mat-label>Card Number</mat-label>
+						<input matInput type="text">
+					</mat-form-field>
+				</div>
+				<div fxLayout="row">
+					<div fxFlex="45%" class="mr-4">
+						<mat-form-field class="form-section w-100">
+							<mat-label>MM/YY</mat-label>
+							<input matInput type="text">
+						</mat-form-field>
+					</div>
+					<div fxFlex="45%">
+						<mat-form-field class="form-section w-100">
+							<mat-label>CVC</mat-label>
+							<input matInput type="text">
+						</mat-form-field>
+					</div>
+				</div>
+				<div fxLayout="row" class="keep-remember border-bottom pb-3 pt-1">
+					<mat-checkbox></mat-checkbox> <span class="pl-4">Keep me Remember</span>
+				</div>
+				<div fxLayout="row" class="total py-4">
+					<div fxFlex="50%" class="left-side">
+						<p>Total</p>
+					</div>
+					<div fxFlex="50%" class="right-side">
+						<p>$56,890</p>
+					</div>
+				</div>
+				<div class="confirm-btn">
+					<a mat-button class="rounded-bt pink-b w-100">Confirm and Pay</a>
+				</div>
+			</div>
+		</mat-tab>
+		
+        <mat-tab label="Bank Transfer">
+
+			<div class="bank-transfer-tab">
+				<div class="address border-bottom py-3">
+					<p class="heading">
+						Sample08 XYZ
+					</p>
+					<p class="text">
+						sample ukarine, xyz 215960
+					</p>
+					<p class="text">
+						London ukarine, 9615960
+					</p>
+					<p class="text">
+						Vaata London
+					</p>
+				</div>
+
+				<div class="account pt-3">
+					<p class="text">
+						Account #
+					</p>
+					<p class="sub-text">
+						FACFR23RSDS
+					</p>
+					<p class="copy" (click)="copyText('FACFR23RSDS')">
+						<span *ngIf="!copied"><img src="../../../../assets/img/copy.png"> Copy</span>
+						<span *ngIf="copied">Copied</span>
+					</p>
+				</div>
+
+				<div class="reference pt-3">
+					<p class="text">
+						Reference to
+					</p>
+					<p class="sub-text">
+						345345235235424
+					</p>
+					<p class="copy" (click)="copyText('345345235235424')">
+						<span *ngIf="!copied"><img src="../../../../assets/img/copy.png"> Copy</span>
+						<span *ngIf="copied">Copied</span>
+					</p>
+				</div>
+			</div>
+
+        </mat-tab>
+      </mat-tab-group>
+</div>

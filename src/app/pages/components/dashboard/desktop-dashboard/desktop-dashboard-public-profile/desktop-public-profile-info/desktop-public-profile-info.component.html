@@ -1,0 +1,78 @@
+<div class="public-profile-info" *ngIf="publicProfile">
+    <div class="user pt-3 text-center">
+        <img src="{{publicProfile.data.profile_pic}}">
+        <p class="pt-4">{{publicProfile.data.first_name}} {{publicProfile.data.last_name}}</p>
+        <a routerLink="/dashboard/dashboard-edit-public-profile" mat-button class="pink-b px-5 rounded-bt mt-4">Edit Profile</a>
+        <div class="user-follows pt-5">
+            <div fxFlex=25% class="rank mr-2">
+                <h6>{{publicProfile.data.items_sold}}</h6>
+                <p>Items Sold</p>
+            </div>
+            <div fxFlex=25% class="rank mr-2">
+                <h6>{{publicProfile.data.iamfollowing_count}}</h6>
+                <p>Follow</p>
+            </div>
+            <div fxFlex=25% class="rank mr-2">
+                <h6>{{publicProfile.data.iamfollowedby_count}}</h6>
+                <p>Followed</p>
+            </div>
+            <div fxFlex=25% class="rank">
+                <h6>{{publicProfile.data.no_show}}</h6>
+                <p>No-Shows</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="membership-contact mt-4">
+        <div fxLayout="row" class="border-top py-3">
+            <div fxFlex="15%" class="left-icon-section text-center mr-2">
+                <span class="icon-Subtraction-7"></span>
+            </div>
+            <div fxFlex="85%" class="right-content-section">
+                <p class="text">Verify Level</p>
+                <p class="sub-text" *ngIf="publicProfile.data.passport_uploaded_n_verified">Uploaded a Passport</p>
+                <p class="sub-text" *ngIf="!publicProfile.data.passport_uploaded_n_verified">Passport Not Verified</p>
+            </div>
+        </div>
+
+        <div fxLayout="row" class="border-top py-3">
+            <div fxFlex="15%" class="left-icon-section text-center mr-2">
+                <span class="icon-commercial"></span>
+            </div>
+            <div fxFlex="85%" class="right-content-section">
+                <p class="text">Verify Level</p>
+                <p class="sub-text" *ngIf="publicProfile.data.billing_uploaded_n_verified">Uploaded a Billing Address</p>
+                <p class="sub-text" *ngIf="!publicProfile.data.billing_uploaded_n_verified">Billing Not Verified</p>
+            </div>
+        </div>
+
+        <div class="contact border-top">
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="10%" class="left-icon">
+                    <img class="location" src="../../../../../../assets/img/location.png">
+                </div>
+                <div fxFlex="90%" class="right-content">
+                    <p>{{publicProfile.data.address}}</p>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4">
+                <div fxFlex="10%" class="left-icon">
+                    <img src="../../../../../../assets/img/telephone.png">
+                </div>
+                <div fxFlex="90%" class="right-content">
+                    <p>{{publicProfile.data.phone}}</p>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4">
+                <div fxFlex="10%" class="left-icon">
+                    <img src="../../../../../../assets/img/email-passive.png">
+                </div>
+                <div fxFlex="90%" class="right-content">
+                    <p>{{publicProfile.data.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

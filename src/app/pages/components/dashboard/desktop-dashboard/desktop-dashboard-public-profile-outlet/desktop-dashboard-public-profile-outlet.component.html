@@ -1,0 +1,41 @@
+<div class="desktop-dashboard p-3">
+    <div class="container">
+        <div fxLayout="row" class="field-row py-4">
+            <div fxFlex="350px" class="left-side">
+                <h4 class="heading">Dashboard</h4>
+                <p class="ml-3">
+                    <span class="icon-commercial pr-2"></span>
+                    Commercial
+                </p>
+            </div>
+            <div fxFlex="70%" class="right-side text-right">
+                <a mat-button class="white-b rounded-bt px-5 py-0 mr-3">Back to Home</a>
+                <a mat-button [matMenuTriggerFor]="manageWidget" class="pink-b rounded-bt px-5 py-0">Manage Widgers</a>
+                <mat-menu #manageWidget="matMenu">
+                    <!-- <label mat-menu-item>OK label</label> -->
+                    <mat-checkbox class="mat-menu-item">Problem here</mat-checkbox> 
+                </mat-menu>
+            </div>
+        </div>
+
+        <div class="tabs-fields">
+            <div fxLayout="row">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+                    <mat-tab label="Widgets">
+                        <app-desktop-dashboard-widgets></app-desktop-dashboard-widgets>
+                    </mat-tab>
+                
+                    <mat-tab label="Public Profile">
+                        <ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+                            <app-mobile-dashboard-public-profile></app-mobile-dashboard-public-profile>
+                        </ng-container>
+                        <ng-template #desktop>
+                            <app-desktop-dashboard-public-profile></app-desktop-dashboard-public-profile>
+                        </ng-template>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,23 @@
+@import '../../../../../../styles.scss';
+
+.col-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 17%;
+    height: 100vh;
+    background: $primary;
+    z-index: 1;
+}
+
+.col-right {
+    width: 87%;
+    margin-left: 17%;
+}
+
+.main {
+    // height: 100vh;
+    // max-height: 90vh;
+    overflow-y: auto;
+    background: $white;
+}

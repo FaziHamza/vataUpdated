@@ -1,0 +1,52 @@
+<div class="desktop-dashboard-booking-portfolio mt-4">
+    <div fxLayout="row" *ngIf="shopWorkImage">
+        <div fxFlex="25%" class="portfolio p-2 mr-3" *ngFor="let item of shopWorkImage.data">
+            <div class="card">
+                <img [src]="item.image">
+    
+                <div fxLayout="row">
+                    <div fxFlex="50%">
+                        <div class="like-chip">
+                            <span class="icon-like1 pr-3 heart" [ngClass]="{'active': item.is_liked}"></span>
+                            <span class="count-like">{{item.total_likes_count}}</span>
+                        </div>
+                    </div>
+                    
+                    <div fxFlex="50%" class="text-right">
+                        <div class="cross">
+                            <span (click)="deleteModifyShopWorkImage(item.id)" class="icon-baseline-close-24px-1"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="25%" class="portfolio p-2 mr-3">
+            <div class="add px-5 py-3 text-center">
+                <!-- <p class="text">Add Photo</p>
+                <div class="icon mt-5">
+                    <span class="icon-baseline-filter_hdr-24px"></span>
+                </div>
+                <p class="drag py-3 border-bottom">Drag & Drop Here</p>
+                <a mat-button class="pink-b outlined rounded-bt px-5 mt-4" (click)="postShopWorkImage()">Upload</a> -->
+
+                <div class="left-imgs" *ngIf="preview.length > 0">
+                    <ng-container *ngFor="let preview of preview; let i = index">
+                        <span
+                            (click)="removeImage(i)"
+                            class="icon-baseline-close-24px-11 close">
+                        </span>
+                        <img class="mr-2 mt-3" [src]="preview.data" />
+                        <a mat-button class="pink-b outlined rounded-bt px-5 mt-4" (click)="postShopWorkImage()">Upload</a>
+                    </ng-container>
+                </div>
+
+                <app-file-upload
+                    *ngIf="preview.length == 0"
+                    (uploadData)="onFileUpload($event)"
+                    template="lg">
+                </app-file-upload>
+            </div>
+        </div>
+    </div>
+</div>

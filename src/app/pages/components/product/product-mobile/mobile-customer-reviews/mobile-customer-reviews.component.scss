@@ -1,0 +1,145 @@
+@import '../../../../../../styles.scss';
+.customer-reviews {
+    .no-data {
+        color: $black;
+    }
+    .heading {
+        h5 {
+            font-size: 23px;
+            color: $black;
+        }
+    }
+
+    span {
+        &.icon-baseline-keyboard_arrow_down-24px-12 {
+            border: 1px solid $light-gray;
+            font-size: 22px;
+            float: right;
+            position: relative;
+            border-radius: 20px;
+            padding: 1px 1px;
+            top: 1px;
+        }
+    }
+
+    .review-btn {
+        a {
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    }
+
+    .feedback {
+
+        .heading {
+            h6 {
+                color: $black;
+                font-size: 15px;
+            }
+        }
+
+        .next-row {
+            .sub-heading {
+                color: $dark-gray;
+                font-size: 14px;
+                font-weight: 100;
+            }
+
+            .rating {
+                position: relative;
+                left: -0px;
+                top: -2px;
+                span {
+                    font-size: 13px;
+                    color: $light-gray;
+                    &.checked {
+                        color: $pink-dark;
+                        &::before {
+                            color: $pink-dark;  
+                        }
+                    }
+                }
+            }
+        }
+
+        .review-msg {
+            p {
+                font-size: 14px;
+                color: $black;
+                line-height: 1.6;
+            }
+        }
+
+        .review-img {
+            img {
+                width: 95px;
+                border-radius: 5px;
+                height: 46px;
+            }
+        }
+
+        .review-reply {
+            a {
+                text-decoration: none;
+                font-size: 15px;
+                color: $black;
+            }
+            .reply-input {
+                    border: 1px solid $ligher-gray;
+                    border-radius: 25px;
+                    padding: 5px 20px;
+                    margin: 0 10px 0 0;
+                    height: 20px;
+                    width: 80%;
+                    &::placeholder {
+                        color: $black;
+                      }
+            }
+            .send-button {
+                background: none;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .reply-container {
+            border: 1px solid $ligher-gray;
+            padding: 10px;
+            border-radius: 10px;
+            .replied-comment {
+                .username {
+                    color: $black;
+                    font-size: 14px;
+                    text-transform: capitalize;
+                }
+                .date {
+                    color: $light-gray;
+                    font-size: 12px;
+                    font-weight: 100;
+                    padding: 0 0 0 10px;
+                }
+                .reply-desc {
+                    font-size: 12px;
+                    color: $black;
+                    line-height: 1.5;
+                }
+                .time-ago {
+                    color: $light-gray;
+                    font-size: 12px;
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+
+    .more-reviews {
+        a {
+            text-decoration: none;
+            font-size: 15px;
+        }
+    }
+
+}

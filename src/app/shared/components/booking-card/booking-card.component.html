@@ -1,0 +1,22 @@
+<div class="card-body border mr-2">
+  <div class="image-sec">
+      <img class="main-img" [src]="booking.shop_image ? booking.shop_image : '/assets/img/front-img/marketplace/p1.png'" alt="booking">
+  </div>
+
+  <div class="truncate-typo">
+    <h5 class="text-center p-2">{{ (booking.shopname && booking.shopname.length>20) ? (booking.shopname | slice:0:20)+'..' : (booking.shopname) }}</h5>
+  </div>
+
+  <div fxLayout="row">
+    <div fxLayoutAlign="space-around" class="rating w-100 border-top p-2 text-center">
+      <app-star-rating [maxScore]="5" [score]="booking.tot_ratings" [forDisplay]="true"></app-star-rating>
+      <p class="number pl-1 text-muted m-0">{{booking.rating_count}} Book Ratings</p>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+      <div class="location text-center border-top py-2 w-100">
+          <p class="m-0 p-2">{{booking.place}}</p>
+      </div>
+  </div>
+</div>

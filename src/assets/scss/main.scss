@@ -1,0 +1,140 @@
+@import './colors.scss';
+@import './mixins.scss';
+@import './variables.scss';
+@import './lib-customizations.scss';
+@import './custom-utilities.scss';
+
+h1, h2, h3, h4, h5, h6, p, ul {
+    margin-bottom: 0;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.rounded-bt {
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.pink-b {
+    background-color: $pink !important;
+    color: $white !important;
+    border: 1px solid $pink;
+    &.outlined {
+        background-color: $white !important;
+        border: 1px solid $pink;
+        color: $pink !important;
+    }
+}
+
+.white-b {
+    background-color: $white;
+    color: $black !important;
+    border: 1px solid $light-gray;
+    &.active {
+        border: 1px solid $pink;
+    }
+}
+
+.lighter-b {
+    background-color: $ligher-gray !important;
+    color: $dark-gray !important;
+    border: 1px solid $dark-gray;
+    &.outlined {
+        background-color: $white !important;
+        border: 1px solid $dark-gray;
+        color: $dark-gray !important;
+    }
+}
+
+.lightblue-b {
+    background-color: $light-blue !important;
+    color: $white !important;
+    border: 1px solid $light-blue;
+}
+
+.purple-b {
+    background-color: $purple !important;
+    color: $white !important;
+    border: 1px solid $purple;
+}
+
+
+.pink-text {
+    color: $pink !important;
+}
+
+.green-text {
+    color: $green !important;
+}
+
+.black-text {
+    color: $black !important;
+}
+
+.circular-b {
+    border-radius: 50%;
+    padding: 11px 15px;
+}
+
+.title {
+    position: relative;
+    padding: 0 0 15px 0;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 35%;
+        background-color: $pink-dark;
+        height: 3px;
+        width: 100px;
+    }
+}
+
+.form {
+    p {
+        &.validation-error {
+            color: $pink-dark;
+            font-size: 12px;
+            font-weight: 500;
+            margin: -10px 0 0 0;
+        }
+    }
+}
+
+// .mat-dialog-container {
+//     @media only screen and (max-width: 600px) {
+//         position: relative;
+//         left: 10%;
+//     }
+    
+// }
+
+
+
+
+
+//  class-b inside class-a
+.class-a {
+    .class-b {
+        position: relative;
+    }
+}
+
+// class-b with class-a on same div/sec
+.class-a {
+    &.class-b {
+        position: relative;
+    }
+}
+
+// pesudo elements
+.class-a {
+    &:hover {
+        color: red;
+    }
+    &::after {
+        color: red;
+    }
+}

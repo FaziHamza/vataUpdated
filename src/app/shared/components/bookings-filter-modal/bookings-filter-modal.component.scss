@@ -1,0 +1,65 @@
+@import "../../../../styles.scss";
+
+.booking-filter-modal {
+    .heading {
+        h6 {
+            font-size: 23px;
+            color: $black;
+        }
+    }
+    .bootom-section {
+        .section {
+            p {
+                &.heading{
+                    font-size: $black;
+                }
+            }
+            .field {
+                span {
+                    color: #808080;
+                    font-size: 13px;
+                    border: 1px solid #ececec;
+                    padding: 3px 10px;
+                    border-radius: 50px;
+                    float: right;
+                }
+            }
+        }
+
+        .material {
+            p {
+                &.heading{
+                    font-size: $black;
+                }
+            }
+            .field {
+                span {
+                    color: #808080;
+                    font-size: 13px;
+                    border: 1px solid#ececec;
+                    padding: 3px 10px;
+                    border-radius: 50px;
+                    float: right;
+                }
+            }
+        }
+
+        .price {
+            p {
+                &.heading{
+                    font-size: $black;
+                }
+            }
+            .field {
+                span {
+                    color: #808080;
+                    font-size: 13px;
+                    border: 1px solid#ececec;
+                    padding: 3px 10px;
+                    border-radius: 50px;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<div class="modal fade" id="authorizeModalCenter" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <form
+        [formGroup]="authorizedForm"
+        class="modal-body"
+      >
+        <div class="container">
+          <h5 class="title font-weight-normal text-center">
+            Are You Authorized to Sign ?
+          </h5>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between" class="row pt-3">
+          <div fxFlex="50%" class="col-md-6">
+            <div class="md-form form-sm mx-2">
+              <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control form-control-sm"
+                  formControlName="first_name"
+                />
+                <mat-error
+                  *ngIf="authorizedForm.controls['first_name'].errors?.required"
+                >Firstname is required</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxFlex="50%" class="col-md-6">
+            <div class="md-form form-sm mx-2">
+              <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control form-control-sm"
+                  formControlName="last_name"
+                />
+                <mat-error
+                  *ngIf="authorizedForm.controls['last_name'].errors?.required"
+                >Lastname is required</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+            <div class="md-form form-sm w-100 mr-3 my-3">
+              <mat-form-field class="d-block">
+                  <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="authorizedForm.controls['gender'].errors?.required"
+                >Gender is required</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+        <div
+          class="row text-center"
+        >
+          <div class="col-12">
+            <a (click)="submit()" class="btn pink-b rounded-bt p-2 btn-block" type="submit">Add</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

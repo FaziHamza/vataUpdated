@@ -1,0 +1,107 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-my-favorite {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .my-favorite {
+        .favorite-bar {
+            .img-side {
+                img {
+                    width: 100px;
+                    height: 50px;
+                    padding-top: 30px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .icons-bar {
+                .left {
+                    text-align: center;
+                    padding: 4px 0 0 0;
+                    border-radius: 50px;
+                    border: 1px solid $ligher-gray;
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                .center {
+                    border-radius: 50px;
+                    padding: 2px 0;
+                    border: 1px solid $ligher-gray;
+                    text-align: center;
+                    p {
+                        &.time {
+                            color: $pink;
+                            font-size: 12px;
+                        }
+                        &.bids {
+                            color: $dark-gray;
+                            font-size: 10px;
+                        }
+                    }
+                }
+
+                .right {
+                    border-radius: 50px;
+                    padding: 4px 0 0 0;
+                    border: 1px solid $ligher-gray;
+                    text-align: center;
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+            }
+
+            .content-side {
+                p {
+                    &.heading {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .shipping-detail {
+                    padding-top: 12px;
+                    span {
+                        &.text {
+                            color: $dark-gray;
+                            font-size: 12px;
+                        }
+                        &.price {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,257 @@
+<div class="desktop-order" *ngIf="orderData">
+    <div fxLayout="row">
+
+        <div fxFlex="70%" class="left-side">
+            <div class="container">
+                <div class="items p-4 m-2">
+                    <div fxLayout="row" class="heading-bar">
+                        <div fxFlex="70%" class="heading-left">
+                            <h4>Marketplace Business ({{orderData?.business_cart.items.length}})</h4>
+                        </div>
+                        <div fxFlex="30%" class="arrow-right text-right">
+                            <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+                        </div>
+                    </div>
+                    <div #toggleAccordian>
+                        <div *ngFor="let item of orderData?.business_cart.items" class="item-details mb-3">
+                            <div fxLayout="row" class="item-marketplace pb-3 border-bottom">
+                                <div fxFlex="20%" class="item-img">
+                                    <img [src]="item.images[0].includes('mp4') ? item.images[1]: item.images[0]">
+                                </div>
+    
+                                <div fxFlex="75%" class="item-text">
+                                    <p class="heading py-2">{{item.item_name}}</p>
+                                    <span class="silver-text">Seller:</span>
+                                    <span class="black-text pl-3">{{item.seller}}</span> 
+                                </div>
+    
+                                <div fxFlex="5%" class="cross-btn text-right">
+                                    <span (click)="removeItem(item.id, true)" class="icon-baseline-close-24px-1 pointer"></span>
+                                </div>
+                            </div>
+    
+                            <div class="item-specifications py-3" style="display: inline-block;">
+                                <div style="display: inline-block; margin: 7px;" class="condition mr-3">
+                                    <span class="silver">Condition:</span>
+                                    <span class="black pl-2">{{item.item_condition}}</span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="size mx-3" *ngFor="let variant of item.selected_variants | keyvalue">
+                                    <span class="silver" *ngIf="variant.key !== 'Quantity' && variant.key !== 'Price'">{{variant.key}}:</span>
+                                    <ng-container *ngIf="variant.key !== 'Quantity' && variant.key !== 'Price'">
+                                        <span class="black pl-2">{{variant.value}}</span>
+                                    </ng-container>
+                                </div>
+                                <!-- <div style="display: inline-block; margin: 7px;" class="colors mx-3">
+                                    <span class="silver">Color:</span>
+                                    <ng-container *ngFor="let color of item.selected_variants">
+                                        <span *ngIf="color.attr_type === 'color'" class="color ml-2"  [style.background-color]="color.internal_value"><a></a></span>
+                                    </ng-container>
+                                </div> -->
+                                <div style="display: inline-block; margin: 7px;" class="quantity mr-3">
+                                    <span class="silver">Quantity: </span>
+                                    <span class="number">
+                                        <span (click)="decrement(input1, true, item.id)" class="minus">-</span>
+                                        <input #input1 min="1" type="text" disabled [value]="item.quantity"/>
+                                        <span (click)="increment(input1, true, item.id)" class="plus">+</span>
+                                    </span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="price ml-3">
+                                    <span class="silver">Price:</span>
+                                    <span class="pink-text pl-2">{{item.price | currency: "CHF":"symbol":"1.0"}}</span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="price ml-3">
+                                    <span class="silver">Shipping:</span>
+                                    <span class="pink-text pl-2">{{ item.shipping_price | currency: "CHF":"symbol":"1.0"}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="items p-4 m-2">
+                    <div fxLayout="row" class="heading-bar">
+                        <div fxFlex="70%" class="heading-left">
+                            <h4>Marketplace Private ({{orderData?.private_cart.items.length}})</h4>
+                        </div>
+                        <div fxFlex="30%" class="arrow-right text-right">
+                            <span [appToggleSectionAccordian]="toggleAccordianPrivate" class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+                        </div>
+                    </div>
+                    <div #toggleAccordianPrivate>
+                        <div *ngFor="let item of orderData?.private_cart.items" class="item-details mb-3">
+                            <div fxLayout="row" class="item-marketplace pb-3 border-bottom">
+                                <div fxFlex="20%" class="item-img">
+                                    <img [src]="item.images[0]">
+                                </div>
+    
+                                <div fxFlex="75%" class="item-text">
+                                    <p class="heading py-2">{{item.item_name}}</p>
+                                    <span class="silver-text">Seller:</span>
+                                    <span class="black-text pl-3">{{item.seller}}</span> 
+                                </div>
+    
+                                <div fxFlex="5%" class="cross-btn text-right">
+                                    <span (click)="removeItem(item.id, false)" class="icon-baseline-close-24px-1 pointer"></span>
+                                </div>
+                            </div>
+    
+                            <div class="item-specifications text-center py-3" style="display: inline-block;">
+                                <div style="display: inline-block; margin: 7px;" class="condition mr-3">
+                                    <span class="silver">Condition:</span>
+                                    <span class="black pl-2">{{item.item_condition}}</span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="size mx-3" *ngFor="let variant of item.selected_variants | keyvalue">
+                                    <span class="silver" *ngIf="variant.key !== 'Quantity' && variant.key !== 'Price'">{{variant.key}}:</span>
+                                    <ng-container *ngIf="variant.key !== 'Quantity' && variant.key !== 'Price'">
+                                        <span class="black pl-2">{{variant.value}}</span>
+                                    </ng-container>
+                                </div>
+                            
+                                <div style="display: inline-block; margin: 7px;" class="quantity mr-3">
+                                    <span class="silver">Quantity: </span>
+                                    <span class="number">
+                                        <span (click)="decrement(input, false, item.id)" class="minus">-</span>
+                                        <input #input min="1" type="text" disabled [value]="item.quantity"/>
+                                        <span (click)="increment(input, false, item.id)" class="plus">+</span>
+                                    </span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="price ml-3">
+                                    <span class="silver">Price:</span>
+                                    <span class="pink-text pl-2">{{item.price | currency: "CHF":"symbol":"1.0"}}</span>
+                                </div>
+                                <div style="display: inline-block; margin: 7px;" class="price ml-3">
+                                    <span class="silver">Shipping:</span>
+                                    <span class="pink-text pl-2">{{ item.shipping_price | currency: "CHF":"symbol":"1.0"}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="deal-bar mt-5">
+                    <div fxLayout="row">
+                        <div fxFlex="70%" class="heading-left">
+                            <h4>Deals (1)</h4>
+                        </div>
+                        <div fxFlex="30%" class="arrow-right text-right">
+                            <span class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="payment-bar mt-5">
+                    <div fxLayout="row" class="pb-3">
+                        <div class="heading">
+                            <h4>Payment</h4>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <span class="silver-text">Payments accepted by</span>
+                        </div>
+
+                        <div fxFlex="70%" class="payment-icons text-right">
+                            <span class="icon-Group-1295 icon-xs mr-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
+                            <span class="icon-Card-networks-MC-Horizontal mx-2 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+                            <span class="icon-Visa icon-m mx-3"></span>
+                            <span class="icon-PayPal-FullColor-Horizontal icon-m mx-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+                            <span class="icon-Group-1296 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shipping-bar mt-5">
+                    <div fxLayout="row">
+                        <div fxFlex="70%" class="heading">
+                            <h4>Shipping</h4>
+                        </div>
+                        <div fxFlex="30%" class="change-btn text-right">
+                            <a mat-button class="pink-b rounded-bt">Change</a>
+                        </div>
+                    </div>
+
+                    <div class="date-location border-bottom pb-4">
+                        <p>Est. Delivery: Jan 17 - Feb 16</p>
+                        <p class="pt-1">Economy Shipping from Austria/ Vienna to worldwide</p>
+                    </div>
+
+                    <div class="shipping-details pt-4">
+                        <p class="pb-3">John Doe</p>
+                        <p class="pb-3">Liberty Street 5/12</p>
+                        <p class="pb-3">London Dnipropetrovska Region, 401789</p>
+                        <p>Ukarine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="30%" class="right-side">
+            <div class="promo-code">
+                <h6>Enter Promo-code</h6>
+                <p class="py-3">If you have promo-code, put it here</p>
+                <div class="form">
+                    <mat-form-field class="w-100">
+                        <mat-label>Promo-code</mat-label>
+                        <input matInput type="text" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="amount mt-5">
+                <h3 class="heading">Total</h3>
+
+                <div fxLayout="row" class="pt-4 pb-3">
+                    <div fxFlex="50%" class="left">
+                        <p class="silver-text">{{orderData?.business_cart.items.length + orderData?.private_cart.items.length}} items worth</p>
+                    </div>
+                    <div fxFlex="50%" class="right text-right">
+                        <p class="black-text">{{(orderData?.business_cart.total_price + orderData?.private_cart.total_price) | currency: "CHF":"symbol":"1.0"}}</p>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="pb-4">
+                    <div fxFlex="50%" class="left">
+                        <p class="silver-text">Cost of delivery</p>
+                    </div>
+                    <div fxFlex="50%" class="right text-right">
+                        <p class="black-text">{{(orderData?.business_cart.delivery_cost + orderData?.private_cart.delivery_cost) | currency: "CHF":"symbol":"1.0"}}</p>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="pb-4">
+                    <div fxFlex="50%" class="left">
+                        <p class="silver-text">Stripe Fee ({{orderData?.business_cart.stripe_fee_percent}} %)</p>
+                    </div>
+                    <div fxFlex="50%" class="right text-right">
+                        <p class="black-text">{{((orderData?.business_cart.total_price * orderData?.business_cart.stripe_fee_percent) / 100) | currency: "CHF":"symbol":"1.0"}}</p>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="pay-total border-top pt-4">
+                    <div fxFlex="50%" class="left">
+                        <p class="silver-text">To pay</p>
+                    </div>
+                    <div fxFlex="50%" class="right text-right">
+                        <p class="black-text">{{(orderData?.business_cart.total_price + orderData?.private_cart.total_price + orderData.business_cart.delivery_cost + orderData?.private_cart.delivery_cost + ((orderData?.business_cart.total_price * orderData?.business_cart.stripe_fee_percent) / 100)) | currency: "CHF":"symbol":"1.0"}}</p>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="confirm-pay-btn justify-content-center pt-5">
+                    <a mat-button class="rounded-bt pink-b">Confirm & Pay</a>
+                </div>
+
+                <div class="accept-policy border-bottom py-5">
+                    <p>By confirming the order, I accept the terms of the</p>
+                    <a>User Agreement</a>
+                </div>
+
+                <div fxLayout="row" class="edit-order-btn justify-content-center pt-5">
+                    <a mat-button class="rounded-bt white-b">Edit Order</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

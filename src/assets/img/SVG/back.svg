@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.502;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #121212;
+      }
+    </style>
+  </defs>
+  <g id="back" class="cls-1" transform="translate(-20 -29)">
+    <g id="Group_1250" data-name="Group 1250">
+      <path id="Path_143" data-name="Path 143" class="cls-2" d="M0,0H24V24H0Z" transform="translate(20 29)"/>
+      <path id="Path_144" data-name="Path 144" class="cls-3" d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(20 29)"/>
+    </g>
+  </g>
+</svg>

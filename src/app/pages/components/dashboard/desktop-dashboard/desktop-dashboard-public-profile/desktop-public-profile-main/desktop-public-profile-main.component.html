@@ -1,0 +1,149 @@
+<mat-tab-group selectedIndex="0" animationDuration="0ms">
+    <mat-tab label="Average Review">
+        <div class="average-review-tab">
+            <app-desktop-public-profile-rating-duration [nameAndReviewStatusData]="nameAndReviewStatus"></app-desktop-public-profile-rating-duration>
+            
+            <app-desktop-public-profile-family-member 
+                (getAllFamilyMember)="apiCalls()"
+                [familyMembersData]="familyMembers"
+            >
+            </app-desktop-public-profile-family-member>
+
+            <div class="items mt-5">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                    <mat-tab label="Marketplace">
+                        <app-desktop-public-profile-marketplace [openAssetsData]="marketplaceItems"></app-desktop-public-profile-marketplace>
+                        <app-desktop-public-profile-user-block [blackListData]="blackList"></app-desktop-public-profile-user-block>
+                    </mat-tab>
+
+                    <mat-tab label="Booking">
+                        <app-desktop-public-profile-booking [bookingData]="categorizedServices"></app-desktop-public-profile-booking>
+                    </mat-tab>
+                </mat-tab-group>
+                
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Family Members">
+        <app-desktop-public-profile-family-member [familyMembersData]="familyMembers"></app-desktop-public-profile-family-member>
+
+            <div class="items mt-5">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                    <mat-tab label="Marketplace">
+                        <app-desktop-public-profile-marketplace></app-desktop-public-profile-marketplace>
+
+                        <div class="time-tabs pt-4">
+                            <div fxLayout="row" class="duration-time">
+                                <div fxFlex="65%">
+                                    <ul>
+                                        <li><p>Show by:</p></li>
+                                        <li [ngClass]="{'active': durationType == 'day'}"><p (click)="changeType('day')">Day</p></li>
+                                        <li [ngClass]="{'active': durationType == 'week'}"><p (click)="changeType('week')">Week</p></li>
+                                        <li [ngClass]="{'active': durationType == 'month'}"><p (click)="changeType('month')">Month</p></li>
+                                        <li [ngClass]="{'active': durationType == 'year'}"><p (click)="changeType('year')">Year</p></li>
+                                        <li [ngClass]="{'active': durationType == 'none' }"><p (click)="changeType('none')">All Time</p></li>
+                                    </ul>
+                                </div>
+                                <div fxFlex="35%"></div>
+                            </div>
+                            
+                            <div fxLayout="row" class="profit-loss border-top py-4 border-bottom">
+                                <div fxFlex="25%" class="time-left-side">
+                                    <p class="text">Weekly Earnings</p>
+                                    <p class="amount pt-2">$789654.36</p>
+                                </div>
+
+                                <div fxFlex="75%" class="field-right-side">
+                                    <div fxLayout="row">
+                                        <div fxFlex="33%" class="circle pink mr-3">
+                                            <p class="text">Marketplace</p>
+                                            <p class="amount pt-2">$365892.02
+                                                <span class="chip pink">50%</span>
+                                            </p>
+                                        </div>
+                                        <div fxFlex="34%" class="circle purple mr-3">
+                                            <p class="text">Booking</p>
+                                            <p class="amount pt-2">$874502.93
+                                                <span class="chip purple">25%</span>
+                                            </p>
+                                        </div>
+                                        <div fxFlex="34%" class="circle light-blue mr-3">
+                                            <p class="text">Deals</p>
+                                            <p class="amount pt-2">$120362.93
+                                                <span class="chip light-blue">25%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fields-tab pt-3">
+                                <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                                    <mat-tab label="Marketplace">
+                                        <div class="product-accounts text-center pt-4">
+                                            <div fxFlex=16.6% class="status mr-2">
+                                                <h6>6580</h6>
+                                                <p>Items Sold</p>
+                                            </div>
+                                            <div fxFlex=16.6% class="status mr-2">
+                                                <h6>6580</h6>
+                                                <p>Items Sold</p>
+                                            </div>
+                                            <div fxFlex=16.6% class="status mr-2">
+                                                <h6>640</h6>
+                                                <p>Follow</p>
+                                            </div>
+                                            <div fxFlex=16.6% class="status mr-2">
+                                                <h6>89</h6>
+                                                <p>Followed</p>
+                                            </div>
+                                            <div fxFlex=16.6% class="status mr-2">
+                                                <h6>0</h6>
+                                                <p>No-Shows</p>
+                                            </div>
+                                            <div fxFlex=16.6% class="status">
+                                                <h6>6580</h6>
+                                                <p>Items Sold</p>
+                                            </div>
+                                        </div>
+                                    </mat-tab>
+                                    <mat-tab label="Booking">Content 2</mat-tab>
+                                    </mat-tab-group>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    
+                    <mat-tab label="Booking">
+                        <app-desktop-public-profile-booking [bookingData]="categorizedServices"></app-desktop-public-profile-booking>
+                    </mat-tab>
+
+                    <mat-tab label="Deals">
+                        <app-desktop-public-profile-deals></app-desktop-public-profile-deals>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+    </mat-tab>
+
+    <mat-tab label="Open Items">
+        <div class="open-items-tab">
+            <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                <mat-tab label="Marketplace">
+                    <app-desktop-public-profile-marketplace [openAssetsData]="marketplaceItems"></app-desktop-public-profile-marketplace>
+                </mat-tab>
+
+                <mat-tab label="Booking">
+                    <app-desktop-public-profile-booking [bookingData]="categorizedServices"></app-desktop-public-profile-booking>
+                </mat-tab>
+
+                <mat-tab label="Deals">
+                    <app-desktop-public-profile-deals></app-desktop-public-profile-deals>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Blacklist">
+        <app-desktop-public-profile-user-block [blackListData]="blackList"></app-desktop-public-profile-user-block>
+    </mat-tab>
+</mat-tab-group>

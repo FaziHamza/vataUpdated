@@ -1,0 +1,106 @@
+<mat-card class="px-4">
+    <div class="form">
+
+        <div class="pt-2 pb-3">
+            <div fxLayout="row">
+                <div fxFlex="12%" class="border-right">
+                    <div class="p-1 tree">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 24 23.999">
+                            <path id="phone"
+                              d="M-19.622-.143l-5.226-5.219a2.475,2.475,0,0,0-3.415,0l-1.01,1.009a2.4,2.4,0,0,0-.165,3.209c-.039.044-.071.084-.117.134s-.114.135-.182.218a6.66,6.66,0,0,1-.461.536,13.437,13.437,0,0,1-4.157-3.016,13.46,13.46,0,0,1-1.84-2.695,2.344,2.344,0,0,1,.426-.51,6.949,6.949,0,0,0,.49-.542l.065.065a2.407,2.407,0,0,0,1.707.7,2.409,2.409,0,0,0,1.707-.7l1.01-1.009a2.412,2.412,0,0,0,0-3.411l-5.945-5.912a2.419,2.419,0,0,0-3.415,0l-1.01,1.009a2.393,2.393,0,0,0-.707,1.705,2.384,2.384,0,0,0,.626,1.607,7.16,7.16,0,0,0-1.651,4.628c.6,4.461,5.656,10.611,10.823,13.161A10.238,10.238,0,0,0-27.6,6.008a5.969,5.969,0,0,0,3-.767,4.723,4.723,0,0,0,.879-.692,2.414,2.414,0,0,0,1.373.433,2.41,2.41,0,0,0,1.707-.706l1.011-1.009A2.412,2.412,0,0,0-19.622-.143Zm-20.4-15,1.01-1.009a.8.8,0,0,1,.57-.235.8.8,0,0,1,.569.235l5.945,5.912a.8.8,0,0,1,0,1.137l-1.01,1.009a.805.805,0,0,1-1.138,0L-40.022-14A.8.8,0,0,1-40.022-15.14Zm8.666,18.522c-4.674-2.306-9.412-7.994-9.939-11.928A5.665,5.665,0,0,1-40.1-11.812l3.67,3.649a4.371,4.371,0,0,1-.491.563A2.326,2.326,0,0,0-37.8-5.931c.032,1.147,2.208,3.687,2.232,3.713.751.863,3.348,3.1,4.972,3.519,1.026.262,1.761-.647,2.114-1.083.048-.06.091-.113.129-.156l.041-.047,3.429,3.425a2.908,2.908,0,0,1-.515.41C-27.316,4.946-29.7,4.2-31.356,3.382Zm10.6-1.251-1.01,1.008a.807.807,0,0,1-1.139,0l-5.225-5.218a.807.807,0,0,1,0-1.138l1.011-1.008a.8.8,0,0,1,.569-.236.8.8,0,0,1,.568.236L-20.761.994A.8.8,0,0,1-20.761,2.131Z"
+                              transform="translate(42.917 17.991)" fill="#fb3b71" />
+                          </svg>
+                    </div>
+                </div>
+                <div fxFlex="67%" class="mx-2">
+                    <h5 class="heading font-weight-bold py-2 m-0">Verify your phone</h5>
+                    <p class="sub-heading py-1 m-0">Your contact details will be safe with us.</p>
+                    <form [formGroup]="form" *ngIf="isPhoneVerified">
+                      <div class="collapse" [ngClass]="{'show': showView}">
+                        <div class="form-group button-group">Phone is verified successfully</div>
+                        <!-- <div *ngIf="isPrivate" class="form-group button-group py-4 mx-2 finish-button">
+                          <a mat-button class="btn pink-b rounded-bt p-0 btn-block w-100" (click)="finish()">Finish</a>
+                        </div> -->
+                      </div>
+                    </form>
+                </div>
+                <div *ngIf="!isPhoneVerified" fxFlex="20%" class="py-4 mx-2">
+                    <a mat-button class="btn pink-b rounded-bt p-0 btn-block" (click)="toggleView()">Select</a>
+                </div>
+            </div>
+        </div>
+        
+        <form [formGroup]="form" *ngIf="!isPhoneVerified && showView">
+            <div class="collapse" [ngClass]="{'show': showView}">
+              <div class="use-same-phone">
+                <mat-slide-toggle class="pt-3" (change)="useSamePhone($event)">
+                  Use same phone
+                </mat-slide-toggle>
+              </div>
+                <div fxLayout="row" fxLayoutAlign="space-between" class="row rowfafari m-0">
+                  <div fxFlex="10%" class="col-lg-2 col-sm-2">
+                    <div class="form-group">
+                        <mat-form-field class="d-block mr-5">
+                            <mat-label>Code</mat-label>
+                            <mat-select formControlName="isd">
+                                <mat-option value="+41">+41</mat-option>
+                                <mat-option value="+91">+91</mat-option>
+                                <mat-option value="+91">+92</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.controls['isd'].errors?.required">
+                                Please select <strong>code</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="70%" class="col-lg-4 col-sm-4">
+                      <mat-form-field>
+                          <input matInput type="text" class="form-control" placeholder="Phone Number" formControlName="phone" maxlength="10"
+                          [disabled]="isVerifyClicked">
+                          <mat-error *ngIf="form.controls['phone'].errors?.required">Phone is required</mat-error>
+                          <mat-error *ngIf="form.controls['phone'].errors?.pattern">Invalid phone number</mat-error>
+                        </mat-form-field>
+                      </div>
+                  </div>
+        
+        
+                  <!-- <div class="col-lg-4 col-sm-4" *ngIf="isVerifyClicked">
+                    <div class="form-group" style="margin-top: 30px">
+
+                      <input type="text" class="form-control" placeholder="Verification Code" formControlName="code"
+                        maxlength="6">
+                      <div *ngIf="submitted && f.code.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.code.errors.required">Verification code is required</div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start" class="row rowfafari m-0" *ngIf="isVerifyClicked">
+                  <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
+                  <!-- <div *ngIf="otpError" class="invalid-feedback d-block">
+                    <div>Verification code is required</div>
+                  </div> -->
+                  <div class="col-lg-2 col-sm-2" *ngIf="failedToVerify">
+                    <div class="form-group" style="margin-left: 15px">
+                      <div (click)="reset()" style="cursor: pointer; padding-top: 15px;">Reset</div>
+                    </div>
+                  </div>
+        
+                </div>
+              <div class="form-group button-group">
+                <div fxFlex="50%" class="py-4" *ngIf="!isVerifyClicked">
+                    <a mat-button class="btn pink-b rounded-bt p-0 btn-block w-100" 
+                    (click)="requestCode()">Request Code</a>
+                </div>
+                  <div fxFlex="50%" class="py-4" *ngIf="isVerifyClicked && !isVerified">
+                      <a mat-button class="btn pink-b rounded-bt p-0 btn-block w-100"  (click)="verify()">Verify</a>
+                  </div>
+                  <!-- <div *ngIf="isPrivate" fxFlex="50%" class="py-4" *ngIf="isVerified">
+                      <a mat-button class="btn pink-b rounded-bt p-0 btn-block w-100"  (click)="finish()">Finish</a>
+                  </div> -->
+
+              </div>
+            </div>
+          </form>
+    </div>
+</mat-card>

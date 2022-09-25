@@ -1,0 +1,136 @@
+
+<app-mid-bar></app-mid-bar>
+
+<div class="mobile-order">
+    <div fxLayout="row" class="top-heading border-bottom p-3">
+        <h3>Making an Order</h3>
+    </div>
+
+    <div class="booking-fields py-4 container border-bottom">
+        <div fxLayout="row" class="field-bar p-3">
+            <div fxFlex="90%">
+                <div fxLayout="row" class="first-row">
+                    <div fxFlex="85%" class="heading">
+                        <h6>Acrylic Full Set Pearl/ French Tips</h6>
+                    </div>
+                    <div fxFlex="15%" class="price text-right">
+                        <span class="amount">$130</span>
+                    </div>
+                </div>
+                <div fxLayout="row" class="second-row">
+                    <div fxFlex="75%" class="star">
+                        <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating> <span class="star-text pl-2">Fashionable haircut</span>
+                    </div>
+                    <div fxFlex="25%" class="time text-right">
+                        <span class="time">17:00 - 17:30</span>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="10%" class="cross-btn text-center">
+                <span class="icon-baseline-close-24px-1"></span>
+            </div>
+        </div>
+        <div fxLayout="row" class="field-bar mt-3 p-3">
+            <div fxFlex="90%">
+                <div fxLayout="row" class="first-row">
+                    <div fxFlex="85%" class="heading">
+                        <h6>Acrylic Full Set Pearl/ French Tips</h6>
+                    </div>
+                    <div fxFlex="15%" class="price text-right">
+                        <span class="amount">$90</span>
+                    </div>
+                </div>
+                <div fxLayout="row" class="second-row">
+                    <div fxFlex="75%" class="star">
+                        <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating> <span class="star-text pl-2">Mans LUX</span>
+                    </div>
+                    <div fxFlex="25%" class="time text-right">
+                        <span class="time">17:00 - 17:30</span>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="10%" class="cross-btn text-center">
+                <span class="icon-baseline-close-24px-1"></span>
+            </div>
+        </div>
+        <div class="add-service-btn mt-3">
+            <span class="pink-text">+  Add another service</span>
+        </div>
+    </div>
+
+    <div class="payment-bar container mt-5">
+        <div fxLayout="row" class="pb-2">
+            <div class="heading">
+                <h4>Payment</h4>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <span class="sub-heading">Payments accepted by</span>
+        </div>
+        <div fxLayout="row" class="payment-icons border-bottom pt-4 pb-5">
+            <span class="icon-Group-1295 icon-xs mr-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
+            <span class="icon-Card-networks-MC-Horizontal mx-2 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+            <span class="icon-Visa icon-m mx-2"></span>
+            <span class="icon-PayPal-FullColor-Horizontal icon-m mx-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+            <span class="icon-Group-1296 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span></span>
+        </div>
+    </div>
+ 
+    <div class="promotion container mt-5">
+        <div class="promo-code">
+            <h6>Enter Promo-code</h6>
+            <p class="py-3">If you have promo-code, put it here</p>
+            <div class="form">
+                <mat-form-field class="w-100">
+                    <mat-label>Promo-code</mat-label>
+                    <input matInput type="text" />
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="amount pt-4">
+            <h3 class="heading">Total</h3>
+    
+            <div fxLayout="row" class="pt-4 pb-3">
+                <div fxFlex="50%" class="left">
+                    <p class="silver-text">2 items worth</p>
+                </div>
+                <div fxFlex="50%" class="right text-right">
+                    <p class="black-text">$2000</p>
+                </div>
+            </div>
+    
+            <div fxLayout="row" class="pb-4">
+                <div fxFlex="50%" class="left">
+                    <p class="silver-text">Cost of delivery</p>
+                </div>
+                <div fxFlex="50%" class="right text-right">
+                    <p class="black-text">$19.99</p>
+                </div>
+            </div>
+    
+            <div fxLayout="row" class="pay-total border-top pt-4">
+                <div fxFlex="50%" class="left">
+                    <p class="silver-text">To pay</p>
+                </div>
+                <div fxFlex="50%" class="right text-right">
+                    <p class="black-text">$2034.63</p>
+                </div>
+            </div>
+    
+            <div fxLayout="row" class="confirm-pay-btn justify-content-center pt-4">
+                <a mat-button class="rounded-bt pink-b w-100">Confirm & Pay</a>
+            </div>
+
+            <div fxLayout="row" class="book-visit-btn justify-content-center pt-4">
+                <a mat-button class="rounded-bt white-b w-100">Book by Visit</a>
+            </div>
+    
+            <div class="accept-policy pt-4 text-center">
+                <p class="pb-2">By confirming the order, I accept the terms of the</p>
+                <a href="#">User Agreement</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@import '../../../../../../styles.scss';
+
+.popular-section {
+    h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+    }
+}
+
+.popular-marketplace{
+    h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+    }
+}
+
+app-marketplace-product-card{
+    margin-bottom: 25px !important;
+}

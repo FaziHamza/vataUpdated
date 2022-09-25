@@ -1,0 +1,32 @@
+<div class="desktop-public-profile-add-blacklist">
+    <div fxLayout="row" class="heading-bar pb-3 border-bottom">
+        <h6>Add to Blacklist</h6>
+    </div>
+
+    <div fxLayout="row" class="search-bar mt-4">
+        <span class="icon-search-1"></span>
+        <input type="text" placeholder="Search Users">
+
+        <a mat-button class="pink-b px-4 ml-3">Search</a>
+    </div>
+
+    <div fxLayout="row" class="pt-4">
+        <mat-form-field class="w-100">
+            <mat-label>Select Reason</mat-label>
+            <mat-select>
+                <mat-option value="service">Did Something Bad</mat-option>
+                <mat-option value="service">Rude Behaviour</mat-option>
+                <mat-option value="service">Other Reason</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row" class="bottom-btns pt-3">
+        <div fxFlex="30%"></div>
+        
+        <div fxFlex="70%" class="text-right">
+            <a routerLink="/dashboard/main" mat-button class="white-b rounded-bt px-5 mr-3">Cancel</a>
+            <a mat-button class="pink-b rounded-bt px-5">Block User</a>
+        </div>
+    </div>
+</div>

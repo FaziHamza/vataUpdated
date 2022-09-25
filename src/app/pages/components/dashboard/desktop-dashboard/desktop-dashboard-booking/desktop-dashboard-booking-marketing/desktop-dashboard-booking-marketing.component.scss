@@ -1,0 +1,261 @@
+@import '../../../../../../../styles.scss';
+
+.dashboard-marketing {
+    .marketing-tabs {
+        // background: $white;
+        // border-radius: 10px;
+
+        .push-booking-categories {
+            .left-side {
+                background: $white;
+                border-radius: 10px;
+                max-height: 83vh;
+                .push-booking {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    .heading-row {
+                        p {
+                            color: $black;
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                .checkbox-row {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $dark-gray;
+                        font-size: 14px;
+                    }
+                }
+
+                .total-price {
+                    p {
+                        &.text {
+                            color: $dark-gray;
+                            font-size: 16px;
+                            padding-top: 7px;
+                        }
+                        &.amount {
+                            font-size: 24px;
+                            font-weight: 600;
+                            padding-top: 2px;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+            .right-side {
+                background: $white;
+                border-radius: 10px;
+            }
+        }
+
+        .last-minute {
+            .left-side {
+                background: $white;
+                border-radius: 10px;
+                max-height: 90vh;
+                .input-fields {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                    span {
+                        color: $dark-gray;
+                        font-size: 13px;
+                    }
+                }
+
+                .note {
+                    p {
+                        color: $dark-gray;
+                        font-size: 12px;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            .right-side {
+                background: $white;
+                border-radius: 10px;
+            }
+        }
+
+        .invite-clients {
+            .left-side {
+                background: $white;
+                border-radius: 10px;
+                max-height: 80vh;
+                .heading-row {
+                    p {
+                        font-size: 15px;
+                        color: $black;
+                    }
+                }
+
+                .methods {
+                    a {
+                        &.method-field {
+                            border: 1px dashed $light-gray;
+                            border-radius: 10px;
+                            span {
+                                font-size: 15px;
+                                padding-right: 10px;
+                            }
+                            img {
+                                width: 20px;
+                                height: auto;
+                                object-fit: cover;
+                                object-position: center;
+                                padding-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-side {
+                background: $white;
+                border-radius: 10px;
+                .content-section {
+                    .heading {
+                        h6 {
+                            color: $black;
+                            font-size: 22px;
+                        }
+                    }
+                    .sub-heading {
+                        p {
+                            color: $dark-gray;
+                            font-size: 12px;
+                        }
+                    }
+                    .title {
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: 0px;
+                            left: 44%;
+                            background-color: $pink-dark;
+                            height: 3px;
+                            width: 90px;
+                        }
+                    }
+                    .email-address {
+                        a  {
+                            &.email-btn {
+                                border-radius: 10px;
+                                border: 1px dashed $light-gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .happy-hours {
+            .left-side {
+                background: $white;
+                border-radius: 10px;
+                max-height: 132vh;
+                .input-fields {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .discount-checkboxes {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 14px;
+                    }
+                    .day-checkbox {
+                        span {
+                            color: $dark-gray;
+                            font-size: 13px;
+                        }
+                    }
+                }
+
+                .note {
+                    p {
+                        color: $dark-gray;
+                        font-size: 12px;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            .right-side {
+                background: $white;
+                border-radius: 10px;
+            }
+        }
+
+        .flash-sale {
+            .left-side {
+                background: $white;
+                border-radius: 10px;
+                max-height: 106vh;
+                .input-field {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .dropdown-field {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .radio-btn {
+                    border: 1px dashed $light-gray;
+                    border-radius: 10px;
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .note {
+                    p {
+                        color: $dark-gray;
+                        font-size: 12px;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            .right-side {
+                background: $white;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+
+// ::ng-deep {
+//     .tabs-fields {
+//         .mat-tab-labels {
+//             background: $white;
+//         }
+//     }
+// }

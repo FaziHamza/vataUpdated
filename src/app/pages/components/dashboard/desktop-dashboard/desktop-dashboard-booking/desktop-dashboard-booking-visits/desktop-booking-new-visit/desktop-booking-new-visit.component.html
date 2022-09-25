@@ -1,0 +1,157 @@
+<div class="dashboard-booking-new-visit">
+    <div class="container">
+        <div fxLayout="row" class="links py-2 border-bottom">
+            <span class="pr-1">Booking</span> > <span class="pink-text pl-3">New Visit</span>
+        </div>
+
+        <div fxLayout="row" class="header-bar mt-4">
+            <div fxFlex="40%" class="heading">
+                <h6>New Visit</h6>
+            </div>
+            <div fxFlex="60%" class="btns text-right">
+                <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Cancel</a>
+                <a mat-button class="pink-b rounded-bt py-0 px-5">Add Visit</a>
+            </div>
+        </div>
+
+        <form [formGroup]="newVisitBookingForm">
+            <div fxLayout="row" class="details mt-4">
+                <div fxFlex="35%" class="left-side p-3 mr-3">
+                    <div class="client">
+                        <div fxLayout="row">
+                            <div fxFlex="15%" class="mr-3">
+                                <div class="client-img">
+                                    <img src="../../../../../../../../assets/img/Oval-user.png">
+                                </div>
+                            </div>
+            
+                            <div fxFlex="85%" class="input-toggle">
+                                <div fxLayout="row" class="input-field">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Client Name</mat-label>
+                                        <input matInput type="text" formControlName="clientName">
+                                        <mat-error *ngIf="newVisitBookingForm.get('clientName').hasError('required')">
+                                            Client Name is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+            
+                                <div class="toggle">
+                                    <span>Quick Booking</span> <mat-slide-toggle></mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="new-client-btn pt-2 pb-4 border-bottom">
+                            <a class="pink-text d-block text-left">
+                                <span class="icon-add-button-inside-black-circle-1"></span>
+                                Add New Client
+                            </a>
+                        </div>
+
+                        <div fxLayout="row" class="executed pt-4">
+                            <div fxFlex="15%" class="mr-3">
+                                <div class="client-img">
+                                    <img src="../../../../../../../../assets/img/Oval-user.png">
+                                </div>
+                            </div>
+            
+                            <div fxFlex="85%" class="dropdown">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Executed by</mat-label>
+                                    <mat-select formControlName="executed">
+                                        <mat-option value="martin">Martin O'conneli</mat-option>
+                                        <mat-option value="martin">Martin O'conneli</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="newVisitBookingForm.get('executed').hasError('required')">
+                                        Executed by is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="65%" class="right-side p-3">
+                    <div fxLayout="row" class="dropdown-service">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Service</mat-label>
+                            <mat-select formControlName="service">
+                                <mat-option fxLayout="row" value="acrylic">
+                                    <div fxFlex="60%" class="left-side pr-4">
+                                        <p>Acrylic Full Pearl Set/ French Tips </p>
+                                    </div>
+                                    <div fxFlex="40%" class="right-side text-right">
+                                        <p>
+                                            <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                        </p>
+                                    </div>
+                                </mat-option>
+
+                                <mat-option fxLayout="row" value="acrylic">
+                                    <div fxFlex="60%" class="left-side pr-4">
+                                        <p>Barber Hair </p>
+                                    </div>
+                                    <div fxFlex="40%" class="right-side text-right">
+                                        <p>
+                                            <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                        </p>
+                                    </div>
+                                </mat-option>
+
+                                <mat-option fxLayout="row" value="acrylic">
+                                    <div fxFlex="60%" class="left-side pr-4">
+                                        <p>Full Massage Man </p>
+                                    </div>
+                                    <div fxFlex="40%" class="right-side text-right">
+                                        <p>
+                                            <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                        </p>
+                                    </div>
+                                </mat-option>
+
+                                <mat-option fxLayout="row" value="acrylic">
+                                    <div fxFlex="60%" class="left-side pr-4">
+                                        <p>Massage Women </p>
+                                    </div>
+                                    <div fxFlex="40%" class="right-side text-right">
+                                        <p>
+                                            <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                        </p>
+                                    </div>
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="newVisitBookingForm.get('service').hasError('required')">
+                                Service is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" class="text-area mt-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Note</mat-label>
+                            <textarea matInput type="text" formControlName="note"></textarea>
+                            <mat-error *ngIf="newVisitBookingForm.get('note').hasError('required')">
+                                Note is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <span class="words">500/1000</span>
+                    </div>
+
+                    <div fxLayout="row" class="text-area mt-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Message to Client</mat-label>
+                            <textarea matInput type="text" formControlName="message_client"></textarea>
+                            <mat-error *ngIf="newVisitBookingForm.get('message_client').hasError('required')">
+                                Message to Client is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <span class="words">250/500</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

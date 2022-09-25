@@ -1,0 +1,172 @@
+<div class="desktop-dashboard-profile-rating-reviews">
+    <div class="rating-review-tabs px-3 pb-3 mt-4">
+        <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+            <mat-tab label="All Reviews">
+                <div *ngFor="let review of allReviews; let i = index" class="all-review-tab">
+                    <div fxLayout="row" class="border-top  pt-5 pb-3 px-3">
+                        <div fxFlex="10%" class="img-left-side">
+                            <img [src]="review.image[0] ? review.image[0] : '../../../../../../../assets/img/no-product.jpg'">
+                        </div>
+                        <div fxFlex="90%" class="content-right-side ml-4">
+                            <div class="heading-row">
+                                <div fxFlex="60%" class="left-side">
+                                    <h5>{{review.title}}</h5>
+                                </div>
+                                <div fxFlex="40%" class="right-side text-right">
+                                    <p class="date-rating">
+                                        <span class="name-date">{{review.customer_username}}, {{review.pub_date | date}}</span>
+                                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="review.rating ? review.rating : 0 " [forDisplay]="true" size="15px"></app-star-rating>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="question-heading pt-3">
+                                <h6>{{review.desc}}</h6>
+                            </div>
+                            <!-- <div class="answer-text pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
+                            </div> -->
+                            <div class="img-section pt-4">
+                                <img *ngFor="let image of review.image; let j = index;" class="mr-3" [src]="images[i][j].src" (click)="open(images[i], j)">
+                            </div>
+                            <div class="comment-reply pt-2 pb-3">
+                                <a mat-button class="text-muted">{{review.repies.length}} Comment (Show)</a>
+                                <a  (click)="showReply[i] = !showReply[i]" mat-button class="pink-text">Reply</a>
+                            </div>
+                            <div>
+                                <input #replyInputEle matInput (keyup.enter)="replyToReview(replyInputEle, review.id, i)" 
+                                    [class.hide]="!showReply[i]" ngModel placeholder="Reply to review"
+                                    name="replyText" type="text" class="form-control reply-input"
+                                />
+                            </div>
+                            <div class="text-right">
+                                <button [class.hide]="!showReply[i]" (click)="replyToReview(replyInputEle, review.id, i)" class="send-button" type="submit"><i class="icon-sent-mail"></i></button>
+                            </div>
+
+                            <div *ngFor="let reply of review.repies.reverse()" class="reply-section border-top py-4">
+                                <div class="reply p-3">
+                                    <h6 class="user">J{{reply.user_name}}
+                                        <span class="date pl-4">{{reply.pub_date | date}}</span>
+                                    </h6>
+                                    <p class="text pt-3">{{reply.description}}</p>
+                                    <p class="text pt-3">{{reply.pub_date | timeAgo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 *ngIf="!allReviews.length" class="text-center pt-3">No Reviews available</h4>
+            </mat-tab>
+            <mat-tab label="Newest Review">
+                <div *ngFor="let review of newestReview; let i = index" class="all-review-tab">
+                    <div fxLayout="row" class="border-top  pt-5 pb-3 px-3">
+                        <div fxFlex="10%" class="img-left-side">
+                            <img [src]="review.image[0] ? review.image[0] : '../../../../../../../assets/img/no-product.jpg'">
+                        </div>
+                        <div fxFlex="90%" class="content-right-side ml-4">
+                            <div class="heading-row">
+                                <div fxFlex="60%" class="left-side">
+                                    <h5>{{review.title}}</h5>
+                                </div>
+                                <div fxFlex="40%" class="right-side text-right">
+                                    <p class="date-rating">
+                                        <span class="name-date">{{review.customer_username}}, {{review.pub_date | date}}</span>
+                                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="review.rating ? review.rating : 0 " [forDisplay]="true" size="15px"></app-star-rating>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="question-heading pt-3">
+                                <h6>{{review.desc}}</h6>
+                            </div>
+                            <!-- <div class="answer-text pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
+                            </div> -->
+                            <div class="img-section pt-4">
+                                <img *ngFor="let image of review.image; let j = index;" class="mr-3" [src]="images[i][j].src" (click)="open(images[i], j)">
+                            </div>
+                            <div class="comment-reply pt-2 pb-3">
+                                <a mat-button class="text-muted">{{review.repies.length}} Comment (Show)</a>
+                                <a  (click)="showReply[i] = !showReply[i]" mat-button class="pink-text">Reply</a>
+                            </div>
+                            <div>
+                                <input #replyInputEle matInput (keyup.enter)="replyToReview(replyInputEle, review.id, i)" 
+                                    [class.hide]="!showReply[i]" ngModel placeholder="Reply to review"
+                                    name="replyText" type="text" class="form-control reply-input"
+                                />
+                            </div>
+                            <div class="text-right">
+                                <button [class.hide]="!showReply[i]" (click)="replyToReview(replyInputEle, review.id, i)" class="send-button" type="submit"><i class="icon-sent-mail"></i></button>
+                            </div>
+
+                            <div *ngFor="let reply of review.repies.reverse()" class="reply-section border-top py-4">
+                                <div class="reply p-3">
+                                    <h6 class="user">J{{reply.user_name}}
+                                        <span class="date pl-4">{{reply.pub_date | date}}</span>
+                                    </h6>
+                                    <p class="text pt-3">{{reply.description}}</p>
+                                    <p class="text pt-3">{{reply.pub_date | timeAgo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 *ngIf="!newestReview.length" class="text-center pt-3">No latest reviews available</h4>
+                
+            </mat-tab>
+            <mat-tab label="Need to Review">
+                <div *ngFor="let review of needToReview; let i = index" class="all-review-tab">
+                    <div fxLayout="row" class="border-top  pt-5 pb-3 px-3">
+                        <div fxFlex="10%" class="img-left-side">
+                            <img [src]="review.image[0] ? review.image[0] : '../../../../../../../assets/img/no-product.jpg'">
+                        </div>
+                        <div fxFlex="90%" class="content-right-side ml-4">
+                            <div class="heading-row">
+                                <div fxFlex="60%" class="left-side">
+                                    <h5>{{review.title}}</h5>
+                                </div>
+                                <div fxFlex="40%" class="right-side text-right">
+                                    <p class="date-rating">
+                                        <span class="name-date">{{review.customer_username}}, {{review.pub_date | date}}</span>
+                                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="review.rating ? review.rating : 0 " [forDisplay]="true" size="15px"></app-star-rating>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="question-heading pt-3">
+                                <h6>{{review.desc}}</h6>
+                            </div>
+                            <!-- <div class="answer-text pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
+                            </div> -->
+                            <div class="img-section pt-4">
+                                <img *ngFor="let image of review.image; let j = index;" class="mr-3" [src]="images[i][j].src" (click)="open(images[i], j)">
+                            </div>
+                            <div class="comment-reply pt-2 pb-3">
+                                <a mat-button class="text-muted">{{review.repies.length}} Comment (Show)</a>
+                                <a  (click)="showReply[i] = !showReply[i]" mat-button class="pink-text">Reply</a>
+                            </div>
+                            <div>
+                                <input #replyInputEle matInput (keyup.enter)="replyToReview(replyInputEle, review.id, i)" 
+                                    [class.hide]="!showReply[i]" ngModel placeholder="Reply to review"
+                                    name="replyText" type="text" class="form-control reply-input"
+                                />
+                            </div>
+                            <div class="text-right">
+                                <button [class.hide]="!showReply[i]" (click)="replyToReview(replyInputEle, review.id, i)" class="send-button" type="submit"><i class="icon-sent-mail"></i></button>
+                            </div>
+
+                            <div *ngFor="let reply of review.repies.reverse()" class="reply-section border-top py-4">
+                                <div class="reply p-3">
+                                    <h6 class="user">J{{reply.user_name}}
+                                        <span class="date pl-4">{{reply.pub_date | date}}</span>
+                                    </h6>
+                                    <p class="text pt-3">{{reply.description}}</p>
+                                    <p class="text pt-3">{{reply.pub_date | timeAgo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 *ngIf="!needToReview.length" class="text-center pt-3">No reviews to be reviewed</h4>
+            </mat-tab>
+          </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-saved-searches {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .saved-bars {
+        position: relative;
+        .fields-scroll {
+            height: 81vh;
+            min-height: 81vh;
+            overflow-y: auto;
+            .saved-field {
+                .heading {
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                    img {
+                        cursor: pointer;
+                        position: relative;
+                        top: -2px;
+                        width: 20px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                        &::before {
+                            color: $dark-gray;
+                        }
+                    }
+                }
+
+                .categories {
+                    span {
+                        &.silver {
+                            font-size: 13px;
+                            color: $dark-gray;
+                        }
+                        &.black {
+                            font-size: 13px;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+        .read-more {
+            a {
+                color: $pink;
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+<div class="catalog-mobile py-5">
+    <div class="container">
+
+        <div fxLayout="row">
+            <div fxFlex="60%">
+                <div class="heading">
+                    <h4>All Categories</h4>
+                </div>
+            </div>
+            <div fxFlex="40%">
+                <div class="btns float-right">
+                    <div class="categories">
+                        <a class="mx-3" [ngClass]="{'active': !categoryType}" (click)="changeCategoryType()"><span class="icon-list-pasive"></span></a>
+                        <a class="mx-3" [ngClass]="{'active': categoryType}" (click)="changeCategoryType()"><span class="icon-abc-pasive"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="categories-list" *ngIf="!categoryType">
+
+            <h2 class="section-title border-bottom p-3 pt-5" *ngIf="marketplaceCategories.length">Marketplace</h2>
+            <div *ngFor="let cat of marketplaceCategories" fxLayout="row" class="categories-list pt-5 border-bottom pb-3">
+                <div fxFlex="40%">
+                    <div [routerLink]="['/marketplace',cat.id]" class="img-section text-center pt-4 mr-3">
+                        <span class="cat-img-cus" [innerHTML]="(cat.icon_content_new ? cat.icon_content_new : notFound) | sanitize"></span>
+                        <h5 class="pt-2">{{cat.name}}</h5>
+                    </div>
+                </div>
+                <div fxFlex="60%">
+                    <div *ngIf="cat.childrens.length > 0" class="links ml-3">
+                        <ul *ngFor="let child of cat.childrens">
+                            <li [routerLink]="['/marketplace',cat.id,child.id]"><a>{{child.name}}</a></li>
+                        </ul>
+                        <ul>
+                            <li [routerLink]="['/marketplace',cat.id]"><a class="pink-text font-weight-normal">View all</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title border-bottom p-3 pt-5" *ngIf="bookingCategories.length">Booking</h2>
+            <div *ngFor="let cat of bookingCategories" fxLayout="row" class="categories-list pt-5 border-bottom pb-3">
+                <div fxFlex="40%">
+                    <div [routerLink]="['/marketplace',cat.id]" class="img-section text-center pt-4 mr-3">
+                        <span class="cat-img-cus" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                        <h5 class="pt-2">{{cat.name}}</h5>
+                    </div>
+                </div>
+                <div fxFlex="60%">
+                    <div *ngIf="cat.childrens.length > 0" class="links ml-3">
+                        <ul *ngFor="let child of cat.childrens">
+                            <li [routerLink]="['/marketplace',cat.id,child.id]"><a>{{child.name}}</a></li>
+                        </ul>
+                        <ul>
+                            <li [routerLink]="['/marketplace',cat.id]"><a class="pink-text font-weight-normal">View all</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="abc-categories"  *ngIf="categoryType">
+
+            <div *ngFor="let cat of categoryAlphaDataMarketplace | keyvalue; let i = index;" fxLayout="row" class="pt-5 border-bottom pb-3">
+                <div fxFlex="80%">
+                    <div class="links">
+                        <div *ngIf="cat.value.length">
+                            <h4 class="abc-sub-head pt-3">Marketplace</h4>
+                            <ul>
+                                <li [routerLink]="['/marketplace',catVal.id]" *ngFor="let catVal of cat.value"><a>{{catVal.name}}</a></li>
+                            </ul>
+                        </div>  
+                        <div *ngIf="categoryAlphaDataBooking[cat.key].length">
+                            <h4 class="abc-sub-head pt-3">Booking</h4>
+                            <ul>
+                                <li [routerLink]="['/bookings',catVal.id]" *ngFor="let catVal of categoryAlphaDataBooking[cat.key]"><a>{{catVal.name}}</a></li>
+                            </ul>
+                        </div>                          
+                    </div>
+                </div>
+                <div fxFlex="20%">
+                    <div class="alphabet text-right">
+                        <a>{{cat.key}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<app-mid-bar></app-mid-bar>

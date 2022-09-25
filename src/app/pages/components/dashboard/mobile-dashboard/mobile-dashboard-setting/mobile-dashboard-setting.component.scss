@@ -1,0 +1,254 @@
+@import '../../../../../../styles.scss';
+
+.mobile-dashboard-setting {
+    background: $ligher-gray;
+
+    .head-bar {
+        .heading-side {
+            h6 {
+                color: $black;
+                font-size: 22px;
+                font-weight: 100;
+            }
+        }
+
+        .icon-side {
+            p {
+                border-radius: 50px;
+                padding: 2px 9px;
+                border: 1px solid $light-gray;
+                &.commercial {
+                    span {
+                        &.icon-commercial {
+                            font-size: 20px;
+                        }
+                        &.text {
+                            font-size: 14px;
+                            position: relative;
+                            top: -4px;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .features-section {
+        border-radius: 10px;
+        background: $white;
+        .field-section {
+            .title-side {
+                p {
+                    color: $black;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .type-section {
+            .headings {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+
+            .title-side {
+                p {
+                    color: $black;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .personal-data {
+        border-radius: 10px;
+        background: $white;
+        .top-row {
+            .heading-side {
+                p {
+                    font-size: 18px;
+                    padding-top: 8px;
+                    color: $black;
+                }
+            }
+
+            .edit-side {
+                a {
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .accept-method {
+        border-radius: 10px;
+        background: $white;
+        .top-row {
+            .heading-side {
+                p {
+                    font-size: 18px;
+                    padding-top: 8px;
+                    color: $black;
+                }
+            }
+
+            .edit-side {
+                a {
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .method-icons {
+            span {
+                cursor: pointer;
+                &.icon-Group-1296 {
+                    font-size: 20px;
+                }
+                &.icon-PayPal-FullColor-Horizontal {
+                    font-size: 18px;
+                }
+                &.icon-Group-1295 {
+                    font-size: 18px;
+                }
+                &.icon-Card-networks-MC-Horizontal2 {
+                    font-size: 20px;
+                }
+                &.icon-Group-1296 {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .payment-method {
+        border-radius: 10px;
+        background: $white;
+        .top-row {
+            .heading-side {
+                p {
+                    font-size: 18px;
+                    padding-top: 8px;
+                    color: $black;
+                }
+            }
+
+            .edit-side {
+                a {
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .method-icons {
+            span {
+                cursor: pointer;
+                &.icon-Group-1296 {
+                    font-size: 20px;
+                }
+                &.icon-PayPal-FullColor-Horizontal {
+                    font-size: 18px;
+                }
+                &.icon-Group-1295 {
+                    font-size: 18px;
+                }
+                &.icon-Card-networks-MC-Horizontal2 {
+                    font-size: 20px;
+                }
+                &.icon-Group-1296 {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .toggle-btn {
+            span {
+                font-size: 16px;
+                color: $black;
+            }
+        }
+    }
+
+    .address-data {
+        border-radius: 10px;
+        background: $white;
+        .top-row {
+            .heading-side {
+                p {
+                    font-size: 18px;
+                    padding-top: 8px;
+                    color: $black;
+                }
+            }
+
+            .edit-side {
+                a {
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .currently-address {
+            .sub-heading {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .shipping-address {
+            .sub-heading {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .notification {
+        border-radius: 10px;
+        background: $white;
+        .top-row {
+            .heading-side {
+                p {
+                    font-size: 18px;
+                    padding-top: 8px;
+                    color: $black;
+                }
+            }
+
+            .edit-side {
+                a {
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .toggle-btn {
+            span {
+                font-size: 16px;
+                color: $black;
+            }
+        }
+    }
+}

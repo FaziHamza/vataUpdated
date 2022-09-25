@@ -1,0 +1,123 @@
+<div class="customer-questions py-4 border-bottom">
+
+    <div fxLayout="row" class="head pb-3">
+        <div fxFlex="70%">
+            <div class="heading">
+                <h5>Customer Questions & Answers</h5> 
+            </div>
+        </div>
+
+        <div fxFlex="30%">
+            <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="pb-4" *ngIf="user">
+        <div class="ask-btn text-right">
+            <a class="pink-text" (click)="askQuestionDialog()">Ask something</a>
+        </div>
+    </div>
+    <div #toggleAccordian>
+        <ng-container *ngIf="qnaData.length > 0">
+            <div *ngFor="let QA of qnaData; let i = index;" class="question">
+    
+                <div fxLayout="row">
+                    <div class="left-side">
+                        <p>Question :</p>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-2">
+                    <div class="right-side">
+                        <span>{{QA.question_txt}}</span>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div class="right-side">
+                        <p class="pt-2">{{QA.author}}, {{QA.dated | date}}</p>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div (click)="showAnswers[i] = !showAnswers[i]" fxLayout="row" class="answer-button pt-1 pb-2">
+                        <!-- <a href="JavaScript:Void(0);" class="comment">{{answer.replies_count}} Comments</a> -->
+                        <a class="pink-text mr-2" >Answer</a>
+                    </div>
+                </div>
+                    
+                <ng-container *ngIf="QA" class="border-bottom">
+                    <div *ngFor="let answer of QA.answers; let j = index;" class="answer-block pt-3">
+                        
+                        <div fxLayout="row">
+                            <div *ngIf="QA.answers.length > 0" fxFlex="100%">
+                                <div class="left-side">
+                                    <p>Answer :</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row" class="pt-2">
+                            <div class="right-side">
+                                <span>{{answer.answer_txt}}</span>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div class="right-side">
+                                <p class="pt-2">{{answer.author}}, {{answer.dated | date}}</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div (click)="showReply[j] = !showReply[j]" fxLayout="row" class="answer-reply pt-2 pb-2">
+                                <a class="pink-text mr-2" >Reply</a>
+                            </div>
+                        </div>
+    
+                        <div fxLayout="row" class="my-3">
+                            <input matInput 
+                                [class.hide]="!showReply[j]"
+                                #replyInputEle (keyup.enter)="replyAnswer(replyInputEle, answer.id, j)" 
+                                ngModel 
+                                name="replyText" type="text" class="form-control"
+                                placeholder="Your Reply" 
+                            />
+    
+                            <button class="send-button" [class.hide]="!showReply[j]" (click)="replyAnswer(replyInputEle, answer.id, j)">
+                                <i class="icon-sent-mail"></i>
+                            </button>  
+                        </div>
+    
+                        <div *ngFor="let reply of answer.replies.reverse(); let j = index" class="reply-container">
+                            <div class="replied-comment small">
+                                <div fxLayout="row" class="p-1">
+                                    <h6 class="username">{{reply.author}} <span class="date">{{reply.dated | date}}</span></h6>
+                                </div>
+                                <div fxLayout="row" class="p-1">
+                                    <p class="reply-desc">{{reply.reply_txt}}</p>
+                                </div>
+                                <div fxLayout="row" class="mt-2">
+                                    <p class="time-ago">{{reply.dated | timeAgo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                    <div fxLayout="row" class="my-3">
+                        <input matInput [class.hide]="!showAnswers[i]" 
+                            #answerInputEle (keyup.enter)="answerQuestion(answerInputEle, QA.id, i)" 
+                            ngModel 
+                            name="replyText" type="text" class="form-control" 
+                            placeholder="Your Answer" 
+                        />
+    
+                        <button class="send-button" [class.hide]="!showAnswers[i]" (click)="answerQuestion(answerInputEle, QA.id, i)">
+                            <i class="icon-sent-mail"></i>
+                        </button>
+                    </div> 
+                </ng-container>
+            </div>
+        </ng-container>
+    
+        <div *ngIf="!(qnaData && qnaData.length)" class="no-data" fxLayout="row" fxLayoutAlign="center">
+            <h4>No Questions asked yet</h4>
+        </div>
+    </div>
+
+</div>

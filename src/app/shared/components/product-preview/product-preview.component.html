@@ -1,0 +1,64 @@
+<div class="feedback-slides p-3">
+  <div class="client-feedback">
+    <ngx-slick-carousel
+      (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)"
+      class="carousel feedback"
+      #slickModal="slick-carousel"
+      [config]="imagesSlider"
+    >
+    <ng-container *ngFor="let slide of slides; let i = index;">
+      <div ngxSlickItem *ngIf="slide && !slide.includes('.mp4')"  class="slide">
+        <!-- <img  src="{{ slide }}" alt="" width="100%" /> -->
+        <lib-ngx-image-zoom
+        (click)="open(slides, i)"
+    [thumbImage]="slide"
+></lib-ngx-image-zoom>
+      </div>
+    </ng-container>
+      <ng-container *ngIf="videos">
+        <div ngxSlickItem *ngFor="let video of videos" class="slide text-center">
+          <video id="slide-video" width="100%" height="100%"
+            class="slide-video slide-media"
+            controls
+            loop
+            disablepictureinpicture 
+            muted
+            preload="metadata"
+            controlslist="nodownload"
+          >
+            <source [src]="video" />
+          </video>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+  </div>
+  <div class="client-thumbnails p-2">
+    <ngx-slick-carousel
+      class="carousel thumbs"
+      #slickModal="slick-carousel"
+      [config]="thumbnailsSlider"
+    >
+    <ng-container *ngFor="let slide of slides">
+      <div ngxSlickItem *ngIf="slide && !slide.includes('.mp4')"  class="slide">
+        <img  src="{{ slide }}" alt="" width="100%" />
+      </div>
+    </ng-container>
+      <ng-container *ngIf="videos">
+        <div ngxSlickItem *ngFor="let video of videos" class="slide-video">
+          <video
+            class="slide-video slide-media"
+            loop
+            muted
+            disablepictureinpicture 
+            preload="metadata"
+            controlslist="nodownload"
+          >
+            <source [src]="video" />
+          </video>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+  </div>
+</div>
+

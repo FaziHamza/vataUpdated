@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb3b71;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_social_person_24px" data-name="icon/social/person_24px" class="cls-1" d="M16,16H0V14c0-.82.52-2,3-3a14.848,14.848,0,0,1,5-1,14.848,14.848,0,0,1,5,1c2.478.993,3,2.178,3,3v2ZM8,12c-2.659,0-5.771,1.284-6,2H14C13.794,13.284,10.692,12,8,12ZM8,8a4,4,0,1,1,4-4A4.005,4.005,0,0,1,8,8ZM8,2a2,2,0,1,0,2,2A2,2,0,0,0,8,2Z" transform="translate(4 4)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-1" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="private-active" transform="translate(-350 -2055)">
+    <path id="Path_835" data-name="Path 835" class="cls-2" d="M0,0H24V24H0Z" transform="translate(350 2055)"/>
+    <g id="Group_67" data-name="Group 67" class="cls-3" transform="translate(350 2055)">
+      <g id="_Color" data-name="↳ Color">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-1" width="24" height="24"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-1" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

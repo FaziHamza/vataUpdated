@@ -1,0 +1,133 @@
+<div class="day-select-slide" style="border-radius: 10px; background-color: white;">
+  <div class="ds-head">
+    <div fxLayout="row">
+      <div fxFlex="90%">{{months[datePicker.preview.month]}} {{datePicker.preview.year}}</div>
+    </div>
+  </div>
+  <div class="ds-body">
+    <div fxLayout="row" class="body-label">
+      <div fxFlex="90%">
+        <ul class="week-list">
+          <li>&nbsp;</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+          <li>Sun</li>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div fxLayout="row" class="body-content">
+      <div fxFlex="90%">
+        <ul class="week-list">
+          <li style="text-align: left;">
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: 15px; cursor: pointer;"
+              (click)="datePicker.prevWeek()"></i>
+          </li>
+          <ng-container *ngIf="datePicker.grid[datePicker.preview.week]">
+            <li *ngFor="let date of datePicker.grid[datePicker.preview.week]">
+              <ng-container *ngIf="date">
+                <button class="ds-btn-day" (click)="setDay(date)"
+                  [ngClass]="{'ds-btn-a' : (datePicker.active.date == date && datePicker.active.month == datePicker.preview.month && datePicker.active.year == datePicker.preview.year)}">{{date}}</button>
+              </ng-container>
+            </li>
+          </ng-container>
+          <li style="text-align: right;">
+            <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 15px; cursor: pointer;"
+              (click)="datePicker.nextWeek()"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="ds-foot ds-foot-w">
+    <div fxLayout="row" class="foot-label">
+      <div fxFlex="30%">Morning</div>
+      <div fxFlex="30%">Afternoon</div>
+      <div fxFlex="30%">Evening</div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="30%" style="text-align: center;" class="time-container">
+        <div fxFlex="50%" *ngFor="let time of getMorningTimes(times)">
+          <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == time}" 
+            (click)="setTime($event)">{{ time }}</button>
+        </div>
+      </div>
+      <div fxFlex="30%" style="text-align: center;" class="time-container">
+        <div fxFlex="50%" *ngFor="let time of getAfternoonTimes(times)">
+          <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == time}" 
+            (click)="setTime($event)">{{ time }}</button>
+        </div>
+      </div>
+      <div fxFlex="30%" style="text-align: center;" class="time-container">
+        <div fxFlex="50%" *ngFor="let time of getEveningTimes(times)">
+          <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == time}" 
+            (click)="setTime($event)">{{ time }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-foot ds-foot-m">
+    <div fxLayout="row" class="foot-label">
+      <ul class="nav nav-tabs foot-label-m">
+        <li><a class="active" data-toggle="tab" href="#pan-a">Morning</a></li>
+        <li><a data-toggle="tab" href="#pan-b">Afternoon</a></li>
+        <li><a data-toggle="tab" href="#pan-c">Evening</a></li>
+      </ul>
+    </div>
+    <div fxLayout="row">
+      <div class="tab-content w-100">
+        <div class="tab-pane active" id="pan-a">
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '00:00'}">00:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '01:00'}">01:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '02:00'}">02:00</button>
+          </div>
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '03:00'}">03:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '04:00'}">04:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '05:00'}">05:00</button>
+          </div>
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '06:00'}">06:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '07:00'}">07:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '08:00'}">08:00</button>
+          </div>
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '09:00'}">09:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '10:00'}">10:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '11:00'}">11:00</button>
+          </div>
+        </div>
+        <div class="tab-pane" id="pan-b">
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '12:00'}">12:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '13:00'}">13:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '14:00'}">14:00</button>
+          </div>
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '15:00'}">15:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '16:00'}">16:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '17:00'}">17:00</button>
+          </div>
+        </div>
+        <div class="tab-pane" id="pan-c">
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '18:00'}">18:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '19:00'}">19:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '20:00'}">20:00</button>
+          </div>
+          <div class="time-slot-row">
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '21:00'}">21:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '22:00'}">22:00</button>
+            <button class="ds-btn" [ngClass]="{'ds-btn-a' : selectedTime == '23:00'}">23:00</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+@import '../../../../../../../styles.scss';
+
+.family-member {
+    .search-bar {
+        position: relative;
+        input {
+            border-radius: 5px;
+            border: 1px solid $light-gray;
+            padding: 8px 0 8px 35px;
+            width: 100%;
+            background: $ligher-gray;
+        }
+        span {
+            &.icon-search-1 {
+                position: absolute;
+                font-size: 18px;
+                left: 8px;
+                bottom: 8px;
+                &::before {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+
+    .member {
+        .left-img {
+            img {
+                width: 40px;
+                height: auto;
+                border-radius: 50px;
+            }
+        }
+
+        .center-content {
+            p {
+                &.heading {
+                    color: $black;
+                    font-size: 15px;
+                }
+                &.text {
+                    color: $dark-gray;
+                    font-size: 12px;
+                    padding-top: 5px;
+                }
+            }
+        }
+
+        .right-edit {
+            a {
+                padding: 0 15px;
+                &.edit {
+                    position: relative;
+                    img {
+                        width: 15px;
+                        height: auto;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 1px;
+                        height: 15px;
+                        background: $light-gray;
+                    }
+                }
+                span {
+                    &.icon-baseline-close-24px-12 {
+                        font-size: 18px;
+                        &::before {
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .add-member {
+        a {
+            border: 1px dashed $light-gray;
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@import "../../../../../../../styles.scss";
+
+.desktop-dashboard-profile-danate {
+  .donate-amount-statistics {
+    .left-side {
+      border-radius: 10px;
+      background-color: $white;
+      position: relative;
+      .amount {
+        @include all-center();
+        h6 {
+          font-size: 30px;
+          color: $pink;
+        }
+        p {
+          &.silver-text {
+            font-size: 13px;
+            color: $dark-gray;
+          }
+        }
+      }
+    }
+
+    .right-side {
+      border-radius: 10px;
+      background-color: $white;
+      .statistics {
+        .left-heading {
+          h6 {
+            font-size: 15px;
+            color: $black;
+          }
+        }
+
+        .times {
+          ul {
+            display: flex;
+            list-style: none;
+            margin-bottom: 0px;
+            li {
+              padding: 0 0 0 25px;
+              padding: 0 10px 10px 10px;
+              &.active {
+                border-bottom: 3px solid $pink;
+              }
+              p {
+                color: $dark-gray;
+                font-size: 15px;
+              }
+
+              a {
+                text-decoration: none;
+                color: $dark-gray;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .history {
+    .heading {
+      h6 {
+        font-size: 22px;
+        color: $dark-gray;
+        position: relative;
+        top: -2px;
+      }
+
+      span {
+        &.icon-baseline-keyboard_arrow_down-24px-12 {
+          font-size: 20px;
+          border-radius: 50px;
+          border: 1px solid $light-gray;
+          padding: 2px;
+          &::before {
+            color: $light-gray;
+          }
+        }
+      }
+    }
+
+    .history-bars {
+      border-radius: 10px;
+      background-color: $white;
+      .product-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: auto;
+          height: 45px;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+
+      .product-heading {
+        h6 {
+          font-size: 16px;
+          color: $black;
+        }
+        .date-id {
+          span {
+            color: $dark-gray;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .bids {
+        span {
+          &.silver {
+            font-size: 15px;
+            color: $dark-gray;
+          }
+          &.black {
+            font-size: 16px;
+            color: $black;
+            font-weight: 600;
+          }
+          &.pink {
+            font-size: 16px;
+            color: $pink;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

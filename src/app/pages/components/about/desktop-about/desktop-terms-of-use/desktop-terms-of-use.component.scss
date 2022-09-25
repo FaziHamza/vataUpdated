@@ -1,0 +1,17 @@
+@import '../../../../../../styles.scss';
+
+.terms-policy {
+    h3 {
+        font-size: 25px;
+        font-weight: 800;
+    }
+    h6 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: $black;
+    }
+}

@@ -1,0 +1,386 @@
+<mobile-header></mobile-header>
+<app-mid-bar></app-mid-bar>
+
+<div *ngIf="productData" class="product-mobile">
+
+    <div class="product">
+        <div class="container">
+            
+            <div fxLayout="row" class="heading">
+                <h3>{{productData.title}}</h3>
+            </div>
+
+            <div fxLayout="row" class="sub-heading border-bottom py-3">
+                <h6>{{productData.shop_data.name}}<span class="icon-Subtraction-7"></span> <span class="ml-3 profile">99.2%</span></h6>
+            </div>
+
+            <div fxLayout="row" class="rating pt-2">
+                <app-star-rating [maxScore]="5" [score]="productData.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                <span class="number pl-3 text-muted">{{productData.rating_data.total_reviews}} product ratings</span>
+            </div>
+
+            <app-product-preview [slides]="productData.image"></app-product-preview>
+
+            <div fxLayout="row" class="mid-action-bar pt-3">
+                <div fxFlex="33.3%">
+                    <div class="bidding text-center">
+                        <img src="../../../../../assets/img/SVG/bidding-active.svg">
+                        <p class="pt-2" *ngIf="productData.bidding">Bidding available</p>
+                        <p class="pt-2" *ngIf="!productData.bidding">Bidding not available</p>
+                    </div>
+                </div>
+                <div fxFlex="33.3%">
+                    <div class="mx-1 change text-center">
+                        <img src="../../../../../assets/img/SVG/change-active.svg">
+                        <p class="pt-2" *ngIf="productData.ask_for_change">Change available</p>
+                        <p class="pt-2" *ngIf="!productData.ask_for_change">Change not available</p>
+                    </div>
+                </div>
+                <div fxFlex="33.3%">
+                    <div class="buy text-center">
+                        <img src="../../../../../assets/img/SVG/buy now-48px.svg">
+                        <p class="pt-2">Buy now available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div fxLayout="row" class="links py-3">
+                <span>Marketplace ></span> <span class="pl-2">Electronic ></span> <span class="pl-2">Watches ></span> <span class="pl-2 pink-text">GOGPS K20</span>
+            </div> -->
+
+            <div fxLayout="row" class="price-cart border-bottom">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+                    <mat-tab label="Buy Now"  class="w-100">
+
+                        <div fxLayout="row" class="price-section py-4">
+                            <div fxFlex="50%">
+                                <p>Fixed Price</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <span class="float-right color pink-text">{{productData.price | currency: "CHF":"symbol":"1.0"}}</span>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" class="cart-section pt-2 pb-5">
+                            <div fxFlex="50%" class="text-center">
+                                <a (click)="addToCart()" class="rounded-bt mx-2 white-b" >Add to Cart</a>
+                            </div>
+                            <div fxFlex="50%" class="text-center">
+                                <a class="rounded-bt mx-2 pink-b">Buy Now</a>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+                    <mat-tab label="Place a Bid" class="w-100">
+
+                        <div class="bid-card">
+
+                            <div *ngIf="productData.bidding">
+                                <div fxLayout="row">
+                                    <p>Time Left : <span class="time">{{productData.end_datetime | timeLeft}}</span></p>
+                                </div>
+
+                                <div fxLayout="row">
+                                    <div fxFlex="70%">
+                                        <p class="">Current Bid : <span class="amount">{{currentBid | currency: "CHF":"symbol":"1.0" : 'symbol' : '1.0'}}</span></p>
+                                    </div>
+
+                                    <div fxFlex="30%" class="text-right">
+                                        <p (click)="biddingListDialog()"><span class="text pr-2">30 Bids</span> <span class="icon-baseline-keyboard_arrow_down-24px-15"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="extras-btn" [class.border-top]="productData.bidding">
+                                    <div fxLayout="row" class="pt-3">
+                                        <form *ngIf="productData.bidding" #bidForm="ngForm">
+                                            <input type="text" name="bidValue" ngModel placeholder="Enter USD $112.0 or more">
+                                        </form>
+                                    </div>
+
+                                    <div fxLayout="row" class="pt-3">
+                                        <div *ngIf="productData.ask_for_change" fxFlex="55%">
+                                            <span class="ask" (click)="askForChangeDialog()">Ask for Change</span>
+                                        </div>
+
+                                        <div fxFlex="45%">
+                                            <span class="bid" (click)="addBid(bidForm)">Place a Bid</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+                </mat-tab-group>
+            </div> 
+            
+            <div class="shipping-detail my-4">
+
+                <div class="heading pb-3 border-bottom">
+                    <div fxLayout="row">
+                        <div fxFlex="70%">
+                            <p>Shipping :</p>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                            <a >See details</a>
+                        </div>
+                    </div>
+                    <div fxLayout="row" class="pt-2">
+                        <span>$1200 FedEx International Economy</span>
+                    </div>
+                </div>
+
+                <div class="parcel py-3 border-bottom">
+                    <p class="pb-2">International item may be subject to customs processing and additional charges.</p>
+                    <p class="pb-2">Item Location :</p>
+                    <p class="pb-2">United States, Island, England, UK</p>
+                    <p class="pb-2">Ships to :</p>
+                    <p>Worldwide</p>
+                </div>
+
+                <div class="delivery py-3 border-bottom">
+                    <div fxLayout="row">
+                        <p>Delivery :</p>
+                    </div>
+                    <div fxLayout="row" class="pt-2">
+                        <span>Varies of item shipped from an international location.</span>
+                    </div>
+                </div>
+
+                <div class="payments py-3 border-bottom">
+                    <div fxLayout="row">
+                        <span class="text">Payments :</span>
+                    </div>
+
+                    <div fxLayout="row" class="pt-2">
+                        <span class="icon-Group-1295 icon-xs mr-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
+                        <span class="icon-Card-networks-MC-Horizontal mr-2 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+                        <span class="icon-Visa mr-3"></span>
+                        <span class="icon-PayPal-FullColor-Horizontal mr-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+                        <span class="icon-Group-1296 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span></span>
+                    </div>
+                </div>
+
+                <div class="returns pt-3">
+                    <div fxLayout="row">
+                        <div fxFlex="70%">
+                            <p>Returns :</p>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                            <a >See details</a>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="pt-2">
+                        <span>Seller does not accept returns</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about border-top border-bottom">
+                <div class="container py-4">
+        
+                    <div fxLayout="row" class="heading pb-3">
+                        <h4>About Product</h4>
+                    </div>
+        
+                    <div class="text">
+                        <p>{{productData.about_product}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="similar-products border-bottom pt-4">
+                <div class="container">
+        
+                    <div fxLayout="row" class="heading pb-5">
+                        <h5>Smilar to This</h5>
+                    </div>
+        
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="configMobile">
+                        <app-marketplace-product-card [routerLink]="['/product', similar.id]" class="slide" ngxSlickItem *ngFor="let similar of similarProducts; let i = index" [product]="similar">
+                        </app-marketplace-product-card>
+                      </ngx-slick-carousel>
+        
+                </div>
+            </div>
+            <div class="rating-reviews border-bottom">
+                <div class="container py-4">
+        
+                    <div fxLayout="row" class="heading pb-4">
+                        <h5>Rating & Reviews</h5>
+                    </div>
+
+                    <div class="profile">
+                        <div fxLayout="row" class="border-bottom">
+                            <div fxFlex="80%" class="pt-3 pb-2 px-2">
+                                <div class="heading-bar">
+                                    <h6 [routerLink]="['/seller', sellerId]" class="pb-1 pointer">{{productData.shop_data.name}}<span class="icon-Subtraction-7"></span> <span class="ml-2 profile">99.2%</span></h6>
+                                    <p><span class="icon-Symbol-296--1"></span> <span class="text">Commercial</span></p>
+                                </div>
+                            </div>
+                            <div fxFlex="20%" class="add-btn py-3 px-2 border-left text-center">
+                                <span class="icon-add-button-inside-black-circle-11" (click)="shopSavedDialog()"></span>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" class="py-2 px-2">
+                            <div class="member-detail">
+                                <p class="pb-2">1000+ item sold</p>
+                                <p class="pb-2">Ricardo member since 2020</p>
+                                <p><span class="icon-location1"></span> <span class="pl-2 location">40044, Berlin, Berlin</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div fxLayout="row" class="product-rating mt-4">
+                        <div fxFlex="30%">
+                            <div class="number-text text-center">
+                                <h4>5.0</h4>
+                            </div>
+                        </div>
+                        <div fxFlex="70%">
+                            <div class="rating">
+                                <app-star-rating [maxScore]="5" [score]="productData.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                        <p class="pt-2 number">{{productData.rating_data.total_reviews}} product ratings</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="progress-bar mt-3">
+
+                        <div fxLayout="row" class="pt-3">
+                            <div class="middle w-100">
+                                <div class="bar-container">
+                                    <div [style.width.%]="productData.rating_data.calc.rating_5.percent" class="bar-5"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="30%" class="side">
+                                <div>5 star</div>
+                            </div>
+
+                            <div fxFlex="70%" class="side">
+                                <div class="right w-100">
+                                    <div class="text-right">{{productData.rating_data.calc.rating_count}} Times ({{productData.rating_data.calc.rating_5.percent}}%)</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" class="pt-3">
+                            <div class="middle w-100">
+                                <div class="bar-container">
+                                    <div [style.width.%]="productData.rating_data.calc.rating_4.percent" class="bar-4"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="30%" class="side">
+                                <div>4 star</div>
+                            </div>
+
+                            <div fxFlex="70%" class="side">
+                                <div class="right w-100">
+                                    <div class="text-right">{{productData.rating_data.calc.rating_count}} Times ({{productData.rating_data.calc.rating_4.percent}}%)</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" class="pt-3">
+                            <div class="middle w-100">
+                                <div class="bar-container">
+                                    <div  [style.width.%]="productData.rating_data.calc.rating_3.percent" class="bar-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="30%" class="side">
+                                <div>3 star</div>
+                            </div>
+
+                            <div fxFlex="70%" class="side">
+                                <div class="right w-100">
+                                    <div class="text-right">{{productData.rating_data.calc.rating_count}} Times ({{productData.rating_data.calc.rating_3.percent}}%)</div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div fxLayout="row" class="pt-3">
+                            <div class="middle w-100">
+                                <div class="bar-container">
+                                    <div [style.width.%]="productData.rating_data.calc.rating_2.percent"  class="bar-2"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="30%" class="side">
+                                <div>2 star</div>
+                            </div>
+
+                            <div fxFlex="70%" class="side">
+                            <div class="right w-100">
+                                <div class="text-right">{{productData.rating_data.calc.rating_count}} Times ({{productData.rating_data.calc.rating_2.percent}}%)</div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" class="pt-3">
+                            <div class="middle w-100">
+                                <div class="bar-container">
+                                    <div class="bar-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="30%" class="side">
+                                <div [style.width.%]="productData.rating_data.calc.rating_1.percent" class="bar-1"></div>
+
+                            </div>
+
+                            <div fxFlex="70%" class="side">
+                                <div class="right w-100">
+                                    <div class="text-right">{{productData.rating_data.calc.rating_count}} Times ({{productData.rating_data.calc.rating_1.percent}}%)</div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+            <app-mobile-customer-reviews [productId]="productId"></app-mobile-customer-reviews>
+
+            <app-mobile-customer-questions-and-answers [sellerId]="productData.seller" [productId]="productId"></app-mobile-customer-questions-and-answers>
+
+            <div class="other-products pt-5">
+                <div class="container">
+
+                    <div fxLayout="row" class="heading pb-5">
+                        <h5>Other products of this seller</h5>
+                    </div>
+
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="configMobile">
+                        <app-marketplace-product-card [routerLink]="['/product', sellerProduct.id]" class="slide" ngxSlickItem *ngFor="let sellerProduct of sellerData; let i = index" [product]="sellerProduct">
+                        </app-marketplace-product-card>
+                    </ngx-slick-carousel>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- <app-layout-footer></app-layout-footer> -->

@@ -1,0 +1,303 @@
+<div class="desktop-dasboard-profile-fees-pay-postil">
+    <div class="fees-section p-3 mt-4">
+        <div fxFlex="80%" class="left-side">
+            <p class="heading">Credits</p>
+            <h6 class="amount pt-3">- $77.99</h6>
+            <p class="sub-text pt-2">Future Fees will be changed with this balance</p>
+        </div>
+
+        <div (click)="openDialog()" fxFlex="20%" class="right-side float-right pt-4">
+            <a mat-button class="rounded-bt w-100 pink-b">Make Payment</a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="transaction-search py-3">
+        <div fxFlex="50%" class="left-side">
+            <div class="transaction">
+                <mat-form-field>
+                    <mat-label>Transaction</mat-label>
+                    <mat-select>
+                      <mat-option value="t1">Transaction 1</mat-option>
+                      <mat-option value="t2">Transaction 2</mat-option>
+                      <mat-option value="t3">Transaction 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+
+        <div fxFlex="50%" class="right-side text-right pt-3 position-relative">
+            <span class="icon-search-1"></span>
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+
+    <div class="list-sheet-1 p-3">
+        <div fxLayout="row" class="headings pb-3">
+            <div fxFlex="50%">
+                <p>Type</p>
+            </div>
+            <div fxFlex="15%">
+                <p>Date</p>
+            </div>
+            <div fxFlex="15%">
+                <p>Status</p>
+            </div>
+            <div fxFlex="10%">
+                <p>Amount</p>
+            </div>
+            <div fxFlex="10%">
+                <p>Balance</p>
+            </div>
+        </div>
+        
+        <div class="list-rows">
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="50%" class="title-text">
+                    <p>Returning</p>
+                </div>
+                <div fxFlex="15%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="15%" class="status">
+                    <p>Open</p>
+                </div>
+                <div fxFlex="10%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="10%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="50%" class="title-text">
+                    <p>Returning</p>
+                </div>
+                <div fxFlex="15%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="15%" class="status">
+                    <p>Open</p>
+                </div>
+                <div fxFlex="10%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="10%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>   
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="50%" class="title-text">
+                    <p>Returning</p>
+                </div>
+                <div fxFlex="15%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="15%" class="status">
+                    <p>Partial Missing</p>
+                </div>
+                <div fxFlex="10%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="10%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>   
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="50%" class="title-text">
+                    <p class="green-text">
+                        Payment
+                        <span class="pl-5 black-text">Andrewz</span>
+                    </p>
+                </div>
+                <div fxFlex="15%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="15%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="10%" class="amount">
+                    <p class="green-text">-3.35</p>
+                </div>
+                <div fxFlex="10%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>   
+            <div fxLayout="row" class="border-top py-3 bg-light">
+                <div fxFlex="50%" class="title-text">
+                    <p>Returning</p>
+                </div>
+                <div fxFlex="15%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="15%" class="status">
+                    <p class="green-text">Paid</p>
+                </div>
+                <div fxFlex="10%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="10%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            
+            <div fxLayout="row" class="see-download-btns pt-4">
+                <div fxFlex="70%"></div>
+
+                <div fxFlex="15%" class="see-btn" class="mr-4">
+                    <a mat-button class="rounded-bt w-100 white-b">See More</a>
+                </div>
+                <div fxFlex="15%" class="download">
+                    <a mat-button class="rounded-bt w-100 pink-b">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="receipts p-3 mt-4">
+        <div fxLayout="row">
+            <div fxFlex="80%" class="heading">
+                <h6>Receipts</h6>
+            </div>
+
+            <div fxFlex="20%" class="right-side text-right">
+                <span class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-sheet-2 p-3 mt-4">
+        <div fxLayout="row" class="headings pb-3">
+            <div fxFlex="20%">
+                <p>Type</p>
+            </div>
+            <div fxFlex="20%">
+                <p>Date</p>
+            </div>
+            <div fxFlex="20%">
+                <p>Status</p>
+            </div>
+            <div fxFlex="20%">
+                <p>Amount</p>
+            </div>
+            <div fxFlex="20%">
+                <p>Balance</p>
+            </div>
+        </div>
+        
+        <div class="list-rows">
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            <div fxLayout="row" class="border-top py-3 bg-light">
+                <div fxFlex="20%" class="title-text">
+                    <p>Payment</p>
+                </div>
+                <div fxFlex="20%" class="date">
+                    <p>01, April 2019</p>
+                </div>
+                <div fxFlex="20%" class="status">
+                    <p></p>
+                </div>
+                <div fxFlex="20%" class="amount">
+                    <p>-3.35</p>
+                </div>
+                <div fxFlex="20%" class="balance">
+                    <p>-3.35</p>
+                </div>
+            </div>
+            
+            <div fxLayout="row" class="see-download-btns pt-4">
+                <div fxFlex="70%"></div>
+
+                <div fxFlex="15%" class="see-btn" class="mr-4">
+                    <a mat-button class="rounded-bt w-100 white-b">See More</a>
+                </div>
+                <div fxFlex="15%" class="download">
+                    <a mat-button class="rounded-bt w-100 pink-b">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

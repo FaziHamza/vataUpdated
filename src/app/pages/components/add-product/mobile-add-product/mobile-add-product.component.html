@@ -1,0 +1,975 @@
+<mobile-header></mobile-header>
+<app-mid-bar></app-mid-bar>
+
+<div class="mobile-add-product">
+  <form [formGroup]="addProductForm">
+    <div *ngIf="tab != 'booking'" class="top">
+      <div class="heading py-4">
+        <div class="container">
+          <div fxLayout="row">
+            <h3>Add Product</h3>
+          </div>
+        </div>
+      </div>
+      <div class="top-imgs">
+        <div class="container">
+          <div fxLayout="row">
+            <ng-container *ngFor="let preview of preview; let i = index">
+              <span
+                (click)="removeImage(i)"
+                class="icon-baseline-close-24px-11 close"
+              ></span>
+              <img
+                *ngIf="preview.format === 'image'"
+                class="mr-2 mt-3"
+                [src]="preview.data"
+              />
+              <video
+                *ngIf="preview.format === 'video'"
+                class="mr-2 mt-3"
+                [src]="preview.data"
+                controls
+              ></video>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="drag-img">
+        <div class="container">
+          <app-file-upload
+            (uploadData)="onFileUpload($event)"
+            template="mobile-lg"
+          ></app-file-upload>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns pt-5 pb-4">
+      <div class="container">
+        <div fxLayout="row">
+          <div fxFlex="36%">
+            <a
+              [ngClass]="{ active: tab == 'marketplace' }"
+              (click)="changeTab('marketplace')"
+              >Marketplace</a
+            >
+          </div>
+          <div fxFlex="36%">
+            <a
+              class="ml-3"
+              [ngClass]="{ active: tab == 'booking' }"
+              (click)="changeTab('booking')"
+              >Booking</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="text-field">
+      <div class="container">
+        <div fxLayout="row" class="pt-3 word-no position-relative">
+          <div class="w-100">
+            <mat-form-field class="form-section w-100">
+              <mat-label>Product Name</mat-label>
+              <input formControlName="title" matInput type="text" />
+              <div *ngIf="addProductForm.get('title').touched || submitted">
+                <mat-error
+                  *ngIf="addProductForm.controls['title'].errors?.required"
+                >
+                  Title is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-1">
+          <div class="w-100 add-in-categories">
+            <mat-form-field class="form-section w-100">
+              <mat-label>
+                <span class="icon-add-button-inside-black-circle-1"></span>
+                Add in 2 Categories
+              </mat-label>
+              <mat-select
+                [(value)]="selectedCategory"
+                multiple
+                formControlName="category"
+              >
+                <mat-option
+                  *ngFor="let category of categoryData"
+                  [value]="category.id"
+                  >{{ category.name }}</mat-option
+                >
+              </mat-select>
+              <div *ngIf="addProductForm.get('category').touched || submitted">
+                <mat-error
+                  *ngIf="addProductForm.controls['category'].errors?.required"
+                >
+                  Category is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-1">
+          <div class="w-100">
+            <mat-form-field class="w-100">
+              <mat-label>Condition</mat-label>
+              <mat-select formControlName="condition">
+                <mat-option
+                  *ngFor="let condition of conditionData"
+                  [value]="condition.id"
+                  >{{ condition.name }}</mat-option
+                >
+              </mat-select>
+              <div *ngIf="addProductForm.get('condition').touched || submitted">
+                <mat-error
+                  *ngIf="addProductForm.controls['condition'].errors?.required"
+                >
+                  Condition is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div
+          fxLayout="row"
+          class="pb-5 pt-1 brief-no position-relative border-bottom"
+        >
+          <div class="w-100">
+            <mat-form-field class="form-section w-100">
+              <mat-label>Description</mat-label>
+              <input formControlName="about_product" matInput type="text" />
+              <div
+                *ngIf="addProductForm.get('about_product').touched || submitted"
+              >
+                <mat-error
+                  *ngIf="
+                    addProductForm.controls['about_product'].errors?.required
+                  "
+                >
+                  Description is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+          
+        </div>
+        <div
+          fxLayout="row"
+          class="pb-5 pt-1 brief-no position-relative border-bottom"
+        >
+          <div class="w-100">
+            <mat-form-field class="form-section w-100">
+              <mat-label>Stock count</mat-label>
+              <input formControlName="stock_count" matInput type="number" />
+              <div
+                *ngIf="addProductForm.get('stock_count').touched || submitted"
+              >
+                <mat-error
+                  *ngIf="
+                    addProductForm.controls['stock_count'].errors?.required
+                  "
+                >
+                  Stock count is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="bidding-toggle">
+      <div class="container">
+        <div fxLayout="row" class="pt-5 border-bottom pb-3">
+          <div fxFlex="70%">
+            <h2>Bidding</h2>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle formControlName="bidding"></mat-slide-toggle>
+          </div>
+        </div>
+
+        <div fxLayout="row" class="py-3 border-bottom">
+          <div fxFlex="70%">
+            <span>Bidding Price</span>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <input
+              matInput
+              formControlName="bidding_price"
+              placeholder="$750"
+              class="right-text"
+            />
+          </div>
+        </div>
+        <div
+          *ngIf="addProductForm.get('bidding_price').touched || submitted"
+          fxLayout="row"
+        >
+          <mat-error
+            *ngIf="addProductForm.controls['bidding_price'].errors?.required"
+          >
+            Bidding price is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="addProductForm.controls['bidding_price'].errors?.pattern"
+          >
+            Only numeric values are allowed
+          </mat-error>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="fixed-price-toggle">
+      <div class="container">
+        <div fxLayout="row" class="pt-5 border-bottom pb-3">
+          <div fxFlex="70%">
+            <h2>Fixed Price</h2>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle formControlName="fixed_price"></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="py-3 border-bottom">
+          <div fxFlex="70%">
+            <span>Price</span>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <input
+              matInput
+              formControlName="price"
+              placeholder="$750"
+              class="right-text"
+            />
+          </div>
+        </div>
+        <div
+          *ngIf="addProductForm.get('price').touched || submitted"
+          fxLayout="row"
+        >
+          <mat-error *ngIf="addProductForm.controls['price'].errors?.required">
+            Price is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="addProductForm.controls['price'].errors?.pattern">
+            Only numeric values are allowed
+          </mat-error>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="ask-change-toggle">
+      <div class="increment-input pt-4" *ngIf="tab == 'marketplace'">
+        <div fxLayout="row">
+          <h4>Increment</h4>
+        </div>
+
+        <div fxLayout="row" class="pb-5">
+          <div class="chips-increment pt-2 w-100">
+            <mat-radio-group formControlName="increment">
+              <mat-radio-button
+                disableRipple="true"
+                *ngFor="let increment of increments"
+                (click)="selectIncrement(increment.value)"
+                [value]="increment.actual"
+                class="mr-2"
+                [ngClass]="{
+                  'pink-b': increment.value == selectedIncrement
+                }"
+              >
+                {{ increment.value }}
+              </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="addProductForm.get('increment').touched || submitted">
+              <mat-error
+                *ngIf="addProductForm.controls['increment'].errors?.required"
+              >
+                Increment price is <strong>required</strong>
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container pt-3 available">
+        <div fxLayout="row">
+          <h2>Start</h2>
+        </div>
+
+        <div fxLayout="row" class="pt-3">
+          <mat-radio-group formControlName="start">
+            <div fxLayout="row" class="pt-3">
+              <mat-radio-button value="now">Now</mat-radio-button>
+            </div>
+            <div fxLayout="row" class="pt-3">
+              <mat-radio-button value="Individual">Individual</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="date-time-end pt-3">
+        <div fxLayout="row">
+          <div fxFlex="47%" class="mr-2">
+            <div class="w-100">
+              <mat-form-field class="w-100">
+                <mat-label>End Date</mat-label>
+                <input
+                  formControlName="subline"
+                  matInput
+                  [matDatepicker]="picker"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="47%" class="ml-2">
+            <mat-form-field class="w-100">
+              <mat-label>End Time</mat-label>
+              <mat-select formControlName="subline">
+                <mat-option value="10AM">10:00 AM</mat-option>
+                <mat-option value="02PM">02:00 PM</mat-option>
+                <mat-option value="40AM">04:00 AM</mat-option>
+                <mat-option value="06PM">06:00 PM</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="container border-bottom">
+        <div fxLayout="row" class="pt-5">
+          <div fxFlex="70%">
+            <h2>Ask for Change</h2>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle
+              formControlName="ask_for_change"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Make Offer</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle formControlName="make_offer"></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>On Stock Item</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle formControlName="on_stock"></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Contact in Messenger</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3 pb-4">
+          <div fxFlex="70%">
+            <h4>Make Offers</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- booking tab things only -->
+    <div *ngIf="tab == 'booking'" class="booking-tab">
+      <div class="inputs-booking">
+        <div class="container">
+          <div fxLayout="row" class="pt-3">
+            <mat-form-field class="w-100">
+              <mat-label>Service Name</mat-label>
+              <mat-select>
+                <mat-option value="service">Service 1</mat-option>
+                <mat-option value="service">Service A</mat-option>
+                <mat-option value="service">Service 2</mat-option>
+                <mat-option value="service">Service B</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" class="pt-1">
+            <mat-form-field class="w-100">
+              <mat-label>Service in Category</mat-label>
+              <mat-select>
+                <mat-option value="category">Category 1</mat-option>
+                <mat-option value="category">Category A</mat-option>
+                <mat-option value="category">Category 2</mat-option>
+                <mat-option value="category">Category B</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" class="heading-form-field pt-3">
+            <span>Duration</span>
+          </div>
+
+          <div fxLayout="row" class="pt-2">
+            <div fxFlex="47%" class="mr-2">
+              <mat-form-field class="w-100">
+                <mat-label>Duration Hours</mat-label>
+                <mat-select>
+                  <mat-option value="hours">Hours 10</mat-option>
+                  <mat-option value="hours">Hours 20</mat-option>
+                  <mat-option value="hours">Hours 40</mat-option>
+                  <mat-option value="hours">Hours 60</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="47%" class="ml-2">
+              <mat-form-field class="w-100">
+                <mat-label>Duration Mins</mat-label>
+                <mat-select>
+                  <mat-option value="mins">Mins 10</mat-option>
+                  <mat-option value="mins">Mins 20</mat-option>
+                  <mat-option value="mins">Mins 40</mat-option>
+                  <mat-option value="mins">Mins 60</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" class="pt-1">
+            <div class="w-100">
+              <mat-form-field class="form-section w-100">
+                <mat-label>Price</mat-label>
+                <input matInput type="text" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="members border-bottom">
+            <div fxLayout="row" class="pt-5 border-bottom pb-3">
+              <div fxFlex="30%" class="heading left-sec">
+                <h2>Members</h2>
+              </div>
+
+              <div fxFlex="70%" class="right-sec text-right">
+                <div class="row">
+                  <div fxFlex="85%">
+                    <a href="#">Select All</a>
+                  </div>
+
+                  <div fxFlex="15%">
+                    <mat-checkbox></mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4 border-bottom pb-2">
+              <div fxFlex="70%" class="left-img-sec">
+                <div class="row">
+                  <div fxFlex="20%">
+                    <img src="../../../../../../assets/img/add-photo.png" />
+                  </div>
+
+                  <div fxFlex="80%">
+                    <h6 class="text pl-2">Anntory Morris</h6>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <mat-checkbox></mat-checkbox>
+              </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4 border-bottom pb-2">
+              <div fxFlex="70%" class="left-img-sec">
+                <div class="row">
+                  <div fxFlex="20%">
+                    <img src="../../../../../../assets/img/add-photo.png" />
+                  </div>
+                  <div fxFlex="80%">
+                    <h6 class="text pl-2">Bella Morots</h6>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <mat-checkbox></mat-checkbox>
+              </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4 border-bottom pb-2">
+              <div fxFlex="70%" class="left-img-sec">
+                <div class="row">
+                  <div fxFlex="20%">
+                    <img src="../../../../../../assets/img/add-photo.png" />
+                  </div>
+                  <div fxFlex="80%">
+                    <h6 class="text pl-2">Chris Zex</h6>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <mat-checkbox></mat-checkbox>
+              </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4 pb-2">
+              <div fxFlex="70%" class="left-img-sec">
+                <div class="row">
+                  <div fxFlex="20%">
+                    <img src="../../../../../../assets/img/add-photo.png" />
+                  </div>
+                  <div fxFlex="80%">
+                    <h6 class="text pl-2">Mawell Honzy</h6>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <mat-checkbox></mat-checkbox>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-field">
+            <div fxLayout="row" class="pt-4 brief-no position-relative">
+              <div class="w-100">
+                <mat-form-field class="form-section w-100">
+                  <mat-label>Service Descrition</mat-label>
+                  <input matInput type="text" />
+                </mat-form-field>
+              </div>
+              <span class="text-no">20/450</span>
+            </div>
+
+            <div fxLayout="row" class="pt-1 brief-no position-relative">
+              <div class="w-100">
+                <mat-form-field class="form-section w-100">
+                  <mat-label>Note for Client</mat-label>
+                  <input matInput type="text" />
+                </mat-form-field>
+              </div>
+              <span>80/600</span>
+            </div>
+          </div>
+
+          <div class="advanced-toggle-inputs">
+            <div fxLayout="row" class="pt-5 pb-3 border-bottom">
+              <div fxFlex="70%" class="heading">
+                <h2>Advanced options</h2>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <mat-slide-toggle></mat-slide-toggle>
+              </div>
+            </div>
+
+            <!-- padding-time input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-5">
+              <span>Padding Time</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <div fxFlex="47%" class="mr-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Hours</mat-label>
+                  <mat-select>
+                    <mat-option value="before">Before</mat-option>
+                    <mat-option value="after">After</mat-option>
+                    <mat-option value="tomorrow">Tomorrow</mat-option>
+                    <mat-option value="yesterday">Yesterday</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="47%" class="ml-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Mins</mat-label>
+                  <mat-select>
+                    <mat-option value="10">10 Mins</mat-option>
+                    <mat-option value="20">20 Mins</mat-option>
+                    <mat-option value="40">40 Mins</mat-option>
+                    <mat-option value="60">60 Mins</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- padding-time input dropdowns end -->
+
+            <!-- processing-time input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-3">
+              <span>Processing Time</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <div fxFlex="47%" class="mr-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Hours</mat-label>
+                  <mat-select>
+                    <mat-option value="10">10 Hours</mat-option>
+                    <mat-option value="10">20 Hours</mat-option>
+                    <mat-option value="10">40 Hours</mat-option>
+                    <mat-option value="10">60 Hours</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="47%" class="ml-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Mins</mat-label>
+                  <mat-select>
+                    <mat-option value="10">10 Mins</mat-option>
+                    <mat-option value="10">20 Mins</mat-option>
+                    <mat-option value="10">40 Mins</mat-option>
+                    <mat-option value="10">60 Mins</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- processing-time input dropdowns end -->
+
+            <!-- interval input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-2">
+              <span>Interval</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <div fxFlex="47%" class="mr-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Hours</mat-label>
+                  <mat-select>
+                    <mat-option value="10">10 Hours</mat-option>
+                    <mat-option value="10">20 Hours</mat-option>
+                    <mat-option value="10">40 Hours</mat-option>
+                    <mat-option value="10">60 Hours</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="47%" class="ml-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Mins</mat-label>
+                  <mat-select>
+                    <mat-option value="10">10 Mins</mat-option>
+                    <mat-option value="10">20 Mins</mat-option>
+                    <mat-option value="10">40 Mins</mat-option>
+                    <mat-option value="10">60 Mins</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- interval input dropdowns end -->
+
+            <!-- parallel-clients input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-2">
+              <span>Parallel Clients</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <mat-form-field class="w-100">
+                <mat-label>Parallel Clients</mat-label>
+                <mat-select>
+                  <mat-option value="10">Yes</mat-option>
+                  <mat-option value="10">No</mat-option>
+                  <mat-option value="10">Next Time</mat-option>
+                  <mat-option value="10">Not Available</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- parallel-clients input dropdowns end -->
+
+            <!-- processing-time-after input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-2">
+              <span>Processing Time After</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <div fxFlex="47%" class="mr-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Hours</mat-label>
+                  <mat-select>
+                    <mat-option value="10">Hours 10</mat-option>
+                    <mat-option value="10">Hours 20</mat-option>
+                    <mat-option value="10">Hours 40</mat-option>
+                    <mat-option value="10">Hours 60</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="47%" class="ml-2">
+                <mat-form-field class="w-100">
+                  <mat-label>Duration Mins</mat-label>
+                  <mat-select>
+                    <mat-option value="10">Mins 10</mat-option>
+                    <mat-option value="10">Mins 20</mat-option>
+                    <mat-option value="10">Mins 40</mat-option>
+                    <mat-option value="10">Mins 60</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- processing-time-after input dropdowns end -->
+
+            <!-- tax-rate input dropdowns start -->
+            <div fxLayout="row" class="heading-form-field pt-2">
+              <span>Tax Rate</span>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+              <mat-form-field class="w-100">
+                <mat-label>Tax Rate</mat-label>
+                <mat-select>
+                  <mat-option value="10">15.00 %</mat-option>
+                  <mat-option value="10">25.00 %</mat-option>
+                  <mat-option value="10">35.00 %</mat-option>
+                  <mat-option value="10">45.00 %</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- tax-rate input dropdowns end -->
+          </div>
+
+          <div fxLayout="row" class="pt-4">
+            <a mat-button class="pink-b rounded-bt w-100 d-block p-3"
+              >Create an Booking</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="shipping-toggle">
+      <div class="container border-bottom">
+        <div fxLayout="row" class="pt-5 border-bottom pb-3">
+          <div fxFlex="40%">
+            <h2>Shipping</h2>
+          </div>
+          <div fxFlex="60%" class="text-right">
+            <div class="row">
+              <div fxFlex="70%">
+                <span class="right-text">Free Shipping</span>
+              </div>
+              <div fxFlex="30%">
+                <mat-slide-toggle formControlName="is_free"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" class="pt-4 pb-3">
+          <div class="shipping-price">
+            <mat-form-field class="form-section w-100">
+              <mat-label>Shipping Price</mat-label>
+              <input formControlName="shipping_price" matInput type="text" />
+              <div
+                *ngIf="
+                  addProductForm.get('shipping_price').touched || submitted
+                "
+              >
+                <mat-error
+                  *ngIf="
+                    addProductForm.controls['shipping_price'].errors?.required
+                  "
+                >
+                  Shipping price is <strong>required</strong>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="delivery-time">
+      <div class="container">
+        <div fxLayout="row" class="pt-5">
+          <h2 class="heading">Delivery Time</h2>
+        </div>
+        <div fxLayout="row" class="pt-4">
+          <div class="chips-days w-100">
+            <mat-radio-group formControlName="shipping_time">
+              <mat-radio-button
+                [value]="delivery.value"
+                class="mr-2"
+                *ngFor="let delivery of deliverys"
+                (click)="selectDelivery(delivery.value)"
+                [ngClass]="{
+                  'pink-b': delivery.value == selectedDelivery
+                }"
+              >
+                {{ delivery.value }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div *ngIf="addProductForm.get('shipping_time').touched || submitted">
+            <mat-error
+              *ngIf="addProductForm.controls['shipping_time'].errors?.required"
+            >
+              Shipping time is <strong>required</strong>
+            </mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="payment">
+      <div class="container">
+        <div fxLayout="row" class="pt-5">
+          <h2 class="heading">Payment</h2>
+        </div>
+        <div fxLayout="row" class="payments-icon pt-4 pb-5 border-bottom">
+          <a
+            (click)="selectPayment('applepay')"
+            [ngClass]="{ active: payments.includes('applepay') }"
+          >
+            <span class="icon-Group-1295 mr-3 icon-xs"
+              ><span class="path1"></span><span class="path2"></span
+              ><span class="path3"></span><span class="path4"></span
+              ><span class="path5"></span
+            ></span>
+          </a>
+          <a
+            (click)="selectPayment('mastercard')"
+            [ngClass]="{ active: payments.includes('mastercard') }"
+          >
+            <span class="icon-Card-networks-MC-Horizontal mr-3 icon-s"
+              ><span class="path1"></span><span class="path2"></span
+              ><span class="path3"></span
+            ></span>
+          </a>
+          <a
+            (click)="selectPayment('visa')"
+            [ngClass]="{ active: payments.includes('visa') }"
+          >
+            <span class="icon-Visa mr-4"></span>
+          </a>
+          <a
+            (click)="selectPayment('paypal')"
+            [ngClass]="{ active: payments.includes('paypal') }"
+          >
+            <span class="icon-PayPal-FullColor-Horizontal mr-3"
+              ><span class="path1"></span><span class="path2"></span
+              ><span class="path3"></span><span class="path4"></span
+              ><span class="path5"></span><span class="path6"></span
+              ><span class="path7"></span><span class="path8"></span
+              ><span class="path9"></span
+            ></span>
+          </a>
+          <a
+            (click)="selectPayment('unionpay')"
+            [ngClass]="{ active: payments.includes('unionpay') }"
+          >
+            <span class="icon-Group-1296 icon-s"
+              ><span class="path1"></span><span class="path2"></span
+              ><span class="path3"></span><span class="path4"></span
+              ><span class="path5"></span><span class="path6"></span
+              ><span class="path7"></span><span class="path8"></span
+              ><span class="path9"></span><span class="path10"></span
+              ><span class="path11"></span><span class="path12"></span
+              ><span class="path13"></span><span class="path14"></span
+              ><span class="path15"></span
+            ></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="marketing-toggle">
+      <div class="container">
+        <div fxLayout="row" class="pt-5">
+          <h2>Marketing</h2>
+        </div>
+        <div fxLayout="row" class="pt-4">
+          <div fxFlex="70%">
+            <h4>Push on Home ($5)</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle formControlName="push_on_home"></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Push on Searching List ($10)</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle
+              formControlName="push_on_searchlist"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Push on Marketplace ($15)</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle
+              formControlName="push_on_marketplace"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Push on Near by Me ($25)</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle
+              formControlName="push_on_nearbyme"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" class="pt-3">
+          <div fxFlex="70%">
+            <h4>Push on Category Promo on Top ($10)</h4>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <mat-slide-toggle
+              formControlName="categorypromo_on_top"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="total-amount">
+      <div class="container">
+        <div fxLayout="row" class="pt-4">
+          <div fxFlex="70%">
+            <h1 class="left-text">Total:</h1>
+          </div>
+          <div fxFlex="30%" class="text-right">
+            <input
+              readonly
+              matInput
+              formControlName="total"
+              class="pink-text right-text"
+              placeholder="$0"
+              [value]="totalAmount | currency: 'CHF':'symbol':'1.0'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="create-btn">
+      <div class="container">
+        <div fxLayout="row" class="py-4">
+          <a
+            (click)="onSubmit(addProductForm)"
+            mat-button
+            class="pink-b rounded-bt w-100 d-block"
+            >Create a Product</a
+          >
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

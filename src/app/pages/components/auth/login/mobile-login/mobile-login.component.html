@@ -1,0 +1,115 @@
+<div>
+  <!-- 
+    <a class="back-b" href="#">
+        <span class="icon-back3"></span>
+    </a> -->
+  <div class="float-right p-3">
+    <div class="text-right">
+      <div class="custom-control custom-switch">
+        <mat-checkbox
+          type="checkbox"
+          class="custom-control-input"
+          id="darkMode"
+          [checked]="!isThemeDark"
+          (change)="toggleDarkTheme($event)"
+        >
+          <label class="custom-control-label" for="darkMode"></label>
+          <a class="text-capitalize">Dark Mode</a>
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-form">
+    <div class="container">
+      <div style="width: 80%; margin: auto;" class="text-center">
+        <div class="form pt-5">
+          <img
+            routerLink="/home"
+            *ngIf="!logoDark"
+            class="logo"
+            src="/assets/img/front-img/home/Logo.png"
+          />
+          <img
+            routerLink="/home"
+            *ngIf="logoDark"
+            class="logo"
+            src="/assets/img/logo-white.svg"
+          />
+
+          <h2 class="title">Welcome</h2>
+          <p class="sub-title">
+            To keep connected with us,<br />please login with your personal info
+          </p>
+
+          <form [formGroup]="loginForm" class="pt-3">
+            <div fxlaout="row">
+              <mat-form-field class="form-section w-100">
+                <mat-label>Email/Username</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control form-control-sm"
+                  autocomplete="off"
+                  formControlName="email"
+                />
+                <mat-error *ngIf="loginForm.controls['email'].errors?.required">
+                  Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].invalid">
+                  Email is <strong>invalid</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row">
+              <mat-form-field class="form-section position-relative w-100">
+                <input
+                  #password
+                  matInput
+                  type="password"
+                  class="form-control form-control-sm"
+                  formControlName="password"
+                  autocomplete="off"
+                />
+                <mat-label>Password</mat-label>
+                <a class="eye-b">
+                  <i [appPasswordToggle]="password" class="fas fa-eye"></i>
+                </a>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row">
+              <a
+                (click)="onSubmit()"
+                class="btn submit-b btn-block rounded-bt p-0"
+                mat-button
+                [disabled]="loginForm.invalid"
+                >Login</a
+              >
+            </div>
+          </form>
+
+          <div fxLayout="row" class="forgot text-center">
+            <div fxFlex="100%">
+              <mat-checkbox class="checkbox-custom"
+                >Keep me logged in</mat-checkbox
+              >
+            </div>
+          </div>
+          <div fxLayout="row" class="forgot text-center">
+            <div routerLink="/auth/forgot-password" fxFlex="100%">
+              <a href="javascript:void(0)">Forgot password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dont-have-account">
+    <div class="container text-center">
+      <p>Don't have an account? <a routerLink="/auth/signup">Signup</a></p>
+    </div>
+  </div>
+</div>

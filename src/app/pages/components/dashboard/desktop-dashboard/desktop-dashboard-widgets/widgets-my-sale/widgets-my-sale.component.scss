@@ -1,0 +1,130 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-my-sale {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .total-earnings {
+        p {
+            &.heading {
+                color: $dark-gray;
+                font-size: 14px;
+            }
+            &.number {
+                color: $black;
+                font-size: 22px;
+            }
+        }
+    }
+
+    .graph-details {
+        .left-side {
+            .circle {
+                position: relative;
+                padding-left: 35px;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 13px;
+                    left: 0px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50px;
+                    // border: 5px solid $pink;
+                }
+                &.pink {
+                    &::after {
+                        border: 4px solid $pink;
+                    }
+                }
+                &.purple {
+                    &::after {
+                        border: 4px solid $purple;
+                    }
+                }
+                &.light-blue {
+                    &::after {
+                        border: 4px solid $light-blue;
+                    }
+                }
+
+                p {
+                    &.text {
+                        color: $dark-gray;
+                        font-size: 13px;
+                    }
+                    &.amount {
+                        font-size: 16px;
+                        color: $black;
+                    }
+                    span {
+                        &.chip {
+                            font-size: 10px;
+                            color: $white;
+                            border-radius: 5px;
+                            margin-left: 8px;
+                            padding: 1px 4px;
+                            position: relative;
+                            top: -3px;
+                            &.pink {
+                                background: $pink;
+                                border: 1px solid $pink;
+                            }
+                            &.purple {
+                                background: $purple;
+                                border: 1px solid $purple;
+                            }
+                            &.light-blue {
+                                background: $light-blue;
+                                border: 1px solid $light-blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabs {
+        .marketplace-tab {
+            p {
+                &.text-field {
+                    color: $dark-gray;
+                    font-size: 14px;
+                }
+                &.number-field {
+                    color: $black;
+                    font-size: 15px;   
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .tabs-fields {
+        .mat-tab-labels {
+            background: $white;
+        }
+    }
+}

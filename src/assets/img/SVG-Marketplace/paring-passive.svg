@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(18,18,18,0.25);
+      }
+    </style>
+  </defs>
+  <g id="paring-passive" transform="translate(-196 -3034)">
+    <path id="star-passive" class="cls-1" d="M9,13.859,13.944,17l-1.312-5.92L17,7.1l-5.752-.514L9,1,6.752,6.583,1,7.1,5.368,11.08,4.056,17Z" transform="translate(195 3033)"/>
+  </g>
+</svg>

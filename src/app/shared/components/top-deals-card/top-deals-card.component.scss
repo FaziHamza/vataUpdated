@@ -1,0 +1,40 @@
+@import "../../../../styles.scss";
+
+.card-body {
+    border-radius: 9px;
+    position: relative;
+    max-width: 340px;
+    .image-sec {
+        position: relative;
+    }
+    .main-img {
+        width: 100%;
+        object-fit: cover;
+        height: 230px;
+        border-radius: 10px 10px 0 0;
+    }
+    h5 {
+        font-size: 14px;
+        font-weight: 500;
+        color: $black;
+    }
+    .fix-p {
+        font-size: 16px;
+        font-weight: 500;
+        color: $dark-gray;
+    }
+    .cutted {
+        font-size: 16px;
+        font-weight: 600;
+        color: $light-gray;
+    }
+    .price {
+        font-size: 17px;
+        font-weight: 600;
+    }
+    .off {
+        border: 1px dashed #f61d5e;
+        padding: 5px 5px;
+        border-radius: 9px;
+    }  
+}

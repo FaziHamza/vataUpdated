@@ -1,0 +1,185 @@
+@import '../../../../../../styles.scss';
+
+.desktop-make-booking {
+    .left-side {
+        background-color: $ligher-gray;
+        padding: 40px 0;
+        .calendar {
+            background: $white;
+            border-radius: 12px;
+
+        }
+
+        .booking-fields {
+            background: $white;
+            border-radius: 10px;
+
+            .field-bar {
+            border-radius: 6px;
+                .first-row {
+                    .heading {
+                        h6 {
+                            color: $black;
+                            font-size: 15px;
+                            font-weight: 100;
+                        }
+                    }
+                    .price {
+                        span {
+                            &.amount {
+                                color: $black;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+
+                .second-row {
+                    .star {
+                        span {
+                            &.star-text {
+                                font-size: 13px;
+                                color: $black;
+                            }
+                        }
+                    }
+                    .time {
+                        span {
+                            &.time {
+                                font-size: 13px;
+                                color: $dark-gray;
+
+                            }
+                        }
+                    }
+                }
+
+                .cross-btn {
+                    span {
+                        &.icon-baseline-close-24px-1 {
+                            font-size: 20px;
+                            position: relative;
+                            top: 8px;
+                        }
+                        &::before {
+                            color: $dark-gray;
+                        }
+                    }
+                }
+            }
+
+            .border-gray {
+                border: 1px solid $ligher-gray;
+            }
+
+            .border-pink {
+                border: 1px solid deeppink;
+            }
+        }
+
+        .payment-bar {
+            background: $white;
+            border-radius: 12px;
+            padding: 20px;
+            .heading {
+                font-size: 19px;
+                color: $black;
+            }
+
+            span {
+                &.silver-text {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+
+            .payment-icons {
+                span {
+                    &.icon-s {
+                        font-size: 22px;
+                    }
+                    &.icon-m {
+                        font-size: 17px;
+                    }
+                    &.icon-xs {
+                        font-size: 19px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-side {
+        background-color: $white;
+        padding: 10% 2% 10% 2%;
+        .promo-code {
+            h6 {
+                font-size: 20px;
+                font-weight: 600;
+                color: $black;
+            }
+            p {
+                font-size: 13px;
+                color: $dark-gray;
+            }
+        }
+
+        .amount {
+            h3 {
+                &.heading {
+                    font-size: 22px;
+                    font-weight: 600;
+                    color: $black;
+                }
+            }
+
+            .left {
+                p {
+                    &.silver-text {
+                        color: $dark-gray;
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .right {
+                p {
+                    &.black-text {
+                        font-size: 15px;
+                        color: $black;
+                    }
+                }
+            }
+
+            .pay-total {
+                .left {
+                    p {
+                        &.silver-text {
+                            color: $dark-gray;
+                            font-size: 15px;
+                        }
+                    }
+                }
+                .right {
+                    p {
+                        &.black-text {
+                            font-size: 18px;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+            .accept-policy {
+                p {
+                    color: $dark-gray;
+                    font-size: 13px;
+                }
+                a {
+                    color: $black;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

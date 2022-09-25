@@ -1,0 +1,93 @@
+<div class="desktop-widgets-reviews p-3 mt-4">
+    <div fxLayout="row" class="top-bar pb-2 border-bottom">
+        <div fxFlex="70%" class="heading">
+            <p>Reviews</p>
+            <span class="online"></span>
+        </div>
+
+        <div fxFlex="30%" class="more-btn text-right">
+            <a>
+                <img src="../../../../../../../assets/img/circlebtns.png">
+            </a>
+        </div>
+    </div>
+    
+    <div class="review-tabs">
+        <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+            <mat-tab label="Newest Review">
+                Content 1
+            </mat-tab>
+
+            <mat-tab label="Need to Review (9+)">
+                Content 2
+            </mat-tab>
+
+            <mat-tab label="All Reviews">
+                <div class="all-reviews">
+                    <div class="fields-scroll pr-2">
+                        <div class="review-field py-3 border-bottom">
+                            <div class="heading">
+                                <p>It is a long established fact that a reader will be distracted by the readable content ?</p>
+                            </div>
+                            <div class="response pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact.</p>
+                            </div>
+            
+                            <div fxLayout="row" class="rating-date pt-2">
+                                <div fxFlex="65%" class="left-side">
+                                    <span class="user">John Doe</span>
+                                    <app-star-rating [maxScore]="5" [score]="4.0" [forDisplay]="true"></app-star-rating>
+                                </div>
+                                <div fxFlex="35%" class="right-side text-right">
+                                    <span class="date">January 11, 2019</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-field py-3 border-bottom">
+                            <div class="heading">
+                                <p>It is a long established fact that a reader will be distracted by the readable content ?</p>
+                            </div>
+                            <div class="response pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact.</p>
+                            </div>
+            
+                            <div fxLayout="row" class="rating-date pt-2">
+                                <div fxFlex="65%" class="left-side">
+                                    <span class="user">Nelson O' Neal</span>
+                                    <app-star-rating [maxScore]="5" [score]="4.0" [forDisplay]="true"></app-star-rating>
+                                </div>
+                                <div fxFlex="35%" class="right-side text-right">
+                                    <span class="date">January 10, 2019</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-field py-3 border-bottom">
+                            <div class="heading">
+                                <p>It is a long established fact that a reader will be distracted by the readable content ?</p>
+                            </div>
+                            <div class="response pt-2">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact.</p>
+                            </div>
+            
+                            <div fxLayout="row" class="rating-date pt-2">
+                                <div fxFlex="65%" class="left-side">
+                                    <span class="user">Robert Albiosa</span>
+                                    <app-star-rating [maxScore]="5" [score]="4.0" [forDisplay]="true"></app-star-rating>
+                                </div>
+                                <div fxFlex="35%" class="right-side text-right">
+                                    <span class="date">January 12, 2019</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="view-btn pt-2">
+                        <a mat-button class="pink-text text-center d-block">View all</a>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

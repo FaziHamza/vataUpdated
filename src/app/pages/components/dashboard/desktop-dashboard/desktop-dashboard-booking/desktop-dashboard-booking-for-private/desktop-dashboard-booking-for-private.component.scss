@@ -1,0 +1,230 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-booking-private {
+    background: $ligher-gray;
+
+    .top-header-bar {
+        .left-side {
+            span {
+                font-size: 20px;
+                font-weight: 100;
+                color: $black;
+                padding-right: 30px;
+            }
+            p {
+                &.date {
+                    color: $dark-gray;
+                    font-size: 14px;
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+
+    .calendar-section {
+        .calendar {
+            background: $white;
+            border-radius: 10px;
+        }
+        .calendar-fields {
+            background: $white;
+            border-radius: 10px;
+            position: relative;
+
+            .heading-bar {
+                .date {
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                }
+                .visit {
+                    p {
+                        color: $pink;
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .fields-scroll {
+                height: 65vh;
+                min-height: 65vh;
+                overflow-y: auto;
+        
+                .category-field {
+                    border: 1px solid $dark-gray;
+                    border-radius: 10px;
+                    .service {
+                        p {
+                            color: $black;
+                            font-size: 15px;
+                        }
+                        .shop-icon {
+                            span {
+                                &.icon-commercial {
+                                    font-size: 22px;
+                                }
+                                &.text {
+                                    color: $black;
+                                    font-size: 13px;
+                                    position: relative;
+                                    bottom: 4px;
+                                    padding-left: 8px;
+                                }
+                            }
+                        }
+                    }
+        
+                    .amount {
+                        position: relative;
+                        p {
+                            &.price {
+                                color: $black;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 14px;
+                            }
+                        }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 1px;
+                            right: -4px;
+                            width: 1px;
+                            height: 44px;
+                            background: $light-gray;
+                        }
+                    }
+        
+                    .edit {
+                        a {
+                           img {
+                            width: 20px;
+                            height: auto;
+                            position: relative;
+                            top: 10px;
+                           }
+                        }
+                    }
+
+                    &.active {
+                        border: 1px solid $pink;
+                        border-radius: 10px;
+                        .amount {
+                            p {
+                                &.time {
+                                    color: $pink;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+
+    .history {
+        position: relative;
+        background: $white;
+        border-radius: 10px;
+        .heading-bar {
+            .left-side {
+              p {
+                  color: $black;
+                  font-size: 16px;
+              }
+            }
+
+            .tabs {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-bottom: 0px;
+                    li {
+                        padding: 0 20px 12px 20px;
+                        &.active {
+                            border-bottom: 3px solid $pink;
+                        }
+                        a {
+                            text-decoration: none;
+                            color: $black;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .fields-scroll {
+            height: 85vh;
+            min-height: 85vh;
+            overflow-y: auto;
+    
+            .category-field {
+                border: 1px solid $ligher-gray;
+                border-radius: 10px;
+                .service {
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+
+                    .shop-icon {
+                        span {
+                            &.icon-commercial {
+                                font-size: 22px;
+                            }
+                            &.text {
+                                color: $black;
+                                font-size: 13px;
+                                position: relative;
+                                bottom: 4px;
+                                padding-left: 8px;
+                            }
+                        }
+                    }
+
+                    .write-btn {
+                        a {
+                            font-size: 13px;
+                            color: $pink;
+                        }
+                    }
+                }
+    
+                .amount {
+                    p {
+                        &.price {
+                            color: $black;
+                            font-size: 16px;
+                        }
+                        &.time {
+                            color: $dark-gray;
+                            font-size: 13px;
+                        }
+                        &.status {
+                            color: $pink;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .content {
+                p {
+                    font-size: 13px;
+                    line-height: 1.5;
+                    color: $black;
+                }
+            }
+        }
+    }
+}

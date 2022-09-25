@@ -1,0 +1,36 @@
+@import '../../../../../../../../styles.scss';
+
+.form {
+    img {
+        width: 26%;
+        display: block;
+        margin: auto;
+    }
+    .center {
+        h6 {
+            font-size: 16px;
+            margin: 0px;
+        }
+        p {
+            font-size: 15px;
+            margin: 0px;
+            color: $dark-gray;
+        }
+        label{
+            span {
+                font-size: 14px;
+                color: $black;
+            }
+        }
+    }
+}
+
+.add-from-comp-bottom 
+{
+    .product-img {
+        height: 80px;
+    }
+    .delete-comment-img img {
+        width: auto !important;
+    }
+}

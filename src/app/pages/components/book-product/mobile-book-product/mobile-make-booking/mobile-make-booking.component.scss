@@ -1,0 +1,181 @@
+@import '../../../../../../styles.scss';
+
+.mobile-order {
+
+    .top-heading {
+        h3 {
+            font-size: 23px;
+            color: $black;
+            font-weight: 600;
+        }
+    }
+
+    .booking-fields {
+
+        .field-bar {
+        border: 1px solid $ligher-gray;
+        border-radius: 6px;
+            .first-row {
+                .heading {
+                    h6 {
+                        color: $black;
+                        font-size: 12px;
+                        font-weight: 100;
+                    }
+                }
+                .price {
+                    span {
+                        &.amount {
+                            color: $black;
+                            font-size: 12px;
+                            position: relative;
+                            top: -4px;
+                        }
+                    }
+                }
+            }
+
+            .second-row {
+                .star {
+                    span {
+                        &.star-text {
+                            font-size: 11px;
+                            color: $black;
+                        }
+                    }
+                }
+                .time {
+                    span {
+                        &.time {
+                            font-size: 11px;
+                            color: $dark-gray;
+
+                        }
+                    }
+                }
+            }
+
+            .cross-btn {
+                span {
+                    &.icon-baseline-close-24px-1 {
+                        font-size: 20px;
+                        position: relative;
+                        top: 5px;
+                        float: right;
+                    }
+                    &::before {
+                        color: $dark-gray;
+                    }
+                }
+            }
+        }
+
+        .add-service-btn {
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .payment-bar {
+        .heading {
+            font-size: 22px;
+            color: $black;
+        }
+
+        span {
+            &.sub-heading {
+                color: $dark-gray;
+                font-size: 15px;
+            }
+        }
+
+        .payment-icons {
+            span {
+                &.icon-s {
+                    font-size: 23px;
+                }
+                &.icon-m {
+                    font-size: 18px;
+                }
+                &.icon-xs {
+                    font-size: 21px;
+                }
+            }
+        }
+    }
+
+    .promotion {
+        .promo-code {
+            h6 {
+                font-size: 22px;
+                font-weight: 600;
+                color: $black;
+            }
+            p {
+                font-size: 15px;
+                color: $dark-gray;
+            }
+        }
+    
+        .amount {
+            h3 {
+                &.heading {
+                    font-size: 25px;
+                    font-weight: 600;
+                    color: $black;
+                }
+            }
+    
+            .left {
+                p {
+                    &.silver-text {
+                        color: $dark-gray;
+                        font-size: 16px;
+                    }
+                }
+            }
+    
+            .right {
+                p {
+                    &.black-text {
+                        font-size: 16px;
+                        color: $black;
+                    }
+                }
+            }
+    
+            .pay-total {
+                .left {
+                    p {
+                        &.silver-text {
+                            color: $dark-gray;
+                            font-size: 17px;
+                        }
+                    }
+                }
+
+                .right {
+                    p {
+                        &.black-text {
+                            font-size: 19px;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+    
+            .accept-policy {
+                p {
+                    color: $dark-gray;
+                    font-size: 13px;
+                }
+                a {
+                    color: $black;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}

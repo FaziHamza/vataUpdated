@@ -1,0 +1,15 @@
+<svg id="baseline-apps-24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #121212;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <path id="Path_682" data-name="Path 682" class="cls-1" d="M4,8.25H8.25V4H4ZM10.375,21h4.25V16.75h-4.25ZM4,21H8.25V16.75H4Zm0-6.375H8.25v-4.25H4Zm6.375,0h4.25v-4.25h-4.25ZM16.75,4V8.25H21V4ZM10.375,8.25h4.25V4h-4.25Zm6.375,6.375H21v-4.25H16.75Zm0,6.375H21V16.75H16.75Z"/>
+  <path id="Path_683" data-name="Path 683" class="cls-2" d="M0,0H25V25H0Z"/>
+</svg>

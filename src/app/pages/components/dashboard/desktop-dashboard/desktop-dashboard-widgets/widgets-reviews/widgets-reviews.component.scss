@@ -1,0 +1,90 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-reviews {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            position: relative;
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            span {
+                position: absolute;
+                top: 6px;
+                left: 75px;
+                background: $pink;
+
+                &.online {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .review-tabs {
+        .all-reviews {
+            position: relative;
+
+            .fields-scroll {
+                height: 76vh;
+                min-height: 76vh;
+                overflow-y: auto;
+
+                .review-field {
+                    .heading {
+                        p {
+                            color: $black;
+                            font-size: 13px;
+                            font-weight: 600;
+                            line-height: 1.6;
+                        }
+                    }
+
+                    .response {
+                        p {
+                            color: $dark-gray;
+                            font-size: 12px;
+                            line-height: 1.6;
+                        }
+                    }
+
+                    .rating-date {
+                        .left-side {
+                            span {
+                                &.user {
+                                    color: $dark-gray;
+                                    font-size: 12px;
+                                    padding-left: 10px;
+                                }
+                            }
+                        }
+                        .right-side {
+                            span {
+                                &.date {
+                                    color: $dark-gray;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<div class="family-member mt-4" *ngIf="familyMembers">
+    <div fxLayout="row" class="search-bar">
+        <input type="text" placeholder="Search Family Member">
+        <span class="icon-search-1"></span>
+    </div>
+
+    <div fxLayout="row" class="member pt-4 pb-3" *ngFor="let familyMember of familyMembers">
+        <div fxFlex="8%" class="left-img">
+            <img src="../../../../../../assets/img/avatar.png">
+        </div>
+        <div fxFlex="72%" class="center-content">
+            <p class="heading">{{familyMember.first_name}} {{familyMember.last_name}}</p>
+            <p class="text" *ngIf="familyMember.can_ask || familyMember.can_buy || familyMember.can_book">
+                Permission to -
+                <span *ngIf="familyMember.can_ask">Ask a Change, </span>
+                <span *ngIf="familyMember.can_buy">Buy a Goods, </span>
+                <span *ngIf="familyMember.can_book">Book a Visits</span>
+            </p>
+            <p class="text" *ngIf="!familyMember.can_ask && !familyMember.can_buy && !familyMember.can_book">No Permissions</p>
+        </div>
+        <div fxFlex="20%" class="right-edit text-right">
+            <a routerLink="/dashboard/edit-member" class="edit" (click)="setFamilyMember(familyMember)">
+                <img src="../../../../../../assets/img/writing-public.png">
+            </a>
+            <a (click)="deleteFamilyMember(familyMember.id)">
+                <span class="icon-baseline-close-24px-12"></span>
+            </a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="add-member pt-4">
+        <a routerLink="/dashboard/new-member" mat-button class="pink-text w-100">
+            <span class="icon-add-button-inside-black-circle-1 pr-3"></span>
+            Add New Member
+        </a>
+    </div>
+</div>

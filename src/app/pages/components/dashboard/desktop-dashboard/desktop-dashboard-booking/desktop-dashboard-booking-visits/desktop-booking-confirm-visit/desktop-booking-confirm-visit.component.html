@@ -1,0 +1,198 @@
+<div class="dashboard-booking-confirm-visit">
+    <div class="container">
+        <div fxLayout="row" class="links py-2 border-bottom">
+            <span class="pr-1">Booking</span> > <span class="pink-text pl-3">New Visit</span>
+        </div>
+
+        <div fxLayout="row" class="header-bar mt-4">
+            <div fxFlex="40%" class="heading">
+                <h6>New Visit</h6>
+            </div>
+            <div fxFlex="60%" class="btns text-right">
+                <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Cancel</a>
+                <a mat-button class="pink-b rounded-bt py-0 px-5">Confirm Visit</a>
+            </div>
+        </div>
+
+        <form [formGroup]="confirmVisitBookingForm">
+            <div fxLayout="row" class="details mt-4">
+                <div fxFlex="35%" class="left-side p-3 mr-3">
+                    <div fxLayout="row" class="client">
+                        <div fxFlex="15%" class="mr-3">
+                            <div class="client-img">
+                                <img src="../../../../../../../../assets/img/Oval-user.png">
+                            </div>
+                        </div>
+        
+                        <div fxFlex="85%" class="dropdown">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Client Name</mat-label>
+                                <input matInput type="text" formControlName="clientName">
+                                <mat-error *ngIf="confirmVisitBookingForm.get('clientName').hasError('required')">
+                                    Client Name is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="client pt-4">
+                        <div fxFlex="15%" class="mr-3">
+                            <div class="client-img">
+                                <img src="../../../../../../../../assets/img/Oval-user.png">
+                            </div>
+                        </div>
+        
+                        <div fxFlex="85%" class="dropdown">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Executed by</mat-label>
+                                <mat-select formControlName="executed">
+                                    <mat-option value="martin">Martin O'conneli</mat-option>
+                                    <mat-option value="martin">Martin O'conneli</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="confirmVisitBookingForm.get('executed').hasError('required')">
+                                    Executed by is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="65%" class="right-side p-3">
+                    <div class="service-inputs px-3 py-2">
+                        <div fxLayout="row" class="dropdown-service">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Service</mat-label>
+                                <mat-select formControlName="service">
+                                    <mat-option fxLayout="row" value="acrylic">
+                                        <div fxFlex="60%" class="left-side pr-4">
+                                            <p>Acrylic Full Pearl Set/ French Tips </p>
+                                        </div>
+                                        <div fxFlex="40%" class="right-side text-right">
+                                            <p>
+                                                <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                            </p>
+                                        </div>
+                                    </mat-option>
+
+                                    <mat-option fxLayout="row" value="acrylic">
+                                        <div fxFlex="60%" class="left-side pr-4">
+                                            <p>Barber Hair </p>
+                                        </div>
+                                        <div fxFlex="40%" class="right-side text-right">
+                                            <p>
+                                                <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                            </p>
+                                        </div>
+                                    </mat-option>
+
+                                    <mat-option fxLayout="row" value="acrylic">
+                                        <div fxFlex="60%" class="left-side pr-4">
+                                            <p>Full Massage Man </p>
+                                        </div>
+                                        <div fxFlex="40%" class="right-side text-right">
+                                            <p>
+                                                <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                            </p>
+                                        </div>
+                                    </mat-option>
+
+                                    <mat-option fxLayout="row" value="acrylic">
+                                        <div fxFlex="60%" class="left-side pr-4">
+                                            <p>Massage Women </p>
+                                        </div>
+                                        <div fxFlex="40%" class="right-side text-right">
+                                            <p>
+                                                <span> 30min</span> <span class="pl-3 pink-text"> $55</span>
+                                            </p>
+                                        </div>
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="confirmVisitBookingForm.get('service').hasError('required')">
+                                    Service is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row">
+                            <div fxFlex="50%" class="mr-3">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Date</mat-label>
+                                    <mat-select formControlName="date">
+                                        <mat-option value="today">Today</mat-option>
+                                        <mat-option value="yesterday">Yesterday</mat-option>
+                                        <mat-option value="tomorrow">Tomorrow</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="confirmVisitBookingForm.get('date').hasError('required')">
+                                        Date is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="24%" class="mr-3">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Time From</mat-label>
+                                    <mat-select formControlName="timeFrom">
+                                        <mat-option value="10">10:00</mat-option>
+                                        <mat-option value="11">11:30</mat-option>
+                                        <mat-option value="12">12:00</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="confirmVisitBookingForm.get('timeFrom').hasError('required')">
+                                        Time From <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="24%">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Time To</mat-label>
+                                    <mat-select formControlName="timeTo">
+                                        <mat-option value="11">11:30</mat-option>
+                                        <mat-option value="12">12:00</mat-option>
+                                        <mat-option value="01">01:30</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="confirmVisitBookingForm.get('timeTo').hasError('required')">
+                                        Time To <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        
+                        <div fxLayout="row" class="delete-btn mt-3">
+                            <div fxFlex="40%" class="delete">
+                                <a mat-button class="px-3">
+                                    <span class="icon-baseline-close-24px-1 pr-2"></span>
+                                    Delete User
+                                </a>
+                            </div>
+
+                            <div fxFlex="60%" class="time-price text-right">
+                                <span class="time pr-4">30min</span>
+                                <span class="price">$165</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="date-repeat mt-5">
+                        <div fxFlex="75%" class="left-side">
+                            <div fxLayout="row">
+                                <div fxFlex="5%">
+                                    <img src="../../../../../../../../assets/img/repeat.png">
+                                </div>
+                                <div fxFlex="95%">
+                                    <p>Repeate Every 2 Weeks, Start From March 27 - End to April 3</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div fxFlex="25%" class="right-side text-right">
+                            <div class="time-price">
+                                <span class="time pr-4">180min</span>
+                                <span class="price pink-text">$225</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

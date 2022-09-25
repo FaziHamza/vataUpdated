@@ -1,0 +1,21 @@
+@import '../../../../../../styles.scss';
+
+.steps {
+    font-size: 15px;
+    padding: 10px 0;
+    color: $dark-gray;
+    span {
+        font-size: 25px;
+        color: $black;
+    }
+}
+
+h3 {
+    color: $black;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 500;
+    color: $light-gray;
+}

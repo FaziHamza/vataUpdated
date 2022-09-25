@@ -1,0 +1,266 @@
+<header>
+  <div class="header-top clearfix">
+    <div class="container-fluid main-size">
+      <h1 class="logo">
+        <a routerLink="/">
+          <img *ngIf="!isThemeDark" src="../../../assets/img/logo.svg" />
+          <img *ngIf="isThemeDark" src="/assets/img/logo-white.svg" />
+        </a>
+      </h1>
+      <ng-container>
+        <div class="header-right clearfix">
+          <div class="border-cont" *ngIf="user">
+            <a
+              [matMenuTriggerFor]="menu"
+              id="dropdownBasic1"
+              class="header-circle-avatar"
+            >
+              <!-- <img class="profile-pic" src="../../../assets/img/avatar.png" />
+              <span class="notification"></span> -->
+              <img class="profile-pic" [src]="profile_pic">
+
+            </a>
+            <mat-menu #menu="matMenu">
+              <div class="tab-links-cont">
+                <ul>
+                  <li mat-menu-item routerLink="/home" routerLinkActive="active">
+                    <a routerLink="/home">
+                      Home
+                    </a>
+                  </li>
+                  <li (click)="basketDialog()" mat-menu-item routerLinkActive="active">
+                    <a>
+                      Basket
+                    </a>
+                  </li>
+                  <li mat-menu-item routerLinkActive="active">
+                    <a routerLink="/dashboard">
+                      Dashboard
+                    </a>
+                  </li>
+                  <li routerLink="/dashboard/main" mat-menu-item routerLinkActive="active">
+                    <a>
+                      Public Profile
+                    </a>
+                  </li>
+                  <li mat-menu-item routerLinkActive="active">
+                    <a>
+                      Messenger
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <button (click)="onSignOut()" class="btn pink-b py-2 rounded-bt d-block signout-btn">
+                Sign Out
+              </button>
+            </mat-menu>
+          </div>
+          <div *ngIf="!user" style="display: inline-block; padding: 20px 35px;">
+            <a [matMenuTriggerFor]="tempCartMenu" id="dropdownBasic2" class="header-cart">
+              <!-- <img
+                src="/assets/img/front-img/home/shopping-cart-empty-side-view.png"
+              /> -->
+              <span class="icon-basket"></span>
+              <span
+                *ngIf="showNotificationIndicatorTemp"
+                [@inOutAnimation]
+                class="icon-Ellipse-196"
+              ></span>
+              <!-- <app-cart-menu (notification)="onNotification($event)" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              </app-cart-menu> -->
+              <mat-menu #tempCartMenu="matMenu" class="cart-menu">
+                <div class="cart-menu-wrapper">
+                  <div *ngIf="!tempCartData" class="cart-empty row">
+                      <div class="show-cart card-container empty clearfix">
+                        <div fxLayout="row">
+                          <div fxFlex="10%" class="mr-3">
+                            <span class="icon-basket"></span>
+                          </div>
+                          <div fxFlex="90%">
+                            <h4>Your Basket is empty</h4>
+                            <h5>Add your favorite items to the cart</h5>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                
+                  <div *ngIf="tempCartData && tempCartData.items.length" class="cart-with-item row">
+                      <div class="card-container show-cart">
+                          <h2>In cart: <strong>{{tempCartData.items.length}} good</strong></h2>
+                          <h2 class="price">Price: <strong> {{tempCartData.total_price | currency: "CHF":"symbol":"1.0"}}</strong></h2>
+                          <a routerLink="/auth/login" class="buy-now-small d-block rounded-bt pink-b">
+                            <span>Checkout</span>
+                          </a>
+                          <a routerLink="/auth/login" class="go-to-cart">Go to Cart</a>
+                        </div>
+                  </div>
+                </div>                
+              </mat-menu>
+            </a>
+          </div>
+          <div class="border-cont" *ngIf="!user">
+            <div class="account text-right">
+              <a routerLink="/auth/login" class="btn white-b rounded-bt my-0 py-2">Log In</a>
+              <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2">Sign Up</a>
+            </div>
+          </div>
+          <div *ngIf="user" class="border-cont">
+            <a class="header-add-btn">
+              <!-- <img src="/assets/img/front-img/home/add-btn.png" /> -->
+              <span routerLink="/add-product" class="icon-add-button-inside-black-circle--1"></span>
+            </a>
+          </div>
+          <div class="border-cont" *ngIf="user">
+            <a [matMenuTriggerFor]="cartMenu" id="dropdownBasic2" class="header-cart">
+              <!-- <img
+                src="/assets/img/front-img/home/shopping-cart-empty-side-view.png"
+              /> -->
+              <span class="icon-basket"></span>
+              <span
+                *ngIf="showNotificationIndicator"
+                [@inOutAnimation]
+                class="icon-Ellipse-196"
+              ></span>
+              <!-- <app-cart-menu (notification)="onNotification($event)" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              </app-cart-menu> -->
+              <mat-menu #cartMenu="matMenu" class="cart-menu">
+                <div class="cart-menu-wrapper" *ngIf="cartData">
+                  <div *ngIf="cartData.business_cart.items.length === 0 && cartData.private_cart.items.length === 0" class="cart-empty row">
+                      <div class="show-cart card-container empty clearfix">
+                        <div fxLayout="row">
+                          <div fxFlex="10%" class="mr-3">
+                            <span class="icon-basket"></span>
+                          </div>
+                          <div fxFlex="90%">
+                            <h4>Your Basket is empty</h4>
+                            <h5>Add your favorite items to the cart</h5>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                
+                  <div *ngIf="cartData.business_cart.items.length > 0 || cartData && cartData.private_cart.items.length > 0" class="cart-with-item row">
+                      <div class="card-container show-cart">
+                          <h2>In cart: <strong>{{cartData.business_cart.items.length + cartData.private_cart.items.length}} good</strong></h2>
+                          <h2 class="price">Price: <strong> {{cartData.business_cart.total_price + cartData.private_cart.total_price | currency: "CHF":"symbol":"1.0"}}</strong></h2>
+                          <a routerLink="/order" class="buy-now-small d-block rounded-bt pink-b">
+                            <span>Checkout</span>
+                          </a>
+                          <a (click)="basketDialog()" class="go-to-cart">Go to Cart</a>
+                        </div>
+                  </div>
+                </div>                
+              </mat-menu>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- TODO -->
+  <!--  <ng-container *ngIf="!is_dashboard_pages"> -->
+  <div id="header-bottom-id" class="header-bottom wrapper clearfix">
+    <div class="container-fluid main-size subheader">
+      <nav class="main-nav">
+        <ul class="clearfix">
+          <li
+            routerLinkActive="active current-page-ancestor"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a routerLink="/home">Home</a>
+          </li>
+          <li routerLinkActive="active current-page-ancestor">
+            <a routerLink="/marketplace">Marketplace</a>
+          </li>
+          <li routerLinkActive="active current-page-ancestor">
+            <a routerLink="/bookings">Booking</a>
+          </li>
+          <!-- <li routerLinkActive="active current-page-ancestor">
+            <a routerLink="/deals">Deals</a>
+          </li> -->
+        </ul>
+      </nav>
+      <div class="header-search clearfix">
+        <div [matMenuTriggerFor]="goodsMenu" class="catalog-menu-container">
+          <span class="icon-catalog-pasive"></span>
+          <a href="javascript:void(0)" class="catalog">Catalog of Goods</a>
+        </div>
+        <mat-menu #goodsMenu="matMenu" class="goods-menu">
+          <mat-tab-group [selectedIndex]="0" mat-stretch-tabs (click)="stopGoodMenuClosing($event)">
+            <mat-tab label="Marketplace">
+              <section class="home-categories catalog-of-goods">
+                <div class="clearfix catalog-of-goods-grid">
+                  <div class="home-cat-cont" *ngFor="let marketplace_cat of marketplace_categories; let i = index;">
+                    <div *ngIf="!marketplace_cat.ancestors.length" class="home-cat-inner">
+                      <div class="home-cat-title clearfix">
+                        <span class="cat-img-cus" [innerHTML]="(marketplace_cat.icon_content ? marketplace_cat.icon_content : notFound) | sanitize"></span>
+                        <h2>{{marketplace_cat.name}}</h2>
+                      </div>
+                      <div class="home-cat-links" *ngIf="marketplace_cat">
+                        <a [routerLink]="['/marketplace',marketplace_cat.id,marketplace_subcat.id]"
+                          *ngFor="let marketplace_subcat of marketplace_cat.childrens">{{marketplace_subcat.name}}</a>
+                        <a [routerLink]="['/marketplace',marketplace_cat.id]" class="see-all">View all</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row" class="border-top" fxLayoutAlign="end">
+                  <div routerLink="/catalog" class="see-all float-right">
+                    <h3 class="pink-text pointer p-4">see all categories ></h3>
+                  </div>
+                </div>
+              </section>
+            </mat-tab>
+            <mat-tab label="Bookings">
+              <section class="home-categories catalog-of-goods">
+                <div class="clearfix catalog-of-goods-grid">
+                  <div class="home-cat-cont" *ngFor="let booking_cat of booking_categories">
+                    <div *ngIf="!booking_cat.ancestors.length" class="home-cat-inner">
+                      <div class="home-cat-title clearfix">
+                        <span class="cat-img-cus" [innerHTML]="(booking_cat.icon_content ? booking_cat.icon_content : notFound) | sanitize"></span>
+                        <h2>{{booking_cat.name}}</h2>
+                      </div>
+                      <div class="home-cat-links" *ngIf="booking_cat">
+                        <a [routerLink]="['/bookings',booking_cat.name,booking_subcat.name]"
+                          *ngFor="let booking_subcat of booking_cat.childrens">{{booking_subcat.name}}</a>
+                        <a [routerLink]="['/bookings',booking_cat.id]" class="see-all">View all</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row" class="border-top" fxLayoutAlign="end">
+                  <div routerLink="/catalog" class="see-all float-right">
+                    <h3 class="pink-text p-4 pointer">see all categories ></h3>
+                  </div>
+                </div>
+              </section>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-menu>
+        <form class="clearfix position-relative">
+          
+          <span [matMenuTriggerFor]="search"  class="open-search"><span class="icon-search"></span></span>
+          <input class="searh-area" [matMenuTriggerFor]="search" type="text" placeholder="Search" (keyup.enter)="gotoSearchDetails($event)" (keyup)="onKeyDown($event)"/>
+          <!-- <input type="submit" /> -->
+          <span class="close-search" (click)="triggerMenu.toArray()[3].closeMenu()"> 
+            <span class="icon-baseline-close-24px-1"></span>
+          </span>
+          <mat-menu #search="matMenu" class="search-result clearfix">
+            <div MatMenuContent>
+              <ng-container *ngIf="isProcessing">
+                <div class="spinner-div">
+                  <div class="box">
+                    <div class="loader"></div>
+                </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="result">
+                <app-search-dropdown [data]="result"></app-search-dropdown>
+              </ng-container>
+            </div>
+          </mat-menu>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>

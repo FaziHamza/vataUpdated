@@ -1,0 +1,103 @@
+@import "../../../../../styles.scss";
+
+.add-product-desktop {
+    position: relative;
+    background-color: $ligher-gray;
+
+
+    .left-icon {
+        &.pink {
+            background: $pink !important;
+        }
+        position: absolute;
+        width: 20px;
+        height: 40px;
+        top: 15px;
+        left: 0;
+        border-radius: 0;
+    }
+    .section-title-cont{
+        padding: 20px 0px;
+    }
+    .section-title {
+        color: $black;
+    }
+
+    .left-side {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+        min-height: 60vh;
+        .example-chip-list {
+            width: 100%;
+        }
+    }
+
+    .right-side {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+        min-height: 60vh;
+
+        .example-box.cdk-drag-animating {
+            transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+        }
+        
+        .example-chip .cdk-drop-list-dragging {
+            transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .dragula_container {
+            height: 100%;
+            width: 100%;
+            display: inline-block
+        }
+
+        .character {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            background: white;
+            margin-right: 5px;
+            border: grey solid 2px;
+            width: fit-content;
+        }
+    }
+
+    .left-imgs {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        justify-content: center;
+        .img-container {
+          .close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            cursor: pointer;
+          }
+          width: 90%;
+          margin: auto;
+          height: 60px;
+        //   float: left;
+          position: relative;
+        }
+        position: relative;
+        img,
+        video {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          object-fit: contain;
+          object-position: center;
+        }
+    }
+
+    .table-input{
+        width: 50% !important;
+    }
+}

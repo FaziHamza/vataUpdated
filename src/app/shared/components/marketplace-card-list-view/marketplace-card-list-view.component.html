@@ -1,0 +1,276 @@
+<mat-card *ngIf="!appSize.getIsMobileResolution()" class="mt-4 list-view" [class.dark]="(themeService.isThemeDark | async)">
+  <!-- Marketplace -->
+  <div fxLayout="row" *ngIf="!product.shopID">
+    <div fxFlex="15%">
+      <div class="mx-1 main-img">
+        <img
+          class="all-center1"
+          [src]="
+            product.image[0]
+              ? product.image[0]
+              : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+          "
+        />
+      </div>
+    </div>
+
+    <div fxFlex="7%">
+      <div fxLayout="row">
+        <div class="mx-1 sub-img">
+          <img
+            [src]="
+              product.image[0]
+                ? product.image[0]
+                : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+            "
+          />
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div class="mx-1 mt-2 sub-img">
+          <img
+            [src]="
+              product.image[0]
+                ? product.image[0]
+                : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+            "
+          />
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="33%">
+      <div class="mx-5 rating-spec">
+        <div fxLayout="row">
+          <h4>{{ product.title }}</h4>
+        </div>
+        <div fxLayout="row" class="py-2" fxLayoutAlign="space-between">
+          <app-star-rating size="12px"
+            [score]="product.rating_data.avg_rating"
+            forDisplay="true"
+          ></app-star-rating>
+
+          <p class="rating-text">{{ product.rating_data.avg_rating }} product ratings</p>
+        </div>
+        <div class="specification">
+          <div fxLayout="row" class="pt-3" fxLayoutAlign="space-between">
+            <div fxFlex="50%">
+              <p>Condition</p>
+            </div>
+            <div fxFlex="30%">
+              <span>{{ product.condition.name }}</span>
+            </div>
+          </div>
+          <!-- <div *ngIf="product.size_attributes.length" fxLayout="row" class="pt-3" fxLayoutAlign="space-between">
+            <div fxFlex="50%">
+              <p>Size</p>
+            </div>
+            <div fxFlex="30%">
+              <ng-container *ngFor="let size of product.size_attributes">
+                <span>{{size.attr_name}}</span>
+                <br>
+            </ng-container>
+            </div>
+          </div> -->
+          <!-- <div *ngIf="product.color_attributes.length" fxLayout="row" class="pt-3" fxLayoutAlign="space-between">
+            <div fxFlex="50%">
+              <p>Color</p>
+            </div>
+            <div fxFlex="50%">
+              <div class="colors float-right">
+                <div *ngFor="let color of product.color_attributes" [style.background-color]="color.internal_value" class="color mx-1">
+                  <a></a>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="48%">
+      <div fxLayout="row">
+        <div class="top-action">
+          <div fxLayout="row" class="pb-4 float-right">
+            <div *ngIf="product.ask_for_change || product.bidding" [fxFlex]="((!product.bidding && product.ask_for_change) || (!product.ask_for_change && product.bidding)) ? '48%' : (!product.bidding) ? '57%' : '38%'" class="px-1">
+              <div class="img-icons rounded-bt border">
+                <div *ngIf="product.ask_for_change" class="image">
+                  <img src="../../../assets/img/SVG-hp/change-active.svg" />
+                </div>
+                <div *ngIf="product.bidding" class="image">
+                  <img src="../../../assets/img/SVG-hp/bidding-active.svg" />
+                </div>
+              </div>
+            </div>
+            <div *ngIf="product.bidding" fxFlex="43%" class="px-1">
+              <div class="rounded-bt border time-content">
+                <p class="main pink-text">{{product.end_datetime | timeLeft: {showDayTime: false} }}</p>
+                <p class="text-muted">{{product.bid_count}} Bids</p>
+              </div>
+            </div>
+            <div fxFlex="19%" class="px-1">
+              <div class="img-user border">
+                <img src="../../../assets/img/SVG-hp/private-active.svg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" class="bid-price w-100 pt-5">
+        <div fxFlex="25%">
+          <p class="text text-muted pb-2">Customer bid</p>
+          <h3>
+            {{
+              product.customer_bid
+                ? (product.customer_bid | currency: "CHF":"symbol":"1.0")
+                : "NA"
+            }}
+          </h3>
+        </div>
+        <div fxFlex="20%">
+          <p class="text text-muted pb-2">Fixed price</p>
+          <h3 class="pink-text">
+            {{ product.price ? (product.price | currency: "CHF":"symbol":"1.0") : "NA" }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking -->
+  <div fxLayout="row" *ngIf="product.shopID">
+    <div fxFlex="15%">
+      <div class="mx-1 main-img">
+        <img
+          class="all-center1"
+          [src]="
+            product.shop_image
+              ? product.shop_image
+              : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+          "
+        />
+      </div>
+    </div>
+
+    <div fxFlex="7%">
+      <div fxLayout="row">
+        <div class="mx-1 sub-img">
+          <img
+            [src]="
+            product.shop_image
+                ? product.shop_image
+                : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+            "
+          />
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div class="mx-1 mt-2 sub-img">
+          <img
+            [src]="
+            product.shop_image
+                ? product.shop_image
+                : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+            "
+          />
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="60%">
+      <div class="mx-5">
+        <div fxLayout="row">
+          <h4>{{ product.shopname }}</h4>
+        </div>
+        <div  class="py-2">
+          <p class="rating-text">{{ product.shop_description }}</p>
+          <div class="my-3" style="display: flex; align-items: center;">
+            <p class="text text-muted mr-3" style="font-size: 12px;">Price From</p>
+            <h3 class="pink-text">
+              {{ product.starting_price ? (product.starting_price | currency: "CHF":"symbol":"1.0") : "NA" }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="21%">
+      <div class="bid-price w-100 pt-5 text-center">
+          <div class="mx-auto" style="display: block; height: 30px; width: fit-content;">
+            <app-star-rating size="12px"
+              [score]="product.tot_ratings"
+              forDisplay="true"
+            ></app-star-rating>
+          </div>
+          <p class="text text-muted pb-2">{{ product.rating_count }} Book ratings</p>
+          <h4>{{ product.place }}</h4>
+      </div>
+    </div>
+  </div>
+
+</mat-card>
+<div class="subcategories-list-mobile">
+  <mat-card *ngIf="appSize.getIsMobileResolution()" class="mt-4">
+    <div fxLayout="row" class="border-bottom">
+         <div fxFlex="20%">
+             <div class="mx-1 main-img">
+                 <img class="all-center1" [src]="
+                 product.image[0]
+                   ? product.image[0]
+                   : '/assets/img/front-img/marketplace/mobile-prod-img.png'
+               ">
+             </div>
+         </div>
+  
+         <div fxFlex="80%">
+             <div class="mx-3 rating-spec">
+  
+                 <div fxLayout="row">
+                     <h4>{{ product.title }}</h4>
+                 </div>
+  
+                 <div fxLayout="row" class="py-2" fxLayoutAlign="space-between">
+                  <app-star-rating
+                    [score]="product.rating_data.avg_rating"
+                    forDisplay="true"
+                  ></app-star-rating>
+        
+                  <p class="rating-text">{{ product.rating_data.avg_rating }} product ratings</p>
+                </div>
+  
+                 <div fxLayout="row" class="bid-price w-100 pt-2 pb-2">
+                     <div fxFlex="55%">
+                         <p class="text text-muted pb-2">Customer bid <span class="text-black">{{
+                          product.customer_bid
+                            ? (product.customer_bid | currency: "CHF":"symbol":"1.0")
+                            : "NA"
+                        }}</span></p>
+                     </div>
+                     <div fxFlex="48%">
+                         <p class="text text-muted pb-2">Fixed price <span class="pink-text">{{ product.price ? (product.price | currency: "CHF":"symbol":"1.0") : "NA" }}</span></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+  
+     <div fxLayout="row" class="top-action p-3">
+         <div fxFlex="35%" class="px-1">
+             <div class="img-icons rounded-bt border">
+                 <div class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
+                 <div class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
+             </div>
+         </div>
+         <div fxFlex="20%" class="px-1">
+             <div class="img-user border">
+                 <img src="../../../assets/img/SVG-hp/private-active.svg">
+             </div>
+         </div>
+         <div *ngIf="product.bidding" fxFlex="45%" class="px-1 float-right">
+             <div class="time-content">
+                 <p class="main pink-text">{{product.end_datetime | timeLeft: {showDayTime: false} }} <span class="bid pl-1 text-muted">{{product.bid_count}} Bids</span></p>
+             </div>
+         </div>
+     </div>
+  </mat-card>
+</div>

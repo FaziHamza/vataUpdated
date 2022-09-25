@@ -1,0 +1,149 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-coupons {
+    .coupons-tabs {
+        background: $white;
+        border-radius: 10px;
+
+        .bought-coupon-cards {
+            .card-body {
+                border-radius: 10px;
+                position: relative;
+                .top-action {
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+                    .img-icons {
+                        background: #ffffffbd;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 0;
+                        .image {
+                            width: 40px;
+                            padding: 0 10px;
+                        }
+                    }
+
+                    .img-user {
+                        background: #ffffffbd;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        float: right;
+                        position: relative;
+                        right: -12px;
+                        img {
+                            width: 70%;
+                            padding: 3px 0px 0px 5px;
+                        }
+                    }
+                }
+
+                .main-img {
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                        height: 170px;
+                        border-radius: 10px 10px 0 0;
+                    }
+                }
+
+                .product-heading {
+                    h5 {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+
+                .bid-row {
+                    p {
+                        &.text {
+                            font-size: 13px;
+                            color: $dark-gray;
+                            position: relative;
+                            top: 5px;
+                        }
+                    }
+                    h3 {
+                        font-weight: 600;
+                        font-size: 19px;
+                    }
+                }
+
+                .fixed-row {
+                    p {
+                        &.fix {
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: $dark-gray;
+                            position: relative;
+                            top: 6px;
+                        }
+                    }
+
+                    del {
+                        &.cutted {
+                            font-size: 18px;
+                            color: $light-gray;
+                            position: relative;
+                            top: 4px;
+                            right: -10px;
+                        }
+                    }
+
+                    span {
+                        &.price {
+                            font-size: 23px;
+                            font-weight: 600;
+                            color: $pink;
+                        }
+                    }
+                }
+
+                .discount {
+                    p {
+                        &.off {
+                            border: 1px dashed #f61d5e;
+                            padding: 5px 5px;
+                            border-radius: 9px;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+
+            .coupon-card-main {
+                border-radius: 10px;
+                border: 1px dashed $light-gray;
+                position: relative;
+
+                .create-coupon-card {
+                    @include all-center();
+                    a {
+                        text-decoration: none;
+                        img {
+                            width: 120px;
+                            height: auto;
+                        }
+                        .img-text {
+                            color: $dark-gray;
+                            font-size: 13px;
+                            text-align: center;
+                            position: relative;
+                            top: -10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .coupons-tabs {
+        .mat-tab-labels {
+            background: $white;
+        }
+    }
+}

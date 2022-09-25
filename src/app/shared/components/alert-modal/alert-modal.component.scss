@@ -1,0 +1,35 @@
+@import '../../../../styles.scss';
+
+.alert-modal {
+
+    h5 {
+        &.heading {
+            font-size: 18px;
+            color: $black;
+        }
+        &.bordered-header {
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 35%;
+                width: 100px;
+                height: 3px;
+                background: $pink;
+            }
+        }
+    }
+    p {
+        &.sub-heading {
+            font-size: 14px;
+            color: $dark-gray;
+        }
+    }
+    .button {
+        a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 6px 60px;
+        }
+    }
+}

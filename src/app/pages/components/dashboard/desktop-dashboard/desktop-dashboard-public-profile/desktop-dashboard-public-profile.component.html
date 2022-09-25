@@ -1,0 +1,27 @@
+<div class="desktop-dashboard-public-profile">
+    <div fxLayout="row" class="top-bar py-4">
+        <div fxFlex="50%" class="left-side">
+            <h6>
+                Public Profile
+                <p class="commercial ml-4">
+                    <span class="icon-commercial"></span>
+                    <span class="text">Commercial</span>  
+                </p>
+            </h6>
+        </div>
+
+        <div fxFlex="50%" class="right-side text-right">
+            <a mat-button class="white-b rounded-bt">Back to Home</a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="public">
+        <div fxFlex="30%" class="left-section p-3 mr-4">
+            <app-desktop-public-profile-info [publicProfileData]="publicProfile"></app-desktop-public-profile-info>
+        </div>
+
+        <div fxFlex="70%" class="right-section p-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

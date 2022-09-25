@@ -1,0 +1,30 @@
+<div class="desktop-dashboard-all-clients" *ngIf="allClients">
+    <div class="search-bar">
+        <span class="icon-search-1"></span>
+        <input type="text" placeholder="Search Clients">
+    </div>
+
+    <div class="clients mt-3">
+        <div class="clients-scroll">
+            <div class="client-row py-3 border-bottom" 
+                (click)="onSelectType('details'); setGetClient(item)" 
+                *ngFor="let item of allClients"
+            >
+                <div fxFlex="25%" class="img-side">
+                    <img src="{{item.client_pic}}">
+                </div>
+                <div fxFlex="75%" class="name-side">
+                    <h6>{{item.client_name}}</h6>
+                    <p>{{item.phone_isd}} {{item.phone_number}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="new-client-btn pt-2">
+        <a mat-button class="pink-text d-block text-center" (click)="onSelectType('new')">
+            <span class="icon-add-button-inside-black-circle-1 pr-2"></span>
+            New Client
+        </a>
+    </div>
+</div>

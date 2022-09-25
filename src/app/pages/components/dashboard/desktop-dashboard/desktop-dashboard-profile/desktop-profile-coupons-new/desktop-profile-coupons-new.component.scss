@@ -1,0 +1,431 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-coupons-new {
+    background-color: $ligher-gray;
+
+    .left-side {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+    
+        .left-drag-img {
+                border: 1px dashed $light-gray;
+                border-radius: 6px;
+                padding: 13% 15%;
+                text-decoration: none;
+                cursor: pointer;
+                color: $dark-gray;
+                span {
+                    &.icon-baseline-filter_hdr-24px {
+                        &::before  {
+                            color: $pink;
+                        }
+                    }
+                }
+
+                span {
+                    &.icon-baseline-filter_hdr-24px {
+                        font-size: 45px;
+                    }
+                }
+
+                span {
+                    &.text {
+                        font-size: 14px;
+                        position: relative;
+                        top: -10px;
+                    }
+                }
+
+            .add-computer {
+                label {
+                    display: block;
+                    margin: auto;
+                    a {
+                        text-decoration: none;
+                        border-radius: 20px;
+                        border: 1px solid $pink;
+                        color: $pink;
+                        padding: 0 28px;
+                        font-size: 12px;
+                    }
+                }
+            }
+           
+            #file-input {
+                display: none;
+            }
+        }
+
+        .left-imgs {
+            img {
+                width: 30%;
+                height: auto;
+                border-radius: 5px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+
+    .right-side {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+        .add-in-categories {
+            span {
+                &.icon-add-button-inside-black-circle-1 {
+                    position: relative;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    .right-side-2 {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+        .bidding-toggle {
+            h2 {
+                font-size: 17px;
+                font-weight: 500;
+                color: $black;
+            }
+    
+            span {
+                font-size: 16px;
+                color: $dark-gray;
+            }
+    
+            span {
+                &.right-text {
+                    font-size: 17px;
+                    color: $black;
+                }
+            }
+        }
+
+        .fixed-price-toggle {
+
+            h2 {
+                font-size: 17px;
+                font-weight: 500;
+                color: $black;
+            }
+    
+            span {
+                font-size: 16px;
+                color: $dark-gray;
+            }
+    
+            span {
+                &.right-text {
+                    font-size: 17px;
+                    color: $black;
+                }
+            }
+    
+        }
+
+        .shipping-toggle {
+
+            h2 {
+                font-size: 17px;
+                font-weight: 500;
+                color: $black;
+            }
+    
+            span {
+                font-size: 15px;
+                color: $dark-gray;
+            }
+            
+            .shipping-details-head {
+                span {
+                    color: $dark-gray;
+                    font-size: 16px;
+                }
+            }
+    
+        }
+
+        .delivery-time {
+
+            h2 {
+                &.heading {
+                    font-size: 17px;
+                    font-weight: 500;
+                    color: $black;
+                }
+            }
+    
+            .chips-days {
+                a {
+                    border-radius: 20px;
+                    border: 1px solid $ligher-gray;
+                    background-color: $ligher-gray;
+                    padding: 0 20px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $black;
+                    height: 40px;
+                }
+            }
+        }
+
+        .payment {
+
+            h2 {
+                &.heading {
+                    font-size: 17px;
+                    font-weight: 500;
+                    color: $black;
+                }
+            }
+            
+            .payments-icon {
+                a {
+                    cursor: pointer;
+                    opacity: 0.5;
+                    position: relative;
+                    &.active {
+                        opacity: 1;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 7px;
+                            height: 7px;
+                            background-color: $pink;
+                            border-radius: 50%;
+                            left: 30%;
+                            bottom: -15px;
+                        
+                        }
+                    }
+                }
+                span {
+                    &.icon-s {
+                        font-size: 24px;
+                    }
+                }
+                span {
+                    &.icon-xs {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            h4 {
+                font-size: 16px;
+                font-weight: 500;
+                color: $black;
+            }
+        }
+
+        .increment-input {
+            .chips-increment {
+                a {
+                    border-radius: 20px;
+                    border: 1px solid $ligher-gray;
+                    background-color: $ligher-gray;
+                    color: $black;
+                    padding: 0;
+                    font-size: 14px;
+                    font-weight: 100;
+                }
+            }
+        }
+
+        .available {
+            h2 {
+                font-size: 17px;
+                font-weight: 500;
+                color: $black;
+            }
+        }
+
+        .toggle-bar-deal {
+            h4 {
+                font-size: 16px;
+                font-weight: 500;
+                color: $black;
+            }
+        }
+
+        .toggle-bar {
+            h4 {
+                font-size: 16px;
+                font-weight: 500;
+                color: $black;
+            }
+        }
+        
+    }
+
+    .right-side-3 {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 25px;
+        .marketing-toggle {
+            .heading {
+                h2 {
+                    font-size: 17px;
+                    font-weight: 500;
+                    margin-bottom: 0px;
+                    color: $black;
+                }
+            }
+
+            .left-sec {
+                h4 {
+                    font-size: 16px;
+                    font-weight: 100;
+                    margin-bottom: 0px;
+                    color: $black;
+                }
+            }
+
+            .right-sec {
+                border: 1px dashed $light-gray;
+                padding: 9% 0;
+                border-radius: 8px;
+                h2 {
+                    font-size: 30px;
+                    font-weight: 800;
+                }
+
+                p {
+                    &.sub-text {
+                        font-size: 17px;
+                        padding-top: 8px;
+                        font-weight: 600;
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+
+    .booking-tab {
+        .left-side-booking {
+            background-color: $white;
+            border-radius: 10px;
+            padding: 25px;
+            .left-inputs {
+                .duration {
+                    .heading-form-field {
+                        span {
+                            color: $dark-gray;
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .members {
+                    .left-sec {
+                        h2 {
+                            font-size: 18px;
+                            font-weight: 500;
+                            color: $black;
+                        }
+                    }
+    
+                    .right-sec {
+                        a {
+                            text-decoration: none;
+                            font-size: 15px;
+                            font-weight: 500;
+                            color: $black;
+                        }
+                    }
+    
+                    .left-img-sec {
+                        img {
+                            width: 35px;
+                            height: auto;
+                            position: relative;
+                            top: -9px;                    
+                        }
+                         h6 {
+                            &.text {
+                                color: $black;
+                                font-size: 16px;
+                                font-weight: 100;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-side-booking {
+            background-color: $white;
+            border-radius: 10px;
+            padding: 25px;
+
+            .advanced-toggle-inputs {
+
+                .heading {
+                    h2 {
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: $black;
+                    }
+                }
+
+                .heading-form-field {
+                    span {
+                        color: $dark-gray;
+                        font-size: 15px;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+}
+
+.tabs {
+    text-align: center;
+    padding: 2% 0 5% 0;
+    a {
+        text-decoration: none;
+        border: 1px solid $light-gray;
+        color: $dark-gray;
+        padding: 4% 25%;
+        font-size: 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        &.active {
+            border: 1px solid $pink;
+        }
+    }
+}
+
+.text-field {
+    .word-no {
+        span {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            font-size: 15px;
+            color: $dark-gray;
+        }
+    }
+
+    .brief-no {
+        span {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            font-size: 15px;
+            color: $dark-gray;
+            &.text-no {
+            top: 80px;
+            }
+        }
+    }
+}

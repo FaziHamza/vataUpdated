@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="visible" transform="translate(-905 -649)">
+    <path id="Path_149" data-name="Path 149" class="cls-1" d="M12,161.525A13.163,13.163,0,0,0,.048,169.3a.534.534,0,0,0,0,.444,13.072,13.072,0,0,0,23.9,0,.534.534,0,0,0,0-.444A13.163,13.163,0,0,0,12,161.525Zm0,13.52a5.52,5.52,0,1,1,5.409-5.519A5.465,5.465,0,0,1,12,175.045Z" transform="translate(905 487.475)"/>
+    <ellipse id="Ellipse_71" data-name="Ellipse 71" class="cls-1" cx="3.463" cy="3.533" rx="3.463" ry="3.533" transform="translate(913.537 653.466)"/>
+  </g>
+</svg>

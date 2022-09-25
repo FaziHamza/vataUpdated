@@ -1,0 +1,95 @@
+<div class="marketplace">
+    <div fxLayout="row" class="search-bar mt-4">
+        <input type="text" placeholder="Search Item">
+        <span class="icon-search-1"></span>
+    </div>
+
+    <div *ngIf="openAssetsData">
+        <div fxLayout="row" *ngFor="let item of openAssetsData" class="product-card border-bottom py-4">
+            <div fxFlex="20%" class="left-section mr-3">
+                <div class="product-img">
+                    <img [src]="item.image[0]">
+                </div>
+            </div>
+    
+            <div fxFlex="60%" class="center-section ml-2">
+                <div class="heading-rating">
+                    <h6 class="pb-2 text-truncate">{{item.title}}</h6>
+                    <app-star-rating [maxScore]="5" [score]="item.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                    <span class="star-text pl-2">{{item.rating_data.total_reviews}} Book Ratings</span>
+                </div>
+    
+                <div fxLayout="row" class="product-brief pt-1">
+                    <div fxFlex="50%">
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">On Stock</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">{{item.stock_count}}</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">Start Bid</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">${{item.start_bid}}</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">Fixed Price</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">${{item.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="50%">
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">Ask for Change</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">{{item.ask_for_change ? 'Available' : 'Not Available'}}</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">Bidding</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">{{item.bidding ? 'Available' : 'Not Available'}}</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex="50%">
+                                <p class="silver">Make Offer</p>
+                            </div>
+                            <div fxFlex="50%">
+                                <p class="black">{{item.make_offer ? 'Available' : 'Not Available'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div fxFlex="20%" class="right-section text-right">
+                <div class="edit-close">
+                    <a class="edit">
+                        <img src="../../../../../../assets/img/writing-public.png">
+                    </a>
+                    <a>
+                        <span class="icon-baseline-close-24px-12"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!openAssetsData">
+        <h4 class="pt-4">No Open Items Found.</h4>
+    </div>
+
+</div>

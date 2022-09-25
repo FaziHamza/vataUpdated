@@ -1,0 +1,212 @@
+@import '../../../../../../styles.scss';
+
+.mobile-dashboard {
+    background: $ligher-gray;
+
+    .field-row {
+        .left-side {
+            h4 {
+                &.heading {
+                    color: $black;
+                    font-size: 21px;
+                    padding-top: 3px;
+                    font-weight: 600;
+                }
+            }
+        }
+        .right-side {
+            p {
+                border: 1px solid $light-gray;
+                border-radius: 50px;
+                padding: 5px 10px;
+                display: flex;
+                font-size: 16px;
+                color: $pink;
+                span {
+                    &.icon-commercial {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .items {
+        background: $white;
+        border-radius: 10px;
+
+        .heading {
+            h4 {
+                font-size: 22px;
+                color: $black;
+            }
+        }
+
+        .item-cards {
+            .card-body {
+                border-radius: 10px;
+                position: relative;
+                .image-sec {
+                    position: relative;
+                }
+
+                .time-bids {
+                    position: absolute;
+                    width: 100%;
+                    bottom: 15px;
+                    .time-content {
+                        width: 100%;
+                        background: #ffffffbd;
+                        p {
+                            line-height: 13px;
+                            padding: 1px 0;
+                            &.main {
+                                font-size: 10px;
+                                font-weight: 600;
+                                span {
+                                    float: right;
+                                }
+                            }
+                            &.text-muted {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .top-action {
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+                    padding: 0 0;
+                    .img-icons {
+                        background: #ffffffbd;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 0;
+                        .image {
+                            width: 40px;
+                            padding: 0 10px;
+                        }
+                    }
+                    
+                    .img-user {
+                        background: #ffffffbd;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        float: right;
+                        img {
+                            width: 23px;
+                            padding: 3px 4px;
+                        }
+                    }
+                }
+
+                .main-img {
+                    width: 101%;
+                    object-fit: cover;
+                    height: 170px;
+                    border-radius: 10px 10px 0 0;
+                    margin: -1px 0 0 -1px;
+                }
+
+                h5 {
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                p {
+                    &.text {
+                        font-size: 10px;
+                    }
+                }
+
+                h3 {
+                    font-weight: 600;
+                    font-size: 13px;
+                    float: right;
+                }
+            }
+        }
+    }
+
+    .tabs-accordians {
+        background: $white;
+        border-radius: 10px;
+
+        .mat-accordion {
+            .inner-text-shop-accordians {
+                border: 1px dashed $light-gray;
+                border-radius: 10px;
+                .left-side {
+                    span {
+                        &.left-text {
+                            font-size: 14px;
+                            color: $dark-gray;
+                        }
+                    }
+                }
+
+                .right-side {
+                    p {
+                        &.right-text {
+                            font-size: 14px;
+                            color: $black;
+                            .icon-commercial {
+                                font-size: 20px;
+                            }
+                            .icon-rating-active-3 {
+                                font-size: 15px;
+                            }
+                            .icon-Subtraction-71 {
+                                font-size: 18px;
+                            }
+                        }
+                        
+                    }
+
+                    .bottom-edit-row {
+                        .left-side {
+                            img {
+                                width: 20px;
+                                height: auto;
+                            }
+                        }
+                        .right-side {
+                            span {
+                                &.icon-baseline-remove_circle_outline-24px {
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .inner-text-saved-searches-accordians {
+                border: 1px dashed $light-gray;
+                border-radius: 10px;
+                span {
+                    &.heading {
+                        font-size: 14px;
+                        color: $dark-gray;
+                    }
+                }
+                p {
+                    &.sub-heading {
+                        font-size: 14px;
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .mat-tab-group.mat-primary .mat-ink-bar {
+        background-color: $pink;
+    }
+    
+}

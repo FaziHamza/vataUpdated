@@ -1,0 +1,61 @@
+<div class="payment-address py-4">
+    <div class="container">
+        <div class="sections" id="slider-payment">
+            <app-phone-verify-mobile (selectStep)="onPhoneVerifyFinish()"></app-phone-verify-mobile>
+            <div *ngIf="isBusiness">
+                <mat-card>
+                    <div fxLayout="row">
+                        <div class="tree w-100">
+                            <img src="../../../../assets/img/SVG/plant.svg">
+                        </div>
+                    </div>
+                    <div fxLayout="row">
+                        <div class="center text-center w-100">
+                            <h6 class="font-weight-bold pt-4">Upload a Billing address</h6>
+                            <p class="pt-2">Good for the environment</p>
+                            <h5 *ngIf="isBillingAdded" class="font-weight-bold py-2 mt-4">Billing address added successfully.</h5>
+
+                            <!-- <mat-slide-toggle class="pt-3">Use a same address</mat-slide-toggle> -->
+                        </div>
+                    </div>
+                </mat-card>
+
+                <div class="container pt-4">
+                    <div fxLayout="row">
+                        <a mat-button class="btn pink-b rounded-bt p-0 w-100" (click)="onSelectStep('billing')">Select</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isBusiness">
+                <mat-card>
+                    <div fxLayout="row">
+                        <div class="tree w-100">
+                            <img src="../../../../assets/img/SVG/plant.svg">
+                        </div>
+                    </div>
+                    <div fxLayout="row">
+                        <div class="center text-center w-100">
+                            <h6 class="font-weight-bold pt-4">Upload a Passport</h6>
+                            <p class="pt-2">Good for the environment, and our choice</p>
+                            <h5 *ngIf="isPassportAdded" class="font-weight-bold py-2 mt-4">Passport added successfully.</h5>
+
+                            <!-- <mat-slide-toggle class="pt-3">Use a same address</mat-slide-toggle> -->
+                        </div>
+                    </div>
+                </mat-card>
+
+                <div class="container pt-4">
+                    <div fxLayout="row">
+                        <a mat-button class="btn pink-b rounded-bt p-0 w-100" (click)="onSelectStep('passport')">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div fxFlex="40%" class="py-4 mx-2">
+                    <a mat-button class="btn pink-b rounded-bt p-0 btn-block" (click)="finish()">Finish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

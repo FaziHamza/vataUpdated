@@ -1,0 +1,39 @@
+<svg id="phone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #21cbb8;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_communication_phonelink_ring_24px" data-name="icon/communication/phonelink_ring_24px" class="cls-1" d="M53.626,94.666H8.937A8.786,8.786,0,0,1,0,86.06V8.605A8.786,8.786,0,0,1,8.937,0H53.626a8.788,8.788,0,0,1,8.941,8.605V86.06A8.788,8.788,0,0,1,53.626,94.666ZM8.937,12.908v68.85H53.626V12.908Zm71.95,52.5,0,0-4.464-4.3c8.056-8.191,8.056-20.212,0-27.969l4.468-4.307a24.994,24.994,0,0,1,8.378,18.709A24.054,24.054,0,0,1,80.891,65.4ZM71.5,56.372l0,0-4.464-4.3a8.16,8.16,0,0,0,0-9.895l4.468-4.3c5.342,5.573,5.341,13.354,0,18.5Z" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="103.273" height="103.273"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="100"/>
+  <path id="icon_communication_phonelink_ring_24px-2" data-name="icon/communication/phonelink_ring_24px" class="cls-1" d="M51.635,94.666H8.605A8.615,8.615,0,0,1,0,86.06V8.605A8.615,8.615,0,0,1,8.605,0h43.03a8.617,8.617,0,0,1,8.609,8.605V86.06A8.617,8.617,0,0,1,51.635,94.666ZM8.605,12.908v68.85h43.03V12.908Zm69.28,52.5,0,0-4.3-4.3c7.757-8.191,7.757-20.212,0-27.969l4.3-4.307a25.434,25.434,0,0,1,8.067,18.709A24.442,24.442,0,0,1,77.889,65.4ZM68.85,56.372l0,0-4.3-4.3a8.412,8.412,0,0,0,0-9.895l4.3-4.3c5.143,5.573,5.142,13.354,0,18.5Z" transform="translate(5.367 2.667)"/>
+  <g id="Group_166" data-name="Group 166" class="cls-4" transform="translate(5.367 2.667)">
+    <g id="_Color" data-name="↳ Color" transform="translate(-8.994 -4.303)">
+      <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="107.254" height="103.273"/>
+      <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="103.273" height="103.273"/>
+    </g>
+  </g>
+</svg>

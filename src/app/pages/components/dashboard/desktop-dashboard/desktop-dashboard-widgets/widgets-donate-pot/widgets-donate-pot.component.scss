@@ -1,0 +1,64 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-donate-pot {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .duration-bar {
+        .left-side {
+          p {
+              color: $dark-gray;
+              font-size: 13px;
+              padding-top: 9px;
+          }
+        }
+
+        .tabs {
+            ul {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+                li {
+                    padding: 5px 10px 10px 10px;
+                    &.active {
+                        border-bottom: 3px solid $pink;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: $dark-gray;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .chart {
+        img {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: auto;
+        }
+    }
+}

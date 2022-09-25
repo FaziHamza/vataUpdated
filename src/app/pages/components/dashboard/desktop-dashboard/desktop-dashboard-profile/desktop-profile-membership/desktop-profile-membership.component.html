@@ -1,0 +1,131 @@
+<div class="desktop-dashboard-profile-membership">
+
+    <div fxLayout="row" class="heading mt-4">
+        <h4>Select Membership Plan</h4>
+    </div>
+
+    <section class="pricing py-5">
+        <div fxLayout="row">
+        <!-- Private Tier -->
+        <div fxFlex="25%" class="mx-2">
+            <mat-card class="card mb-5 mb-lg-0 price-card p-0" [ngClass]="{'active': plan == 'private'}">
+                <div class="top-border-gradient"></div>
+                <div class="card-body">
+                    <div class="py-4 border-bottom heads">
+                        <h4 class="card-title text-center">Private</h4>
+                        <h6 class="card-price text-center">$7</h6>
+                    </div>
+                    
+                    <ul class="fa-ul pt-4">
+                        <li>Multiaccount Option</li>
+                        <li>Pay Monthly Fees</li>
+                        <li>Membership Status</li>
+                        <li>Memberships: Rewards</li>
+                        <li class="pl-2">- Coupins</li>
+                        <li class="pl-2">- Points</li>
+                        <li class="pl-2">- 1 Free Product Sellings</li>
+                    </ul>
+                    <a class="btn btn-block private" 
+                        (click)="selectPlan('private')"
+                        [ngClass]="{'active': plan == 'private'}">
+                        <span *ngIf="plan != 'private'">Choose Private</span>
+                        <span *ngIf="plan == 'private'">Your Membership Plan</span>
+                    </a>
+                </div>
+            </mat-card>
+        </div>
+        <!-- Private Plus Tier -->
+        <div fxFlex="25%" class="mx-2">
+            <mat-card class="card mb-5 mb-lg-0 price-card p-0" [ngClass]="{'active': plan == 'private-plus'}">
+                <div class="top-border-gradient"></div>
+                <div class="card-body">
+                    <div class="py-4 border-bottom heads">
+                        <h4 class="card-title text-center">Private Plus</h4>
+                        <h6 class="card-price text-center">$14</h6>
+                    </div>
+
+                    <ul class="fa-ul pt-4">
+                        <li>Multiaccount Option</li>
+                        <li>Pay Monthly Fees</li>
+                        <li>Membership Status</li>
+                        <li>Memberships: Rewards</li>
+                        <li class="pl-2">- Coupins</li>
+                        <li class="pl-2">- Points</li>
+                        <li class="pl-2">- 2 Free Product Sellings</li>
+                        <li>Create Bookings</li>
+                    </ul>
+                    <a class="btn btn-block private-plus" 
+                        (click)="selectPlan('private-plus')"
+                        [ngClass]="{'active': plan == 'private-plus'}">
+                        <span *ngIf="plan != 'private-plus'">Choose Private Plus</span>
+                        <span *ngIf="plan == 'private-plus'">Your Membership Plan</span>
+                    </a>
+                </div>
+            </mat-card>
+        </div>
+        <!-- Commercial Tier -->
+        <div fxFlex="25%" class="mx-2">
+            <mat-card class="card price-card p-0" [ngClass]="{'active': plan == 'commercial'}">
+                <div class="top-border-gradient"></div>
+                <div class="card-body">
+                    <div class="py-4 border-bottom heads">
+                        <h4 class="card-title text-center">Commercial</h4>
+                        <h6 class="card-price text-center">$47</h6>
+                    </div>
+                    
+                    <ul class="fa-ul pt-4">
+                        <li>Multiaccount Option</li>
+                        <li>Pay Monthly Fees</li>
+                        <li>Membership Status</li>
+                        <li>Memberships: Rewards</li>
+                        <li class="pl-2">- Coupins</li>
+                        <li class="pl-2">- Points</li>
+                        <li class="pl-2">- 2 Free Product Sellings</li>
+                        <li>Create Bookings</li>
+                        <li>Create Coupons</li>
+                        <li>5% of Marketing</li>
+                    </ul>
+                    <a class="btn btn-block commercial" 
+                        (click)="selectPlan('commercial')"
+                        [ngClass]="{'active': plan == 'commercial'}">
+                        <span *ngIf="plan != 'commercial'">Choose Commercial</span>
+                        <span *ngIf="plan == 'commercial'">Your Membership Plan</span>
+                    </a>
+                </div>
+            </mat-card>
+        </div>
+        <!-- Startup Tier -->
+        <div fxFlex="25%" class="mx-2">
+            <mat-card class="card price-card p-0" [ngClass]="{'active': plan == 'startup'}">
+                <div class="top-border-gradient"></div>
+                <div class="card-body">
+                    <div class="py-4 border-bottom heads">
+                        <h4 class="card-title text-center">Startup</h4>
+                        <h6 class="card-price text-center">$27</h6>
+                        <p class="text-muted small-text pt-2">Company is not older than 15 months</p>
+                    </div>
+
+                    <ul class="fa-ul pt-4">
+                        <li>Multiaccount Option</li>
+                        <li>Pay Monthly Fees</li>
+                        <li>Membership Status</li>
+                        <li>Memberships: Rewards</li>
+                        <li class="pl-2">- Coupins</li>
+                        <li class="pl-2">- Points</li>
+                        <li class="pl-2">- 2 Free Product Sellings</li>
+                        <li>Create Coupons</li>
+                        <li>10% of Marketing Fees Discount</li>
+                    </ul>
+                    <a class="btn btn-block startup"
+                        (click)="selectPlan('startup')"
+                        [ngClass]="{'active': plan == 'startup'}" >
+                        <span *ngIf="plan != 'startup'">Choose Startup</span>
+                        <span *ngIf="plan == 'startup'">Your Membership Plan</span>
+                    </a>
+                </div>
+            </mat-card>
+        </div>
+        </div>
+    </section>
+
+</div>

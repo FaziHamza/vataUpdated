@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e68942;
+        opacity: 0.997;
+      }
+    </style>
+  </defs>
+  <g id="orange" transform="translate(-971 -345)">
+    <path id="orange-2" data-name="orange" class="cls-1" d="M10,0H30a0,0,0,0,1,0,0V20A10,10,0,0,1,20,30H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(971 345)"/>
+  </g>
+</svg>

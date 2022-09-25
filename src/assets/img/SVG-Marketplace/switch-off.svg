@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e7e7e7;
+      }
+
+      .cls-2 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="switch-off" transform="translate(-1570 -821)">
+    <g id="switch-off-2" data-name="switch-off" transform="translate(1610 857) rotate(180)">
+      <path id="Path_142" data-name="Path 142" class="cls-1" d="M11.724,12H28.276A11.9,11.9,0,0,1,40,24h0A11.9,11.9,0,0,1,28.276,36H11.724A11.9,11.9,0,0,1,0,24H0A11.9,11.9,0,0,1,11.724,12Z"/>
+      <circle id="Ellipse_63" data-name="Ellipse 63" class="cls-2" cx="8" cy="8" r="8" transform="translate(20 16)"/>
+    </g>
+  </g>
+</svg>

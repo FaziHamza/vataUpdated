@@ -1,0 +1,77 @@
+@import "../../../../styles.scss";
+
+.home-cat-inner {
+  width: 92%;
+  border: solid 1px #e7e7e7;
+  border-radius: 15px;
+  .home-cat-title {
+    * {
+      vertical-align: middle;
+      display: inline-block;
+    }
+    padding: 0 25px 0 55px;
+    display: table;
+    height: 75px;
+    width: 74%;
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 20px;
+      top: 24px;
+    }
+
+    .cat-content {
+      .alt-img-cus {
+        position: absolute;
+        left: 20px;
+        top: 24px;
+      }
+    }
+    h2 {
+      font-size: 18px;
+      margin-left: 20px;
+      color: $black;
+      font-family: "montserratmedium";
+      display: table-cell;
+      font-weight: 400;
+      width: 96%;
+      padding-right: 7px;
+      height: 74px;
+    }
+  }
+}
+.home-cat-links {
+  border-top: solid 1px #E7E7E7;
+  padding: 25px;
+}
+.home-cat-links a {
+  display: block;
+  text-decoration: none;
+  color: $black;
+  font-family: "montserratmedium";
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.home-cat-links a:hover {
+  text-decoration: underline;
+}
+.home-cat-links a.see-all {
+  color: #fb3b71;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  color: $black;
+}
+
+.item-popular {
+    border-radius: 12px;
+    border: 1px solid #dddddd;
+    padding: 5px 10px;
+    margin: 12px 0 0 0;
+}
+
+::ng-deep .mat-expansion-panel {
+    box-shadow: none !important;
+}

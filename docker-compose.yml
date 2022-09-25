@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  vata-front-new:
+    image: vata-front-new
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000

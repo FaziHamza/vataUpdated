@@ -1,0 +1,164 @@
+<div class="dashboard-edit-public-profile p-3">
+
+    <div fxLayout="row" class="links py-3 border-bottom">
+        <div class="container">
+            <span>Public Profile ></span>
+            <span class="pink-text">Edit Profile</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div fxLayout="row" class="heading my-4">
+            <h6>Edit Profile</h6>
+        </div>
+
+        <div fxLayout="row" class="edit-profile-content">
+            <div fxFlex="75%" class="left-side p-3 mr-4">
+                <form [formGroup]="editPublicForm">
+                    <div fxLayout="row">
+                        <div fxFlex="25%" class="img-section text-center py-4 px-3 mr-4">
+                            <img src="../../../../../../assets/img/w2.png">
+                            <a class="add-btn">
+                                <span class="icon-add-button-inside-black-circle-1"></span>
+                            </a>
+                            <p class="pt-4">Drag & Drop</p>
+                            <p class="pt-2 pb-3">Member Photo</p>
+                            <div class="upload-btn border-top pt-3">
+                                <a mat-button class="pink-b outlined rounded-bt d-block">Upload</a>
+                            </div>
+                        </div>
+
+                        <div fxFlex="75%" class="info-section">
+                            <div fxLayout="row" class="input-fields">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Nick Name</mat-label>
+                                    <input matInput type="text" formControlName="nickName">
+                                    <mat-error *ngIf="editPublicForm.get('nickName').hasError('required')">
+                                        Nick Name is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="input-fields">
+                                <p class="input-heading py-2">Phone Number</p>
+                                <div fxLayout="row">
+                                    <div fxFlex="15%" class="mr-3">
+                                        <mat-form-field class="form-section w-100">
+                                            <mat-label>Code</mat-label>
+                                            <mat-select formControlName="phoneCode">
+                                                <mat-option value="41">+41</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="editPublicForm.get('phoneCode').hasError('required')">
+                                                Code is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="35%" class="mr-3">
+                                        <mat-form-field class="form-section w-100">
+                                            <mat-label>Number</mat-label>
+                                            <input matInput type="number" formControlName="phoneNumber">
+                                            <mat-error *ngIf="editPublicForm.get('phoneNumber').hasError('required')">
+                                                Number is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="49%">
+                                        <mat-form-field class="form-section w-100">
+                                            <mat-label>Email Address</mat-label>
+                                            <input matInput type="text" formControlName="email">
+                                            <mat-error *ngIf="editPublicForm.get('email').hasError('required')">
+                                                Email Address is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div fxLayout="row" class="input-fields">
+                                <div fxFlex="72%" class="mr-3">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Street</mat-label>
+                                        <input matInput type="text" formControlName="streetName">
+                                        <mat-error *ngIf="editPublicForm.get('streetName').hasError('required')">
+                                            Street is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="25%">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Number</mat-label>
+                                        <input matInput type="number" formControlName="streetNumber">
+                                        <mat-error *ngIf="editPublicForm.get('streetNumber').hasError('required')">
+                                            Number is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div fxLayout="row" class="input-fields">
+                                <div fxFlex="40%" class="mr-3">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>City</mat-label>
+                                        <input matInput type="text" formControlName="city">
+                                        <mat-error *ngIf="editPublicForm.get('city').hasError('required')">
+                                            City is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="20%">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Postcode</mat-label>
+                                        <input matInput type="number" formControlName="postCode">
+                                        <mat-error *ngIf="editPublicForm.get('postCode').hasError('required')">
+                                            Postcode is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="40%" class="ml-3">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Country</mat-label>
+                                        <mat-select formControlName="country">
+                                            <mat-option value="switzerland">Switzerland</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="editPublicForm.get('country').hasError('required')">
+                                            Country is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div fxLayout="row" class="bottom-btns pt-4">
+                                <div fxFlex="30%" class="pt-1">
+                                    <span class="text pr-3">Donate Ever</span>
+                                    <mat-slide-toggle></mat-slide-toggle>
+                                </div>
+                                
+                                <div fxFlex="70%" class="text-right ml-3">
+                                    <a mat-button class="white-b rounded-bt px-5 mr-3">Cancel</a>
+                                    <a mat-button class="pink-b rounded-bt px-5">Save Member</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div fxFlex="25%" class="right-side p-3 text-center">
+                <div class="img">
+                    <span class="icon-commercial"></span>
+                </div>
+                <div class="headings pb-4 border-bottom">
+                    <p class="text">Membership Plan</p>
+                    <h6 class="plan">Commercial</h6>
+                    <p class="date">since Jan 03, 2017</p>
+                </div>
+                <div class="choose-plan-btn mt-3">
+                    <a mat-button class="pink-b rounded-bt px-5">Choose Plan</a>
+                </div>
+                <div class="cancel-btn mt-3">
+                    <a mat-button class="text-muted px-5">Cancel Plan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

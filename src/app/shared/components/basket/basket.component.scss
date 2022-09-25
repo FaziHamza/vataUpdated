@@ -1,0 +1,57 @@
+@import "../../../../styles.scss";
+
+.basket {
+    .content {
+        overflow: auto;
+        max-height: 400px;
+        &.no-item {
+            @media only screen and (max-width: 600px) {
+                h2 {
+                    font-size: 17px;
+                }
+                h3 {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .cart-item {
+        position: relative;
+        border: 1px solid $ligher-gray;
+        border-radius: 5px;
+        padding: 15px;
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: $dark-gray;
+        }
+        p {
+            padding-top: 5px;
+        }
+        .small-typo {
+            color: $dark-gray;
+            font-size: 13px;
+            padding: 0 5px 0 0;
+        }
+    }
+    .image {
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .footer-btns {
+        a {
+            cursor: pointer;
+            padding: 10px 30px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            &.close-bt {
+                border: 1px solid $ligher-gray;
+            }
+        }
+    }
+}

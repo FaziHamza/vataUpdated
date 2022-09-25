@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-left">
+        <sidebar [step]="step"></sidebar>
+    </div>
+    <div class="col-right">
+        <app-header (backStep)="backStep($event)" [step]="step"></app-header>
+
+        <div class="main">
+            <div class="container py-5">
+                <div fxLayout="row" class="justify-content-center">
+                    <user-info-desktop fxFlex="58.3%" *ngIf="step === 1" (selectStep)="getStep($event)"></user-info-desktop>
+                    <business-info-desktop fxFlex="58.3%" *ngIf="step === 2" (selectStep)="getStep($event)"></business-info-desktop>
+                    <verify-an-account-desktop fxFlex="83.3%" *ngIf="step === 3" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></verify-an-account-desktop>
+                    <billing-address-desktop fxFlex="58.3%" *ngIf="step === 4 && addressType === 'billing' && !isPrivate" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></billing-address-desktop>
+                    <address-passport-desktop fxFlex="58.3%" *ngIf="step === 4 && addressType === 'passport' && !isPrivate" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></address-passport-desktop>
+                    <choose-plan-desktop fxFlex="100%" (selectStep)="getStep($event)" *ngIf="step === 5"></choose-plan-desktop>
+                    <app-payment *ngIf="step === 6"></app-payment>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

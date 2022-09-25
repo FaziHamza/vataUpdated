@@ -1,0 +1,168 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dasboard-profile-fees-pay-postil {
+    .fees-section {
+        border-radius: 10px;
+        background: $white;
+        p {
+            &.heading {
+                font-size: 15px;
+                color: $black;
+            }
+            &.sub-text {
+                font-size: 13px;
+                color: $dark-gray;
+            }
+        }
+
+        h6 {
+            &.amount {
+                font-size: 30px;
+                color: $pink;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .transaction-search {
+        .right-side {
+            input {
+                padding: 8px 0px 8px 30px;
+                background: $ligher-gray;
+                border-radius: 50px;
+                border: 1px solid $light-gray;
+                width: 225px;
+            }
+
+            span {
+                &.icon-search-1 {
+                    position: absolute;
+                    top: 24px;
+                    left: 59%;
+                    &::before {
+                        color: $light-gray;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    .list-sheet-1 {
+        border-radius: 10px;
+        background: $white;
+        .headings {
+            p {
+                font-size: 15px;
+                color: $dark-gray;
+            }
+        }
+
+        .list-rows {
+            .title-text {
+                p {
+                    color: $black;
+                    font-size: 15px;
+                }
+            }
+            .date {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+            .status {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+            .amount {
+                p {
+                    color: $black;
+                    font-size: 15px;
+                }
+            }
+            .balance {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .receipts {
+        border-radius: 10px;
+        background: $white;
+        .heading {
+            h6 {
+                font-size: 22px;
+                color: $black;
+            }
+        }
+        .right-side {
+            span {
+                &.icon-baseline-keyboard_arrow_down-24px-1 {
+                    font-size: 25px;
+                    &::before {
+                        color: $dark-gray;
+                    }
+                }
+            }
+        }
+    }
+
+    .list-sheet-2 {
+        border-radius: 10px;
+        background: $white;
+        .headings {
+            p {
+                font-size: 15px;
+                color: $dark-gray;
+            }
+        }
+
+        .list-rows {
+            .title-text {
+                p {
+                    color: $green;
+                    font-size: 15px;
+                }
+            }
+            .date {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+            .status {
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+            .amount {
+                p {
+                    color: $green;
+                    font-size: 15px;
+                }
+            }
+            .balance {
+                p {
+                    color: $green;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .mat-form-field {
+        .mat-form-field-infix {
+            width: 200px;
+        }
+    }
+    
+}

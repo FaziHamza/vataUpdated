@@ -1,0 +1,104 @@
+<div *ngIf="!appSize.getIsMobileResolution()" class="basket">
+    <div mat-dialog-title class="head border-bottom pb-3">
+        <h4 class="text-center">{{basketData.title}}</h4>
+    </div>
+    <ng-container *ngIf="basketData.cartData.business_cart.items.length > 0">
+        <mat-dialog-content class="content">
+            <app-basket-item (itemDeleted)="onItemDelete()" [item]="item" [isBusiness]="true"
+            *ngFor="let item of basketData.cartData.business_cart.items; let i = index;"></app-basket-item>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions>
+            <div class="footer-btns mt-4 w-100">
+                <div fxLayout="row">
+                    <div  fxFlex="50%">
+                        <a (click)="onContinueShopping()" class="rounded-bt close-bt">Continue Shopping</a>
+                    </div>
+                    <div fxFlex="25%" class="total text-right">
+                        <p>Total <span class="pink-text"><strong>{{basketData.cartData.business_cart.total_price | currency: "CHF":"symbol":"1.0"}}</strong></span></p>
+                    </div>
+                    <div fxFlex="25%" class="total text-right">
+                        <a routerLink="/order" class="rounded-bt pink-b ">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </mat-dialog-actions>
+    </ng-container>
+
+    <ng-container *ngIf="basketData.cartData.private_cart.items.length > 0">
+        <mat-dialog-content class="content">
+            <app-basket-item (itemDeleted)="onItemDelete()" [item]="item" [isBusiness]="false"
+            *ngFor="let item of basketData.cartData.private_cart.items; let i = index;"></app-basket-item>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions>
+            <div class="footer-btns mt-4 w-100">
+                <div fxLayout="row">
+                    <div  fxFlex="50%">
+                        <a (click)="onContinueShopping()" class="rounded-bt close-bt">Continue Shopping</a>
+                    </div>
+                    <div fxFlex="25%" class="total text-right">
+                        <p>Total <span class="pink-text"><strong>{{basketData.cartData.private_cart.total_price | currency: "CHF":"symbol":"1.0"}}</strong></span></p>
+                    </div>
+                    <div fxFlex="25%" class="total text-right">
+                        <a routerLink="/order" class="rounded-bt pink-b ">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </mat-dialog-actions>
+    </ng-container>
+
+    <ng-container *ngIf="!basketData.cartData.business_cart.items.length && !basketData.cartData.private_cart.items.length">
+        <mat-dialog-content class="content">
+            <div fxLayout="column" fxLayoutAlign="center" [ngClass]="{'empty-cart-dialogue': basketData.cartData.business_cart.items.length < 1 && basketData.cartData.private_cart.items.length < 1}" class="product-popup-inner basked empty-cart">
+                <div class="text-center p-5">
+                  <h2 class="popup-title-underline p-2">Your basket is empty</h2>
+                  <h3 class="prod-popup-subtitle p-1">Add your favorite items to the cart</h3>
+                  <div fxLayout="row" class="p-2" fxLayoutAlign="center">
+                      <a (click)="onContinueShopping()" class="rounded-bt pink-b p-2">Go Shopping</a>
+                  </div>
+                </div>
+              </div>
+        </mat-dialog-content>
+    </ng-container>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()" class="basket">
+    <div mat-dialog-title class="head border-bottom pb-3">
+        <h4 class="text-center">{{basketData.title}}</h4>
+    </div>
+    <ng-container *ngIf="basketData.cartData.business_cart.items.length > 0">
+        <mat-dialog-content class="content">
+            <app-basket-item (itemDeleted)="onItemDelete()" [isBusiness]="true" [item]="item"
+            *ngFor="let item of basketData.cartData.business_cart.items; let i = index;"></app-basket-item>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions>
+            <div class="footer-btns mt-4 w-100">
+                <div fxLayout="row" class="justify-content-center">
+                    <a (click)="onContinueShopping()" class="rounded-bt close-bt">Continue Shopping</a>
+                </div>
+                <div fxLayout="row" class="total pt-3 justify-content-center">
+                    <p>Total <span class="pink-text"><strong>{{basketData.cartData.business_cart.total_price | currency: "CHF":"symbol":"1.0"}}</strong></span></p>
+                </div>
+                <div fxLayout="row" class="total pt-3 justify-content-center">
+                    <a class="rounded-bt pink-b ">Checkout</a>
+                </div>
+            </div>
+        </mat-dialog-actions>
+    </ng-container>
+
+    <ng-container *ngIf="!basketData.cartData.business_cart.items.length">
+        <mat-dialog-content class="content no-item">
+            <div fxLayout="column" fxLayoutAlign="center" [ngClass]="{'empty-cart-dialogue': basketData.cartData.business_cart.items.length < 1}" class="product-popup-inner basked empty-cart">
+                <div class="text-center">
+                  <h2 class="popup-title-underline p-2">Your basket is empty</h2>
+                  <h3 class="prod-popup-subtitle p-1">Add your favorite items to the cart</h3>
+                  <div fxLayout="row" class="p-2" fxLayoutAlign="center">
+                      <a (click)="onContinueShopping()" class="rounded-bt pink-b p-2">Go Shopping</a>
+                  </div>
+                </div>
+              </div>
+        </mat-dialog-content>
+    </ng-container>
+</div>

@@ -1,0 +1,118 @@
+@import '../../../../../../../../styles.scss';
+
+.dashboard-booking-confirm-visit {
+    background: $ligher-gray;
+
+    .links {
+        span {
+            color: $black;
+            font-size: 12px;
+        }
+    }
+
+    .header-bar {
+        .heading {
+            h6 {
+                color: $black;
+                font-size: 24px;
+                padding-top: 3px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .details {
+        .left-side {
+            border-radius: 10px;
+            background: $white;
+            .client {
+                .client-img {
+                    img {
+                        border-radius: 50px;
+                        width: 50px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+            }
+        }
+
+        .right-side {
+            border-radius: 10px;
+            background: $white;
+            .service-inputs {
+                border-radius: 10px;
+                border: 1px solid $ligher-gray;
+                .delete-btn {
+                    .delete {
+                        a {
+                            font-size: 14px;
+                            span {
+                                &.icon-baseline-close-24px-1 {
+                                    font-size: 20px;
+                                    position: relative;
+                                    top: -2px;
+                                    &::before {
+                                        color: $pink;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .time-price {
+                        padding-top: 2px;
+                        span {
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 15px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 20px;
+                                font-size: 22px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .date-repeat {
+                .left-side {
+                    padding-top: 9px;
+                    img {
+                        width: 13px;
+                        height: auto;
+                        object-position: center;
+                        object-fit: cover;
+                    }
+                    p {
+                        font-size: 13px;
+                        color: $black;
+                    }
+                }
+
+                .right-side {
+                    .time-price {
+                        span {
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 15px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 20px;
+                                font-size: 22px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

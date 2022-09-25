@@ -1,0 +1,109 @@
+@import '../../../../../../styles.scss';
+
+.dashboard-edit-public-profile {
+    background: $ligher-gray;
+    .links {
+        span {
+            font-size: 13px;
+            color: $black;
+            padding-right: 10px;
+        }
+    }
+
+    .heading {
+        h6 {
+            font-size: 25px;
+            font-weight: 100;
+            color: $black;
+        }
+    }
+
+    .edit-profile-content {
+        .left-side {
+            background: $white;
+            border-radius: 10px;
+            .img-section {
+                border: 1px dashed $light-gray;
+                border-radius: 10px;
+                position: relative;
+                max-height: 45vh;
+                a {
+                    span {
+                        &.icon-add-button-inside-black-circle-1 {
+                            position: absolute;
+                            top: 26%;
+                            left: 63%;
+                            font-size: 18px;
+                        }
+                    }
+                }
+                img {
+                    width: 80px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 50px;
+                }
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+
+            .info-section {
+                .input-fields {
+                    p {
+                        &.input-heading {
+                            color: $dark-gray;
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                .bottom-btns {
+                    span {
+                        &.text {
+                            color: $black;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-side {
+            background: $white;
+            border-radius: 10px;
+            .img {
+                span {
+                    &.icon-commercial {
+                        font-size: 100px;
+                    }
+                }
+            }
+
+            .headings {
+                p {
+                    &.text {
+                        color: $pink;
+                        font-size: 13px;
+                        padding-top: 15px;
+                    }
+                    &.date {
+                        color: $dark-gray;
+                        font-size: 12px;
+                        padding-top: 8px;
+                    }
+                }
+                h6 {
+                    &.plan {
+                        color: $black;
+                        font-size: 22px;
+                        font-weight: 100;
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

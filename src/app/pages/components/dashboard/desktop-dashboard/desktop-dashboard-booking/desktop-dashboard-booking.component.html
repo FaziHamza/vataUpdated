@@ -1,0 +1,61 @@
+<div class="desktop-dashboard-booking p-4">
+    <div class="container">
+        <div fxLayout="row" class="field-row py-4">
+            <h4 class="heading pr-4">Booking</h4>
+            <p>
+                <span class="icon-commercial pr-2"></span>
+                Commercial
+            </p>
+        </div>
+
+        <div class="tabs-fields">
+            <div fxLayout="row">
+                <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100" (selectedIndexChange)="routeTo($event)">
+                    <mat-tab label="Visits">
+                        <app-desktop-dashboard-booking-visits></app-desktop-dashboard-booking-visits>
+                    </mat-tab>
+
+                    <mat-tab label="Sales">
+                        <app-desktop-dashboard-booking-sales></app-desktop-dashboard-booking-sales>
+                    </mat-tab>
+
+                    <mat-tab label="Clients">
+                        <app-desktop-dashboard-booking-clients></app-desktop-dashboard-booking-clients>
+                    </mat-tab>
+
+                    <mat-tab label="Private">
+                        <app-desktop-dashboard-booking-for-private></app-desktop-dashboard-booking-for-private>
+                    </mat-tab>
+
+                    <mat-tab label="Company">
+                        <app-desktop-dashboard-booking-company></app-desktop-dashboard-booking-company>
+                    </mat-tab>
+
+                    <mat-tab label="Members">
+                        <app-desktop-dashboard-booking-members></app-desktop-dashboard-booking-members>
+                    </mat-tab>
+
+                    <mat-tab label="Portfolio">
+                        <app-desktop-dashboard-booking-portfolio></app-desktop-dashboard-booking-portfolio>
+                    </mat-tab>
+
+                    <mat-tab label="Marketing">
+                        <app-desktop-dashboard-booking-marketing></app-desktop-dashboard-booking-marketing>
+                    </mat-tab>
+
+                    <mat-tab label="Reviews">
+                        <app-desktop-dashboard-booking-reviews></app-desktop-dashboard-booking-reviews>
+                    </mat-tab>
+                    
+                    <mat-tab label="Statistics">
+                        <app-desktop-dashboard-booking-statistics></app-desktop-dashboard-booking-statistics>
+                    </mat-tab>
+
+                    <mat-tab label="Settings">
+                        <app-desktop-dashboard-booking-settings></app-desktop-dashboard-booking-settings>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>

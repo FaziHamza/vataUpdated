@@ -1,0 +1,14 @@
+<div class="top-deals border-top py-4">
+    <div class="container">
+        <div fxLayout="row" class="popular-section w-100">
+            <h3>Top Deals</h3>
+        </div>
+
+        <div class="deals-cards pt-4">
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+            <app-top-deals-card class="slide" *ngFor="let deal of topDealsData; let i = index" ngxSlickItem [deal]="deal">
+            </app-top-deals-card>
+          </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

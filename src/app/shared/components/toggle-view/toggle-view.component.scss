@@ -1,0 +1,38 @@
+@import "../../../../styles.scss";
+
+.active-s {
+  fill: #fb3b71 !important;
+}
+
+.list-view-shops {
+  display: inline;
+  width: 30px;
+  margin-top: -16px;
+}
+
+.block-view-shops {
+  display: inline;
+  width: 32px;
+  margin-top: -14px;
+  margin-left: 15px;
+}
+
+span {
+  &.icon {
+    font-size: 30px;
+    &::before {
+      color: $light-gray;
+    }
+  }
+  &.active-s {
+    &::before {
+      color: $pink;
+    }
+  }
+}
+
+.list-view, .card-view {
+  padding: 0 5px;
+  cursor: pointer;
+}
+

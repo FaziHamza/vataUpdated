@@ -1,0 +1,37 @@
+@import '../../../../../../../styles.scss';
+
+.mat-card {
+    background: $white;
+}
+
+.verify-account {
+    h5 {
+        color: $black;
+    }
+    p {
+        font-size: 12px;
+        color: $dark-gray;
+    }
+    .toggle-text {
+        color: $black;
+    }
+    label{
+        span {
+            font-size: 12px;
+            color: $black;
+        }
+    }
+    .tree {
+        img {
+            width: 75%;
+        }
+    }
+}
+
+.mat-slide-toggle {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    .mat-slide-toggle-content {
+        padding: 0 0 0 0 !important;
+    }
+}

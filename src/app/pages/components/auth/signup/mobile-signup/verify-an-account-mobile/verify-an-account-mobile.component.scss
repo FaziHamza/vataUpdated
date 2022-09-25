@@ -1,0 +1,53 @@
+@import '../../../../../../../styles.scss';
+
+
+img {
+    width: 30%;
+    display: block;
+    margin: auto;
+}
+
+.center {
+    h6 {
+        font-size: 16px;
+        color: $black;
+        margin: 0;
+    }
+    p {
+        font-size: 14px;
+        color: $dark-gray;
+        margin: 0;
+    }
+    label{
+        span {
+            font-size: 14px;
+            color: $black;
+        }
+    }
+}
+
+.payment-address {
+    #slider-payment {
+        height: 50vh !important;
+    }
+}
+::ng-deep {
+    .mat-slide-toggle-content {
+        color: $black;
+    }
+}
+
+
+.mat-card {
+    border: 1px solid $white;
+    box-shadow: none;
+    background: $white;
+}
+
+.mat-slide-toggle {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    .mat-slide-toggle-content {
+        padding: 0 0 0 0 !important;
+    }
+}

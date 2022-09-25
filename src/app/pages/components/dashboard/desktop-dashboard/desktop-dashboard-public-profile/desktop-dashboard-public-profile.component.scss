@@ -1,0 +1,48 @@
+@import '../../../../../../styles.scss';
+
+.desktop-dashboard-public-profile {
+    background: $ligher-gray;
+
+    .top-bar {
+        .left-side {
+            h6 {
+                display: flex;
+                color: $black;
+                font-size: 22px;
+                font-weight: 100;
+                p {
+                    border-radius: 50px;
+                    padding: 1px 8px;
+                    border: 1px solid $light-gray;
+                    &.commercial {
+                        span {
+                            &.icon-commercial {
+                                font-size: 20px;
+                            }
+                            &.text {
+                                font-size: 13px;
+                                position: relative;
+                                top: -4px;
+                                color: $pink;
+                                padding-left: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .public {
+        .left-section {
+            border-radius: 10px;
+            background: $white;
+            max-height: 108vh;
+        }
+
+        .right-section {
+            border-radius: 10px;
+            background: $white;
+        }
+    }
+}

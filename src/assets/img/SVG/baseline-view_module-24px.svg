@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="baseline-view_module-24px" transform="translate(-66 -519)">
+    <path id="Path_169" data-name="Path 169" class="cls-1" d="M0,0H24V24H0Z" transform="translate(66 519)"/>
+    <path id="Path_168" data-name="Path 168" class="cls-2" d="M4,11H9V5H4Zm0,7H9V12H4Zm6,0h5V12H10Zm6,0h5V12H16Zm-6-7h5V5H10Zm6-6v6h5V5Z" transform="translate(65.5 519.5)"/>
+  </g>
+</svg>

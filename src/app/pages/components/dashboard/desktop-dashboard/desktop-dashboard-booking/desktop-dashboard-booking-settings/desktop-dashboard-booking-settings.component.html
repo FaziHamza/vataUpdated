@@ -1,0 +1,275 @@
+<div class="desktop-dashboard-booking-settings mt-4">
+    <form [formGroup]="messageTemplateSettingForm">
+        <div fxLayout="row" class="mode-template">
+            <div fxFlex="30%" class="left-side">
+                <div fxLayout="row" class="mode-toggle p-3">
+                    <div fxFlex="50%">
+                        <p>Confirmation Mode</p>
+                    </div>
+                    <div fxFlex="50%" class="text-right">
+                        <mat-slide-toggle formControlName="confirmationMode"></mat-slide-toggle>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="time-dropdown pt-3 px-3 mt-4">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Client can book appointments</mat-label>
+                        <!-- <mat-select formControlName="clientBookAppointment">
+                            <mat-option value="15mins">Up to 15 mins before start time</mat-option>
+                            <mat-option value="30mins">Up to 30 mins before start time</mat-option>
+                            <mat-option value="45mins">Up to 45 mins before start time</mat-option>
+                            <mat-option value="55mins">Up to 55 mins before start time</mat-option>
+                            <mat-option value="3hours">Up to 3 hours before start time</mat-option>
+                            <mat-option value="6hours">Up to 6 hours before start time</mat-option>
+                            <mat-option value="9hours">Up to 9 hours before start time</mat-option>
+                            <mat-option value="15hours">Up to 15 hours before start time</mat-option>
+                            <mat-option value="20hours">Up to 20 hours before start time</mat-option>
+                        </mat-select> -->
+                        <input matInput type="time" formControlName="clientBookAppointment">
+                        <mat-error *ngIf="messageTemplateSettingForm.get('clientBookAppointment').hasError('required')">
+                            Client Book Appointments is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxFlex="70%" class="right-side p-3 ml-4">
+                <div fxLayout="row" class="heading pb-3 border-bottom">
+                    <p>Message Templates & Settings</p>
+                </div>
+
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="25%" class="left-side pr-4">
+                        <p class="text">Event</p>
+                        <div class="btn p-3 mt-3">
+                            <a>Email Footer</a>
+                        </div>
+                        <div class="btn p-3 mt-3">
+                            <a>Message Footer</a>
+                        </div>
+                    </div>
+
+                    <div fxFlex="75%" class="right-side pl-4 border-left">
+                        <div fxLayout="row" class="text-area">
+                            <mat-form-field class="w-100">
+                                <mat-label>E-mail footer content</mat-label>
+                                <textarea matInput type="text" formControlName="emailFooter"></textarea>
+                                <mat-error *ngIf="messageTemplateSettingForm.get('emailFooter').hasError('required')">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <span class="words">50/180</span>
+                        </div>
+
+                        <div fxLayout="row" class="mail mt-5">
+                            <div fxFlex="85%" class="mail-input mr-3">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Send preview of the message</mat-label>
+                                    <input matInput type="text" formControlName="previewMessage">
+                                    <mat-error *ngIf="messageTemplateSettingForm.get('previewMessage').hasError('required')">
+                                        Preview Message is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="15%" class="send-btn">
+                                <a (click)="postBasicSettings()">Send</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form [formGroup]="staffCommissionsSettingForm">
+        <div class="staff-commissions p-3 mt-4">
+            <div class="heading pb-3 border-bottom">
+                <p>Staff Commissions</p>
+            </div>
+
+            <div fxLayout="row" class="content-commission">
+                <div fxFlex="30%" class="left-side pr-3">
+                    <div class="input-commission pt-3">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Default Services Commissions</mat-label>
+                            <input matInput type="text" formControlName="defaultCommissions">
+                            <mat-error *ngIf="staffCommissionsSettingForm.get('defaultCommissions').hasError('required')">
+                                Default Services Commissions is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <div class="edit">
+                            <a><img src="../../../../../../../assets/img/writing.png"></a>
+                        </div>
+                    </div>
+
+                    <div class="service-bars mt-3">
+                        <div class="main-heading pb-3">
+                            <p>Product Commision for</p>
+                        </div>
+
+                        <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                            <mat-tab label="Service Provider">
+                                <div class="search-bar mt-3">
+                                    <span class="icon-search-1"></span>
+                                    <input type="text" placeholder="Search Services">
+                                </div>
+
+                                <div fxLayout="row" class="bar active p-2 mt-3" *ngFor="let item of serviceCategory">
+                                    <div fxFlex="70%" class="service-name" (click)="getServicesByCategory(item.name)">
+                                        <p>{{item.name}}</p>
+                                    </div>
+                                    <div fxFlex="20%" class="service-no mr-3">
+                                        <span>{{item.total_services_count}}</span> <span class="pl-2">Services</span>
+                                    </div>
+                                    <div fxFlex="20%" class="service-edit">
+                                        <a class="edit">
+                                            <img src="../../../../../../../../assets/img/writing-public.png">
+                                        </a>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            
+                            <mat-tab label="Second">
+                                Seller
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+
+                <div fxFlex="70%" class="right-side border-left">
+                    <div *ngIf="servicesByCategory">
+                        <div fxLayout="row" class="header-bar py-3 pl-3 border-bottom">
+                            <div fxFlex="60%" class="heading">
+                                <h6>All Categories - Services</h6>
+                            </div>
+    
+                            <div fxFlex="40%" class="text-right">
+                                <div class="item">
+                                    <span class="mr-3">Change</span>
+                                    <a mat-button class="pink-b p-0 px-1">{{servicesByCategory.length}} Items</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div fxLayout="row" *ngIf="servicesByCategory.length > 0" class="item-bar py-3 pl-3 border-bottom">
+                            <div fxFlex="60%" class="heading">
+                                <p>Items</p>
+                            </div>
+    
+                            <div fxFlex="40%" class="text-right">
+                                <div class="checkbox">
+                                    <span class="mr-3">Select All</span>
+                                    <mat-checkbox (change)="selectAllServices('all')"></mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="services-scroll px-3" *ngIf="servicesByCategory.length > 0">
+                            <div fxLayout="row" *ngFor="let item of servicesByCategory" class="category-field py-3 border-bottom">
+                                <div fxFlex="70%" class="service">
+                                    <p class="pb-2">{{item.service_name}}</p>
+                                    <span>{{item.category.name}}</span>
+                                </div>
+                                <div fxFlex="25%" class="amount text-right pr-3">
+                                    <p class="pink-text">0%</p>
+                                    <p class="time pt-2">${{item.total}}</p>
+                                </div>
+                                <div fxFlex="5%" class="checkbox text-center mt-2 ml-3">
+                                    <mat-checkbox [checked]="selectAll" (change)="selectService(service.id)"></mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div *ngIf="servicesByCategory.length == 0">
+                            <h4 class="mt-4 ml-4">No Services Found/Select Any Category</h4>
+                        </div>
+    
+                        <div class="commission-btns pl-3 pt-4" *ngIf="servicesByCategory.length > 0">
+                            <a class="text-muted mr-5">Apply default commisions</a>
+                            <a class="pink-text">Clear all commisions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="services-social-sections mt-4">
+        <div fxLayout="row">
+            <div fxFlex="34%" class="card pt-3 px-3 mr-4">
+                <div class="heading pb-3 border-bottom">
+                    <p>Short Address to Your Business Website</p>
+                </div>
+
+                <div fxLayout="row" class="input-copy pt-3">
+                    <div fxFlex="80%" class="mr-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Link to your public profile</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="20%" class="copy-btn">
+                        <p class="copy" (click)="copyText('testr@vaata.com')">
+                            <span *ngIf="!copied">Copy</span>
+                            <span *ngIf="copied">Copied</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="input-copy">
+                    <div fxFlex="80%" class="mr-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Customer Public Link</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="20%" class="copy-btn">
+                        <p class="copy" (click)="copyText('testr@vaata.com')">
+                            <span *ngIf="!copied">Copy</span>
+                            <span *ngIf="copied">Copied</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div fxFlex="39%" class="card p-3 mr-4">
+                <div class="heading pb-3 border-bottom">
+                    <p>Booking Widgets</p>
+                </div>
+
+                <div class="profile pt-4">
+                    <div fxFlex="50%" class="p-2 text-center">
+                        <p>Place Book me widget on Facebook profile</p>
+                        <a matbutton class="pink-b rounded-bt py-2 px-3">Connect with Facebook</a>
+                    </div>
+                    <div fxFlex="50%" class="text-center border-left p-2">
+                        <p>Place Book me widget on your own website</p>
+                        <a matbutton class="pink-b rounded-bt py-2 px-3">Connect with Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div fxFlex="25%" class="card p-3">
+                <div class="heading pb-3 border-bottom">
+                    <p>Photo Sharing</p>
+                </div>
+                
+                <div class="instagram pt-4">
+                    <div fxFlex="50%">
+                        <p>
+                            <img src="../../../../../../../assets/img/instagram.png">
+                            Instagram
+                        </p>
+                    </div>
+                    <div fxFlex="50%" class="text-right">
+                        <a class="pink-b">Connect</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,72 @@
+@import '../../../../../../../../styles.scss';
+
+.desktop-dashboard-all-clients {
+    position: relative;
+    height: 100%;
+    .search-bar {
+        position: relative;
+        input {
+            border: 1px solid $ligher-gray;
+            border-radius: 8px;
+            padding: 8px 0px 8px 28px;
+            width: 90%;
+            background-color: $ligher-gray;
+        }
+    
+        span {
+            &.icon-search-1 {
+                font-size: 15px;
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                &::before {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+    
+    .clients {
+        position: relative;
+        .clients-scroll {
+            height: 86vh;
+            min-height: 86vh;
+            overflow-y: auto;
+            .client-row {
+                cursor: pointer;
+                .img-side {
+                    img {
+                        width: 52px;
+                        height: auto;
+                        object-fit: cover;
+                        border-radius: 50px;
+                        object-position: center;
+                    }
+                }
+        
+                .name-side {
+                    position: relative;
+                    top: 4px;            
+                    h6 {
+                        font-size: 16px;
+                        font-weight: 100;
+                        color: $black;
+                    }
+                    p {
+                        font-size: 13px;
+                        color: $dark-gray;
+                        padding-top: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+    .new-client-btn {
+        span {
+            &.icon-add-button-inside-black-circle-1 {
+                font-size: 12px;
+            }
+        }
+    }
+}

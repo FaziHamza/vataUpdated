@@ -1,0 +1,16 @@
+@import '../../../../../../../../styles.scss';
+
+.speedometer {
+    svg {
+        transform: rotate(-90deg);
+        stroke-dasharray: 251; /* (2PI * 40px) */
+        stroke-dashoffset: 251;
+        animation: offsettozero 1s linear forwards;
+      }
+      
+      @keyframes offsettozero {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+}

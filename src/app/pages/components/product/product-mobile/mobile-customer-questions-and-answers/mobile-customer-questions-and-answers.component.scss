@@ -1,0 +1,157 @@
+@import '../../../../../../styles.scss';
+
+    .customer-questions {
+        .container .no-data {
+            color: $black;
+        }
+
+        .heading {
+            h5 {
+                font-size: 23px;
+                color: $black;
+            }
+        }
+
+        span {
+            &.icon-baseline-keyboard_arrow_down-24px-12 {
+                border: 1px solid $light-gray;
+                font-size: 22px;
+                float: right;
+                position: relative;
+                border-radius: 20px;
+                padding: 1px 1px;
+                top: 1px;
+            }
+        }
+
+        .ask-btn {
+            a {
+                text-decoration: none;
+                font-size: 17px;
+                cursor: pointer;
+                border-radius: 7px;
+            }
+        }
+
+        .question {
+            .left-side {
+                p {
+                    font-size: 12px;
+                    color: $dark-gray;
+                }
+            }
+            .right-side {
+                position: relative;
+                top: -6px;
+                span {
+                    font-size: 13px;
+                    color: $black;
+                }
+                p {
+                    font-size: 12px;
+                    color: $dark-gray;
+                }
+            }
+            .send-button {
+                font-size: 20px;
+                background: none;
+                border: none;
+            }
+            .question-reply {
+                a {
+                    text-decoration: none;
+                    font-size: 13px;
+                    color: $black;
+                }
+            }
+        }
+
+        .answer {
+            .left-side {
+                p {
+                    font-size: 12px;
+                    color: $light-gray;
+                }
+            }
+            .right-side {
+                position: relative;
+                top: -6px;
+                span {
+                    font-size: 13px;
+                    color: $black;
+                }
+                p {
+                    font-size: 12px;
+                    color: $light-gray;
+                }
+            }
+            .answer-reply {
+                a {
+                    text-decoration: none;
+                    font-size: 13px;
+                    color: $black;
+                }
+            }
+        }
+
+        .more-questions {
+            a {
+                text-decoration: none;
+                font-size: 14px;
+            }
+        }
+        
+    }
+
+    .reply-container {
+        border: 1px solid $ligher-gray;
+        padding: 10px;
+        border-radius: 10px;
+        .replied-comment {
+            .username {
+                color: $black;
+                font-size: 14px;
+                text-transform: capitalize;
+            }
+            .date {
+                color: $light-gray;
+                font-size: 12px;
+                font-weight: 100;
+                padding: 0 0 0 10px;
+            }
+            .reply-desc {
+                font-size: 12px;
+                color: $black;
+                line-height: 1.5;
+            }
+            .time-ago {
+                color: $light-gray;
+                font-size: 12px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .answer-button {
+        a {
+            font-size: 14px;
+        }
+    }
+
+    .answer-reply {
+        a {
+            font-size: 14px;
+        }
+    }
+
+    input {
+        border: 1px solid $ligher-gray;
+        border-radius: 25px;
+        padding: 5px 20px;
+        margin: 0 10px 0 0;
+        height: 20px;
+        width: 80%;
+        &::placeholder {
+            color: $black;
+          }
+    }

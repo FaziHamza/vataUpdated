@@ -1,0 +1,198 @@
+<mat-card class="px-4">
+    <div class="form">
+        <form [mustMatch]="[userInfoForm.controls['email'], userInfoForm.controls['confirmEmail'], userInfoForm.controls['password'], userInfoForm.controls['confirmPassword']]" [formGroup]="userInfoForm">
+            <!-- <div fxLayout="row"> -->
+                
+            <div fxLayout="row">
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" class="form-control form-control-sm" formControlName="first_name">
+                        <mat-error *ngIf="userInfoForm.controls['first_name'].errors?.required">
+                            Firstname is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['first_name'].errors?.pattern">
+                            Please enter valid <strong>firstname</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" class="form-control form-control-sm" formControlName="last_name">
+                        <mat-error *ngIf="userInfoForm.controls['last_name'].errors?.required">
+                            Lastname is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['last_name'].errors?.pattern">
+                            Please enter valid <strong>lastname</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-2">
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Select date of birth</mat-label>
+                        <input [max]="today" matInput [matDatepicker]="picker" formControlName="birth_date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="userInfoForm.controls['birth_date'].errors?.required">
+                            Birth date is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['birth_date'].invalid">
+                            Please enter a valid <strong>birth date</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['birth_date'].errors?.ageInvalid">
+                            Minimum age should be <strong>13</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Nick Name</mat-label>
+                        <input matInput type="text" class="form-control form-control-sm" formControlName="username">
+                        <mat-error *ngIf="userInfoForm.controls['username'].errors?.nicknameAlreadyExists">
+                            Nickname is already taken
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['username'].errors?.required">
+                            Nickname is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['username'].errors?.spaceExists">
+                            Nickname should not contain any spaces
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <p>Gender</p>
+            </div>
+
+            <div fxLayout="row" class="my-3 btns-gender">
+                <div *ngIf="!more" class="mr-3" [ngClass]="{'w-50': more == true}">
+                    <a mat-button class="rounded-bt p-0 btn-block" 
+                    (click)="genderSelect('m')"
+                    [ngClass]="{'pink-b': gender == 'm', 'white-b': gender != 'm'}">Male</a>
+                </div>
+
+                <div *ngIf="!more" class="mr-3" [ngClass]="{'w-50': more == true}">
+                    <a mat-button class="rounded-bt p-0 btn-block" 
+                    (click)="genderSelect('f')"
+                    [ngClass]="{'pink-b': gender == 'f', 'white-b': gender != 'f'}">Female</a>
+                </div>
+
+                <div>
+                    <a mat-button class="white-b rounded-bt p-0 btn-block" (click)="showMore()">{{more ? "Less" : "More"}}</a>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="mb-3 btns-gender" *ngIf="more">
+                <div class="mr-3">
+                    <a mat-button class="white-b rounded-bt p-0 btn-block"
+                    (click)="genderSelect('nb')"
+                    [ngClass]="{'pink-b': gender == 'nb', 'white-b': gender != 'nb'}">Non Binary</a>
+                </div>
+
+                <div class="mr-3">
+                    <a mat-button class="white-b rounded-bt p-0 btn-block"
+                    (click)="genderSelect('b')"
+                    [ngClass]="{'pink-b': gender == 'b', 'white-b': gender != 'b'}">Binary</a>
+                </div>
+
+                <div class="mr-3">
+                    <a mat-button class="white-b rounded-bt p-0 btn-block"
+                    (click)="genderSelect('c')"
+                    [ngClass]="{'pink-b': gender == 'c', 'white-b': gender != 'c'}">Custom</a>
+                </div>
+            </div>
+            
+            <div fxLayout="row" class="pt-3" *ngIf="gender == 'c'">
+                <mat-form-field class="form-section w-100">
+                    <mat-label>Whats's you'r Gender</mat-label>
+                    <input matInput type="text" class="form-control form-control-sm" formControlName="custom">
+                    <mat-error *ngIf="userInfoForm.controls['custom'].errors?.required">
+                        Gender is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div fxLayout="row">
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Email</mat-label>
+                        <input checkEmailExists matInput type="text" class="form-control form-control-sm" formControlName="email">
+                        <mat-error *ngIf="userInfoForm.controls['email'].errors?.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['email'].errors?.emailAlreadyExists">
+                            This email is already taken
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['email'].errors?.pattern">
+                            Please enter a valid <strong>email</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Email Confirm</mat-label>
+                        <input #confirmControl matInput type="text" class="form-control form-control-sm" formControlName="confirmEmail">
+                        <mat-error *ngIf="userInfoForm.controls['confirmEmail'].errors?.required">
+                            Confirmation email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['confirmEmail'].errors?.pattern">
+                            Enter a valid email
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['confirmEmail'].errors?.mustMatch">
+                            Email Id entered does not match
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div fxLayout="row">
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Password</mat-label>
+                        <input #passwordControl matInput type="password" class="form-control form-control-sm" formControlName="password">
+                        <a class="eye-b">
+                            <i [appPasswordToggle]="passwordControl" class="fas fa-eye"></i>
+                        </a>
+                        <mat-error *ngIf="userInfoForm.controls['password'].errors?.required">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['password'].invalid">
+                            Please enter a valid <strong>password</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Password Confirm</mat-label>
+                        <input #pass_confirmControl matInput type="password" class="form-control form-control-sm" formControlName="confirmPassword">
+                        <a class="eye-b">
+                            <i [appPasswordToggle]="pass_confirmControl" class="fas fa-eye"></i>
+                        </a>
+                        <mat-error *ngIf="userInfoForm.controls['confirmPassword'].errors?.required">
+                            Password confirmation is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userInfoForm.controls['confirmPassword'].errors?.mustMatch">
+                            Please enter a matching password
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div fxLayout="row" class="justify-content-center">
+                <div fxFlex="50%" class="py-4">
+                    <button mat-button class="pink-b rounded-bt w-100" (click)="proceed()">Next</button>
+                </div>
+            </div>
+            <!-- </div> -->
+        </form>
+    </div>
+</mat-card>  

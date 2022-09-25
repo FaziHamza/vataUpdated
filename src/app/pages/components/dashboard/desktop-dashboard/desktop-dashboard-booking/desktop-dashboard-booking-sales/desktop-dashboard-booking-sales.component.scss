@@ -1,0 +1,448 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-booking-sales {
+    .left-side {
+        border-radius: 10px;
+        background: $white;
+
+        .client {
+            .client-img {
+                img {
+                    border-radius: 50px;
+                    width: 50px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                    position: relative;
+                    top: -2px;
+                }
+            }
+    
+            .input-toggle {
+                position: relative;
+                .toggle {
+                    position: absolute;
+                    top: -6px;
+                    right: 0;
+                    span {
+                        color: $black;
+                        font-size: 13px;
+                        padding-right: 20px;
+                        position: relative;
+                        top: -3px;
+                    }
+                }
+            }
+        }
+
+        .client-service-tabs {
+            .charged-tab {
+                position: relative;
+                .fields-scroll {
+                    height: 65vh;
+                    min-height: 65vh;
+                    overflow-y: auto;
+
+                    .charged-fields {
+                        .heading {
+                            border-bottom: 1px dashed $ligher-gray;
+                            padding-bottom: 8px;
+                            p {
+                                color: $black;
+                                font-size: 14px;
+                            }
+                        }
+
+                        .field-detail {
+                            border-radius: 10px;
+                            border: 1px solid $ligher-gray;
+                            p {
+                                color: $black;
+                                font-size: 15px;
+                                padding-bottom: 6px;
+                            }
+                            span {
+                                color: $dark-gray;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .service-tab {
+                position: relative;
+                .search-bar {
+                    position: relative;
+                    input {
+                        border: 1px solid $ligher-gray;
+                        border-radius: 8px;
+                        padding: 12px 0px 12px 28px;
+                        width: 92%;
+                        background-color: $ligher-gray;
+                    }
+                
+                    span {
+                        &.icon-search-1 {
+                            font-size: 15px;
+                            position: absolute;
+                            top: 13px;
+                            left: 8px;
+                            &::before {
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+
+                .fields-scroll {
+                    height: 65vh;
+                    min-height: 65vh;
+                    overflow-y: auto;
+
+                    .service-fields {
+                        .heading {
+                            border-bottom: 1px solid $ligher-gray;
+                            padding-bottom: 8px;
+                            p {
+                                color: $black;
+                                font-size: 15px;
+                                padding-top: 2px;
+                            }
+                            span {
+                                font-size: 22px;
+                                &::before {
+                                    color: $dark-gray;
+                                }
+                            }
+                        }
+
+                        .field-detail {
+                            border-radius: 10px;
+                            border: 1px solid $ligher-gray;
+                            p {
+                                color: $black;
+                                font-size: 15px;
+                                padding-bottom: 6px;
+                            }
+                            span {
+                                color: $dark-gray;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .right-side {
+        border-radius: 10px;
+        background: $white;
+
+        .summary-details-view {
+            .header-row {
+                h6 {
+                    color: $black;
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+                p {
+                    font-size: 15px;
+                    color: $dark-gray;
+                    padding-top: 7px;
+                }
+            }
+
+            .service-price-row {
+                .left-side {
+                    p {
+                        font-size: 16px;
+                        color: $black;
+                        padding-bottom: 6px;
+                    }
+                    span {
+                        color: $dark-gray;
+                        font-size: 12px;
+                    }
+                }
+                .right-side {
+                    p {
+                        color: $black;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .tap-modify {
+                a {
+                    &.tap {
+                        img {
+                            width: 22px;
+                            height: auto;
+                            object-position: center;
+                            object-fit: cover;
+                        }
+                        span {
+                            &.tap-text {
+                                font-size: 13px;
+                                padding-left: 10px;
+                                color: $dark-gray;
+                                top: -4px;
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .discount-amount {
+                .subtotal {
+                    p {
+                        font-size: 15px;
+                        color: $dark-gray;
+                        &.discount {
+                            color: $pink;
+                            span {
+                                &.icon-add-button-inside-black-circle-1 {
+                                    font-size: 13px;
+                                    padding-left: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .price {
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .tip-bar {
+                .left-side {
+                    ul {
+                        display: flex;
+                        list-style: none;
+                        margin-bottom: 0px;
+                        li {
+                            padding: 0 15px 10px 15px;
+                            p {
+                                color: $dark-gray;
+                                font-size: 15px;
+                                // padding-bottom: 10px;
+                                img {
+                                    width: 24px;
+                                    height: auto;
+                                    object-fit: cover;
+                                    object-position: center;
+                                    position: relative;
+                                    top: -3px;
+                                }
+                            }
+
+                            &.active {
+                                border-bottom: 3px solid $pink;
+                            }
+                        }
+                    }
+                }
+
+                .right-side {
+                    p {
+                        &.tip-text {
+                            font-size: 15px;
+                            color: $dark-gray;
+                        }
+
+                        &.amount {
+                            color: $black;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+
+            .payment-method {
+                .right-side {
+                    p {
+                        &.total {
+                            color: $dark-gray;
+                            font-size: 15px;
+                            padding-top: 6px;
+                        }
+                        &.price {
+                            color: $black;
+                            font-size: 25px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .summary-edit-view {
+            .header-row {
+                h6 {
+                    color: $black;
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+                p {
+                    font-size: 15px;
+                    color: $dark-gray;
+                    padding-top: 7px;
+                }
+            }
+
+            .edit-inputs {
+                border: 1px dashed $light-gray;
+                border-radius: 10px;
+
+                .service-input {
+                    position: relative;
+                    &.amount {
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        span {
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 13px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+
+                .remove-apply-btns {
+                    .remove {
+                        a {
+                            font-size: 15px;
+                            span {
+                                &.icon-baseline-close-24px-1 {
+                                    font-size: 20px;
+                                    position: relative;
+                                    top: -2px;
+                                    margin-right: 8px;
+                                    &::before {
+                                        color: $pink;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .service-bar-tap {
+                .service-price-row {
+                    .left-side {
+                        p {
+                            font-size: 16px;
+                            color: $black;
+                            padding-bottom: 6px;
+                        }
+                        span {
+                            color: $dark-gray;
+                            font-size: 12px;
+                        }
+                    }
+
+                    .right-side {
+                        p {
+                            color: $black;
+                            font-size: 16px;
+                        }
+                    }
+                }
+    
+                .tap-modify {
+                    a {
+                        &.tap {
+                            img {
+                                width: 22px;
+                                height: auto;
+                                object-position: center;
+                                object-fit: cover;
+                            }
+                            span {
+                                &.tap-text {
+                                    font-size: 13px;
+                                    padding-left: 10px;
+                                    color: $dark-gray;
+                                    top: -4px;
+                                    position: relative;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .tip-bar {
+                .left-side {
+                    ul {
+                        display: flex;
+                        list-style: none;
+                        margin-bottom: 0px;
+                        li {
+                            padding: 0 15px 10px 15px;
+                            p {
+                                color: $dark-gray;
+                                font-size: 15px;
+                            }
+
+                            &.active {
+                                border-bottom: 3px solid $pink;
+                            }
+                        }
+                    }
+                }
+
+                .right-side {
+                    p {
+                        &.tip-text {
+                            font-size: 15px;
+                            color: $dark-gray;
+                        }
+
+                        &.amount {
+                            color: $black;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+
+            .tips-conditions {
+                .field {
+                    border-radius: 10px;
+                    border: 1px dashed $light-gray;
+                }
+            }
+
+            .payment-method {
+                .right-side {
+                    p {
+                        &.total {
+                            color: $dark-gray;
+                            font-size: 15px;
+                            padding-top: 6px;
+                        }
+                        &.price {
+                            color: $black;
+                            font-size: 25px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

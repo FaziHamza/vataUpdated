@@ -1,0 +1,66 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-favorite-business {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .favorite-business {
+        position: relative;
+
+        .fields-scroll {
+            height: 58vh;
+            min-height: 58vh;
+            overflow-y: auto;
+
+            .favorite-field {
+                 .heading {
+                    p {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                    img {
+                        cursor: pointer;
+                        position: relative;
+                        top: -1px;
+                        width: 20px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                .rating {
+                    span {
+                        &.text {
+                            color: $dark-gray;
+                            font-size: 13px;
+                            position: relative;
+                            top: 1px;
+                            padding-left: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: rgba(18,18,18,0.25);
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_perm_media_24px" data-name="icon/action/perm_media_24px" class="cls-1" d="M20,24H2a2.23,2.23,0,0,1-2-2.4L.01,10.8H0v-6H2V21.6H20V24Zm2-4.8H6a2.23,2.23,0,0,1-2-2.4L4.01,2.4A2.226,2.226,0,0,1,6,0h6l2,2.4h8a2.23,2.23,0,0,1,2,2.4v12A2.23,2.23,0,0,1,22,19.2ZM6,2.4V16.8H22V4.8H13.17l-.589-.707L11.17,2.4ZM21,15.6H7l4.5-7.2L15,13.812,17.5,10.2,21,15.6Z" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="Symbol_392_2" data-name="Symbol 392 – 2" transform="translate(-20 -772)">
+    <g id="Group_829" data-name="Group 829" class="cls-3" transform="translate(20 772)">
+      <g id="_Color" data-name="↳ Color" transform="translate(0 -2.4)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="24" height="28.8"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

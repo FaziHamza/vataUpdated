@@ -1,0 +1,84 @@
+<div class="dashboard-booking-all-ratings">
+    <div fxLayout="row" class="rating-sections" *ngIf="shopRatingInfo">
+        <div fxFlex="21%" class="seller-profile mr-2">
+            <div fxLayout="row">
+                <div fxFlex="80%">
+                    <h6>{{shopRatingInfo.data.user_shop_name}}</h6>
+                </div>
+                <div fxFlex="20%" class="text-right">
+                    <span class="icon-add-button-inside-black-circle-1"></span>
+                </div>
+            </div>
+            <div fxLayout="row" class="rating-row pt-1">
+                <span class="icon-Subtraction-7 pr-3 border-right"></span> <p class="profile-rating mx-3">{{shopRatingInfo.data.overall_rating_percentage}}%</p>
+            </div>
+            <div class="detail-row pt-2">
+                <p class="text">{{shopRatingInfo.data.booking_total_items_sold}} Services sold</p>
+                <p class="text py-2">Member since {{shopRatingInfo.data.membership_since}}</p>
+                <span class="icon-location1"></span> <span class="location-text pl-1">{{shopRatingInfo.data.seller_address}}</span>
+            </div>
+        </div>
+
+        <div fxFlex="13%" class="review-rating text-center mx-2">
+            <h5 class="heading">{{shopRatingInfo.data.avg_review}}.0</h5>
+            <div fxLayout="row" class="rating py-2">
+                <app-star-rating [maxScore]="5" [score]="shopRatingInfo.data.avg_review" [forDisplay]="true"></app-star-rating>
+            </div>
+            <p class="py-1">Average Review</p>
+            <span>{{shopRatingInfo.data.review_count}} Ratings</span>
+        </div>
+
+        <div fxFlex="22%" class="star-rating mx-2">
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="60%">
+                    <p class="text-muted">Service as described</p>
+                </div>
+                <div fxFlex="40%">
+                    <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopRatingInfo.data.product_rating_data.avg_desc" [forDisplay]="true" size="11px"></app-star-rating>
+                </div>
+            </div>
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="60%">
+                    <p class="text-muted">Communication</p>
+                </div>
+                <div fxFlex="40%">
+                    <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopRatingInfo.data.product_rating_data.avg_comm" [forDisplay]="true" size="11px"></app-star-rating>
+                </div>
+            </div>
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="60%">
+                    <p class="text-muted">Shipping Time</p>
+                </div>
+                <div fxFlex="40%">
+                    <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopRatingInfo.data.product_rating_data.avg_ship_time" [forDisplay]="true" size="11px"></app-star-rating>
+                </div>
+            </div>
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="60%">
+                    <p class="text-muted">Average Rating</p>
+                </div>
+                <div fxFlex="40%">
+                    <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopRatingInfo.data.product_rating_data.avg_rating" [forDisplay]="true" size="11px"></app-star-rating>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="44%" class="bar-rating ml-2">
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="1" times="{{shopRatingInfo.data.rating_plot.rating_1.rating_count}}" percentage="{{shopRatingInfo.data.rating_plot.rating_1.percent}}"></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="2" times="{{shopRatingInfo.data.rating_plot.rating_2.rating_count}}" percentage="{{shopRatingInfo.data.rating_plot.rating_2.percent}}"></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="3" times="{{shopRatingInfo.data.rating_plot.rating_3.rating_count}}" percentage="{{shopRatingInfo.data.rating_plot.rating_3.percent}}"></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="4" times="{{shopRatingInfo.data.rating_plot.rating_4.rating_count}}" percentage="{{shopRatingInfo.data.rating_plot.rating_4.percent}}"></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="5" times="{{shopRatingInfo.data.rating_plot.rating_5.rating_count}}" percentage="{{shopRatingInfo.data.rating_plot.rating_5.percent}}"></app-bar-rating>
+            </div>
+        </div>
+    </div>
+</div>

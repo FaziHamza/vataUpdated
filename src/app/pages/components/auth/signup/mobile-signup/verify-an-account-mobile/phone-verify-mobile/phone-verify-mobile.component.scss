@@ -1,0 +1,23 @@
+@import '../../../../../../../../styles.scss';
+
+.phone-verify-card
+{
+    background: $white;
+    min-height: 300px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+h5 {
+    &.heading {
+        font-size: 17px;
+        color: $black;
+    }
+}
+p {
+    &.sub-heading {
+        text-align: center;
+        color: $dark-gray;
+        font-size: 15px;
+    }
+}

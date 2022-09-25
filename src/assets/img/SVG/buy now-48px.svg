@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fe3c72;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_payment_24px" data-name="icon/action/payment_24px" class="cls-1" d="M18,16H2a2,2,0,0,1-2-2L.01,2A1.974,1.974,0,0,1,2,0H18a2,2,0,0,1,2,2V14A2,2,0,0,1,18,16ZM2,8v6H18V8ZM2,2V4H18V2Z" transform="translate(0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="buy_now-48px" data-name="buy now-48px" transform="translate(-287 -708)">
+    <rect id="icon_action_alarm_add_24px_background" data-name="icon/action/alarm_add_24px background" class="cls-3" width="24" height="24" transform="translate(287 708)"/>
+    <path id="icon_action_payment_24px-2" data-name="icon/action/payment_24px" class="cls-1" d="M18,16H2a2,2,0,0,1-2-2L.01,2A1.974,1.974,0,0,1,2,0H18a2,2,0,0,1,2,2V14A2,2,0,0,1,18,16ZM2,8v6H18V8ZM2,2V4H18V2Z" transform="translate(289 712)"/>
+    <g id="Group_256" data-name="Group 256" class="cls-4" transform="translate(289 712)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-2 -4)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-3" width="24" height="24"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

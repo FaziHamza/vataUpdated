@@ -1,0 +1,27 @@
+@import '../../../../../../styles.scss';
+
+.sub-categories {
+    .category {
+        img {
+            width: 65px;
+            height: auto;
+        }
+        h5 {
+            font-size: 18px;
+            color: $black;
+        }
+    }
+}
+
+.heading {
+    h4 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+    }
+}
+
+::ng-deep svg {
+    height: 105px;
+    width: 105px;
+}

@@ -1,0 +1,20 @@
+@import '../../../../styles.scss';
+
+.header {
+    padding: 19px 0;
+    position: relative;
+    background: $primary;
+    .back {
+        img {
+            width: 30px;
+            height: auto;
+        }
+    }
+    h3 {
+        margin: 0;
+        color: $black;
+    }
+    #darkMode {
+        color: $black;
+    }
+}

@@ -1,0 +1,65 @@
+<div *ngIf="!appSize.getIsMobileResolution()">
+    <ng-container *ngIf="item">
+        <div *ngIf="!showWarning" fxLayout="row" class="cart-item mt-3">
+            <a (click)="showWarning=true" class="close-btn"><span class="icon-baseline-close-24px-66"></span></a>
+    
+            <div fxFlex="40%">
+                <div class="image">
+                    <img class="main-img" [src]="item.images[0].includes('mp4') ? item.images[1] : item.images[0]" alt="product">
+                </div>
+            </div>
+            <div fxFlex="60%">
+                <div class="py-2 px-4">
+                    <h4>{{item.item_name}}</h4>
+                    <p><span class="small-typo">Price:</span><span class="pink-text"><strong>{{item.price | currency: "CHF":"symbol":"1.0"}}</strong></span></p>
+                    <p><span class="small-typo">Seller:</span><span>{{item.seller}}</span></p>
+                </div>
+                
+            </div>
+        </div>
+    
+        <div [ngClass]="[ showWarning ? 'show' : 'hide' ]" class="cart-item mt-3">
+            <div class="typo">
+                <h4 class="text-center">Are you sure you want to delete</h4>
+                <h4 class="text-center">{{item.item_name}}</h4>
+            </div>
+    
+            <div fxLayout="row" class="pt-3 justify-content-center">
+                <a (click)="showWarning=false" mat-button>Cancel</a>
+                <a (click)="removeItem(item.id, isBusiness)" mat-button class="pink-text">Yes</a>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()">
+    <ng-container *ngIf="item">
+        <div *ngIf="!showWarning" class="cart-item mt-3">
+            <a (click)="showWarning=true" class="close-btn"><span class="icon-baseline-close-24px-66"></span></a>
+    
+            <div fxLayout="row">
+                <div class="image">
+                    <img class="main-img" [src]="item.images[0]" alt="product">
+                </div>
+            </div>
+
+            <div class="pt-3">
+                <h4>{{item.item_name}}</h4>
+                <p><span class="small-typo">Price:</span><span class="pink-text"><strong>{{item.price | currency: "CHF":"symbol":"1.0"}}</strong></span></p>
+                <p><span class="small-typo">Seller:</span><span>{{item.seller}}</span></p>
+            </div>
+        </div>
+    
+        <div [ngClass]="[ showWarning ? 'show' : 'hide' ]" class="cart-item mt-3">
+            <div class="typo">
+                <h4 class="text-center">Are you sure you want to delete</h4>
+                <h4 class="text-center">{{item.item_name}}</h4>
+            </div>
+    
+            <div fxLayout="row" class="pt-3 justify-content-center">
+                <a (click)="showWarning=false" mat-button>Cancel</a>
+                <a (click)="removeItem(item.id, isBusiness)" mat-button class="pink-text">Yes</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

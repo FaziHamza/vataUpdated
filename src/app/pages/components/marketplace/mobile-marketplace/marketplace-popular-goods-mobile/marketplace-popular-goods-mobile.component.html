@@ -1,0 +1,41 @@
+<div class="price-filter py-3">
+    <div class="container" fxLayoutAlign="center">
+        <div fxFlex="30%" class="mx-2">
+            <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+        </div>
+        <div fxFlex="70%" class="mx-2">
+            <div fxLayout="row">
+                <div class="form">
+                    <mat-form-field class="rounded-bt d-block">
+                        <mat-select (selectionChange)="onSort($event.value)">
+                            <mat-option value="&ordering=-price,-shipping_price">Price+Shipping: Highest first</mat-option>
+                            <mat-option value="&ordering=price,shipping_price">Price+Shipping: Lowest first</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <!-- <div fxFlex="20%" class="mx-2">
+                <a mat-button class="text-center rounded-bt filter" (click)="openDialog()">
+                    <img class="filter" src="../../../../../../assets/img/SVG-Marketplace/filter.svg">
+                </a>
+            </div> -->
+        </div>
+    </div>
+</div>
+<div class="products">
+        <!-- <app-marketplace-product-card [product]="product"></app-marketplace-product-card> -->
+        <!-- <div fxLayout="row wrap" class="marketplace-cards border-top pt-5">
+            <app-marketplace-product-card *ngFor="let product of popularGoods; let i = index;" fxFlex="50%" [product]="product"></app-marketplace-product-card>
+        </div> -->
+        <div *ngIf="viewType === 'card'" fxLayout="row wrap" class="marketplace-cards border-top pt-5 px-2">
+            <app-marketplace-product-card [routerLink]="['/product', product.id]" class="p-3" fxFlex="50%" *ngFor="let product of popularGoods"  [product]="product"></app-marketplace-product-card>
+        </div>
+        <div *ngIf="viewType === 'list'" fxLayout="column" class="px-2">
+            <div *ngFor="let product of popularGoods">
+                <div class="card-block">
+                    <app-marketplace-card-list-view [routerLink]="['/product', product.id]" [product]="product"></app-marketplace-card-list-view>
+                </div>
+              </div>
+        </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="categories-marketplace">
+
+    <div class="container">
+        <div fxLayout="row">
+            <div class="head pb-4 w-100">
+                <h4 [innerText]="!isSubcategory ? 'Categories': 'Subcategories'"></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="category mb-5 py-4">
+        <div class="container">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                <div ngxSlickItem *ngFor="let cat of data; let i = index">
+                    <div style="width: 200px;" (click)="routeTo(cat.id, cat.name)" class="mx-2 box">
+                        <div class="box-content text-center"> 
+                            <span style="width: 80px; height: 80px;" [innerHTML]="(cat.icon_content ? cat.icon_content : notFound) | sanitize"></span>
+                            <p class="text-center">{{cat.name}}</p>
+                        </div>
+                    </div>
+                </div>
+              </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+@import '../../../../../../../../styles.scss';
+
+.modal {
+    background: $white;
+}
+h5 {
+    color: $black;
+}
+
+.mat-form-field-appearance-legacy {
+    .mat-form-field-underline {
+        background-color: $black !important;
+    }
+}
+
+input {
+    color: $black;
+}
+
+::ng-deep {
+    .mat-form-field-appearance-legacy {
+        .mat-form-field-label {
+            color: $black;
+        }
+    }
+}
+
+.mat-input-element {
+    &:disabled {
+        color: $black;
+    }
+}

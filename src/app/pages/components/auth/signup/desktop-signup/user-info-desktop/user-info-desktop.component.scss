@@ -1,0 +1,45 @@
+@import '../../../../../../../styles.scss';
+
+.mat-card {
+    background: $white;
+}
+
+img{
+    &.corner-t {
+        position: absolute;
+        top: -15%;
+        left: -15%;
+    }
+    &.corner-b{
+        position: absolute;
+        top: 91%;
+        right: -22%;
+        height: 25%;
+        width: 10%;
+    }
+}
+
+.form {
+    p {
+        font-size: 13px;
+        font-weight: 500;
+        color: $light-gray;
+    }
+    .eye-b {
+        color: $light-gray;
+        position: absolute;
+        top: 9px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+.mat-button {
+    font-weight: 400;
+}
+
+.btns-gender {
+    div {
+        width: 33.3%;
+    }
+}

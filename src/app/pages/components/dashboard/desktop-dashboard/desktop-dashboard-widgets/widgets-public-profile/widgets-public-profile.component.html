@@ -1,0 +1,72 @@
+<div class="desktop-widgets-public-profile p-3 mt-4">
+    <div fxLayout="row" class="top-bar pb-2 border-bottom">
+        <div fxFlex="70%" class="heading">
+            <p>Public Profile</p>
+        </div>
+
+        <div fxFlex="30%" class="more-btn text-right">
+            <a>
+                <img src="../../../../../../../assets/img/circlebtns.png">
+            </a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="duration-bar border-bottom">
+        <div fxFlex="20%" class="left-side">
+            <p>Duration:</p>
+        </div>
+        <div fxFlex="80%" class="tabs">
+            <div class="float-right">
+                <ul>
+                    <li [ngClass]="{'active': durationType == 'day'}"><a (click)="changeType('day')">Day</a></li>
+                    <li [ngClass]="{'active': durationType == 'week'}"><a (click)="changeType('week')">Week</a></li>
+                    <li [ngClass]="{'active': durationType == 'month'}"><a (click)="changeType('month')">Month</a></li>
+                    <li [ngClass]="{'active': durationType == 'year'}"><a (click)="changeType('year')">Year</a></li>
+                    <li [ngClass]="{'active': durationType == 'none' }"><a (click)="changeType('none')">All Time</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="followers-bar py-3 border-bottom">
+        <div fxFlex="50%" class="follow">
+           <p class="heading">Follow</p>
+           <p class="numbers pt-2">3345 Users</p>     
+        </div>
+        <div fxFlex="50%" class="followed">
+           <p class="heading">Followed</p>
+           <p class="numbers pt-2">456 Users</p> 
+        </div>
+    </div>
+
+    <div fxLayout="row" class="average-review py-3 border-bottom">
+        <div fxFlex="50%" class="left-side">
+           <p class="heading">Average Review</p>   
+        </div>
+
+        <div fxFlex="50%" class="right-side text-right">
+           <p class="number-rating">
+               4,4
+               <span class="total-ratings">(67 Ratings)</span>
+           </p>
+        </div>
+    </div>
+
+    <div class="bar-rating pt-3">
+        <div fxLayout="row">
+            <app-bar-rating class="w-100" star="5" times="46.9" percentage="24.6" ></app-bar-rating>
+        </div>
+        <div fxLayout="row">
+            <app-bar-rating class="w-100" star="4" times="890" percentage="44.5" ></app-bar-rating>
+        </div>
+        <div fxLayout="row">
+            <app-bar-rating class="w-100" star="3" times="218" percentage="10.9" ></app-bar-rating>
+        </div>
+        <div fxLayout="row">
+            <app-bar-rating class="w-100" star="2" times="290" percentage="14.5" ></app-bar-rating>
+        </div>
+        <div fxLayout="row">
+            <app-bar-rating class="w-100" star="1" times="110" percentage="5.5" ></app-bar-rating>
+        </div>
+    </div>
+</div>

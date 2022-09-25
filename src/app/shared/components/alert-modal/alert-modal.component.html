@@ -1,0 +1,25 @@
+<div *ngIf="!appSize.getIsMobileResolution()" class="alert-modal">
+    <div class="container">
+
+        <h5 class="heading text-center position-relative pb-2" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">{{dataGet.title}}</h5>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-4 sub-heading">{{dataGet.subTitle}}</p>
+
+        <div fxLayout="row" class="button pt-4 justify-content-center">
+            <a class="rounded-bt pink-b" (click)="onConfirmClick()" >{{dataGet.buttonText}}</a>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()" class="alert-modal">
+    <div class="container">
+
+        <h5 class="heading text-center position-relative pb-2" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">M {{dataGet.title}}</h5>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-4 sub-heading">{{dataGet.subTitle}}</p>
+
+        <div fxLayout="row" class="button pt-4 justify-content-center">
+            <a class="rounded-bt pink-b" (click)="onConfirmClick()" >{{dataGet.buttonText}}</a>
+        </div>
+    </div>
+</div>

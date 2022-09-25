@@ -1,0 +1,114 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-rating-reviews {
+
+    .rating-review-tabs {
+        background: $white;
+        border-radius: 10px;
+
+        .all-review-tab {
+            .img-left-side {
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 12px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .content-right-side {
+                .heading-row {
+                    .left-side {
+                        h5 {
+                            color: $pink;
+                            font-size: 16px;
+                            font-weight: 100;
+                        }
+                    }
+
+                    .right-side {
+                        p {
+                            &.date-rating {
+                                span {
+                                    &.name-date {
+                                        color: $dark-gray;
+                                        font-size: 15px;
+                                        position: relative;
+                                        right: 5%;
+                                    }
+                                }
+
+                                .rate-stars {
+                                    float: right;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .question-heading {
+                    h6 {
+                        color: $black;
+                        font-size: 15px;
+                        font-weight: 100;
+                    }
+                }
+
+                .answer-text {
+                    p {
+                        color: $black;
+                        font-size: 13px;
+                        line-height: 1.6;
+                    }
+                }
+
+                .img-section {
+                    img {
+                        width: 100px;
+                        height: 60px;
+                        object-fit: cover;
+                        object-position: center;
+                        border-radius: 12px;
+                    }
+                }
+
+                .reply-section {
+                    .reply {
+                        border-radius: 10px;
+                        border: 1px solid $light-gray;
+                        h6 {
+                            &.user {
+                                color: $black;
+                                font-size: 16px;
+                                font-weight: 100;
+                                span {
+                                    &.date {
+                                        color: $dark-gray;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+    
+                        p {
+                            &.text {
+                                color: $black;
+                                font-size: 14px;
+                                line-height: 1.6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .rating-review-tabs {
+        .mat-tab-labels {
+            background: $white;
+        }
+    }
+}

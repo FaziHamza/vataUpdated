@@ -1,0 +1,59 @@
+<app-old-layout-header></app-old-layout-header>
+<section class="favorites pb-5 clearfix">
+    <app-banner></app-banner>
+  </section>
+  <router-outlet></router-outlet>
+
+  <section class="main-sections-container">
+    <div class="container-fluid main-size clearfix hide-on-mobile">
+      <div class="home-main-section-left">
+        <div class="home-main-section pink">
+          <div class="home-main-section-inner">
+            <h2>Marketplace</h2>
+            <p>Logo,Filter,+ and Search need other space.
+              “Hambuger” menu maybe other space its to small
+              and hidden. so have to option search a product. </p>
+            <div class="explore-btn-container"><a routerLink="/marketplace/">Explore</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="home-main-section-center">
+        <div class="home-main-section purple">
+          <div class="home-main-section-inner">
+            <h2>Booking</h2>
+            <p>Logo,Filter,+ and Search need other space.
+              “Hambuger” menu maybe other space its to small
+              and hidden. so have to option search a product. </p>
+            <div class="explore-btn-container"><a routerLink="/bookings/">Explore</a></div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="home-main-section-right">
+        <div class="home-main-section blue">
+          <div class="home-main-section-inner">
+            <h2>Deals</h2>
+            <p>Logo,Filter,+ and Search need other space.
+              “Hambuger” menu maybe other space its to small
+              and hidden. so have to option search a product. </p>
+            <div class="explore-btn-container"><a routerLink="/deals/">Explore</a></div>
+          </div>
+          <img class="main-top-left-img" src="/assets/img/front-img/home/card-dots-top-left.png" />
+          <img class="main-bottom-left-img" src="/assets/img/front-img/home/card-dots-bottom-left.png" />
+          <img class="main-bottom-right-img" src="/assets/img/front-img/home/card-dors-bottom-right.png" />
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <section class="home-categories container-fluid main-size ">
+    <!-- popular Categories -->
+    <app-desktop-popular-categories></app-desktop-popular-categories>
+    <!-- popular marketplace -->
+    <app-desktop-popular-marketplace></app-desktop-popular-marketplace>
+    <!-- best bookings -->
+    <app-desktop-best-bookings></app-desktop-best-bookings>
+    <!-- top deals -->
+
+    <!-- <app-desktop-top-deals></app-desktop-top-deals> -->
+  </section>
+  <app-layout-footer></app-layout-footer>

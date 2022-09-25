@@ -1,0 +1,84 @@
+@import '../../../../../../../styles.scss';
+
+.public-profile-info {
+    .user {
+        img {
+            width: 100px;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 52px;
+        }
+
+        p {
+            font-size: 22px;
+            color: $black;
+        }
+
+        .user-follows {
+            .rank {
+                border: 1px dashed $light-gray;
+                padding: 15px 5px;
+                border-radius: 8px;
+                h6 {
+                    color: $black;
+                    font-size: 16px;
+                }
+                p {
+                    color: $dark-gray;
+                    font-size: 12px;
+                    padding-top: 8px;
+                }
+            }
+        }
+    }
+
+    .membership-contact {
+        .left-icon-section {
+            span {
+                &.icon-Subtraction-7 {
+                    font-size: 29px;
+                }
+                &.icon-commercial {
+                    font-size: 40px;
+                }
+            }
+        }
+
+        .right-content-section {
+            p {
+                &.text {
+                    color: $dark-gray;
+                    font-size: 11px;
+                }
+                &.sub-text {
+                    font-size: 13px;
+                    padding-top: 5px;
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .contact {
+        .left-icon {
+            img {
+                width: 16px;
+                height: auto;
+                &.location {
+                    width: 21px;
+                    height: auto;
+                    position: relative;
+                    top: -2px;
+                }
+            }
+        }
+
+        .right-content {
+            p {
+                color: $black;
+                font-size: 13px;
+            }
+        }
+    }
+}

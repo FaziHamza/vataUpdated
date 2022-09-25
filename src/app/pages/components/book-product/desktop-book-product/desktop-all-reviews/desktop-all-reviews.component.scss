@@ -1,0 +1,540 @@
+@import '../../../../../../styles.scss';
+
+
+
+    .no-data {
+        padding: 1rem;
+    }
+
+    .links {
+        span {
+            font-size: 14px;
+            cursor: pointer;
+            color: $black;
+        }
+    }
+
+    .seller-info {
+        .left-side {
+            .seller-profile {
+                h6 {
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: $black;
+                    span {
+                        &.icon-Subtraction-9 {
+                            font-size: 18px;
+                            padding: 0 12px;
+                            border-right: 1px solid $light-gray;
+                        }
+                    }
+        
+                    span {
+                        &.profile {
+                            font-size: 12px;
+                            font-weight: 100;
+                            color: $white;
+                            background-color: #2cda4d;
+                            padding: 1px 5px;
+                            border: 1px solid #2cda4d;
+                            border-radius: 20px;
+                            position: relative;
+                            top: -3px;
+                        }
+                    }
+                }
+                p {
+                    span {
+                        &.icon-location1 {
+                            font-size: 23px;
+                            position: relative;
+                            left: -5px;
+                        }
+                    }
+                    span {
+                        &.text {
+                            font-size: 13px;
+                            color: $black;
+                            position: relative;
+                            top: -5px;
+                        }
+                    }
+                } 
+            }
+            .imgs-section {
+                .main-img {
+                    img {
+                        width: 100%;
+                        height: 80vh;
+                        object-fit: cover;
+                        object-position: center;
+                        border-radius: 9px;
+                    }
+                }
+            }
+        }
+
+        .right-side {
+            .rating {
+                
+                span {
+        
+                }
+                a {
+        
+                }
+            }
+        
+            .shop-detail-section {
+                .location-row {
+                    #map {
+                        height: 450px;
+                        max-height: 550px;
+                        overflow: scroll;
+                    }
+                    img {
+                        &.map {
+                            width: 100%;
+                            border-radius: 9px;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                    p {
+                        font-size: 15px;
+                        &.silver-text {
+                            color: $dark-gray;
+                        }
+                        span {
+                            &.black-text {
+                                color: $black;
+                            }
+                        }
+                    }
+                    a {
+                        &.direction-btn {
+                            position: relative;
+                            left: -2%;
+                        }
+                    }
+                }
+                .info-shop-row {
+                    span {
+                        font-size: 12px;
+                        line-height: 1.7;
+                        color: $black;
+                    }
+                }
+                .workers-img-row {
+                    background-color: $ligher-gray;
+                    border-radius: 9px;
+                    border: 1px dashed $light-gray;
+                    img {
+                        width: 65px;
+                        height: auto;
+                        border-radius: 8px;
+                    }
+                    p {
+                        text-align: center;
+                        color: $black;
+                        font-size: 12px;
+                    }
+                }
+                .shop-timing-row {
+                    border-radius: 9px;
+                    border: 1px dashed $light-gray;
+        
+                    .left-section {
+                        span {
+                            font-size: 14px;
+                            &.silver-text {
+                                color: $dark-gray;
+                            }
+                        }
+                        span {
+                            &.black-text {
+                                color: $black;
+                            }
+                        }
+                        span {
+                            &.pink-text {
+                                color: $pink;
+                            }
+                        }
+                    }
+        
+                    .right-section {
+                        .social-favourite {
+                            ul {
+                                display: flex;
+                                list-style: none;
+                                margin-bottom: 0px;
+                                li {
+                                    &:nth-last-child(1)  {
+                                        border-right: 0px;
+                                    }
+                                    padding: 0 12px 0 0;
+                                    border-right: 1px solid $light-gray;
+                                    cursor: pointer;
+                                    p {
+                                        font-size: 14px;
+                                        color: $black;
+                                        font-weight: 100;
+                                        span {
+                                            &.icon-share-1 {
+                                                font-size: 14px;
+                                            }
+                                            &.icon-like {
+                                                font-size: 14px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .book-visit {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 23px;
+                    color: $black;
+                }
+            }
+        }
+        
+        .book-appointment {
+            p {
+                &.heading {
+                    font-size: 18px;
+                    color: $dark-gray;
+                }
+                span {
+                    &.icon-baseline-keyboard_arrow_down-24px-1 {
+                        border: 1px solid $light-gray;
+                        border-radius: 50px;
+                        font-size: 18px;
+                        padding: 1px;
+                        font-weight: 600;
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+            }
+    
+            .booking-fields {
+                border: 1px solid $light-gray;
+                border-radius: 6px;
+                .heading {
+                    h6 {
+                        color: $black;
+                        font-size: 15px;
+                        font-weight: 100;
+                    }
+                }
+    
+                span {
+                    &.star-text {
+                        font-size: 12px;
+                        color: $dark-gray;
+                    }
+                }
+    
+                .time-price {
+                    p {
+                        &.wrapper {
+                            position: relative;
+                            top: 8px;
+                            span {
+                                &.time {
+                                    color: $dark-gray;
+                                    font-size: 17px;
+                                }
+                            }
+                            span {
+                                &.text {
+                                    color: $black;
+                                    font-size: 21px;
+                                    top: -4px;
+                                    position: relative;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                .details {
+                    p {
+                        font-size: 13px;
+                        line-height: 1.6;
+                        color: $black;
+                    }
+                }
+            }
+    
+        }
+    }
+
+    .our-works {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 28px;
+                    color: $black;
+                }
+            }
+        }
+
+        .works-imgs {
+            .work {
+                position: relative;
+            }
+
+            img {
+                width: 100%;
+                height: 250px;
+                border-radius: 10px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .like-chip {
+                background: #ccccccbf;
+                border: 1px solid #ccccccbf;
+                border-radius: 25px;
+                padding: 5px 10px;
+                width: 45px;
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                span {
+                    &.heart {
+                        &.active {
+                            &::before {
+                                color: $pink-dark;
+                            }
+                        }
+                    }
+                }
+                cursor: pointer;
+            }
+        }
+    }
+
+    .cutomer-reviews {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 23px;
+                    color: $black;
+                }
+                
+                span {
+                    &.icon-baseline-keyboard_arrow_down-24px-1 {
+                        border: 1px solid $light-gray;
+                        border-radius: 50px;
+                        font-size: 18px;
+                        padding: 1px;
+                        position: relative;
+                        top: 1px;
+                    }
+                    &::before {
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+
+        .review-fields {
+
+            .heading {
+                h6 {
+                    color: $black;
+                    font-size: 15px;
+                    font-weight: 100;
+                }
+            }
+            span {
+                &.star-text {
+                    font-size: 12px;
+                    color: $dark-gray;
+                }
+            }
+            .details {
+                p {
+                    font-size: 13px;
+                    line-height: 1.6;
+                    color: $black;
+                }
+
+                .review-imgs {
+                    img {
+                        width: 100px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                        border-radius: 12px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .similar-this {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 24px;
+                    color: $black;
+                }
+            }
+        }
+
+        .card {
+            border-radius: 9px;
+            .main-img {
+                width: 101%;
+                object-fit: cover;
+                height: 170px;
+                border-radius: 10px 10px 0 0;
+                margin: -1px 0 0 -1px;
+            }
+            h5 {
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .rating {
+                span {
+                    &.star-text {
+                        font-size: 13px;
+                        position: relative;
+                        color: $dark-gray;
+                        top: 1px;
+                        padding-left: 15px;
+                    }
+                }
+            }
+            .location {
+                h4 {
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+
+    .all-review-tab {
+        .img-left-side {
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 12px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        .content-right-side {
+            .heading-row {
+                .left-side {
+                    h5 {
+                        color: $pink;
+                        font-size: 16px;
+                        font-weight: 100;
+                    }
+                }
+
+                .right-side {
+                    p {
+                        &.date-rating {
+                            span {
+                                &.name-date {
+                                    color: $dark-gray;
+                                    font-size: 15px;
+                                    position: relative;
+                                    right: 5%;
+                                }
+                            }
+
+                            .rate-stars {
+                                float: right;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .question-heading {
+                h6 {
+                    color: $black;
+                    font-size: 15px;
+                    font-weight: 100;
+                }
+            }
+
+            .answer-text {
+                p {
+                    color: $black;
+                    font-size: 13px;
+                    line-height: 1.6;
+                }
+            }
+
+            .img-section {
+                img {
+                    width: 100px;
+                    height: 60px;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 12px;
+                }
+            }
+
+            .reply-section {
+                .reply {
+                    border-radius: 10px;
+                    border: 1px solid $light-gray;
+                    h6 {
+                        &.user {
+                            color: $black;
+                            font-size: 16px;
+                            font-weight: 100;
+                            span {
+                                &.date {
+                                    color: $dark-gray;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+
+                    p {
+                        &.text {
+                            color: $black;
+                            font-size: 14px;
+                            line-height: 1.6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ::ng-deep {
+    .rating-review-tabs {
+        .mat-tab-labels {
+            background: $white;
+        }
+    }
+}
+
+.margin-bottom {
+    margin-bottom: 1rem;
+}

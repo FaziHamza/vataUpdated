@@ -1,0 +1,159 @@
+// border bottom on click of input 
+.mat-form-field-appearance-legacy  {
+    .mat-form-field-ripple {
+        height: 1px !important;
+    }
+}
+
+.mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+        background-color: $black !important;
+    }
+}
+
+// input focus blue border
+.mat-form-field-appearance-legacy {
+    .mat-form-field-infix {
+        &:focus {
+            outline: none !important;
+        }
+    }
+}
+
+// login form input label font-size changes and input bottom padding removal
+.form {
+    .mat-form-field-appearance-legacy {
+        // before floating
+        .mat-form-field-label {
+            font-size: 12px !important;
+            padding: 5px 0 0 0;
+            color: $black;
+        }
+        // after floating 
+        &.mat-form-field-can-float {
+            &.mat-form-field-should-float {
+                .mat-form-field-label {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+}
+
+.mat-radio-outer-circle {
+    border-color: $black !important;
+}
+.mat-radio-label-content {
+    color: $black;
+}
+
+.lSSlideOuter {
+    .lSPager{
+        &.lSpg > {
+            li {
+                &.active {
+                    a {
+                        background-color: $pink-dark !important;
+                    }
+                }
+                a {
+                    background-color: $light-gray !important;
+                }
+            }
+        }
+    }
+}
+
+.mat-checkbox-frame {
+    border-color: $black !important;
+}
+
+.mat-form-field-appearance-legacy {
+    .mat-form-field-underline {
+        background-color: $black !important;
+    }
+}
+
+input {
+    color: $black;
+}
+
+.mat-input-element {
+    &:disabled {
+        color: $black;
+    }
+}
+
+
+
+::ng-deep {
+    .mat-menu-panel {
+        background: $white;
+    }
+    .mat-dialog-container {
+        background: $white;
+    }
+    .mat-select-value {    
+        color: $black!important;
+    }
+    .mat-select-arrow  {
+        color: $black;
+    }
+
+    .mat-select-placeholder  {
+        color: $black;
+    }
+
+    .mat-tab-labels {
+        background: $white;
+    }
+
+    .mat-tab-label {
+        .mat-tab-label-content {
+            color: $black;
+        }
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar {
+        background-color: $pink;
+    }
+    
+    .mat-accordion {
+        .mat-expansion-panel-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 11px;
+            border-radius: inherit;
+        }
+    }
+
+    // SLICK LIB OVERRIDES
+
+    .slick-dots li.slick-active button:before {
+        color:$pink !important;
+    }
+
+    .slick-dots li button:before {
+        color: $slider-dot-grey;
+      }
+
+      .slick-prev:before {
+        color: $pink;
+        font-size: 20px;
+      }
+      
+      .slick-next:before {
+        color: $pink;
+        font-size: 20px;
+      }
+
+    
+}
+
+.ngx-file-drop__drop-zone,
+.ngx-file-drop__content {
+  display: block !important;
+  height: inherit !important;
+  border: none !important;
+}

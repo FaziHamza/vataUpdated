@@ -1,0 +1,10 @@
+@import '../../../../../../../../styles.scss';
+
+.desktop-dashboard-booking-company {
+    background: $ligher-gray;
+
+    .company-services {
+        background: $white;
+        border-radius: 10px;
+    }
+}

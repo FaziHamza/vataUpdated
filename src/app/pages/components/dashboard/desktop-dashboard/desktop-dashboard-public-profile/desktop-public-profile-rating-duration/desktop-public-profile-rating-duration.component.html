@@ -1,0 +1,48 @@
+<div class="rating-duration" *ngIf="nameAndReviewStatus">
+    <div fxLayout="row" class="duration-time-tabs border-bottom pt-2">
+        <div fxFlex="65%">
+            <ul>
+                <li><p>Duration:</p></li>
+                <li [ngClass]="{'active': durationType == 'day'}"><p (click)="durationNameAndReviewStatus('day')">Day</p></li>
+                <li [ngClass]="{'active': durationType == 'week'}"><p (click)="durationNameAndReviewStatus('week')">Week</p></li>
+                <li [ngClass]="{'active': durationType == 'month'}"><p (click)="durationNameAndReviewStatus('month')">Month</p></li>
+                <li [ngClass]="{'active': durationType == 'year'}"><p (click)="durationNameAndReviewStatus('year')">Year</p></li>
+                <li [ngClass]="{'active': durationType == 'none' }"><p (click)="durationNameAndReviewStatus('none')">All Time</p></li>
+            </ul>
+        </div>
+
+        <div fxFlex="35%">
+
+        </div>
+    </div>
+
+    <div fxLayout="row" class="ratings text-center pt-5 pb-4 border-bottom">
+        <div fxFlex="25%" class="star-rating border-right pr-2">
+            <h6 class="heading">{{nameAndReviewStatus.data.avg_review}}.0</h6>
+            <p class="chip-rating">{{nameAndReviewStatus.data.overall_rating_percentage}}%</p>
+            <div class="star text-center">
+                <app-star-rating [maxScore]="5" [score]="nameAndReviewStatus.data.avg_review" [forDisplay]="true" [size]="15"></app-star-rating>
+            </div>
+            <p class="text">Average Review</p>
+            <p class="number-rating">{{nameAndReviewStatus.data.review_count}} Ratings</p>
+        </div>
+
+        <div fxFlex="75%"  class="bar-rating pl-4">
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="5" times="{{nameAndReviewStatus.data.rating_plot.rating_5.rating_count}}" percentage="{{nameAndReviewStatus.data.rating_plot.rating_5.percent}}" ></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="4" times="{{nameAndReviewStatus.data.rating_plot.rating_4.rating_count}}" percentage="{{nameAndReviewStatus.data.rating_plot.rating_4.percent}}" ></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="3" times="{{nameAndReviewStatus.data.rating_plot.rating_3.rating_count}}" percentage="{{nameAndReviewStatus.data.rating_plot.rating_3.percent}}" ></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="2" times="{{nameAndReviewStatus.data.rating_plot.rating_2.rating_count}}" percentage="{{nameAndReviewStatus.data.rating_plot.rating_2.percent}}" ></app-bar-rating>
+            </div>
+            <div fxLayout="row">
+                <app-bar-rating class="w-100" star="1" times="{{nameAndReviewStatus.data.rating_plot.rating_1.rating_count}}" percentage="{{nameAndReviewStatus.data.rating_plot.rating_1.percent}}" ></app-bar-rating>
+            </div>
+        </div>
+    </div>
+</div>

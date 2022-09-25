@@ -1,0 +1,60 @@
+<mobile-home-header></mobile-home-header>
+
+<div class="main-section">
+    <app-banner></app-banner>
+
+    <ngx-slick-carousel class="cards carousel pt-5" #slickModal="slick-carousel" [config]="config">
+      <div class="slide" ngxSlickItem>
+        <mat-card class="card pink mx-3">
+            <div class="card-body">
+                <img src="../../../assets/img/SVG-hp/fashion.svg">
+                <div class="content text-center">
+                    <h6 class="font-weight-bold">Marketplace</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ation ullamco sed do eiusmod tempor incididunt ut ation ullamco laboris</p>
+                    <a mat-button class="btn py-2 rounded-bt text-white p-0" routerLink="/marketplace">Explore</a>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="slide" ngxSlickItem>
+        <mat-card class="card purple mx-3">
+            <div class="card-body">
+                <img src="../../../assets/img/SVG-hp/electronics.svg">
+                <div class="content text-center">
+                    <h6 class="font-weight-bold">Booking</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ation ullamco sed do eiusmod tempor incididunt ut ation ullamco laboris</p>
+                    <a mat-button class="btn py-2 rounded-bt text-white p-0" routerLink="/bookings">Explore</a>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <!-- <div class="slide" ngxSlickItem>
+        <mat-card class="card blue mx-3">
+            <div class="card-body">
+                <img src="../../../assets/img/SVG-hp/home-garden.svg">
+                <div class="content text-center">
+                    <h6 class="font-weight-bold">Deals</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ation ullamco sed do eiusmod tempor incididunt ut ation ullamco laboris</p>
+                    <a mat-button class="btn py-2 rounded-bt text-white p-0" routerLink="/deals">Explore</a>
+                </div>
+            </div>
+        </mat-card>
+    </div> -->
+    </ngx-slick-carousel>  
+
+    <app-mid-bar></app-mid-bar>
+    <div class="container">
+        <div class="popular-section pt-5 pb-4">
+            <app-mobile-popular-categories></app-mobile-popular-categories>
+        </div>
+    </div>
+
+    <app-mobile-popular-marketplace></app-mobile-popular-marketplace>
+
+    <app-mobile-best-bookings></app-mobile-best-bookings>
+
+    <!-- <app-mobile-top-deals></app-mobile-top-deals> -->
+</div>
+
+<mobile-home-footer></mobile-home-footer>
+

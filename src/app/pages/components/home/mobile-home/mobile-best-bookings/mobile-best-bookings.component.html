@@ -1,0 +1,15 @@
+<div class="best-booking border-top py-4">
+    <div class="container">
+        <div fxLayout="row" class="popular-section w-100">
+            <h3>Best Booking</h3>
+        </div>
+
+        <div class="booking-cards pt-4">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                <app-booking-card class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookingsData; let i = index;" [booking]="bestBooking">
+                </app-booking-card>
+              </ngx-slick-carousel>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-quick-settings {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .toggle-bars {
+        p {
+            color: $dark-gray;
+            font-size: 14px;
+        }
+    }
+}

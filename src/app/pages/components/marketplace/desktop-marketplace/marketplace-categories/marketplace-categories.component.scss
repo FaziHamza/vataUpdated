@@ -1,0 +1,91 @@
+@import '../../../../../../styles.scss';
+
+.categories-marketplace {
+    background-color: $white;
+    .head {
+        h4 {
+            font-size: 25px;
+            font-weight: 600;
+            color: $black;
+        }
+    }
+    .category {
+        background-color: $ligher-gray-black;
+        .box {
+            border: 1px solid $ligher-gray;
+            background-color: $white;
+            border-radius: 8px;
+            padding: 20px 5px 10px 5px;
+            position: relative;
+            .box-content {
+                ::ng-deep svg {
+                    height: 105px;
+                    width: 105px;
+                }
+                &::after {
+                    position: absolute;
+                    top: -1px;
+                    padding: 19px 20px 0px 0px;
+                    border-radius: 9px 0 9px 0;
+                    left: -1%;
+                    content: "";
+                    width: 12px;
+                    height: 13px;
+                }
+                &.purple {
+                    &::after {
+                        background-color: $purple;
+                    }
+                }
+                &.light-blue {
+                    &::after {
+                        background-color: $light-blue;
+                    }
+                }
+                &.pink {
+                    &::after {
+                        background-color: $pink;
+                    }
+                }
+                &.dark-blue {
+                    &::after {
+                        background-color: $dark-blue;
+                    }
+                }
+                &.brown {
+                    &::after {
+                        background-color: $brown;
+                    }
+                }
+                &.green {
+                    &::after {
+                        background-color: $green;
+                    }
+                }
+                &.dark-purple {
+                    &::after {
+                        background-color: $dark-purple;
+                    }
+                }
+                &.sky-blue {
+                    &::after {
+                        background-color: $sky-blue;
+                    }
+                }
+            }
+            
+            img {
+                width: 50%;
+                height: auto;
+                display: block;
+                margin: auto;
+            }
+            p {
+                padding-top: 11px;
+                font-weight: 600;
+                font-size: 11px;
+                color: $black;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<div class="card-body border mr-2">
+    <div class="image-sec">
+        <img class="main-img" [src]="deal.image ? deal.image[0]: 'assets/img/placeholder-img.png'">
+    </div>
+
+    <div class="truncate-typo">
+        <h5 class="text-center p-2">{{ ( deal.item_name && deal.item_name.length>20) ? (deal.item_name | slice:0:20)+'..' : (deal.item_name) }}</h5>
+    </div>
+
+    <div fxLayout="row" class="pt-3 text-center border-top w-100">
+        <div fxFlex="40%">
+            <p class="fix-p mx-1 pt-1">Fixed Price</p>
+        </div>
+        <div fxFlex="60%" class="mr-2">
+            <div fxLayout="row" class="float-right">
+                <del class="p-0 mx-1 cutted">{{deal.price | currency: 'CHF' : 'symbol' : '1.0'}}</del>
+            </div>
+            <div fxLayout="row" class="float-right">
+                <span class="price pink-text">{{deal.price | currency: 'CHF' : 'symbol' : '1.0'}}</span>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div class="w-100 p-4 text-center">
+            <p class="off pink-text">{{deal.discount ? deal.discount : '10'}}% Off</p>
+        </div>
+    </div>
+</div>

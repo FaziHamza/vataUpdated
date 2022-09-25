@@ -1,0 +1,39 @@
+<svg id="audio" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #c26dd8;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_notification_disc_full_24px" data-name="icon/notification/disc_full_24px" class="cls-1" d="M40,80A40,40,0,1,1,80,40,40.046,40.046,0,0,1,40,80Zm0-70A30,30,0,1,0,70,40,30.036,30.036,0,0,0,40,10Zm60,50H90V50h10V60ZM40,50A10,10,0,1,1,50,40,10.01,10.01,0,0,1,40,50Zm60-10H90V15h10V40Z" transform="translate(0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="120.001" height="120.001"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="100"/>
+  <path id="icon_notification_disc_full_24px-2" data-name="icon/notification/disc_full_24px" class="cls-1" d="M33.334,66.668A33.334,33.334,0,1,1,66.668,33.334,33.372,33.372,0,0,1,33.334,66.668Zm0-58.335a25,25,0,1,0,25,25A25.03,25.03,0,0,0,33.334,8.332ZM83.333,50H75V41.666h8.333V50Zm-50-8.333a8.333,8.333,0,1,1,8.333-8.333A8.342,8.342,0,0,1,33.334,41.666Zm50-8.332H75V12.5h8.333V33.334Z" transform="translate(8.333 16.667)"/>
+  <g id="Group_164" data-name="Group 164" class="cls-4" transform="translate(0 10)">
+    <g id="_Color" data-name="↳ Color" transform="translate(-10 -20)">
+      <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="120.001" height="120.001"/>
+      <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="120.001" height="120.001"/>
+    </g>
+  </g>
+</svg>

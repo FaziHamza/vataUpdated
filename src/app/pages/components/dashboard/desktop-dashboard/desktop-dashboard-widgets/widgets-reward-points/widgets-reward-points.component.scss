@@ -1,0 +1,37 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-reward-points {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+        
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .points-section {
+        span {
+            color: $dark-gray;
+            font-size: 13px;
+        }
+        p {
+            color: $black;
+            font-size: 16px;
+        }
+    }
+}

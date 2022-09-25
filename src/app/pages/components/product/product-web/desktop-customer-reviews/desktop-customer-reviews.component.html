@@ -1,0 +1,103 @@
+<div *ngIf="reviewData" class="customer-reviews border-bottom">
+    <div class="container py-5">
+
+        <div fxLayout="row" class="head pb-5">
+
+            <div fxFlex="80%">
+                <div class="heading">
+                    <h5>
+                        Customer Reviews 
+                        <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-12 ml-2"></span>
+                    </h5> 
+                </div>
+            </div>
+
+            <div fxFlex="20%" *ngIf="user && !isSelf && can_review">
+                <div class="review-btn text-right">
+                    <a (click)="writeReviewDialog()" class="pink-b">Write Review</a>
+                </div>
+            </div>
+            
+        </div>
+        <div #toggleAccordian>
+            <ng-container *ngIf="reviewData.length > 0">
+                <div *ngFor="let review of reviewData | slice:0:2; let i = index;" class="feedback">
+        
+                    <div fxLayout="row" class="pb-2">
+                        <div class="heading">
+                            <h6>{{review.title}}</h6>
+                        </div>
+                    </div>
+        
+                    <div fxLayout="row" class="next-row pb-2">
+                        <div fxFlex="15%">
+                            <div class="sub-heading">
+                                <p>{{review.customer_fullname}}, {{review.pub_date | date}}</p>
+                            </div>
+                            
+                        </div>
+        
+                        <div fxFlex="15%">
+                            <div class="rating text-left">
+                                <app-star-rating [maxScore]="5" [score]="review.rating ? review.rating : 0 " [forDisplay]="true"></app-star-rating>
+                            </div>
+                        </div>    
+                    </div>
+                    
+                        
+                    <div fxLayout="row" class="review-msg pb-3">
+                        <p>{{review.desc}}</p>
+                    </div>
+        
+                    <div fxLayout="row" class="review-img pb-3">
+                        <!-- <img class="mr-2" src="../../../../../assets/img/159.png"> -->
+                        <img class="mr-2" *ngFor="let image of review.image; let j = index;" (click)="open(images[i], j)" width="70px"
+                        [src]="images[i][j].src" />
+                    </div>
+        
+                    <div fxLayout="row" class="review-reply pt-2">
+                        <div *ngIf="user" fxFlex="5%">
+                            <a (click)="showReply[i] = !showReply[i]" class="pink-text mr-3" >Reply</a>
+                        </div>
+    
+                        <div fxFlex="30%">
+                            <input #replyInputEle matInput (keyup.enter)="replyToReview(replyInputEle, review.id, i)" 
+                                [class.hide]="!showReply[i]" ngModel 
+                                name="replyText" type="text" class="form-control reply-input"
+                            />
+                        </div>
+    
+                        <div fxFlex="5%">
+                            <button [class.hide]="!showReply[i]" (click)="replyToReview(replyInputEle, review.id, i)" class="send-button" type="submit"><i class="icon-sent-mail"></i></button>
+                        </div>
+                        
+                    </div>
+    
+                    <div *ngFor="let reply of review.repies.reverse()" class="reply-container mt-4 border-bottom">
+                        <div class="replied-comment small">
+                            <div fxLayout="row" class="p-1">
+                                <h6 class="username">{{reply.user_name}} <span class="date">{{reply.pub_date | date}}</span></h6>
+                            </div>
+                            <div fxLayout="row" class="p-1">
+                                <p class="reply-desc">{{reply.description}}</p>
+                            </div>
+                            <div fxLayout="row" class="mt-2">
+                                <p class="time-ago">{{reply.pub_date | timeAgo}}</p>
+                            </div>
+                        </div>
+                      </div>
+                    
+                </div>
+        
+                <!-- <div *ngIf="reviewData.length > 1" class="more-reviews pt-4">
+                    <div fxLayout="row">
+                        <a class="pink-text" >See all {{reviewData.length}} Customer Reviews ></a>
+                    </div>
+                </div> -->
+            </ng-container>
+            <div *ngIf="!(reviewData && reviewData.length)" class="no-data" fxLayout="row" fxLayoutAlign="center">
+                <h4>No Reviews added yet</h4>
+            </div>
+        </div>
+    </div>
+</div>

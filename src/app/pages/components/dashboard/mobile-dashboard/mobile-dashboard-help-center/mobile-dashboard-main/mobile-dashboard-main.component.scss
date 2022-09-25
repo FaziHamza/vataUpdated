@@ -1,0 +1,173 @@
+@import '../../../../../../../styles.scss';
+
+.mobile-dashboard-help-center-main {
+    background: $ligher-gray;
+
+    .head-bar {
+        .left-side {
+            h6 {
+                color: $black;
+                font-size: 25px;
+            }
+        }
+
+        .right-side {
+            p {
+                &.commercial {
+                    border: 1px solid $pink;
+                    border-radius: 50px;
+                    padding: 3px 5px;
+                    position: relative;
+                    margin-top: 4px;
+                    span {
+                        &.icon-commercial {
+                            font-size: 22px;
+                        }
+                        &.text {
+                            color: $pink;
+                            font-size: 15px;
+                            position: relative;
+                            top: -4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main-center-sections {
+        background: $white;
+        border-radius: 10px;
+
+        .head-main-section {
+            background-image: url('../../../../../../../../src/assets/img/dash-help-bg.png');
+            width: 100%;
+            height: auto;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+            h6 {
+                color: $black;
+                font-size: 21px;
+                padding-top: 10px;
+            }
+
+            p {
+                color: $dark-gray;
+                font-size: 13px;
+            }
+
+            .search-bar {
+                position: relative;
+                input {
+                    border: 1px solid $ligher-gray;
+                    padding: 15px 0px 15px 35px;
+                    width: 85%;
+                    border-radius: 8px;
+                    background: $ligher-gray;
+                }
+
+                span {
+                    &.icon-search-1 {
+                        position: absolute;
+                        top: 39px;
+                        left: 15px;
+                        font-size: 15px;
+                        &::before {
+                            color: $dark-gray;
+                        }
+                    }
+                }
+            }
+        }
+
+        .popular-section {
+            .popular-heading {
+                h5 {
+                 font-size: 18px;
+                 color: $dark-gray;
+                }
+             }
+
+             .popular-card {
+                border-radius: 10px;
+                border: 1px dashed $light-gray;
+                .heading {
+                    position: relative;
+                    img {
+                        border-radius: 50px;
+                        width: 40px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                    h6 {
+                        position: absolute;
+                        top: 8px;
+                        left: 22%;
+                        color: $black;
+                        font-size: 18px;
+                    }
+                }
+
+                p {
+                    color: $dark-gray;
+                    font-size: 13px;
+                    padding-top: 11px;
+                }
+            }
+        }
+
+        .accordians-section {
+            mat-accordion {
+                mat-panel-title {
+                    font-weight: 500;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-size: 15px;
+                    color: $dark-gray;
+                    line-height: 1.6;
+                }
+            }
+        
+            .mat-expansion-panel {
+                border-bottom: 1px solid #ccc;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .mat-expanded {
+                .mat-expansion-panel-header-title {
+                    &::before {
+                        background-color: $pink-dark;
+                    }
+                }
+            }
+        
+            .mat-expansion-panel-header-title {
+                position: relative;
+                &::before {
+                    position: absolute;
+                    left: 0px;
+                    top: 4px;
+                    content: "";
+                    width: 12px;
+                    height: 12px;
+                    background-color: $light-gray;
+                    border-radius: 50%;
+                }
+            }
+            
+            .mat-expansion-panel-header {
+                padding: 0 5px;
+            }
+        
+            .mat-content {
+                overflow: unset !important;
+            }
+        }
+    }
+}

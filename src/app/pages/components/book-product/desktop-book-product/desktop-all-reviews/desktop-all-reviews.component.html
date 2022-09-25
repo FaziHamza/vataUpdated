@@ -1,0 +1,33 @@
+<div class="cutomer-reviews border-top">
+    <div class="container py-5">
+        <div fxLayout="row" class="heading-bar">
+            <div fxFlex="70%">
+                <h3 class="heading">All Reviews<span class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span></h3>
+            </div>
+        </div>
+        <div class="review-fields mt-4" *ngFor="let review of reviews">
+            <div fxLayout="row">
+                <div class="heading">
+                    <h6 class="pb-2">Acrylic Full Set Pearl/ French Extention Tips</h6>
+                    <app-star-rating [maxScore]="5" [score]="review.rating" [forDisplay]="true"></app-star-rating> <span class="star-text pl-3">2 Book Ratings</span>
+                </div>
+            </div>
+            <div class="details border-bottom py-3">
+                <p class="pb-2">{{ review.feedback }}</p>
+
+                <div class="review-imgs py-3">
+                    <img class="mr-3" *ngFor="let image of review.image" src="{{ image }}">
+                </div>
+
+                <div class="reply-comment-btns">
+                    <a mat-button class="comment" >
+                    {{ review.comment_count }} Comment
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="reviews.length == 0" class="no-data">
+            <h4>No reviews to show</h4>
+        </div>
+    </div>
+</div>

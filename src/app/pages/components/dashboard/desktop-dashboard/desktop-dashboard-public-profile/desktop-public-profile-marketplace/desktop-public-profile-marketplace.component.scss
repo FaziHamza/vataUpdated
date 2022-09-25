@@ -1,0 +1,103 @@
+@import '../../../../../../../styles.scss';
+
+.marketplace {
+    .search-bar {
+        position: relative;
+        input {
+            border-radius: 5px;
+            border: 1px solid $light-gray;
+            padding: 8px 0 8px 35px;
+            width: 100%;
+            background: $ligher-gray;
+        }
+
+        span {
+            &.icon-search-1 {
+                position: absolute;
+                font-size: 18px;
+                left: 8px;
+                bottom: 8px;
+                &::before {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+
+    .product-card {
+        .left-section {
+            .product-img {
+                img {
+                    width: 100%;
+                    height: 118px;
+                    border-radius: 10px;
+                    border: 1px solid $light-gray;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .center-section {
+            .heading-rating {
+                h6 {
+                    font-size: 15px;
+                    color: $black;
+                }
+                span {
+                    &.star-text {
+                        font-size: 12px;
+                        color: $dark-gray;
+                    }
+                }
+            }
+
+            .product-brief {
+                p {
+                    &.silver {
+                        color: $dark-gray;
+                        font-size: 13px;
+                        padding-top: 5px;
+                    }
+                    &.black {
+                        color: $black;
+                        font-size: 14px;
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
+
+        .right-section {
+            .edit-close {
+                a {
+                    padding: 0 15px;
+                    &.edit {
+                        position: relative;
+                        img {
+                            width: 17px;
+                            height: auto;
+                        }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 1px;
+                            height: 15px;
+                            background: $light-gray;
+                        }
+                    }
+                    span {
+                        &.icon-baseline-close-24px-12 {
+                            font-size: 20px;
+                            &::before {
+                                color: $pink;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import '../../../../styles.scss';
+
+.account {
+    text-align: center;
+    p {
+        font-size: 13px;
+        color: $light-gray;
+        a{
+            color: $black;
+            font-weight: 600;
+        }
+    }
+    .terms {
+        font-size: 13px;
+        color: $light-gray;
+        a {
+            color: $black;
+            font-weight: 600;
+        }
+    }
+    
+}

@@ -1,0 +1,55 @@
+<div class="verify-account">
+    <div class="container">
+
+        <app-phone-verify (selectStep)="onPhoneVerifyFinish()"></app-phone-verify>
+            <ng-container *ngIf="isBusiness">
+                
+                <mat-card class="p-3 my-3">
+                    <div fxLayout="row">
+                        <div fxFlex="12%" class="border-right mx-2">
+                            <div class="p-1 tree">
+                                <img src="../../../../assets/img/SVG/plant.svg">
+                            </div>
+                        </div>
+                        <div fxFlex="68%" class="mx-2">
+                            <h5 class="font-weight-bold py-2 m-0">Upload a Billing address</h5>
+                            <p class="py-1 m-0">Good for the environment</p>
+                            <h5 *ngIf="isBillingAdded" class="font-weight-bold py-2 mt-4">Billing address added successfully.</h5>
+
+    
+                            <!-- <mat-slide-toggle class="toggle-text py-1">Use a same address</mat-slide-toggle> -->
+                        </div>
+                        <div fxFlex="20%" class="py-4 mx-2">
+                            <a mat-button class="btn pink-b rounded-bt p-0 btn-block" *ngIf="!isBillingAdded" (click)="onSelectStep('billing')">Select</a>
+                        </div>
+                    </div>
+                </mat-card>
+    
+                <mat-card class="p-3 my-3">
+                    <div fxLayout="row">
+                        <div fxFlex="12%" class="border-right mx-2">
+                            <div class="p-1 tree">
+                                <img src="../../../../assets/img/SVG/plant.svg">
+                            </div>
+                        </div>
+                        <div fxFlex="68%" class="mx-2">
+                            <h5 class="font-weight-bold py-2 m-0">Upload a Passport address</h5>
+                            <p class="py-1 m-0">Good for the environment, and our choice</p>
+                            <h5 *ngIf="isPassportAdded" class="font-weight-bold py-2 mt-4">Passport address added successfully.</h5>
+
+    
+                            <!-- <mat-slide-toggle class="toggle-text py-1">Use a same address</mat-slide-toggle> -->
+                        </div>
+                        <div fxFlex="20%" class="py-4 mx-2">
+                            <a mat-button class="btn pink-b rounded-bt p-0 btn-block" *ngIf="!isPassportAdded" (click)="onSelectStep('passport')">Select</a>
+                        </div>
+                    </div>
+                </mat-card>
+            </ng-container>
+            <div class="row justify-content-center">
+                <div fxFlex="20%" class="py-4 mx-2">
+                    <a mat-button class="btn pink-b rounded-bt p-0 btn-block" (click)="finish()">Finish</a>
+                </div>
+            </div>
+    </div>
+</div>

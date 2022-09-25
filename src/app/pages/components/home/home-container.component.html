@@ -1,0 +1,6 @@
+<ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+    <mobile-home></mobile-home>
+</ng-container>
+<ng-template #desktop>
+    <desktop-home></desktop-home>
+</ng-template>

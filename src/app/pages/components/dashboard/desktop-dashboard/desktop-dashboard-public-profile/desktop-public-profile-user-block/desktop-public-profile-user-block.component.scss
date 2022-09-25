@@ -1,0 +1,65 @@
+@import '../../../../../../../styles.scss';
+
+.user-block-section {
+    .search-bar {
+        position: relative;
+        input {
+            border-radius: 5px;
+            border: 1px solid $light-gray;
+            padding: 8px 0 8px 35px;
+            width: 100%;
+            background: $ligher-gray;
+        }
+
+        span {
+            &.icon-search-1 {
+                position: absolute;
+                font-size: 18px;
+                left: 8px;
+                bottom: 8px;
+                &::before {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+
+    .block-user {
+        .left-img {
+            img {
+                width: 40px;
+                height: auto;
+                border-radius: 50px;
+            }
+        }
+
+        .center-content {
+            p {
+                &.heading {
+                    color: $black;
+                    font-size: 15px;
+                }
+                &.text {
+                    color: $dark-gray;
+                    font-size: 12px;
+                    padding-top: 5px;
+                }
+            }
+        }
+
+        .block-btn {
+            a {
+                img {
+                    width: 20px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .block-user-btn {
+        a {
+            border: 1px dashed $light-gray;
+        }
+    }
+}

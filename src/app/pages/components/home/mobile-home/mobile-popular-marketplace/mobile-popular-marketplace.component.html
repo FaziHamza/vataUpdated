@@ -1,0 +1,15 @@
+<div class="popular-marketplace border-top py-4">
+    <div class="container">
+        <div fxLayout="row" class="popular-section w-100">
+            <h3>Popular Marketplace</h3>
+        </div>
+
+        <div class="marketplace-cards pt-4">
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+            <app-marketplace-product-card [routerLink]="['/product', popularProduct.id]" class="slide" ngxSlickItem *ngFor="let popularProduct of popularProductsData; let i = index" [product]="popularProduct">
+            </app-marketplace-product-card>
+          </ngx-slick-carousel>
+        </div>
+
+    </div>
+</div>

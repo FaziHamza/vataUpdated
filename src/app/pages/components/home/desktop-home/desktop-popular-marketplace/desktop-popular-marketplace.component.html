@@ -1,0 +1,19 @@
+<section class="popular-goods container-fluid main-size pink-dots">
+  <div class="left-icon pink"></div>
+  <div class="popular-goods-top mb-5 clearfix">
+    <div class="section-title-cont float-left clearfix">
+      <h2 class="section-title m-0">Popular Marketplace</h2>
+    </div>
+    <div class="sort-by clearfix home float-right">
+      <a class="show-all-btn" routerLink="/marketplace">Show all</a>
+    </div>
+  </div>
+  <section id="demos" class="mb-5">
+    <div class="row">
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+    <app-marketplace-product-card [routerLink]="['/product', popularProduct.id]" class="slide" ngxSlickItem *ngFor="let popularProduct of filterProductData(); let i = index" [product]="popularProduct">
+    </app-marketplace-product-card>
+  </ngx-slick-carousel>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,9 @@
+<section class="container-fluid main-size">
+    <h2 class="section-title">Popular Categories</h2>
+    <div *ngIf="popular_categories" class="clearfix hide-on-mobile">
+      <div class="home-cat-cont">
+        <app-category-card *ngFor="let cat of popular_categories" [category]="cat"></app-category-card>
+      </div>
+    </div>
+</section>
+  

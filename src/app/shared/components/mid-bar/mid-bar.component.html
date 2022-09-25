@@ -1,0 +1,122 @@
+<div fxLayout="row" class="mid-bar w-100">
+    <ul>
+        <li routerLink="/home" routerLinkActive="active"><span class="icon-home"></span></li>
+        <li [matMenuTriggerFor]="goodsMenu"><span class="icon-baseline-apps-1"></span></li>
+        <li (click)="toggleSearchBar()"><span class="icon-search"></span></li>
+        <li><span class="icon-add-btn"></span></li>
+        <li [matMenuTriggerFor]="menu" class="user online"><img class="mt-3" [src]="profilePic"></li>
+    </ul>
+</div>
+<div class="search-bar" [class.show]="showSearchBar" [class.hide]="!showSearchBar" >
+    <input [matMenuTriggerFor]="search" #searchTrigger="matMenuTrigger" placeholder="Search" (keyup.enter)="gotoSearchDetails($event); searchTrigger.closeMenu()" (keyup)="onKeyDown($event)" type="text">
+</div>
+
+<mat-menu [hasBackdrop]="true" class="tab-links-cont-menu profile-dropdown" #menu="matMenu">
+    <div class="tab-links-cont">
+      <ul>
+        <li mat-menu-item routerLink="/home" routerLinkActive="active">
+          <span class="icon icon-home"></span>
+          <a routerLink="/home">
+            Home
+          </a>
+        </li>
+        <li routerLink="/marketplace" mat-menu-item routerLinkActive="active">
+          <span class="icon icon-marketplace"></span>
+          <a>
+            Marketplace
+          </a>
+        </li>
+        <li *ngIf="user" routerLink="/dashboard/public-profile" mat-menu-item routerLinkActive="active">
+          <span class="icon icon-marketplace"></span>
+          <a>
+            Public profile
+          </a>
+        </li>
+        <li mat-menu-item routerLinkActive="active">
+          <span class="icon icon-booking"></span>
+          <a>
+            Booking
+          </a>
+        </li>
+        <!-- <li mat-menu-item routerLinkActive="active">
+          <span class="icon icon-deal"></span>
+          <a>
+            Deals
+          </a>
+        </li> -->
+        <li *ngIf="user" mat-menu-item routerLinkActive="active">
+          <span class="icon icon-basket1"></span>
+          <a (click)="basketDialog()">
+            Basket
+          </a>
+        </li>
+        <div fxLayout="row" class="justify-content-center" *ngIf="!user">
+          <div class="account text-right">
+            <a routerLink="/auth/login" class="btn white-b rounded-bt my-0 py-2">Log In</a>
+            <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2">Sign Up</a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div fxLayout="row" class="justify-content-center">
+      <button  *ngIf="user" (click)="onSignOut()" class="btn pink-b py-2 rounded-bt d-block signout-btn">
+        Sign Out
+      </button>
+    </div>
+  </mat-menu>
+  <mat-menu #goodsMenu="matMenu" class="goods-menu">
+    <mat-tab-group selectedIndex="0" mat-stretch-tabs (click)="stopGoodMenuClosing($event)">
+      <mat-tab label="Marketplace">
+        <section class="home-categories catalog-of-goods">
+          <div class="clearfix">
+            <div class="home-cat-cont" *ngFor="let marketplace_cat of marketplace_categories">
+              <div class="home-cat-inner">
+                <div class="home-cat-title clearfix">
+                  <span class="cat-img-cus" [innerHTML]="(marketplace_cat.icon_content ? marketplace_cat.icon_content : notFound) | sanitize"></span>
+                  <h2>{{marketplace_cat.name}}</h2>
+                </div>
+                <div class="home-cat-links" *ngIf="marketplace_cat">
+                  <a [routerLink]="['/booking',marketplace_cat.id,marketplace_subcat.id]"
+                    *ngFor="let marketplace_subcat of marketplace_cat.childrens">{{marketplace_subcat.name}}</a>
+                  <a [routerLink]="['/marketplace',marketplace_cat.id]" class="see-all">View all</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </mat-tab>
+      <mat-tab label="Bookings">
+        <section class="home-categories catalog-of-goods">
+          <div class="clearfix">
+            <div class="home-cat-cont" *ngFor="let booking_cat of booking_categories">
+              <div class="home-cat-inner">
+                <div class="home-cat-title clearfix">
+                  <span class="cat-img-cus" [innerHTML]="(booking_cat.icon_content ? booking_cat.icon_content : notFound) | sanitize"></span>
+                  <h2>{{booking_cat.name}}</h2>
+                </div>
+                <div class="home-cat-links" *ngIf="booking_cat">
+                  <a [routerLink]="['/booking',booking_cat.name,booking_subcat.name]"
+                    *ngFor="let booking_subcat of booking_cat.childrens">{{booking_subcat.name}}</a>
+                  <a [routerLink]="['/booking',booking_cat.id]" class="see-all">View all</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-menu>
+  <mat-menu yPosition="above" [overlapTrigger]="false" #search="matMenu" class="search-result clearfix">
+    <div MatMenuContent>
+      <ng-container *ngIf="isProcessing">
+        <div class="spinner-div">
+          <div class="box">
+            <div class="loader"></div>
+        </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="result">
+        <app-search-dropdown [data]="result"></app-search-dropdown>
+      </ng-container>
+    </div>
+  </mat-menu>

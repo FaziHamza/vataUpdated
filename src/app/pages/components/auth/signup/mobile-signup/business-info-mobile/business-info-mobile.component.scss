@@ -1,0 +1,27 @@
+@import '../../../../../../../styles.scss';
+
+.form {
+    p {
+        font-size: 13px;
+        font-weight: 500;
+        color: $light-gray;
+        position: absolute;
+    }
+}
+.img-container {
+    float: left;
+        position: relative;
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+      }
+}
+.mat-button {
+    font-weight: 400;
+}
+
+.add-from-comp-bottom .product-img {
+    height: 100px;
+}

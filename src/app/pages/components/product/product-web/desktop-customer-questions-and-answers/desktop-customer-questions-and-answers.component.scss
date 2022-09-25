@@ -1,0 +1,151 @@
+@import "../../../../../../styles.scss";
+
+.customer-questions {
+  .container .no-data {
+    color: $black;
+  }
+
+  .heading {
+    h5 {
+      font-size: 23px;
+      color: $black;
+      span {
+        border: 1px solid $light-gray;
+        font-size: 20px;
+        border-radius: 15px;
+        padding: 1px 1px;
+      }
+    }
+  }
+
+  .ask-btn {
+    a {
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 7px;
+    }
+  }
+
+  .question {
+    .left-side {
+      p {
+        font-size: 12px;
+        color: $light-gray;
+      }
+    }
+    .right-side {
+      position: relative;
+      top: -6px;
+      span {
+        font-size: 13px;
+        color: $black;
+      }
+      p {
+        font-size: 12px;
+        color: $light-gray;
+      }
+    }
+    .send-button {
+      font-size: 20px;
+      background: none;
+      border: none;
+    }
+    .question-reply {
+      a {
+        text-decoration: none;
+        font-size: 13px;
+        color: $black;
+      }
+    }
+  }
+
+  .answer {
+    .left-side {
+      p {
+        font-size: 12px;
+        color: $light-gray;
+      }
+    }
+    .right-side {
+      position: relative;
+      top: -6px;
+      span {
+        font-size: 13px;
+        color: $black;
+      }
+      p {
+        font-size: 12px;
+        color: $light-gray;
+      }
+    }
+    .answer-reply {
+      a {
+        text-decoration: none;
+        font-size: 13px;
+        color: $black;
+      }
+    }
+  }
+
+  .more-questions {
+    a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
+}
+
+.reply-container {
+  border: 1px solid $ligher-gray;
+  padding: 10px;
+  border-radius: 10px;
+  .replied-comment {
+    .username {
+      color: $black;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+    .date {
+      color: $light-gray;
+      font-size: 12px;
+      font-weight: 100;
+      padding: 0 0 0 10px;
+    }
+    .reply-desc {
+      font-size: 12px;
+      color: $black;
+      line-height: 1.5;
+    }
+    .time-ago {
+      color: $light-gray;
+      font-size: 12px;
+      font-weight: 100;
+    }
+  }
+}
+
+.answer-button {
+  a {
+    font-size: 14px;
+  }
+}
+
+.answer-reply {
+  a {
+    font-size: 14px;
+  }
+}
+
+input {
+  border: 1px solid $ligher-gray;
+  border-radius: 25px;
+  padding: 5px 20px;
+  margin: 0 10px 0 0;
+  height: 20px;
+  width: 30%;
+  &::placeholder {
+    color: $black;
+  }
+}

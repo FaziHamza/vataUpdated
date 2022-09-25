@@ -1,0 +1,253 @@
+@import "../../../../styles.scss";
+::ng-deep {
+  mat-card.list-view.dark {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+  }
+}
+.main-img {
+  position: relative;
+  border: 1px solid $ligher-gray;
+  border-radius: 10px;
+  padding: 20px 10px;
+  img {
+    width: 100%;
+    height: 145px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    background-color: $white;
+    // border-radius: 10px;
+  }
+}
+
+.sub-img {
+  position: relative;
+  border: 1px solid $ligher-gray;
+  border-radius: 10px;
+  padding: 15px 8px;
+  img {
+    width: 100%;
+    object-fit: contain;
+    height: 60px;
+    display: block;
+    margin: auto;
+    background-color: $white;
+    // border-radius: 10px;
+  }
+}
+
+.rating-spec {
+  h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+  }
+  span {
+    font-size: 16px;
+    color: $light-gray;
+    &.checked {
+      color: $pink-dark;
+    }
+    &.number {
+      font-size: 13px;
+      color: $black;
+      font-weight: 500;
+    }
+  }
+  .specification {
+    p {
+      color: $dark-gray;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    span {
+      color: $black;
+      font-size: 15px;
+      float: right;
+      font-weight: 500;
+    }
+    .colors {
+      display: flex;
+      .color {
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        border-radius: 50px;
+        &.green {
+          background-color: $light-green;
+        }
+        &.dark-blue {
+          background-color: $blue;
+        }
+        &.red {
+          background-color: $red;
+        }
+      }
+    }
+  }
+}
+
+.top-action {
+  width: 100%;
+  padding: 0;
+  .img-icons {
+    background: $white;
+    display: flex;
+    justify-content: center;
+    padding: 2px 0;
+    .image {
+      width: 35px;
+      padding: 0 10px;
+    }
+  }
+  .time-content {
+    background: $white;
+    padding: 0px 2px;
+    p {
+      text-align: center;
+      line-height: 12px;
+      padding: 1px 0;
+      &.main {
+        font-size: 11px;
+        font-weight: 600;
+      }
+      &.text-muted {
+        font-size: 10px;
+        font-weight: 700;
+      }
+    }
+  }
+  .img-user {
+    background: $white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    img {
+      width: 90%;
+      padding-left: 1px;
+    }
+  }
+}
+
+.bid-price {
+  justify-content: flex-end;
+  p {
+    &.text {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 17px;
+    word-break: break-word;
+    color: $black;
+  }
+}
+
+.rating-text {
+  color: $black;
+}
+
+.subcategories-list-mobile {
+  .main-img {
+    position: relative;
+    border: 1px solid $ligher-gray;
+    border-radius: 10px;
+    padding: 0;
+    width: 95%;
+    img {
+      width: 100%;
+      object-fit: contain;
+      height: 60px;
+      display: block;
+      margin: auto;
+      background-color: $white;
+      border-radius: 10px;
+    }
+  }
+
+  .rating-spec {
+    h4 {
+      font-size: 16px;
+      font-weight: 500;
+      color: $black;
+    }
+    .rating {
+      span {
+        font-size: 12px;
+        color: $light-gray;
+        &.checked {
+          color: $pink-dark;
+        }
+        &.number {
+          font-size: 13px;
+          color: $dark-gray;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .bid-price {
+    p {
+      &.text {
+        font-size: 16px;
+      }
+      span {
+        font-weight: 700;
+        font-size: 12px;
+      }
+    }
+    h3 {
+      font-weight: 600;
+      font-size: 22px;
+    }
+  }
+
+  .top-action {
+    width: 100%;
+    padding: 0;
+    .img-icons {
+      background: $white;
+      display: flex;
+      justify-content: center;
+      .image {
+        width: 23px;
+        padding: 0 12px;
+      }
+    }
+    .time-content {
+      background: $white;
+      padding: 0px 2px;
+      p {
+        line-height: 22px;
+        padding: 1px 0;
+        &.main {
+          font-size: 12px;
+          font-weight: 700;
+        }
+        span {
+          &.text-muted {
+            font-size: 12px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .img-user {
+      background: $white;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      img {
+        width: 94%;
+        padding-left: 1px;
+      }
+    }
+  }
+}
+
+.mat-card {
+  background-color: $white;
+}

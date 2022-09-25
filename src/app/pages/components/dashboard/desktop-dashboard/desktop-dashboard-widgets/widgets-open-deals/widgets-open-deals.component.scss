@@ -1,0 +1,121 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-open-deals {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .deals {
+        position: relative;
+
+        .fields-scroll {
+            height: 82vh;
+            min-height: 82vh;
+            overflow-y: auto;
+
+            .deal-fields {
+                .product {
+                    .img-side {
+                        position: relative;
+                        img {
+                            width: 75px;
+                            height: 75px;
+                            object-fit: cover;
+                            object-position: center;
+                            border-radius: 15px;
+                        }
+
+                        .discount-off {
+                            position: absolute;
+                            right: 2px;
+                            top: 22px;
+                            p {
+                                color: $pink;
+                                font-size: 15px;
+                                border-radius: 10px;
+                                border: 1px dashed $pink;
+                                padding: 6px 11px;
+                            }
+                        }
+                    }
+
+                    .btns-side {
+                        padding-top: 32px;
+                        span {
+                            &.icon-add-btn {
+                                cursor: pointer;
+                                border-radius: 50px;
+                                border: 1px solid $ligher-gray;
+                                padding: 3px 3px;
+                                font-size: 18px;
+                                margin-right: 15px;
+                                &::before {
+                                    color: $dark-gray;
+                                }
+                            }
+                            &.icon-baseline-close-24px-1 {
+                                cursor: pointer;
+                                border-radius: 50px;
+                                border: 1px solid $ligher-gray;
+                                padding: 3px 3px;
+                                font-size: 18px;
+                                margin-right: 15px;
+                                &::before {
+                                    color: $dark-gray;
+                                }
+                            }
+                            &.edit-btn {
+                                cursor: pointer;
+                                border-radius: 50px;
+                                border: 1px solid $ligher-gray;
+                                padding: 3px 15px;
+                                font-size: 16px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+
+                .product-name {
+                    p {
+                        font-size: 16px;
+                        color: $black;
+                    }
+                }
+
+                .price {
+                    span {
+                        &.text {
+                            color: $dark-gray;
+                            font-size: 14px;
+                            padding-right: 10px;
+                        }
+                        &.number {
+                            color: $black;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

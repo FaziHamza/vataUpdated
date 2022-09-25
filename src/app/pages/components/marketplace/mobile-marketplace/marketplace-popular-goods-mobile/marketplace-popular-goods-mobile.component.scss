@@ -1,0 +1,79 @@
+@import '../../../../../../styles.scss';
+
+.chips-row {
+    background-color: $ligher-gray; 
+    padding: 15px 0;
+    h1 {
+        font-size: 35px;
+        color: $black;
+    }
+}
+
+.chip {
+    padding: 5px 13px;
+    background-color: $ligher-gray;
+    &.category {
+        background-color: $purple;
+        span {
+            color: $white;
+        }
+        .cross-btn {
+            color: $white;
+        }
+    }
+    span {
+        font-size: 13px;
+        font-weight: 500;
+        position: relative;
+        top: 3px;
+    }
+    .cross-btn {
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 22px;
+        padding: 0 0 0 5px;
+        float: right;
+    }
+}
+
+.clear-save {
+    .row-right {
+        justify-content: flex-end;
+    }
+    a {
+        text-decoration: none;
+        color: $black;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        &.clear {
+            color: $light-gray;
+        }
+        &.save {
+            color: $pink-dark !important;
+        }
+    }
+}
+
+.price-filter {
+    a {
+        text-decoration: none;
+        position: relative;
+        top: 10px;
+        &.filter {
+            background-color: $white;
+            border: 1px solid $light-gray;
+        }
+        &.dropdown {
+            background-color: $pink-dark;
+            color: $white !important;
+        }
+    }
+    img {
+        &.filter {
+            width: 20px;
+            height: auto;
+        }
+    }
+}

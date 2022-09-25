@@ -1,0 +1,480 @@
+@import '../../../../../styles.scss';
+
+.mobile-book-product {
+
+    .seller-info {
+
+        .seller-profile-heading {
+            h6 {
+                font-size: 25px;
+                font-weight: 600;
+                color: $black;
+            }
+        }
+
+        .location-rating {
+            p {
+                &.location {
+                    span {
+                        &.icon-location1 {
+                            font-size: 24px;
+                            position: relative;
+                            left: -5px;
+                        }
+                        &.text {
+                            font-size: 17px;
+                            color: $black;
+                            position: relative;
+                            top: -5px;
+                        }
+                    }
+                }
+            }
+
+            p{
+                &.rating-chip {
+                    span {
+                        &.icon-Subtraction-9 {
+                            font-size: 21px;
+                            padding: 0 15px 0 0px;
+                            border-right: 1px solid $light-gray;
+                        }
+                    }
+                    span {
+                        &.profile {
+                            font-size: 13px;
+                            font-weight: 100;
+                            color: $white;
+                            background-color: #2cda4d;
+                            padding: 1px 6px;
+                            border: 1px solid #2cda4d;
+                            border-radius: 50px;
+                            position: relative;
+                            top: -3px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .favourite-rating {
+            .star-rating {
+                span {
+                    &.start-text {
+                        font-size: 13px;
+                        color: $dark-gray;
+                    }
+                }
+            }
+
+            .favourite {
+                p {
+                    span {
+                        &.icon-like {
+                            font-size: 16px;
+                        }
+                        &.like-text {
+                            font-size: 15px;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-img {
+            img {
+                width: 100%;
+                height: 45vh;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 9px;
+            }
+        }
+
+        .info-shop-row {
+            span {
+                font-size: 16px;
+                line-height: 1.7;
+                color: $black;
+            }
+        }
+
+        .location-row {
+            img {
+                &.map {
+                    width: 100%;
+                    height: 200px;
+                    border-radius: 9px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            p {
+                font-size: 16px;
+                &.silver-text {
+                    color: $dark-gray;
+                }
+                span {
+                    &.black-text {
+                        color: $black;
+                    }
+                }
+            }
+            span {
+                .direction-btn {
+                    font-size: 19px;
+                }
+            }
+        }
+
+        .workers-img-section {
+            background-color: $ligher-gray;
+            border-radius: 9px;
+            border: 1px dashed $light-gray;
+            img {
+                width: 70px;
+                height: auto;
+                border-radius: 8px;
+            }
+            p {
+                text-align: center;
+                color: $black;
+                font-size: 14px;
+            }
+        }
+
+        
+        .shop-timing {
+            border-radius: 9px;
+            border: 1px dashed $light-gray;
+
+            .date-time {
+                span {
+                    font-size: 16px;
+                    &.silver-text {
+                        color: $dark-gray;
+                    }
+                    &.black-text {
+                        color: $black;
+                    }
+                    &.pink-text {
+                        color: $pink;
+                    }
+                }
+            }
+
+            .social-favourite {
+                p {
+                    font-size: 16px;
+                    color: $black;
+                    font-weight: 100;
+                    span {
+                        &.icon-share-1 {
+                            font-size: 16px;
+                        }
+                        &.icon-like {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .book-visit {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 25px;
+                    color: $black;
+                }
+            }
+        }
+
+        .book-appointment {
+            .heading-dropdown-row {
+                .left {
+                    p {
+                        &.heading {
+                            font-size: 20px;
+                            color: $dark-gray;
+                        }
+                    }
+                }
+                .right {
+                    span {
+                        &.icon-baseline-keyboard_arrow_down-24px-1 {
+                            font-size: 25px;
+                            font-weight: 600;
+                            position: relative;
+                            top: -1px;
+                        }
+                    }
+                    ::before {
+                        color: $dark-gray;
+                    }
+                }
+            }
+
+            .booking-fields {
+                border: 1px solid $light-gray;
+                border-radius: 6px;
+                .heading {
+                    h6 {
+                        color: $black;
+                        font-size: 16px;
+                        font-weight: 100;
+                    }
+                    span {
+                        &.star-text {
+                            font-size: 13px;
+                            color: $dark-gray;
+                        }
+                    }
+                }
+
+                .details {
+                    p {
+                        font-size: 15px;
+                        line-height: 1.6;
+                        color: $black;
+                    }
+                }
+
+                .time-book-btn {
+                    .time-price {
+                        p {
+                            &.wrapper {
+                                position: relative;
+                                top: 12px;
+                                span {
+                                    &.time {
+                                        color: $dark-gray;
+                                        font-size: 18px;
+                                    }
+                                    &.text {
+                                        color: $black;
+                                        font-size: 22px;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .our-works {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 28px;
+                    color: $black;
+                }
+            }
+        }
+
+        .works-imgs {
+            .work {
+                position: relative;
+            }
+
+            img {
+                width: 100%;
+                height: 250px;
+                border-radius: 10px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .like-chip {
+                background: #ccccccbf;
+                border: 1px solid #ccccccbf;
+                border-radius: 25px;
+                padding: 5px 10px;
+                width: 45px;
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                span {
+                    &.heart {
+                        &.active {
+                            &::before {
+                                color: $pink-dark;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cutomer-reviews {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 23px;
+                    color: $black;
+                }
+            }
+        }
+
+        .dropdown-btn {
+            span {
+                &.icon-baseline-keyboard_arrow_down-24px-1 {
+                    font-size: 26px;
+                    font-weight: 600;
+                    position: relative;
+                    top: 1px;
+                    padding: 1px;
+                    border-radius: 50px;
+                    border: 1px solid $dark-gray;
+                }
+            }
+            ::before {
+                color: $dark-gray;
+            }
+        }
+
+        .review-fields {
+            .heading {
+                h6 {
+                    color: $black;
+                    font-size: 16px;
+                    font-weight: 100;
+                }
+            }
+
+            .left {
+                span {
+                    &.name-date {
+                        font-size: 13px;
+                        color: $dark-gray;
+                    }
+                }
+            }
+
+            .details {
+                p {
+                    font-size: 15px;
+                    line-height: 1.6;
+                    color: $black;
+                }
+            }
+
+            .review-imgs {
+                img {
+                    width: 100px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+
+    .similar-this {
+        .heading-bar {
+            h3 {
+                &.heading {
+                    font-size: 23px;
+                    color: $black;
+                }
+            }
+        }
+
+        .similar-cards {
+            .card-body {
+                border-radius: 9px;
+                position: relative;
+                .image-sec {
+                    position: relative;
+                }
+                .time-bids {
+                    position: absolute;
+                    width: 100%;
+                    bottom: 15px;
+                    .time-content {
+                        width: 100%;
+                        background: #ffffffbd;
+                        p {
+                            line-height: 13px;
+                            padding: 1px 0;
+                            &.main {
+                                font-size: 10px;
+                                font-weight: 600;
+                                span {
+                                    float: right;
+                                }
+                            }
+                            &.text-muted {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+                .top-action {
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+                    padding: 0 0;
+                    .img-icons {
+                        background: #ffffffbd;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 0;
+                        .image {
+                            width: 40px;
+                            padding: 0 10px;
+                        }
+                    }
+                    
+                    .img-user {
+                        background: #ffffffbd;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        float: right;
+                        img {
+                            width: 23px;
+                            padding: 3px 4px;
+                        }
+                    }
+                }
+                .main-img {
+                    width: 101%;
+                    object-fit: cover;
+                    height: 170px;
+                    border-radius: 10px 10px 0 0;
+                    margin: -1px 0 0 -1px;
+                }
+                h5 {
+                    font-size: 15px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                }
+                p {
+                    &.text {
+                        font-size: 12px;
+                    }
+                }
+                h3 {
+                    font-weight: 600;
+                    font-size: 15px;
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .mat-button-wrapper {
+        font-size: 17px;
+    }
+}

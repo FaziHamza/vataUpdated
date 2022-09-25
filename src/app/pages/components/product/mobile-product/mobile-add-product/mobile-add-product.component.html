@@ -1,0 +1,839 @@
+<mobile-header></mobile-header>
+
+<div class="mobile-add-product">
+
+    <div *ngIf="tab != 'booking'" class="top">
+        <div class="heading py-4">
+            <div class="container">
+    
+                <div fxLayout="row">
+                    <h3>Add Product</h3>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="top-imgs">
+            <div class="container">
+    
+                <div fxLayout="row">
+                    <img class="mr-2" src="../../../../../../assets/img/private-12.png">
+                    <img class="mr-2" src="../../../../../../assets/img/private-11.png">
+                    <img class="mr-2" src="../../../../../../assets/img/private-12.png">
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="drag-img">
+            <div class="container">
+    
+                <div fxLayout="row" class="py-4 border-bottom">
+                    <label for="file-input">
+                        <span class="icon-baseline-filter_hdr-24px"></span>
+                        <span class="text pl-3">Upload Video / Photo</span>
+                    </label>
+
+                    <input id="file-input" type="file" />
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="btns py-5">
+        <div class="container">
+
+            <div fxLayout="row">
+                <div fxFlex="36%">
+                    <a [ngClass]="{active: tab == 'marketplace'}" (click)="changeTab('marketplace')">Marketplace</a>
+                </div>
+                <div fxFlex="36%">
+                    <a class="ml-3" [ngClass]="{active: tab == 'booking'}" (click)="changeTab('booking')">Booking</a>
+                </div>
+                <div fxFlex="28%">
+                    <a [ngClass]="{active: tab == 'deals'}" (click)="changeTab('deals')">Deals</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="text-field">
+        <div class="container">
+
+            <div fxLayout="row">
+                <form class="w-100">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                </form>
+            </div>
+
+            <div fxLayout="row">
+                <form class="w-100">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Category</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                </form>
+            </div>
+
+            <div fxLayout="row">
+                <form class="w-100">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Condition</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                </form>
+            </div>
+
+            <div fxLayout="row" class="pb-4 border-bottom">
+                <form class="w-100">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Description</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="bidding-toggle">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-5 border-bottom pb-3">
+                <div fxFlex="70%">
+                    <h2>Bidding</h2>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="py-3 border-bottom">
+                <div fxFlex="70%">
+                    <span>Starting Bid</span>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <span class="right-text">$32</span>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="py-3 border-bottom">
+                <div fxFlex="70%">
+                    <span>Bidding Price</span>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <span class="right-text">$750</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="fixed-price-toggle">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-5 border-bottom pb-3">
+                <div fxFlex="70%">
+                    <h2>Fixed Price</h2>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="py-3 border-bottom">
+                <div fxFlex="70%">
+                    <span>Price</span>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <span class="right-text">$580</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab == 'marketplace'" class="ask-change-toggle">
+        <div class="container border-bottom">
+
+            <div fxLayout="row" class="pt-5">
+                <div fxFlex="70%">
+                    <h2>Ask for Change</h2>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>Make Offer</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>On Stock Item</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>Contact in Messenger</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3 pb-4">
+                <div fxFlex="70%">
+                    <h4>Make Offers</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- deals tab things only  -->
+    <div *ngIf="tab == 'deals'" class="deals-tab">
+
+        <div class="available">
+            <div class="container">
+    
+                <div fxLayout="row" class="pt-4 border-top">
+                    <mat-radio-button>Now</mat-radio-button>
+                </div>
+
+                <div fxLayout="row" class="pt-3">
+                    <mat-radio-button>Individual</mat-radio-button>
+                </div>
+    
+            </div>
+        </div>
+
+        <div class="text-field">
+            <div class="container">
+    
+                <div fxLayout="row">
+                    <form class="w-100 pt-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>End Date</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div fxLayout="row">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>End Time</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div fxLayout="row">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Discount</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div fxLayout="row">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Promo Code</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+    
+                <div fxLayout="row">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Fixed Price</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+
+        <div class="deals-toggle-bar">
+
+            <div class="container border-bottom">
+                <div fxLayout="row" class="pt-4">
+                    <div fxFlex="70%">
+                        <h3>Contact in Messenger</h3>
+                    </div>
+                    <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle></mat-slide-toggle>
+                    </div>
+                </div>
+    
+                <div fxLayout="row" class="pt-3 pb-4">
+                    <div fxFlex="70%">
+                        <h3>Contact in Ask Question</h3>
+                    </div>
+                    <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle></mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- booking tab things only -->
+    <div *ngIf="tab == 'booking'" class="booking-tab">
+
+        <div class="inputs-booking">
+            <div class="container">
+
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Service Name</mat-label>
+                        <mat-select>
+                            <mat-option>Service 1</mat-option>
+                            <mat-option>Service A</mat-option>
+                            <mat-option>Service 2</mat-option>
+                            <mat-option>Service B</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Service in Category</mat-label>
+                        <mat-select>
+                            <mat-option>Category 1</mat-option>
+                            <mat-option>Category A</mat-option>
+                            <mat-option>Category 2</mat-option>
+                            <mat-option>Category B</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" class="heading-form-field pt-2">
+                    <span>Duration</span>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="47%" class="mr-2">
+                        <mat-form-field class="w-100">
+                            <mat-label>Duration Hours</mat-label>
+                            <mat-select>
+                                <mat-option>Hours 10</mat-option>
+                                <mat-option>Hours 20</mat-option>
+                                <mat-option>Hours 40</mat-option>
+                                <mat-option>Hours 60</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="47%" class="ml-2">
+                        <mat-form-field class="w-100">
+                            <mat-label>Duration Mins</mat-label>
+                            <mat-select>
+                                <mat-option>Mins 10</mat-option>
+                                <mat-option>Mins 20</mat-option>
+                                <mat-option>Mins 40</mat-option>
+                                <mat-option>Mins 60</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Price</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div class="members border-bottom">
+            
+                    <div fxLayout="row" class="pt-3 border-bottom pb-3">
+        
+                        <div fxFlex="30%" class="heading left-sec">
+                            <h2>Shipping</h2>
+                        </div>
+
+                        <div fxFlex="70%" class="right-sec text-right">
+                            <div class="row">
+        
+                                <div fxFlex="85%">
+                                    <a href="#">Select All</a>
+                                </div>
+        
+                                <div fxFlex="15%">
+                                    <mat-checkbox></mat-checkbox>
+                                </div>
+        
+                            </div>
+                            
+                        </div>
+
+                    </div>
+        
+                    <div fxLayout="row" class="pt-4 border-bottom pb-2">
+
+                        <div fxFlex="70%" class="left-img-sec">
+                            <div class="row">
+                                <div fxFlex="20%">
+                                    <img src="../../../../../../assets/img/add-photo.png">
+                                </div>
+        
+                                <div fxFlex="80%">
+                                    <h6 class="text pl-2">Anntory Morris</h6>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div fxFlex="30%" class="text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="pt-4 border-bottom pb-2">
+
+                        <div fxFlex="70%" class="left-img-sec">
+                            <div class="row">
+                                <div fxFlex="20%">
+                                    <img src="../../../../../../assets/img/add-photo.png">
+                                </div>
+        
+                                <div fxFlex="80%">
+                                    <h6 class="text pl-2">Bella Morots</h6>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div fxFlex="30%" class="text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="pt-4 border-bottom pb-2">
+
+                        <div fxFlex="70%" class="left-img-sec">
+                            <div class="row">
+                                <div fxFlex="20%">
+                                    <img src="../../../../../../assets/img/add-photo.png">
+                                </div>
+        
+                                <div fxFlex="80%">
+                                    <h6 class="text pl-2">Chris Zex</h6>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div fxFlex="30%" class="text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="pt-4 pb-2">
+
+                        <div fxFlex="70%" class="left-img-sec">
+                            <div class="row">
+                                <div fxFlex="20%">
+                                    <img src="../../../../../../assets/img/add-photo.png">
+                                </div>
+        
+                                <div fxFlex="80%">
+                                    <h6 class="text pl-2">Mawell Honzy</h6>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div fxFlex="30%" class="text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div fxLayout="row" class="pt-3">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Service Descrition</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div fxLayout="row" class="pt-3">
+                    <form class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Note for Client</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div class="advanced-toggle-inputs">
+
+                    <div fxLayout="row" class="pt-5 pb-3 border-bottom">
+                        <div fxFlex="70%" class="heading">
+                            <h2>Advanced options</h2>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                            <mat-slide-toggle></mat-slide-toggle>
+                        </div>
+                    </div>
+    
+                    <!-- padding-time input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-5">
+                        <span>Padding Time</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <div fxFlex="47%" class="mr-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Hours</mat-label>
+                                <mat-select>
+                                    <mat-option>Before</mat-option>
+                                    <mat-option>After</mat-option>
+                                    <mat-option>Tomorrow</mat-option>
+                                    <mat-option>Yesterday</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+    
+                        <div fxFlex="47%" class="ml-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Mins</mat-label>
+                                <mat-select>
+                                    <mat-option>10 Mins</mat-option>
+                                    <mat-option>20 Mins</mat-option>
+                                    <mat-option>40 Mins</mat-option>
+                                    <mat-option>60 Mins</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- padding-time input dropdowns end -->
+    
+                    <!-- processing-time input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-2">
+                        <span>Processing Time</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <div fxFlex="47%" class="mr-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Hours</mat-label>
+                                <mat-select>
+                                    <mat-option>10 Hours</mat-option>
+                                    <mat-option>20 Hours</mat-option>
+                                    <mat-option>40 Hours</mat-option>
+                                    <mat-option>60 Hours</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+    
+                        <div fxFlex="47%" class="ml-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Mins</mat-label>
+                                <mat-select>
+                                    <mat-option>10 Mins</mat-option>
+                                    <mat-option>20 Mins</mat-option>
+                                    <mat-option>40 Mins</mat-option>
+                                    <mat-option>60 Mins</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- processing-time input dropdowns end -->
+    
+                    <!-- interval input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-2">
+                        <span>Interval</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <div fxFlex="47%" class="mr-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Hours</mat-label>
+                                <mat-select>
+                                    <mat-option>10 Hours</mat-option>
+                                    <mat-option>20 Hours</mat-option>
+                                    <mat-option>40 Hours</mat-option>
+                                    <mat-option>60 Hours</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+    
+                        <div fxFlex="47%" class="ml-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Mins</mat-label>
+                                <mat-select>
+                                    <mat-option>10 Mins</mat-option>
+                                    <mat-option>20 Mins</mat-option>
+                                    <mat-option>40 Mins</mat-option>
+                                    <mat-option>60 Mins</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- interval input dropdowns end -->
+    
+                    <!-- parallel-clients input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-2">
+                        <span>Parallel Clients</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <mat-form-field class="w-100">
+                            <mat-label>Parallel Clients</mat-label>
+                            <mat-select>
+                                <mat-option>Yes</mat-option>
+                                <mat-option>No</mat-option>
+                                <mat-option>Next Time</mat-option>
+                                <mat-option>Not Available</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- parallel-clients input dropdowns end -->
+    
+                    <!-- processing-time-after input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-2">
+                        <span>Processing Time After</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <div fxFlex="47%" class="mr-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Hours</mat-label>
+                                <mat-select>
+                                    <mat-option>Hours 10</mat-option>
+                                    <mat-option>Hours 20</mat-option>
+                                    <mat-option>Hours 40</mat-option>
+                                    <mat-option>Hours 60</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+    
+                        <div fxFlex="47%" class="ml-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Duration Mins</mat-label>
+                                <mat-select>
+                                    <mat-option>Mins 10</mat-option>
+                                    <mat-option>Mins 20</mat-option>
+                                    <mat-option>Mins 40</mat-option>
+                                    <mat-option>Mins 60</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- processing-time-after input dropdowns end -->
+    
+                    <!-- tax-rate input dropdowns start -->
+                    <div fxLayout="row" class="heading-form-field pt-2">
+                        <span>Tax Rate</span>
+                    </div>
+    
+                    <div fxLayout="row">
+                        <mat-form-field class="w-100">
+                            <mat-label>Tax Rate</mat-label>
+                            <mat-select>
+                                <mat-option>15.00 %</mat-option>
+                                <mat-option>25.00 %</mat-option>
+                                <mat-option>35.00 %</mat-option>
+                                <mat-option>45.00 %</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- tax-rate input dropdowns end -->
+
+                </div>
+
+                <div fxLayout="row" class="pt-4">
+                    <a mat-button class="pink-b rounded-bt w-100 d-block p-3">Create an Booking</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="shipping-toggle">
+        <div class="container border-bottom">
+
+            <div fxLayout="row" class="pt-5 border-bottom pb-3">
+
+                <div fxFlex="40%">
+                    <h2>Shipping</h2>
+                </div>
+
+                <div fxFlex="60%" class="text-right">
+
+                   <div class="row">
+
+                        <div fxFlex="70%">
+                            <span class="right-text">Free Shipping</span> 
+                        </div>
+
+                        <div fxFlex="30%">
+                            <mat-slide-toggle></mat-slide-toggle>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-4 pb-3">
+                <div class="shipping-price">
+                    <span>Shipping Price</span>
+                    <p class="pt-3"><span class="right-text">$32</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="delivery-time">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-5">
+                <h2 class="heading">Delivery Time</h2>
+            </div>
+
+            <div fxLayout="row" class="pt-4">
+                <div class="chips-days">
+                    <a class="mr-2">1 Day</a>
+                    <a class="mr-2">5 Days</a>
+                    <a class="mr-2">5 Weeks</a>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pb-3 pt-2 border-bottom">
+                <form class="w-100">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Put Delivery Time Manually</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="payment">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-5">
+                <h2 class="heading">Payment</h2>
+            </div>
+
+            <div fxLayout="row" class="payments-icon py-3 border-bottom">
+                <span class="icon-Group-1295 mr-3 icon-xs"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
+                <span class="icon-Card-networks-MC-Horizontal mr-3 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+                <span class="icon-Visa mr-4"></span>
+                <span class="icon-PayPal-FullColor-Horizontal mr-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+                <span class="icon-Group-1296 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="marketing-toggle">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-5">
+                <h2>Marketing</h2>
+            </div>
+
+            <div fxLayout="row" class="pt-4">
+                <div fxFlex="70%">
+                    <h4>Push on Home ($5)</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>Push on Searching List ($10)</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>Push on Marketplace ($15)</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="pt-3">
+                <div fxFlex="70%">
+                    <h4>Push on Near by Me ($25)</h4>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="total-amount">
+        <div class="container">
+
+            <div fxLayout="row" class="pt-4">
+                <div fxFlex="70%">
+                    <h1 class="left-text">Total:</h1>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                   <span class="pink-text right-text">$1000</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="tab != 'booking'" class="create-btn">
+        <div class="container">
+            <div fxLayout="row" class="pt-4">
+                <a mat-button class="pink-b rounded-bt w-100 d-block">Create an Product</a>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+

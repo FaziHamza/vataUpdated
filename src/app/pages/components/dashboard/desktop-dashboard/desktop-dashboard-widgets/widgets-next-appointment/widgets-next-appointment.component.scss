@@ -1,0 +1,78 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-next-appointment {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .next-appointments {
+        .appointment-bar {
+            p {
+                &.heading {
+                    color: $black;
+                    font-size: 15px;
+                }
+            }
+
+            .detail {
+                .left-side {
+                    .user-rating {
+                        span {
+                            &.user {
+                                color: $dark-gray;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    
+                    .date-time {
+                        span {
+                            &.date {
+                                color: $dark-gray;
+                                font-size: 13px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+        
+                .right-side {
+                    span {
+                        &.icon-baseline-close-24px-1 {
+                            font-size: 22px;
+                            position: relative;
+                            top: 5px;
+                            cursor: pointer;
+                            &::before {
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

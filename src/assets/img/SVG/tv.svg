@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 23.934 23.934">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #373a8a;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_hardware_tv_24px" data-name="icon/hardware/tv_24px" class="cls-1" d="M14.959,17.951H6.981V15.956H1.994A2,2,0,0,1,0,13.962V1.994A2,2,0,0,1,1.994,0H19.945a2,2,0,0,1,1.994,1.994l-.01,11.968a1.992,1.992,0,0,1-1.984,1.994H14.959V17.95ZM1.994,1.994V13.962H19.945V1.994Z" transform="translate(0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="23.934" height="23.934"/>
+    </clipPath>
+  </defs>
+  <g id="tv" transform="translate(-1381.027 -191)">
+    <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="23.934" height="23.934" transform="translate(1381.027 191)"/>
+    <path id="icon_hardware_tv_24px-2" data-name="icon/hardware/tv_24px" class="cls-1" d="M14.959,17.951H6.981V15.956H1.994A2,2,0,0,1,0,13.962V1.994A2,2,0,0,1,1.994,0H19.945a2,2,0,0,1,1.994,1.994l-.01,11.968a1.992,1.992,0,0,1-1.984,1.994H14.959V17.95ZM1.994,1.994V13.962H19.945V1.994Z" transform="translate(1382.025 193.992)"/>
+    <g id="Group_170" data-name="Group 170" class="cls-4" transform="translate(1382.025 193.992)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-0.997 -2.992)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="23.934" height="23.934"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="23.934" height="23.934"/>
+      </g>
+    </g>
+  </g>
+</svg>

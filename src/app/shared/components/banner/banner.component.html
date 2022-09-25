@@ -1,0 +1,70 @@
+<ng-container *ngIf="appSize.getIsMobileResolution(); else desktop">
+    <div class="container after-header">
+        <div fxLayout="row" class="pt-4 w-100">
+            <h4 class="pink-text">03</h4>
+            <p>New Fashion</p>
+        </div>
+        <div fxLayout="row" class="pt-3 w-100">
+            <h3>2019 Fashion for Fashion</h3>
+        </div>
+        <div fxLayout="row" class="pt-3 w-100">
+            <span class="sub-title">It is a long established fact that a reader will be distracted by the readable content of a page & readable.</span>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="pt-4 w-100">
+        <div class="shoes">
+            <img src="../../../assets/img/SVG-hp/shoes1.png">
+            <a mat-button class="btn m-0 bg-dark py-2 text-white">Previous</a>
+            <a mat-button class="btn m-0 bg-white py-2 pink-text">Next</a>
+        </div>
+    </div>
+</ng-container>
+<ng-template #desktop>
+  <div class="container-fluid main-size">
+    <div class="favorites-left clearfix">
+      <div class="intro-top">
+        <h2>02</h2>
+        <h3>New Style always with you</h3>
+        <h4>Your Favorites Always With You</h4>
+        <p>
+          Stayinfun was established with a clear vision: to provide the very
+          latest in compelling designs for the fashionably hip along with
+          providing exceptional value, quality, and superb customer service.
+        </p>
+      </div>
+      <div class="intro-bottom clearfix">
+        <div class="intro-smal-info">
+          <h2>Thrends</h2>
+          <p>Stayinfun was established with a clear vision:</p>
+        </div>
+        <div class="intro-smal-info">
+          <h2>Fashion</h2>
+          <p>The very latest in compelling designs for the fashionably</p>
+        </div>
+        <div class="intro-smal-info">
+          <h2>Famous</h2>
+          <p>Along with providing exceptional value,</p>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="button-pink">Shop Now</a>
+    </div>
+    <div class="favorites-right clearfix">
+      <div class="banner-left">
+        <img src="/assets/img/front-img/home/banner1.png" />
+        <div class="prev-next-container clearfix">
+          <a href="javascript:void(0)">Previous</a>
+          <a href="javascript:void(0)">Next</a>
+        </div>
+      </div>
+      <div class="banner-right">
+        <div class="banner-info">
+          <h2>03</h2>
+          <h3>New Fashion</h3>
+          <h4>2019 Fashion for Fashion</h4>
+        </div>
+        <img src="/assets/img/front-img/home/banner2.png" />
+      </div>
+    </div>
+  </div>
+</ng-template>

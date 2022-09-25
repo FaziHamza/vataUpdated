@@ -1,0 +1,14 @@
+<div *ngIf="!appSize.getIsMobileResolution()">
+    <app-old-layout-header></app-old-layout-header>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()">
+    <mobile-header></mobile-header>
+    <app-mid-bar></app-mid-bar>
+</div>
+
+<router-outlet></router-outlet>
+
+<div *ngIf="!appSize.getIsMobileResolution()">
+    <app-layout-footer></app-layout-footer>
+</div>

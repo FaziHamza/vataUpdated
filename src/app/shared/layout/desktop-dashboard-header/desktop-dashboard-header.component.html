@@ -1,0 +1,90 @@
+<div class="desktop-dashboard-header">
+  <div class="container">
+    <div fxLayout="row" class="header-bar">
+      <ul>
+        <li>
+          <a class="logo" href="#"
+            ><img src="../../../../assets/img/logo.png"
+          /></a>
+        </li>
+        <li routerLink="/dashboard/main" routerLinkActive="active">
+          <a
+            ><span class="icon-dashboad-1 img-icon"></span>
+            <span class="field-heading">Dashboard</span></a
+          >
+        </li>
+        <li routerLink="/dashboard/dashboard-booking" routerLinkActive="active">
+          <a
+            ><span class="icon-booking img-icon"></span>
+            <span class="field-heading">Booking</span></a
+          >
+        </li>
+        <li routerLink="/dashboard/dashboard-profile" routerLinkActive="active">
+          <a
+            ><span class="icon-basket1 img-icon"></span>
+            <span class="field-heading">Marketplace</span></a
+          >
+        </li>
+        <li routerLink="/dashboard/dashboard-setting" routerLinkActive="active">
+          <a
+            ><span class="icon-menu-1 img-icon"></span>
+            <span class="field-heading">Settings</span></a
+          >
+        </li>
+        <li
+          routerLink="/dashboard/dashboard-help-center"
+          routerLinkActive="active"
+        >
+          <a
+            ><span class="icon-paring-passive3 img-icon"></span>
+            <span class="field-heading">Help</span></a
+          >
+        </li>
+        <li [matMenuTriggerFor]="menu">
+          <a class="user"
+            ><img [src]="profile_pic" />
+            <div class="online"></div
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <div class="tab-links-cont">
+    <ul>
+      <li mat-menu-item routerLink="/home" routerLinkActive="active">
+        <a routerLink="/home">
+          Home
+        </a>
+      </li>
+      <li (click)="basketDialog()" mat-menu-item routerLinkActive="active">
+        <a>
+          Basket
+        </a>
+      </li>
+      <li mat-menu-item routerLinkActive="active">
+        <a>
+          Dashboard
+        </a>
+      </li>
+      <li routerLink="/dashboard/main" mat-menu-item routerLinkActive="active">
+        <a>
+          Public Profile
+        </a>
+      </li>
+      <li mat-menu-item routerLinkActive="active">
+        <a>
+          Messenger
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button
+    (click)="onSignOut()"
+    class="btn pink-b py-2 rounded-bt d-block signout-btn"
+  >
+    Sign Out
+  </button>
+</mat-menu>

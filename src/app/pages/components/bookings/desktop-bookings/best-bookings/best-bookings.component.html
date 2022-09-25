@@ -1,0 +1,17 @@
+<section class="popular-goods container-fluid main-size pink-dots">
+    <div class="left-icon pink"></div>
+    <div class="popular-goods-top mb-5 clearfix">
+      <div class="section-title-cont float-left clearfix">
+        <h2 class="section-title m-0">Best Bookings</h2>
+      </div>
+    </div>
+    <section id="demos" class="mb-5">
+      <div class="row">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+      <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookings; let i = index" [booking]="bestBooking">
+      </app-booking-card>
+    </ngx-slick-carousel>
+      </div>
+    </section>
+  </section>
+  

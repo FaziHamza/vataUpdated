@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="first-point-active" transform="translate(-36 -167)">
+    <circle id="Ellipse_62" data-name="Ellipse 62" class="cls-1" cx="30" cy="30" r="30" transform="translate(36 167)"/>
+  </g>
+</svg>

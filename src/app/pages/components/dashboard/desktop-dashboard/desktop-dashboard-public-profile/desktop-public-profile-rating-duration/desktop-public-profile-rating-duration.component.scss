@@ -1,0 +1,65 @@
+@import '../../../../../../../styles.scss';
+
+.rating-duration {
+    .duration-time-tabs {
+        ul {
+            display: flex;
+            list-style: none;
+            margin-bottom: 0px;
+            li {
+                cursor: pointer;
+                padding: 5px 10px 10px 10px;
+                // padding: 0 30px 0 0px;
+                &.active {
+                    border-bottom: 3px solid $pink;
+                }
+                p {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .ratings {
+        .star-rating {
+            h6 {
+                &.heading {
+                    color: $black;
+                    font-size: 38px;
+                    font-weight: 600;
+                    padding-bottom: 15px;
+                }
+            }
+
+            p {
+                margin-top: 10px;
+                &.chip-rating {
+                    font-size: 12px;
+                    color: $white;
+                    border: 1px solid $light-green;
+                    background: $light-green;
+                    padding: 6px 10px;
+                    width: 40px;
+                    border-radius: 50px;
+                    margin: auto;
+                }
+                &.text {
+                    color: $black;
+                    font-size: 14px;
+                }
+                &.number-rating {
+                    color: $dark-gray;
+                    font-size: 12px;
+                }
+            }
+
+            .star {
+                height: 30px;
+                position: relative;
+                left: 22%;
+                top: 7%;
+            }
+        }
+    }
+}

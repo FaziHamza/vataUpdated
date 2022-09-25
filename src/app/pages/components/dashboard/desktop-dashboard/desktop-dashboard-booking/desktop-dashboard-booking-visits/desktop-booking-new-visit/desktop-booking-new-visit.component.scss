@@ -1,0 +1,105 @@
+@import '../../../../../../../../styles.scss';
+
+.dashboard-booking-new-visit {
+    background: $ligher-gray;
+
+    .links {
+        span {
+            color: $black;
+            font-size: 12px;
+        }
+    }
+
+    .header-bar {
+        .heading {
+            h6 {
+                color: $black;
+                font-size: 24px;
+                padding-top: 3px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .details {
+        .left-side {
+            border-radius: 10px;
+            background: $white;
+
+            .client {
+                .client-img {
+                    img {
+                        border-radius: 50px;
+                        width: 50px;
+                        height: auto;
+                        object-fit: cover;
+                        object-position: center;
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+        
+                .input-toggle {
+                    position: relative;
+                    .toggle {
+                        position: absolute;
+                        top: -6px;
+                        right: 0;
+                        span {
+                            color: $black;
+                            font-size: 13px;
+                            padding-right: 20px;
+                            position: relative;
+                            top: -3px;
+                        }
+                    }
+                }
+
+                .executed {
+                    .client-img {
+                        img {
+                            border-radius: 50px;
+                            width: 50px;
+                            height: auto;
+                            object-fit: cover;
+                            object-position: center;
+                            position: relative;
+                            top: -2px;
+                        }
+                    }
+                }
+            }
+
+            .new-client-btn {
+                a {
+                    color: $pink;
+                    font-size: 14px;
+                    span {
+                        &.icon-add-button-inside-black-circle-1 {
+                            font-size: 13px;
+                            padding-right: 11px;                  
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-side {
+            border-radius: 10px;
+            background: $white;
+
+            .text-area {
+                position: relative;
+                span {
+                    &.words {
+                        position: absolute;
+                        right: 0;
+                        font-size: 12px;
+                        color: $dark-gray;
+                        bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

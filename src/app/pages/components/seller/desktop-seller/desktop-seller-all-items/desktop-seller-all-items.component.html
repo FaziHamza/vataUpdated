@@ -1,0 +1,190 @@
+<div class="desktop-seller-all-items" *ngIf="shopInfo">
+
+    <div class="slider">
+    </div>
+
+    <div class="container cards">
+        <div fxLayout="row" class="slider-card">
+
+            <div fxFlex="21%" class="seller-profile mr-2">
+                <div fxLayout="row">
+                    <div fxFlex="80%">
+                        <h6>{{shopInfo.user_shop_name}}</h6>
+                    </div>
+                </div>
+                <div fxLayout="row" class="rating-row pt-1">
+                    <span class="icon-Subtraction-7 pr-3 border-right"></span> <p class="profile-rating mx-3">{{shopInfo.overall_rating_percentage}}%</p>
+                </div>
+                <div class="detail-row pt-2">
+                    <p class="text">{{shopInfo.marketplace_total_items_sold}} items sold</p>
+                    <p class="text py-2">Member since {{shopInfo.membership_since}}</p>
+                    <span class="icon-location1"></span> <span class="location-text pl-1">{{shopInfo.seller_address}}</span>
+                </div>
+            </div>
+
+            <div fxFlex="13%" class="review-rating text-center mx-2" *ngIf="type == 'booking'">
+                <h5 class="heading">{{shopInfo.booking_rating_data.avg_rating | number : '1.1-1'}}</h5>
+                <div fxLayout="row" class="rating py-2">
+                    <app-star-rating [maxScore]="5" [score]="shopInfo.booking_rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                </div>
+                <p class="py-1">Average Review</p>
+                <span>{{shopInfo.booking_rating_data.total_reviews}} Ratings</span>
+            </div>
+
+            <div fxFlex="22%" class="star-rating mx-2" *ngIf="type == 'booking'">
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Service as described</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.booking_rating_data.avg_service_rating" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Communication</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.booking_rating_data.avg_comm" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Shipping Time</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.booking_rating_data.avg_quan" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Average Rating</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.booking_rating_data.avg_rating" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+            </div>
+    
+            <div fxFlex="44%" class="bar-rating ml-2" *ngIf="type == 'booking'">
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="1" times="{{shopInfo.booking_rating_data.calc.rating_1.rating_count}}" percentage="{{shopInfo.booking_rating_data.calc.rating_1.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="2" times="{{shopInfo.booking_rating_data.calc.rating_2.rating_count}}" percentage="{{shopInfo.booking_rating_data.calc.rating_2.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="3" times="{{shopInfo.booking_rating_data.calc.rating_3.rating_count}}" percentage="{{shopInfo.booking_rating_data.calc.rating_3.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="4" times="{{shopInfo.booking_rating_data.calc.rating_4.rating_count}}" percentage="{{shopInfo.booking_rating_data.calc.rating_4.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="5" times="{{shopInfo.booking_rating_data.calc.rating_5.rating_count}}" percentage="{{shopInfo.booking_rating_data.calc.rating_5.percent}}"></app-bar-rating>
+                </div>
+            </div>
+
+            <!-- Product Rating Data -->
+            <div fxFlex="13%" class="review-rating text-center mx-2" *ngIf="type == 'marketplace'">
+                <h5 class="heading">{{shopInfo.product_rating_data.avg_rating | number : '1.1-1'}}</h5>
+                <div fxLayout="row" class="rating py-2">
+                    <app-star-rating [maxScore]="5" [score]="shopInfo.product_rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                </div>
+                <p class="py-1">Average Review</p>
+                <span>{{shopInfo.product_rating_data.total_reviews}} Ratings</span>
+            </div>
+
+            <div fxFlex="22%" class="star-rating mx-2" *ngIf="type == 'marketplace'">
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Service as described</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_desc" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Communication</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_comm" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Shipping Time</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_ship_time" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3">
+                    <div fxFlex="60%">
+                        <p class="text-muted">Average Rating</p>
+                    </div>
+                    <div fxFlex="40%">
+                        <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_rating" [forDisplay]="true" size="11px"></app-star-rating>
+                    </div>
+                </div>
+            </div>
+    
+            <div fxFlex="44%" class="bar-rating ml-2" *ngIf="type == 'marketplace'">
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="1" times="{{shopInfo.product_rating_data.calc.rating_1.rating_count}}" percentage="{{shopInfo.product_rating_data.calc.rating_1.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="2" times="{{shopInfo.product_rating_data.calc.rating_2.rating_count}}" percentage="{{shopInfo.product_rating_data.calc.rating_2.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="3" times="{{shopInfo.product_rating_data.calc.rating_3.rating_count}}" percentage="{{shopInfo.product_rating_data.calc.rating_3.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="4" times="{{shopInfo.product_rating_data.calc.rating_4.rating_count}}" percentage="{{shopInfo.product_rating_data.calc.rating_4.percent}}"></app-bar-rating>
+                </div>
+                <div fxLayout="row">
+                    <app-bar-rating class="w-100" star="5" times="{{shopInfo.product_rating_data.calc.rating_5.rating_count}}" percentage="{{shopInfo.product_rating_data.calc.rating_5.percent}}"></app-bar-rating>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="popular-goods container-fluid main-size pink-dots">
+        <div class="left-icon pink"></div>
+        <div class="popular-goods-top mb-5 clearfix">
+          <div class="section-title-cont float-left clearfix">
+            <h2 class="section-title m-0 pointer" (click)="toggler(true)" [class.active]="type === 'marketplace'">Items for Sale ({{sellerData?.length}})</h2>
+          </div>
+          <div class="section-title-cont float-left clearfix">
+            <h2 class="section-title ml-5 pointer" (click)="toggler(false)" [class.active]="type === 'booking'">Bookings ({{serviceData?.length}})</h2>
+          </div>
+          <div class="sort-by clearfix home float-right">
+            <a class="show-all-btn" routerLink="/marketplace">Show all</a>
+          </div>
+        </div>
+        <section *ngIf="type === 'marketplace'" id="demos" class="mb-5">
+          <div *ngIf="sellerData && sellerData.length" class="row">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+          <app-marketplace-product-card [routerLink]="['/product', sellerProduct.id]" class="slide" ngxSlickItem *ngFor="let sellerProduct of sellerData; let i = index" [product]="sellerProduct">
+          </app-marketplace-product-card>
+        </ngx-slick-carousel>
+          </div>
+          <div *ngIf="!sellerData?.length" class="row">
+            <h3>Sorry, no products are available</h3>
+          </div>
+        </section>
+        <section *ngIf="type === 'booking'" id="demos" class="mb-5">
+            <div class="row">
+              <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+            <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem *ngFor="let bestBooking of serviceData; let i = index" [booking]="bestBooking">
+            </app-booking-card>
+          </ngx-slick-carousel>
+            </div>
+            <div *ngIf="!serviceData?.length" class="row">
+                <h3>Sorry, no bookings are available</h3>
+              </div>
+          </section>
+      </section>
+      
+
+</div>

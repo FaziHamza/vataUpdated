@@ -1,0 +1,149 @@
+<div class="desktop-dashboard-profile-danate">
+  <div fxLayout="row" class="donate-amount-statistics mt-5">
+    <div fxFlex="30%" class="left-side p-3 mr-4">
+      <div class="amount">
+        <h6>$66787</h6>
+        <p class="silver-text">Total Donates</p>
+      </div>
+      <div fxFlex="100%" class="m-5" id="chart1">
+        <apx-chart
+          #chartTotalDonate
+          [series]="chartOptionsTotal.series"
+          [chart]="chartOptionsTotal.chart"
+          [grid]="chartOptionsTotal.grid"
+          [stroke]="chartOptionsTotal.stroke"
+          [xaxis]="chartOptionsTotal.xaxis"
+          [yaxis]="chartOptionsTotal.yaxis"
+
+          [tooltip]="chartOptionsTotal.tooltip"
+          [fill]="chartOptionsTotal.fill"
+          [markers]="chartOptionsTotal.markers"
+        ></apx-chart>
+      </div>
+    </div>
+
+    <div fxFlex="70%" class="right-side p-3">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between"
+        class="statistics border-bottom pb-3"
+      >
+        <div>
+          <div class="left-heading">
+            <h6>Statstics</h6>
+          </div>
+        </div>
+        <div>
+          <div class="times float-right">
+            <ul>
+              <li
+                [ngClass]="{
+                  active:
+                    day == true &&
+                    week == false &&
+                    month == false &&
+                    year == false
+                }"
+              >
+                <a (click)="dayProfile()">Day</a>
+              </li>
+              <li
+                [ngClass]="{
+                  active:
+                    day == false &&
+                    week == true &&
+                    month == false &&
+                    year == false
+                }"
+              >
+                <a (click)="weekProfile()">Week</a>
+              </li>
+              <li
+                [ngClass]="{
+                  active:
+                    day == false &&
+                    week == false &&
+                    month == true &&
+                    year == false
+                }"
+              >
+                <a (click)="monthProfile()">Month</a>
+              </li>
+              <li
+                [ngClass]="{
+                  active:
+                    day == false &&
+                    week == false &&
+                    month == false &&
+                    year == true
+                }"
+              >
+                <a (click)="yearProfile()">Year</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100%" class="m-5" id="chart">
+          <apx-chart
+            #chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [dataLabels]="chartOptions.dataLabels"
+            [grid]="chartOptions.grid"
+            [fill]="chartOptions.fill"
+            [markers]="chartOptions.markers"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history mt-5">
+    <div fxLayout="row" class="heading">
+      <h6>History (4)</h6>
+      <span class="icon-baseline-keyboard_arrow_down-24px-12 ml-5"></span>
+    </div>
+
+    <div class="history-bars mt-5">
+      <div *ngFor="let history of historyData" fxLayout="row" class="p-3">
+        <div fxFlex="8%" class="product-img">
+          <img [src]="history.item_images[0]" />
+        </div>
+        <div fxFlex="52%" class="product-heading">
+          <h6>{{ history.item_title }}</h6>
+          <div class="date-id pt-2">
+            <span class="pr-3">{{ history.date }}</span>
+            <span>{{ history.order_item_id }}</span>
+          </div>
+        </div>
+        <div fxFlex="40%">
+          <div fxLayout="row" class="bids text-center">
+            <div fxFlex="33.3%" class="mr-3">
+              <span class="silver pr-3">Start Bid</span>
+              <span class="black">{{
+                history.item_start_bid | currency: "CHF":"symbol":"1.0"
+              }}</span>
+            </div>
+            <div fxFlex="33.3%" class="mr-3">
+              <span class="silver pr-3">Won Bid</span>
+              <span class="black">{{
+                history.item_won_bid | currency: "CHF":"symbol":"1.0"
+              }}</span>
+            </div>
+            <div fxFlex="33.3%">
+              <span class="silver pr-3">Donated</span>
+              <span class="pink">{{
+                history.donation_amount | currency: "CHF":"symbol":"1.0"
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

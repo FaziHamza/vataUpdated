@@ -1,0 +1,169 @@
+@import '../../../../../../../../styles.scss';
+
+.dashboard-booking-new-client {
+    background: $ligher-gray;
+
+    .links {
+        span {
+            color: $black;
+            font-size: 12px;
+        }
+    }
+
+    .header-bar {
+        .heading {
+            h6 {
+                color: $black;
+                font-size: 24px;
+                padding-top: 3px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .details {
+        .left-side {
+            border-radius: 10px;
+            background: $white;
+            .heading {
+                p {
+                    font-size: 16px;
+                    color: $black;
+                    font-weight: 600;
+                }
+            }
+
+            .client {
+                .client-img {
+                    img {
+                        position: relative;
+                        top: -4px;
+                        width: 50px;
+                        height: auto;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                .drag-img {
+                    label {
+                        border: 1px dashed $light-gray;
+                        border-radius: 6px;
+                        padding: 6px;
+                        text-decoration: none;
+                        cursor: pointer;
+                        color: $dark-gray;
+                        width: 100%;
+                        text-align: center;
+                        span {
+                            &.icon-baseline-filter_hdr-24px {
+                                font-size: 25px;
+                            }
+                        }
+                        span {
+                            &.text {
+                                font-size: 14px;
+                                position: relative;
+                                top: -5px;
+                            }
+                        }
+                    }
+                    #file-input {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .right-side {
+            border-radius: 10px;
+            background: $white;
+
+            .service-inputs {
+                border-radius: 10px;
+                border: 1px solid $ligher-gray;
+                .delete-btn {
+                    .delete {
+                        a {
+                            font-size: 14px;
+                            span {
+                                &.icon-baseline-close-24px-1 {
+                                    font-size: 20px;
+                                    position: relative;
+                                    top: -2px;
+                                    &::before {
+                                        color: $pink;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .time-price {
+                        padding-top: 2px;
+                        span {
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 15px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 20px;
+                                font-size: 22px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .date-repeat {
+                .left-side {
+                    padding-top: 11px;
+                    img {
+                        width: 13px;
+                        height: auto;
+                        object-position: center;
+                        object-fit: cover;
+                    }
+                    p {
+                        font-size: 13px;
+                        color: $black;
+                    }
+                }
+
+                .right-side {
+                    .time-price {
+                        padding-top: 2px;
+                        span {
+                            &.time {
+                                color: $dark-gray;
+                                font-size: 15px;
+                            }
+                            &.price {
+                                color: $black;
+                                font-size: 20px;
+                                font-size: 22px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .text-area {
+                position: relative;
+                span {
+                    &.words {
+                        position: absolute;
+                        right: 0;
+                        font-size: 12px;
+                        color: $dark-gray;
+                        bottom: 0px;
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fe5a76;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_hardware_watch_24px" data-name="icon/hardware/watch_24px" class="cls-1" d="M12,24H4L3.05,18.27a7.969,7.969,0,0,1,0-12.54L4,0h8l.96,5.73a7.985,7.985,0,0,1,0,12.54L12,24ZM5.29,19.53,5.7,22h4.61l.41-2.479A7.918,7.918,0,0,1,8,20,8.045,8.045,0,0,1,5.29,19.53ZM8,6a6,6,0,1,0,6,6A6.007,6.007,0,0,0,8,6ZM8,4a7.889,7.889,0,0,1,2.718.48L10.31,2H5.7L5.29,4.47A8.026,8.026,0,0,1,8,4Z"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="watch" transform="translate(-1021 -191)">
+    <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="24" height="24" transform="translate(1021 191)"/>
+    <path id="icon_hardware_watch_24px-2" data-name="icon/hardware/watch_24px" class="cls-1" d="M12,24H4L3.05,18.27a7.969,7.969,0,0,1,0-12.54L4,0h8l.96,5.73a7.985,7.985,0,0,1,0,12.54L12,24ZM5.29,19.53,5.7,22h4.61l.41-2.479A7.918,7.918,0,0,1,8,20,8.045,8.045,0,0,1,5.29,19.53ZM8,6a6,6,0,1,0,6,6A6.007,6.007,0,0,0,8,6ZM8,4a7.889,7.889,0,0,1,2.718.48L10.31,2H5.7L5.29,4.47A8.026,8.026,0,0,1,8,4Z" transform="translate(1025 191)"/>
+    <g id="Group_168" data-name="Group 168" class="cls-4" transform="translate(1025 191)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-4 0)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="24" height="24"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

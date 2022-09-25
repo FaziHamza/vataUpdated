@@ -1,0 +1,131 @@
+
+<div class="mobile-seller-all-items">
+    <div class="container">
+
+        <div class="tabs pt-3">
+            <mat-tab-group selectedIndex="0" animationDuration="0ms">
+                <mat-tab class="w-100" label="Shop Info">
+
+                    <div class="profile mt-4">
+                        <div fxLayout="row" class="border-bottom">
+                            <div fxFlex="80%" class="pt-3 pb-2 px-2">
+                                <div class="heading-bar">
+                                    <h6 class="pb-1">{{shopInfo.user_shop_name}}<span class="icon-Subtraction-7"></span> <span class="ml-2 profile">{{shopInfo.overall_rating_percentage}}%</span></h6>
+                                    <p><span class="icon-Symbol-296--1"></span> <span class="text">Commercial</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" class="py-2 px-2">
+                            <div class="member-detail">
+                                <p class="pb-2">{{shopInfo.marketplace_total_items_sold}} items sold</p>
+                                <p class="pb-2">Member since {{shopInfo.membership_since}}</p>
+                                <p><span class="icon-location1"></span> <span class="pl-2 location-text">{{shopInfo.seller_address}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div fxLayout="row" class="product-rating mt-4">
+                        <div fxFlex="30%">
+                            <div class="heading-text text-center">
+                                <h4>{{shopInfo.avg_review | number : '1.1-1'}}</h4>
+                            </div>
+                        </div>
+                        <div fxFlex="70%">
+                            <div fxLayout="row" class="rating">
+                                <app-star-rating [maxScore]="5" [score]="shopInfo.avg_review" [forDisplay]="true" [size]="20"></app-star-rating>
+                            </div>
+                            <div fxLayout="row" class="number">
+                                <p class="pt-1">{{shopInfo.review_count}} product ratings</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="star-rating border-bottom mt-5">
+                        <div fxLayout="row">
+                            <div class="heading">
+                                <h6>Detailed Seller Ratings</h6>
+                            </div>
+                        </div>
+                        <div fxLayout="row" class="pt-3">
+                            <div fxFlex="60%">
+                                <p class="text-muted">Service as described</p>
+                            </div>
+                            <div fxFlex="40%">
+                                <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_desc" [forDisplay]="true" size="15px"></app-star-rating>
+                            </div>
+                        </div>
+                        <div fxLayout="row" class="pt-3">
+                            <div fxFlex="60%">
+                                <p class="text-muted">Communication</p>
+                            </div>
+                            <div fxFlex="40%">
+                                <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_comm" [forDisplay]="true" size="15px"></app-star-rating>
+                            </div>
+                        </div>
+                        <div fxLayout="row" class="pt-3">
+                            <div fxFlex="60%">
+                                <p class="text-muted">Shipping Time</p>
+                            </div>
+                            <div fxFlex="40%">
+                                <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_ship_time" [forDisplay]="true" size="15px"></app-star-rating>
+                            </div>
+                        </div>
+                        <div fxLayout="row" class="pt-3 pb-4">
+                            <div fxFlex="60%">
+                                <p class="text-muted">Handling Charges</p>
+                            </div>
+                            <div fxFlex="40%">
+                                <app-star-rating class="rate-stars" [maxScore]="5" [score]="shopInfo.product_rating_data.avg_rating" [forDisplay]="true" size="15px"></app-star-rating>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bar-rating my-5">
+                        <div fxLayout="row">
+                            <app-bar-rating deviceType="mobile" class="w-100" star="5" [times]="shopInfo.rating_plot.rating_5.rating_count" [percentage]="shopInfo.rating_plot.rating_5.percent" ></app-bar-rating>
+                        </div>
+                        <div fxLayout="row">
+                            <app-bar-rating deviceType="mobile" class="w-100" star="4" [times]="shopInfo.rating_plot.rating_4.rating_count" [percentage]="shopInfo.rating_plot.rating_4.percent" ></app-bar-rating>
+                        </div>
+                        <div fxLayout="row">
+                            <app-bar-rating deviceType="mobile" class="w-100" star="3" [times]="shopInfo.rating_plot.rating_3.rating_count" [percentage]="shopInfo.rating_plot.rating_3.percent" ></app-bar-rating>
+                        </div>
+                        <div fxLayout="row">
+                            <app-bar-rating deviceType="mobile" class="w-100" star="2" [times]="shopInfo.rating_plot.rating_2.rating_count" [percentage]="shopInfo.rating_plot.rating_2.percent" ></app-bar-rating>
+                        </div>
+                        <div fxLayout="row">
+                            <app-bar-rating deviceType="mobile" class="w-100" star="1" [times]="shopInfo.rating_plot.rating_1.rating_count" [percentage]="shopInfo.rating_plot.rating_1.percent" ></app-bar-rating>
+                        </div>
+                    </div>
+
+                    <section *ngIf="sellerData" class="popular-goods container-fluid main-size pink-dots">
+                        <div class="left-icon pink"></div>
+                        <div class="popular-goods-top mb-5 clearfix">
+                          <div class="section-title-cont float-left clearfix">
+                            <h2 class="section-title m-0 pointer">Items for Sale ({{sellerData.length}})</h2>
+                          </div>
+                          <div class="sort-by clearfix home float-right">
+                            <a class="show-all-btn" routerLink="/marketplace">Show all</a>
+                          </div>
+                        </div>
+                        <section id="demos" class="mb-5">
+                          <div class="row">
+                            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                          <app-marketplace-product-card [routerLink]="['/product', sellerProduct.id]" class="slide" ngxSlickItem *ngFor="let sellerProduct of sellerData; let i = index" [product]="sellerProduct">
+                          </app-marketplace-product-card>
+                        </ngx-slick-carousel>
+                          </div>
+                        </section>
+                      </section>
+
+                </mat-tab>
+
+                <!-- <mat-tab class="w-100" label="Booking Info">
+                    Content 2
+                </mat-tab> -->
+            </mat-tab-group>
+        </div>
+
+    </div>
+</div>

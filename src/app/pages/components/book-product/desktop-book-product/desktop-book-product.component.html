@@ -1,0 +1,829 @@
+<div class="desktop-book-product">
+  <div class="links border-bottom py-3">
+    <div class="container">
+      <div fxLayout="row">
+        <span class="mr-2">Booking ></span>
+        <span class="mr-2">Hair Saloon ></span>
+        <span class="mr-2 pink-text">{{ shopDetails?.shop_name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="seller-info">
+    <div class="container">
+      <div fxLayout="row" class="mt-4 mb-5">
+        <div fxFlex="45%" class="left-side border-right pr-5">
+          <div class="seller-profile border-bottom pb-2">
+            <h6>
+              {{ shopDetails?.shop_name }}
+              <span class="icon-Subtraction-9"></span>
+              <span class="ml-3 profile"
+                >{{ shopDetails?.overall_rating_percentage }}%</span
+              >
+            </h6>
+            <p class="location pt-2">
+              <span class="icon-location1"></span>
+              <span class="text"
+                >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                {{ shopDetails?.state }}</span
+              >
+            </p>
+          </div>
+
+          <div class="imgs-section pt-4">
+            <div class="main-img">
+              <app-product-preview
+                [slides]="[shopDetails?.business_logo]"
+              ></app-product-preview>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seller-info">
+        <div class="container">
+          <div fxLayout="row" class="mt-4 mb-5">
+            <div fxFlex="45%" class="left-side border-right pr-5">
+              <div class="seller-profile border-bottom pb-2">
+                <h6>
+                  {{ shopDetails?.shop_name }}
+                  <span class="icon-Subtraction-9"></span>
+                  <span class="ml-3 profile">99.2%</span>
+                </h6>
+                <p class="location pt-2">
+                  <span class="icon-location1"></span>
+                  <span class="text"
+                    >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                    {{ shopDetails?.state }}</span
+                  >
+                </p>
+              </div>
+
+              <div class="imgs-section pt-4">
+                <div class="main-img">
+                  <app-product-preview
+                    [slides]="[shopDetails?.business_logo]"
+                  ></app-product-preview>
+                </div>
+              </div>
+            </div>
+
+            <div fxFlex="55%" class="right-side pl-5">
+              <div fxLayout="row" class="border-bottom pb-2">
+                <div fxFlex="65%" class="rating mr-4">
+                  <div fxLayout="row">
+                    <app-star-rating
+                      [maxScore]="5"
+                      [score]="4"
+                      [forDisplay]="true"
+                    ></app-star-rating>
+                  </div>
+                  <div fxLayout="row">
+                    <p>
+                      {{ shopDetails?.rating_data.total_reviews }} Reviews
+                      <a mat-button class="pink-text" routerLink="all-reviews">
+                        (Show All)
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  fxFlex="35%"
+                  class="favourite border-left pl-5 text-right"
+                  *ngIf="userInfo"
+                >
+                  <a
+                    mat-button
+                    class="rounded-bt white-b px-3"
+                    (click)="addToFavourites()"
+                  >
+                    <span class="icon-like pr-3"></span> Add to Favourite</a
+                  >
+                </div>
+              </div>
+
+              <div class="shop-detail-section pt-4">
+                <div class="location-row border-bottom pb-2">
+                  <!-- <img class="map" src="../../../../../assets/img/Rectangle-map.png"> -->
+                  <div
+                    #mapElement
+                    class="map"
+                    id="map"
+                    class="match-parent"
+                  ></div>
+                  <p class="silver-text pt-3">
+                    Address:
+                    <span class="black-text pl-2"
+                      >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                      {{ shopDetails?.state }}</span
+                    >
+                  </p>
+                  <a
+                    mat-button
+                    (click)="showDirection()"
+                    class="direction-btn pink-text"
+                    >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
+                  >
+                </div>
+
+                <div class="info-shop-row pt-3">
+                  <span>{{ shopDetails?.shop_description }}</span>
+                </div>
+
+                <div fxLayout="row" class="workers-img-row my-4 p-4">
+                  <div
+                    class="worker1 mr-4"
+                    *ngFor="let member of shopDetails?.members"
+                  >
+                    <img src="{{ member.photo }}" />
+                    <p>{{ member.name }}</p>
+                  </div>
+                </div>
+
+                <div fxLayout="row" class="shop-timing-row mt-5 p-3">
+                  <div fxFlex="40%" class="left-section border-right pr-3">
+                    <div fxLayout="row" class="w-100">
+                      <div fxFlex="50%">
+                        <span class="silver-text">Monday-Friday</span>
+                      </div>
+                      <div fxFlex="50%">
+                        <span class="black-text">8 AM - 6 PM</span>
+                      </div>
+                    </div>
+
+                    <div fxLayout="row" class="w-100 py-3">
+                      <div fxFlex="50%">
+                        <span class="pink-text">Saturday</span>
+                      </div>
+                      <div fxFlex="50%">
+                        <span class="black-text">8 AM - 4 PM</span>
+                      </div>
+                    </div>
+
+                    <div fxLayout="row" class="w-100">
+                      <div fxFlex="50%">
+                        <span class="pink-text">Sunday</span>
+                      </div>
+                      <div fxFlex="50%">
+                        <span class="black-text">Weekend</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="60%" class="right-section pl-5">
+                    <div class="book-btn" *ngIf="userInfo">
+                      <a
+                        mat-button
+                        class="pink-b rounded-bt w-100"
+                        (click)="navigateToMakeBooking()"
+                        >Book a Visit</a
+                      >
+                    </div>
+
+                    <div class="social-favourite pt-4">
+                      <ul>
+                        <li (click)="openShareLink()">
+                          <p>
+                            <span class="icon-share-1 pr-2"></span>Share in
+                            social
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxFlex="35%"
+            class="favourite border-left pl-5 text-right"
+            *ngIf="userInfo"
+          >
+            <a
+              mat-button
+              class="rounded-bt white-b px-3"
+              (click)="addToFavourites()"
+            >
+              <span class="icon-like pr-3"></span> Add to Favourite</a
+            >
+          </div>
+        </div>
+
+        <div class="shop-detail-section pt-4">
+          <div class="location-row border-bottom pb-2">
+            <!-- <img class="map" src="../../../../../assets/img/Rectangle-map.png"> -->
+            <div #mapElement class="map" id="map" class="match-parent"></div>
+            <p class="silver-text pt-3">
+              Address:
+              <span class="black-text pl-2"
+                >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                {{ shopDetails?.state }}</span
+              >
+            </p>
+            <a
+              mat-button
+              (click)="showDirection()"
+              class="direction-btn pink-text"
+              >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
+            >
+          </div>
+
+          <div class="info-shop-row pt-3">
+            <span>{{ shopDetails?.shop_description }}</span>
+          </div>
+
+          <div fxLayout="row" class="workers-img-row my-4 p-4">
+            <div
+              class="worker1 mr-4"
+              *ngFor="let member of shopDetails?.members"
+            >
+              <img src="{{ member.photo }}" />
+              <p>{{ member.name }}</p>
+            </div>
+          </div>
+
+          <div fxLayout="row" class="shop-timing-row mt-5 p-3">
+            <div fxFlex="40%" class="left-section border-right pr-3">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="50%">
+                  <span class="silver-text">Monday-Friday</span>
+                </div>
+                <div fxFlex="50%">
+                  <span class="black-text">8 AM - 6 PM</span>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="w-100 py-3">
+                <div fxFlex="50%">
+                  <span class="pink-text">Saturday</span>
+                </div>
+                <div fxFlex="50%">
+                  <span class="black-text">8 AM - 4 PM</span>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="50%">
+                  <span class="pink-text">Sunday</span>
+                </div>
+                <div fxFlex="50%">
+                  <span class="black-text">Weekend</span>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="60%" class="right-section pl-5">
+              <div class="book-btn" *ngIf="userInfo">
+                <a
+                  mat-button
+                  class="pink-b rounded-bt w-100"
+                  (click)="navigateToMakeBooking()"
+                  >Book a Visit</a
+                >
+              </div>
+
+              <div class="social-favourite pt-4">
+                <ul>
+                  <li (click)="openShareLink()">
+                    <p>
+                      <span class="icon-share-1 pr-2"></span>Share in social
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      >>>>>>> origin/book-product
+    </div>
+
+    <div
+      fxFlex="35%"
+      class="favourite border-left pl-5 text-right"
+      *ngIf="userInfo"
+    >
+      <a mat-button class="rounded-bt white-b px-3" (click)="addToFavourites()">
+        <span class="icon-like pr-3"></span> Add to Favourite</a
+      >
+    </div>
+  </div>
+
+  <div class="shop-detail-section pt-4">
+    <div class="location-row border-bottom pb-2">
+      <!-- <img class="map" src="../../../../../assets/img/Rectangle-map.png"> -->
+      <div #mapElement class="map" id="map" class="match-parent"></div>
+      <p class="silver-text pt-3">
+        Address:
+        <span class="black-text pl-2"
+          >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+          {{ shopDetails?.state }}</span
+        >
+      </p>
+      <a mat-button (click)="showDirection()" class="direction-btn pink-text"
+        >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
+      >
+    </div>
+
+    <div class="info-shop-row pt-3">
+      <span>{{ shopDetails?.shop_description }}</span>
+    </div>
+
+    <div fxLayout="row" class="workers-img-row my-4 p-4">
+      <div class="worker1 mr-4" *ngFor="let member of shopDetails?.members">
+        <img src="{{ member.photo }}" />
+        <p>{{ member.name }}</p>
+      </div>
+    </div>
+
+    <div fxLayout="row" class="shop-timing-row mt-5 p-3">
+      <div fxFlex="40%" class="left-section border-right pr-3">
+        <div fxLayout="row" class="w-100">
+          <div fxFlex="50%">
+            <span class="silver-text">Monday-Friday</span>
+          </div>
+          <div fxFlex="50%">
+            <span class="black-text">8 AM - 6 PM</span>
+          </div>
+        </div>
+
+        <div fxLayout="row" class="w-100 py-3">
+          <div fxFlex="50%">
+            <span class="pink-text">Saturday</span>
+          </div>
+          <div fxFlex="50%">
+            <span class="black-text">8 AM - 4 PM</span>
+          </div>
+        </div>
+
+        <div fxLayout="row" class="w-100">
+          <div fxFlex="50%">
+            <span class="pink-text">Sunday</span>
+          </div>
+          <div fxFlex="50%">
+            <span class="black-text">Weekend</span>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="60%" class="right-section pl-5">
+        <div class="book-btn" *ngIf="userInfo">
+          <a
+            mat-button
+            class="pink-b rounded-bt w-100"
+            (click)="navigateToMakeBooking()"
+            >Book a Visit</a
+          >
+        </div>
+
+        <div class="social-favourite pt-4">
+          <ul>
+            <li (click)="openShareLink()">
+              <p><span class="icon-share-1 pr-2"></span>Share in social</p>
+            </li>
+            <li>
+              <p><span class="icon-like pr-2 ml-3"></span>Add to Favourite</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="book-visit border-top">
+  <div class="container py-5">
+    <div class="heading-bar">
+      <h3 class="heading">Book a Visit</h3>
+    </div>
+    <div *ngFor="let service of services">
+      <div
+        class="book-appointment"
+        *ngIf="
+          service.category__name == 'For Women' && service.services.length > 0
+        "
+      >
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For Women {{ service.services.length }}
+            <span
+              [appToggleSectionAccordian]="servicesForWomen"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
+            ></span>
+          </p>
+        </div>
+
+        <div #servicesForWomen>
+          <ng-container>
+            <div
+              class="booking-fields p-3 mt-4"
+              *ngFor="let subService of service.services"
+            >
+              <div fxLayout="row" class="pb-3">
+                <div fxFlex="64%" class="heading">
+                  <h6 class="pb-2">{{ subService.service_name }}</h6>
+                  <app-star-rating
+                    [maxScore]="5"
+                    [score]="subService.avg_rating"
+                    [forDisplay]="true"
+                  ></app-star-rating>
+                  <span class="star-text pl-3"
+                    >{{ subService.rating_count }} Book Ratings</span
+                  >
+                </div>
+                <div fxFlex="16%" class="time-price border-left px-4">
+                  <p class="wrapper">
+                    <span class="time">{{ subService.duration }}</span>
+                    <span class="text float-right"
+                      >${{ subService.total }}</span
+                    >
+                  </p>
+                </div>
+                <div
+                  fxFlex="20%"
+                  class="book-btn border-left pl-5"
+                  *ngIf="userInfo"
+                >
+                  <a
+                    mat-button
+                    class="rounded-bt pink-b px-5"
+                    (click)="navigateToMakeBooking(subService.id)"
+                    >Book Now</a
+                  >
+                </div>
+              </div>
+              <div class="details border-top pt-3">
+                <p class="pb-2">
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
+                </p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div
+        class="book-appointment"
+        *ngIf="
+          service.category__name == 'For Men' && service.services.length > 0
+        "
+      >
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For Men {{ service.services.length }}
+            <span
+              [appToggleSectionAccordian]="servicesForMen"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
+            >
+            </span>
+          </p>
+        </div>
+
+        <div #servicesForMen>
+          <ng-container>
+            <div
+              class="booking-fields p-3 mt-4"
+              *ngFor="let subService of service.services"
+            >
+              <div fxLayout="row" class="pb-3">
+                <div fxFlex="64%" class="heading">
+                  <h6 class="pb-2">{{ subService.service_name }}</h6>
+                  <app-star-rating
+                    [maxScore]="5"
+                    [score]="subService.avg_rating"
+                    [forDisplay]="true"
+                  ></app-star-rating>
+                  <span class="star-text pl-3"
+                    >{{ subService.rating_count }} Book Ratings</span
+                  >
+                </div>
+                <div fxFlex="16%" class="time-price border-left px-4">
+                  <p class="wrapper">
+                    <span class="time">{{ subService.duration }}</span>
+                    <span class="text float-right"
+                      >${{ subService.total }}</span
+                    >
+                  </p>
+                </div>
+                <div
+                  fxFlex="20%"
+                  class="book-btn border-left pl-5"
+                  *ngIf="userInfo"
+                >
+                  <a
+                    mat-button
+                    class="rounded-bt pink-b px-5"
+                    (click)="navigateToMakeBooking(subService.id)"
+                    >Book Now</a
+                  >
+                </div>
+              </div>
+              <div class="details border-top pt-3">
+                <p class="pb-2">
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
+                </p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div
+        class="book-appointment"
+        *ngIf="service.category__name == 'All' && service.services.length > 0"
+      >
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For All {{ service.services.length }}
+            <span
+              [appToggleSectionAccordian]="servicesForAll"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
+            ></span>
+          </p>
+        </div>
+
+            <div fxLayout="row" class="similar-services pt-5">
+                <div fxFlex="" class="mr-3" *ngFor="let shop of similarShops">
+                    <div class="card border">
+                        <div class="card-body p-0">
+                            <img class="main-img" src="{{ shop.shop_image }}">
+                            <h5 class="border-bottom text-center p-2">{{ shop.shopname }}</h5>
+                            <div class="rating border-bottom p-1 justify-content-center">
+                                <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
+                                <span class="star-text">{{ shop.tot_ratings }} Book Ratings</span>
+                            </div>
+                            <div class="location p-3 text-center">
+                                <h4>{{ shop.place }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                  fxFlex="20%"
+                  class="book-btn border-left pl-5"
+                  *ngIf="userInfo"
+                >
+                  <a
+                    mat-button
+                    class="rounded-bt pink-b px-5"
+                    (click)="navigateToMakeBooking(subService.id)"
+                    >Book Now</a
+                  >
+                </div>
+              </div>
+              <div class="details border-top pt-3">
+                <p class="pb-2">
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
+                </p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
+      <h4>No services to show</h4>
+    </div>
+  </div>
+</div>
+
+<div class="our-works border-top" *ngIf="ourWorks && ourWorks.length > 0">
+  <div class="container pt-5 pb-4">
+    <div fxLayout="row" class="heading-bar">
+      <h3 class="heading">Our Works</h3>
+    </div>
+    <div fxLayout="row" class="works-imgs w-100 pt-5">
+      <div fxFlex="" class="work mr-3" *ngFor="let work of ourWorks">
+        <img src="{{ work.image }}" />
+        <div class="like-chip" (click)="updateLikes(work)">
+          <span
+            class="icon-like1 pr-2 heart active"
+            *ngIf="work.is_liked"
+          ></span>
+          <span class="icon-like1 pr-2 heart" *ngIf="!work.is_liked"></span>
+          <span class="count-like">{{ work.total_likes_count }}</span>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" class="more-works-btn border-top pt-2">
+      <a mat-button class="pink-text">See all works</a>
+    </div>
+  </div>
+</div>
+
+<!-- New Review Section -->
+<div class="container py-5">
+  <div fxLayout="row" class="heading-bar">
+    <div fxFlex="70%">
+      <h3 class="heading">
+        Customer Reviews
+        <span class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
+      </h3>
+    </div>
+  </div>
+  <mat-tab-group
+    *ngIf="reviews && reviews.length > 0"
+    selectedIndex="0"
+    animationDuration="0ms"
+    class="w-100"
+  >
+    <mat-tab label="All Reviews">
+      <div class="all-review-tab p-3" *ngFor="let review of reviews">
+        <div fxLayout="row" class="border-bottom" *ngIf="!review.parent">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div class="heading-row">
+              <div fxFlex="60%" class="left-side">
+                <h5>{{ review.title }}</h5>
+              </div>
+              <div fxFlex="40%" class="right-side text-right">
+                <p class="date-rating">
+                  <span class="name-date"
+                    >{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span
+                  >
+                  <app-star-rating
+                    class="rate-stars"
+                    [maxScore]="5"
+                    [score]="4.0"
+                    [forDisplay]="true"
+                    size="15px"
+                  ></app-star-rating>
+                </p>
+              </div>
+            </div>
+            <div class="answer-text pt-2">
+              <p>{{ review.feedback }}</p>
+            </div>
+            <div class="img-section pt-4">
+              <img *ngFor="let image of review.image" src="{{ image }}" />
+            </div>
+            <div class="comment-reply pt-2 pb-3">
+              <a mat-button class="text-muted">Comment (Hire)</a>
+              <a
+                mat-button
+                class="pink-text"
+                (click)="reply(review.service, review.id)"
+                >Reply</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- REPLY SECTION -->
+        <div fxLayout="row" class="border-bottom">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div
+              class="reply-section border-top pt-4"
+              *ngFor="let reply of findRepliesForReview(review.id, reviews)"
+            >
+              <div class="reply p-3">
+                <h6 class="user">
+                  {{ reply.user_fullname }}
+                  <span class="date pl-4">{{ reply.pub_date | date }}</span>
+                </h6>
+                <p class="text pt-3">{{ reply.feedback }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Newest Review">
+      <div class="all-review-tab p-3" *ngFor="let review of newestReviews">
+        <div fxLayout="row" class="border-bottom" *ngIf="!review.parent">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div class="heading-row">
+              <div fxFlex="60%" class="left-side">
+                <h5>{{ review.title }}</h5>
+              </div>
+              <div fxFlex="40%" class="right-side text-right">
+                <p class="date-rating">
+                  <span class="name-date"
+                    >{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span
+                  >
+                  <app-star-rating
+                    class="rate-stars"
+                    [maxScore]="5"
+                    [score]="4.0"
+                    [forDisplay]="true"
+                    size="15px"
+                  ></app-star-rating>
+                </p>
+              </div>
+            </div>
+            <div class="answer-text pt-2">
+              <p>{{ review.feedback }}</p>
+            </div>
+            <div class="img-section pt-4">
+              <img *ngFor="let image of review.image" src="{{ image }}" />
+            </div>
+            <div class="comment-reply pt-2 pb-3">
+              <a mat-button class="text-muted">Comment (Hire)</a>
+              <a
+                mat-button
+                class="pink-text"
+                (click)="reply(review.service, review.id)"
+                >Reply</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- REPLY SECTION -->
+        <div fxLayout="row" class="border-bottom">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div
+              class="reply-section border-top pt-4"
+              *ngFor="
+                let reply of findRepliesForReview(review.id, newestReviews)
+              "
+            >
+              <div class="reply p-3">
+                <h6 class="user">
+                  {{ reply.user_fullname }}
+                  <span class="date pl-4">{{ reply.pub_date | date }}</span>
+                </h6>
+                <p class="text pt-3">{{ reply.feedback }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Need to Review">
+      <div
+        fxLayout="row"
+        *ngFor="let service of servicesThatNeedReview"
+        class="margin-bottom"
+      >
+        <div fxflex="60">
+          {{ service.title }}
+        </div>
+        <div fxflex="40">
+          <a
+            mat-button
+            class="pink-b px-3 ml-3"
+            (click)="writeReview(service.id)"
+            >Write Review</a
+          >
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div *ngIf="reviews.length == 0" class="no-data" fxLayout="row">
+    <h4>No reviews to show</h4>
+  </div>
+</div>
+
+<div class="similar-this border-top" *ngIf="similarShops">
+  <div class="container py-5">
+    <div fxLayout="row" class="heading-bar">
+      <h3 class="heading">Similar to This</h3>
+    </div>
+
+    <section id="demos" class="mb-5">
+      <div class="row">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="config"
+        >
+          <app-booking-card
+            [routerLink]="['/book-product', bestBooking.shopID]"
+            class="slide"
+            ngxSlickItem
+            *ngFor="let bestBooking of similarShops; let i = index"
+            [booking]="bestBooking"
+          >
+          </app-booking-card>
+        </ngx-slick-carousel>
+      </div>
+      <div *ngIf="!similarShops?.length" class="row">
+        <h3>Sorry, no shops are available</h3>
+      </div>
+    </section>
+  </div>
+</div>

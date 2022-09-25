@@ -1,0 +1,45 @@
+<div class="container-fluid main-size products-tab">
+    <h2 class="main-title">Add Product</h2>
+    <div class="clearfix">
+      <div class="add-from-comp">
+        <div class="clearfix">
+          <div class="add-from-comp-bottom show-on-mobile clearfix">
+            <a *ngFor="let file of uploadingFiles; let i = index;" href="javascript:void(0)">
+              <div class="inline-block">
+                <span (click)="removeImage(i)" class="delete-comment-img"><img src="/assets/img/delete.png"></span>
+                <img [src]="preview[i]">
+              </div>
+            </a>
+          </div>
+          <!-- <app-file-upload (uploadData)="onFileUpload($event)" [template]="'lg'"></app-file-upload>  -->
+          <div class="add-from-comp-bottom hide-on-mobile clearfix">
+            <a *ngFor="let file of uploadingFiles; let i = index;" href="javascript:void(0)">
+              <div class="inline-block">
+                <span (click)="removeImage(i)" class="delete-comment-img"><img src="/assets/img/delete.png"></span>
+                <img class="product-img" [src]="preview[i]">
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="product-tab-container">
+        <div class="product-tab-container-top">
+          <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
+            <div class="tab-list-cont">
+              <ul role="tablist" class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                <li routerLink="/products/add-product" routerLinkActive="ui-tabs-active ui-state-active"
+                  class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-expanded="true"><a
+                    class="first-tab ui-tabs-anchor">Marketplace</a></li>
+                <span class="ellipse"></span>
+                <li routerLink="/products/add-booking" routerLinkActive="ui-tabs-active ui-state-active"
+                  class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a
+                    class="second-tab ui-tabs-anchor">Booking</a></li>
+                <span class="ellipse"></span>
+              </ul>
+            </div>
+            <desktop-add-marketplace></desktop-add-marketplace>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

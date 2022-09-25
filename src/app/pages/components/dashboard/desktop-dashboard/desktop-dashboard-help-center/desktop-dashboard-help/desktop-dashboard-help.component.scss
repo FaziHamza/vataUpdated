@@ -1,0 +1,138 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-help-center-help {
+    background: $ligher-gray;
+
+    .links {
+        span {
+            color: $black;
+            font-size: 13px;
+            padding-right: 8px;
+        }
+    }
+
+    .main-heading {
+        h6 {
+            font-size: 25px;
+            color: $black;
+        }
+    }
+
+    .main-center-section {
+        border-radius: 10px;
+        background: $white;
+        .content {
+            h5 {
+                color: $black;
+                font-size: 25px;
+            }
+
+            p {
+                color: $dark-gray;
+                font-size: 15px;
+            }
+
+            .title {
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 46%;
+                    background-color: $pink;
+                    height: 3px;
+                    width: 100px;
+                }
+            }
+
+            .question-input {
+                position: relative;
+                span {
+                    &.words {
+                        position: absolute;
+                        right: 0;
+                        font-size: 13px;
+                        color: $dark-gray;
+                        bottom: -12px;
+                    }
+                }
+            }
+        }
+
+        .solution-accordians {
+            .solution-heading {
+               h5 {
+                color: $dark-gray;
+                font-size: 30px;
+                font-weight: 100;
+               }
+            }
+
+            mat-accordion {
+                mat-panel-title {
+                    font-weight: 500;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-size: 15px;
+                    color: $dark-gray;
+                    line-height: 1.6;
+                }
+            }
+        
+            .mat-expansion-panel {
+                border-bottom: 1px solid #ccc;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .mat-expanded {
+                .mat-expansion-panel-header-title {
+                    &::before {
+                        background-color: $pink-dark;
+                    }
+                }
+            }
+        
+            .mat-expansion-panel-header-title {
+                position: relative;
+                &::before {
+                    position: absolute;
+                    left: 0px;
+                    top: 4px;
+                    content: "";
+                    width: 12px;
+                    height: 12px;
+                    background-color: $light-gray;
+                    border-radius: 50%;
+                }
+            }
+            
+            .mat-expansion-panel-header {
+                padding: 0 5px;
+            }
+        
+            .mat-content {
+                overflow: unset !important;
+            }
+        }
+
+        .contact {
+            .connect {
+                border: 1px dashed $light-gray;
+                border-radius: 10px;
+                h6 {
+                    font-size: 18px;
+                    color: $black;
+                    padding-bottom: 12px;
+                }
+                p {
+                    font-size: 13px;
+                    color: $dark-gray;
+                    padding-bottom: 18px;
+                }
+            }
+        }
+    }
+}

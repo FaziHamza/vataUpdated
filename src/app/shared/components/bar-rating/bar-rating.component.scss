@@ -1,0 +1,46 @@
+@import '../../../../styles.scss';
+
+.progress-bar {
+    /* Three column layout */
+    .side {
+        float: left;
+        width: 10%;
+        color: $light-gray;
+        font-size: 15px;
+        margin-top:10px;
+    }
+    
+    .middle {
+        margin-top:10px;
+        float: left;
+        width: 60%;
+    }
+    
+    /* Place text to the right */
+    .right {
+        color: $light-gray;
+        font-size: 14px;
+        width: 30%;
+        text-align: right;            
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    /* The bar container */
+    .bar-container {
+        // width: 100%;
+        background-color: $ligher-gray;
+        text-align: center;
+        color: $white;
+        border-radius: 20px;
+        padding: 5px;
+    }
+    
+    /* Individual bars */
+    .bar { width: 0%; height: 15px; background-color: $pink; border-radius: 20px; }
+}

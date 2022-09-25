@@ -1,0 +1,210 @@
+<div class="desktop-dashboard-profile-favorites">
+    <div class="items p-3 mt-4">
+        <div class="heading-row pb-3">
+            <div fxFlex="90%" class="left-side-heading">
+                <h4>Items</h4>
+            </div>
+            <div fxFlex="10%" class="right-side-btns text-right">
+                <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+            </div>
+        </div>
+
+        <div *ngIf="viewType === 'card'" class="item-cards p-3 border-top">
+            <div class="container">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                    <app-marketplace-product-card [routerLink]="['/product', favProduct.product_id]" class="slide" ngxSlickItem *ngFor="let favProduct of myFavourites; let i = index" [product]="favProduct">
+                    </app-marketplace-product-card>
+                  </ngx-slick-carousel>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="viewType === 'list'" fxLayout="column" class="px-2">
+                <div *ngFor="let favProduct of myFavourites; let i = index" class="card-block">
+                    <app-marketplace-card-list-view [routerLink]="['/product', favProduct.product_id]" class="slide"  [product]="favProduct"></app-marketplace-card-list-view>
+                </div>
+        </div> -->
+
+        <!-- <div fxLayout="row" class="item-deal-cards pt-5">
+            <div fxFlex="20%" class="mr-3">
+                <div class="card-body border">
+                    <div class="top-action">
+                        <div fxLayout="row">
+                            <div fxFlex="40%" class="px-1">
+                                <div class="img-icons rounded-bt border">
+                                    <div class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
+                                    <div class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
+                                </div>
+                            </div>
+                            <div fxFlex="40%" class="px-1">
+                                <div class="rounded-bt border time-content">
+                                    <p class="main pink-text">1h 02m 32s</p>
+                                    <p class="text">43 bids</p>
+                                </div>
+                            </div>
+                            <div fxFlex="20%" class="px-1">
+                                <div class="img-user border">
+                                    <img src="../../../assets/img/SVG-hp/private-active.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-img" >
+                        <img src="../../../assets/img/SVG-hp/football.png">
+                    </div>
+
+                    <div class="product-heading border-bottom text-center p-3">
+                        <h5>Soccer ball Joerex Size 5 Yellow</h5>
+                    </div>
+
+                    <div fxLayout="row" class="p-2 bid-row">
+                        <div fxFlex="50%">
+                            <p class="text">Customer bid</p>
+                        </div>
+                        <div fxFlex="50%" class="text-right">
+                            <h3>$1098</h3>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="p-2 fixed-row">
+                        <div fxFlex="37%">
+                            <p class="fix">Fixed Price</p>
+                        </div>
+                        <div fxFlex="26%" class="text-right">
+                            <del class="cutted">$367</del>
+                        </div>
+                        <div fxFlex="37%" class="text-right">
+                            <span class="price">$367</span>
+                        </div>
+                    </div>
+                    
+                    <div class="discount p-3 text-center">
+                        <p class="off">10% Off</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="sellers p-3 mt-5">
+        <div fxLayout="row" class="heading pb-3">
+            <h4>Seller</h4>
+        </div>
+
+        <div *ngFor="let savedSeller of mySavedSeller" class="shop-details border-top">
+            <div fxLayout="row" class="shop-heading pt-4 pb-3">
+                <div fxFlex="70%" class="left-side">
+                    <h4>{{savedSeller.seller_shop_name}}</h4>
+                </div>
+                <div fxFlex="30%" class="right-side text-right">
+                    <a (click)="deleteSavedSeller(savedSeller.save_seller_id)" mat-button class="p-0">
+                        <img class="remove" src="../../../../../../assets/img/baseline-remove_circle_outline-24px.png">
+                    </a>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="detail-section border-top py-4">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <p>Marketplace</p>
+                            <span class="membership-icon">
+                                <img [src]="savedSeller.membership_status_icon" alt="">
+                            </span> <span class="pl-2">{{savedSeller.membership_status_name ? savedSeller.membership_status_name : 'Not available'}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Items</p>
+                            <span>{{savedSeller.total_items_sold}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Address</p>
+                            <span>24500, Lindon Ukarine, London</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Member Since</p>
+                            <span>{{savedSeller.membership_since}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Rating</p>
+                            <span class="pink-text">({{savedSeller.avg_review}}.0)</span> <span class="icon-rating-active-1 px-2"></span> <span>{{savedSeller.review_count}} Rating</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Verify Level</p>
+                            <span *ngIf="savedSeller.billing_uploaded_n_verified && savedSeller.passport_uploaded_n_verified">Uploaded a Billing Address & Passport</span>
+                            <span *ngIf="savedSeller.billing_uploaded_n_verified && !savedSeller.passport_uploaded_n_verified">Uploaded a Billing Address</span>
+                            <span *ngIf="!savedSeller.billing_uploaded_n_verified && savedSeller.passport_uploaded_n_verified">Uploaded a Passport</span>
+                            <span *ngIf="!savedSeller.billing_uploaded_n_verified && !savedSeller.passport_uploaded_n_verified">Billing & passport not verified</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="saved-search p-3 mt-5">
+        <div fxLayout="row" class="heading pb-3">
+            <h4>Saved Searches</h4>
+        </div>
+
+        <div class="saved-search-details border-top">
+            <div fxLayout="row" class="search-heading pt-4 pb-3">
+                <div fxFlex="70%" class="left-side">
+                    <h4>Running Track EnergyFIT 815</h4>
+                </div>
+                <div fxFlex="30%" class="right-side text-right">
+                    <a mat-button class="p-0">
+                        <img  class="writing" src="../../../../../../assets/img/writing-public.png">
+                    </a>
+                    <a (click)="removeSavedSearch(id)" mat-button class="p-0">
+                        <img class="remove" src="../../../../../../assets/img/baseline-remove_circle_outline-24px.png">
+                    </a>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="detail-section border-top py-4">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <p>Category</p>
+                            <span>Electronics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Subcategory</p>
+                            <span>Fitness</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Title angle adjustment</p>
+                            <span>Mechanical, Electrical</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Purpose</p>
+                            <span>Professional</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p>Manufacture</p>
+                            <span>EnergyFIT, EnergyPool, Samsung</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+</div>

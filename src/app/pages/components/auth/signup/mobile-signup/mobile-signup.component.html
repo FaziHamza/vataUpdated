@@ -1,0 +1,30 @@
+<mobile-header (backStep)="backStep($event)" [step]="step"></mobile-header>
+
+<div class="border-bottom mb-3 mx-4">
+    <div fxLayout="row">
+        <div fxFlex="75%">
+            <div class="text py-2">
+                <h3 class="font-weight-bold">Sign Up</h3>
+                <p *ngIf="step === 1" class="pt-1">User Info</p>
+                <p *ngIf="step === 2" class="pt-1">Business Info</p>
+                <p *ngIf="step === 3" class="pt-1">Payment Address</p>
+                <p *ngIf="step === 4 && addressType === 'billing' && !isPrivate" class="pt-1">Billing Address</p>
+                <p *ngIf="step === 4 && addressType === 'passport' && !isPrivate" class="pt-1">Passport Address</p>
+                <p *ngIf="step === 5" class="pt-1">Choose A Plan</p>
+            </div>
+        </div>
+        <div fxFlex="25%" class="text-right">
+            <h4 class="steps"><span class="font-weight-bold">{{step}}</span> / 5</h4>
+        </div>
+    </div>
+</div>
+
+<user-info-mobile *ngIf="step === 1" (selectStep)="getStep($event)"></user-info-mobile>
+<business-info-mobile *ngIf="step === 2" (selectStep)="getStep($event)"></business-info-mobile>
+<verify-an-account-mobile *ngIf="step === 3" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></verify-an-account-mobile>
+<billing-address-mobile *ngIf="step === 4 && addressType === 'billing'" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></billing-address-mobile>
+<address-passport-mobile *ngIf="step === 4 && addressType === 'passport'" (addressType)="onAddressType($event)" (selectStep)="getStep($event)"></address-passport-mobile>
+
+<choose-plan-mobile (selectStep)="getStep($event)" *ngIf="step === 5"></choose-plan-mobile>
+
+<mobile-footer></mobile-footer>

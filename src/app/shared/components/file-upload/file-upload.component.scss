@@ -1,0 +1,91 @@
+@import "../../../../styles.scss";
+
+input {
+  border: none;
+  width: 100%;
+}
+input#file {
+  display: none;
+  width: 100%;
+  padding: 120px 0 0 0;
+  height: 100px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-size: 60px 60px;
+}
+
+.drag-and-drop-cont {
+  height: 85px;
+  border: dashed 2px #e7e7e7;
+  border-radius: 15px;
+  background: url("/assets/img/drag-drop.png") no-repeat center center #fff0;
+  cursor: pointer;
+  // margin-bottom: 40px;
+}
+
+.drag-and-drop input[type="submit"] {
+  border: solid 1px #fb3b71;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 50px;
+  max-width: 260px;
+  text-align: center;
+  padding: 14px 23px;
+  font-size: 16px;
+  font-family: "montserratsemibold";
+  display: block;
+  background: #fb3b71;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 203, 218, 1);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(255, 203, 218, 1);
+  box-shadow: 0px 0px 15px 0px rgba(255, 203, 218, 1);
+  margin: auto;
+}
+
+span {
+  &.icon-baseline-filter_hdr-24px {
+    &::before {
+      color: $pink;
+    }
+  }
+}
+
+span {
+  &.icon-baseline-filter_hdr-24px {
+    font-size: 45px;
+  }
+}
+
+span {
+  &.text {
+    font-size: 14px;
+    position: relative;
+    top: -10px;
+  }
+}
+
+.add-computer {
+  label {
+    display: block;
+    margin: auto;
+    a {
+      text-decoration: none;
+      border-radius: 20px;
+      border: 1px solid $pink;
+      color: $pink;
+      padding: 0 28px;
+      font-size: 12px;
+    }
+  }
+}
+
+#file-input {
+  display: none !important;
+}

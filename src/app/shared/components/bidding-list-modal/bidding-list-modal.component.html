@@ -1,0 +1,33 @@
+<div class="bidding-list-modal">
+    <div class="container">
+
+        <h5 mat-dialog-title class="heading text-center position-relative pb-2" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">{{dataGet.title}}</h5>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-4 sub-heading">{{dataGet.subTitle}}</p>
+
+        <mat-dialog-content style="padding: 18px;">
+            <ng-container *ngIf="dataGet.biddingData">
+                <div *ngFor="let bid of dataGet.biddingData" fxLayout="row" class="list pt-5 pb-3 border-bottom">
+                    <div fxFlex="33.3%">
+                        <p>{{bid.username}}</p>
+                    </div>
+                    <div fxFlex="33.3%">
+                        <p class="text-center">{{bid.amount | currency: "CHF":"symbol":"1.0"}}</p>
+                    </div>
+                    <div fxFlex="33.3%">
+                        <span>{{bid.time | timeAgo}}</span>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!dataGet.biddingData.length">
+                <h4 class="text-center m-2">No bidding yet</h4>
+            </ng-container>
+        </mat-dialog-content>
+        <mat-dialog-actions class="justify-content-center">
+            <div fxLayout="row" class="button pt-4 justify-content-center">
+                <a (click)="onConfirmClick()" class="rounded-bt pink-b">Back to Product</a>
+            </div>
+        </mat-dialog-actions>
+
+    </div>
+</div>

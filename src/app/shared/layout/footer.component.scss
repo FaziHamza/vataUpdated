@@ -1,0 +1,46 @@
+@import '../../../styles.scss';
+
+.footer {
+    padding: 30px 0;
+    background-color: $ligher-gray-black;
+    .logo {
+           img {
+            width: 45%;
+            padding-top: 30px;
+            height: auto;
+           }
+    }
+    .links {
+        ul {
+            list-style: none;
+            margin-bottom: 0px;
+            li {
+                padding: 3px 0;
+                a {
+                    font-size: 16px;
+                    text-decoration: none;
+                    color: #858585;
+                    font-family: 'montserratlight';
+                }   
+                font-weight: 500;
+            };
+        }
+    }
+    input {
+        &.email {
+            border-radius: 50px;
+            border: 1px solid #eeeeeeee;
+            padding: 5px 15px;
+            width: 100%;
+        }
+    }
+    h6 {
+        color: #141414;
+        font-size: 23px;
+    }
+    .subs-btn{
+        a {
+            font-size: 16px;
+        }
+    }
+}

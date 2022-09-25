@@ -1,0 +1,204 @@
+<app-old-layout-header></app-old-layout-header>
+
+<div class="add-product-desktop">
+    <div class="left-icon pink"></div>
+    <div class="section-title-cont container clearfix">
+        <h2 class="section-title m-0">Create Variations</h2>
+    </div>
+    <div class="container">
+        <form *ngIf="!show_combination">
+            <div fxLayout="row" class="py-3">
+                <div fxFlex="45%" class="left-side mr-3">
+                    <div class="mb-3" fxLayout="row">
+                        <h4>Attributes</h4>
+                    </div>
+                    <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList aria-label="attribute selection">
+                          <mat-chip *ngFor="let attribute of attributes" color="accent" [selected]="attribute === active_attribute ? true: false"
+                                   
+                                   (click)="selectAttribute(attribute)"
+                                   >
+                            {{attribute.name}}
+                            <!-- [removable]="removable" (removed)="remove(attribute)"  -->
+                            <!-- <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> -->
+                          </mat-chip>
+                          <input placeholder="New attribute..."
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)"
+                                 >
+                        </mat-chip-list>
+                    </mat-form-field>
+                    <div class="mb-3" fxLayout="row">
+                        <h4>Options</h4>
+                    </div>
+
+                    <mat-chip-list *ngIf="active_attribute && active_attribute.values" class="my-3" aria-label="Options">
+                        <mat-chip 
+                        [color]="option.selected ? 'accent' : ''" 
+                        *ngFor="let option of active_attribute.values; let i=index"
+                        (click)="selectOption(i)"
+                        selected
+                        >{{option.name}}</mat-chip>
+                    </mat-chip-list>
+
+                    <p *ngIf="active_attribute && !active_attribute.values">No option(s) available</p>
+
+                    <!-- <div fxLayout="row" class="my-3">
+                        <div fxFlex="220px">
+                          <a (click)="toggleShowOption()" class="show-all-btn">+ Create your own</a>
+                        </div>
+                    </div>
+                    <div *ngIf="show_option">
+                        <mat-form-field class="form-section mt-2">
+                            <mat-label>Option</mat-label>
+                            <input #option matInput type="text" />
+                        </mat-form-field>
+                        <button type="button" (click)="addOption(option.value)" [disabled]="!option.value" mat-button>Add</button>
+                    </div> -->
+                    
+                </div>
+
+                <div fxFlex="55%" class="right-side ml-3">
+                    <div class="mb-3">
+                        <h4>Attributes and options you've selected</h4>
+                        <p class="my-2">Important: Arrange attributes here in the order you want them to appear in your listing</p>
+                    </div>
+                    <div *ngFor="let attr of attributes">
+                        <div *ngIf="filterSelectedOptions(attr).length" class="my-3" fxLayout="row">
+                            <h4>{{attr.name}}</h4>
+                        </div>
+                        <div *ngIf="filterSelectedOptions(attr).length" class="wrapper">
+                            <div class="dragula_container"
+                            dragula="DRAGULA_CONTAINER" 
+                            [(dragulaModel)]="attr.values">
+                                <div style="display: inline-block;" *ngFor="let character of filterSelectedOptions(attr); let i=index">
+                                    <div class="character" *ngIf="character.selected">
+                                      {{character.name}} &nbsp; <mat-icon (click)="character.selected = false" style="cursor: pointer;" >cancel</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div *ngIf="show_combination" class="left-side my-4" style="min-height: 20vh;">
+            <div fxLayout="row" class="my-4" >
+                <div fxFlex="100%">
+                    <h4>Attributes and options you've selected &nbsp; &nbsp; <button class="mx-3" (click)="toggleShowCombination()" mat-stroked-button>Edit</button></h4> 
+                </div>
+            </div>
+            <div fxLayout="row" class="my-3">
+                <div fxFlex="30%" >
+                    <p>Number of variations</p>
+                </div>
+                <div fxFlex="70%">
+                    <p>{{dataSource.length}}</p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngFor="let attr of filteredAttributes" class="my-2">
+                <div fxFlex="30%" >
+                    <p>{{attr.name}}</p>
+                </div>
+                <div fxFlex="70%">
+                    <span *ngFor="let option of attr.values;let i=index">{{option.name}} <span *ngIf="i !== attr.values.length - 1">,</span> &nbsp;</span>
+                </div>
+            </div>
+        </div>
+
+     
+        <div *ngIf="show_combination" class="my-4" style="min-height: 10vh;">
+            <div fxLayout="row">
+                <div fxFlex="100%">
+                  <mat-form-field class="form-section w-100">
+                    <mat-label>Add Variation Photos</mat-label>
+                    <mat-select [value]="0" (selectionChange)="setImageAttribute($event)">
+                        <!-- <mat-option
+                            [value]="null"
+                        >Use Default Photos</mat-option> -->
+                        <mat-option
+                            *ngFor="let variation of dataSource"
+                            [value]="variation.id"
+                        >No. {{variation.id}} &nbsp;<span *ngFor="let attr of filteredAttributes"> {{attr.name}}: {{variation[attr.name]}} &nbsp; </span></mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="show_combination && dataSource.length" class="row left-side my-5">
+            <div fxFlex="25%" class=" mr-3">
+                <div class="left-drag-img">
+                  <app-file-upload *ngIf="preview.length < 12"
+                  allowedTypes="image/*, video/*"
+                    (uploadData)="onFileUpload($event)"
+                    template="lg"
+                  ></app-file-upload>
+                </div>
+                <p class="my-3 text-center" style="font-size: 13px;">Add up to 12 photos. We don't allow photos with extra borders, text or artwork.</p>
+            </div>
+            <div fxFlex="75%">
+                <div class="left-imgs">
+                    <div class="img-container m-3" *ngFor="let preview of filterPreviewImages(); let i = index">
+                        <span
+                          (click)="removeImage(i)"
+                          class="icon-baseline-close-24px-11 close"
+                        ></span>
+                        <img *ngIf="preview.format === 'image'" [src]="preview.data" />
+                        <video *ngIf="preview.format === 'video'" [src]="preview.data" controls></video>
+                      </div>
+                  </div>
+            </div>
+        </div>
+
+        <div *ngIf="show_combination && dataSource.length" fxLayout="row" class="py-3">
+            <div fxFlex="100%" class="left-side mr-3">
+
+                <!-- Table -->
+                <mat-table #table [dataSource]="dataSource">
+                
+                    <!-- Action Column -->
+                    <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
+                        <mat-header-cell *matHeaderCellDef> 
+                            {{column === 'id' ? 'No.' : column}} 
+                            <!-- <mat-checkbox *ngIf="column === 'id'" class="example-margin"></mat-checkbox>  -->
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element;let i=index" >
+                            {{column === 'Price' || column === 'Quantity' || column === 'Action' ? '' : element[column]}} 
+                            <a *ngIf="column === 'Action'" (click)="deleteCombination(i)">{{element[column]}}</a>
+                            <!-- <mat-checkbox *ngIf="column === 'id'" [id]="element[column]" class="example-margin"></mat-checkbox>  -->
+                            <div *ngIf="column === 'Photos' && preview.length">
+                                <img style="width: 80px; height: 40px; object-fit: contain;" *ngIf="preview[0].format === 'image'" [src]="preview[0].data" />
+                                <video style="width: 80px; height: 40px; object-fit: contain;" *ngIf="preview[0].format === 'video'" [src]="preview[0].data" controls></video>
+                            </div>
+                            <input class="table-input" [(value)]="element[column]" #price (keyup)="setPrice(i, price.value)" *ngIf="column === 'Price'" type="number">
+                            <input class="table-input" [(value)]="element[column]" #quantity (keyup)="setQuantity(i, quantity.value)" *ngIf="column === 'Quantity'" type="number">
+                        </mat-cell>
+                    </ng-container>
+
+                
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </div>
+
+        <div fxLayout="row" *ngIf="!show_combination" class="py-3 mb-5">
+            <div fxFlex="100%">
+                <div class="text-left">
+                    <a mat-button class="rounded-bt mr-3" style="min-width: 120px;" (click)="this.location.back()">Cancel</a>
+                    <a mat-button class="pink-b rounded-bt" style="min-width: 120px;" (click)="toggleShowCombination()" >Continue</a>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row" *ngIf="show_combination" class="py-3 mb-5">
+            <div fxFlex="100%">
+                <div class="text-left">
+                    <a mat-button class="pink-b rounded-bt" style="min-width: 120px;" (click)="addAttribute()" >Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@import '../../../../../../../styles.scss';
+
+.submit-b {
+    background-color: $pink;
+    margin: 15px 0 0 0;
+}
+
+.form {
+    p {
+        font-size: 14px;
+        font-weight: 500;
+        color: $light-gray;
+    }
+}
+
+.mat-button {
+    font-weight: 400;
+}
+
+.btns-gender {
+    div {
+        width: 33.3%;
+    }
+}

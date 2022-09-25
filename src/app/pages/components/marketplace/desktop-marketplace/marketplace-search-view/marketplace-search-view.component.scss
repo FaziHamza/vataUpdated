@@ -1,0 +1,507 @@
+@import '../../../../../../styles.scss';
+
+.sub-categories-desktop {
+
+    background-color: $white;
+
+    .next-page {
+        .link {
+            p {
+                font-size: 15px;
+                font-weight: 600;
+                color: $black;
+            }
+        }
+    }
+
+    .stepper{
+        border-bottom: 1px solid $ligher-gray;
+        padding: 15px 0px;
+        font-size: 13px;
+        color: $dark-gray;
+        width: 90%;
+        margin: auto;
+        .active-cat{
+            color: $pink;
+        }
+    }
+
+    .head {
+        h4 {
+            font-size: 25px;
+            font-weight: 600;
+            span {
+                color: $black;
+            }
+        }
+    }
+
+    .subcategory {
+        background-color: #f5f5f5;
+        .box {
+            border: 1px solid $white;
+            background-color: $white;
+            border-radius: 8px;
+            padding: 20px 5px 10px 5px;
+            position: relative;
+            .box-content {
+                cursor: pointer;
+                &::after {
+                    position: absolute;
+                    top: -1px;
+                    padding: 13px 14px 0px 0px;
+                    border-radius: 9px 0 9px 0;
+                    left: -1%;
+                    content: "";
+                    width: 12px;
+                    height: 13px;
+                }
+                &.purple {
+                    &::after {
+                        background-color: $purple;
+                    }
+                }
+                &.light-blue {
+                    &::after {
+                        background-color: $light-blue;
+                    }
+                }
+                &.pink {
+                    &::after {
+                        background-color: $pink;
+                    }
+                }
+                &.dark-blue {
+                    &::after {
+                        background-color: $dark-blue;
+                    }
+                }
+                &.brown {
+                    &::after {
+                        background-color: $brown;
+                    }
+                }
+                &.green {
+                    &::after {
+                        background-color: $green;
+                    }
+                }
+                &.dark-purple {
+                    &::after {
+                        background-color: $dark-blue;
+                    }
+                }
+                &.sky-blue {
+                    &::after {
+                        background-color: $sky-blue;
+                    }
+                }
+            }
+            
+            img {
+                width: 50%;
+                height: auto;
+                display: block;
+                margin: auto;
+            }
+            p {
+                padding-top: 11px;
+                font-weight: 600;
+                font-size: 11px;
+            }
+        }
+    }
+
+    .btns {
+        background: $white;
+         .chip {
+            padding: 10px 13px;
+            background-color: $ligher-gray;
+            &.category {
+                background-color: $purple;
+                span {
+                    color: $white;
+                }
+                .cross-btn {
+                    color: $white;
+                }
+            }
+            span {
+                font-size: 13px;
+                font-weight: 500;
+            }
+            .cross-btn {
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 22px;
+                margin-top: -3px;
+                float: right;
+            }
+        }
+    }
+
+    .clear-save {
+        .row-right {
+            justify-content: flex-end;
+        }
+        a {
+            text-decoration: none;
+            color: $black;
+            font-size: 15px;
+            font-weight: 500;
+            width: 100%;
+            &.clear {
+                background-color: $white;
+                border: 1px solid $light-gray;
+            }
+            &.save {
+                background-color: $pink-dark;
+                color: $white !important;
+            }
+        }
+    }
+
+    .filter-bar {
+        background: $white;
+        .head {
+            padding: 15px 15px;
+            h4 {
+                span  {
+                    font-size: 25px;
+                    padding-right: 10px;
+                    font-weight: 600;
+                }
+                a  {
+                    img {
+                        width: 27px;
+                        height: auto;
+                    };
+                }
+            }
+            p {
+                color: $dark-gray;
+                font-weight: 600;
+                font-size: 17px;
+    
+            }
+        }
+
+        .clear-save {
+            .row-right {
+                justify-content: flex-end;
+            }
+            a {
+                text-decoration: none;
+                color: $black;
+                font-size: 15px;
+                font-weight: 500;
+                width: 100%;
+                &.filter {
+                    background-color: $white;
+                    border: 1px solid $light-gray;
+                    min-width: 100px;
+                }
+                &.dropdown {
+                    background-color: $pink-dark;
+                    color: $white !important;
+                }
+            }
+            img {
+                &.filter {
+                    width: 20px;
+                    height: auto;
+                }
+            }
+            span {
+                &.sort-label {
+                    color: $black;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .list-cards {
+        background: $white;
+        .products-card-view {
+            max-height: 800px;
+            overflow-y: auto;
+            flex-wrap: wrap;
+            display: flex;
+        }
+        .main-img {
+            position: relative;
+            border: 1px solid $ligher-gray;
+            border-radius: 10px;
+            padding: 20px 10px;
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: auto;
+                background-color: $white;
+                border-radius: 10px;
+            }
+        }
+        .no-data {
+            color: $black;
+        }
+
+        .sub-img {
+            position: relative;
+            border: 1px solid $ligher-gray;
+            border-radius: 10px;
+            padding: 15px 8px;
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: auto;
+                background-color: $white;
+                border-radius: 10px;
+            }
+        }
+
+        .rating-spec {
+            h4 {
+                font-size: 16px;
+                font-weight: 500;
+                color: $black;
+            }
+            span {
+                font-size: 16px;
+                color: $light-gray;
+                &.checked {
+                    color: $pink-dark;
+                }
+                &.number {
+                    font-size: 13px;
+                    color: $dark-gray;
+                    font-weight: 500;
+                }
+            }
+            .specification {
+                p  {
+                    color: $dark-gray;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+                span  {
+                    color: $black;
+                    font-size: 15px;
+                    float: right;
+                    font-weight: 500;
+                }
+                .colors {
+                    display: flex;
+                    .color {
+                        cursor: pointer;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50px;
+                        &.green {
+                            background-color: #2cda4d;
+                        }
+                        &.dark-blue {
+                            background-color: #2c2cda;
+                        }
+                        &.red {
+                            background-color: #da2c41;
+                        }
+                    }
+                }
+            }
+        }
+
+        .top-action {
+            width: 100%;
+            padding: 0;
+            .img-icons {
+                background: $white;
+                display: flex;
+                justify-content: center;
+                padding: 2px 0;
+                .image {
+                    width: 35px;
+                    padding: 0 10px;
+                }
+            }
+            .time-content {
+                background: $white;
+                padding: 0px 2px;
+                p {
+                    text-align: center;
+                    line-height: 12px;
+                    padding: 1px 0;
+                    &.main {
+                        font-size: 11px;
+                        font-weight: 600;
+                    }
+                    &.text-muted {
+                        font-size: 10px;
+                        font-weight: 700;
+                    }
+                }
+            }
+            .img-user {
+                background: $white;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                img {
+                    width: 90%;
+                    padding-left: 1px;
+                }
+            }
+        }
+
+        .bid-price {
+            justify-content: flex-end;
+            p {
+                &.text {
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+            h3 {
+                font-weight: 600;
+                font-size: 22px;
+            }
+        }
+    }
+   
+}
+
+.sub-categories-mobile {
+    .chips-row {
+        background-color: $ligher-gray; 
+        padding: 15px 0;
+        h1 {
+            font-size: 35px;
+            color: $black;
+        }
+    }
+    
+    .chip {
+        padding: 5px 13px;
+        background-color: $ligher-gray;
+        &.category {
+            background-color: $purple;
+            span {
+                color: $white;
+            }
+            .cross-btn {
+                color: $white;
+            }
+        }
+        span {
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            top: 3px;
+        }
+        .cross-btn {
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 22px;
+            padding: 0 0 0 5px;
+            float: right;
+        }
+    }
+    
+    .clear-save {
+        .row-right {
+            justify-content: flex-end;
+        }
+        a {
+            text-decoration: none;
+            color: $black;
+            font-size: 16px;
+            font-weight: 600;
+            width: 30%;
+            &.clear {
+                color: $light-gray;
+            }
+            &.save {
+                color: $pink-dark !important;
+            }
+        }
+    }
+    
+    .price-filter {
+        a {
+            text-decoration: none;
+            position: relative;
+            top: 10px;
+            &.filter {
+                background-color: $white;
+                border: 1px solid $light-gray;
+                color: $black;
+                span {
+                    font-size: 25px;
+                }
+            }
+            &.dropdown {
+                background-color: $pink-dark;
+                color: $white !important;
+            }
+        }
+        img {
+            &.filter {
+                width: 20px;
+                height: auto;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .main {
+        padding: 10px;
+    }
+    .my-menu {
+        width: 280px;
+        h6 {
+            padding: 15px 0;
+            font-size: 12px;
+        }
+        .chip {
+            background-color: $ligher-gray;
+            color: $black;
+            padding: 4px 10px 7px 10px;
+            &.purple {
+                color: $white;
+                background-color: $purple;
+                .cross-btn {
+                    color: $white;
+                }
+                span {
+                    color: $white;
+                }
+            }
+            span {
+                font-size: 12px;
+                font-weight: 500;
+                color: $black;
+            }
+            .cross-btn {
+                color: $black;
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 22px;
+                margin-top: -3px;
+                float: right;
+            }
+        }
+    }
+    .mat-card {
+        background: $white;
+    }
+    .mat-select-value {
+        color: $black;
+    }
+}

@@ -1,0 +1,125 @@
+@import '../../../../styles.scss';
+
+.write-review-modal {
+
+    h5 {
+        &.heading {
+            font-size: 19px;
+            color: $black;
+        }
+        &.bordered-header {
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 39%;
+                width: 90px;
+                height: 3px;
+                background: $pink;
+            }
+        }
+    }
+
+    p {
+        &.sub-heading {
+            font-size: 14px;
+            color: $dark-gray;
+        }
+    }
+
+    .left-side {
+        .rating {
+            span {
+                font-size: 20px;
+                padding: 0 8px;
+                color: $light-gray;
+                &.checked {
+                    color: $pink-dark;
+                    &::before {
+                        color: $pink-dark;  
+                    }
+                }
+            }
+            p {
+                &.number {
+                    font-size: 15px;
+                    font-weight: 100;
+                    color: $dark-gray;
+                }
+            }
+        }
+    
+        .seller-rating {
+            h6 {
+                font-size: 15px;
+                font-weight: 500;
+                color: $dark-gray;
+            }
+            p {
+                font-size: 13px;
+                color: $light-gray;
+            }
+            .rating-right {
+                span {
+                    font-size: 15px;
+                    padding: 0 6px;
+                    color: $light-gray;
+                    &.checked {
+                        color: $pink-dark;
+                        &::before {
+                            color: $pink-dark;  
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .right-side {
+        .drag-img {
+            a {
+                border: 1px dashed $light-gray;
+                border-radius: 4px;
+                padding: 10px;
+                text-decoration: none;
+                cursor: pointer;
+                color: $dark-gray;
+                width: 100%;
+                text-align: center;
+                span {
+                    &.icon-baseline-filter_hdr-24px {
+                        font-size: 30px;
+                    }
+                }
+                span {
+                    &.text {
+                        font-size: 17px;
+                        font-weight: 600;
+                        position: relative;
+                        top: -5px;
+                    }
+                }
+            }
+        }
+        .add-from-comp-bottom {
+            .preview-img {
+                width: 33.3%;
+            }
+        }
+    }
+    
+    .button {
+        a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 6px 60px;
+            width: 100px;
+            text-align: center;
+        }
+    }
+
+    &.mobile {
+        height: 80vh;
+        overflow-y: auto;
+    }
+}

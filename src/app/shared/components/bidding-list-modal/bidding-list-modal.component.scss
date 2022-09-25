@@ -1,0 +1,49 @@
+@import '../../../../styles.scss';
+
+.bidding-list-modal {
+    overflow: auto;
+    h5 {
+        &.heading {
+            font-size: 18px;
+            color: $black;
+        }
+        &.bordered-header {
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 39%;
+                width: 90px;
+                height: 3px;
+                background: $pink;
+            }
+        }
+    }
+
+    p {
+        &.sub-heading {
+            font-size: 14px;
+            color: $dark-gray;
+        }
+    }
+
+    .list {
+        p {
+            color: $black;
+            font-size: 13px;
+        }
+        span {
+            float: right;
+            color: $light-gray;
+            font-size: 13px;
+        }
+    }
+    
+    .button {
+        a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 6px 60px;
+        }
+    }
+}

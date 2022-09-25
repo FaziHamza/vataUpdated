@@ -1,0 +1,478 @@
+@import '../../../../../styles.scss';
+
+.product-mobile {
+
+    .heading {
+        h3 {
+            font-size: 20px;
+            color: $black;
+        }
+    }
+
+    .sub-heading {
+        h6 {
+            font-size: 16px;
+            font-weight: 200;
+            color: $black;
+            span {
+                &.icon-Subtraction-7 {
+                    font-size: 17px;
+                    padding: 0 13px;
+                    border-right: 1px solid $light-gray;
+                }
+            }
+            span {
+                &.profile {
+                    font-size: 11px;
+                    color: var(--white-color);
+                    background-color: #2cda4d;
+                    padding: 1px 5px;
+                    border: 1px solid #2cda4d;
+                    border-radius: 20px;
+                    position: relative;
+                    top: -4px;
+                }
+            }
+        }
+    }
+
+    .rating {
+        span {
+            font-size: 15px;
+            color: $light-gray;
+            &.checked {
+                color: $pink-dark;
+                &::before {
+                    color: $pink-dark;  
+                }
+            }
+            &.number {
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .main-img {
+        img {
+            height: 220px;
+            width: 270px;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .mid-action-bar {
+        p {
+            font-size: 10px;
+            color: $black;
+        }
+        img {
+            width: 33px;
+            height: auto;
+        }
+        .bidding {
+            background-color: $ligher-gray;
+            border: 1px solid $ligher-gray;
+            padding: 15px 5px;
+            border-radius: 10px 0 0 0px;
+        }
+    
+        .change {
+            background-color: $ligher-gray;
+            border: 1px solid $ligher-gray;
+            padding: 15px 5px;
+        }
+    
+        .buy {
+            background-color: $ligher-gray;
+            border: 1px solid $ligher-gray;
+            padding: 15px 5px;
+            border-radius: 0 10px 0px 0;
+        }
+    }
+    
+    .links {
+        span {
+            font-size: 13px;
+        }
+    }
+
+    .price-cart {
+
+        .price-section {
+            p {
+                color: $light-gray;
+                font-size: 16px;
+                font-weight: 100;
+            }
+            span {
+                &.color {
+                    font-size: 29px;
+                    font-weight: 800;
+                    position: relative;
+                    top: -12px;
+                }
+            }
+        }
+    
+        .cart-section {
+            a {
+                text-decoration: none;
+                padding: 12px 30px;
+                font-size: 15px;
+            }
+        }
+
+        .bid-card {
+            padding: 20px 0px 30px;
+            p {
+                font-size: 12px;
+                color: $dark-gray;
+                span {
+                    &.time {
+                        color: $black;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+           p {
+            span {
+                &.amount {
+                    color: #064789;
+                    font-weight: 700;
+                    font-size: 17px;
+                }
+            }
+           }
+    
+            p {
+                cursor: pointer;
+                span {
+                    &.text {
+                        font-weight: 600;
+                        font-size: 15px;
+                        color: $black;
+                    }
+                }
+        
+                span {
+                    &.icon-baseline-keyboard_arrow_down-24px-15 {
+                        border: 1px solid $light-gray;
+                        font-size: 19px;
+                        color: $dark-gray;
+                        border-radius: 20px;
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+        
+            }
+
+            .extras-btn {
+
+                input {
+                    width: 90%;
+                    border-radius: 20px;
+                    top: -4px;
+                    position: relative;
+                    padding: 8px 0px 8px 15px;
+                    border: 1px solid $light-gray;
+                }
+
+                span {
+                    &.bid {
+                        padding: 10px 15px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        background: #064789;
+                        color: $white;
+                        border-radius: 20px;
+                        border: 1px solid #064789;
+                    }
+                }
+
+                span {
+                    cursor: pointer;
+                    &.ask {
+                        padding: 8px 18px;
+                        font-size: 12px;
+                        border-radius: 20px;
+                        border: 1px solid $light-gray;
+                    }
+                }
+            }
+        }
+    }
+
+    .shipping-detail {
+        border: 1px dashed $light-gray;
+        padding: 20px 15px;
+        border-radius: 6px;
+
+        .heading {
+            p {
+                font-size: 15px;
+                font-weight: 100;
+                color: $light-gray;
+            }
+            a {
+                text-decoration: none;
+                font-size: 15px;
+                color: $black;
+                font-weight: 600;
+            }
+            span {
+                font-size: 15px;
+                color: $black;
+            }
+        }
+
+        .parcel {
+            p {
+                color: $light-gray;
+                font-size: 15px;
+                font-weight: 100;
+            }
+        }
+
+        .delivery {
+            p {
+                color: $light-gray;
+                font-size: 15px;
+                font-weight: 100;
+                span {
+                    color: $black;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .payments {
+            span {
+                &.text {
+                    color: $light-gray;
+                    font-size: 15px;
+                    font-weight: 100;
+                }
+            }
+            span {
+                &.icon-s {
+                    font-size: 22px;
+                }
+                &.icon-xs {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .returns {
+            p {
+                color: $light-gray;
+                font-size: 15px;
+                font-weight: 100;
+                span {
+                    color: $black;
+                    font-size: 15px;
+                }
+            }
+            a {
+                text-decoration: none;
+                font-size: 15px;
+                color: $black;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .about {
+        .heading {
+            h4 {
+                font-size: 26px;
+                color: $black;
+            }
+        }
+        .text {
+            p {
+                font-size: 14px;
+                color: $black;
+                line-height: 1.7;
+            }
+        }
+    }
+
+    .rating-reviews {
+
+        .heading {
+            h5 {
+                font-size: 22px;
+                color: $black;
+            }
+        }
+
+        .profile {
+            border: 1px solid $ligher-gray;
+            border-radius: 5px;
+
+            .heading-bar {
+                h6 {
+                    font-size: 15px;
+                    font-weight: 200;
+                    color: $black;
+                    span {
+                        &.icon-Subtraction-7 {
+                            font-size: 16px;
+                            padding: 0 10px;
+                            border-right: 1px solid $light-gray;
+                        }
+                    }
+                    span {
+                        &.profile {
+                            font-size: 10px;
+                            color: $white;
+                            background-color: #2cda4d;
+                            padding: 1px 4px;
+                            border: 1px solid #2cda4d;
+                            border-radius: 20px;
+                            position: relative;
+                            top: -1px;
+                        }
+                    }
+                }
+    
+                p {
+                    span {
+                        &.icon-Symbol-296--1 {
+                            font-size: 19px;
+                        }
+                    }
+                    span {
+                        &.text {
+                            font-size: 14px;
+                            color: $black;
+                            position: relative;
+                            top: -4px;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
+
+            .add-btn {
+                span {
+                    &.icon-add-button-inside-black-circle-11 {
+                        font-size: 25px;
+                        cursor: pointer;
+                        top: 5px;
+                        position: relative;
+                    }
+                }
+            }
+    
+            .member-detail {
+                p {
+                    font-size: 14px;
+                    color: $light-gray;
+                    span {
+                        &.icon-location1 {
+                            font-size: 21px;
+                        }
+                    }
+                    span {
+                        &.location {
+                            color: $black;
+                            position: relative;
+                            top: -5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .product-rating {
+            border: 1px solid $ligher-gray;
+            padding: 10px 0;
+            border-radius: 10px;
+
+            .number-text {
+                h4 {
+                    font-size: 25px;
+                    color: $black;
+                }
+            }
+
+            .rating {
+                span {
+                    font-size: 16px;
+                    color: $light-gray;
+                    &.checked {
+                        color: $pink-dark;
+                        &::before {
+                            color: $pink-dark;  
+                        }
+                    }
+                }
+                p {
+                    &.number {
+                        font-size: 13px;
+                        font-weight: 100;
+                        color: $light-gray;
+                    }
+                }
+                
+            }
+        }
+
+        .progress-bar {
+            /* Three column layout */
+            .side {
+                color: $light-gray;
+                font-size: 15px;
+                margin-top:10px;
+            }
+            
+            .middle {
+                margin-top:10px;
+                float: left;
+                width: 60%;
+            }
+            
+            /* Place text to the right */
+            .right {
+                color: $light-gray;
+                font-size: 13px;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            
+            /* The bar container */
+            .bar-container {
+                width: 95%;
+                background-color: $ligher-gray;
+                color: $white;
+                border-radius: 20px;
+                padding: 5px;
+            }
+            
+            /* Individual bars */
+            .bar-5 { width: 80%; height: 15px; background-color: $pink; border-radius: 20px; }
+            .bar-4 { width: 65%; height: 15px; background-color: $pink; border-radius: 20px; }
+            .bar-3 { width: 45%; height: 15px; background-color: $pink; border-radius: 20px; }
+            .bar-2 { width: 30%; height: 15px; background-color: $pink; border-radius: 20px; }
+            .bar-1 { width: 15%; height: 15px; background-color: $pink; border-radius: 20px; }
+        }
+    }
+}
+
+.other-products {
+    h5 {
+        font-size: 20px;
+        color: $black;
+    }
+}

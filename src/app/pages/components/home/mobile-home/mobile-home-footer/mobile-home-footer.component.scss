@@ -1,0 +1,68 @@
+@import '../../../../../../styles.scss';
+
+.footer {
+    padding: 10px 0;
+    background-color: $ligher-gray-black;
+    .logo {
+        width: 40%;
+        height: auto;
+        margin: auto;
+        display: block;
+    }
+    .pages {
+        ul {
+            list-style: none;
+            display: flex;
+            margin-bottom: 0px;
+            overflow: auto;
+            white-space: nowrap;
+            li {
+                display: inline-block;
+                a {
+                    font-size: 17px;
+                    text-decoration: none;
+                    color: #3b3b3b;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .links {
+        ul {
+            list-style: none;
+            margin-bottom: 0px;
+            li {
+                a {
+                    font-size: 16px;
+                    text-decoration: none;
+                    color: $dark-gray;
+                    font-weight: 500;
+                    line-height: 2.8;
+                }
+            }
+        }
+    }
+    .subscribe {
+        h5 {
+            font-weight: 700;
+            font-size: 20px;
+            color: $black;
+        }
+    }
+    input {
+        &.email {
+            border-radius: 50px;
+            border: 1px solid #eeeeeeee;
+            padding: 5px 15px;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 15px;
+        }
+    }
+    .subs-btn{
+        a {
+            font-size: 16px;
+            text-decoration: none;
+        }
+    }
+}

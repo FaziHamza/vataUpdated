@@ -1,0 +1,58 @@
+<div class="popular-goods  pb-3">
+
+    <div class="container">
+        <div fxLayout="row">
+            <div fxFlex="40%" class="head">
+                <h4 fxLayout="row" fxLayoutAlign="baseline">
+                    <span>Popular goods</span>
+                    <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+                </h4>
+            </div>
+            <div fxFlex="60%">
+                <div class="clear-save">
+                    <div fxLayout="row" fxLayoutAlign="end center" class="row-right">
+                        
+                        <div fxFlex="6%" class="py-3">
+                            <span class="sort-label">Sort:</span>
+                        </div>
+
+                        <div fxFlex="30%" class="mx-3">
+                            <div class="form">
+                                <mat-form-field class="rounded-bt d-block">
+                                    <mat-select (selectionChange)="onSort($event.value)">
+                                        <mat-option value="&ordering=-price,-shipping_price">Price+Shipping: Highest first</mat-option>
+                                        <mat-option value="&ordering=price,shipping_price">Price+Shipping: Lowest first</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="popular-goods">
+        <div class="list-cards pb-5">
+            <div class="container">
+                <h3 class="text-center no-data" *ngIf="viewType === 'card' && popularGoods && !popularGoods.length">Oops, No products found.</h3>        
+                <div *ngIf="viewType === 'card'" class="products-card-view flex-wrap" id="top-products">
+                    <div *ngFor="let product of filterProductData()">
+                        <div class="card-block">
+                          <app-marketplace-product-card [hover]="true" [routerLink]="['/product', product.id]"  [product]="product"></app-marketplace-product-card>
+                        </div>
+                      </div>
+                </div>
+                <div *ngIf="viewType === 'list'"  fxLayout="column" class="px-5">
+                    <h3 class="text-center no-data" *ngIf="popularGoods && !popularGoods.length">Oops, No products found.</h3>
+                    <div *ngFor="let product of filterProductData()">
+                        <div class="card-block">
+                            <app-marketplace-card-list-view [routerLink]="['/product', product.id]" [product]="product"></app-marketplace-card-list-view>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

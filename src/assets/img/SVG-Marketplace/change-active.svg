@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fb3b71;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_compare_arrows_24px" data-name="icon/action/compare_arrows_24px" class="cls-1" d="M7.01,14V11H0V9H7.01V6L11,10,7.012,14Zm5.98-6,0,0L9,4l3.99-4V3H20V5H12.99V8Z" transform="translate(2 5)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="change-active" transform="translate(-118 -2011)">
+    <path id="Path_833" data-name="Path 833" class="cls-3" d="M0,0H24V24H0Z" transform="translate(118 2011)"/>
+    <g id="Group_63" data-name="Group 63" class="cls-4" transform="translate(118 2011)">
+      <g id="_Color" data-name="↳ Color">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="24" height="24"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<div class="user-block-section mt-5" *ngIf="blackList">
+    
+    <div fxLayout="row" class="search-bar">
+        <input type="text" placeholder="Search by Username or Reason">
+        <span class="icon-search-1"></span>
+    </div>
+
+    <div fxLayout="row" class="block-user pt-4 pb-3" *ngFor="let member of blackList.data.results">
+        <div fxFlex="8%" class="left-img">
+            <img src="../../../../../../assets/img/avatar.png">
+        </div>
+        <div fxFlex="72%" class="center-content">
+            <p class="heading">{{member.blacklist_first_name}} {{member.blacklist_last_name}}</p>
+            <p *ngIf="member.reason == null" class="text">Reason: No Reason</p>
+            <p *ngIf="member.reason != null" class="text">Reason: {{member.reason}}</p>
+        </div>
+        <div fxFlex="20%" class="block-btn text-right">
+            <a mat-button (click)="deleteBlacklist(member.id)">
+                <img src="../../../../../../assets/img/baseline-remove_circle_outline-24px.png">
+            </a>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="block-user-btn pt-4">
+        <a routerLink="/dashboard/add-blacklist" mat-button class="pink-text w-100">
+            <span class="icon-add-button-inside-black-circle-1 pr-3"></span>
+            Block User
+        </a>
+    </div>
+</div>

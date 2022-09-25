@@ -1,0 +1,15 @@
+<div class="header border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="back">
+                <a (click)="onBackStep()">
+                    <span class="icon-back3"></span>
+                </a>
+            </div>
+            <div class="col-12">
+                <img *ngIf="!isThemeDark" class="logo" src="/assets/img/front-img/home/Logo.png" />
+                <img *ngIf="isThemeDark" class="logo" src="/assets/img/logo-white.svg" />
+            </div>
+        </div>
+    </div>
+</div>

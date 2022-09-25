@@ -1,0 +1,380 @@
+
+<div *ngIf="!appSize.getIsMobileResolution()">
+  <div class="container">
+    <h3 mat-dialog-title class="text-center mb-3">Filter</h3>
+  </div>
+  <div mat-dialog-content>
+    <div fxLayout="row">
+
+      <div
+        fxFlex="33.3%"
+        class="selection border-right mx-2"
+      >
+      <div *ngIf="dataGet.condition">
+        <h6>Condition</h6>
+
+        <div
+          class="mat-checkbox-sec"
+          *ngFor="let condition of selectedFilter.condition; index as i"
+        >
+          <mat-checkbox
+            (change)="onConditionSelect($event)"
+            [name]="condition.name"
+            [(checked)]="selectedFilter.condition[i].isSelected"
+            [value]="condition"
+          >
+            {{ condition.name }}
+          </mat-checkbox>
+        </div>
+      </div>     
+  
+        <!-- <div *ngIf="dataGet.attribute">
+          <h6>Colors</h6>
+  
+          <div
+            class="mat-checkbox-sec"
+            *ngFor="let color of selectedFilter.attributes; index as i"
+          >
+            <mat-checkbox
+              (change)="onColorSelect($event)"
+              [name]="color.name"
+              [(checked)]="selectedFilter.attributes[i].isSelected"
+              [value]="color"
+            >
+              {{ color.name }}
+            </mat-checkbox>
+          </div>
+        </div> -->
+      </div>
+  
+      <div fxFlex="33.3%" class="selection border-right mx-2">
+
+        <h6>Fixed Price</h6>
+        <mat-checkbox
+          (change)="onFixedPrice($event)"
+          [(checked)]="selectedFilter.fixed_price"
+        >
+          fixed price
+        </mat-checkbox>
+  
+        <h6>Free</h6>
+        <mat-checkbox
+          (change)="onFree($event)"
+          [(checked)]="selectedFilter.is_free"
+        >
+          free product
+        </mat-checkbox>
+  
+        <h6>Contact</h6>
+        <mat-checkbox
+          (change)="onMessenger($event)"
+          [(checked)]="selectedFilter.contact_messenger"
+        >
+          Messenger
+        </mat-checkbox>
+        <div fxLayout="column" class="selection mx-2">
+          <h6>Push</h6>
+          <mat-checkbox
+            (change)="onPushOnHome($event)"
+            [(checked)]="selectedFilter.push_on_home"
+          >
+            Push on home
+          </mat-checkbox>
+    
+          <mat-checkbox
+            (change)="onPushOnSearchList($event)"
+            [(checked)]="selectedFilter.push_on_searchlist"
+          >
+            Push on searchlist
+          </mat-checkbox>
+    
+          <mat-checkbox
+            (change)="onPushOnMarketplace($event)"
+            [(checked)]="selectedFilter.push_on_marketplace"
+          >
+            Push on Marketplace
+          </mat-checkbox>
+    
+          <mat-checkbox
+            (change)="onPushNearby($event)"
+            [(checked)]="selectedFilter.push_on_nearbyme"
+          >
+            Push on nearby
+          </mat-checkbox>
+        </div>
+      </div>
+  
+      <div fxFlex="33.3%" class="selection mx-2">
+        <div class="pricing">
+          <h6>Price</h6>
+          <div fxLayout="row" class="pricing-labels">
+            <div fxFlex="50%">
+              <p>
+                From: <span>{{ selectedFilter.price_range.min }}</span>
+              </p>
+            </div>
+            <div fxFlex="50%">
+              <p>
+                To: <span>{{ selectedFilter.price_range.max }}</span>
+              </p>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <ng5-slider
+              [(value)]="selectedFilter.price_range.min"
+              [(highValue)]="selectedFilter.price_range.max"
+              [options]="{
+                floor: 0,
+                ceil: 100000,
+                hideLimitLabels: true,
+                hidePointerLabels: true
+              }"
+            ></ng5-slider>
+          </div>
+  
+          <div fxLayout="column">
+              <h6>Stock Info</h6>
+        <mat-checkbox
+          (change)="onStock($event)"
+          [(checked)]="selectedFilter.on_stock"
+        >
+          stock available
+        </mat-checkbox>
+  
+        <h6>Offers</h6>
+        <mat-checkbox
+          (change)="onMakeOffer($event)"
+          [(checked)]="selectedFilter.make_offer"
+        >
+          Make offer available
+        </mat-checkbox>
+  
+        <h6>Change</h6>
+        <mat-checkbox
+          (change)="onAskForChange($event)"
+          [(checked)]="selectedFilter.ask_for_change"
+        >
+          Change available
+        </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions fxLayout="row" class="justify-content-center">
+    <div fxFlex="30%" class="pt-5">
+      <a
+        mat-button
+        class="pink-b rounded-bt p-0 btn-block w-100"
+        (click)="applyChanges()"
+        >Apply Changes</a
+      >
+    </div>
+  </div>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()">
+  <div mat-dialog-content class="filter-modal-mobile">
+    <div class="container">
+
+        <div fxLayout="row">
+            <h3 class="heading">Filter</h3>
+        </div>
+
+        <div fxLayout="row">
+            <h6 class="sub-heading pt-4 pb-4">Condition</h6>
+        </div>
+        
+        <div
+          class="mat-checkbox-sec pb-3"
+          *ngFor="let condition of selectedFilter.condition; index as i"
+        >
+          <mat-checkbox
+            (change)="onConditionSelect($event)"
+            [name]="condition.name"
+            [(checked)]="selectedFilter.condition[i].isSelected"
+            [value]="condition"
+          >
+            {{ condition.name }}
+          </mat-checkbox>
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Fixed Price</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onFixedPrice($event)"
+                [(checked)]="selectedFilter.fixed_price"
+                class="text"
+                >fixed price</mat-checkbox> 
+            </div>
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Free</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onFree($event)"
+                [(checked)]="selectedFilter.is_free"
+                class="text"
+                >free product</mat-checkbox> 
+            </div>
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Contact</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onMessenger($event)"
+                [(checked)]="selectedFilter.contact_messenger"
+                class="text"
+                >Messenger</mat-checkbox> 
+            </div>
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Push</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onPushOnHome($event)"
+                [(checked)]="selectedFilter.push_on_home"
+                class="text"
+                >Push on home</mat-checkbox> 
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onPushOnSearchList($event)"
+                [(checked)]="selectedFilter.push_on_searchlist"
+                class="text"
+                >Push on searchlist</mat-checkbox> 
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onPushOnMarketplace($event)"
+                [(checked)]="selectedFilter.push_on_marketplace"
+                class="text"
+                >Push on Marketplace</mat-checkbox> 
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onPushNearby($event)"
+                [(checked)]="selectedFilter.push_on_nearbyme"
+                class="text"
+                >Push on nearby</mat-checkbox> 
+            </div>
+        </div>
+
+
+        <div fxLayout="row" class="pb-3">
+            <h6 class="sub-heading pt-4">Price</h6>
+        </div>
+        <div fxLayout="row" class="pricing-labels pb-1">
+            <div fxFlex="50%">
+                    <p>From: <span>{{ selectedFilter.price_range.min }}</span></p>
+            </div>
+            <div fxFlex="50%" class="text-right">
+                <p>To: <span>{{ selectedFilter.price_range.max }}</span></p>
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-3">
+          <ng5-slider
+            [(value)]="selectedFilter.price_range.min"
+            [(highValue)]="selectedFilter.price_range.max"
+            [options]="{
+              floor: 0,
+              ceil: 100000,
+              hideLimitLabels: true,
+              hidePointerLabels: true
+            }"
+          ></ng5-slider>
+        </div>
+
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Stock Info</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onStock($event)"
+                [(checked)]="selectedFilter.on_stock"
+                class="text"
+                >stock available</mat-checkbox> 
+            </div>
+
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Offers</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onMakeOffer($event)"
+                [(checked)]="selectedFilter.make_offer"
+                class="text"
+                >Make offer available</mat-checkbox> 
+            </div>
+        </div>
+
+        <div fxLayout="row" class="pb-3">
+          <h6 class="sub-heading pt-4">Change</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="100%">
+                <mat-checkbox 
+                (change)="onAskForChange($event)"
+                [(checked)]="selectedFilter.ask_for_change"
+                class="text"
+                >Change available</mat-checkbox> 
+            </div>
+        </div>
+
+        <!-- <div fxLayout="row" class="pb-3">
+            <h6 class="sub-heading pt-4">Section</h6>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="60%">
+                <p class="toggle-text">Section</p>
+            </div>
+            <div fxFlex="40%" class="text-right">
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-3">
+            <div fxFlex="60%">
+                <p class="toggle-text">Section</p>
+            </div>
+            <div fxFlex="40%" class="text-right">
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-5">
+            <div fxFlex="60%">
+                <p class="toggle-text">Section</p>
+            </div>
+            <div fxFlex="40%" class="text-right">
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+        </div> -->
+
+        <div fxLayout="row" class="justify-content-center pb-3">
+            <a mat-button class="pink-b rounded-bt p-0 btn-block w-100" (click)="applyChanges()">Apply Changes</a>
+        </div>
+    </div>
+</div>
+</div>

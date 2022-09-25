@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fe3c72;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_alarm_add_24px" data-name="icon/action/alarm_add_24px" class="cls-1" d="M9.944,20.19a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9.944,20.19Zm0-16a7,7,0,1,0,7,7A7.008,7.008,0,0,0,9.944,4.19Zm1,11h-2v-3h-3v-2h3v-3h2v3h3v2h-3v3ZM18.607,5.38h0L14,1.536,15.28,0l4.608,3.843L18.607,5.379Zm-17.326,0h0L0,3.844,4.607,0,5.889,1.535,1.282,5.378Z" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="bidding-48pz" transform="translate(-65 -708)">
+    <rect id="icon_action_alarm_add_24px_background" data-name="icon/action/alarm_add_24px background" class="cls-3" width="24" height="24" transform="translate(65 708)"/>
+    <path id="icon_action_alarm_add_24px-2" data-name="icon/action/alarm_add_24px" class="cls-1" d="M9.944,20.19a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9.944,20.19Zm0-16a7,7,0,1,0,7,7A7.008,7.008,0,0,0,9.944,4.19Zm1,11h-2v-3h-3v-2h3v-3h2v3h3v2h-3v3ZM18.607,5.38h0L14,1.536,15.28,0l4.608,3.843L18.607,5.379Zm-17.326,0h0L0,3.844,4.607,0,5.889,1.535,1.282,5.378Z" transform="translate(67.056 709.905)"/>
+    <g id="Group_252" data-name="Group 252" class="cls-4" transform="translate(67.056 709.905)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-2.056 -1.905)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-3" width="24" height="24"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="24" height="24"/>
+      </g>
+    </g>
+  </g>
+</svg>

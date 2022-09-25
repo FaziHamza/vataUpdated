@@ -1,0 +1,27 @@
+@import '../../../../../../styles.scss';
+
+.popular-section {
+    h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+    }
+    .item-popular {
+        border-radius: 12px;
+        border: 1px solid #dddddd;
+        padding: 5px 10px;
+        margin: 12px 0 0 0;
+    }
+    p {
+        color: $black;
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+.top-deals{
+    h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+    }
+}

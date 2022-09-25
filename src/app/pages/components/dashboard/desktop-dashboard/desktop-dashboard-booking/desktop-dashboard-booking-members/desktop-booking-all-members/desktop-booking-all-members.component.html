@@ -1,0 +1,28 @@
+<div class="dashboard-booking-all-members"*ngIf="allMembers">
+    <div class="search-bar">
+        <span class="icon-search-1"></span>
+        <input type="text" placeholder="Search Member">
+    </div>
+
+    <div class="members">
+        <div class="members-scroll pr-3">
+            <div class="member-row py-3 border-bottom" (click)="onSelectType('details'); setGetMember(item)" *ngFor="let item of allMembers.data">
+                <div fxFlex="20%" class="img-side">
+                    <img src="{{item.photo}}">
+                </div>
+
+                <div fxFlex="80%" class="name-side">
+                    <h6>{{item.member_name}}</h6>
+                    <p>{{item.phone_isd}} {{item.phone_number}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="new-member-btn pt-2">
+        <a mat-button class="pink-text d-block text-center" (click)="onSelectType('new')">
+            <span class="icon-add-button-inside-black-circle-1 pr-2"></span>
+            New Member
+        </a>
+    </div>
+</div>

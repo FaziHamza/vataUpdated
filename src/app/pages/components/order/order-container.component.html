@@ -1,0 +1,6 @@
+<ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+    <app-mobile-order></app-mobile-order>
+</ng-container>
+<ng-template #desktop>
+    <app-desktop-order></app-desktop-order>
+</ng-template>

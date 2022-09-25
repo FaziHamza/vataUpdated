@@ -1,0 +1,14 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-booking-members {
+    background: $ligher-gray;
+    .left-side {
+        border-radius: 10px;
+        background: $white;
+    }
+
+    .right-side {
+        border-radius: 10px;
+        background: $white;
+    }
+}

@@ -1,0 +1,52 @@
+@import "../../../../styles.scss";
+
+.card-body {
+  border-radius: 9px;
+  margin: 15px;
+  position: relative;
+  max-width: 340px;
+  .image-sec {
+    position: relative;
+  }
+  .main-img {
+    width: 100%;
+    object-fit: contain;
+    height: 230px;
+    border-radius: 10px 10px 0 0;
+  }
+  h5 {
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+  }
+  p {
+    &.text {
+      font-size: 12px;
+    }
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 1px;
+    float: right;
+  }
+  .rating {
+    span {
+      font-size: 14px;
+      color: $light-gray;
+      &.checked {
+        color: $pink-dark;
+      }
+      &.number {
+        font-size: 10px;
+        color: $dark-gray;
+      }
+    }
+  }
+  .location {
+    p {
+      font-size: 15px;
+      font-weight: 600;
+      color: $black;
+    }
+  }
+}

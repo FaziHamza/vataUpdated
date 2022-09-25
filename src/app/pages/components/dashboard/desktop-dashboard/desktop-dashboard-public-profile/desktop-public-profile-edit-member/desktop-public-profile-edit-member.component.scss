@@ -1,0 +1,91 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-public-profile-edit-member {
+    .main-heading  {
+        h6 {
+            font-size: 20px;
+            font-weight: 100;
+            color: $black;
+        }
+    }
+
+    .edit-member-section {
+        .left-img {
+            border: 1px dashed $light-gray;
+            border-radius: 10px;
+            position: relative;
+            max-height: 45vh;
+            a {
+                span {
+                    &.icon-add-button-inside-black-circle-1 {
+                        position: absolute;
+                        top: 28%;
+                        left: 65%;
+                        font-size: 18px;
+                    }
+                }
+            }
+            img {
+                width: 80px;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 50px;
+            }
+            p {
+                color: $dark-gray;
+                font-size: 15px;
+            }
+        }
+
+        .center-inputs {
+            .input-fields {
+                p {
+                    &.input-heading {
+                        color: $dark-gray;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .permission-checkbox {
+        .head-bar {
+            p {
+                color: $dark-gray;
+                font-size: 14px;
+            }
+            span {
+                color: $dark-gray;
+                font-size: 14px;
+            }
+        }
+        
+        .fields {
+            p {
+                color: $black;
+                font-size: 15px;
+            }
+        }
+
+        .bottom-btns {
+            a {
+                font-size: 15px;
+                &.delete-btn {
+                    span {
+                        &.icon-baseline-close-24px-1 {
+                            font-size: 18px;
+                            position: relative;
+                            top: -1px;
+                            font-weight: 600;
+                            &::before {
+                                color: $pink;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,222 @@
+<div class="container">
+  <div fxLayout="row" class="justify-content-center">
+    <div fxFlex="100%">
+      <h5 class="text m-0">Choose a Plan</h5>
+    </div>
+</div>
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between"
+  class="row align-items-center justify-content-between toggle_bar">
+  <span class="p-2 nickname">
+    <h3>Welcome, {{ user.first_name }} {{ user.last_name }}</h3>
+  </span>
+  <span fxLayout="row" fxLayoutAlign="center" class="month_year_toggle d-flex">
+    <h3 class="p-2">Monthly</h3>
+    <div class="switch">
+      <mat-slide-toggle (change)="showYearly($event)"></mat-slide-toggle>
+    </div>
+    <h3 class="p-2">Yearly</h3>
+  </span>
+</div>
+
+<div
+  fxLayout="row"
+  class="row align-items-center toggle_bar" style="justify-content: flex-end;">
+  <span class="p-2 nickname">
+    <h3>Coupon Code: </h3>
+  </span>
+  <form fxLayout="row" [formGroup]="couponForm" (ngSubmit)="submit()">
+    <mat-form-field class="form-section">
+      <input formControlName="coupon_code" matInput type="text">
+    </mat-form-field>
+    <button style="height: 45px; width: 100px;" type="submit" class="pink-b rounded-bt btn-block mat-button mat-button-base p-1 ml-2">Apply</button>
+  </form>
+</div>
+</div>
+
+<section class="pricing py-5" *ngIf="subscriptionPlanData !== null">
+  <div class="container">
+    <div fxLayout="row">
+      <!-- Private Tier -->
+      <div fxFlex="25%" class="mx-2">
+        <mat-card class="card mb-5 mb-lg-0 private p-0">
+          <div class="top-border-gradient"></div>
+          <div class="card-body">
+            <div class="py-4 border-bottom heads">
+              <h4 class="card-title text-center">
+                {{ subscriptionPlanData[0].name }}
+              </h4>
+              <h6 class="card-price text-center">
+                {{
+                  (isYearly
+                    ? subscriptionPlanData[0].pay_yearly
+                    : subscriptionPlanData[0].pay_monthly
+                  ) | currency: "CHF":"symbol":"1.0"
+                }}
+              </h6>
+            </div>
+
+            <ul class="fa-ul pt-3">
+              <li *ngIf="subscriptionPlanData[0].multiaccount">
+                Multiaccount Option
+              </li>
+              <li>Pay Monthly Fees</li>
+              <li>Memberships Status</li>
+              <li>Memberships:Rewards</li>
+              <li>{{ subscriptionPlanData[0].coupons }} Coupons</li>
+              <li>{{ subscriptionPlanData[0].points }} Points</li>
+              <li>
+                {{ subscriptionPlanData[0].product_selling }} Free Product
+                Sellings
+              </li>
+            </ul>
+            <a class="btn btn-block private" (click)="nextStep2(0)"
+              >Choose {{ subscriptionPlanData[0].name }}</a
+            >
+          </div>
+        </mat-card>
+      </div>
+      <!-- Private Plus Tier -->
+      <div fxFlex="25%" class="mx-2">
+        <mat-card class="card mb-5 mb-lg-0 private-plus p-0">
+          <div class="top-border-gradient"></div>
+          <div class="card-body">
+            <div class="py-4 border-bottom heads">
+              <h4 class="card-title text-center">
+                {{ subscriptionPlanData[1].name }}
+              </h4>
+              <h6 class="card-price text-center">
+                {{
+                  (isYearly
+                    ? subscriptionPlanData[1].pay_yearly
+                    : subscriptionPlanData[1].pay_monthly
+                  ) | currency: "CHF":"symbol":"1.0"
+                }}
+              </h6>
+            </div>
+
+            <ul class="fa-ul pt-3">
+              <li *ngIf="subscriptionPlanData[1].multiaccount">
+                Multiaccount Option
+              </li>
+              <li>>Pay Monthly Fees</li>
+              <li>>Memberships Status</li>
+              <li>Memberships:Rewards</li>
+              <li>{{ subscriptionPlanData[1].coupons }} Coupons</li>
+              <li>{{ subscriptionPlanData[1].points }} Points</li>
+              <li>
+                {{ subscriptionPlanData[1].product_selling }} Free Product
+                Sellings
+              </li>
+              <li *ngIf="subscriptionPlanData[1].create_booking">
+                Create Bookings
+              </li>
+              <li *ngIf="subscriptionPlanData[1].create_coupons">
+                Create Coupons
+              </li>
+              <li>{{ subscriptionPlanData[1].discounts }}% of Marketing</li>
+            </ul>
+            <a class="btn btn-block private-plus" (click)="nextStep2(1)"
+              >Choose {{ subscriptionPlanData[1].name }}</a
+            >
+          </div>
+        </mat-card>
+      </div>
+      <!-- Commercial Tier -->
+      <div fxFlex="25%" class="mx-2">
+        <mat-card class="card commercial p-0">
+          <div class="top-border-gradient"></div>
+          <div class="card-body">
+            <div class="py-4 border-bottom heads">
+              <h4 class="card-title text-center">{{ subscriptionPlanData[2].name }}</h4>
+              <h6 class="card-price text-center">
+                {{
+                  (isYearly
+                    ? subscriptionPlanData[2].pay_yearly
+                    : subscriptionPlanData[2].pay_monthly
+                  ) | currency: "CHF":"symbol":"1.0"
+                }}
+              </h6>
+            </div>
+
+            <ul class="fa-ul pt-3">
+              <li *ngIf="subscriptionPlanData[2].multiaccount">
+                Multiaccount Option
+              </li>
+              <li>Pay Monthly Fees</li>
+              <li>Memberships Status</li>
+              <li>Memberships:Rewards</li>
+              <li>{{ subscriptionPlanData[2].coupons }} Coupons</li>
+              <li>{{ subscriptionPlanData[2].points }} Points</li>
+              <li>
+                {{ subscriptionPlanData[2].product_selling }} Free Product
+                Sellings
+              </li>
+              <li>Create Bookings</li>
+            </ul>
+            <a class="btn btn-block commercial" (click)="nextStep2(2)"
+              >Choose {{ subscriptionPlanData[2].name }}</a
+            >
+          </div>
+        </mat-card>
+      </div>
+      <!-- Startup Tier -->
+      <div fxFlex="25%" class="mx-2">
+        <mat-card class="card startup p-0">
+          <div class="top-border-gradient"></div>
+          <div class="card-body">
+            <div class="py-4 border-bottom heads">
+              <h4 class="card-title text-center">{{ subscriptionPlanData[3].name }}</h4>
+              <h6 class="card-price text-center">
+                {{
+                  (isYearly
+                    ? subscriptionPlanData[3].pay_yearly
+                    : subscriptionPlanData[3].pay_monthly
+                  ) | currency: "CHF":"symbol":"1.0"
+                }}
+              </h6>
+              <p class="text-muted small-text">
+                Company is not older than 15 months
+              </p>
+            </div>
+
+            <ul class="fa-ul pt-3">
+              <li *ngIf="subscriptionPlanData[3].multiaccount">
+                Multiaccount Option
+              </li>
+              <li>Pay Monthly Fees</li>
+              <li>Memberships Status</li>
+              <li>Memberships:Rewards</li>
+              <li>{{ subscriptionPlanData[3].coupons }} Coupons</li>
+              <li>{{ subscriptionPlanData[3].points }} Points</li>
+              <li>
+                {{ subscriptionPlanData[3].product_selling }} Free Product
+                Sellings
+              </li>
+              <li *ngIf="subscriptionPlanData[3].create_coupons">
+                Create Coupons
+              </li>
+              <li>
+                {{ subscriptionPlanData[3].discounts }}% Marketing Fees Discount
+              </li>
+            </ul>
+            <a class="btn btn-block startup" (click)="nextStep2(3)"
+              >Choose {{ subscriptionPlanData[3].name }}</a
+            >
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div fxLayout="row" class="justify-content-center">
+    <div fxFlex="25%" class="choose">
+      <a routerLink="/auth/login" mat-button class="white-b rounded-bt btn-block"
+        >Choose later</a
+      >
+    </div>
+  </div>
+</div>

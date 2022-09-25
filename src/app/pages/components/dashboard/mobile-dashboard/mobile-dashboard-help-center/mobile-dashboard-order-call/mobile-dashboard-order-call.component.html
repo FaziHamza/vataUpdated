@@ -1,0 +1,76 @@
+<div class="order-call-screen">
+    <div fxLayout="row" class="justify-content-center py-3 border-bottom">
+        <div class="container">
+            <div class="top-heading">
+                <h6>Order a Call</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="call-details pt-5">
+        <div class="container">
+            <p>Enter the phone number</p>
+            <p class="pt-2">and we will call back to you soon</p>
+
+            <div class="contact-inputs mt-5">
+                <div class="input-heading">
+                    <p >Phone Number</p>
+                </div>
+
+                <div class="input-fields pt-2">
+                    <div fxFlex="20%" class="mr-3">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Code</mat-label>
+                            <mat-select>
+                                <mat-option value="91">+91</mat-option>
+                                <mat-option value="71">+71</mat-option>
+                                <mat-option value="01">+01</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="75%">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Number</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-inputs mt-4">
+                <div class="input-heading">
+                    <p>In what time you will be available to speak ?</p>
+                </div>
+                
+                <div class="input-fields pt-2">
+                    <div fxFlex="46%" class="mr-4">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Hours</mat-label>
+                            <mat-select>
+                                <mat-option value="91">12 Hours</mat-option>
+                                <mat-option value="71">8 Hours</mat-option>
+                                <mat-option value="01">5 Hours</mat-option>
+                                <mat-option value="01">10 Hours</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="46%">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Minutes</mat-label>
+                            <mat-select>
+                                <mat-option value="91">45 Mins</mat-option>
+                                <mat-option value="71">23 Mins</mat-option>
+                                <mat-option value="01">2 Mins</mat-option>
+                                <mat-option value="01">55 Mins</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-call-btn mt-5">
+                <a mat-button class="pink-b rounded-bt d-block">Order a Call</a>
+            </div>
+        </div>
+    </div>
+</div>

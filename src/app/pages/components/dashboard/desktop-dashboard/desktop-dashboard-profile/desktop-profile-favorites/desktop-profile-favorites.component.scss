@@ -1,0 +1,394 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-favorites {
+    
+    .items {
+        background: $white;
+        border-radius: 10px;
+        .heading-row {
+            .left-side-heading {
+                h4 {
+                    font-size: 22px;
+                    font-weight: 100;
+                    color: $black;
+                }
+            }
+
+            .right-side-btns {
+                span {
+                    &.icon-list-pasive {
+                        font-size: 30px;
+                    }
+                    &.icon-baseline-view_module-24px-active {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+
+        .item-cards {
+            .card-body {
+                border-radius: 10px;
+                position: relative;
+                .top-action {
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+
+                    .img-icons {
+                        background: #ffffffbd;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 0;
+                        .image {
+                            width: 40px;
+                            padding: 0 10px;
+                        }
+                    }
+
+                    .time-content {
+                        background: #ffffffbd;
+                        p {
+                            text-align: center;
+                            line-height: 13px;
+                            padding: 1px 0;
+                            &.main {
+                                font-size: 11px;
+                                font-weight: 600;
+                            }
+                            &.text {
+                                font-size: 10px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+
+                    .img-user {
+                        background: #ffffffbd;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        img {
+                            width: 70%;
+                            padding: 5px 0px 0px 5px;
+                        }
+                    }
+                }
+
+                .main-img {
+                    img {
+                        width: 101%;
+                        object-fit: cover;
+                        object-position: center;
+                        height: 170px;
+                        border-radius: 10px 10px 0 0;
+                        margin: 0px 0 0 -1px;
+                    }
+                }
+
+                .product-heading {
+                    h5 {
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                }
+
+                .bid-price-section {
+                    .bid-section {
+                        p {
+                            &.text {
+                                font-size: 13px;
+                                color: $dark-gray;
+                            }
+                        }
+                        h3 {
+                            font-weight: 600;
+                            font-size: 20px;
+                        }
+                    }
+
+                    .price-section {
+                        p {
+                            &.text {
+                                font-size: 13px;
+                                color: $dark-gray;
+                            }
+                        }
+                        
+                        h3 {
+                            font-weight: 600;
+                            font-size: 20px;
+                            color: $pink;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .item-deal-cards {
+            .card-body {
+                border-radius: 10px;
+                position: relative;
+                .top-action {
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+                    .img-icons {
+                        background: #ffffffbd;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 0;
+                        .image {
+                            width: 40px;
+                            padding: 0 10px;
+                        }
+                    }
+                    .time-content {
+                        background: #ffffffbd;
+                        p {
+                            text-align: center;
+                            line-height: 13px;
+                            padding: 1px 0;
+                            &.main {
+                                font-size: 11px;
+                                font-weight: 600;
+                            }
+                            &.text {
+                                font-size: 10px;
+                                color: $dark-gray;
+                            }
+                        }
+                    }
+                    .img-user {
+                        background: #ffffffbd;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        img {
+                            width: 70%;
+                            padding: 5px 0px 0px 5px;
+                        }
+                    }
+                }
+
+                .main-img {
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                        height: 170px;
+                        border-radius: 10px 10px 0 0;
+                    }
+                }
+
+                .product-heading {
+                    h5 {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+
+                .bid-row {
+                    p {
+                        &.text {
+                            font-size: 13px;
+                            color: $dark-gray;
+                            position: relative;
+                            top: 5px;
+                        }
+                    }
+                    h3 {
+                        font-weight: 600;
+                        font-size: 19px;
+                    }
+                }
+
+                .fixed-row {
+                    p {
+                        &.fix {
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: $dark-gray;
+                            position: relative;
+                            top: 6px;
+                        }
+                    }
+
+                    del {
+                        &.cutted {
+                            font-size: 18px;
+                            color: $light-gray;
+                            position: relative;
+                            top: 4px;
+                            right: -10px;
+                        }
+                    }
+
+                    span {
+                        &.price {
+                            font-size: 23px;
+                            font-weight: 600;
+                            color: $pink;
+                        }
+                    }
+                }
+
+                .discount {
+                    p {
+                        &.off {
+                            border: 1px dashed #f61d5e;
+                            padding: 5px 5px;
+                            border-radius: 9px;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .sellers {
+        background: $white;
+        border-radius: 10px;
+        .heading {
+            h4 {
+                font-size: 20px;
+                font-weight: 100;
+                color: $black;
+            }
+        }
+
+        .shop-details {
+            .shop-heading {
+                .left-side {
+                    h4 {
+                        font-size: 17px;
+                        font-weight: 100;
+                        color: $black;
+                    }
+                }
+
+                .right-side {
+                    img {
+                        &.writing {
+                            width: 21px;
+                            height: auto;
+                        }
+                        &.remove {
+                            width: 24px;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            .detail-section {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-bottom: 0px;
+                    li {
+                        border-right: 1px solid $light-gray;
+                        padding: 0px 20px;
+                        a {
+                            text-decoration: none;
+                            p {
+                                color: $dark-gray;
+                                font-size: 15px;
+                                padding-bottom: 10px;
+                            }
+                            span {
+                                color: $black;
+                                font-size: 15px;
+                            }
+                            span {
+                                &.membership-icon img {
+                                    font-size: 20px;
+                                    position: relative;
+                                    top: 2px;
+                                }
+                                &.icon-diamond1 {
+                                    font-size: 18px;
+                                    position: relative;
+                                    top: 1px;
+                                }
+                                &.icon-image-plaseholder {
+                                    font-size: 20px;
+                                    position: relative;
+                                    top: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .saved-search {
+        background: $white;
+        border-radius: 10px;
+        .heading {
+            h4 {
+                font-size: 20px;
+                font-weight: 100;
+                color: $black;
+            }
+        }
+
+        .saved-search-details {
+            .search-heading {
+                .left-side {
+                    h4 {
+                        font-size: 17px;
+                        font-weight: 100;
+                        color: $black;
+                    }
+                }
+
+                .right-side {
+                    img {
+                        &.writing {
+                            width: 21px;
+                            height: auto;
+                        }
+                        &.remove {
+                            width: 24px;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            .detail-section {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-bottom: 0px;
+                    li {
+                        border-right: 1px solid $light-gray;
+                        padding: 0px 20px;
+                        a {
+                            text-decoration: none;
+                            p {
+                                color: $dark-gray;
+                                font-size: 15px;
+                                padding-bottom: 10px;
+                            }
+                            span {
+                                color: $black;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.slick-list {
+    width: 100%;
+}

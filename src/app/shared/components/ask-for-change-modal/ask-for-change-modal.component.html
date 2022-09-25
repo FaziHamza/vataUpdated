@@ -1,0 +1,70 @@
+<div class="ask-for-change py-3">
+    <form [formGroup]="askForChangeForm">
+        <div class="container">
+            <div fxLayout="row" class=" pb-4 justify-content-center">
+                <h5 class="heading position-relative" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">Ask for Change</h5>
+            </div>
+    
+            <div fxLayout="row" class="pt-4">
+                <div fxFlex="100%" class="mx-2">
+                    <mat-form-field class="w-100">
+                        <mat-label>Change On</mat-label>
+                        <input formControlName="change_on" matInput type="text" />
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div fxLayout="row">
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="w-100">
+                        <mat-label>Surcharge</mat-label>
+                        <input formControlName="charge" matInput type="text" />
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50%" class="mx-2">
+                    <mat-form-field class="w-100">
+                        <mat-label>Condition</mat-label>
+                        <input matInput type="text" />
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div fxLayout="row">
+                <mat-form-field class="w-100">
+                    <mat-label>Your Message here</mat-label>
+                    <textarea formControlName="message" matInput type="text"></textarea>
+                </mat-form-field>
+            </div>
+    
+            <!-- <div class="clearfix ask-change-images">
+                <a *ngFor="let file of files; let i = index;" href="javascript:void(0)">
+                  <div class="inline-block">
+                    <span (click)="removeImage(i)" class="delete-comment-img"><img src="/assets/img/delete.png"></span>
+                    <img [src]="preview[i]">
+                  </div>
+                </a>
+              </div>
+              <app-file-upload (uploadData)="onFileUpload($event)"></app-file-upload> -->
+
+            <div (click)="onConfirmClick()" fxLayout="row" class="button pt-4 justify-content-center">
+                <a class="rounded-bt pink-b">Ask for Change</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 
+<div class="ask-for-change-modal">
+    <div class="container">
+
+        <div class=" pb-3">
+            <h5 class="heading text-center position-relative" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">{{dataGet.title}}</h5>
+        </div>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-3 sub-heading">{{dataGet.subTitle}}</p>
+
+        <div fxLayout="row" class="button pt-4 justify-content-center">
+            <a class="rounded-bt pink-b">{{dataGet.buttonText}}</a>
+        </div>
+
+    </div>
+</div> -->

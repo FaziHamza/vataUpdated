@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fb3b71;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_alarm_add_24px" data-name="icon/action/alarm_add_24px" class="cls-1" d="M6.667,13.333A6,6,0,0,1,.633,7.39,6,6,0,0,1,6.667,1.446,6,6,0,0,1,12.7,7.39,6,6,0,0,1,6.667,13.333Zm0-10.567A4.664,4.664,0,0,0,1.974,7.39a4.694,4.694,0,0,0,9.386,0A4.664,4.664,0,0,0,6.667,2.767Zm.67,7.264H6V8.05H3.985V6.729H6V4.748H7.337V6.729H9.348V8.05H7.337v1.98Zm5.137-6.478h0L9.385,1.015,10.244,0l3.089,2.538-.859,1.014Zm-11.616,0h0L0,2.539,3.089,0l.859,1.014L.859,3.552Z" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="15.85" height="15.85"/>
+    </clipPath>
+  </defs>
+  <g id="biddng" transform="translate(16605 21988)">
+    <path id="Path_834" data-name="Path 834" class="cls-3" d="M0,0H16V16H0Z" transform="translate(-16605 -21988)"/>
+    <g id="Group_65" data-name="Group 65" class="cls-4" transform="translate(-16603.666 -21986.666)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-1.378 -1.258)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="16.09" height="15.85"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="15.85" height="15.85"/>
+      </g>
+    </g>
+  </g>
+</svg>

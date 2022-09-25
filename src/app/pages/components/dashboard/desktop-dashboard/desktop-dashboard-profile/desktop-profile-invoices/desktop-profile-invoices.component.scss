@@ -1,0 +1,239 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-profile-invoices {
+    border-radius: 10px;
+    background: $white;
+    .invoice-heading {
+        h6 {
+            font-size: 16px;
+            color: $black;
+        }
+    }
+
+    .date-deatil {
+        border-top: 1px dashed $ligher-gray;
+        p {
+            display: flex;
+            padding-right: 30px;
+            span {
+                &.silver {
+                    font-size: 13px;
+                    color: $dark-gray;
+                }
+                &.black {
+                    font-size: 13px;
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .bill {
+        .from {
+            p {
+                &.heading {
+                    color: $pink;
+                    font-size: 15px;
+                }
+                &.shop {
+                    font-size: 13px;
+                    border-bottom: 1px dashed $ligher-gray;
+                    color: $black;
+                }
+            }
+
+            .contact {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-bottom: 0px;
+                    li {
+                        border-right: 1px dashed $ligher-gray;
+                        padding: 0 25px 0 10px;
+                        &:nth-last-child(1) {
+                            border-right: 0px;
+                        }
+                        p {
+                            &.silver {
+                                color: $dark-gray;
+                                font-size: 12px;
+                            }
+                            &.black {
+                                color: $black;
+                                font-size: 12px;
+                                padding-top: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .to {
+            p {
+                &.heading {
+                    color: $sky-blue;
+                    font-size: 15px;
+                }
+                &.shop {
+                    font-size: 13px;
+                    border-bottom: 1px dashed $ligher-gray;
+                    color: $black;
+                }
+            }
+
+            .contact {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-bottom: 0px;
+                    li {
+                        border-right: 1px dashed $ligher-gray;
+                        padding: 0 25px 0 10px;
+                        &:nth-last-child(1) {
+                            border-right: 0px;
+                        }
+                        p {
+                            &.silver {
+                                color: $dark-gray;
+                                font-size: 12px;
+                            }
+                            &.black {
+                                color: $black;
+                                font-size: 12px;
+                                padding-top: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .product-invoice {
+        .product {
+            border-top: 1px dashed $ligher-gray;
+            padding-top: 15px;
+            &:first-child {
+                border-top: 0;
+            }
+            .product-img {
+                img {
+                    width: 80px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            
+            .product-heading {
+                h6 {
+                    font-size: 14px;
+                    color: $black;
+                }
+                .date-id {
+                    span {
+                        color: $dark-gray;
+                        font-size: 12px;
+                    }
+                }
+            }
+            
+            .price {
+                .left {
+                    color: $dark-gray;
+                    font-size: 15px;
+                }
+                .right {
+                    color: $black;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .subtotal-discount {
+        .right {
+            .sub-total {
+                .left-side {
+                    span {
+                        &.subtotal-text {
+                            color: $dark-gray;
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                .right-side {
+                    span {
+                        &.price {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+            .discount {
+                .left-side {
+                    span {
+                        font-size: 15px;
+                        color: $pink;
+                        span {
+                            &.icon-add-button-inside-black-circle-1 {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+
+                .right-side {
+                    span {
+                        &.price {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .payment-total {
+        .payment-method {
+            h1 {
+                color: $pink;
+                font-size: 25px;
+                font-weight: 600;
+            }
+        }
+
+        .total-amount  {
+            .sub-total {
+                .left-side {
+                    span {
+                        &.subtotal-text {
+                            color: $dark-gray;
+                            font-size: 14px;
+                            position: relative;
+                            top: 8px;
+                        }
+                    }
+                }
+
+                .right-side {
+                    span {
+                        &.price {
+                            font-size: 28px;
+                            font-weight: 600;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

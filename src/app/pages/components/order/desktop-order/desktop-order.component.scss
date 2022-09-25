@@ -1,0 +1,298 @@
+@import "../../../../../styles.scss";
+
+.desktop-order {
+  .left-side {
+    background-color: $ligher-gray;
+    padding: 40px 0;
+    .items {
+      background: $white;
+      border-radius: 12px;
+
+      .heading-bar {
+        padding-bottom: 4%;
+        .heading-left {
+          font-size: 19px;
+          color: $black;
+        }
+        .arrow-right {
+          span {
+            &.icon-baseline-keyboard_arrow_down-24px-1 {
+              font-size: 20px;
+              border: 1px solid $light-gray;
+              border-radius: 50px;
+            }
+            &::before {
+              color: $light-gray;
+            }
+          }
+        }
+      }
+
+      .item-details {
+        border-radius: 5px;
+        border: 1px solid $light-gray;
+        padding: 10px 20px;
+        .item-marketplace {
+          .item-img {
+            img {
+              width: 110px;
+              height: 80px;
+              object-fit: contain;
+              object-position: center;
+            }
+          }
+
+          .item-text {
+            p {
+              &.heading {
+                font-size: 20px;
+                color: $black;
+              }
+            }
+            span {
+              &.black-text {
+                color: $black;
+                font-size: 15px;
+              }
+            }
+            span {
+              &.silver-text {
+                color: $dark-gray;
+                font-size: 15px;
+              }
+            }
+          }
+
+          .cross-btn {
+            span {
+              &.icon-baseline-close-24px-1 {
+                font-size: 20px;
+              }
+              &::before {
+                color: $light-gray;
+              }
+            }
+          }
+        }
+        .item-specifications {
+          span {
+            &.silver {
+              font-size: 15px;
+              color: $dark-gray;
+              span {
+                cursor: pointer;
+              }
+            }
+            &.number {
+                .minus,
+              .plus {
+                width: 20px;
+                height: 20px;
+                padding: 8px 5px 8px 5px;
+                display: inline-block;
+                vertical-align: middle;
+                text-align: center;
+                color: $black;
+                cursor: pointer;
+              }
+              input {
+                height: 22px;
+                width: 40px;
+                border-radius: 30%;
+                text-align: center;
+                border: 1px solid #ddd;
+                display: inline-block;
+                vertical-align: middle;
+              }
+            }
+          }
+
+          span {
+            &.black {
+              font-size: 15px;
+              color: $black;
+            }
+          }
+
+          .colors {
+            display: flex;
+            span {
+              &.color {
+                cursor: pointer;
+                width: 18px;
+                height: 18px;
+                border-radius: 50px;
+                &.green {
+                  background-color: $light-green;
+                }
+                &.dark-blue {
+                  background-color: $blue;
+                }
+              }
+            }
+          }
+
+          span {
+            &.pink-text {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .deal-bar {
+      background: $white;
+      border-radius: 12px;
+      padding: 20px;
+
+      .heading-left {
+        h4 {
+          font-size: 19px;
+          color: $black;
+        }
+      }
+      .arrow-right {
+        span {
+          &.icon-baseline-keyboard_arrow_down-24px-1 {
+            font-size: 20px;
+            border: 1px solid $light-gray;
+            border-radius: 50px;
+          }
+          &::before {
+            color: $light-gray;
+          }
+        }
+      }
+    }
+
+    .payment-bar {
+      background: $white;
+      border-radius: 12px;
+      padding: 20px;
+      .heading {
+        font-size: 19px;
+        color: $black;
+      }
+
+      span {
+        &.silver-text {
+          color: $dark-gray;
+          font-size: 15px;
+        }
+      }
+
+      .payment-icons {
+        span {
+          &.icon-s {
+            font-size: 22px;
+          }
+          &.icon-m {
+            font-size: 17px;
+          }
+          &.icon-xs {
+            font-size: 19px;
+          }
+        }
+      }
+    }
+
+    .shipping-bar {
+      background: $white;
+      border-radius: 12px;
+      padding: 20px;
+      .heading {
+        font-size: 19px;
+        color: $black;
+      }
+
+      .date-location {
+        p {
+          color: $dark-gray;
+          font-size: 15px;
+        }
+      }
+
+      .shipping-details {
+        p {
+          font-size: 16px;
+          color: $black;
+        }
+      }
+    }
+  }
+
+  .right-side {
+    background-color: $white;
+    padding: 10% 2% 0 2%;
+    .promo-code {
+      h6 {
+        font-size: 20px;
+        font-weight: 600;
+        color: $black;
+      }
+      p {
+        font-size: 13px;
+        color: $dark-gray;
+      }
+    }
+
+    .amount {
+      h3 {
+        &.heading {
+          font-size: 22px;
+          font-weight: 600;
+          color: $black;
+        }
+      }
+
+      .left {
+        p {
+          &.silver-text {
+            color: $dark-gray;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .right {
+        p {
+          &.black-text {
+            font-size: 15px;
+            color: $black;
+          }
+        }
+      }
+
+      .pay-total {
+        .left {
+          p {
+            &.silver-text {
+              color: $dark-gray;
+              font-size: 15px;
+            }
+          }
+        }
+        .right {
+          p {
+            &.black-text {
+              font-size: 18px;
+              color: $black;
+            }
+          }
+        }
+      }
+
+      .accept-policy {
+        p {
+          color: $dark-gray;
+          font-size: 13px;
+        }
+        a {
+          color: $black;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

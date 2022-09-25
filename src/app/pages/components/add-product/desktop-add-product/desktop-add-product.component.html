@@ -1,0 +1,942 @@
+<app-old-layout-header></app-old-layout-header>
+
+<div class="add-product-desktop">
+  <div class="left-icon pink"></div>
+    <div class="section-title-cont container clearfix">
+        <h2 class="section-title m-0">Add Product</h2>
+    </div>
+  <div class="container">
+    <!-- marketplace and deals start -->
+    <div class="marketplace-tab" *ngIf="tab === 'marketplace'">
+      <form [formGroup]="addProductForm">
+        <div *ngIf="tab != 'booking'">
+          <div fxLayout="row" class="py-3">
+            <div fxFlex="25%" class="left-side mr-3">
+              <div class="left-drag-img">
+                <app-file-upload
+                allowedTypes="image/*, video/*"
+                  (uploadData)="onFileUpload($event)"
+                  template="lg"
+                ></app-file-upload>
+                
+              </div>
+              <mat-error class="mt-2 text-center" *ngIf="addProductForm.controls['image'].errors?.imageRequired">
+                Image is required
+              </mat-error>
+  
+              <div class="left-imgs">
+                <ng-container *ngFor="let preview of preview; let i = index">
+                <div class="img-container m-3">
+                    <span
+                      (click)="removeImage(i)"
+                      class="icon-baseline-close-24px-11 close"
+                    ></span>
+                    <img *ngIf="preview.format === 'image'" [src]="preview.data" />
+                    <video *ngIf="preview.format === 'video'" [src]="preview.data" controls></video>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+  
+            <div fxFlex="75%" class="right-side ml-3">
+              <div class="tabs border-bottom">
+                <div fxLayout="row">
+                  <div fxFlex="45%">
+                    <a
+                      [ngClass]="{ active: tab == 'marketplace' }"
+                      (click)="changeTab('marketplace')"
+                      >Marketplace</a
+                    >
+                  </div>
+                  <div fxFlex="45%">
+                    <a
+                      [ngClass]="{ active: tab == 'booking' }"
+                      (click)="changeTab('booking')"
+                      >Booking</a
+                    >
+                  </div>
+                </div>
+              </div>
+  
+              <div class="text-field">
+                <div fxLayout="row" class="pt-4">
+                  <div class="w-100">
+                    <mat-form-field class="form-section w-100">
+                      <mat-label>Product Name</mat-label>
+                      <input formControlName="title" matInput type="text" />
+                      <div
+                        *ngIf="addProductForm.get('title').touched || submitted"
+                      >
+                        <mat-error
+                          *ngIf="
+                            addProductForm.controls['title'].errors?.required
+                          "
+                        >
+                          Title is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div fxLayout="row">
+                  <div class="w-100">
+                    <div class="basic-container my-3">
+                        <button type="button" style="min-width: 150px;" mat-raised-button color="accent" [matMenuTriggerFor]="menu.childMenu">
+                          Categories
+                          <mat-icon>expand_more</mat-icon>
+                        </button>
+                        <app-menu-item (selectedCat)="categorySelected($event)" #menu [items]="categoryData"></app-menu-item>
+                    </div>
+                    <mat-error
+                          *ngIf=" addProductForm.get('category').touched || submitted &&
+                            addProductForm.controls['category'].errors?.required
+                          "
+                        >
+                          Category is <strong>required</strong>
+                        </mat-error>
+                    <p class="my-3" *ngIf="selectedCategory">{{selectedCategory.full_path}}</p>
+                  </div>
+                </div>
+  
+                <div fxLayout="row mt-2">
+                  <div class="w-100">
+                    <mat-form-field class="form-section w-100">
+                      <mat-label>Condition</mat-label>
+                      <mat-select formControlName="condition">
+                        <mat-option
+                          *ngFor="let condition of conditionData"
+                          [value]="condition.id"
+                          >{{ condition.name }}</mat-option
+                        >
+                      </mat-select>
+                      <div
+                        *ngIf="
+                          addProductForm.get('condition').touched || submitted
+                        "
+                      >
+                        <mat-error
+                          *ngIf="
+                            addProductForm.controls['condition'].errors?.required
+                          "
+                        >
+                          Condition is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div fxLayout="row">
+                  <div class="w-100">
+                    <mat-form-field class="form-section w-100">
+                      <mat-label>Description</mat-label>
+                      <input
+                        formControlName="about_product"
+                        matInput
+                        type="text"
+                      />
+                      <div
+                        *ngIf="
+                          addProductForm.get('about_product').touched || submitted
+                        "
+                      >
+                        <mat-error
+                          *ngIf="
+                            addProductForm.controls['about_product'].errors
+                              ?.required
+                          "
+                        >
+                          Description is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="fixed-price-toggle" *ngIf="tab == 'marketplace'">
+                  <div fxLayout="row" class="pt-5 border-bottom pb-3">
+                    <div fxFlex="70%">
+                      <h2>Product Variation</h2>
+                    </div>
+                    <div fxFlex="30%" class="text-right">
+                      <mat-slide-toggle
+                        formControlName="variation"
+                      ></mat-slide-toggle>
+                    </div>
+                  </div>
+
+                  <mat-form-field class="form-section w-100" id="stock_count">
+                    <mat-label>Stock count</mat-label>
+                    <input
+                      formControlName="stock_count"
+                      matInput
+                      type="number"
+                    />
+                    <div
+                      *ngIf="
+                        addProductForm.get('stock_count').touched || submitted
+                      "
+                    >
+                      <mat-error
+                        *ngIf="
+                          addProductForm.controls['stock_count'].errors
+                            ?.required
+                        "
+                      >
+                        Stock count is <strong>required</strong>
+                      </mat-error>
+                    </div>
+                  </mat-form-field>
+                </div>
+
+                <!-- <div fxLayout="row">
+                  <div class="w-100">
+                    <mat-form-field class="form-section w-100">
+                      <mat-label>Stock count</mat-label>
+                      <input
+                        formControlName="stock_count"
+                        matInput
+                        type="number"
+                      />
+                      <div
+                        *ngIf="
+                          addProductForm.get('stock_count').touched || submitted
+                        "
+                      >
+                        <mat-error
+                          *ngIf="
+                            addProductForm.controls['stock_count'].errors
+                              ?.required
+                          "
+                        >
+                          Stock count is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div> -->
+                <!-- <div fxLayout="row">
+                  <div class="mb-2" fxFlex="180px">
+                    <a (click)="addAttributes()" class="show-all-btn">Add Attributes +</a>
+                  </div>
+                </div> -->
+                <!-- <div class="mt-2" *ngFor="let attr of addProductForm.get('attributes')['controls']; let i = index;"
+                formArrayName="attributes" fxLayout="row">
+                  <div [formGroupName]="i" class="w-100">
+                    <div>
+                      <mat-form-field class="form-section mr-2">
+                        <mat-label>Attribute type</mat-label>
+                        <input formControlName="attr_type" matInput type="text" />
+                        
+                      </mat-form-field>
+                      <ng-container
+                          *ngIf="addProductForm.get('attributes').controls[i].get('attr_type').touched || submitted"
+                        >
+                          <mat-error
+                            *ngIf="
+                            addProductForm.get('attributes').controls[i].get('attr_type').errors?.required
+                            "
+                          >
+                          Attribute type is <strong>required</strong>
+                          </mat-error>
+                          <mat-error
+                            *ngIf="
+                            addProductForm.get('attributes').controls[i].get('attr_type').errors?.unique
+                            "
+                          >
+                          Attribute type must be <strong>unique</strong>
+                          </mat-error>
+                        </ng-container>
+                    </div>
+                    <div>
+                      <mat-form-field *ngIf="addProductForm.get('attributes').controls[i].get('attr_type').value !== 'color'"  class="form-section mr-2">
+                        <mat-label>Attribute value</mat-label>
+                        <input formControlName="attr_name" matInput type="text" />
+                      </mat-form-field>
+                      <mat-form-field class="form-section mr-2" *ngIf="addProductForm.get('attributes').controls[i].get('attr_type').value === 'color'">
+                        <mat-label>Color</mat-label>
+                        <input matInput [ngxMatColorPicker]="picker" formControlName="attr_name">
+                        <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+                        <ngx-mat-color-picker #picker color="primary"></ngx-mat-color-picker>
+                    </mat-form-field>
+                      <ng-container
+                        *ngIf="addProductForm.get('attributes').controls[i].get('attr_name').touched || submitted"
+                      >
+                        <mat-error
+                          *ngIf="
+                          addProductForm.get('attributes').controls[i].get('attr_name').errors?.required
+                          "
+                        >
+                        Attribute name is <strong>required</strong>
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                          addProductForm.get('attributes').controls[i].get('attr_name').errors?.unique
+                          "
+                        >
+                        Attribute name must be <strong>unique</strong>
+                        </mat-error>
+                      </ng-container>
+                    </div>
+                    <div>
+                      <mat-form-field class="form-section mr-2">
+                        <mat-label>Price</mat-label>
+                        <input formControlName="price" matInput type="text" />
+                      </mat-form-field>
+                      <ng-container
+                        *ngIf="addProductForm.get('attributes').controls[i].get('price').touched || submitted"
+                      >
+                        <mat-error
+                          *ngIf="
+                          addProductForm.get('attributes').controls[i].get('price').errors?.required
+                          "
+                        >
+                        Price is <strong>required</strong>
+                        </mat-error>
+                      </ng-container>
+                    </div>
+                    <div class="close-btn" fxFlex="10%" >
+                      <span class="icon-baseline-close-24px-1" (click)="removeAttributes(i)">  
+                      </span>
+                    </div>
+                  </div>
+                </div> -->
+                <div fxLayout="row" *ngIf="!variations && selectedCategory && addProductForm.get('variation').value === true" id="variation" class="mt-3">
+                  <div class="mb-2" fxFlex="220px">
+                    <a (click)="variationService.tempFormData = addProductForm" [routerLink]="['/add-product-variation', selectedCategory.id]"  class="show-all-btn">Create Variations</a>
+                  </div>
+                </div>
+                <p class="my-2" style="color: red; font-size: 13px;" *ngIf="variationError">{{variationError}}</p>
+                <p class="my-3" *ngIf="variations">Variation(s) Added</p>
+
+              </div>
+            </div>
+          </div>
+  
+          <div fxLayout="row" class="py-3">
+            <div fxFlex="25%" class="left-side-2 mr-3"></div>
+  
+            <div fxFlex="75%" class="right-side-2 ml-3">
+              <div fxLayout="row">
+                <div fxFlex="50%" class="border-right pr-5">
+                  <div class="bidding-toggle" *ngIf="tab == 'marketplace'">
+                    <div fxLayout="row" class="border-bottom pb-3">
+                      <div fxFlex="70%">
+                        <h2>Bidding</h2>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="bidding"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="py-3 border-bottom">
+                      <div fxFlex="70%">
+                        <span>Bidding Price</span>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <input
+                          (focusout)="calculateTotalValue()"
+                          matInput
+                          formControlName="bidding_price"
+                          placeholder="$750"
+                          class="right-text"
+                          (keyup)="onCh()"
+                        />
+                      </div>
+                    </div>
+                  <div
+                    *ngIf="
+                      addProductForm.get('bidding_price').touched || submitted
+                    "
+                    fxLayout="row"
+                  >
+                    <mat-error
+                      *ngIf="
+                        addProductForm.controls['bidding_price'].errors
+                          ?.required
+                      "
+                    >
+                      Bidding price is <strong>required</strong>
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        addProductForm.controls['bidding_price'].errors
+                          ?.pattern
+                      "
+                    >
+                      Only numeric values are allowed
+                    </mat-error>
+                  </div>
+                  <div fxLayout="row" class="py-3 border-bottom">
+                    <div fxFlex="70%">
+                      <span>Initial Bidding Price</span>
+                    </div>
+                    <div fxFlex="30%" class="text-right">
+                      <input
+                        (focusout)="calculateTotalValue()"
+                        matInput
+                        formControlName="start_bid"
+                        placeholder="$0"
+                        class="right-text"
+                        (keyup)="onCh()"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="
+                      addProductForm.get('start_bid').touched || submitted
+                    "
+                    fxLayout="row"
+                  >
+                    <mat-error
+                      *ngIf="
+                        addProductForm.controls['start_bid'].errors
+                          ?.required
+                      "
+                    >
+                      Initial Bidding price is <strong>required</strong>
+                    </mat-error>
+                    <mat-error
+                      *ngIf="customErr"
+                    >
+                      Initial Bidding price should be less than bidding price
+                    </mat-error>
+                  </div>
+                  </div>
+  
+                  <div class="fixed-price-toggle" *ngIf="tab == 'marketplace'">
+                    <div fxLayout="row" class="pt-5 border-bottom pb-3">
+                      <div fxFlex="70%">
+                        <h2>Fixed Price</h2>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="fixed_price"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="py-3 border-bottom">
+                      <div fxFlex="70%">
+                        <span>Price</span>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <input
+                          (focusout)="calculateTotalValue()"
+                          matInput
+                          formControlName="price"
+                          placeholder="$750"
+                          class="right-text"
+                        />
+                      </div>
+                      
+                  </div>
+                  <div
+                    *ngIf="addProductForm.get('price').touched || submitted" fxLayout="row"
+                  >
+                    <mat-error
+                      *ngIf="
+                        addProductForm.controls['price'].errors?.required
+                      "
+                    >
+                      Price is <strong>required</strong>
+                    </mat-error>
+                    <mat-error
+                      *ngIf="addProductForm.controls['price'].errors?.pattern"
+                    >
+                      Only numeric values are allowed
+                    </mat-error>
+                  </div>
+                  </div>
+  
+                  <div class="increment-input pt-4" *ngIf="tab == 'marketplace'">
+                    <div fxLayout="row">
+                      <h4>Increment</h4>
+                    </div>
+  
+                    <div fxLayout="row" class="pb-5">
+                      <div class="chips-increment pt-2 w-100">
+                        <mat-radio-group formControlName="increment">
+                          <mat-radio-button
+                            disableRipple="true"
+                            *ngFor="let increment of increments"
+                            (click)="selectIncrement(increment.value)"
+                            [value]="increment.actual"
+                            class="mr-2"
+                            [ngClass]="{
+                              'pink-b': increment.value == selectedIncrement
+                            }"
+                          >
+                            {{ increment.value }}
+                          </mat-radio-button>
+                        </mat-radio-group>
+                        <div
+                          *ngIf="
+                            addProductForm.get('increment').touched || submitted
+                          "
+                        >
+                          <mat-error
+                            *ngIf="
+                              addProductForm.controls['increment'].errors
+                                ?.required
+                            "
+                          >
+                            Increment price is <strong>required</strong>
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="available">
+                    <div fxLayout="row">
+                      <h2>Start</h2>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3">
+                      <mat-radio-group formControlName="start">
+                        <div fxLayout="row" class="pt-3">
+                          <mat-radio-button value="now">Now</mat-radio-button>
+                        </div>
+                        <div fxLayout="row" class="pt-3">
+                          <mat-radio-button value="Individual"
+                            >Individual</mat-radio-button
+                          >
+                        </div>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+  
+                  <div class="date-time-end pt-3">
+                    <div fxLayout="row">
+                      <div fxFlex="47%" class="mr-2">
+                        <div class="w-100">
+                          <mat-form-field class="w-100">
+                            <mat-label>End Date</mat-label>
+                            <input
+                              formControlName="end_date"
+                              matInput
+                              [matDatepickerFilter]="myFilter"
+                              [matDatepicker]="picker"
+                            />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="picker"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+  
+                      <div fxFlex="47%" class="ml-2">
+                        <mat-form-field class="w-100">
+                          <mat-label>End Time</mat-label>
+                          <input matInput type="time" formControlName="end_time">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="toggle-bar" *ngIf="tab == 'marketplace'">
+                    <div fxLayout="row" class="pt-3">
+                      <div fxFlex="70%">
+                        <h4>Ask for Change</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="ask_for_change"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3">
+                      <div fxFlex="70%">
+                        <h4>Make Offer</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="make_offer"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3">
+                      <div fxFlex="70%">
+                        <h4>Stock on Item</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="on_stock"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div fxFlex="50%" class="pl-5">
+                  <div class="shipping-toggle">
+                    <div fxLayout="row" class="border-bottom pb-3">
+                      <div fxFlex="40%">
+                        <h2>Shipping</h2>
+                      </div>
+  
+                      <div fxFlex="60%" class="text-right">
+                        <div class="row">
+                          <div fxFlex="70%">
+                            <span class="right-text">Free Shipping</span>
+                          </div>
+  
+                          <div fxFlex="30%">
+                            <mat-slide-toggle
+                              formControlName="is_free"
+                            ></mat-slide-toggle>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="shipping-price pt-2">
+                      <div class="w-100">
+                        <mat-form-field class="form-section w-100">
+                          <mat-label>Shipping Price</mat-label>
+                          <input
+                            formControlName="shipping_price"
+                            matInput
+                            type="text"
+                          />
+                          <div
+                            *ngIf="
+                              addProductForm.get('shipping_price').touched ||
+                              submitted
+                            "
+                          >
+                            <mat-error
+                              *ngIf="
+                                addProductForm.controls['shipping_price'].errors
+                                  ?.required
+                              "
+                            >
+                              Shipping price is <strong>required</strong>
+                            </mat-error>
+                          </div>
+                        </mat-form-field>
+                      </div>
+                    </div>
+  
+                    <div *ngIf="tab == 'marketplace'">
+                      <div fxLayout="row" class="shipping-details-head pt-2">
+                        <span>Shipping Details</span>
+                      </div>
+
+                      <div fxLayout="row" class="shipping-price pt-1">
+                        <div class="w-100">
+                          <!-- <mat-form-field class="form-section w-100">
+                            <mat-label></mat-label>
+                            <input
+                              formControlName="ship_to"
+                              matInput
+                              type="text"
+                            />
+                          </mat-form-field> -->
+
+                          <mat-form-field class="form-section w-100" appearance="fill">
+                            <mat-label>Ship To</mat-label>
+                            <mat-select formControlName="ship_to" multiple>
+                              <mat-option *ngFor="let option of shiptoArray" [value]="option.id">{{option.name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div fxLayout="row" class="shipping-price pt-1">
+                        <div class="w-100">
+                          <mat-form-field class="form-section w-100" appearance="fill">
+                            <mat-label>Product Location</mat-label>
+                            <mat-select formControlName="product_location" multiple>
+                              <mat-option *ngFor="let option of productLocationArray" [value]="option.id">{{option.name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+  
+                      <div fxLayout="row" class="pt-2">
+                        <mat-radio-group formControlName="shipping_details">
+                          <div fxLayout="row" class="pt-3">
+                            <mat-radio-button>Pickup</mat-radio-button>
+                          </div>
+  
+                          <div fxLayout="row" class="pt-3">
+                            <mat-radio-button>Shipping</mat-radio-button>
+                          </div>
+                          <div fxLayout="row" class="pt-3">
+                            <mat-radio-button>Both</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="delivery-time">
+                    <div fxLayout="row" class="pt-5 border-bottom pb-3">
+                      <h2 class="heading">Delivery Time</h2>
+                    </div>
+  
+                    <div fxLayout="row" class="chips-days pt-4">
+                      <mat-radio-group formControlName="shipping_time">
+                        <mat-radio-button
+                          [value]="delivery.value"
+                          class="mr-2"
+                          *ngFor="let delivery of deliverys"
+                          (click)="selectDelivery(delivery.value)"
+                          [ngClass]="{
+                            'pink-b': delivery.value == selectedDelivery
+                          }"
+                        >
+                          {{ delivery.value }}
+                        </mat-radio-button>
+                      </mat-radio-group>
+                      <!-- <a formControlName="shipping_time" mat-button 
+                                              class="mr-2"
+                                              *ngFor="let delivery of deliverys"
+                                              ngModel=""
+                                              (click)="selectDelivery(delivery.value)"
+                                              [ngClass]="{'pink-b': delivery.value == selectedDelivery}"
+                                          >
+                                              {{delivery.value}}
+                                          </a> -->
+                    </div>
+                    <div
+                      *ngIf="
+                        addProductForm.get('shipping_time').touched || submitted
+                      "
+                    >
+                      <mat-error
+                        *ngIf="
+                          addProductForm.controls['shipping_time'].errors
+                            ?.required
+                        "
+                      >
+                        Shipping time is <strong>required</strong>
+                      </mat-error>
+                    </div>
+  
+                    <!-- <div fxLayout="row" class="pt-3">
+                      <div class="w-100">
+                        <mat-form-field class="form-section w-100">
+                          <mat-label>Put Delivery Time Manually</mat-label>
+                          <input
+                            formControlName="shipping_time"
+                            matInput
+                            type="text"
+                          />
+                        </mat-form-field>
+                        <div
+                          *ngIf="
+                            addProductForm.get('shipping_time').touched ||
+                            submitted
+                          "
+                        >
+                          <mat-error
+                            *ngIf="
+                              addProductForm.controls['shipping_time'].errors
+                                ?.required
+                            "
+                          >
+                            Shipping time is <strong>required</strong>
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+  
+                  <div class="payment">
+                    <div fxLayout="row" class="pt-4 border-bottom pb-3">
+                      <h2 class="heading">Payment</h2>
+                    </div>
+  
+                    <div fxLayout="row" class="payments-icon py-4">
+                      <a
+                        (click)="selectPayment('applepay')"
+                        [ngClass]="{ active: payments.includes('applepay') }"
+                      >
+                        <span class="icon-Group-1295 mr-3 icon-xs"
+                          ><span class="path1"></span><span class="path2"></span
+                          ><span class="path3"></span><span class="path4"></span
+                          ><span class="path5"></span
+                        ></span>
+                      </a>
+                      <a
+                        (click)="selectPayment('mastercard')"
+                        [ngClass]="{ active: payments.includes('mastercard') }"
+                      >
+                        <span class="icon-Card-networks-MC-Horizontal mr-3 icon-s"
+                          ><span class="path1"></span><span class="path2"></span
+                          ><span class="path3"></span
+                        ></span>
+                      </a>
+                      <a
+                        (click)="selectPayment('visa')"
+                        [ngClass]="{ active: payments.includes('visa') }"
+                      >
+                        <span class="icon-Visa mr-4"></span>
+                      </a>
+                      <a
+                        (click)="selectPayment('paypal')"
+                        [ngClass]="{ active: payments.includes('paypal') }"
+                      >
+                        <span class="icon-PayPal-FullColor-Horizontal mr-3"
+                          ><span class="path1"></span><span class="path2"></span
+                          ><span class="path3"></span><span class="path4"></span
+                          ><span class="path5"></span><span class="path6"></span
+                          ><span class="path7"></span><span class="path8"></span
+                          ><span class="path9"></span
+                        ></span>
+                      </a>
+                      <a
+                        (click)="selectPayment('unionpay')"
+                        [ngClass]="{ active: payments.includes('unionpay') }"
+                      >
+                        <span class="icon-Group-1296 icon-s"
+                          ><span class="path1"></span><span class="path2"></span
+                          ><span class="path3"></span><span class="path4"></span
+                          ><span class="path5"></span><span class="path6"></span
+                          ><span class="path7"></span><span class="path8"></span
+                          ><span class="path9"></span><span class="path10"></span
+                          ><span class="path11"></span><span class="path12"></span
+                          ><span class="path13"></span><span class="path14"></span
+                          ><span class="path15"></span
+                        ></span>
+                      </a>
+                    </div>
+  
+                    <div *ngIf="tab == 'marketplace'">
+                      <div fxLayout="row" class="pt-4 pb-3 border-bottom">
+                        <div fxFlex="70%">
+                          <h4>Contact in Messenger</h4>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                          <mat-slide-toggle></mat-slide-toggle>
+                        </div>
+                      </div>
+  
+                      <div fxLayout="row" class="pt-3">
+                        <div fxFlex="70%">
+                          <h4>Contact in Messenger</h4>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                          <mat-slide-toggle></mat-slide-toggle>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div fxLayout="row" class="py-3">
+            <div fxFlex="25%" class="left-side-3 mr-3"></div>
+  
+            <div fxFlex="75%" class="right-side-3 ml-3 marketing-toggle">
+              <div class="marketing-toggle">
+                <div fxLayout="row" class="heading border-bottom pb-3">
+                  <h2>Marketing</h2>
+                </div>
+  
+                <div fxLayout="row">
+                  <div fxFlex="55%" class="left-sec pt-5 mr-4">
+                    <div fxLayout="row" class="pb-2 border-bottom">
+                      <div fxFlex="70%">
+                        <h4>Push on Home ($10)</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="push_on_home"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3 pb-2 border-bottom">
+                      <div fxFlex="70%">
+                        <h4>Push on Searching List ($10)</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="push_on_searchlist"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3 pb-2 border-bottom">
+                      <div fxFlex="70%">
+                        <h4>Push on Marketplace ($10)</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="push_on_marketplace"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3">
+                      <div fxFlex="70%">
+                        <h4>Push on Near by Me ($10)</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="push_on_nearbyme"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+  
+                    <div fxLayout="row" class="pt-3">
+                      <div fxFlex="70%">
+                        <h4>Push on Category Promo on Top ($10)</h4>
+                      </div>
+                      <div fxFlex="30%" class="text-right">
+                        <mat-slide-toggle
+                          formControlName="categorypromo_on_top"
+                        ></mat-slide-toggle>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div fxFlex="45%" class="right-sec text-center mt-4 ml-4">
+                    <input
+                    readonly
+                      matInput
+                      formControlName="total"
+                      class="pink-text"
+                      placeholder="$0"
+                      [value]="totalAmount | currency: 'CHF'"
+                    />
+                    <p class="sub-text">Total</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div fxLayout="row" class="py-3">
+            <div fxFlex="25%" class="left-side-4 mr-3"></div>
+  
+            <div
+              (click)="onSubmit(addProductForm)"
+              fxFlex="75%"
+              class="right-side-4 ml-3 text-center"
+            >
+              <a mat-button class="pink-b rounded-bt">Create a Product</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- booking tab start -->
+    <div class="booking-tab" *ngIf="tab == 'booking'">
+      <app-add-booking (onChangeTab)="changeTab($event)"></app-add-booking>
+    </div>
+  </div>
+</div>

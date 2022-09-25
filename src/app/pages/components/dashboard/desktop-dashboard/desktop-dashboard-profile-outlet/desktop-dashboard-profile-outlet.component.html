@@ -1,0 +1,6 @@
+<ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+    <app-mobile-dashboard-profile></app-mobile-dashboard-profile>
+</ng-container>
+<ng-template #desktop>
+    <app-desktop-dashboard-profile></app-desktop-dashboard-profile>
+</ng-template>

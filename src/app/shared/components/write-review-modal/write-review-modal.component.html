@@ -1,0 +1,242 @@
+<div *ngIf="!appSize.getIsMobileResolution()" class="write-review-modal">
+    <div class="container">
+
+        <div fxLayout="row" class=" pb-4 justify-content-center border-bottom">
+            <h5 class="heading position-relative" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">{{dataGet.title}}</h5>
+        </div>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-4 sub-heading">{{dataGet.subTitle}}</p>
+        <form #addReview="ngForm">
+            <div fxLayout="row" class="pt-4">
+    
+                <div fxFlex="50%" class="left-side pr-3 border-right">
+    
+                    <div class="rating pt-3 pb-5 border-bottom text-center">
+                        <p class="pb-3 number">Leave Your Rating</p>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <app-star-rating class="row" (rateChanged)="setRating($event)" [size]="size" [maxScore]="5" [score]="0"
+                            [forDisplay]="false"></app-star-rating>
+                        </div>
+                    </div>
+        
+                    <div class="seller-rating pt-3">
+                        <h6>Detailed Seller Ratings</h6>
+        
+                        <div fxLayout="row" class="pt-4 pb-3">
+                            <div fxFlex="60%">
+                                <p>Item as Described</p>
+                            </div>
+        
+                            <div fxFlex="40%">
+                                <div class="rating-right float-right">
+                                    <app-star-rating (rateChanged)="setItemDescRating($event)" class="float-right" [size]="size" [maxScore]="5"
+                      [score]="0" [forDisplay]="false"></app-star-rating>
+                                </div>
+                            </div>
+        
+                        </div>
+    
+                        <div fxLayout="row" class="pb-3">
+                            <div fxFlex="60%">
+                                <p>Communication</p>
+                            </div>
+        
+                            <div fxFlex="40%">
+                                <div class="rating-right float-right">
+                                    <app-star-rating (rateChanged)="setCommunicationRating($event)" class="float-right" [size]="size"
+                      [maxScore]="5" [score]="0" [forDisplay]="false"></app-star-rating>
+                                </div>
+                            </div>
+        
+                        </div>
+    
+                        <div fxLayout="row" class="pb-3">
+                            <div fxFlex="60%">
+                                <p>Shipping Time</p>
+                            </div>
+        
+                            <div fxFlex="40%">
+                                <div class="rating-right float-right">
+                                    <app-star-rating (rateChanged)="setShippingRating($event)" class="float-right" [size]="size" [maxScore]="5"
+                      [score]="0" [forDisplay]="false"></app-star-rating>
+                                </div>
+                            </div>
+        
+                        </div>
+    
+                        <div fxLayout="row" class="pb-3">
+                            <div fxFlex="60%">
+                                <p>Shipping & Handing Charges</p>
+                            </div>
+        
+                            <div fxFlex="40%">
+                                <div class="rating-right float-right">
+                                    <app-star-rating class="float-right" [size]="size" [maxScore]="5" [score]="0" [forDisplay]="false">
+                                    </app-star-rating>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="50%" class="right-side pl-3">
+    
+                    <div fxLayout="row">
+                        <mat-form-field class="w-100">
+                            <mat-label>Title</mat-label>
+                            <textarea name="title" [(ngModel)]="reviewModel.text" matInput type="text"></textarea>
+                        </mat-form-field>
+                    </div>
+        
+                    <div fxLayout="row">
+                        <mat-form-field class="w-100">
+                            <mat-label>Feedback</mat-label>
+                            <textarea name="desc" [(ngModel)]="reviewModel.desc" matInput type="text"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <app-file-upload (uploadData)="onFileUpload($event)"></app-file-upload>
+                    <div class="add-from-comp-bottom clearfix">
+                        <a *ngFor="let file of uploadingFiles; let i = index;" href="javascript:void(0)">
+                          <div class="inline-block">
+                            <span (click)="removeImage(i)" class="delete-comment-img"><img
+                                src="/assets/img/delete.png"></span>
+                            <img class="preview-img" [src]="preview[i]">
+                          </div>
+                        </a>
+                      </div>
+                    <!-- <div fxLayout="row" class="drag-img justify-content-center py-4">
+                        <a href="#"><span class="icon-baseline-filter_hdr-24px"></span> <span class="text pl-3">Drag & Drop here</span></a>
+                    </div> -->
+        
+                    <div fxLayout="row" class="button pt-4 justify-content-center">
+                        <a (click)="submit(addReview)" class="rounded-bt pink-b">Send</a>
+                    </div>
+        
+                </div>
+            </div>
+        </form>
+        
+
+    </div>
+</div>
+
+<div  *ngIf="appSize.getIsMobileResolution()" class="write-review-modal mobile">
+    <div class="container">
+
+        <div fxLayout="row" class=" pb-4 justify-content-center border-bottom">
+            <h5 class="heading position-relative" [ngClass]="{ 'bordered-header': dataGet.type == 'border' }">{{dataGet.title}}</h5>
+        </div>
+
+        <p *ngIf="dataGet.subTitle" class="text-center pt-4 sub-heading">{{dataGet.subTitle}}</p>
+        <form #addReview="ngForm">
+            <div class="left-side pt-2">
+
+                <div class="rating py-2 border-bottom text-center">
+                    <p class="pb-3 number">Leave Your Rating</p>
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <app-star-rating class="row" (rateChanged)="setRating($event)" [size]="size" [maxScore]="5" [score]="0"
+                        [forDisplay]="false"></app-star-rating>
+                    </div>
+                </div>
+    
+                <div class="seller-rating pt-3">
+                    <h6>Detailed Seller Ratings</h6>
+    
+                    <div fxLayout="row" class="pt-4 pb-2">
+                        <div fxFlex="40%">
+                            <p>Item as Described</p>
+                        </div>
+    
+                        <div fxFlex="60%">
+                            <div class="rating-right float-right">
+                                <app-star-rating (rateChanged)="setItemDescRating($event)" class="float-right" [size]="size" [maxScore]="5"
+                    [score]="0" [forDisplay]="false"></app-star-rating>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div fxLayout="row" class="pb-2">
+                        <div fxFlex="40%">
+                            <p>Communication</p>
+                        </div>
+    
+                        <div fxFlex="60%">
+                            <div class="rating-right float-right">
+                                <app-star-rating (rateChanged)="setCommunicationRating($event)" class="float-right" [size]="size"
+                    [maxScore]="5" [score]="0" [forDisplay]="false"></app-star-rating>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div fxLayout="row" class="pb-2">
+                        <div fxFlex="40%">
+                            <p>Shipping Time</p>
+                        </div>
+    
+                        <div fxFlex="60%">
+                            <div class="rating-right float-right">
+                                <app-star-rating (rateChanged)="setShippingRating($event)" class="float-right" [size]="size" [maxScore]="5"
+                    [score]="0" [forDisplay]="false"></app-star-rating>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div fxLayout="row" class="pb-2">
+                        <div fxFlex="40%">
+                            <p>Shipping & Handing Charges</p>
+                        </div>
+    
+                        <div fxFlex="60%">
+                            <div class="rating-right float-right">
+                                <app-star-rating class="float-right" [size]="size" [maxScore]="5" [score]="0" [forDisplay]="false">
+                                </app-star-rating>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side">
+
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Title</mat-label>
+                        <textarea name="title" [(ngModel)]="reviewModel.text" matInput type="text"></textarea>
+                    </mat-form-field>
+                </div>
+    
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Feedback</mat-label>
+                        <textarea name="desc" [(ngModel)]="reviewModel.desc" matInput type="text"></textarea>
+                    </mat-form-field>
+                </div>
+                <app-file-upload (uploadData)="onFileUpload($event)"></app-file-upload>
+                <div class="add-from-comp-bottom clearfix">
+                    <a *ngFor="let file of uploadingFiles; let i = index;" href="javascript:void(0)">
+                        <div class="inline-block">
+                        <span (click)="removeImage(i)" class="delete-comment-img"><img
+                            src="/assets/img/delete.png"></span>
+                        <img class="preview-img" [src]="preview[i]">
+                        </div>
+                    </a>
+                    </div>
+                <!-- <div fxLayout="row" class="drag-img justify-content-center py-4">
+                    <a href="#"><span class="icon-baseline-filter_hdr-24px"></span> <span class="text pl-3">Drag & Drop here</span></a>
+                </div> -->
+    
+                <div fxLayout="row" class="button pt-4 justify-content-center">
+                    <a (click)="submit(addReview)" class="rounded-bt pink-b">Send</a>
+                </div>
+    
+            </div>
+        </form>
+        
+
+    </div>
+</div>

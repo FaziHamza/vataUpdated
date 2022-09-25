@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="checkbox-on" transform="translate(-579 -246)">
+    <path id="Path_241" data-name="Path 241" class="cls-1" d="M0,0H24V24H0Z" transform="translate(579 246)"/>
+    <path id="Path_242" data-name="Path 242" class="cls-2" d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z" transform="translate(579 246)"/>
+  </g>
+</svg>

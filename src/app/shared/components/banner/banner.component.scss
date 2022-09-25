@@ -1,0 +1,211 @@
+@import "../../../../styles.scss";
+
+.after-header {
+  h4 {
+    font-weight: 600;
+    font-size: 25px;
+  }
+
+  p {
+    padding-left: 15px;
+    padding-top: 4px;
+    color: #808080;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 20px;
+    color: $black;
+  }
+
+  .sub-title {
+    color: $black;
+    line-height: 1.8;
+    font-size: 17px;
+  }
+}
+
+.shoes {
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+  }
+  a {
+    width: 50%;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+// Desktop
+
+.favorites-left {
+  float: left;
+  width: 40%;
+  max-width: 615px;
+}
+
+.intro-smal-info {
+  float: left;
+  width: 33%;
+}
+
+.intro-smal-info p {
+  max-width: 166px;
+}
+
+.intro-top h2 {
+  color: #fb3b71;
+  font-size: 32px;
+  font-family: "montserratlight";
+  margin: 30px 0;
+}
+
+.intro-top h3 {
+  color: #717171;
+  font-size: 17px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.intro-top h4 {
+  color: $black;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-family: "montserratbold";
+}
+
+.intro-top p {
+  color: $black;
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 24px;
+  font-weight: normal;
+}
+
+.intro-bottom h2 {
+  color: $black;
+  font-size: 14px;
+  margin-bottom: 15px;
+  font-family: "montserratsemibold";
+}
+
+.intro-bottom p {
+  color: $black;
+  font-size: 16px;
+  line-height: 23px;
+  font-family: "montserratlight";
+}
+
+.banner-left {
+  max-width: 500px;
+  overflow: hidden;
+  float: left;
+  width: 50%;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.banner-left .prev-next-container {
+  position: absolute;
+  width: inherit;
+  bottom: 0;
+  display: block;
+}
+
+.banner-left img {
+  width: 100%;
+  position: relative;
+  top: -70px;
+}
+
+.banner-right {
+  width: 59%;
+  position: absolute;
+  right: -75px;
+  background: $white;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.banner-info {
+  background-color: $white;
+  padding-left: 35px;
+}
+
+.banner-info h2 {
+  color: #fb3b71;
+  font-size: 32px;
+  font-family: "montserratlight";
+  margin: 30px 0;
+}
+
+.banner-info h3 {
+  color: #717171;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.banner-info h4 {
+  color: $black;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-family: "montserratbold";
+}
+
+.button-pink {
+  min-width: 250px;
+  color: $white;
+  font-size: 16px;
+  font-family: "montserratsemibold";
+  text-align: center;
+  text-decoration: none;
+  background: #fb3b71;
+  margin-top: 17px;
+  padding: 20px;
+  display: block;
+  max-width: 250px;
+}
+
+.favorites {
+  background-color: $black;
+  margin-bottom: 100px;
+}
+
+.favorites-right {
+  float: right;
+  width: 60%;
+  position: relative;
+}
+
+.banner-right img {
+  width: 100%;
+  display: block;
+}
+
+.prev-next-container {
+  display: block;
+  a {
+    float: left;
+    width: 50%;
+    color: $white;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    height: 65px;
+    background: $black;
+    display: flex;
+    font-family: "montserratsemibold";
+    align-items: center;
+    justify-content: center;
+  }
+}
+.prev-next-container a:hover {
+  color: #fb3b71;
+  background: $white;
+}

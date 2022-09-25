@@ -1,0 +1,193 @@
+<mat-card class="px-4">
+    <div class="form">
+
+        <div class="border-bottom pt-2 pb-3">
+            <div fxLayout="row">
+                <div fxFlex="13%" class="mx-2">
+                    <div class="p-1 tree">
+                        <img src="../../../../assets/img/SVG/plant.svg">
+                    </div>
+                </div>
+                <div fxFlex="67%" class="mx-2">
+                    <h5 class="heading font-weight-bold py-2 m-0">Upload a Passport address</h5>
+                    <p class="sub-heading py-1 m-0">Good for the environment, and our choice</p>
+
+                    <mat-slide-toggle class="toggle-text py-1" (change)="markAsSame($event)">
+                        Use a same address
+                    </mat-slide-toggle>
+                </div>
+                <!-- <div fxFlex="20%" class="py-4 mx-2">
+                    <a mat-button class="btn pink-b rounded-bt p-0 btn-block">Select</a>
+                </div> -->
+            </div>
+        </div>
+        
+        <form [formGroup]="passportInfoForm">
+            <div class="business-form">
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="pt-4 mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="first_name">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.first_name.hasError('required') && submitted">
+                            First Name*
+                        </p>
+                    </div>
+                    <div fxFlex="50%" class="pt-4 mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="last_name">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.last_name.hasError('required') && submitted">
+                            Last Name*
+                        </p>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Birthday</mat-label>
+                            <input [max]="today" matInput [matDatepicker]="picker" formControlName="birth_date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="passportInfoForm.controls['birth_date'].errors?.required">
+                                Birth date is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="passportInfoForm.controls['birth_date'].invalid">
+                                Please enter a valid <strong>birth date</strong>
+                            </mat-error>
+                            <mat-error *ngIf="passportInfoForm.controls['birth_date'].errors?.ageInvalid">
+                                Minimum age should be <strong>13</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Nick Name</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="username">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.username.hasError('required') && submitted == true">
+                            Nick Name*
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form [formGroup]="passportInfoForm">
+            <div class="private-form">
+                <div fxLayout="row">
+                    <div fxFlex="33.3%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Street</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="street">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.street.hasError('required') && submitted == true">
+                            Street*
+                        </p>
+                    </div>
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Number</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="street_num">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.street_num.hasError('required') && submitted == true">
+                            Number*
+                        </p>
+                    </div>
+                    <div fxFlex="25%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>City</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="city">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.city.hasError('required') && submitted == true">
+                            City*
+                        </p>
+                    </div>
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Postcode</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="postcode">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.postcode.hasError('required') && submitted == true">
+                            Postcode*
+                        </p>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Country</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="country">
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.country.hasError('required') && submitted == true">
+                            Country*
+                        </p>
+                    </div>
+        
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="d-block">
+                            <mat-label>Code</mat-label>
+                            <mat-select formControlName="phone_isd">
+                                <mat-option value="+41">+41</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <p class="validation-error" *ngIf="passportInfoForm.controls.phone_isd.hasError('required') && submitted == true">
+                            Code*
+                        </p>
+                    </div>
+                    
+                    <div fxFlex="33.3%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="phone_number">
+                            <mat-error *ngIf="passportInfoForm.controls['phone_number'].errors?.required">
+                                Phone number is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="passportInfoForm.controls['phone_number'].errors?.pattern">
+                                Please enter a <strong>valid phone number</strong>
+                            </mat-error>
+                            <mat-error *ngIf="passportInfoForm.controls['phone_number'].errors?.maxlength || passportInfoForm.controls['phone_number'].errors?.minLength">
+                                Please enter a 9 digit phone number
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+            <div class="add-from-comp-bottom hide-on-mobile clearfix">
+                  <div *ngIf="preview" class="inline-block img-container">
+                    <span (click)="removeImage(i)" class="delete-comment-img close"><img src="/assets/img/delete.png"></span>
+                    <img class="product-img" [src]="preview.data">
+                  </div>
+              </div>
+            <div fxLayout="row" class="justify-content-center">
+                <app-file-upload class="w-100"
+                (uploadData)="onFileUpload($event)"
+              ></app-file-upload>
+            </div>
+                  <mat-error *ngIf="passportInfoForm.controls['passport_address_pic'].errors?.imageRequired">
+                    Image is required
+                </mat-error>
+        </form>
+    
+    
+        <div fxLayout="row" class="justify-content-center">
+            <div fxFlex="50%" class="py-4">
+                <a *ngIf="!isPassportAdded" mat-button class="pink-b rounded-bt p-0 btn-block w-100" (click)="proceed()">Finish</a>
+                <a *ngIf="isPassportAdded" mat-button class="pink-b rounded-bt p-0 btn-block w-100" (click)="onSelectStep()">Back</a>
+            </div>
+        </div>
+    </div>
+</mat-card>

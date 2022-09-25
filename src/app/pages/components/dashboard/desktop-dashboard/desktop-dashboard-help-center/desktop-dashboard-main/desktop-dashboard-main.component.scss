@@ -1,0 +1,116 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-dashboard-help-center-main {
+    background: $ligher-gray;
+
+    .main-heading {
+        h6 {
+            font-size: 25px;
+            color: $black;
+        }
+    }
+
+    .center-sections {
+        background: $white;
+        border-radius: 10px;
+
+        .head-main-section {
+            background-image: url('../../../../../../../assets/img/dash-help-bg.png');
+            width: 100%;
+            height: 300px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+            h6 {
+                color: $black;
+                font-size: 25px;
+                padding-top: 6%;
+            }
+
+            p {
+                color: $dark-gray;
+                font-size: 15px;
+            }
+
+            .search-bar {
+                position: relative;
+                input {
+                    border: 1px solid $ligher-gray;
+                    padding: 10px 0px 10px 35px;
+                    width: 100%;
+                    border-radius: 8px;
+                    background: $ligher-gray;
+                }
+
+                span {
+                    &.icon-search-1 {
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        font-size: 15px;
+                        &::before {
+                            color: $dark-gray;
+                        }
+                    }
+                }
+
+                a {
+                    position: absolute;
+                    right: -25px;
+                    top: 5px;
+                    padding: 5px 15px;
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                    font-weight: 100;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .popular-section {
+            .popular-heading {
+               h5 {
+                font-size: 25px;
+                color: $dark-gray;
+               }
+            }
+
+            .popular-card {
+                border-radius: 10px;
+                border: 1px dashed $light-gray;
+                img {
+                    border-radius: 50px;
+                    width: 50px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                h6 {
+                    color: $black;
+                    font-size: 16px;
+                    padding-top: 13px;
+                }
+
+                p {
+                    color: $dark-gray;
+                    font-size: 13px;
+                    padding-top: 11px;
+                }
+            }
+        }
+    }
+
+    .contact-customer {
+        border-radius: 10px;
+        background: $white;
+        .left-side {
+            h6 {
+                color: $black;
+                font-size: 18px;
+                padding-top: 10px;
+            }
+        }
+    }
+}

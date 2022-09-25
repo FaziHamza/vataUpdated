@@ -1,0 +1,35 @@
+@import '../../../../../../../styles.scss';
+
+.blog  {
+    .text {
+        p {
+            font-size: 14px;
+            font-weight: 600;
+            color: $black;
+        }
+    }
+    h5 {
+        font-size: 23px;
+        font-weight: 700;
+        color: $black;
+    }
+    img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        height: 250px;
+    }
+    .content {
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 500;
+            color: $black;
+        }
+        h6 {
+            font-size: 15px;
+            font-weight: 700;
+            color: $black;
+        }
+    }
+}

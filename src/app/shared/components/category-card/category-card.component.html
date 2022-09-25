@@ -1,0 +1,55 @@
+
+
+  <ng-container *ngIf="appSize.getIsMobileResolution(); else desktop">
+    <div class="item-popular">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div fxLayoutAlign="center"  fxFlex="10%" class="img">
+                        <img class="left-icon" [src]="category.icon">
+                    </div>
+                    <div fxFlex="80%">
+                        <p class="pl-3 pt-2">{{ category.name }}</p>
+                    </div>
+                    <div fxFlex="10%">
+                        <img class="right-icon" src="../../../assets/img/SVG hp-m/baseline-keyboard_arrow_down-24px (1).svg">
+                    </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+
+                <div class="home-cat-links">
+                    <a
+                      [routerLink]="['/marketplace', category.id, subcat.id]"
+                      *ngFor="let subcat of category.childrens"
+                      >{{ subcat.name }}</a
+                    >
+                    <a [routerLink]="['/marketplace', category.id]" class="see-all">See all</a>
+                  </div>
+          
+            </mat-expansion-panel>
+            </mat-accordion>
+    </div>
+</ng-container>
+<ng-template #desktop>
+    <div class="home-cat-inner">
+        <div class="home-cat-title clearfix">
+          <div class="cat-content">
+            <span
+              class="alt-img-cus"
+              [innerHTML]="(category.icon_content ? category.icon_content : notFound) | sanitize"
+            ></span>
+            <h2>{{ category.name }}</h2>
+          </div>
+        </div>
+        <div class="home-cat-links">
+          <a
+            [routerLink]="['/marketplace', category.id, subcat.id]"
+            *ngFor="let subcat of category.childrens.slice(0,5)"
+            >{{ subcat.name }}</a
+          >
+          <a [routerLink]="['/marketplace', category.id]" class="see-all">See all</a>
+        </div>
+      </div>
+</ng-template>

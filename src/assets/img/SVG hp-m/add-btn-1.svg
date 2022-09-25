@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #637381;
+      }
+
+      .cls-2 {
+        opacity: 0.503;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        fill: #121212;
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_content_add_24px" data-name="icon/content/add_24px" class="cls-1" d="M17.667,10.1H10.1v7.571H7.571V10.1H0V7.571H7.571V0H10.1V7.571h7.571Z"/>
+    </clipPath>
+  </defs>
+  <g id="add-btn" class="cls-2" transform="translate(-253 -772)">
+    <g id="icon_navigation_menu_24px_copy_5" data-name="icon/navigation/menu_24px copy 5" transform="translate(253 772)">
+      <rect id="icon_navigation_menu_24px_copy_5_background" data-name="icon/navigation/menu_24px copy 5 background" class="cls-3" width="25" height="25"/>
+      <path id="icon_content_add_24px-2" data-name="icon/content/add_24px" class="cls-4" d="M17,9.714H9.714V17H7.286V9.714H0V7.286H7.286V0H9.714V7.286H17Z" transform="translate(4.202 4.202)"/>
+    </g>
+  </g>
+</svg>

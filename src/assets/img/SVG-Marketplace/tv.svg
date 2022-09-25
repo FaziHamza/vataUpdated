@@ -1,0 +1,39 @@
+<svg id="tv" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #373a8a;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_hardware_tv_24px" data-name="icon/hardware/tv_24px" class="cls-1" d="M62.5,75H29.167V66.668H8.332A8.342,8.342,0,0,1,0,58.335v-50A8.342,8.342,0,0,1,8.332,0h75a8.342,8.342,0,0,1,8.332,8.332l-.041,50a8.321,8.321,0,0,1-8.291,8.333H62.5V75ZM8.332,8.332v50h75v-50Z" transform="translate(0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="100"/>
+  <path id="icon_hardware_tv_24px-2" data-name="icon/hardware/tv_24px" class="cls-1" d="M62.5,75H29.167V66.668H8.332A8.342,8.342,0,0,1,0,58.335v-50A8.342,8.342,0,0,1,8.332,0h75a8.342,8.342,0,0,1,8.332,8.332l-.041,50a8.321,8.321,0,0,1-8.291,8.333H62.5V75ZM8.332,8.332v50h75v-50Z" transform="translate(4.167 12.5)"/>
+  <g id="Group_170" data-name="Group 170" class="cls-4" transform="translate(4.167 12.5)">
+    <g id="_Color" data-name="↳ Color" transform="translate(-4.167 -12.5)">
+      <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="100" height="100"/>
+      <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="100" height="100"/>
+    </g>
+  </g>
+</svg>

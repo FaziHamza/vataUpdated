@@ -1,0 +1,5 @@
+<section class="favorites pb-5 clearfix">
+    <app-banner></app-banner>
+</section>
+<app-marketplace-categories (catData)="onCatSelect($event)" [data]="categories"></app-marketplace-categories>
+<app-marketplace-popular-goods></app-marketplace-popular-goods>

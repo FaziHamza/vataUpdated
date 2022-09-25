@@ -1,0 +1,238 @@
+<div class="desktop-public-profile-edit-member" *ngIf="familyMember">
+
+    <div fxlayout="row" class="main-heading pb-3 border-bottom">
+        <h6>Edit Member</h6>
+    </div>
+
+    <form [formGroup]="newMemberForm">
+        <div fxlayout="row" class="edit-member-section mt-4">
+            <div fxFlex="30%" class="left-img text-center py-4 px-3 mr-4">
+
+                <div *ngIf="preview.length == 0">
+                    <img src="{{profilePicture}}" alt="Profile Picture" />
+                </div>
+
+                <div class="left-imgs" *ngIf="preview.length > 0">
+                    <ng-container *ngFor="let preview of preview; let i = index">
+                        <span
+                            (click)="removeImage(i)"
+                            class="icon-baseline-close-24px-11 close">
+                        </span>
+                        <img class="mr-2 mt-3" [src]="preview.data" />
+                    </ng-container>
+                </div>
+
+                <!-- <img src="../../../../../../../../assets/img/w2.png">
+                <a class="add-btn">
+                    <span class="icon-add-button-inside-black-circle-1"></span>
+                </a>
+                <p class="pt-4">Drag & Drop</p>
+                <p class="pt-2 pb-3">Member Photo</p>
+                <div class="upload-btn border-top pt-3">
+                    <a mat-button class="pink-b outlined rounded-bt d-block">Upload</a>
+                </div> -->
+
+                <app-file-upload
+                    *ngIf="preview.length == 0 || !profilePicture"
+                    (uploadData)="onFileUpload($event)"
+                    template="lg"
+                    imageToShow="profilePicture">
+                </app-file-upload>
+            </div>
+            
+            <div fxFlex="35%" class="center-inputs mr-4">
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>User Name</mat-label>
+                        <input matInput type="text" formControlName="userName">
+                        <mat-error *ngIf="newMemberForm.get('userName').hasError('required')">
+                            User Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" formControlName="firstname">
+                        <mat-error *ngIf="newMemberForm.get('firstname').hasError('required')">
+                            First Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="lastname">
+                        <mat-error *ngIf="newMemberForm.get('lastname').hasError('required')">
+                            Last Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100" >
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName="gender">
+                            <mat-option value="male">Male</mat-option>
+                            <mat-option value="female">Female</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="newMemberForm.get('gender').hasError('required')">
+                            Gender is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="input-fields">
+                    <p class="input-heading py-2">Phone Number</p>
+                    <div fxLayout="row">
+                        <div fxFlex="28%" class="mr-3">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Code</mat-label>
+                                <mat-select formControlName="phoneCode">
+                                <mat-option value="41">+41</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="newMemberForm.get('phoneCode').hasError('required')">
+                                    Code is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="65%">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Number</mat-label>
+                                <input matInput type="number" formControlName="phoneNumber">
+                                <mat-error *ngIf="newMemberForm.get('phoneNumber').hasError('required')">
+                                    Number is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput type="text" formControlName="email">
+                        <mat-error *ngIf="newMemberForm.get('email').hasError('required')">
+                            Email Address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="text" formControlName="password">
+                        <mat-error *ngIf="newMemberForm.get('password').hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxFlex="35%" class="right-input-fields">
+                <div fxLayout="row" class="input-fields">
+                    <div fxFlex="65%" class="mr-3">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Street</mat-label>
+                            <input matInput type="text" formControlName="streetName">
+                            <mat-error *ngIf="newMemberForm.get('streetName').hasError('required')">
+                                Street is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="30%">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Number</mat-label>
+                            <input matInput type="number" formControlName="streetNumber">
+                            <mat-error *ngIf="newMemberForm.get('streetNumber').hasError('required')">
+                                Number is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <div fxFlex="65%" class="mr-3">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>City</mat-label>
+                            <input matInput type="text" formControlName="city">
+                            <mat-error *ngIf="newMemberForm.get('city').hasError('required')">
+                                City is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="30%">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Postcode</mat-label>
+                            <input matInput type="number" formControlName="postCode">
+                            <mat-error *ngIf="newMemberForm.get('postCode').hasError('required')">
+                                Postcode is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country">
+                            <mat-option value="switzerland">Switzerland</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="newMemberForm.get('country').hasError('required')">
+                            Country is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        
+        <div class="permission-checkbox">
+            <div fxLayout="row" class="head-bar pt-5 pb-3 border-bottom">
+                <div fxFlex="60%">
+                    <p>Permissions</p>
+                </div>
+                <div fxFlex="40%" class="text-right">
+                    <span class="pr-3">Select All</span>
+                    <mat-checkbox [checked]="allPermissions" (change)="selectAllPermissions()"></mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" class="fields py-3 border-bottom">
+                <div fxFlex="60%">
+                    <p>Ask for Change</p>
+                </div>
+                <div fxFlex="40%" class="text-right">
+                    <mat-checkbox [checked]="newMemberForm.value.askForChange" formControlName="askForChange"></mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" class="fields py-3 border-bottom">
+                <div fxFlex="60%">
+                    <p>Buy a Goods</p>
+                </div>
+                <div fxFlex="40%" class="text-right">
+                    <mat-checkbox [checked]="newMemberForm.value.buyAGoods" formControlName="buyAGoods"></mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" class="fields py-3 border-bottom">
+                <div fxFlex="60%">
+                    <p>Buy a Visits</p>
+                </div>
+                <div fxFlex="40%" class="text-right">
+                    <mat-checkbox [checked]="newMemberForm.value.buyAVisits" formControlName="buyAVisits"></mat-checkbox>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="bottom-btns pt-4">
+                <div fxFlex="40%">
+                    <a (click)="deleteFamilyMember()" mat-button class="delete-btn px-4">
+                        <span class="icon-baseline-close-24px-1 pr-2"></span>
+                        Delete
+                    </a>
+                </div>
+                
+                <div fxFlex="60%" class="text-right">
+                    <a routerLink="/dashboard/main" mat-button class="white-b rounded-bt px-5 mr-3">Cancel</a>
+                    <a (click)="updateMember()" mat-button class="pink-b rounded-bt px-5">Update Member</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div *ngIf="!familyMember">
+    <h3>No Family Member Selected</h3>
+</div>

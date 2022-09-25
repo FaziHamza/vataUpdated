@@ -1,0 +1,34 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-public-profile-add-blacklist {
+    .heading-bar {
+        h6 {
+            color: $black;
+            font-size: 18px;
+            font-weight: 100;
+        }
+    }
+
+    .search-bar {
+        position: relative;
+        input {
+            border: 1px solid $ligher-gray;
+            border-radius: 8px;
+            padding: 8px 0px 8px 35px;
+            width: 90%;
+            background-color: $ligher-gray;
+        }
+    
+        span {
+            &.icon-search-1 {
+                font-size: 15px;
+                position: absolute;
+                top: 11px;
+                left: 10px;
+                &::before {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,519 @@
+<app-old-layout-header></app-old-layout-header>
+
+<div *ngIf="productData && shopRatingInfo" class="product-web">
+  <!-- <div class="links border-bottom">
+        <div class="container">
+            <div fxLayout="row" class="py-2">
+                Marketplace > Electronic > Watches > <span class="pl-3 pink-text">GOGPS K20</span>
+            </div>
+        </div>
+    </div> -->
+
+  <div class="product border-bottom">
+    <div class="container">
+      <div fxLayout="row" class="py-5">
+        <div fxFlex="50%">
+          <div fxLayout="row">
+            <div class="heading">
+              <h3>{{ productData.title }}</h3>
+            </div>
+          </div>
+
+          <div fxLayout="row" class="py-3 border-bottom">
+            <div fxFlex="50%">
+              <div class="sub-heading">
+                <h6 class="pointer" [routerLink]="['/seller', sellerId, 'marketplace']">
+                  {{ productData.shop_data.name
+                  }}<span class="icon-Subtraction-7"></span>
+                  <span class="ml-3 profile">{{shopRatingInfo.overall_rating_percentage}}%</span>
+                </h6>
+              </div>
+            </div>
+
+            <div fxFlex="50%">
+              <div class="rating float-right">
+                <app-star-rating
+                  [maxScore]="5"
+                  [score]="shopRatingInfo.avg_review"
+                  [forDisplay]="true"
+                ></app-star-rating>
+                <span class="number pl-2 text-muted"
+                  >{{shopRatingInfo.review_count}} product
+                  ratings</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <app-product-preview
+            [slides]="images"
+            [videos]="productData.video"
+          ></app-product-preview>
+        </div>
+
+        <div fxFlex="50%" class="ml-5">
+          <div fxLayout="row" class="top-action-bar">
+            <div fxFlex="33.3%">
+              <div class="mr-1 bidding text-center">
+                <h6>
+                  <img
+                    class="pr-3"
+                    src="../../../../../assets/img/SVG/bidding-active.svg"
+                  />
+                  <span *ngIf="productData.bidding">Bidding available</span>
+                  <span *ngIf="!productData.bidding"
+                    >Bidding not available</span
+                  >
+                </h6>
+              </div>
+            </div>
+            <div fxFlex="33.3%">
+              <div class="mr-1 change text-center">
+                <h6>
+                  <img
+                    class="pr-3"
+                    src="../../../../../assets/img/SVG/change-active.svg"
+                  />
+                  <span *ngIf="productData.ask_for_change"
+                    >Change available</span
+                  >
+                  <span *ngIf="!productData.ask_for_change"
+                    >Change not available</span
+                  >
+                </h6>
+              </div>
+            </div>
+            <div fxFlex="33.3%">
+              <div class="buy text-center">
+                <h6>
+                  <img
+                    class="pr-3"
+                    src="../../../../../assets/img/SVG/buy now-48px.svg"
+                  />
+                  <span>Buy now available</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: inline-block; width: 100%;" class="extras pt-3 pb-4 border-bottom">
+            <div class="condition m-2" style="display: inline-block;">
+              <p class="pb-2">Condition</p>
+              <span>{{productData.condition.name}}</span>
+            </div>
+
+            <div
+              *ngFor="let attr of attributes"
+              style="display: inline-block;"
+              class="size m-2 "
+            >
+              <p class="pb-2">{{attr}}</p>
+              <span *ngFor="let option of options[attr]; let i = index"
+              class="mr-2">
+                <input  (change)="onChangeOption($event, attr, option)" type="radio" [id]="option" name="attr">
+                <label [ngClass]="{'option-active': option === selectedVariation[attr]}" [for]="option">{{ option }}</label>
+              </span>
+            </div>
+
+            <!-- <div
+              *ngIf="productData.size_attributes.length"
+              fxFlex="50%"
+              class="size"
+            >
+              <p class="pb-2">Size</p>
+              <span *ngFor="let size of productData.size_attributes; let i = index"
+              class="mr-2">
+                <input [checked]="i === 0" (change)="onSizeVarientChange($event, size)" type="radio" [id]="size.attr_name" name="attr">
+                <label [for]="size.attr_name">{{ size.attr_name }}</label>
+              </span>
+            </div> -->
+
+            <!-- <div
+              *ngIf="productData.color_attributes.length"
+              fxFlex="30%"
+              class="colors"
+            >
+              <p class="pb-2">Color</p>
+              <div class="show-color">
+                <label [for]="color.attr_name" *ngFor="let color of productData.color_attributes; let i = index">
+                <input [checked]="i === 0" (change)="onColorVarientChange($event.target.value)" type="radio" [id]="color.attr_name" name="color" [value]="color.id">
+
+                <div
+                [style.background-color]="color.internal_value"
+                class="color mx-1"
+                >
+              </div>
+            </label>
+            </div>
+            </div> -->
+          </div>
+
+          <div fxLayout="row" *ngIf="!productData.bidding" class="price py-4">
+            <div fxFlex="40%" class="price-section" (click)="print()">
+              <p>
+                Fixed Price
+                <span class="pl-3 pink-text">{{
+                  price | currency: "CHF":"symbol":"1.0"
+                }}</span>
+              </p>
+            </div>
+            <div fxFlex="60%" *ngIf="!on_stock" class="price-section">
+              <p>
+                <span class="pink-text">
+                  (Currently unavailable)
+                </span>
+              </p>
+            </div>
+            <div *ngIf="on_stock && !productData.is_self" fxFlex="auto" class="cart-section text-right">
+              <a (click)="addToCart()" class="rounded-bt m-2 white-b"
+                >Add to Cart</a
+              >
+              <a class="rounded-bt m-2 pink-b" (click)="buyNow()">Buy Now</a>
+            </div>
+          </div>
+
+          <div *ngIf="user && !productData.is_self" class="bid-card">
+            <div *ngIf="productData.bidding" fxLayout="row" class="pb-4">
+              <div fxFlex="70%">
+                <p>
+                  Time Left :
+                  <span class="time pl-3">{{
+                    productData.end_datetime | timeLeft
+                  }}</span>
+                </p>
+                <p class="pt-2">
+                  Current Bid :
+                  <span class="amount pl-3">{{
+                    currentBid | currency: "CHF":"symbol":"1.0"
+                  }}</span>
+                </p>
+                <p class="pt-2">
+                  Increment :
+                  <span class="amount pl-3">{{
+                    productData.increment | currency: "CHF":"symbol":"1.0"
+                  }}</span>
+                </p>
+              </div>
+              <div fxFlex="30%" class="text-right">
+                <p (click)="biddingListDialog()">
+                  <span class="text pr-3">{{bidCount}} Bids</span>
+                  <span
+                    class="icon-baseline-keyboard_arrow_down-24px-15"
+                  ></span>
+                </p>
+              </div>
+            </div>
+
+            <div class="extras-btn" [class.border-top]="productData.bidding">
+              <div [class.pt-4]="productData.bidding" style="display: inline-block !important; width: 100%;">
+                <form *ngIf="productData.bidding" #bidForm="ngForm" style="display: inline-block !important; margin-bottom: 15px;">
+                  <div style="display: inline-block !important; width: 180px;">
+                    <input
+                      type="number"
+                      name="bidValue"
+                      ngModel
+                      placeholder="Enter CHF {{ bidDetails.threshold }} or more"
+                    />
+                  </div>
+                  <div style="display: inline-block !important; width: 130px;">
+                    <span class="ml-2 bid" (click)="addBid(bidForm)"
+                      >Place a Bid</span
+                    >
+                  </div>
+                </form>
+                <div *ngIf="productData.ask_for_change" style="display: inline-block !important; width: 140px;">
+                  <span class="ask" (click)="askForChangeDialog()"
+                    >Ask for Change</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="add-share py-4">
+            <div fxLayout="row">
+              <ul>
+                <li
+                  *ngIf="!productData.is_fav_product && user"
+                  (click)="addFavourite()"
+                  class="px-3"
+                >
+                  <p>
+                    <span [@inOutAnimation] class="icon-like1 pr-1"></span> Add
+                    to Favourite
+                  </p>
+                </li>
+                <li
+                  *ngIf="productData.is_fav_product && user"
+                  (click)="addFavourite()"
+                  class="px-3"
+                >
+                  <p>
+                    <span [@inOutAnimation] class="icon-like pr-1"></span> Added
+                  </p>
+                </li>
+                <li
+                  *ngIf="!productData.is_save_seller && user && !productData.is_self"
+                  (click)="onSaveSeller()"
+                  class="px-3"
+                >
+                  <p>
+                    <span
+                      class="icon-add-button-inside-black-circle--1 pr-1"
+                    ></span>
+                    Save Seller
+                  </p>
+                </li>
+                <li
+                  *ngIf="productData.is_save_seller && user"
+                  (click)="onSaveSeller()"
+                  class="px-3"
+                >
+                  <p>
+                    <span
+                      class="icon-add-button-inside-black-circle--1 pr-1"
+                    ></span>
+                    Saved
+                  </p>
+                </li>
+
+                <li (click)="openShareLink()"
+                class="px-3"
+                >
+                  <p>
+                    <span class="icon-share-1 pr-1"></span> Share in social
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="shipping-detail">
+            <div class="heading pb-3 border-bottom">
+              <div fxLayout="row">
+                <div fxFlex="70%">
+                  <p>
+                    Shipping :
+                    <span class="pl-2">{{productData.shipping_price | currency: "CHF":"symbol":"1.0"}}</span>
+                  </p>
+                </div>
+                <div fxFlex="30%" class="text-right">
+                  <a [appToggleSectionAccordian]="toggleAccordian"
+                    >See details</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div #toggleAccordian>
+              <div class="parcel py-3 border-bottom">
+                <p class="pb-1">
+                  International item may be subject to customs processing and
+                  additional charges.
+                </p>
+                <p *ngIf="productData.product_location.length" class="pb-1">Item Location :</p>
+                <p class="pb-1" *ngFor="let loc of productData.product_location">{{loc.name}}</p>
+                <p *ngIf="productData.ship_to.length" class="pb-1">Ships to :</p>
+                <p *ngFor="let loc of productData.ship_to">{{loc.name}}</p>
+              </div>
+
+              <div class="delivery py-3 border-bottom">
+                <div fxLayout="row">
+                  <p>
+                    Delivery :
+                    <span class="pl-3"
+                      >Varies of item shipped from an international
+                      location.</span
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <div *ngIf="productData.is_seller_subscribed" class="payments py-3 border-bottom">
+                <span class="text pr-2">Payments :</span>
+                <span class="icon-Card-networks-MC-Horizontal mx-3 icon-s"
+                  ><span class="path1"></span><span class="path2"></span
+                  ><span class="path3"></span
+                ></span>
+                <span class="icon-Visa mx-3"></span>
+              </div>
+
+              <!-- <div class="returns pt-3">
+                <div fxLayout="row">
+                  <div fxFlex="70%">
+                    <p>
+                      Returns :
+                      <span class="pl-3">Seller does not accept returns</span>
+                    </p>
+                  </div>
+                  <div fxFlex="30%" class="text-right">
+                    <a>See details</a>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about border-bottom">
+    <div class="container py-4">
+      <div fxLayout="row" class="heading pb-3">
+        <h4>About</h4>
+      </div>
+
+      <div class="text">
+        <p class="pb-2">{{ productData.about_product }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="similar-products border-bottom pt-4" *ngIf="similarProducts.length">
+    <div class="container">
+      <div fxLayout="row" class="heading pb-5">
+        <h5>Similar to This</h5>
+      </div>
+
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="config"
+      >
+        <app-marketplace-product-card
+          [routerLink]="['/product', similar.id]"
+          class="slide"
+          ngxSlickItem
+          *ngFor="let similar of filterProductData(similarProducts); let i = index"
+          [product]="similar"
+        >
+        </app-marketplace-product-card>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+
+  <div class="rating-reviews border-bottom">
+    <div class="container py-5">
+      <div fxLayout="row" class="heading pb-5">
+        <h5>Rating & Reviews</h5>
+      </div>
+
+      <div fxLayout="row">
+        <div fxFlex="30%" class="profile mr-1">
+          <div fxLayout="row" class="border-bottom">
+            <div fxFlex="90%">
+              <div class="heading-bar">
+                <h6 *ngIf="!user" [routerLink]="['/seller', sellerId, 'marketplace']" class="pb-1 pointer">
+                  {{ shopRatingInfo.user_shop_name
+                  }}<span class="icon-Subtraction-7"></span>
+                  <span class="ml-3 profile">{{shopRatingInfo.overall_rating_percentage}}%</span>
+                </h6>
+
+                <h6
+                  *ngIf="user"
+                  [routerLink]="['/seller', sellerId, 'marketplace']"
+                  class="pb-1 pointer"
+                >
+                  {{ shopRatingInfo.user_shop_name
+                  }}<span class="icon-Subtraction-7"></span>
+                  <span class="ml-3 profile">{{shopRatingInfo.overall_rating_percentage}}%</span>
+                </h6>
+                <p class="pb-2">
+                  <img src="{{shopRatingInfo.membership_status_icon}}" alt="">
+                  <span class="text">Commercial</span>
+                </p>
+              </div>
+            </div>
+            <div *ngIf="user && !productData.is_self" fxFlex="10%" class="add-btn text-right">
+              <span
+                class="icon-add-button-inside-black-circle-11"
+                (click)="shopSavedDialog()"
+              ></span>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div class="member-detail">
+              <p class="pt-2 pb-2">{{shopRatingInfo.marketplace_total_items_sold}} item sold</p>
+              <p class="pb-2">Member since {{shopRatingInfo.membership_since}}</p>
+              <p>
+                <span class="icon-location1"></span>
+                <span class="pl-1 location">{{shopRatingInfo.seller_address}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div fxFlex="15%" class="product-rating mx-4">
+          <div class="number-text pb-3 text-center">
+            <h4>{{ productData.rating_data.avg_rating }}.0</h4>
+          </div>
+          <div class="rating text-center">
+            <div fxLayout="row" class="justify-content-center">
+              <app-star-rating
+                [maxScore]="5"
+                [score]="productData.rating_data.avg_rating"
+                [forDisplay]="true"
+              ></app-star-rating>
+            </div>
+            <div fxLayout="row" class="justify-content-center">
+              <p class="pt-2 number">
+                {{ productData.rating_data.total_reviews }} ratings
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div fxFlex="44%" class="bar-rating ml-2">
+          <div fxLayout="row">
+              <app-bar-rating class="w-100" star="1" times="{{productData.rating_data.calc.rating_1.rating_count}}" percentage="{{productData.rating_data.calc.rating_1.percent}}"></app-bar-rating>
+          </div>
+          <div fxLayout="row">
+              <app-bar-rating class="w-100" star="2" times="{{productData.rating_data.calc.rating_2.rating_count}}" percentage="{{productData.rating_data.calc.rating_2.percent}}"></app-bar-rating>
+          </div>
+          <div fxLayout="row">
+              <app-bar-rating class="w-100" star="3" times="{{productData.rating_data.calc.rating_3.rating_count}}" percentage="{{productData.rating_data.calc.rating_3.percent}}"></app-bar-rating>
+          </div>
+          <div fxLayout="row">
+              <app-bar-rating class="w-100" star="4" times="{{productData.rating_data.calc.rating_4.rating_count}}" percentage="{{productData.rating_data.calc.rating_4.percent}}"></app-bar-rating>
+          </div>
+          <div fxLayout="row">
+              <app-bar-rating class="w-100" star="5" times="{{productData.rating_data.calc.rating_5.rating_count}}" percentage="{{productData.rating_data.calc.rating_5.percent}}"></app-bar-rating>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <app-desktop-customer-reviews
+    [productId]="productId" [isSelf]="productData.is_self"
+  ></app-desktop-customer-reviews>
+
+  <app-desktop-customer-questions-and-answers
+    [sellerId]="productData.seller"
+    [productId]="productId"
+    [isSelf]="productData.is_self"
+  ></app-desktop-customer-questions-and-answers>
+
+  <div class="other-products pt-5" *ngIf="sellerData.length">
+    <div class="container">
+      <div fxLayout="row" class="heading pb-5">
+        <h5>Other products of this seller</h5>
+      </div>
+
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="config"
+      >
+        <app-marketplace-product-card
+          [routerLink]="['/product', sellerProduct.id]"
+          class="slide"
+          ngxSlickItem
+          *ngFor="let sellerProduct of filterProductData(sellerData); let i = index"
+          [product]="sellerProduct"
+        >
+        </app-marketplace-product-card>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>

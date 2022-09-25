@@ -1,0 +1,6 @@
+<ng-container *ngIf="appSize.getIsMobileResolution() else desktop">
+    <app-mobile-make-booking></app-mobile-make-booking>
+</ng-container>
+<ng-template #desktop>
+    <app-desktop-make-booking></app-desktop-make-booking>
+</ng-template>

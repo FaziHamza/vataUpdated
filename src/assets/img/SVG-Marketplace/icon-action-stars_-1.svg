@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2df;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_all_out_24px" data-name="icon/action/all_out_24px" class="cls-1" d="M100,100H75l25-25v25Zm-75,0H0V75L24.986,99.988ZM50,93.75A43.759,43.759,0,0,1,19.057,19.057,43.761,43.761,0,0,1,80.948,80.942,43.475,43.475,0,0,1,50,93.75Zm0-75A31.249,31.249,0,1,0,81.246,50,31.287,31.287,0,0,0,50,18.748ZM0,25V0H25L.011,24.986Zm100,0-.011-.011L75,0h25V25Z"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="149.997" height="149.997"/>
+    </clipPath>
+  </defs>
+  <g id="icon_action_stars_24px" data-name="icon/action/stars_24px" transform="translate(-1690 -369)">
+    <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="100" transform="translate(1690 369)"/>
+    <path id="icon_action_all_out_24px-2" data-name="icon/action/all_out_24px" class="cls-1" d="M66.667,66.668H50L66.667,50V66.668Zm-50,0H0V50L16.657,66.66ZM33.334,62.5A29.173,29.173,0,0,1,12.7,12.7,29.175,29.175,0,0,1,53.966,53.962,28.984,28.984,0,0,1,33.334,62.5Zm0-50A20.833,20.833,0,1,0,54.165,33.334,20.859,20.859,0,0,0,33.334,12.5ZM0,16.665V0H16.665L.007,16.657Zm66.667,0-.007-.007L50,0H66.667V16.665Z" transform="translate(1706.667 385.667)"/>
+    <g id="Group_8" data-name="Group 8" class="cls-4" transform="translate(1690 369)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-25 -25)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="149.998" height="149.997"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="149.997" height="149.997"/>
+      </g>
+    </g>
+  </g>
+</svg>

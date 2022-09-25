@@ -1,0 +1,6 @@
+<section class="favorites pb-5 clearfix">
+    <app-banner></app-banner>
+</section>
+<app-booking-categories (catData)="onCatSelect($event)" [data]="categories"></app-booking-categories>
+<app-best-bookings></app-best-bookings>
+<app-near-you></app-near-you>

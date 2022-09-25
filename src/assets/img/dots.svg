@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fe3c72;
+        opacity: 0.102;
+      }
+    </style>
+  </defs>
+  <g id="dots" transform="translate(-933 -779)">
+    <g id="Group_140" data-name="Group 140" transform="translate(2031 1054) rotate(180)">
+      <circle id="Ellipse_14" data-name="Ellipse 14" class="cls-1" cx="5" cy="5" r="5" transform="translate(1036 213)"/>
+      <circle id="Ellipse_18" data-name="Ellipse 18" class="cls-1" cx="5" cy="5" r="5" transform="translate(1088 213)"/>
+      <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-1" cx="5" cy="5" r="5" transform="translate(1036 239)"/>
+      <circle id="Ellipse_22" data-name="Ellipse 22" class="cls-1" cx="5" cy="5" r="5" transform="translate(1036 265)"/>
+      <circle id="Ellipse_15" data-name="Ellipse 15" class="cls-1" cx="5" cy="5" r="5" transform="translate(1062 213)"/>
+    </g>
+  </g>
+</svg>

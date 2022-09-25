@@ -1,0 +1,39 @@
+<svg id="camera" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #57b14b;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_camera_enhance_24px" data-name="icon/action/camera_enhance_24px" class="cls-1" d="M80.4,84H8.932A9.149,9.149,0,0,1,0,74.668v-56A9.149,9.149,0,0,1,8.932,9.332H23.091L31.268,0h26.8l8.177,9.332H80.4a9.149,9.149,0,0,1,8.932,9.332v56A9.149,9.149,0,0,1,80.4,84ZM8.932,18.665v56H80.4v-56H62.31l-2.637-3.032-5.536-6.3H35.2l-5.54,6.3-2.637,3.032ZM44.666,70C32.353,70,22.335,59.533,22.335,46.666S32.353,23.335,44.666,23.335,67,33.8,67,46.666,56.982,70,44.666,70Zm-.008-9.337h.008c7.388,0,13.4-6.28,13.4-14a14.249,14.249,0,0,0-3.93-9.894,13.021,13.021,0,0,0-9.469-4.1c-7.384,0-13.4,6.276-13.4,13.991s6.006,14,13.39,14.006l0-.008-4.185-9.6-9.2-4.388,9.2-4.385,4.193-9.6,4.2,9.6,9.2,4.384-9.2,4.39-4.2,9.6Z" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="100"/>
+  <path id="icon_action_camera_enhance_24px-2" data-name="icon/action/camera_enhance_24px" class="cls-1" d="M48,48H5.333A5.339,5.339,0,0,1,0,42.667v-32A5.339,5.339,0,0,1,5.333,5.333h8.453L18.667,0h16l4.882,5.333H48a5.339,5.339,0,0,1,5.333,5.333v32A5.339,5.339,0,0,1,48,48ZM5.333,10.666v32H48v-32H37.2L35.626,8.933l-3.3-3.6H21.014l-3.307,3.6-1.574,1.733ZM26.666,40A13.333,13.333,0,1,1,40,26.666,13.348,13.348,0,0,1,26.666,40Zm0-5.335h0a8,8,0,1,0-.005,0l0,0-2.5-5.486-5.493-2.508,5.493-2.506,2.5-5.488,2.51,5.488,5.49,2.505-5.49,2.508-2.51,5.486Z" transform="translate(5.333 8)"/>
+  <g id="Group_176" data-name="Group 176" class="cls-4" transform="translate(5.333 8)">
+    <g id="_Color" data-name="↳ Color" transform="translate(-8.933 -14)">
+      <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="107.2" height="112"/>
+      <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="64" height="64"/>
+    </g>
+  </g>
+</svg>

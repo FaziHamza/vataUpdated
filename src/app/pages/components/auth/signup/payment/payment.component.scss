@@ -1,0 +1,761 @@
+@import '../../../../../../styles.scss';
+
+.payment-sec {
+  background: $white;
+}
+
+.success {
+    .m-widget7__desc {
+      color: #000 !important;
+  
+      padding: 50px;
+  
+      h4 {
+        color: #7ab51f;
+        text-transform: uppercase;
+        font-size: 1.1em;
+      }
+  
+      p {
+        margin-top: 40px;
+        color: grey;
+      }
+    }
+  
+    color: #000;
+  }
+  
+  .card-bottom {
+    font-family: "poppins";
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    padding-right: 30px;
+    right: 0;
+  }
+  
+  main>.container-lg {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  main>.container-lg .cell {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    -ms-flex: auto;
+    flex: auto;
+    min-width: 100%;
+    min-height: 600px;
+  }
+  
+  main>.container-lg .cell+.cell {
+    margin-top: 70px;
+  }
+  
+  main>.container-lg .cell.intro {
+    padding: 0;
+  }
+  
+  @media (min-width: 670px) {
+    main>.container-lg .cell.intro {
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .optionList {
+      margin-left: 13px;
+    }
+  }
+  
+  main>.container-lg .cell.intro>* {
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  main>.container-lg .cell.intro .common-IntroText {
+    margin-top: 10px;
+  }
+  
+  main>.container-lg .cell.intro .common-BodyText {
+    margin-top: 15px;
+  }
+  
+  main>.container-lg .cell.intro .common-ButtonGroup {
+    width: auto;
+    margin-top: 20px;
+  }
+  
+  main>.container-lg .example {
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+  
+  
+  main>.container-lg .example.submitted form,
+  main>.container-lg .example.submitting form {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+  }
+  
+  main>.container-lg .example.submitted .success,
+  main>.container-lg .example.submitting .success {
+    pointer-events: all;
+  }
+  
+  main>.container-lg .example.submitting .success .icon {
+    opacity: 1;
+  }
+  
+  main>.container-lg .example.submitted .success>* {
+    opacity: 1;
+    transform: none !important;
+  }
+  
+  
+  main>.container-lg .example.submitted.error .error>* {
+    opacity: 1;
+    transform: none !important;
+  }
+  
+  main>.container-lg .example .error>* {
+    opacity: 0;
+    transform: none !important;
+  }
+  
+  main>.container-lg .example.submitted .success> :nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  
+  main>.container-lg .example.submitted .success> :nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  
+  main>.container-lg .example.submitted .success> :nth-child(4) {
+    transition-delay: 0.3s;
+  }
+  
+  main>.container-lg .example.submitted .success .icon .border,
+  main>.container-lg .example.submitted .success .icon .checkmark {
+    opacity: 1;
+    stroke-dashoffset: 0 !important;
+  }
+  
+  // main>.container-lg .example * {
+  //   margin: 0;
+  //   padding: 0;
+  // }
+  
+  main>.container-lg .example .caption {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    padding: 15px 10px 0;
+    color: #aab7c4;
+    font-family: Roboto, "Open Sans", "Segoe UI", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  main>.container-lg .example .caption * {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  
+  main>.container-lg .example .caption .no-charge {
+    color: #cfd7df;
+    margin-right: 10px;
+  }
+  
+  main>.container-lg .example .caption a.source {
+    text-align: right;
+    color: inherit;
+    transition: color 0.1s ease-in-out;
+    margin-left: 10px;
+  }
+  
+  main>.container-lg .example .caption a.source:hover {
+    color: #6772e5;
+  }
+  
+  main>.container-lg .example .caption a.source:active {
+    color: #43458b;
+  }
+  
+  main>.container-lg .example .caption a.source svg {
+    margin-right: 10px;
+  }
+  
+  main>.container-lg .example .caption a.source svg path {
+    fill: currentColor;
+  }
+  
+  main>.container-lg .example form {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    transition-property: opacity, transform;
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  main>.container-lg .example form input::-webkit-input-placeholder {
+    opacity: 1;
+  }
+  
+  main>.container-lg .example form input::-moz-placeholder {
+    opacity: 1;
+  }
+  
+  main>.container-lg .example form input:-ms-input-placeholder {
+    opacity: 1;
+  }
+  
+  main>.container-lg .example .error {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    margin-top: 20px;
+    left: 0;
+    padding: 0 15px;
+    font-size: 13px !important;
+    opacity: 0;
+    transform: translateY(10px);
+    transition-property: opacity, transform;
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  main>.container-lg .example .error.visible {
+    opacity: 1;
+    transform: none;
+  }
+  
+  main>.container-lg .example .error .message {
+    font-size: inherit;
+  }
+  
+  main>.container-lg .example .error svg {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-top: -1px;
+    margin-right: 10px;
+  }
+  
+  main>.container-lg .example .success {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    text-align: center;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 670px) {
+    main>.container-lg .example .success {
+      padding: 40px;
+    }
+  }
+  
+  main>.container-lg .example .success>* {
+    transition-property: opacity, transform;
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  main>.container-lg .example .error>* {
+    transition-property: opacity, transform;
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  main>.container-lg .example .success .icon {
+    margin: 15px 0 30px;
+    transform: translateY(70px) scale(0.75);
+  }
+  
+  main>.container-lg .example .success .icon svg {
+    will-change: transform;
+  }
+  
+  main>.container-lg .example .success .icon .border {
+    stroke-dasharray: 251;
+    stroke-dashoffset: 62.75;
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: spin 1s linear infinite;
+  }
+  
+  main>.container-lg .example .success .icon .checkmark {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s;
+  }
+  
+  main>.container-lg .example .success .title {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  main>.container-lg .example .success .message {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    line-height: 1.6em;
+  }
+  
+  main>.container-lg .example .success .message span {
+    font-size: inherit;
+  }
+  
+  main>.container-lg .example .success .reset:active {
+    transition-duration: 0.15s;
+    transition-delay: 0s;
+    opacity: 0.65;
+  }
+  
+  main>.container-lg .example .success .reset svg {
+    will-change: transform;
+  }
+  
+  .example.example2 * {
+    font-family: Source Code Pro, Consolas, Menlo, monospace;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .example.example2 .row {
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 5px 10px !important;
+  }
+  
+  .example.example2 .field {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 0 10px !important;
+  }
+  
+  .example.example2 .field.half-width {
+    width: 50%;
+  }
+  
+  .example.example2 .field.quarter-width {
+    width: calc(25% - 10px);
+  }
+  
+  .example.example2 .baseline {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #cfd7df;
+    transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .example.example2 label {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0px;
+    color: $black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform-origin: 0 50%;
+    cursor: text;
+    transition-property: color, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .example.example2 .input {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 7px;
+    color: $black;
+    background-color: transparent;
+  }
+  
+  .example.example2 .input::-webkit-input-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .example.example2 .input::-moz-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .example.example2 .input:-ms-input-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .example.example2 .input.StripeElement {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity;
+  }
+  
+  .example.example2 .input.focused,
+  .example.example2 .input:not(.empty) {
+    opacity: 1;
+  }
+  
+  .example.example2 .input.focused::-webkit-input-placeholder,
+  .example.example2 .input:not(.empty)::-webkit-input-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example2 .input.focused::-moz-placeholder,
+  .example.example2 .input:not(.empty)::-moz-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example2 .input.focused:-ms-input-placeholder,
+  .example.example2 .input:not(.empty):-ms-input-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example2 .input.focused+label,
+  .example.example2 .input:not(.empty)+label {
+    color: #aab7c4;
+    transform: scale(0.85) translateY(-25px);
+    cursor: default;
+  }
+  
+  .example.example2 .input.focused+label {
+    color: $black;
+  }
+  
+  .example.example2 .input.invalid+label {
+    color: $black;
+  }
+  
+  .example.example2 .input.focused+label+.baseline {
+    background-color: $black;
+  }
+  
+  .example.example2 .input.focused.invalid+label+.baseline {
+    background-color: $black;
+  }
+  
+  .example.example2 input,
+  .example.example2 button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+  }
+  
+  .example.example2 input:-webkit-autofill {
+    -webkit-text-fill-color: #e39f48;
+    transition: background-color 100000000s;
+    -webkit-animation: 1ms void-animation-out;
+  }
+  
+  .example.example2 .StripeElement--webkit-autofill {
+    background: transparent !important;
+  }
+  
+  
+  .example.example2 input,
+  .example.example2 button {
+    -webkit-animation: 1ms void-animation-out;
+  }
+  
+  .example.example2 button {
+    display: block;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 40px 15px 0 !important;
+    background-color: #FB3B71;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .example.example2 input:active {
+    background-color: #159570;
+  }
+  
+  .example.example2 .error svg {
+    margin-top: 0 !important;
+  }
+  
+  .example.example2 .error svg .base {
+    fill: #e25950;
+  }
+  
+  .example.example2 .error svg .glyph {
+    fill: #fff;
+  }
+  
+  .example.example2 .error .message {
+    color: #e25950;
+  }
+  
+  .example.example2 .success .icon .border {
+    stroke: #abe9d2;
+  }
+  
+  .example.example2 .success .icon .checkmark {
+    stroke: #24b47e;
+  }
+  
+  .example.example2 .failure .icon .close-x {
+    stroke: red;
+  }
+  
+  .example.example2 .success .title {
+    color: #32325d;
+    font-size: 16px !important;
+  }
+  
+  .example.example2 .success .message {
+    color: #8898aa;
+    font-size: 13px !important;
+  }
+  
+  .example.example2 .success .reset path {
+    fill: #FB3B71;
+  }
+  
+  .btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed !important;
+    pointer-events: none;
+  }
+  
+  .m-widget28 .m-widget28__pic {
+    min-height: 164px !important;
+  }
+  
+  .privacy-message {
+    font-size: 14px !important;
+      font-family: 'Poppins' !important;
+      font-weight: 400 !important;
+      color: $dark-gray;
+      text-align: center;
+      padding-top: 20px;
+  }
+  
+  .stripe-info {
+    display: table;
+    padding: 10px;
+    font-family: 'Poppins' !important;
+    color: #666;
+    font-size: 14px !important;
+    svg {
+      fill: #32325d;
+    }
+  }
+  
+  .login-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    .go-to-login {
+      background: #fb3b71;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      display: block;
+      padding: 16px 20px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 21px;
+      font-family: 'Montserrat-Regular';
+      font-weight: 400;
+      margin-top: 48px;
+      box-shadow: 0px 0px 33px 4px rgba(255,219,229,1);
+    }
+  }
+  
+  .example.example3 {
+    background-color: #525f7f;
+  }
+  
+  .example.example3 * {
+    font-family: Quicksand, Open Sans, Segoe UI, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .example.example3 .fieldset {
+    margin: 0 15px 30px;
+    padding: 0;
+    border-style: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  
+  .example.example3 .field {
+    padding: 10px 20px 11px;
+    background-color: #7488aa;
+    border-radius: 20px;
+    width: 100%;
+  }
+  
+  .example.example3 .field.half-width {
+    width: calc(50% - (5px / 2));
+  }
+  
+  .example.example3 .field.third-width {
+    width: calc(33% - (5px / 3));
+  }
+  
+  .example.example3 .field + .field {
+    margin-top: 6px;
+  }
+  
+  .example.example3 .field.focus,
+  .example.example3 .field:focus {
+    color: #424770;
+    background-color: #f6f9fc;
+  }
+  
+  .example.example3 .field.invalid {
+    background-color: #fa755a;
+  }
+  
+  .example.example3 .field.invalid.focus {
+    background-color: #f6f9fc;
+  }
+  
+  .example.example3 .field.focus::-webkit-input-placeholder,
+  .example.example3 .field:focus::-webkit-input-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example3 .field.focus::-moz-placeholder,
+  .example.example3 .field:focus::-moz-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example3 .field.focus:-ms-input-placeholder,
+  .example.example3 .field:focus:-ms-input-placeholder {
+    color: #cfd7df;
+  }
+  
+  .example.example3 input, .example.example3 button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+  }
+  
+  .example.example3 input {
+    color: #fff;
+  }
+  
+  .example.example3 input::-webkit-input-placeholder {
+    color: #9bacc8;
+  }
+  
+  .example.example3 input::-moz-placeholder {
+    color: #9bacc8;
+  }
+  
+  .example.example3 input:-ms-input-placeholder {
+    color: #9bacc8;
+  }
+  
+  .example.example3 button {
+    display: block;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 0 15px;
+    background-color: #fcd669;
+    border-radius: 20px;
+    color: #525f7f;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .example.example3 button:active {
+    background-color: #f5be58;
+  }
+  
+  .example.example3 .error svg .base {
+    fill: #fa755a;
+  }
+  
+  .example.example3 .error svg .glyph {
+    fill: #fff;
+  }
+  
+  .example.example3 .error .message {
+    color: #fff;
+  }
+  
+  .example.example3 .success .icon .border {
+    stroke: #fcd669;
+  }
+  
+  .example.example3 .success .icon .checkmark {
+    stroke: #fff;
+  }
+  
+  .example.example3 .success .title {
+    color: #fff;
+  }
+  
+  .example.example3 .success .message {
+    color: #9cabc8;
+  }
+  
+  .example.example3 .success .reset path {
+    fill: #fff;
+  }
+  

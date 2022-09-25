@@ -1,0 +1,118 @@
+<ngx-file-drop
+  [multiple]="multiple"
+  dropZoneLabel="Drop files here"
+  (onFileDrop)="onFileDrop($event)"
+>
+  <ng-template
+    ngx-file-drop-content-tmp
+    let-openFileSelector="fileInput.click()"
+  >
+    <div
+      (click)="fileInput.click()"
+      *ngIf="template === 'default'"
+      style="width: 100%;"
+    >
+      <label for="upload">
+        <div class="drag-and-drop">
+          <div class="drag-and-drop-cont">
+            <input
+              #fileInput
+              type="file"
+              style="display: none;"
+              class="form-control-file"
+              id="file"
+              (change)="onFileSelect($event)"
+              name="file"
+              [accept]="allowedTypes"
+            />
+          </div>
+        </div>
+      </label>
+    </div>
+    <div *ngIf="template === 'lg'" class="add-from-comp-top">
+      <div fxLayout="row" class="justify-content-center">
+        <span *ngIf="!imageToShow" class="icon-baseline-filter_hdr-24px"></span>
+
+        <div *ngIf="imageToShow">
+          <img src="{{imageToShow}}" alt="">
+        </div>
+      </div>
+      <div fxLayout="row" class="justify-content-center pt-4">
+        <span class="text">Drag & Drop</span>
+      </div>
+      <div
+        fxLayout="row"
+        class="justify-content-center pt-2 pb-3 border-bottom"
+      >
+        <span class="text">Your Photos & Videos</span>
+      </div>
+
+      <div fxLayout="row" class="add-computer pt-4">
+        <label for="file-input">
+          <a mat-button class="w-100 text-center">Add from Computer</a>
+        </label>
+      </div>
+
+      <input
+        id="file-input"
+        [accept]="allowedTypes"
+        #fileInput
+        (change)="onFileSelect($event)"
+        type="file"
+      />
+    </div>
+    <div *ngIf="template === 'mobile-lg'" fxLayout="row" class="py-4 border-bottom" style="justify-content: center;">
+      <label for="file-input">
+          <span class="icon-baseline-filter_hdr-24px"></span>
+          <span class="text pl-3">Upload Video / Photo</span>
+      </label>
+      <input id="file-input"
+      [accept]="allowedTypes"
+      #fileInput
+      (change)="onFileSelect($event)"
+      type="file" type="file" />
+  </div>
+    <div *ngIf="template === 'profile-upload'" class="drag-member-photo">
+      <div class="drag-member-photo-inner clearfix">
+        <img
+          class="profile-picture"
+          [src]="
+            preview[preview.length - 1]
+              ? preview[preview.length - 1]
+              : '/assets/img/front-img/add-photo.png'
+          "
+        />
+        <h2>
+          Drag & Drop<br />
+          {{ profileTitle }} Photo
+        </h2>
+        <a (click)="fileInput.click()" class="pink-button">Upload </a>
+        <input
+          [accept]="allowedTypes"
+          #fileInput
+          id="file"
+          type="file"
+          (change)="onFileSelect($event)"
+        />
+      </div>
+    </div>
+    <div>
+      <div
+        *ngIf="template === 'portfolio-upload'"
+        class="booking-private-item-img relative"
+      >
+        <a (click)="fileInput.click()">
+          <img src="/src/assets/img/upload-new-img.png" />
+        </a>
+        <input
+          [accept]="allowedTypes"
+          #fileInput
+          id="file"
+          (change)="onFileSelect($event)"
+          class="upload-new-photo"
+          type="file"
+        />
+      </div>
+    </div>
+  </ng-template>
+</ngx-file-drop>

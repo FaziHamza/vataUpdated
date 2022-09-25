@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2df;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_action_all_out_24px" data-name="icon/action/all_out_24px" class="cls-1" d="M50,50H37.5L50,37.5V50ZM12.5,50H0V37.5l12.493,12.5ZM25,46.875A21.88,21.88,0,0,1,9.529,9.529,21.881,21.881,0,0,1,40.474,40.471,21.738,21.738,0,0,1,25,46.875Zm0-37.5A15.625,15.625,0,1,0,40.623,25,15.644,15.644,0,0,0,25,9.374ZM0,12.5V0H12.5L.006,12.493Zm50,0-.006-.006L37.5,0H50V12.5Z"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="74.999" height="74.999"/>
+    </clipPath>
+  </defs>
+  <g id="orher" transform="translate(16354 22498)">
+    <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="50" height="50" transform="translate(-16354 -22498)"/>
+    <path id="icon_action_all_out_24px-2" data-name="icon/action/all_out_24px" class="cls-1" d="M33.334,33.334H25L33.334,25v8.335Zm-25,0H0V25L8.329,33.33Zm8.334-2.083A14.587,14.587,0,0,1,6.352,6.352,14.587,14.587,0,0,1,26.983,26.981,14.492,14.492,0,0,1,16.667,31.251Zm0-25A10.417,10.417,0,1,0,27.083,16.667,10.429,10.429,0,0,0,16.667,6.249ZM0,8.332V0H8.332L0,8.329Zm33.334,0,0,0L25,0h8.334V8.332Z" transform="translate(-16345.667 -22489.666)"/>
+    <g id="Group_8" data-name="Group 8" class="cls-4" transform="translate(-16354 -22498)">
+      <g id="_Color" data-name="↳ Color" transform="translate(-12.5 -12.5)">
+        <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="74.999" height="74.999"/>
+        <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="74.999" height="74.999"/>
+      </g>
+    </g>
+  </g>
+</svg>

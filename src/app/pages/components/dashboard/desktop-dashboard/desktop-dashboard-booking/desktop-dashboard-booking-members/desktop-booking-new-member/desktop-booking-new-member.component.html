@@ -1,0 +1,220 @@
+<div class="dashboard-booking-new-member">
+    <div fxlayout="row" class="main-heading border-bottom pb-3">
+        <h6>New Member</h6>
+    </div>
+
+    <form [formGroup]="newMemberBookingForm">
+        <div fxlayout="row" class="new-section mt-4">
+            <div fxFlex="25%" class="left-img text-center py-4 px-3 mr-4">
+
+                <div class="left-imgs" *ngIf="preview.length > 0">
+                    <ng-container *ngFor="let preview of preview; let i = index">
+                        <span
+                        (click)="removeImage(i)"
+                        class="icon-baseline-close-24px-11 close"
+                        ></span>
+                        <img class="mr-2 mt-3" [src]="preview.data" />
+                    </ng-container>
+                </div>
+
+                <!-- <img src="../../../../../../../../assets/img/w2.png">
+                <a class="add-btn">
+                    <span class="icon-add-button-inside-black-circle-1"></span>
+                </a>
+                <p class="pt-4">Drag & Drop</p>
+                <p class="pt-2 pb-3">Client Profile Photo</p>
+                <div class="upload-btn border-top pt-3">
+                    <a mat-button class="pink-b outlined rounded-bt d-block">Upload</a>
+                </div> -->
+
+                <app-file-upload
+                    *ngIf="preview.length == 0"
+                    (uploadData)="onFileUpload($event)"
+                    template="lg">
+                </app-file-upload>
+
+            </div>
+
+            <div fxFlex="35%" class="center-inputs mr-4">
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Member Name</mat-label>
+                        <input matInput type="text" formControlName="memberName">
+                        <mat-error *ngIf="newMemberBookingForm.get('memberName').hasError('required')">
+                            Member Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Member Surname</mat-label>
+                        <input matInput type="text" formControlName="memberSurname">
+                        <mat-error *ngIf="newMemberBookingForm.get('memberSurname').hasError('required')">
+                            Member Surname is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="input-fields">
+                    <p class="input-heading py-2">Phone Number</p>
+                    <div fxLayout="row">
+                        <div fxFlex="28%" class="mr-3">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Code</mat-label>
+                                <mat-select formControlName="phoneCode" [(ngModel)]="selectedPhoneCode">
+                                    <mat-option value="+41">+41</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="newMemberBookingForm.get('phoneCode').hasError('required')">
+                                    Code is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="65%">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Number</mat-label>
+                                <input matInput type="number" formControlName="phoneNumber">
+                                <mat-error *ngIf="newMemberBookingForm.get('phoneNumber').hasError('required')">
+                                    Number is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="input-fields">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput type="text" formControlName="email">
+                        <mat-error *ngIf="newMemberBookingForm.get('email').hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxFlex="40%" class="right-input-fields ml-1">
+                <div fxLayout="row" class="text-area">
+                    <mat-form-field class="w-100">
+                        <mat-label>Describe staffer position or skills</mat-label>
+                        <textarea matInput type="text" formControlName="position_skills"></textarea>
+                        <mat-error *ngIf="newMemberBookingForm.get('position_skills').hasError('required')">
+                            Staffer position or skills is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <span class="words">100/500</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="all-services border-bottom py-3">
+            <div class="services-scroll pr-3">
+                <div class="service-fields">
+                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>All Categories (8)</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <span>Select All</span>
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Barber Hair</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-fields">
+                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Not Categorized (1)</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <span>Select All</span>
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Barber Hair</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="service-fields">
+                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Concierge (3)</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <span>Select All</span>
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Barber Hair</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="service-fields">
+                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Beauty Saloon (8)</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <span>Select All</span>
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLaytout="row" class="field pt-3">
+                        <div fxFlex="85%" class="left-side">
+                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                        </div>
+                        <div fxFlex="15%" class="right-side text-right">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <div fxLayout="row" class="bottom-btns-bar float-right pt-4">
+        <a mat-button class="white-b rounded-bt px-5 py-0 mr-5" (click)="onSelectType('details')">Cancel</a>
+        <a mat-button class="pink-b rounded-bt px-5 py-0" (click)="addNewMember()">Save Changes</a>
+    </div>
+</div>

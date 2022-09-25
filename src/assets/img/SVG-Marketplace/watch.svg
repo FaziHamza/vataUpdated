@@ -1,0 +1,39 @@
+<svg id="watch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fe5a76;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="icon_hardware_watch_24px" data-name="icon/hardware/watch_24px" class="cls-1" d="M50,100H16.665L12.709,76.124a33.2,33.2,0,0,1,0-52.248L16.665,0H50l4,23.876a33.271,33.271,0,0,1,0,52.248L50,100ZM22.043,81.374l1.706,10.29H42.956l1.71-10.331a32.992,32.992,0,0,1-11.333,2A33.52,33.52,0,0,1,22.043,81.374ZM33.334,25a25,25,0,1,0,25,25A25.028,25.028,0,0,0,33.334,25Zm0-8.336a32.871,32.871,0,0,1,11.325,2L42.96,8.332H23.749L22.043,18.626A33.441,33.441,0,0,1,33.334,16.665Z"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle" class="cls-2" width="99.999" height="99.999"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_action_stars_24px_background" data-name="icon/action/stars_24px background" class="cls-3" width="100" height="99.999"/>
+  <path id="icon_hardware_watch_24px-2" data-name="icon/hardware/watch_24px" class="cls-1" d="M50,100H16.665L12.709,76.124a33.2,33.2,0,0,1,0-52.248L16.665,0H50l4,23.876a33.271,33.271,0,0,1,0,52.248L50,100ZM22.043,81.374l1.706,10.29H42.956l1.71-10.331a32.992,32.992,0,0,1-11.333,2A33.52,33.52,0,0,1,22.043,81.374ZM33.334,25a25,25,0,1,0,25,25A25.028,25.028,0,0,0,33.334,25Zm0-8.336a32.871,32.871,0,0,1,11.325,2L42.96,8.332H23.749L22.043,18.626A33.441,33.441,0,0,1,33.334,16.665Z" transform="translate(16.667 0)"/>
+  <g id="Group_168" data-name="Group 168" class="cls-4" transform="translate(16.667 0)">
+    <g id="_Color" data-name="↳ Color" transform="translate(-16.667 0)">
+      <rect id="_Color_background" data-name="↳ Color background" class="cls-2" width="100" height="99.999"/>
+      <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="99.999" height="99.999"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,120 @@
+@import '../../../../../../styles.scss';
+
+.mobile-seller-all-items {
+
+    .profile {
+        border: 1px solid $ligher-gray;
+        border-radius: 5px;
+
+        .heading-bar {
+            h6 {
+                font-size: 16px;
+                font-weight: 200;
+                color: $black;
+                span {
+                    &.icon-Subtraction-7 {
+                        font-size: 16px;
+                        padding: 0 10px;
+                        border-right: 1px solid $light-gray;
+                    }
+                }
+                span {
+                    &.profile {
+                        font-size: 10px;
+                        color: $white;
+                        background-color: #2cda4d;
+                        padding: 1px 4px;
+                        border: 1px solid #2cda4d;
+                        border-radius: 20px;
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+            }
+
+            p {
+                span {
+                    &.icon-Symbol-296--1 {
+                        font-size: 19px;
+                    }
+                }
+                span {
+                    &.text {
+                        font-size: 14px;
+                        color: $black;
+                        position: relative;
+                        top: -4px;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+
+        .add-btn {
+            span {
+                &.icon-add-button-inside-black-circle-11 {
+                    font-size: 25px;
+                    cursor: pointer;
+                    top: 5px;
+                    position: relative;
+                }
+            }
+        }
+
+        .member-detail {
+            p {
+                font-size: 14px;
+                color: $light-gray;
+                span {
+                    &.icon-location1 {
+                        font-size: 21px;
+                    }&::before {
+                        color: $light-gray;
+                    }
+                }
+                span {
+                    &.location-text {
+                        color: $black;
+                        position: relative;
+                        top: -5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .product-rating {
+        border: 1px solid $ligher-gray;
+        padding: 10px 0;
+        border-radius: 10px;
+
+        .heading-text {
+            h4 {
+                font-size: 35px;
+                color: $black;
+            }
+        }
+        .number {
+            p {
+                font-size: 15px;
+                font-weight: 100;
+                color: $light-gray;
+            }
+        }
+    }
+
+    .star-rating {
+        
+        .heading {
+            h6 {
+                font-size: 18px;
+                color: $dark-gray;
+            }
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+}

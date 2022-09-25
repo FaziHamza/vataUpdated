@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb3b71;
+      }
+    </style>
+  </defs>
+  <g id="rating-active" transform="translate(-132 -3034)">
+    <path id="rati" class="cls-1" d="M9,13.859,13.944,17l-1.312-5.92L17,7.1l-5.752-.514L9,1,6.752,6.583,1,7.1,5.368,11.08,4.056,17Z" transform="translate(131 3033)"/>
+  </g>
+</svg>

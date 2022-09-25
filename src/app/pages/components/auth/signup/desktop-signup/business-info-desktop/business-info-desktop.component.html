@@ -1,0 +1,292 @@
+
+<mat-card *ngIf="signupDeps" class="px-4">
+    <div class="form">
+
+        <div fxLayout="row" class="pb-4 pt-1">
+            <div fxFlex="50%" class="mr-3">
+                <a class="btn rounded-bt p-0 btn-block white-b" 
+                (click)="changeFormType('private')"
+                [ngClass]="{'active pink-b': type == 'private'}" mat-button>
+                    Private
+                </a>
+            </div>
+            <div fxFlex="50%">
+                <a class="btn rounded-bt p-0 btn-block white-b" 
+                (click)="changeFormType('business')"
+                [ngClass]="{'active pink-b': type == 'business'}" mat-button>
+                    Business
+                </a>
+            </div>
+        </div>
+        
+        <form [formGroup]="businessInfoForm">
+            <div class="business-form" *ngIf="type == 'business'">
+                
+                <div fxLayout="row">
+                    <div fxFlex="100%" class="mx-2">
+                        <mat-form-field class="d-block">
+                            <mat-label>Select Business Type</mat-label>
+                            <mat-select formControlName="business_type">
+                                <mat-option *ngFor="let type of businessTypeOption" value={{type.id}}>{{type.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="businessInfoForm.controls['business_type'].errors?.required">
+                                Business type is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2 mr-3">
+                        <mat-form-field class="d-block">
+                            <mat-label>Select the Business Field</mat-label>
+                            <mat-select formControlName="business_field">
+                                <mat-option *ngIf="signupDeps['business_field'].length" [value]="signupDeps['business_field'][0].id">Seller</mat-option>
+                                <mat-option *ngIf="signupDeps['business_field'].length" [value]="signupDeps['business_field'][1].id">Service</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="businessInfoForm.controls['business_field'].errors?.required">
+                                Business field is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50%" class="mx-2">
+                        <mat-form-field class="d-block">
+                            <mat-label>Select the Business Field/department of industry</mat-label>
+                            <mat-select formControlName="department_industry">
+                                <ng-container *ngIf="signupDeps['business_field'].length && businessInfoForm.controls['business_field'].value === signupDeps['business_field'][0].id">
+                                    <mat-option *ngFor="let seller_dept of sellerOptions; let i = index;" [value]="seller_dept.id">{{seller_dept.name}}</mat-option>
+                                  </ng-container>
+                                  
+                                  <ng-container *ngIf="businessInfoForm.controls['business_field'].value === signupDeps['business_field'][1].id">
+                                    <mat-option *ngFor="let service_dept of serviceOptions;" [value]="service_dept.id">
+                                      {{service_dept.name}}</mat-option>
+                                  </ng-container>
+                            </mat-select>
+                            <mat-error *ngIf="businessInfoForm.controls['department_industry'].errors?.required">
+                                This field is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <div fxLayout="row">
+                    <div fxFlex="100%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Name of Store</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="store_name">
+                            <mat-error *ngIf="businessInfoForm.controls['store_name'].errors?.required">
+                                Name of store is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="100%" class="mx-2">
+                        <mat-form-field class="d-block">
+                            <mat-label>Select Payout Interval</mat-label>
+                            <mat-select [value]='30' formControlName="payout_interval">
+                                <mat-option value="15">15 Days</mat-option>
+                                <mat-option value="30">30 Days</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" #bbtn style="display: none;"></button>
+        </form>
+    
+        <form [formGroup]="privateInfoForm">
+            <div class="private-form">
+
+                <div fxLayout="row">
+                    <div fxFlex="33.3%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Street</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="street">
+                            <mat-error *ngIf="privateInfoForm.controls['street'].errors?.required">
+                                Street is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="privateInfoForm.controls['street'].invalid">
+                                Please enter a <strong>valid street</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Number</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="street_num">
+                            <mat-error *ngIf="privateInfoForm.controls['street_num'].errors?.required">
+                                Number is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="privateInfoForm.controls['street_num'].errors?.pattern">
+                                Please enter a <strong>valid number</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="25%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>City</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="city">
+                            <mat-error *ngIf="privateInfoForm.controls['city'].errors?.required">
+                                City is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Postcode</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="postcode">
+                            <mat-error *ngIf="privateInfoForm.controls['postcode'].errors?.required">
+                                Postcode is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="privateInfoForm.controls['postcode'].errors?.pattern">
+                                Please enter a <strong>valid postcode</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Country</mat-label>
+                            <input required matInput type="text" class="form-control form-control-sm" formControlName="country">
+                            <mat-error *ngIf="privateInfoForm.controls['country'].errors?.required">
+                                Country is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+        
+                    <div fxFlex="16.6%" class="mx-2">
+                        <mat-form-field class="d-block">
+                            <mat-label>Code</mat-label>
+                            <mat-select formControlName="phone_isd">
+                                <mat-option value="+41">+41</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="privateInfoForm.controls['phone_isd'].errors?.required">
+                                Please select <strong>code</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div fxFlex="33.3%" class="mx-2">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Phone Number</mat-label>
+                            <input required maxlength="9" matInput type="text" class="form-control form-control-sm" formControlName="phone_number">
+                            <mat-error *ngIf="privateInfoForm.controls['phone_number'].errors?.required">
+                                Phone number is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="privateInfoForm.controls['phone_number'].errors?.pattern">
+                                Please enter a <strong>valid phone number</strong>
+                            </mat-error>
+                            <mat-error *ngIf="privateInfoForm.controls['phone_number'].errors?.maxlength || privateInfoForm.controls['phone_number'].errors?.minlength">
+                                Please enter a 9 digit phone number
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" #pbtn style="display: none;"></button>
+        </form>
+    
+        <form (ngSubmit)="proceed()" [formGroup]="businessInfoForm">
+            <div class="business-form" *ngIf="type == 'business'">
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <p>Are You Register for Government ?</p>
+                    </div>
+                    <div fxFlex="50%" class="mx-2 text-right pt-2">
+                        <mat-slide-toggle formControlName="registered"></mat-slide-toggle>
+                    </div>
+                </div>
+                
+                <div *ngIf="businessInfoForm.controls['registered'].value" fxLayout="row">
+                    <div fxFlex="100%" class="mx-2 pt-1">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>MwSt. Nr</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="registered_code">
+                            <mat-error *ngIf="businessInfoForm.controls['registered_code'].errors?.required">
+                                This field is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="businessInfoForm.controls['registered_code'].errors?.pattern">
+                                Enter a valid code
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <p>Are You VAT Liable ?</p>
+                    </div>
+                    <div fxFlex="50%" class="mx-2 text-right pt-2">
+                        <mat-slide-toggle formControlName="VAT_liable"></mat-slide-toggle>
+                    </div>
+                </div>
+                <div *ngIf="businessInfoForm.controls['VAT_liable'].value" fxLayout="row">
+                    <div fxFlex="100%" class="mx-2 pt-1">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>MwSt. Nr</mat-label>
+                            <input matInput type="text" class="form-control form-control-sm" formControlName="VAT_liable_code">
+                            <mat-error *ngIf="businessInfoForm.controls['VAT_liable_code'].errors?.required">
+                                This field is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="mx-2">
+                        <p>Are You Authorize to Sign ?</p>
+                    </div>
+                    <div fxFlex="50%" class="mx-2 text-right pt-2">
+                        <mat-slide-toggle formControlName="authorized"></mat-slide-toggle>
+                    </div>
+                </div>
+                <div *ngIf="businessInfoForm.controls['authorized'].value" fxLayout="row">
+                    <div fxFlex="100%" class="mx-2 border-bottom pb-3 pt-2">
+                        <mat-chip-list fxLayout="row" #chipList aria-label="Fruit selection">
+                            <mat-chip *ngFor="let auth of authSigners; let i = index;"
+                                     [removable]="true" (removed)="remove(i)">
+                              {{auth.first_name}} {{auth.last_name}}
+                              <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                            <button  mat-fab class="m-2 btn pink-b" (click)="openDialog()"><i class="fas fa-plus"></i></button>
+                          </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="type === 'business'">
+                <mat-label class="mb-2">Shop Cover picture</mat-label>
+                
+              <div fxLayout="row" class="justify-content-center m-2">
+                  <app-file-upload class="w-100"
+                  [multiple]="false"
+                  [isDragEnabled]="true"
+                  (uploadData)="onFileUpload($event)"
+                ></app-file-upload>
+            </div>
+            <mat-error *ngIf="businessInfoForm.controls['cover_pic'].errors?.imageRequired">
+                Image is required
+            </mat-error>
+            <div class="add-from-comp-bottom hide-on-mobile clearfix">
+                <div *ngIf="preview" class="inline-block img-container">
+                  <span (click)="removeImage(i)" class="delete-comment-img close"><img src="/assets/img/delete.png"></span>
+                  <img class="product-img" [src]="preview.data">
+                </div>
+            </div>
+            </div>
+            <div fxLayout="row" class="justify-content-center">
+                <div fxFlex="50%" class="py-4">
+                    <button type="submit" *ngIf="type == 'business'" (click)="pbtn.click(); bbtn.click()" mat-button class="pink-b rounded-bt p-0 btn-block w-100" 
+                        >Continue</button>
+                    <button type="submit" *ngIf="type == 'private'" (click)="pbtn.click()" mat-button class="pink-b rounded-bt p-0 btn-block w-100" 
+                        >Continue</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-card>

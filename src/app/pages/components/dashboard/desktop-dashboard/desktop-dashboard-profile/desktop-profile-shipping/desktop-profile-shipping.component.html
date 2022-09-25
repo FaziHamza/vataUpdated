@@ -1,0 +1,469 @@
+<div class="desktop-dashboard-profile-shipping" *ngIf="shippingData">
+    <div class="my-orders mb-5">
+        <div fxLayout="row" class="heading py-4">
+            <h5 class="pr-5">My Orders ({{shippingData.my_orders.length}})</h5> <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+        </div>
+
+        <div toggleAccordian class="my-orders-accordian-one">
+            <mat-accordion>
+                <mat-expansion-panel class="p-2">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="left-side">
+                            <div class="order-img">
+                                <img src="../../../../../../../assets/img/order-img.png">
+                            </div>
+                        </div>
+                    </mat-panel-title>
+    
+                    <mat-panel-description>
+                        <div fxLayout="row" class="right-side p-2 w-100">
+                            <div fxFlex="70%" class="left-side-order-detail">
+                                <h6>
+                                    Cordless Screwdriver Zenit USA-125 A Lik-90
+                                    <span class="discount">10% Off</span>
+                                </h6>
+                                <p class="date-id py-1">
+                                    <span class="date pr-2">03 April 2019</span>
+                                    <span class="id pl-2">#98145309</span>
+                                </p>
+                            </div>
+    
+                            <div fxFlex="30%" class="right-side-order-amount">
+                                <div fxFlex="37%" class="">
+                                    <p class="fix">Fixed Price</p>
+                                </div>
+                                <div fxFlex="26%" class="">
+                                    <del class="cutted">$367</del>
+                                </div>
+                                <div fxFlex="37%" class="">
+                                    <span class="price">$367</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+    
+                <div class="tracking-section py-4 border-top">
+                    <ul>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Size</span> <span class="size">Small</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-color-wrapper">
+                                <span class="title-text">Color</span> <p class="color"></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Quantity</span> <span class="quantity">2</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Payment</span> <span class="icon-Visa"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Track Number</span>
+                                <input type="text" placeholder="Enter Here">
+                                <span class="add-btn pink-b ml-3">Add</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="customer-detail-section p-3">
+                    <ul>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Name</span> <p class="name">John</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Street</span> <p class="address">Liberty</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Number</span> <p class="no">4</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">City</span> <p class="city">London</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Postcode</span> <p class="code">9874563</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Country</span> 
+                                <p class="flag">
+                                    <img src="../../../../../../../assets/img/ukflag.png">
+                                    <span class="country-name">Ukarine</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+
+    <div class="placed-orders mb-5">
+        <div fxLayout="row" class="heading pt-5 pb-4 border-top">
+            <h5 class="pr-5">Placed Orders ({{shippingData.placed_orders.length}})</h5> <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+        </div>
+
+        <div toggleAccordian *ngFor="let order of shippingData.placed_orders" class="placed-orders-accordian-one mb-3">
+            <mat-accordion>
+                <mat-expansion-panel class="p-2">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="left-side">
+                            <div class="order-img">
+                                <img [src]="order.product_images[0]">
+                            </div>
+                        </div>
+                    </mat-panel-title>
+
+                    <mat-panel-description>
+                        <div fxLayout="row" class="right-side p-2 w-100">
+                            <div fxFlex="65%" class="left-side-order-detail">
+                                <h6>
+                                    {{order.product_title}}
+                                    <!-- <span class="discount">10% Off</span> -->
+                                </h6>
+                                <p class="date-id py-1">
+                                    <span class="date pr-2">03 April 2019</span>
+                                    <span class="id pl-2">{{order.track_number ? order.track_number : 'NA' }}</span>
+                                </p>
+                            </div>
+
+                            <div fxFlex="35%" class="right-side-order-amount">
+                                <div fxFlex="50%" class="left">
+                                    <span class="text pr-4">Start Bid</span>
+                                    <span class="black">$367</span>
+                                </div>
+                                <div fxFlex="50%" class="right">
+                                    <span class="text pr-4">Won Bid</span>
+                                    <span class="pink">$367</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="tracking-section py-4 border-top">
+                    <ul>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Size</span> <span class="size">Small</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-color-wrapper">
+                                <span class="title-text">Color</span> <p class="color"></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Quantity</span> <span class="quantity">2</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Payment</span> <span class="icon-Visa"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Track Number</span>
+                                <input type="text" placeholder="Enter Here">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="customer-detail-section p-3">
+                    <ul>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Name</span> <p class="name">John</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Street</span> <p class="address">Liberty</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Number</span> <p class="no">4</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">City</span> <p class="city">London</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Postcode</span> <p class="code">9874563</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Country</span> 
+                                <p class="flag">
+                                    <img src="../../../../../../../assets/img/ukflag.png">
+                                    <span class="country-name">Ukarine</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+
+    <div class="completed-orders mb-5">
+        <div fxLayout="row" class="heading pt-5 pb-4 border-top">
+            <h5 class="pr-5">Completed Orders ({{shippingData.completed_orders.length}})</h5> <span [appToggleSectionAccordian]="toggleAccordian" class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+        </div>
+
+        <div toggleAccordian *ngFor="let completedOrders of shippingData.completed_orders" class="completed-orders-accordian-one">
+            <mat-accordion>
+                <mat-expansion-panel class="p-2">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="left-side">
+                            <div class="order-img">
+                                <img [src]="completedOrders.product_images[0]">
+                            </div>
+                        </div>
+                    </mat-panel-title>
+
+                    <mat-panel-description>
+                        <div fxLayout="row" class="right-side p-2 w-100">
+                            <div fxFlex="65%" class="left-side-order-detail">
+                                <h6>
+                                    {{completedOrders.product_title}}
+                                    <span class="discount">10% Off</span>
+                                </h6>
+                                <p class="date-id py-1">
+                                    <span class="date pr-2">03 April 2019</span>
+                                    <span class="id pl-2">{{completedOrders.track_number ? completedOrders.track_number : 'NA' }}</span>
+                                </p>
+                            </div>
+
+                            <div fxFlex="35%" class="right-side-order-amount">
+                                <div fxFlex="50%" class="left">
+                                    <span class="text pr-4">Start Bid</span>
+                                    <span class="black">$367</span>
+                                </div>
+                                <div fxFlex="50%" class="right">
+                                    <span class="text pr-4">Won Bid</span>
+                                    <span class="pink">$367</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="tracking-section py-4 border-top">
+                    <ul>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Size</span> <span class="size">Small</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-color-wrapper">
+                                <span class="title-text">Color</span> <p class="color"></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Quantity</span> <span class="quantity">2</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Payment</span> <span class="icon-Visa"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Track Number</span>
+                                <input type="text" placeholder="Enter Here">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="customer-detail-section p-3">
+                    <ul>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Name</span> <p class="name">John</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Street</span> <p class="address">Liberty</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Number</span> <p class="no">4</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">City</span> <p class="city">London</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Postcode</span> <p class="code">9874563</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Country</span> 
+                                <p class="flag">
+                                    <img src="../../../../../../../assets/img/ukflag.png">
+                                    <span class="country-name">Ukarine</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <div class="completed-orders-accordian-two mt-3">
+            <mat-accordion>
+                <mat-expansion-panel class="p-2">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="left-side">
+                            <div class="order-img">
+                                <img src="../../../../../../../assets/img/order-img.png">
+                            </div>
+                        </div>
+                    </mat-panel-title>
+
+                    <mat-panel-description>
+                        <div fxLayout="row" class="right-side p-2 w-100">
+                            <div fxFlex="65%" class="left-side-order-detail">
+                                <h6>
+                                    Cordless Screwdriver Zenit USA-125 A Lik-90
+                                    <span class="discount">10% Off</span>
+                                </h6>
+                                <p class="date-id py-1">
+                                    <span class="date pr-2">03 April 2019</span>
+                                    <span class="id pl-2">#98145309</span>
+                                </p>
+                            </div>
+
+                            <div fxFlex="35%" class="right-side-order-amount">
+                                <div fxFlex="50%" class="left">
+                                    <span class="text pr-4">Start Bid</span>
+                                    <span class="black">$367</span>
+                                </div>
+                                <div fxFlex="50%" class="right">
+                                    <span class="text pr-4">Won Bid</span>
+                                    <span class="pink">$367</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="tracking-section py-4 border-top">
+                    <ul>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Size</span> <span class="size">Small</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-color-wrapper">
+                                <span class="title-text">Color</span> <p class="color"></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Quantity</span> <span class="quantity">2</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Payment</span> <span class="icon-Visa"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tracking-wrapper">
+                                <span class="title-text">Track Number</span>
+                                <input type="text" placeholder="Enter Here">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="customer-detail-section p-3">
+                    <ul>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Name</span> <p class="name">John</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Street</span> <p class="address">Liberty</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Number</span> <p class="no">4</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">City</span> <p class="city">London</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Postcode</span> <p class="code">9874563</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="customer-wrapper">
+                                <span class="title-text">Country</span> 
+                                <p class="flag">
+                                    <img src="../../../../../../../assets/img/ukflag.png">
+                                    <span class="country-name">Ukarine</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

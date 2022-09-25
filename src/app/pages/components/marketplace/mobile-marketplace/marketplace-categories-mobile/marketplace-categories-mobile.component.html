@@ -1,0 +1,36 @@
+<div *ngIf="data" class="container">
+
+    <div fxLayout="row">
+        <div fxFlex="100%">
+            <div class="heading">
+                <h4>Marketplace Categories</h4>
+            </div>
+        </div>
+    </div>
+    <ngx-slick-carousel class="cards carousel pt-5" #slickModal="slick-carousel" [config]="config">
+            <div class="slide" ngxSlickItem *ngFor="let cat of data; let i = index">
+                <div  fxLayout="row" class="sub-categories border-top">
+                    <div  (click)="routeTo(data[i].id, data[i].name)"  fxFlex="100%" class="border-right py-4">
+                        <div class="category text-center">
+                            <span style="width: 80px; height: 80px;" [innerHTML]="(data[i+1]?.icon_content ? data[i+1]?.icon_content : notFound) | sanitize"></span>
+                            <!-- <svg-icon [src]="data[i+1].icon" [svgStyle]="{ 'width.px': 80, 'height.px': 80 }"></svg-icon> -->
+                            <h5 class="pt-4">{{data[i+1]?.name}}</h5>
+                        </div>
+                    </div>
+                    <!-- <div  (click)="routeTo(data[i+1].id, data[i+1].name)" *ngIf="i + 1 < data.length" fxFlex="100%" class="border-right py-4">
+                        <div class="category text-center">
+                            <span [innerHTML]="(data[i+1].icon_content ? data[i+1].icon_content : notFound) | sanitize"></span>
+                            <h5 class="pt-4">{{data[i+1].name}}</h5>
+                        </div>
+                    </div> -->
+                    <!-- <div (click)="routeTo(data[i+2].id, data[i+2].name)" *ngIf="i + 2 < data.length" fxFlex="100%">
+                        <div class="category text-center py-4">
+                            <span [innerHTML]="(data[i+2].icon_content ? data[i+2].icon_content : notFound) | sanitize"></span>
+    
+                            <h5 class="pt-4">{{data[i+2].name}}</h5>
+                        </div>
+                    </div> -->
+                </div>
+            </div>    
+      </ngx-slick-carousel>  
+</div>

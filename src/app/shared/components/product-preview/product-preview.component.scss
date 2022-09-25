@@ -1,0 +1,51 @@
+@import '../../../../styles.scss';
+
+.feedback-slides {
+  .client-feedback {
+    border: 1px solid #E7E7E7;
+    padding: 10px;
+    border-radius: 4px;
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: none;
+      img {
+        height: 400px;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+    }
+    ::ng-deep lib-ngx-image-zoom {
+      img {
+        height: 400px;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.client-thumbnails {
+  border: 1px solid #E7E7E7;
+  border-radius: 4px;
+  padding: 5px;
+
+  .thumbs {
+    .slide-video {
+      text-align: center;
+    }
+    img,
+    video {
+      text-align: center;
+      height: 100px;
+      object-fit: contain;
+    }
+  }
+}
+
+::ng-deep .lb-data .lb-close {
+  position: absolute;
+  top: -50px;
+  margin-right: -50px;
+}

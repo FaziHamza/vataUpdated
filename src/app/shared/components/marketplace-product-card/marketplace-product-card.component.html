@@ -1,0 +1,169 @@
+<div *ngIf="!appSize.getIsMobileResolution()" class="marketplace-product-desktop">
+    <div class="card-container" [class.desktop]="!appSize.getIsMobileResolution()" [class.mobile]="appSize.getIsMobileResolution()">
+        <div class="card-body">
+          <div class="image-sec">
+              <div class="top-action">
+                  <div *ngIf="appSize.getIsMobileResolution()" fxLayout="row" class="w-100">
+                      <div fxFlex="50%" class="ml-3">
+                          <div class="img-icons rounded-bt border">
+                              <div class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
+                              <div class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
+                          </div>
+                      </div>
+                      <div fxFlex="50%" class="mr-3">
+                          <div class="img-user border">
+                              <img src="../../../assets/img/SVG-hp/private-active.svg">
+                          </div>
+                      </div>
+                  </div>
+                  <div *ngIf="!appSize.getIsMobileResolution()" fxLayout="row" class="w-100" fxLayoutAlign="space-between center">
+                    <div *ngIf="product.ask_for_change || product.bidding" fxFlex="35%" class="ml-2">
+                        <div class="img-icons rounded-bt border">
+                            <div *ngIf="product.ask_for_change" class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
+                            <div *ngIf="product.bidding" class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
+                        </div>
+                    </div>
+                    <div *ngIf="product.bidding" fxFlex="35%" class="time-bids-desktop mx-2">
+                          <div class="rounded-bt border time-content">
+                              <p class="main pink-text m-0">{{product.end_datetime | timeLeft: {showDayTime: false} }}</p>
+                              <span class="text-muted">{{product.bid_count}} bids</span>
+                          </div>
+                  </div>
+                    <div fxFlex="20%" class="mr-2">
+                        <div class="img-user border">
+                            <img src="../../../assets/img/SVG-hp/private-active.svg">
+                        </div>
+                    </div>
+                </div>
+              </div>
+        
+              <div *ngIf="appSize.getIsMobileResolution()" class="time-bids">
+                  <div fxLayout="row" class="mx-2">
+                      <div class="rounded-bt border time-content px-3 py-2">
+                          <p class="main pink-text">{{product.end_datetime | timeLeft: {showDayTime: false} }} <span class="text-muted">{{product.bid_count}} bids</span></p>
+                      </div>
+                  </div>
+              </div>
+        
+              <img class="main-img" [src]="product.image[0] ? product.image[0] : '/assets/img/front-img/marketplace/private.png'" alt="product">
+          </div>
+        
+          <h5 class="border-bottom text-center">{{product.title}}</h5>
+        
+          <div *ngIf="hover" class="rating-spec border-bottom hover-block">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class=" star-block m-3">
+                <div fxFlex="50%">
+                    <app-star-rating size="10px" [maxScore]="5" [score]="product.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                </div>
+                <div fxFlex="50%">
+                    <span class="number pl-2 text-muted">{{product.rating_data.total_reviews}} product ratings</span>
+                </div>
+            </div>
+        
+            <div class="specification border-top">
+                <div fxLayout="row" class="pt-3 mx-3 pb-3">
+                    <div fxFlex="50%">
+                        <p>Condition</p>
+                    </div>
+                    <div fxFlex="50%">
+                        <span>{{product.condition.name}}</span>
+                    </div>
+                </div>
+                <!-- <div *ngIf="product.size_attributes.length" fxLayout="row"  class="mx-3 pb-3">
+                    <div fxFlex="50%">
+                        <p>Size</p>
+                    </div>
+                    <div fxFlex="50%">
+                        <ng-container *ngFor="let size of product.size_attributes">
+                            <span>{{size.attr_name}}</span>
+                            <br>
+                        </ng-container>
+                    </div>
+                </div> -->
+                <!-- <div *ngIf="product.color_attributes.length" fxLayout="row" class="mx-3 pb-3">
+                    <div fxFlex="50%">
+                        <p>Color</p>
+                    </div>
+                    <div fxFlex="50%">
+                        <div class="colors float-right">
+                            <div *ngFor="let color of product.color_attributes" [style.background-color]="color.internal_value" class="color mx-1">
+                                <a></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+          <div fxLayout="row" class="py-4">
+              <div fxFlex="50%" class="mx-2 text-left">
+                  <p class="text text-muted pb-1">Customer bid</p>
+              </div>
+              <div fxFlex="50%" class="mx-2 text-right">
+                <p class="text text-muted pb-1">Fixed price</p>
+            </div>
+              
+          </div>
+          <div fxLayout="row" class="py-2">
+            <div fxFlex="50%" class="mx-2 text-left">
+                <h3 class="bid-price">{{product.customer_bid ?(product.customer_bid | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
+            </div>
+              <div fxFlex="50%" class="mx-2 text-right">
+                  <h3 class="pink-text bid-price">{{product.price ? (product.price | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="appSize.getIsMobileResolution()" class="marketplace-product-mobile">
+    <div class="card-body border mr-2">
+        <div class="image-sec">
+            <div class="top-action">
+                <div fxLayout="row" class="w-100">
+                    <div *ngIf="product.ask_for_change || product.bidding" fxFlex="50%" class="ml-3">
+                        <div class="img-icons rounded-bt border">
+                            <div *ngIf="product.ask_for_change" class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
+                            <div *ngIf="product.bidding" class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
+                        </div>
+                    </div>
+                    <div fxFlex="50%" class="mr-3">
+                        <div class="img-user border">
+                            <img src="../../../assets/img/SVG-hp/private-active.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div *ngIf="product.bidding" class="time-bids">
+                <div fxLayout="row" class="mx-2">
+                    <div class="rounded-bt border time-content px-3 py-2">
+                        <p class="main pink-text">{{product.end_datetime | timeLeft: {showDayTime: false} }} <span class="text-muted">{{product.bid_count}} bids</span></p>
+                    </div>
+                </div>
+            </div>
+    
+            <img class="main-img" [src]="product.image[0] ? product.image[0] : '/assets/img/front-img/marketplace/private.png'">
+        </div>
+    
+        <div class="truncate-typo">
+            <h5 class="border-bottom text-center">{{ (product.title && product.title.length>20) ? (product.title | slice:0:20)+'..' : (product.title) }}</h5>
+        </div>
+    
+        <div fxLayout="row" class="py-2">
+            <div fxFlex="50%" class="mx-2">
+                <p class="text text-muted pb-1">Customer bid</p>
+            </div>
+            <div fxFlex="50%" class="mx-2">
+                <h3>{{product.customer_bid ?(product.customer_bid | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
+            </div>
+        </div>
+        <div fxLayout="row" class="pb-2">
+            <div fxFlex="50%" class="mx-2">
+                <p class="text text-muted pb-1">Fixed price</p>
+            </div>
+            <div fxFlex="50%" class="mx-2">
+                <h3 class="pink-text">{{product.price ? (product.price | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
+            </div>
+        </div>
+    </div>
+</div>

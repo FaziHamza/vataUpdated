@@ -1,0 +1,14 @@
+<div class="popular-section">
+  <div fxLayout="row" class="w-100 pb-3">
+    <h3>Popular Categories</h3>
+  </div>
+  
+  <div *ngIf="popular_categories" class="clearfix hide-on-mobile">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+      <div class="home-cat-cont" ngxSlickItem *ngFor="let cat of popular_categories" >
+        <app-category-card [category]="cat"></app-category-card>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  
+</div>

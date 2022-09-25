@@ -1,0 +1,34 @@
+<div class="header">
+    <div class="container">
+        <div fxLayout="row">
+
+            <div fxFlex="33.3%">
+                <div class="back" *ngIf="Step>1">
+                    <a (click)="onBackStep()">
+                        <img src="../../../assets/img/SVG/back-btn.svg" alt="back">
+                    </a>
+                </div>
+            </div>
+
+            <div fxFlex="33.3%">
+                <h3 class="text-center font-weight-bold">Sign Up</h3>
+            </div>
+
+            <!-- <div fxFlex="33.3%" class="float-right">
+                <div class="text-right">
+                    <div class="custom-control custom-switch">
+                        <mat-checkbox type="checkbox" 
+                            class="custom-control-input" 
+                            id="darkMode" 
+                            [checked]="isThemeDark | async"
+                            (change)="toggleDarkTheme($event)">
+                        <label class="custom-control-label" for="darkMode"></label>
+                        <a class="text-capitalize">Dark Mode</a>
+                    </mat-checkbox>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>

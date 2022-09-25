@@ -1,0 +1,61 @@
+@import '../../../../../../../styles.scss';
+
+.desktop-widgets-fees-pay {
+    border-radius: 10px;
+    background: $white;
+    .top-bar {
+        .heading {
+            p {
+                color: $black;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .more-btn {
+            a {
+                img {
+                    width: 22px;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .fees-pay {
+        .pay-bar {
+            .img-side {
+                img {
+                    width: 100px;
+                    height: 50px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .content-side {
+                p {
+                    &.heading {
+                        color: $black;
+                        font-size: 15px;
+                    }
+                }
+
+                .shipping-detail {
+                    padding-top: 12px;
+                    span {
+                        &.text {
+                            color: $dark-gray;
+                            font-size: 12px;
+                        }
+                        &.price {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

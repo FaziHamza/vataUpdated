@@ -1,0 +1,307 @@
+<form [formGroup]="addBookingForm" #form="ngForm" (ngSubmit)="onSubmit(form)" class="booking-tab">
+
+    <div fxLayout="row" class="py-3">
+        <div fxFlex="25%" class="left-side-booking mr-3">
+            <div class="left-inputs">
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Service Name</mat-label>
+                        <input matInput formControlName="service_name" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row">
+                    <mat-form-field class="w-100">
+                        <mat-label>Service in Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let service of serviceCategories" [value]="service.id">{{service.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="duration">
+                    <div fxLayout="row" class="heading-form-field pt-3">
+                        <span>Duration</span>
+                    </div>
+
+                    <div fxLayout="row" class="pt-1">
+                        <div fxFlex="47%" class="mr-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Hours</mat-label>
+                                <mat-select formControlName="durationHours">
+                                    <mat-option [value]="h" *ngFor="let h of timeUtils.hours;let i = index;">{{h}} H
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="47%" class="ml-2">
+                            <mat-form-field class="w-100">
+                                <mat-label>Minutes</mat-label>
+                                <mat-select formControlName="durationMin">
+                                    <mat-option [value]="m" *ngFor="let m of timeUtils.minutes;">{{m}} Mins</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Price</mat-label>
+                            <input formControlName="price" matInput type="text" />
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="members">
+                    <div fxLayout="row" class="pt-3 border-bottom pb-3">
+                        <div fxFlex="30%" class="heading left-sec">
+                            <h2>Family Members</h2>
+                        </div>
+
+                        <div fxFlex="70%" class="right-sec text-right">
+                            <div class="row">
+                                <div fxFlex="85%">
+                                    <a href="#">Select All</a>
+                                </div>
+
+                                <div fxFlex="15%">
+                                    <mat-checkbox formControlName="selectAll" (change)="onSelectAll($event)">
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="members-list" style="overflow-y: auto; max-height: 500px;">
+                        <div formArrayName="membersArray" *ngFor="let member of membersData; let i = index;" fxLayout="row"
+                            class="pt-4 border-bottom p-2">
+                            <div fxFlex="70%" class="left-img-sec">
+                                <div class="row">
+                                    <div fxFlex="20%">
+                                        <img [src]="member.photo">
+                                    </div>
+    
+                                    <div fxFlex="80%">
+                                        <h6 class="text pl-3">{{member.member_name}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div fxFlex="30%" class="text-right">
+                                <mat-checkbox [formControlName]="i" [value]="member.id" (change)="onCheckChange($event)">
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="75%" class="right-side-booking ml-3">
+            <div class="tabs border-bottom">
+                <div fxLayout="row">
+                    <div fxFlex="45%">
+                        <a [ngClass]="{ active: tab == 'marketplace' }"
+                            (click)="changeTab('marketplace')">Marketplace</a>
+                    </div>
+                    <div fxFlex="45%">
+                        <a [ngClass]="{ active: tab == 'booking' }" (click)="changeTab('booking')">Booking</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-field">
+                <div fxLayout="row" class="pt-4">
+                    <div class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Service Description</mat-label>
+                            <input formControlName="description" matInput type="text" />
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row">
+                    <div class="w-100">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Note for Client</mat-label>
+                            <input formControlName="note" matInput type="text" />
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="advanced-toggle-inputs">
+                    <div fxLayout="row" class="pt-5 pb-3 border-bottom">
+                        <div fxFlex="70%" class="heading">
+                            <h2>Advanced Options</h2>
+                        </div>
+                        <div fxFlex="30%" class="text-right">
+                            <mat-slide-toggle formControlName="advance_options"></mat-slide-toggle>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="pt-5">
+                        <div fxFlex="50%" class="border-right pr-5">
+                            <!-- padding-time input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field">
+                                <span>Padding Time</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <div fxFlex="47%" class="mr-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Hours</mat-label>
+                                        <mat-select formControlName="padding_time_type">
+                                            <mat-option value="before">Before</mat-option>
+                                            <mat-option value="after">After</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="47%" class="ml-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Mins</mat-label>
+                                        <mat-select formControlName="padding_time">
+                                            <mat-option [value]="m" *ngFor="let m of timeUtils.minutes;">{{m}} Mins
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- padding-time input dropdowns end -->
+
+                            <!-- processing-time input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field pt-3">
+                                <span>Processing Time</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <div fxFlex="47%" class="mr-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Hours</mat-label>
+                                        <mat-select formControlName="processing_time_dservice_hours">
+                                            <mat-option [value]="h" *ngFor="let h of timeUtils.hours;">{{h}} H
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="47%" class="ml-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Mins</mat-label>
+                                        <mat-select formControlName="processing_time_dservice_min">
+                                            <mat-option [value]="m" *ngFor="let m of timeUtils.minutes;">{{m}} Mins
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- processing-time input dropdowns end -->
+
+                            <!-- interval input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field pt-3">
+                                <span>Interval</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <div fxFlex="47%" class="mr-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Hours</mat-label>
+                                        <mat-select formControlName="intervalHours">
+                                            <mat-option [value]="h" *ngFor="let h of timeUtils.hours;">{{h}} H</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="47%" class="ml-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Mins</mat-label>
+                                        <mat-select formControlName="intervalMin">
+                                            <mat-option [value]="m" *ngFor="let m of timeUtils.minutes;">{{m}} Mins
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- interval input dropdowns end -->
+                        </div>
+
+                        <div fxFlex="50%" class="pl-5">
+                            <!-- parallel-clients input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field">
+                                <span>Parallel Clients</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Parallel Clients</mat-label>
+                                    <mat-select formControlName="parallel">
+                                        <mat-option value="yes">Yes</mat-option>
+                                        <mat-option value="no">No</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <!-- parallel-clients input dropdowns end -->
+
+                            <!-- processing-time-after input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field pt-3">
+                                <span>Processing Time After</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <div fxFlex="47%" class="mr-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Hours</mat-label>
+                                        <mat-select formControlName="proccessing_time_aservice_hours">
+                                            <mat-option [value]="h" *ngFor="let h of timeUtils.hours;">{{h}} H
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="47%" class="ml-2">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Duration Mins</mat-label>
+                                        <mat-select formControlName="proccessing_time_aservice_min">
+                                            <mat-option [value]="m" *ngFor="let m of timeUtils.minutes;">{{m}} Mins
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- processing-time-after input dropdowns end -->
+
+                            <!-- tax-rate input dropdowns start -->
+                            <div fxLayout="row" class="heading-form-field pt-3">
+                                <span>Tax Rate</span>
+                            </div>
+
+                            <div fxLayout="row" class="pt-1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tax Rate</mat-label>
+                                    <mat-select formControlName="tax_rate">
+                                        <mat-option value="5">5.00 %</mat-option>
+                                        <mat-option value="15">15.00 %</mat-option>
+                                        <mat-option value="25">25.00 %</mat-option>
+                                        <mat-option value="35">35.00 %</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <!-- tax-rate input dropdowns end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" class="py-3">
+        <div fxFlex="25%" class="left-side-4 mr-3"></div>
+
+        <div fxFlex="75%" class="right-side-4 ml-3 text-center">
+            <a (click)="onSubmit(form)" type="submit" mat-button class="pink-b rounded-bt p-2">Create an Booking</a>
+        </div>
+    </div>
+
+</form>

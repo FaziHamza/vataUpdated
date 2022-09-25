@@ -1,0 +1,466 @@
+<form [formGroup]="addProductForm" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div id="tabs-1" aria-labelledby="ui-id-1" role="tabpanel"
+      class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false">
+      <div class="add-product-info">
+        <div class="clearfix add-product-name">
+          <h2>Product Name</h2>
+          <div class="clearfix">
+            <input #productName type="text" name="title" formControlName="title"
+              (keyup)="onKeyUp($event, 'productName')" maxlength="40" class="form-control add-product-model">
+              <div *ngIf="(addProductForm.get('title').touched || submitted)">
+                <div *ngIf="addProductForm.get('title').hasError('required')">
+                    <label class="error-msg">Product name is required</label>
+                  </div>
+              </div>
+            <h3 class="add-product-number">
+              {{remainingText?.productName >= 0 ? remainingText?.productName : 40}}/40</h3>
+          </div>
+        </div>
+        <div class="clearfix add-product-name">
+          <h2>Category</h2>
+          <div *ngFor="let category of addProductForm.get('categoryArray')['controls']; let i = index;"
+            class="clearfix" formArrayName="categoryArray">
+            <div [formGroupName]="i" class="select-wrapper">
+
+              <select class="form-control" formControlName="category">
+                <option *ngFor="let category of categoryData" [value]="category.id">{{category.name}}</option>
+              </select>
+              <div *ngIf="(addProductForm.get('categoryArray').touched || submitted)">
+                <div *ngIf="addProductForm.get('categoryArray').hasError('required')">
+                    <label class="error-msg">Category is required</label>
+                  </div>
+              </div>
+              <i class="material-icons"><img src="/assets/img/down_arrow.svg" alt=""></i>
+              <h3 *ngIf="i > 0" class="add-product-number"><a href="javascript:void(0)"
+                  (click)="removeCategory(i)"><img src="/assets/img/blacx.png"></a></h3>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix add-product-name">
+          <div class="clearfix">
+            <h3 class="add-product-model light clearfix">
+              <a href="javascript:void(0)" (click)="addCategory()" class="product-add-category">
+                <img src="/assets/img/qwe1.png">
+              </a>
+              <span>Add in 2 categories </span>
+            </h3>
+            <h3 class="add-product-number"><a href="#"><img src="/assets/img/dropdown.png"></a></h3>
+          </div>
+        </div>
+        <div class="clearfix add-product-name">
+          <h2>Condition </h2>
+          <div class="clearfix select-wrapper">
+            <select class="form-control" formControlName="condition">
+              <option *ngFor="let condition of conditionData" [value]="condition.id">{{condition.name}}</option>
+            </select>
+            <div *ngIf="(addProductForm.get('condition').touched || submitted)">
+              <div *ngIf="addProductForm.get('condition').hasError('required')">
+                  <label class="error-msg">Condition is required</label>
+                </div>
+            </div>
+            <i class="material-icons"><img src="/assets/img/down_arrow.svg" alt=""></i>
+          </div>
+        </div>
+        <div class="add-product-editor">
+          <h3>Description</h3>
+          <div class="clearfix editor">
+            <div class="editor-content">
+              <!-- TODO add FroalaEditor on next line -->
+              <textarea maxlength="500" class="form-control"
+                formControlName="about_product" type="text" style="border: none;"></textarea>
+                <div *ngIf="(addProductForm.get('about_product').touched || submitted)">
+                  <div *ngIf="addProductForm.get('about_product').hasError('required')">
+                      <label class="error-msg">Product description is required</label>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <!-- <div class="characters-number">
+                    {{remainingText?.description >= 0 ? remainingText?.description : 500}}/500
+                </div> -->
+        </div>
+      </div>
+      <div class="add-product-info full-radius">
+        <div class="clearfix">
+          <div class="add-product-info-left">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Bidding</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="bidding" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model small-light">Starting bid</h3>
+                <input class="form-control" formControlName="start_bid" type="text">
+                <div *ngIf="(addProductForm.get('start_bid').touched || submitted)">
+                  <div *ngIf="addProductForm.get('start_bid').hasError('required')">
+                      <label class="error-msg">Start bid is required</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model small-light">Bidding Price</h3>
+                <input class="form-control" formControlName="bidding_price" type="text">
+                <div *ngIf="(addProductForm.get('bidding_price').touched || submitted)">
+                  <div *ngIf="addProductForm.get('bidding_price').hasError('required')">
+                      <label class="error-msg">Bidding price is required</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Fixed Price</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="fixed_price" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="clearfix add-product-name">
+                <div class="clearfix">
+                  <h3 class="add-product-model small-light">Price</h3>
+                  <input class="add-product-number dark-big form-control" formControlName="price" type="text">
+                  <div *ngIf="(addProductForm.get('price').touched || submitted)">
+                    <div *ngIf="addProductForm.get('price').hasError('required')">
+                        <label class="error-msg">Price is required</label>
+                      </div>
+                      <div *ngIf="addProductForm.get('price').hasError('pattern')">
+                        <label class="error-msg">only numeric values are allowed</label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix signup">
+                <div class="row mb-5">
+                  <h3 class="add-product-model">Increment</h3>
+                </div>
+                <div class="row radio-toolbar m-5">
+                  <div class="col">
+                    <input type="radio" id="male" name="increment" formControlName="increment" value="0.10">
+                    <label for="male" class="btn btn-outline-primary btn-block">CHF0.10</label>
+                  </div>
+                  <div class="col">
+                    <input type="radio" id="female" value="1" formControlName="increment" name="increment">
+                    <label for="female" class="btn btn-outline-primary btn-block">CHF1</label>
+                  </div>
+                  <div class="col">
+                    <input type="radio" id="other" value="5" formControlName="increment" name="increment">
+                    <label for="other" class="btn btn-outline-primary btn-block">CHF5</label>
+                  </div>
+                </div>
+                <div *ngIf="(addProductForm.get('increment').touched || submitted)">
+                  <div *ngIf="addProductForm.get('increment').hasError('required')">
+                      <label class="error-msg">Increment is required</label>
+                    </div>
+                </div>
+              </div>
+              <div class="clearfix signup">
+                <div class="row mb-5">
+                  <h3 class="add-product-model">Start</h3>
+                </div>
+                <div class="start">
+                  <label for="now">
+                    <input id="now" name="start" value="now" formControlName="start" type="radio">
+                    <span>Now</span>
+                  </label>
+                  <label for="individual">
+                    <input id="individual" value="individual" name="start" formControlName="start" type="radio">
+                    <span>Individual</span>
+                  </label>
+                </div>
+                <div *ngIf="(addProductForm.get('start').touched || submitted)">
+                  <div *ngIf="addProductForm.get('start').hasError('required')">
+                      <label class="error-msg">Start is required</label>
+                    </div>
+                </div>
+              </div>
+              <div class="row clearfix add-product-name mb-3">
+                <div class="clearfix col-md-6">
+                  <h3 class="add-product-model small-light">End Date</h3>
+                  <input class="add-product-number dark-big form-control" formControlName="subline" type="text">
+                </div>
+                <div class="clearfix col-md-6">
+                  <h3 class="add-product-model small-light">End Time</h3>
+                  <input class="add-product-number dark-big form-control" formControlName="subline" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Ask for Change</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="ask_for_change" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Make Offer</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="make_offer" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">On Stock Item</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="on_stock" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Contact in Messenger</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="contact_messenger" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="clearfix add-product-name">
+                    <div class="clearfix">
+                      <h3 class="add-product-model">Contact in Ask a Question</h3>
+                      <div class="brand-count">
+                        <label class="switch">
+                          <input type="checkbox">
+                          <span class="slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div> -->
+          </div>
+          <div class="add-product-info-right">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Shipping</h3>
+                <div class="brand-count">
+                  <h3 class="add-product-number">Free Shipping</h3>
+                  <label class="switch">
+                    <input formControlName="is_free" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <h2>Shipping Price </h2>
+              <div class="clearfix">
+                <input class="form-control" formControlName="shipping_price" type="text">
+                <div *ngIf="(addProductForm.get('shipping_price').touched || submitted)">
+                  <div *ngIf="addProductForm.get('shipping_price').hasError('required')">
+                      <label class="error-msg">Shipping price is required</label>
+                    </div>
+                    <div *ngIf="addProductForm.get('shipping_price').hasError('pattern')">
+                      <label class="error-msg">only numeric values are allowed</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix add-product-name">
+              <h2>Shipping Details </h2>
+              <div class="clearfix shipping_details">
+                <label for="pickup">
+                  <input checked="true" id="pickup" name="shipping_details" value="pickup" formControlName="shipping_details"
+                    type="radio">
+                  <span>Pickup</span>
+                </label>
+                <label for="shipping">
+                  <input id="shipping" value="shipping" name="shipping_details"
+                    formControlName="shipping_details" type="radio">
+                  <span>Shipping</span>
+                </label>
+                <label for="both">
+                  <input id="both" value="both" name="shipping_details" formControlName="shipping_details"
+                    type="radio">
+                  <span>Both</span>
+                </label>
+              </div>
+            </div>
+            <div class="clearfix add-product-name delivery-time-cont signup">
+              <h3 class="add-product-model">Delivery Time</h3>
+              <div class="row radio-toolbar m-5">
+                <div class="row">
+                  <div class="col-md-3">
+                    <input type="radio" id="1day" name="shipping_time" formControlName="shipping_time"
+                      value="1 Day">
+                    <label for="1day" class="btn btn-outline-primary btn-block">1 day</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="radio" id="2day" value="5 Days" formControlName="shipping_time"
+                      name="shipping_time">
+                    <label for="2day" class="btn btn-outline-primary btn-block">2 days</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="radio" id="1week" value="1 week" formControlName="shipping_time"
+                      name="shipping_time">
+                    <label for="1week" class="btn btn-outline-primary btn-block">1 week</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="radio" id="2weeks" value="2 weeks" formControlName="shipping_time"
+                      name="shipping_time">
+                    <label for="2weeks" class="btn btn-outline-primary btn-block">2 weeks</label>
+                  </div>
+                </div>
+              </div>
+              <input class="add-product-number dark-big form-control" placeholder="Put Delivery Time Manually"
+                type="text" name="shipping_time" formControlName="shipping_time">
+                <div *ngIf="(addProductForm.get('shipping_time').touched || submitted)">
+                  <div *ngIf="addProductForm.get('shipping_time').hasError('required')">
+                      <label class="error-msg">Delivery time is required</label>
+                    </div>
+                </div>
+              </div>
+            <div class="clearfix add-product-name delivery-time-cont">
+              <h3 class="add-product-model">Payment</h3>
+              <div class="clearfix carts-available">
+                <a href="#">
+                  <img src="/assets/img/c1.png">
+                  <span></span>
+                  <div class="white-bg"></div>
+                </a>
+                <a href="#">
+                  <img src="/assets/img/c2.png">
+                  <span></span>
+                  <div class="white-bg"></div>
+                </a>
+                <a href="#">
+                  <img src="/assets/img/c3.png">
+                  <span></span>
+                  <div class="white-bg"></div>
+                </a>
+                <a href="#" class="disabled">
+                  <img src="/assets/img/c4.png">
+                  <span></span>
+                  <div class="white-bg"></div>
+                </a>
+                <a href="#" class="disabled">
+                  <img src="/assets/img/c5.png">
+                  <span></span>
+                  <div class="white-bg"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="add-product-info full-radius clearfix marketing">
+        <h2>Marketing</h2>
+        <div class="add-product-info-left">
+          <div class="clearfix">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Push on Home ($10)</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="push_on_home" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Push on Searching List ($10)</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="push_on_searchlist" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Push on Marketplace ($10)</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="push_on_marketplace" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Push on Near by Me ($10)</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="push_on_nearbyme" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="clearfix add-product-name">
+              <div class="clearfix">
+                <h3 class="add-product-model">Push on Category Promo on Top ($10)</h3>
+                <div class="brand-count">
+                  <label class="switch">
+                    <input formControlName="categorypromo_on_top" type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="add-product-info-right">
+          <div class="total-price-container">
+            <img src="/assets/img/grup1.png" class="popup-bg-left">
+            <img src="/assets/img/grup2.png" class="popup-bg-right">
+            <div class="total-middle">
+              <h6 class="clearfix">
+                <strong><input class="text-center"
+                    [value]="getFormattedPrice(addProductForm.get('total').value)"
+                    formControlName="total" type="text" style="border: none;" placeholder="CHF0"></strong>
+                <span>Total</span>
+                <div *ngIf="(addProductForm.get('total').touched || submitted)">
+                <div *ngIf="addProductForm.get('total').hasError('required')">
+                    <label class="error-msg">Total Price is required</label>
+                  </div>
+                  <div *ngIf="addProductForm.get('total').hasError('priceInvalid')">
+                    <label class="error-msg">Only numeric values are allowed</label>
+                  </div>
+              </div>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="create-product-cont">
+        <button type="submit" class="create-product-button">Create a Product</button>
+      </div>
+    </div>
+  </form>

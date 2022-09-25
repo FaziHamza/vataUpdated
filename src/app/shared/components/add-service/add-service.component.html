@@ -1,0 +1,25 @@
+<div class="add-service-modal">
+    <div class="container">
+        <div fxLayout="row" class=" pb-4 justify-content-center border-bottom">
+            <h5 class="heading position-relative" [ngClass]="{ 'bordered-header': dialogData.type == 'border' }">{{dialogData.title}}</h5>
+        </div>
+    </div>
+    <div class="booking-fields">
+        <div fxLayout="row" class="pb-3" *ngFor="let service of services">
+            <div fxFlex="64%" class="heading">
+                <h6 class="pb-2">{{ service.service_name }}</h6>
+                <app-star-rating [maxScore]="5" [score]="service.avg_rating" [forDisplay]="true"></app-star-rating> 
+                <span class="star-text pl-3">{{ service.rating_count }} Book Ratings</span>
+            </div>
+            <div fxFlex="16%" class="time-price border-left px-4">
+                <p class="wrapper">
+                    <span class="time">{{ service.duration }}</span>
+                    <span class="text float-right">${{ service.total }}</span>
+                </p>
+            </div>
+            <div fxFlex="20%" class="book-btn border-left pl-5">
+                <a mat-button class="rounded-bt pink-b px-5" (click)="bookService(service)">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>

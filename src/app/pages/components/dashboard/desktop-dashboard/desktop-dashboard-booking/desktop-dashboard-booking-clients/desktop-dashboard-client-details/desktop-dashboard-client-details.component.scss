@@ -1,0 +1,108 @@
+@import '../../../../../../../../styles.scss';
+
+.desktop-dashboard-client-details {
+    .client-info {
+        .img-section {
+            img {
+                width: 72px;
+                height: auto;
+                border-radius: 50px;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+    
+        .detail-section {
+            position: relative;
+            h6 {
+                color: $black;
+                font-size: 20px;
+            }
+            
+            a {
+                &.edit-btn {
+                    img {
+                        width: 18px;
+                        height: auto;
+                        position: absolute;
+                        top: 5px;
+                        right: 35%;
+                    }
+                }
+            }
+    
+            p {
+                font-size: 13px;
+                color: $dark-gray;
+            }
+        }
+    
+        .product-brief-section {
+            .product-box {
+                text-align: center;
+                border-radius: 10px;
+                border: 1px dashed $light-gray;
+                h6 {
+                    color: $black;
+                    font-size: 18px;
+                }
+                p {
+                    font-size: 11px;
+                    color: $dark-gray;
+                    padding-top: 5px;
+                }
+            }
+        }
+    }
+    
+    .total-bar {
+        border-radius: 10px;
+        background: $ligher-gray;
+        p {
+            &.text {
+                color: $dark-gray;
+                font-size: 15px;
+            }
+        }
+        span {
+            &.amount {
+                color: $black;
+                font-size: 17px;
+            }
+        }
+    }
+    
+    .service-status {
+        .service {
+            .field-row {
+                .left-side {
+                    p {
+                        font-size: 15px;
+                        color: $black;
+                    }
+                }
+                .right-side {
+                    p {
+                        font-size: 15px;
+                        color: $black;
+                    }
+                }
+            }
+            
+            .time-row {
+                .left-side {
+                    span {
+                        font-size: 12px;
+                        color: $dark-gray;
+                    }
+                }
+                .right-side {
+                    span {
+                        font-size: 13px;
+                        color: $dark-gray;
+                    }
+                }
+            }
+        }
+    }
+}

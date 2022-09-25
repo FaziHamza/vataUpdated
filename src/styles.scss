@@ -1,0 +1,214 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/main.scss';
+@import '~@angular/material/theming';
+
+@import '~ngx-sharebuttons/themes/material/material-dark-theme';
+@import '~ngx-sharebuttons/themes/modern/modern-light-theme';
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+body {
+  font-family: 'montserratregular';
+}
+$custom-typography: mat-typography-config(
+  $font-family: 'Montserrat-Regular'
+);
+@include mat-core($custom-typography);
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+@font-face{
+	font-family: 'Montserrat-Regular'; 
+	src: url('/assets/fonts/Montserrat-Regular.otf') format('truetype');
+}
+@font-face{     
+	font-family: 'Montserrat-Bold'; 
+	src: url('/assets/fonts/Montserrat-Bold.otf') format('truetype');
+}
+@font-face{     
+	font-family: 'Montserrat-SemiBold'; 
+	src: url('/assets/fonts/Montserrat-SemiBold.otf') format('truetype');
+}
+@font-face {
+  font-family: 'montserratlight';
+  src: url('/assets/fonts/montserrat-light-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'montserratmedium';
+  src: url('/assets/fonts/montserrat-medium-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'montserratregular';
+  src: url('/assets/fonts/montserrat-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'montserratsemibold';
+  src: url('/assets/fonts/montserrat-semibold-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'montserratbold';
+  src: url('/assets/fonts/montserrat-bold-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  }
+body {
+    overflow-x: hidden !important;
+    background-color: var(--white-color);
+}
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: 'Montserrat-Regular', sans-serif !important;
+}
+
+.container-fluid.main-size {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+ul {
+  list-style: none;
+}
+
+.show-all-btn{
+	font-family: 'montserratsemibold';
+	font-size:16px;
+	color:#fff;
+	background:#FE3C72;
+	text-decoration:none;
+	border-radius:10px;
+	min-width:110px;
+	padding:10px 20px;
+}
+// This css is added so that if more than one mat-errors are shows, the controls below, shift down in order to NOT overlap with the 
+// mat-errors shown
+::ng-deep .mat-form-field {
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+  
+        .mat-form-field-underline {
+          position: initial !important;
+          display: block;
+          margin-top: -1px;
+        }
+  
+        .mat-form-field-subscript-wrapper,
+        .mat-form-field-ripple {
+          position: initial !important;
+          display: table;
+        }
+  
+        .mat-form-field-subscript-wrapper {
+          min-height: calc(1em + 1px);
+          font-size: 75%;
+        }
+      }
+    }
+    ::ng-deep mat-error {
+      font-size: 75%;
+    }
+    
+
+    // Scrollbar
+
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: #eeeeee;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #595c5f;
+    }
+
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  * html .clearfix             { zoom: 1; } /* IE6 */
+  *:first-child+html .clearfix { zoom: 1; }
+
+  a, button {
+    cursor: pointer;
+  }
+
+  // remove arrows from input
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// spinner button css
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+.spinner {
+  opacity: 0.5;
+}
+
+input, input::placeholder {
+  color: $black;
+}
+
+::ng-deep .mat-form-field-label {
+  color: $black !important;
+}

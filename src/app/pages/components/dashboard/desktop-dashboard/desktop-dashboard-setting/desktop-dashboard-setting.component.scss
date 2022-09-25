@@ -1,0 +1,306 @@
+@import '../../../../../../styles.scss';
+
+.desktop-dashboard-setting {
+    background: $ligher-gray;
+    .top-bar {
+        h6 {
+            display: flex;
+            color: $black;
+            font-size: 22px;
+            font-weight: 100;
+            p {
+                border-radius: 50px;
+                padding: 1px 8px;
+                border: 1px solid $light-gray;
+                &.commercial {
+                    span {
+                        &.icon-commercial {
+                            font-size: 20px;
+                        }
+                        &.text {
+                            font-size: 13px;
+                            position: relative;
+                            top: -4px;
+                            color: $pink;
+                            padding-left: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .setting-sections {
+        .left-section {
+            .personal-data {
+                border-radius: 10px;
+                background: $white;
+                .top-row {
+                    .heading-side {
+                        p {
+                            font-size: 19px;
+                            padding-top: 6px;
+                            color: $black;
+                        }
+                    }
+
+                    .edit-side {
+                        position: relative;
+                        a {
+                            img {
+                                width: 17px;
+                                height: auto;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 10px;
+                                left: -10px;
+                                width: 1px;
+                                height: 18px;
+                                background: $light-gray;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .accept-method {
+                border-radius: 10px;
+                background: $white;
+                .top-row {
+                    .heading-side {
+                        p {
+                            font-size: 17px;
+                            padding-top: 6px;
+                            color: $black;
+                        }
+                    }
+
+                    .edit-side {
+                        position: relative;
+                        a {
+                            img {
+                                width: 18px;
+                                height: auto;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 10px;
+                                left: -10px;
+                                width: 1px;
+                                height: 18px;
+                                background: $light-gray;
+                            }
+                        }
+                    }
+                }
+
+                .method-imgs {
+                    span {
+                        cursor: pointer;
+                        &.icon-Group-1296 {
+                            font-size: 20px;
+                        }
+                        &.icon-PayPal-FullColor-Horizontal {
+                            font-size: 18px;
+                        }
+                    }
+                    a {
+                        position: relative;
+                        top: -9px;                    
+                    }
+                }
+            }
+
+            .payment-method {
+                border-radius: 10px;
+                background: $white;
+                .top-row {
+                    .heading-side {
+                        p {
+                            font-size: 19px;
+                            padding-top: 6px;
+                            color: $black;
+                        }
+                    }
+
+                    .toggle {
+                        span {
+                            &.toggle-text {
+                                font-size: 14px;
+                                color: $black;
+                            }
+                        }
+                    }
+
+                    .edit-side {
+                        position: relative;
+                        a {
+                            img {
+                                width: 17px;
+                                height: auto;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 10px;
+                                left: -10px;
+                                width: 1px;
+                                height: 18px;
+                                background: $light-gray;
+                            }
+                        }
+                    }
+                }
+
+                .method-imgs {
+                    span {
+                        cursor: pointer;
+                        &.icon-Group-1295 {
+                            font-size: 18px;
+                        }
+                        &.icon-Card-networks-MC-Horizontal2 {
+                            font-size: 20px;
+                        }
+                        &.icon-Group-1296 {
+                            font-size: 20px;
+                        }
+                        &.icon-PayPal-FullColor-Horizontal {
+                            font-size: 18px;
+                        }
+                    }
+                    a {
+                        position: relative;
+                        top: -9px;                    
+                    }
+                }
+            }
+
+            .address-data {
+                border-radius: 10px;
+                background: $white;
+                .top-row {
+                    .heading-side {
+                        p {
+                            font-size: 19px;
+                            padding-top: 6px;
+                            color: $black;
+                        }
+                    }
+
+                    .edit-side {
+                        position: relative;
+                        a {
+                            img {
+                                width: 17px;
+                                height: auto;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 10px;
+                                left: -10px;
+                                width: 1px;
+                                height: 18px;
+                                background: $light-gray;
+                            }
+                        }
+                    }
+                }
+
+                .currently-address {
+                    .sub-heading {
+                        p {
+                            color: $dark-gray;
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                .shipping-address {
+                    .sub-heading {
+                        p {
+                            color: $dark-gray;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+
+            .notification {
+                border-radius: 10px;
+                background: $white;
+                .top-row {
+                    .heading-side {
+                        p {
+                            font-size: 19px;
+                            padding-top: 6px;
+                            color: $black;
+                        }
+                    }
+
+                    .toggle {
+                        span {
+                            &.toggle-text {
+                                font-size: 14px;
+                                color: $black;
+                            }
+                        }
+                    }
+
+                    .edit-side {
+                        position: relative;
+                        a {
+                            img {
+                                width: 17px;
+                                height: auto;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 10px;
+                                left: -10px;
+                                width: 1px;
+                                height: 18px;
+                                background: $light-gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-section {
+            border-radius: 10px;
+            background: $white;
+            max-height: 95vh;
+
+            .field-section {
+                .title-side {
+                    p {
+                        color: $black;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .type-section {
+                .headings {
+                    p {
+                        color: $dark-gray;
+                        font-size: 15px;
+                    }
+                }
+
+                .title-side {
+                    p {
+                        color: $black;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
