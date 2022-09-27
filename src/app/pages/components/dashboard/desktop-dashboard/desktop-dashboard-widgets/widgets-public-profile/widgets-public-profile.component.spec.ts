@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { WidgetsPublicProfileComponent } from './widgets-public-profile.component';
 
@@ -6,7 +6,7 @@ describe('WidgetsPublicProfileComponent', () => {
   let component: WidgetsPublicProfileComponent;
   let fixture: ComponentFixture<WidgetsPublicProfileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ WidgetsPublicProfileComponent ]
     })

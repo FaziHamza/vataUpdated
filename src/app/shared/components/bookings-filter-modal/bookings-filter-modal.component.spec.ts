@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BookingsFilterModalComponent } from './bookings-filter-modal.component';
 
@@ -6,7 +6,7 @@ describe('BookingsFilterModalComponent', () => {
   let component: BookingsFilterModalComponent;
   let fixture: ComponentFixture<BookingsFilterModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BookingsFilterModalComponent ]
     })

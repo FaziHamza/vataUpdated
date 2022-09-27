@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DesktopDashboardEditPublicProfileOutletComponent } from './desktop-dashboard-edit-public-profile-outlet.component';
 
@@ -6,7 +6,7 @@ describe('DesktopDashboardEditPublicProfileOutletComponent', () => {
   let component: DesktopDashboardEditPublicProfileOutletComponent;
   let fixture: ComponentFixture<DesktopDashboardEditPublicProfileOutletComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DesktopDashboardEditPublicProfileOutletComponent ]
     })

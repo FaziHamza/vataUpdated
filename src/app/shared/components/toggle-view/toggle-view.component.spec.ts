@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ToggleViewComponent } from './toggle-view.component';
 
@@ -6,7 +6,7 @@ describe('ToggleViewComponent', () => {
   let component: ToggleViewComponent;
   let fixture: ComponentFixture<ToggleViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ToggleViewComponent ]
     })

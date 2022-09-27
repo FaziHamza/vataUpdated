@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MarketplaceCategoriesComponent } from './marketplace-categories.component';
 
@@ -6,7 +6,7 @@ describe('MarketplaceCategoriesComponent', () => {
   let component: MarketplaceCategoriesComponent;
   let fixture: ComponentFixture<MarketplaceCategoriesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MarketplaceCategoriesComponent ]
     })

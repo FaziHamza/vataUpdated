@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AskForChangeModalComponent } from './ask-for-change-modal.component';
 
@@ -6,7 +6,7 @@ describe('AskForChangeModalComponent', () => {
   let component: AskForChangeModalComponent;
   let fixture: ComponentFixture<AskForChangeModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AskForChangeModalComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NearYouComponent } from './near-you.component';
 
@@ -6,7 +6,7 @@ describe('NearYouComponent', () => {
   let component: NearYouComponent;
   let fixture: ComponentFixture<NearYouComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NearYouComponent ]
     })

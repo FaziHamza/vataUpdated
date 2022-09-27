@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DesktopPasswordResetComponent } from './desktop-password-reset.component';
 
@@ -6,7 +6,7 @@ describe('DesktopPasswordResetComponent', () => {
   let component: DesktopPasswordResetComponent;
   let fixture: ComponentFixture<DesktopPasswordResetComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DesktopPasswordResetComponent ]
     })

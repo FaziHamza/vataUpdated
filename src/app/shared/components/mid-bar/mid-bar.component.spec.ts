@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MidBarComponent } from './mid-bar.component';
 
@@ -6,7 +6,7 @@ describe('MidBarComponent', () => {
   let component: MidBarComponent;
   let fixture: ComponentFixture<MidBarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MidBarComponent ]
     })

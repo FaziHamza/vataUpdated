@@ -17,7 +17,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload' })
+    RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })

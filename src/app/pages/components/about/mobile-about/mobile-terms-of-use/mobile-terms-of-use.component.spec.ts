@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MobileTermsOfUseComponent } from './mobile-terms-of-use.component';
 
@@ -6,7 +6,7 @@ describe('MobileTermsOfUseComponent', () => {
   let component: MobileTermsOfUseComponent;
   let fixture: ComponentFixture<MobileTermsOfUseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MobileTermsOfUseComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DesktopPublicProfileMainComponent } from './desktop-public-profile-main.component';
 
@@ -6,7 +6,7 @@ describe('DesktopPublicProfileMainComponent', () => {
   let component: DesktopPublicProfileMainComponent;
   let fixture: ComponentFixture<DesktopPublicProfileMainComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DesktopPublicProfileMainComponent ]
     })

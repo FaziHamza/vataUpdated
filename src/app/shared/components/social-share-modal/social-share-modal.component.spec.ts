@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SocialShareModalComponent } from './social-share-modal.component';
 
@@ -6,7 +6,7 @@ describe('SocialShareModalComponent', () => {
   let component: SocialShareModalComponent;
   let fixture: ComponentFixture<SocialShareModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SocialShareModalComponent ]
     })

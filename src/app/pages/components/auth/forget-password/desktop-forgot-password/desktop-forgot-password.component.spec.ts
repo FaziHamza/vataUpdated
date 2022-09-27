@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DesktopForgotPasswordComponent } from './desktop-forgot-password.component';
 
@@ -6,7 +6,7 @@ describe('DesktopForgotPasswordComponent', () => {
   let component: DesktopForgotPasswordComponent;
   let fixture: ComponentFixture<DesktopForgotPasswordComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DesktopForgotPasswordComponent ]
     })

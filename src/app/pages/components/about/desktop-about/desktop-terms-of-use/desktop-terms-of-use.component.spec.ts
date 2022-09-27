@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DesktopTermsOfUseComponent } from './desktop-terms-of-use.component';
 
@@ -6,7 +6,7 @@ describe('TermsOfUseComponent', () => {
   let component: DesktopTermsOfUseComponent;
   let fixture: ComponentFixture<DesktopTermsOfUseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DesktopTermsOfUseComponent ]
     })
