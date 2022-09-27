@@ -85,7 +85,7 @@ import { DesktopBookingNewVisitComponent } from './desktop-dashboard/desktop-das
 import { DesktopBookingNewClientComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-visits/desktop-booking-new-client/desktop-booking-new-client.component';
 import { DesktopBookingConfirmVisitComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-visits/desktop-booking-confirm-visit/desktop-booking-confirm-visit.component';
 import { LightboxModule } from 'ngx-lightbox';
-import { NgxTuiCalendarModule } from 'ngx-tui-calendar';
+// import { NgxTuiCalendarModule } from 'ngx-tui-calendar';
 import { DesktopDashboardWidgetsComponent } from './desktop-dashboard/desktop-dashboard-widgets/desktop-dashboard-widgets.component';
 import { WidgetsProfileComponent } from './desktop-dashboard/desktop-dashboard-widgets/widgets-profile/widgets-profile.component';
 import { WidgetsRewardPointsComponent } from './desktop-dashboard/desktop-dashboard-widgets/widgets-reward-points/widgets-reward-points.component';
@@ -115,7 +115,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     DashboardRoutingModule,
     MaterialModule,
     SharedModule,
-    NgxTuiCalendarModule.forRoot(),
+    // NgxTuiCalendarModule.forRoot(),
     SlickCarouselModule,
     LightboxModule,
     MaterialModule,
