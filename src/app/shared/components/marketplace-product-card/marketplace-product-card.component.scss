@@ -19,6 +19,7 @@
     }
     .card-body {
         margin: 15px;
+        height: 100% !important;
         border: solid 1px #E7E7E7;
         border-radius: 10px;
         &:hover > .hover-block {
@@ -133,7 +134,7 @@
           font-size: 18px;
           line-height: 25px;
           text-align: center;
-          height: 60px;
+          height: 100%;
           overflow: hidden;
           font-weight: 500;
           color: $black;
