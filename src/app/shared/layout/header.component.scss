@@ -22,8 +22,11 @@
 }
 
 .logo {
-  padding-top: 12px;
+  padding-top: 8px;
   float: left;
+  img {
+    height: 50px;
+  }
 }
 
 .header-right {
@@ -82,7 +85,7 @@
   border-right: solid 1px $ligher-gray;
   float: right;
   margin-right: -1px;
-  height: 45px;
+  // height: 45px;
   position: relative;
   .account {
     width: 270px;
