@@ -20,8 +20,36 @@
                     <div fxLayout="row" class="heading pb-3 border-bottom">
                         <p>Add New Client</p>
                     </div>
-
                     <div fxLayout="row" class="client mt-4">
+                        <div fxFlex="15%" class="client-img" *ngIf="preview.length > 0">
+                            <ng-container *ngFor="let preview of preview; let i = index">
+                                <span (click)="removeImage(i)" class="icon-baseline-close-24px-11 close"></span>
+                                <img class="mr-2 mt-3" [src]="preview.data" />
+                            </ng-container>
+                        </div>
+
+                        <div fxFlex="85%" class="drag-img ml-3">
+                            <app-file-upload *ngIf="preview.length == 0" (uploadData)="onFileUpload($event)"
+                                template="default">
+                            </app-file-upload>
+                        </div>
+                    </div>
+
+
+                    <!-- <img src="../../../../../../../../assets/img/w2.png">
+                    <a class="add-btn">
+                        <span class="icon-add-button-inside-black-circle-1"></span>
+                    </a>
+                    <p class="pt-4">Drag & Drop</p>
+                    <p class="pt-2 pb-3">Client Profile Photo</p>
+                    <div class="upload-btn border-top pt-3">
+                        <a mat-button class="pink-b outlined rounded-bt d-block">Upload</a>
+                    </div> -->
+
+
+
+
+                    <!-- <div fxLayout="row" class="client mt-4">
                         <div fxFlex="15%" class="client-img">
                             <img src="../../../../../../../../assets/img/adrian.png">
                         </div>
@@ -36,7 +64,7 @@
                                 <input id="file-input" type="file" />
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div fxLayout="row" class="client-input mt-2">
                         <mat-form-field class="form-section w-100">
@@ -171,12 +199,12 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        
+
                         <div fxLayout="row" class="delete-btn">
                             <div fxFlex="40%" class="delete">
                                 <a mat-button class="px-3">
                                     <span class="icon-baseline-close-24px-1 pr-2"></span>
-                                    Delete User
+                                    Delete Service
                                 </a>
                             </div>
 
@@ -283,12 +311,12 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        
+
                         <div fxLayout="row" class="delete-btn">
                             <div fxFlex="40%" class="delete">
                                 <a mat-button class="px-3">
                                     <span class="icon-baseline-close-24px-1 pr-2"></span>
-                                    Delete User
+                                    Delete Service
                                 </a>
                             </div>
 

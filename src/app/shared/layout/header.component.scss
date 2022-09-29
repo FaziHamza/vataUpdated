@@ -22,8 +22,11 @@
 }
 
 .logo {
-  padding-top: 12px;
+  padding-top: 8px;
   float: left;
+  img {
+    height: 50px;
+  }
 }
 
 .header-right {
@@ -77,12 +80,12 @@
 
 .border-cont {
   // padding: 30px 50px 40px 50px;
-  padding: 20px 35px 20px 35px;
+  padding: 15px 30px;
   border-left: solid 1px $ligher-gray;
   border-right: solid 1px $ligher-gray;
   float: right;
   margin-right: -1px;
-  height: 45px;
+  // height: 45px;
   position: relative;
   .account {
     width: 270px;
@@ -453,7 +456,7 @@ span {
   &.icon-search {
     position: absolute;
     left: 13px;
-    top: 10px;
+    top: 14px;
     color: $black;
     font-size: 25px;
   }
@@ -524,7 +527,7 @@ span {
 }
 
 .header-bottom {
-  padding: 17px 0;
+  padding: 14px 0;
   border-bottom: solid 1px $ligher-gray;
   position: relative;
 }

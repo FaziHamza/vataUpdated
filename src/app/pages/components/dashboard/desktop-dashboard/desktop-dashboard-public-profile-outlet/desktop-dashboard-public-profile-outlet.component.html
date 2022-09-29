@@ -1,14 +1,14 @@
 <div class="desktop-dashboard p-3">
     <div class="container">
-        <div fxLayout="row" class="field-row py-4">
-            <div fxFlex="350px" class="left-side">
+        <div  class="field-row row py-4">
+            <div class="left-side text-left col-lg-6">
                 <h4 class="heading">Dashboard</h4>
                 <p class="ml-3">
                     <span class="icon-commercial pr-2"></span>
                     Commercial
                 </p>
             </div>
-            <div fxFlex="70%" class="right-side text-right">
+            <div class="right-side text-right col-lg-6">
                 <a mat-button class="white-b rounded-bt px-5 py-0 mr-3">Back to Home</a>
                 <a mat-button [matMenuTriggerFor]="manageWidget" class="pink-b rounded-bt px-5 py-0">Manage Widgers</a>
                 <mat-menu #manageWidget="matMenu">
