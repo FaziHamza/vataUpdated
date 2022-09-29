@@ -46,7 +46,8 @@
      .cards {
         background-color: $ligher-gray-black;
         .card {
-            border-radius: 20px 20px 0 0;
+            border-radius: 20px 20px;
+            margin-bottom: 30px;
             position: relative;
             &.pink {
                 background: $pink-gradient;

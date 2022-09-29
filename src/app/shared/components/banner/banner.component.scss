@@ -69,21 +69,21 @@
 .intro-top h3 {
   color: #717171;
   font-size: 17px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-weight: normal;
 }
 
 .intro-top h4 {
   color: $black;
   font-size: 32px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-family: "montserratbold";
 }
 
 .intro-top p {
   color: $black;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   line-height: 24px;
   font-weight: normal;
 }
@@ -97,7 +97,7 @@
 
 .intro-bottom p {
   color: $black;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 23px;
   font-family: "montserratlight";
 }
@@ -107,8 +107,12 @@
   overflow: hidden;
   float: left;
   width: 50%;
-  max-height: 500px;
+  object-fit: cover;
+  height: 500px;
   overflow: hidden;
+  img {
+    height: 500px;
+  }
 }
 
 .banner-left .prev-next-container {
@@ -121,7 +125,7 @@
 .banner-left img {
   width: 100%;
   position: relative;
-  top: -70px;
+  // top: -70px;
 }
 
 .banner-right {
