@@ -35,7 +35,6 @@ export class DesktopDashboardAllClientsComponent implements OnInit {
     let params = {
       shop_id: this.userService.getUser().shop_details.id
     }
-
     this.dashboardService.getClients(params.shop_id).subscribe(res => {
       this.allClients = res;
       console.log(this.allClients);

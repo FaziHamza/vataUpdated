@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-desktop-dashboard-new-client',
@@ -23,6 +24,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
     private fb: FormBuilder,
     private dashboardService: DashboardService,
     private userService: UserService,
+    private toasterService:ToastrService
   ) { }
 
   ngOnInit() {
@@ -58,6 +60,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
   }
 
   addNewMember() {
+  
     let date = new Date(this.newClientBookingForm.value.birthday);
     let formattedDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 
@@ -84,6 +87,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
 
     if (this.newClientBookingForm.valid) {
       this.dashboardService.addClient(params).subscribe(res => {
+        debugger
         console.log(res);
         
         if(res) {

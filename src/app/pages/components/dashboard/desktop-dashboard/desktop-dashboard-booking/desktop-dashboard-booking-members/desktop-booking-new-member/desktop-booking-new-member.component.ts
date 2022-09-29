@@ -70,6 +70,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
       "position_skills": this.newMemberBookingForm.value.position_skills,
       "shop_id": this.userService.getUser().shop_details.id,
       "working_hour": "",
+      "default_member": true,
       "gender": "",
     }
 

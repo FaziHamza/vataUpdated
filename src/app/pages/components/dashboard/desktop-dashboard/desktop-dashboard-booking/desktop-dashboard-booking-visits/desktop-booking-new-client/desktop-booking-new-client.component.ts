@@ -13,7 +13,9 @@ export class DesktopBookingNewClientComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
   ) { }
-
+  uploadingFiles = [];
+  fd = new FormData();
+  preview = [];
   ngOnInit() {
     this.newClientBookingForminIt();
   }
@@ -32,4 +34,18 @@ export class DesktopBookingNewClientComponent implements OnInit {
     });
   }
 
+  onFileUpload(data) {
+    this.uploadingFiles = data.files;
+    this.preview = data.preview;
+
+    const fileList: FileList = data.files;
+    const file = fileList[0];
+    this.fd.append('client_pic', file, file.name);    
+  }
+
+  removeImage(i) {
+    this.uploadingFiles.splice(i, 1);
+    this.preview.splice(i, 1);
+    console.log(this.uploadingFiles);
+  }
 }

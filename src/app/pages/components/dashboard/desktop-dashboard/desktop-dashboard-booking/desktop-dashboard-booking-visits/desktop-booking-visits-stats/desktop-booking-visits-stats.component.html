@@ -13,7 +13,7 @@
 
         <div fxFlex="45%" class="right-side text-right">
             <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Back to Home</a>
-            <a mat-button class="pink-b rounded-bt py-0 px-5">Add Visit</a>
+            <a mat-button class="pink-b rounded-bt py-0 px-5" (click)="routeToNewVisit()" >Add Visit</a>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="week">
+                <div class="week" *ngIf="false">
                     <div class="fields-scroll pr-3">
                         <div class="visit-field">
                             <div class="header-bar border-bottom pt-4 pb-3">

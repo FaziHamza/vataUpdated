@@ -32,10 +32,11 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
 
   ngOnInit() {
   this.calendar = this.dashboardService.getCalendar('#example-calendar');
-
+  debugger
     if (this._datePicker) {
       this._datePicker.selectedChange.subscribe(x => {
         this.dashboardService.getDailyVisits(moment(x).format('YYYY-MM-DD')).subscribe(res => {
+          debugger
           this.visitData = res;
         });
       });
@@ -46,24 +47,25 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
       isReadOnly: true,
     });
     this.dashboardService.getDailyVisits(moment().format('YYYY-MM-DD')).subscribe(res => {
+      debugger
       this.visitData = res;
     });
     this.calendar.clear();
-    this.calendar.createSchedules([
-      {
-        id: '3',
-        calendarId: '2',
-        title: 'my schedule down',
-        category: 'time',
-        dueDateClass: '',
-        color: '#46a938',
-        bgColor: '#46a9380f',
-        customStyle: 'border-top: solid 1px #00800075; border-bottom: solid 1px #00800075;',
-        start: '2020-07-12T15:30:00+05:30',
-        end: '2020-07-12T21:20:00+05:30',
-        isReadOnly: true    // schedule is read-only
-      },
-    ]);
+    // this.calendar.createSchedules([
+    //   {
+    //     id: '3',
+    //     calendarId: '2',
+    //     title: 'my schedule down',
+    //     category: 'time',
+    //     dueDateClass: '',
+    //     color: '#46a938',
+    //     bgColor: '#46a9380f',
+    //     customStyle: 'border-top: solid 1px #00800075; border-bottom: solid 1px #00800075;',
+    //     start: '2020-07-12T15:30:00+05:30',
+    //     end: '2020-07-12T21:20:00+05:30',
+    //     isReadOnly: true    // schedule is read-only
+    //   },
+    // ]);
   }
 
   ngAfterContentInit() {
@@ -77,6 +79,7 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
     if (!this.isDayActive) {
       this.dashboardService.getWeeklyVisits(moment().startOf('week').format('YYYY-MM-DD'),
       moment().endOf('week').format('YYYY-MM-DD')).subscribe(res => {
+        debugger
         this.visitData = res;
       });
     }
