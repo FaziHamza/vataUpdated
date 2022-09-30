@@ -119,6 +119,9 @@ export class DashboardService {
   addClient(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.CLIENTS_ADD_CLIENT, params);
   }
+  getServicesList(id) {
+    return this.apiService.get(sprintf(ApiEndPoints.BOOKING.GET_SERVICES_LIST, id));
+  }
 
   getClients(id) {
     return this.apiService.get(sprintf(ApiEndPoints.DASHBOARD.GET_CLIENTS, id));
@@ -266,6 +269,10 @@ export class DashboardService {
 
   deleteMember(id) {
     return this.apiService.delete(sprintf(ApiEndPoints.DASHBOARD.DELETE_MEMBER, id));
+  }
+  
+  deleteBookingMember(id) {
+    return this.apiService.delete(sprintf(ApiEndPoints.DASHBOARD.DELETE_BOOKINGMEMBER, id));
   }
   
 }

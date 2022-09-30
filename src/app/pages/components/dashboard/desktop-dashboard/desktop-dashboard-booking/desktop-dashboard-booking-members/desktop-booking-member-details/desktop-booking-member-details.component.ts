@@ -54,7 +54,7 @@ export class DesktopBookingMemberDetailsComponent implements OnInit {
     this.selectAll = !this.selectAll;
 
     if (services == 'all') {
-      this.allServices.forEach(element => {
+      this.dataMember.my_services_list.forEach(element => {
         this.selectService(element.id)
       });
     }

@@ -106,109 +106,26 @@
     
         <div class="all-services border-bottom py-3">
             <div class="services-scroll pr-3">
-                <div class="service-fields">
+                <div class="service-fields" *ngFor="let item of servicesList">
                     <div fxLaytout="row" class="heading-bar py-3 border-bottom">
                         <div fxFlex="85%" class="left-side">
-                            <p>All Categories (8)</p>
+                            <p>{{item.category__name}} ( {{item.services_count}} )</p>
                         </div>
                         <div fxFlex="15%" class="right-side text-right">
                             <span>Select All</span>
-                            <mat-checkbox></mat-checkbox>
+                            <mat-checkbox (change)="selectAllMembers(item.services)"></mat-checkbox>
                         </div>
                     </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
+                    <div fxLaytout="row" class="field py-3 border-bottom" *ngFor="let service of item.services">
                         <div fxFlex="85%" class="left-side">
-                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                            <p>{{service.service_name}}</p>
                         </div>
                         <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Barber Hair</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Acrylic Full Set Pearl/ French Tips</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
+                            <mat-checkbox [checked]="selectAll" (change)="selectMember(member.id)"></mat-checkbox>
                         </div>
                     </div>
                 </div>
                 
-                <div class="service-fields">
-                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Not Categorized (1)</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <span>Select All</span>
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Barber Hair</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="service-fields">
-                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Concierge (3)</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <span>Select All</span>
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Acrylic Full Set Pearl/ French Tips</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Barber Hair</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="service-fields">
-                    <div fxLaytout="row" class="heading-bar py-3 border-bottom">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Beauty Saloon (8)</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <span>Select All</span>
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                    <div fxLaytout="row" class="field pt-3">
-                        <div fxFlex="85%" class="left-side">
-                            <p>Acrylic Full Set Pearl/ French Tips</p>
-                        </div>
-                        <div fxFlex="15%" class="right-side text-right">
-                            <mat-checkbox></mat-checkbox>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </form>

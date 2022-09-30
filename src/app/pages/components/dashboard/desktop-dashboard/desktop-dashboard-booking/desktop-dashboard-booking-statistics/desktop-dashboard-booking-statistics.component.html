@@ -19,7 +19,24 @@
                     </div>  
                 </div>
             </div>
-            
+            <div fxLayout="row" >
+                <div fxFlex="100%" class="m-2" id="chart1">
+                    <apx-chart
+                    #chart
+                    [series]="chartOptions.series"
+                    [chart]="chartOptions.chart"
+                    [xaxis]="chartOptions.xaxis"
+                    [tooltip]="chartOptions.tooltip"
+                    [dataLabels]="chartOptions.dataLabels"
+                    [legend]="chartOptions.legend"
+                    [markers]="chartOptions.markers"
+                    [grid]="chartOptions.grid"
+                    [yaxis]="chartOptions.yaxis"
+                    [title]="chartOptions.title"
+                  ></apx-chart>
+                </div>
+            </div>
+          
         </div>
 
         <div fxFlex="35%" class="summary-section p-3" *ngIf="bookingStatistics">
@@ -98,7 +115,7 @@
 
                 <div class="row" class="client py-3 border-bottom" *ngFor="let item of topClients.data">
                     <div fxFlex="10%">
-                        <img src="{{item.client_pic}}">
+                        <!-- <img src="{{item.client_pic}}"> -->
                     </div>
                 
                     <div fxFlex="90%" class="pl-3">

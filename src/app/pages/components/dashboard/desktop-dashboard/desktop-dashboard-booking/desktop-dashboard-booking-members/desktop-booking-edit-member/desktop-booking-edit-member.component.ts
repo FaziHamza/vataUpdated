@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-desktop-booking-edit-member',
@@ -27,9 +28,12 @@ export class DesktopBookingEditMemberComponent implements OnInit {
     private dashboardService: DashboardService,
     private apiService: ApiService,
     private userService: UserService,
+    private toaster:ToastrService
   ) { }
 
   ngOnInit() {
+    debugger
+    this.dataMember;
     this.editMemberBookingForminIt();
     this.dataCheck();
   }
@@ -107,10 +111,11 @@ export class DesktopBookingEditMemberComponent implements OnInit {
   }
 
   deleteMember() {
-    this.dashboardService.deleteMember(this.dataMember.id).subscribe(res => {
+    this.dashboardService.deleteBookingMember(this.dataMember.id).subscribe(res => {
       console.log(res);
 
       if(res) {
+        this.toaster.success("Information deleted successfully!")
         this.onSelectType('details');
       }
     })

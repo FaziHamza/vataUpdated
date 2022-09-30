@@ -33,7 +33,9 @@ export class ApiEndPoints {
         ADD_SHOP: '/booking/addShop/',
         NEAR_YOU: '/booking/nearbyshops/',
         BOOKINGS_BY_CATEGORY: '/booking/shopFilters/?category=%s',
-        BOOKINGS_BY_ALPHA: '/booking/categories/?startswith=%s'
+        BOOKINGS_BY_ALPHA: '/booking/categories/?startswith=%s',
+        GET_SERVICES_LIST: '/booking/serviceList/%s/',
+
     };
 
     public static USER = {
@@ -189,6 +191,7 @@ export class ApiEndPoints {
         POST_ADD_MEMBER: '/dashboard/AddMember/',
         PUT_UPDATE_MEMBER: '/dashboard/EditMember/%s/',
         DELETE_MEMBER: '/dashboard/EditMember/%s/',
+        DELETE_BOOKINGMEMBER: '/user/dashboard/EditMember/%s/',
         
         //booking    
         PUT_UPDATE_BOOKINGMEMBER: '/user/dashboard/EditMember/%s/',
