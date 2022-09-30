@@ -10,6 +10,8 @@
     </div>
     <section class="mb-5" id="demos">
       <div class="row">
+        {{bestBookingsData | json}}
+
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
               <app-booking-card class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookingsData; let i = index;" 
                 [booking]="bestBooking" (click)="showProductDetails(i)">
