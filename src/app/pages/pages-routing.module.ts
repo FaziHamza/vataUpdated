@@ -56,7 +56,7 @@ const routes: Routes = [
         loadChildren: () => import('./components/order/order.module').then(m => m.OrderModule)
       },
       {
-        path: 'book-product',
+        path: ' ',
         loadChildren: () => import('./components/book-product/book-product.module').then(m => m.BookProductModule)
       },
       {

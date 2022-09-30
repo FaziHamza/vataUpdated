@@ -23,7 +23,12 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DesktopAllReviewsComponent } from './desktop-book-product/desktop-all-reviews/desktop-all-reviews.component';
 
 @NgModule({
-  declarations: [BookProductContainerComponent, DesktopBookProductComponent, MobileBookProductComponent, DesktopSellerBookingComponent, DesktopBookProductOutletComponent, DesktopServiceListComponent, MobileBookingComponent, DesktopSellerBookingOutletComponent, DesktopMakeBookingOutletComponent, DesktopMakeBookingComponent, MobileMakeBookingComponent, DesktopAllReviewsComponent],
+  declarations: [BookProductContainerComponent, DesktopBookProductComponent,
+     MobileBookProductComponent, DesktopSellerBookingComponent, 
+     DesktopBookProductOutletComponent, DesktopServiceListComponent, 
+     MobileBookingComponent, DesktopSellerBookingOutletComponent,
+      DesktopMakeBookingOutletComponent, DesktopMakeBookingComponent,
+       MobileMakeBookingComponent, DesktopAllReviewsComponent],
   imports: [
     CommonModule,
     BookProductRoutingModule,
