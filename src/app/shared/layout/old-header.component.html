@@ -189,7 +189,8 @@
           <mat-tab-group [selectedIndex]="0" mat-stretch-tabs (click)="stopGoodMenuClosing($event)">
             <mat-tab label="Marketplace">
               <section class="home-categories catalog-of-goods">
-                <div class="clearfix catalog-of-goods-grid">
+                <!-- FaziComment -->
+                <div class="clearfix catalog-of-goods-grid" *ngIf="false"><!-- FaziComment --> 
                   <div class="home-cat-cont" *ngFor="let marketplace_cat of marketplace_categories; let i = index;">
                     <div *ngIf="!marketplace_cat.ancestors.length" class="home-cat-inner">
                       <div class="home-cat-title clearfix">
@@ -206,7 +207,7 @@
                 </div>
                 <div fxLayout="row" class="border-top" fxLayoutAlign="end">
                   <div routerLink="/catalog" class="see-all float-right">
-                    <h3 class="pink-text pointer p-4">see all categories ></h3>
+                    <h3 class="pink-text pointer p-4">See all categories v></h3>
                   </div>
                 </div>
               </section>
@@ -230,7 +231,7 @@
                 </div>
                 <div fxLayout="row" class="border-top" fxLayoutAlign="end">
                   <div routerLink="/catalog" class="see-all float-right">
-                    <h3 class="pink-text p-4 pointer">see all categories ></h3>
+                    <h3 class="pink-text p-4 pointer">See all categories v1></h3>
                   </div>
                 </div>
               </section>

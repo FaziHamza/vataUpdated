@@ -62,9 +62,11 @@
 
 <section class="home-categories container-fluid main-size ">
   <!-- popular Categories -->
-  <app-desktop-popular-categories></app-desktop-popular-categories>
+  <app-desktop-popular-categories *ngIf="false"><!-- FaziComment -->
+  </app-desktop-popular-categories>
   <!-- popular marketplace -->
-  <app-desktop-popular-marketplace></app-desktop-popular-marketplace>
+  <app-desktop-popular-marketplace *ngIf="false"><!-- FaziComment -->
+</app-desktop-popular-marketplace>
   <!-- best bookings -->
   <app-desktop-best-bookings></app-desktop-best-bookings>
   <!-- top deals -->
