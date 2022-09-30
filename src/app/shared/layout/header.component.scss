@@ -126,7 +126,7 @@ span {
     position: absolute;
     left: 22px;
     font-size: 23px;
-    top: 12px;
+    top: 9px;
     &::before {
       color: $black;
     }
@@ -135,7 +135,7 @@ span {
 .catalog {
   // background: url(/assets/img/baseline-apps-24px.png) no-repeat 17px center;
   border: solid 1px $ligher-gray;
-  width: 250px;
+  width: 220px;
   border-radius: 50px;
   padding-left: 54px;
   outline: none;
@@ -144,7 +144,7 @@ span {
   color: #717171;
   text-decoration: none;
   display: block;
-  padding: 17px 17px 17px 54px;
+  padding: 8px 5px 10px 50px;
 }
 .header-search form {
   float: left;
@@ -187,9 +187,9 @@ span {
 .open-search {
   // background: url(/assets/img/search.png) no-repeat center center;
   border: solid 1px $ligher-gray;
-  width: 50px;
+  width: 45px;
   border-radius: 50%;
-  height: 50px;
+  height: 45px;
   cursor: pointer;
   font-size: 0;
   outline: none;
@@ -455,8 +455,8 @@ span {
 span {
   &.icon-search {
     position: absolute;
-    left: 13px;
-    top: 14px;
+    left: 10px;
+    top: 10px;
     color: $black;
     font-size: 25px;
   }
