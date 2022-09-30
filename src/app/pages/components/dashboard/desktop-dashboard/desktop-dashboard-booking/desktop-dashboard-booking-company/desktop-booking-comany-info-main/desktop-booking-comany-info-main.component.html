@@ -96,29 +96,33 @@
 								</div>
 							</div>
 						</div>
-		
-						<div *ngIf="members.length > 0">
-							<div fxLayout="row" class="pt-4 border-bottom pb-2" *ngFor="let member of members">
-								<div fxFlex="70%" class="left-img-sec">
-									<div class="row">
-										<div fxFlex="20%">
-											<img [src]="member.photo" />
-										</div>
+                        <div *ngIf="members">
+                            <div *ngIf="members.length > 0">
+                                <div fxLayout="row" class="pt-4 border-bottom pb-2" *ngFor="let member of members">
+                                    <div fxFlex="70%" class="left-img-sec">
+                                        <div class="row">
+                                            <div fxFlex="20%">
+                                                <img [src]="member.photo" />
+                                            </div>
+                        
+                                            <div fxFlex="80%">
+                                                <h6 class="text pl-2">{{member.member_name}} {{member.member_surname}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div fxFlex="30%" class="text-right">
+                                        <mat-checkbox [checked]="selectAll" (change)="selectMember(member.id)"></mat-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						<div *ngIf="members">
+                            <div *ngIf="members.length == 0">
+                                <h4>Members Not Found</h4>
+                            </div>
+                        </div>
 					
-										<div fxFlex="80%">
-											<h6 class="text pl-2">{{member.member_name}} {{member.member_surname}}</h6>
-										</div>
-									</div>
-								</div>
-				
-								<div fxFlex="30%" class="text-right">
-									<mat-checkbox [checked]="selectAll" (change)="selectMember(member.id)"></mat-checkbox>
-								</div>
-							</div>
-						</div>
-						<div *ngIf="members.length == 0">
-							<h4>Members Not Found</h4>
-						</div>
 					</div>
 				</div>
 

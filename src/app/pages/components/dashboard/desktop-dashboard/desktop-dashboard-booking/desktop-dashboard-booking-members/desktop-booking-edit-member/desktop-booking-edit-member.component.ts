@@ -40,7 +40,7 @@ export class DesktopBookingEditMemberComponent implements OnInit {
 
     const fileList: FileList = data.files;
     const file = fileList[0];
-    this.picture = file;
+    this.picture = file;  
     // this.fd.append('client_pic', file, file.name);    
   }
 
@@ -86,13 +86,13 @@ export class DesktopBookingEditMemberComponent implements OnInit {
       "email": this.editMemberBookingForm.value.email,
       "position_skills": this.editMemberBookingForm.value.position_skills,
       "shop_id": this.userService.getUser().shop_details.id,
-      "default_member": "",
-      "working_hour": "",
+      "default_member": false,
+      "working_hour": "08:00 - 19:00",
       "gender": "",
     }
 
     if (this.editMemberBookingForm.valid) {
-      this.dashboardService.putUpdateMember(this.dataMember.id, params).subscribe(res => {
+      this.dashboardService.putUpdateBookingMember(this.dataMember.id, params).subscribe(res => {
         console.log(res);
         
         if(res) {
