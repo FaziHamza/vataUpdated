@@ -27,7 +27,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
 
   bookingStats() {
     this.dashboardService.getBookingStats().subscribe(res => {
-      debugger
+      
       this.bookingStatistics = res;
       // console.log(res);
     });
@@ -35,7 +35,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
 
   getTopClients() {
     this.dashboardService.getTopClients().subscribe(res => {
-      debugger
+      
       this.topClients = res;
       // console.log(res);
     });
@@ -43,7 +43,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
   
   getTopMembers() {
     this.dashboardService.getTopMembers().subscribe(res => {
-      debugger
+      
       this.topMembers = res;
       // console.log(res);
     });

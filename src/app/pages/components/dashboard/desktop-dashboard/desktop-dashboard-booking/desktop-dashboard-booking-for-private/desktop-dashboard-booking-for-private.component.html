@@ -16,7 +16,7 @@
     <div *ngIf="datedHistory" class="calendar-section mt-4">
         <div fxLayout="row">
             <div fxFlex="35%" class="calendar p-3 mr-4">
-
+                <mat-calendar #calendar color="primary" [(selected)]="privateSelectedDate"></mat-calendar>
             </div>
 
             <div fxFlex="65%" class="calendar-fields p-3">

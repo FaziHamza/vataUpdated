@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { MatCalendar } from '@angular/material/datepicker';
+import { Moment } from 'moment';
+import * as moment from 'moment';
+import Calendar from 'tui-calendar';
 
 @Component({
   selector: 'app-desktop-dashboard-booking-for-private',
   templateUrl: './desktop-dashboard-booking-for-private.component.html',
   styleUrls: ['./desktop-dashboard-booking-for-private.component.scss']
 })
-export class DesktopDashboardBookingForPrivateComponent implements OnInit {
 
+export class DesktopDashboardBookingForPrivateComponent implements OnInit {
+  @ViewChild(MatCalendar, {static: true}) _datePicker: MatCalendar<Moment>;
   currentHistory: any;
   datedHistory: any;
+  privateSelectedDate = moment();
+  dateSelected: EventEmitter<Moment> = new EventEmitter();
   cancel: boolean = false;
   finish: boolean = false;
   today: any = new Date();
+  calendar: Calendar;
 
   constructor(
     private dashboardService: DashboardService,
@@ -22,8 +30,17 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.calendar = this.dashboardService.getCalendar('#example-calendar');
     this.privateCurrentHistory();
     this.datedData(new Date());
+    this.calendar.setOptions({
+      usageStatistics: false,
+      defaultView: 'day',
+      isReadOnly: true,
+    });
+    
+    this.calendar.clear();
+
   }
 
   privateCurrentHistory() {
@@ -37,6 +54,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     }
 
     this.dashboardService.currentHistory(params.limit, params.offset, params.user_book_services__user_id, params.finished, params.cancel, params.get_date).subscribe(res => {
+      debugger
       this.currentHistory = res;
       console.log(this.currentHistory);
     })
@@ -61,6 +79,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   }
 
   datedData(dateParam) {
+    debugger
     let date = new Date(dateParam);
     let formattedDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
     
@@ -74,10 +93,22 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     }
 
     this.dashboardService.currentHistory(params.limit, params.offset, params.user_book_services__user_id, params.finished, params.cancel, params.get_date).subscribe(res => {
+      debugger
       this.datedHistory = res;
       console.log(this.datedHistory);
     })
 
+  }
+  dateChanged() {
+    this._datePicker.activeDate = this.privateSelectedDate;
+    this.dateSelected.emit(this.privateSelectedDate);
+    if (this._datePicker) {
+      this._datePicker.selectedChange.subscribe(x => {
+        debugger
+        var date = moment(x).format('YYYY-MM-DD');
+        this.datedData(date);
+      });
+    }
   }
 
 }

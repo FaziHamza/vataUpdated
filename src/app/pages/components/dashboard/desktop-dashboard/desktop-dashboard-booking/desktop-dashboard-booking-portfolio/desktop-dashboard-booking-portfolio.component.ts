@@ -53,6 +53,7 @@ export class DesktopDashboardBookingPortfolioComponent implements OnInit {
   }
 
   postShopWorkImage() {
+    debugger
     let shopId = this.userService.getUser().shop_details.id;
     this.formData.append('shop', shopId);
 

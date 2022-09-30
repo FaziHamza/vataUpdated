@@ -20,7 +20,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   preview = [];
   uploadingFiles = [];
   // today = new Date();
-
+  params = new FormData();
   constructor(
     private fb: FormBuilder,
     private dashboardService: DashboardService,
@@ -38,7 +38,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
 
     const fileList: FileList = data.files;
     const file = fileList[0];
-    this.fd.append('client_pic', file, file.name);    
+    this.params.append('photo', file, file.name);    
   }
 
   removeImage(i) {
@@ -59,23 +59,32 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   }
 
   addNewMember() {
-
-    let params = {
-      "photo": this.fd,
-      "member_name": this.newMemberBookingForm.value.memberName,
-      "member_surname": this.newMemberBookingForm.value.memberSurname,
-      "phone_isd": this.newMemberBookingForm.value.phoneCode,
-      "phone_number": this.newMemberBookingForm.value.phoneNumber,
-      "email": this.newMemberBookingForm.value.email,
-      "position_skills": this.newMemberBookingForm.value.position_skills,
-      "shop_id": this.userService.getUser().shop_details.id,
-      "working_hour": "",
-      "default_member": true,
-      "gender": "",
-    }
+      debugger
+      this.params.append("member_name",this.newMemberBookingForm.value.memberName);
+      this.params.append("member_surname",this.newMemberBookingForm.value.memberSurname);
+      this.params.append("phone_isd",this.newMemberBookingForm.value.phoneCode);
+      this.params.append("phone_number",this.newMemberBookingForm.value.phoneNumber);
+      this.params.append("email",this.newMemberBookingForm.value.email);
+      this.params.append("position_skills",this.newMemberBookingForm.value.position_skills);
+      this.params.append("shop_id",this.userService.getUser().shop_details.id);
+      this.params.append("working_hour", "08:00 - 19:00");
+      this.params.append("default_member", "false");
+      this.params.append("gender", '');
+    //  this.params = {
+    //   "member_name": this.newMemberBookingForm.value.memberName,
+    //   "member_surname": this.newMemberBookingForm.value.memberSurname,
+    //   "phone_isd": this.newMemberBookingForm.value.phoneCode,
+    //   "phone_number": this.newMemberBookingForm.value.phoneNumber,
+    //   "email": this.newMemberBookingForm.value.email,
+    //   "position_skills": this.newMemberBookingForm.value.position_skills,
+    //   "shop_id": this.userService.getUser().shop_details.id,
+    //   "working_hour": "08:00 - 19:00",
+    //   "default_member": false,
+    //   "gender": "",
+    // }
 
     if (this.newMemberBookingForm.valid) {
-      this.dashboardService.postAddMember(params).subscribe(res => {
+      this.dashboardService.postAddBookingMember(this.params).subscribe(res => {
         console.log(res);
         
         if(res) {

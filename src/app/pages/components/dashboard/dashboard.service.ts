@@ -253,9 +253,15 @@ export class DashboardService {
   postAddMember(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.POST_ADD_MEMBER, params);
   }
+  postAddBookingMember(params) {
+    return this.apiService.post(ApiEndPoints.BOOKING.MEMBERS, params);
+  }
 
   putUpdateMember(id, params) {
     return this.apiService.put(sprintf(ApiEndPoints.DASHBOARD.PUT_UPDATE_MEMBER, id), params);
+  }
+  putUpdateBookingMember(id, params) {
+    return this.apiService.put(sprintf(ApiEndPoints.DASHBOARD.PUT_UPDATE_BOOKINGMEMBER, id), params);
   }
 
   deleteMember(id) {

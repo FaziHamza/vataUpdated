@@ -189,5 +189,9 @@ export class ApiEndPoints {
         POST_ADD_MEMBER: '/dashboard/AddMember/',
         PUT_UPDATE_MEMBER: '/dashboard/EditMember/%s/',
         DELETE_MEMBER: '/dashboard/EditMember/%s/',
+        
+        //booking    
+        PUT_UPDATE_BOOKINGMEMBER: '/user/dashboard/EditMember/%s/',
+
     };
 }
