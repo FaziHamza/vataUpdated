@@ -32,12 +32,14 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   ngOnInit() {
     this.calendar = this.dashboardService.getCalendar('#example-calendar');
     this.privateCurrentHistory();
-    this.datedData(new Date());
     this.calendar.setOptions({
       usageStatistics: false,
       defaultView: 'day',
       isReadOnly: true,
     });
+    
+    this.datedData(new Date());
+ 
     
     this.calendar.clear();
 

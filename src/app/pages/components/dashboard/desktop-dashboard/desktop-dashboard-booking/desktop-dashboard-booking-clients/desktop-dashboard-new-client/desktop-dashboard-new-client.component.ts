@@ -24,7 +24,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
     private fb: FormBuilder,
     private dashboardService: DashboardService,
     private userService: UserService,
-    private toasterService:ToastrService
+    private toasterService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
 
     const fileList: FileList = data.files;
     const file = fileList[0];
-    this.fd.append('client_pic', file, file.name);    
+    this.fd.append('client_pic', file, file.name);
   }
 
   removeImage(i) {
@@ -60,7 +60,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
   }
 
   addNewMember() {
-  
+
     let date = new Date(this.newClientBookingForm.value.birthday);
     let formattedDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 
@@ -80,17 +80,22 @@ export class DesktopDashboardNewClientComponent implements OnInit {
       "discount": this.newClientBookingForm.value.discount,
       "internal_note": '',
       "allergens": '',
-      "is_blocked": true,
+      "is_blocked": false,
       "quick_booking": true,
-      "shop_id": this.userService.getUser().shop_details.id
+      "shop_id": this.userService.getUser().shop_details.id,
+      "bookings_count": 0,
+      "finished": 0,
+      "cancelled": 0,
+      "no_shows": 0,
+      "total_revenue": 0,
     }
 
     if (this.newClientBookingForm.valid) {
       this.dashboardService.addClient(params).subscribe(res => {
         debugger
         console.log(res);
-        
-        if(res) {
+
+        if (res) {
           this.newClientBookingForm.reset();
           this.onSelectType('details');
         }
