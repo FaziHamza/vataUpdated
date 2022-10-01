@@ -10,10 +10,10 @@
       vertical-align: middle;
       display: inline-block;
     }
-    padding: 0 25px 0 55px;
+    padding: 0 10px ;
     display: table;
-    height: 75px;
-    width: 74%;
+    // height: 75px;
+    // width: 74%;
     position: relative;
 
     img {
@@ -23,36 +23,40 @@
     }
 
     .cat-content {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      font-size: 14px;
       .alt-img-cus {
-        position: absolute;
-        left: 20px;
+        // position: absolute;
+        left: 15px;
         top: 24px;
       }
     }
     h2 {
-      font-size: 18px;
-      margin-left: 20px;
+      font-size: 14px;
+      margin-left: 15px;
       color: $black;
       font-family: "montserratmedium";
       display: table-cell;
-      font-weight: 400;
+      font-weight: 500;
       width: 96%;
-      padding-right: 7px;
-      height: 74px;
+      padding-right: 5px;
+      // height: 74px;
     }
   }
 }
 .home-cat-links {
   border-top: solid 1px #E7E7E7;
-  padding: 25px;
+  padding: 15px;
 }
 .home-cat-links a {
   display: block;
   text-decoration: none;
   color: $black;
   font-family: "montserratmedium";
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 .home-cat-links a:hover {
   text-decoration: underline;
