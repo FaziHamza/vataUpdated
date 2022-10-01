@@ -457,13 +457,28 @@
         }
     }
 }
+.product-detail-search {
+  .rounded-bt {
+    min-width: 135px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+}
+.product-detail-search
+.my-menu {
+    border-radius: 15px !important;
+      }
 
 ::ng-deep {
     .main {
         padding: 10px;
     }
     .my-menu {
+        margin-top: 3px !important;
         width: 280px;
+        border-radius: 20px !important;
+        padding: 15px !important;
         h6 {
             padding: 15px 0;
             font-size: 12px;

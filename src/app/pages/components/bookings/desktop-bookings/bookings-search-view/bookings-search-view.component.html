@@ -31,19 +31,19 @@
                             </div>
                         </div>
         
-                        <div fxFlex="20%" class="ml-3">
+                        <div fxFlex="20%" class="ml-3 product-detail-search">
                             <div class="clear-save">
                                 <div fxLayout="row" class="row-right">
                                     <div fxFlex="50%" class="mx-3">
-                                        <a mat-button class="text-center rounded-bt clear" (click)="clearAll()">Clear All</a>
+                                        <a mat-button class="text-center rounded-bt pl-2 pr-2 clear" (click)="clearAll()">Clear All</a>
                                     </div>
                                     <div fxFlex="50%" class="mx-3">
-                                        <a #trigger="matMenuTrigger" mat-button class="text-center rounded-bt save" [matMenuTriggerFor]="menu">Save Search</a>
+                                        <a #trigger="matMenuTrigger" mat-button class="text-center rounded-bt pl-2 pr-2 save" [matMenuTriggerFor]="menu">Save Search</a>
                                     </div>
                                 </div>
                             </div>
                             <mat-menu #menu="matMenu" class="my-menu">
-                                <div class="main" (click)="$event.stopPropagation();">
+                                <div class="main " (click)="$event.stopPropagation();">
                                     <form [formGroup]="saveSearchForm" class="form">
                                         <div fxLayout="row">
                                             <mat-form-field class="w-100 form-section">

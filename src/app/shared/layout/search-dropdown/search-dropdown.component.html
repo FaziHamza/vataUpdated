@@ -1,105 +1,117 @@
 <div *ngIf="!appSize.getIsMobileResolution()" fxLayout="row" class="result">
-    <div fxFlex="50%" class="result-nav">
-        <h2>Often Looking</h2>
-        <ul *ngIf="marketplaceData && marketplaceData.often.length">
-          <h3 class="abc-sub-head my-4">Marketplace</h3>
-          <li *ngFor="let item of marketplaceData.often">
-            <a [routerLink]="['/marketplace/', item.id]">{{item.name}}</a>
-          </li>
-        </ul>
-        <ul *ngIf="bookingData && bookingData.often.length">
-          <h3 class="abc-sub-head my-4">Booking</h3>
-          <li *ngFor="let item of bookingData.often">
-            <a [routerLink]="['/bookings/', item.id]">{{item.name}}</a>
-          </li>
-        </ul>
-        <div class="d-flex text-align-center">
-            <h3 *ngIf="!marketplaceData.often.length && !bookingData.often.length">No results found</h3>
-          </div>
-    
+  <div fxFlex="50%" class="result-nav">
+    <h2>Often Looking</h2>
+    <ul *ngIf="marketplaceData && marketplaceData.often.length">
+      <h3 class="abc-sub-head my-4">Marketplace</h3>
+      <li *ngFor="let item of marketplaceData.often">
+        <a [routerLink]="['/marketplace/', item.id]">{{item.name}}</a>
+      </li>
+    </ul>
+    <ul *ngIf="bookingData && bookingData.often.length">
+      <h3 class="abc-sub-head my-4">Booking</h3>
+      <li *ngFor="let item of bookingData.often">
+        <a [routerLink]="['/bookings/', item.id]">{{item.name}}</a>
+      </li>
+    </ul>
+    <div class="d-flex text-align-center">
+      <h3 *ngIf="!marketplaceData.often.length && !bookingData.often.length">No results found</h3>
+    </div>
+
+  </div>
+  <div fxFlex="50%" class="popular" *ngIf="marketplaceData && bookingData">
+    <h2>Popular Goods</h2>
+    <h3 class="abc-sub-head my-4" *ngIf="filterProductData(marketplaceData.popular).length">Marketplace</h3>
+    <a fxLayout="column" class="clearfix mb-3" [routerLink]="['/product', item.id]"
+      *ngFor="let item of filterProductData(marketplaceData.popular)">
+      <div class="sprod-img">
+        <img src="{{item.images[0]}}" width="70px">
       </div>
-      <div fxFlex="50%" class="popular" *ngIf="marketplaceData && bookingData">
-        <h2>Popular Goods</h2>
-          <h3 class="abc-sub-head my-4" *ngIf="filterProductData(marketplaceData.popular).length">Marketplace</h3>
-          <a fxLayout="column" class="clearfix mb-3" [routerLink]="['/product', item.id]" *ngFor="let item of filterProductData(marketplaceData.popular)">
-            <div class="sprod-img">
-              <img src="{{item.images[0]}}" width="70px">
-            </div>
-            <div class="sprod-info">
-              <h3>{{item.title}}</h3>
-              <h4 class="price-from">From {{item.price | currency: "CHF":"symbol":"1.0"}}</h4>
-            </div>
-          </a>
-          <h3 class="abc-sub-head my-4" *ngIf="filterProductData(bookingData.popular).length">Booking</h3>
-          <a fxLayout="column" class="clearfix mb-3" [routerLink]="['/book-product', item.shopID]" *ngFor="let item of filterProductData(bookingData.popular)">
-            <div class="sprod-img">
-              <img src="{{item.shop_image}}" width="70px">
-            </div>
-            <div class="sprod-info">
-              <h3>{{item.shopname}}</h3>
-              <h4 class="price-from">From {{item.starting_price | currency: "CHF":"symbol":"1.0"}}</h4>
-            </div>
-          </a>
-        <div class="d-flex text-align-center">
-          <h3 *ngIf="!marketplaceData.popular.length && !bookingData.popular.length">No results found</h3>
+      <div class="sprod-info">
+        <h3>{{item.title}}</h3>
+        <h4 class="price-from">From {{item.price | currency: "CHF":"symbol":"1.0"}}</h4>
+      </div>
+    </a>
+    <h3 class="abc-sub-head my-4" *ngIf="filterProductData(bookingData.popular).length">Booking</h3>
+    <a fxLayout="column" class="clearfix mb-3" [routerLink]="['/book-product', item.shopID]"
+      *ngFor="let item of filterProductData(bookingData.popular)">
+      <div class="search-drop-product">
+        <div class="sprod-img">
+          <img src="{{item.shop_image}}" width="70px">
         </div>
-      </div>
+        <div class="sprod-info">
+          <h3>{{item.shopname}}</h3>
+          <h4 class="price-from">From{{item.starting_price | currency: "CHF":"symbol":"1.0"}}</h4>
+        </div>
+      </div>  
+    </a>
+    <div class="d-flex text-align-center">
+      <h3 *ngIf="!marketplaceData.popular.length && !bookingData.popular.length">No results found</h3>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="appSize.getIsMobileResolution()" class="result result-mobile">
-    <div fxLayout="column">
-      <div class="card-view">
-        <h3>Often Looking</h3>
-        <ul *ngIf="marketplaceData && marketplaceData.often.length">
-          <h3 class="abc-sub-head my-4">Marketplace</h3>
-          <li *ngFor="let item of marketplaceData.often">
-            <a [routerLink]="['/marketplace/', item.id]">{{item.name}}</a>
-          </li>
-        </ul>
-        <ul *ngIf="bookingData && bookingData.often.length">
-          <h3 class="abc-sub-head my-4">Booking</h3>
-          <li *ngFor="let item of bookingData.often">
-            <a [routerLink]="['/bookings/', item.id]">{{item.name}}</a>
-          </li>
-        </ul>
-        <div class="d-flex text-align-center">
-          <h3 *ngIf="!marketplaceData.often.length && !bookingData.often.length">No results found</h3>
-        </div>
-      </div>
-
-      <div class="card-view" *ngIf="marketplaceData && bookingData">
-          <h3>Popular Goods</h3>
-          <h3 class="abc-sub-head my-4" *ngIf="marketplaceData.popular.length">Marketplace</h3>
-            <a fxLayout="row" class="clearfix pb-3" *ngFor="let item of marketplaceDatapopular">
-              <div class="sprod-img">
-                <img src="{{item.images[0]}}" width="70px">
-              </div>
-              <div class="sprod-info-mobile">
-                <h3>{{item.title}}</h3>
-                <h4 *ngIf="!item.bidding" class="price-from pink-text mt-2">From {{item.price | currency: "CHF":"symbol":"1.0"}}</h4>
-                <div fxLayout="row" class="bid-info" *ngIf="item.bidding">
-                  <div fxLayout="column" class="py-2">
-                    <div fxFlex="70%" class="mx-2">
-                        <p class="text text-muted pb-1">Customer bid</p>
-                    </div>
-                    <div fxFlex="30%" class="mx-2">
-                        <h3 class="bid-price">{{item.customer_bid ?(item.customer_bid | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
-                    </div>
-                </div>
-                <div fxLayout="column" class="py-2">
-                    <div fxFlex="70%" class="mx-2">
-                        <p class="text text-muted pb-1">Fixed price</p>
-                    </div>
-                    <div fxFlex="30%" class="mx-2">
-                        <h3 class="pink-text bid-price">{{item.price ? (item.price | currency: "CHF":"symbol":"1.0") : 'NA'}}</h3>
-                    </div>
-                </div>
-                </div>
-              </div>
-            </a>
-          <div class="d-flex text-align-center">
-            <h3 *ngIf="!marketplaceData.popular.length && !bookingData.popular.length">No results found</h3>
-          </div>
+  <div fxLayout="column">
+    <div class="card-view">
+      <h3>Often Looking</h3>
+      <ul *ngIf="marketplaceData && marketplaceData.often.length">
+        <h3 class="abc-sub-head my-4">Marketplace</h3>
+        <li *ngFor="let item of marketplaceData.often">
+          <a [routerLink]="['/marketplace/', item.id]">{{item.name}}</a>
+        </li>
+      </ul>
+      <ul *ngIf="bookingData && bookingData.often.length">
+        <h3 class="abc-sub-head my-4">Booking</h3>
+        <li *ngFor="let item of bookingData.often">
+          <a [routerLink]="['/bookings/', item.id]">{{item.name}}</a>
+        </li>
+      </ul>
+      <div class="d-flex text-align-center">
+        <h3 *ngIf="!marketplaceData.often.length && !bookingData.often.length">No results found</h3>
       </div>
     </div>
+
+    <div class="card-view" *ngIf="marketplaceData && bookingData">
+      <h3>Popular Goods</h3>
+      <h3 class="abc-sub-head my-4" *ngIf="marketplaceData.popular.length">Marketplace</h3>
+      <a fxLayout="row" class="clearfix pb-3" *ngFor="let item of marketplaceDatapopular">
+        <div class="search-drop-product">
+          <div class="sprod-img">
+            <img src="{{item.images[0]}}" width="70px">iiii
+          </div>
+          <div>
+            <h3>{{item.title}}</h3>
+            <h4 *ngIf="!item.bidding" class="price-from pink-text mt-2">From{{item.price | currency:
+              "CHF":"symbol":"1.0"}}</h4>
+          </div>
+        </div>
+        <div class="sprod-info-mobile">
+
+          <div fxLayout="row" class="bid-info" *ngIf="item.bidding">
+            <div fxLayout="column" class="py-2">
+              <div fxFlex="70%" class="mx-2">
+                <p class="text text-muted pb-1">Customer bid</p>
+              </div>
+              <div fxFlex="30%" class="mx-2">
+                <h3 class="bid-price">{{item.customer_bid ?(item.customer_bid | currency: "CHF":"symbol":"1.0") : 'NA'}}
+                </h3>
+              </div>
+            </div>
+            <div fxLayout="column" class="py-2">
+              <div fxFlex="70%" class="mx-2">
+                <p class="text text-muted pb-1">Fixed price</p>
+              </div>
+              <div fxFlex="30%" class="mx-2">
+                <h3 class="pink-text bid-price">{{item.price ? (item.price | currency: "CHF":"symbol":"1.0") : 'NA'}}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="d-flex text-align-center">
+        <h3 *ngIf="!marketplaceData.popular.length && !bookingData.popular.length">No results found</h3>
+      </div>
+    </div>
+  </div>
 </div>
