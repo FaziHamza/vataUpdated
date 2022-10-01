@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css");
+
 @import './assets/scss/main.scss';
 @import '~@angular/material/theming';
 
@@ -10,80 +12,91 @@
 body {
   font-family: 'montserratregular';
 }
-$custom-typography: mat-typography-config(
-  $font-family: 'Montserrat-Regular'
-);
+
+$custom-typography: mat-typography-config($font-family: 'Montserrat-Regular'
+  );
 @include mat-core($custom-typography);
 
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
-@font-face{
-	font-family: 'Montserrat-Regular'; 
-	src: url('/assets/fonts/Montserrat-Regular.otf') format('truetype');
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('/assets/fonts/Montserrat-Regular.otf') format('truetype');
 }
-@font-face{     
-	font-family: 'Montserrat-Bold'; 
-	src: url('/assets/fonts/Montserrat-Bold.otf') format('truetype');
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('/assets/fonts/Montserrat-Bold.otf') format('truetype');
 }
-@font-face{     
-	font-family: 'Montserrat-SemiBold'; 
-	src: url('/assets/fonts/Montserrat-SemiBold.otf') format('truetype');
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('/assets/fonts/Montserrat-SemiBold.otf') format('truetype');
 }
+
 @font-face {
   font-family: 'montserratlight';
   src: url('/assets/fonts/montserrat-light-webfont.woff2') format('woff2'),
-       url('/assets/fonts/montserrat-light-webfont.woff') format('woff');
+    url('/assets/fonts/montserrat-light-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
+
 @font-face {
   font-family: 'montserratmedium';
   src: url('/assets/fonts/montserrat-medium-webfont.woff2') format('woff2'),
-       url('/assets/fonts/montserrat-medium-webfont.woff') format('woff');
+    url('/assets/fonts/montserrat-medium-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
+
 @font-face {
   font-family: 'montserratregular';
   src: url('/assets/fonts/montserrat-regular-webfont.woff2') format('woff2'),
-       url('/assets/fonts/montserrat-regular-webfont.woff') format('woff');
+    url('/assets/fonts/montserrat-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
+
 @font-face {
   font-family: 'montserratsemibold';
   src: url('/assets/fonts/montserrat-semibold-webfont.woff2') format('woff2'),
-       url('/assets/fonts/montserrat-semibold-webfont.woff') format('woff');
+    url('/assets/fonts/montserrat-semibold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
+
 @font-face {
   font-family: 'montserratbold';
   src: url('/assets/fonts/montserrat-bold-webfont.woff2') format('woff2'),
-       url('/assets/fonts/montserrat-bold-webfont.woff') format('woff');
+    url('/assets/fonts/montserrat-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
+
 // * {
 //   margin: 0;
 //   padding: 0;
 //   }
 body {
-    overflow-x: hidden !important;
-    background-color: var(--white-color);
-}
-html, body { 
-    height: 100%; 
+  overflow-x: hidden !important;
+  background-color: var(--white-color);
 }
 
-body { 
-    margin: 0; 
-    font-family: 'Montserrat-Regular', sans-serif !important;
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat-Regular', sans-serif !important;
 }
 
 .container-fluid.main-size {
@@ -95,79 +108,89 @@ ul {
   list-style: none;
 }
 
-.show-all-btn{
-	font-family: 'montserratsemibold';
-	font-size:16px;
-	color:#fff;
-	background:#FE3C72;
-	text-decoration:none;
-	border-radius:10px;
-	min-width:110px;
-	padding:10px 20px;
+.show-all-btn {
+  font-family: 'montserratsemibold';
+  font-size: 16px;
+  color: #fff;
+  background: #FE3C72;
+  text-decoration: none;
+  border-radius: 10px;
+  min-width: 110px;
+  padding: 10px 20px;
 }
+
 // This css is added so that if more than one mat-errors are shows, the controls below, shift down in order to NOT overlap with the 
 // mat-errors shown
 ::ng-deep .mat-form-field {
-      .mat-form-field-wrapper {
-        padding-bottom: 0;
-  
-        .mat-form-field-underline {
-          position: initial !important;
-          display: block;
-          margin-top: -1px;
-        }
-  
-        .mat-form-field-subscript-wrapper,
-        .mat-form-field-ripple {
-          position: initial !important;
-          display: table;
-        }
-  
-        .mat-form-field-subscript-wrapper {
-          min-height: calc(1em + 1px);
-          font-size: 75%;
-        }
-      }
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-underline {
+      position: initial !important;
+      display: block;
+      margin-top: -1px;
     }
-    ::ng-deep mat-error {
+
+    .mat-form-field-subscript-wrapper,
+    .mat-form-field-ripple {
+      position: initial !important;
+      display: table;
+    }
+
+    .mat-form-field-subscript-wrapper {
+      min-height: calc(1em + 1px);
       font-size: 75%;
     }
-    
-
-    // Scrollbar
-
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-      background-color: #eeeeee;
-    }
-    
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: #595c5f;
-    }
-
-  .clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
   }
-  * html .clearfix             { zoom: 1; } /* IE6 */
-  *:first-child+html .clearfix { zoom: 1; }
+}
 
-  a, button {
-    cursor: pointer;
-  }
+::ng-deep mat-error {
+  font-size: 75%;
+}
 
-  // remove arrows from input
-  /* Chrome, Safari, Edge, Opera */
+
+// Scrollbar
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #eeeeee;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #595c5f;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+* html .clearfix {
+  zoom: 1;
+}
+
+/* IE6 */
+*:first-child+html .clearfix {
+  zoom: 1;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+// remove arrows from input
+/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -182,9 +205,11 @@ input[type=number] {
 // spinner button css
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
- 
+
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -205,12 +230,13 @@ input[type=number] {
   opacity: 0.5;
 }
 
-input, input::placeholder {
+input,
+input::placeholder {
   color: $black;
 }
 
 ::ng-deep .mat-form-field-label {
-  color: $black !important;
+  color: $black  !important;
 }
 
 
@@ -219,233 +245,240 @@ input, input::placeholder {
   min-height: 600px;
 
   .left-content {
-      min-height: 600px !important;
+    min-height: 600px !important;
 
 
-      .top-content {
-          min-height: calc(600px - 60px);
-          padding: 30px 60px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          // background-color: #f5f5f5;
+    .top-content {
+      min-height: calc(600px - 60px);
+      padding: 30px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // background-color: #f5f5f5;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #fb3b71;
+      margin-bottom: 30px;
+    }
+
+    small {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .categories-section {
+
+      .cat-card {
+        border-left: 1px solid #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 10px;
+
       }
 
-      h2 {
+      p {
+        font-weight: 700;
+        margin-bottom: 0px;
+        margin-bottom: 10px;
+      }
+
+      margin-top: 40px;
+      width: 100%;
+
+    }
+  }
+
+  .btn-row {
+    height: 80px;
+
+    .hero-btn {
+      min-height: 60px;
+      width: 100%;
+      color: white;
+      border-radius: 0px;
+      // margin-top: 40px;
+      background-color: #fb3b71;
+    }
+  }
+
+  .right-content {
+    display: flex;
+
+    .r-1 {
+      width: 50% !important;
+      min-height: 600px;
+
+      .top-image {
+        background-color: #f5f5f5;
+        min-height: calc(600px - 60px);
+        // background-color: #f5f5f5;
+
+        img {
+          width: 100%;
+          height: calc(600px - 60px);
+          object-fit: cover;
+        }
+
+      }
+
+      .buttons {
+        display: flex;
+
+        .btn {
+          border-radius: 0px;
+          width: 100%;
+          height: 60px;
+        }
+      }
+    }
+
+    .r-2 {
+      min-height: 600px;
+      width: 50% !important;
+
+      .top {
+        height: 50%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // background-color: #f5f5f5;
+
+        h2 {
           font-size: 32px;
           color: #fb3b71;
           margin-bottom: 30px;
-      }
+        }
 
-      small {
+        small {
           font-size: 13px;
           font-weight: 500;
-      }
+        }
 
-      h1 {
+        h1 {
           margin-top: 20px;
           font-size: 32px;
           font-weight: 700;
           margin-bottom: 20px;
+        }
       }
 
-      h4 {
-          font-size: 16px;
-          font-weight: 500;
-      }
+      .bottom {
+        height: 50%;
+        overflow: hidden;
 
-      .categories-section {
-
-          .cat-card {
-              border-left: 1px solid #f5f5f5;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              padding-left: 10px;
-
-          }
-
-          p {
-              font-weight: 700;
-              margin-bottom: 0px;
-              margin-bottom: 10px;
-          }
-
-          margin-top: 40px;
+        img {
           width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
 
       }
-  }
-
-  .btn-row {
-      height: 80px;
-
-      .hero-btn {
-          min-height: 60px;
-          width: 100%;
-          color: white;
-          border-radius: 0px;
-          // margin-top: 40px;
-          background-color: #fb3b71;
-      }
-  }
-
-  .right-content {
-      display: flex;
-
-      .r-1 {
-          width: 50% !important;
-          min-height: 600px;
-
-          .top-image {
-            background-color: #f5f5f5;
-              min-height: calc(600px - 60px);
-              // background-color: #f5f5f5;
-
-              img {
-                  width: 100%;
-                  height: calc(600px - 60px);
-                  object-fit: cover;
-              }
-
-          }
-
-          .buttons {
-              display: flex;
-
-              .btn {
-                  border-radius: 0px;
-                  width: 100%;
-                  height: 60px;
-              }
-          }
-      }
-
-      .r-2 {
-          min-height: 600px;
-          width: 50% !important;
-
-          .top {
-              height: 50%;
-              padding: 30px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              // background-color: #f5f5f5;
-
-              h2 {
-                  font-size: 32px;
-                  color: #fb3b71;
-                  margin-bottom: 30px;
-              }
-
-              small {
-                  font-size: 13px;
-                  font-weight: 500;
-              }
-
-              h1 {
-                  margin-top: 20px;
-                  font-size: 32px;
-                  font-weight: 700;
-                  margin-bottom: 20px;
-              }
-          }
-
-          .bottom {
-              height: 50%;
-              overflow: hidden;
-
-              img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-              }
-
-          }
-      }
+    }
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .hero-section .left-content .top-content {
-      padding: 30px;
+    padding: 30px;
   }
 
   .hero-section .left-content .categories-section {
-      margin-top: 20px;
+    margin-top: 20px;
   }
 }
 
 @media only screen and (max-width: 991px) {
   .hero-section .left-content {
-      min-height: 400px !important;
+    min-height: 400px !important;
   }
 
   .hero-section .right-content .r-1 .top-image img {
-      height: calc(400px - 60px) !important;
+    height: calc(400px - 60px) !important;
 
   }
+
   .hero-section .right-content .r-1 .buttons .btn {
-      padding: 0px;
-      font-size: 14px;
+    padding: 0px;
+    font-size: 14px;
   }
+
   .hero-section .left-content .top-content {
-      min-height: calc(400px - 60px);
+    min-height: calc(400px - 60px);
 
-      h2 {
-          margin-bottom: 10px;
-          font-size: 20px;
-      }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
 
-      .hero-section .left-content small {
-          margin-bottom: 20px;
-      }
+    .hero-section .left-content small {
+      margin-bottom: 20px;
+    }
 
-      h1 {
-          font-size: 22px;
-      }
+    h1 {
+      font-size: 22px;
+    }
 
-      h4 {
-          font-size: 14px;
-      }
+    h4 {
+      font-size: 14px;
+    }
 
   }
 
   .hero-section .right-content .r-1 {
-      min-height: 400px;
+    min-height: 400px;
   }
 
   .hero-section .right-content .r-1 .top-image {
-      min-height: calc(400px - 60px);
+    min-height: calc(400px - 60px);
 
   }
 
 
   .hero-section .right-content .r-2 {
-      min-height: 400px;
+    min-height: 400px;
 
   }
+
   .hero-section .left-content .top-content {
-      padding: 20px !important;
+    padding: 20px !important;
   }
+
   .hero-section .right-content .r-2 .top {
-      padding: 20px;
+    padding: 20px;
 
-      h2 {
-          margin-bottom: 10px;
-          font-size: 20px;
-      }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
 
-      h1 {
-          margin-bottom: 0px;
-          font-size: 18px;
-      }
+    h1 {
+      margin-bottom: 0px;
+      font-size: 18px;
+    }
   }
+
   .order1 {
-      order: 2;
+    order: 2;
   }
+
   .order2 {
-      order: 1;
+    order: 1;
   }
 }
+
