@@ -1,7 +1,14 @@
-@import '../../../../styles.scss';
+@import "../../../../styles.scss";
 
 .desktop-dashboard-header {
-
+    @media only screen and (max-width: 991px) {
+        .img-icon {
+            font-size: 18px !important;
+        }
+        .field-heading {
+            font-size: 13px !important;
+        }
+    }
     .header-bar {
         ul {
             display: flex;
@@ -15,13 +22,15 @@
                 width: 100%;
                 display: flex;
                 align-items: center;
+                justify-content: center;
 
                 &.active {
                     border-bottom: 3px solid $pink;
                 }
 
                 border-right: 1px solid $ligher-gray;
-                padding:15px 20px;
+                padding: 15px 0px;
+                text-align: center;
 
                 &:nth-last-child(1) {
                     border-right: 0px;
@@ -111,7 +120,7 @@
 }
 
 .tab-links-cont li.active a {
-    color: $black  !important;
+    color: $black !important;
     background-position: 0 0px;
 }
 
@@ -119,6 +128,7 @@
     margin: 0 auto;
     padding: 40px;
     margin: 25px;
-    font-family: 'montserratbold';
+    font-family: "montserratbold";
     height: 48px;
 }
+

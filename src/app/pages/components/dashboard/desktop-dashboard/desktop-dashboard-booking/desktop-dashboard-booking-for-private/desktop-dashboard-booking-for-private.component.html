@@ -1,60 +1,68 @@
 <div class="desktop-dashboard-booking-private" *ngIf="currentHistory">
     <div class="top-header-bar mt-4">
-        <div fxLayout="row">
-            <div fxFlex="50%" class="left-side">
-                <span>Booking</span> 
-                <a mat-button class="pink-b rounded-bt py-0 px-3">Select Plan</a>
-                <p class="date">{{today | date: 'fullDate'}}</p>
+        <div class="row">
+            <div class="col-lg-6 xs-mb-20">
+                <div class="left-side">
+                    <span>Booking</span>
+                    <a mat-button class="pink-b rounded-bt py-0 px-3">Select Plan</a>
+                    <p class="date">{{today | date: 'fullDate'}}</p>
+                </div>
             </div>
-            <div fxFlex="50%" class="right-side text-right">
-                <a mat-button class="white-b rounded-bt px-5 mr-4">Back to Home</a>
-                <a mat-button class="pink-b rounded-bt px-5">Back a Visit</a>
+            <div class="col-lg-6">
+                <div class="right-side text-right">
+                    <a mat-button class="white-b rounded-bt px-5 mr-4">Back to Home</a>
+                    <a mat-button class="pink-b rounded-bt px-5">Back a Visit</a>
+                </div>
             </div>
         </div>
     </div>
 
     <div *ngIf="datedHistory" class="calendar-section mt-4">
-        <div fxLayout="row">
-            <div fxFlex="35%" class="calendar p-3 mr-4">
-                <mat-calendar #calendar color="primary" [(selected)]="privateSelectedDate"></mat-calendar>
+        <div class="row">
+            <div class="col-lg-4 xs-mb-20">
+                <div class="calendar p-3 ">
+                    <mat-calendar #calendar color="primary" [(selected)]="privateSelectedDate"></mat-calendar>
+                </div>
             </div>
 
-            <div fxFlex="65%" class="calendar-fields p-3">
-                <div fxLayout="row" class="heading-bar pb-3 border-bottom">
-                    <div fxFlex="50%" class="date">
-                        <p>{{today | date}}</p>
+            <div class="col-lg-8">
+                <div class="calendar-fields p-3">
+                    <div fxLayout="row" class="heading-bar pb-3 border-bottom">
+                        <div fxFlex="50%" class="date">
+                            <p>{{today | date}}</p>
+                        </div>
+
+                        <div fxFlex="50%" class="visit text-right">
+                            <p>{{datedHistory.count}} Visits</p>
+                        </div>
                     </div>
 
-                    <div fxFlex="50%" class="visit text-right">
-                        <p>{{datedHistory.count}} Visits</p>
-                    </div>
-                </div>
-
-                <div class="fields-scroll pr-3 mt-3">
-                    <div fxLayout="row" class="category-field p-2" *ngFor="let item of datedHistory.results">
-                        <div fxFlex="70%" class="service">
-                            <p class="pb-2">{{item.service_name}}</p>
-                            <div class="shop-icon">
-                                <span class="icon-commercial"></span>
-                                <span class="text">{{item.service_shop_name}}</span>
+                    <div class="fields-scroll pr-3 mt-3">
+                        <div fxLayout="row" class="category-field p-2" *ngFor="let item of datedHistory.results">
+                            <div fxFlex="70%" class="service">
+                                <p class="pb-2">{{item.service_name}}</p>
+                                <div class="shop-icon">
+                                    <span class="icon-commercial"></span>
+                                    <span class="text">{{item.service_shop_name}}</span>
+                                </div>
+                            </div>
+                            <div fxFlex="25%" class="amount text-right pr-3">
+                                <p class="price">${{item.price}}</p>
+                                <p class="time pt-2">{{item.to_time}} - {{item.from_time}}</p>
+                            </div>
+                            <div fxFlex="5%" class="edit text-center ml-3">
+                                <a>
+                                    <img src="../../../../../../../assets/img/writing-public.png">
+                                </a>
                             </div>
                         </div>
-                        <div fxFlex="25%" class="amount text-right pr-3">
-                            <p class="price">${{item.price}}</p>
-                            <p class="time pt-2">{{item.to_time}} - {{item.from_time}}</p>
-                        </div>
-                        <div fxFlex="5%" class="edit text-center ml-3">
-                            <a>
-                                <img src="../../../../../../../assets/img/writing-public.png">
-                            </a>
+
+                        <div *ngIf="datedHistory.results.length == 0">
+                            <h4>No Results Found For {{today | date}}</h4>
                         </div>
                     </div>
 
-                    <div *ngIf="datedHistory.results.length == 0">
-                        <h4>No Results Found For {{today | date}}</h4>
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -67,9 +75,12 @@
             <div fxFlex="60%" class="tabs">
                 <div class="float-right">
                     <ul>
-                        <li [ngClass]="{'active': cancel == false && finish == false }"><a (click)= 'allHistory()'>All</a></li>
-                        <li [ngClass]="{'active': cancel == false && finish == true }"><a (click)= 'finishHistory()'>Completed</a></li>
-                        <li [ngClass]="{'active': cancel == true && finish == false }"><a (click)= 'cancelHistory()'>Cancelled</a ></li>
+                        <li [ngClass]="{'active': cancel == false && finish == false }"><a
+                                (click)='allHistory()'>All</a></li>
+                        <li [ngClass]="{'active': cancel == false && finish == true }"><a
+                                (click)='finishHistory()'>Completed</a></li>
+                        <li [ngClass]="{'active': cancel == true && finish == false }"><a
+                                (click)='cancelHistory()'>Cancelled</a></li>
                     </ul>
                 </div>
             </div>
@@ -85,7 +96,8 @@
                             <span class="text">{{item.service_shop_name}}</span>
                         </div>
                         <div class="star-rating">
-                            <app-star-rating [maxScore]="5" [score]="item.service_rating" [forDisplay]="true"></app-star-rating>
+                            <app-star-rating [maxScore]="5" [score]="item.service_rating" [forDisplay]="true">
+                            </app-star-rating>
                         </div>
                         <div class="write-btn">
                             <a class="ml-3">Write Review</a>
