@@ -225,3 +225,8 @@
     overflow: visible !important;
     overflow-y: unset !important;
 }
+@media only screen and (max-width: 991px) {
+    .xs-mb-20 {
+        margin-bottom: 20px !important;
+    }
+}

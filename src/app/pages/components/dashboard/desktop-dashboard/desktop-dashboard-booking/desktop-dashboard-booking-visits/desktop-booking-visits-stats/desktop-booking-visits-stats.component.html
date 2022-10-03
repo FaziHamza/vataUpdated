@@ -1,7 +1,7 @@
 <div class="desktop-booking-visits-stats">
 
-    <div fxLayout="row" class="date-header-bar p-3 mt-4">
-        <div fxFlex="55%" class="left-side pt-2">
+    <div class="row date-header-bar p-3 mt-4">
+        <div class="col-lg-7 left-side pt-2 xs-mb-20">
             <ul>
                 <li *ngIf="isDayActive"><a class="date">{{moment().format('LLLL')}}</a></li>
                 <li *ngIf="!isDayActive"><a class="date">{{moment().startOf('week').format('MMMM DD')}} - {{moment().endOf('week').format('MMMM DD YYYY')}}</a></li>
@@ -11,14 +11,14 @@
             </ul>
         </div>
 
-        <div fxFlex="45%" class="right-side text-right">
+        <div class="col-lg-5 right-side text-right">
             <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Back to Home</a>
             <a mat-button class="pink-b rounded-bt py-0 px-5" (click)="routeToNewVisit()" >Add Visit</a>
         </div>
     </div>
 
-    <div fxLayout="row" class="calendar-sections mt-4">
-        <div fxFlex="35%" class="left-section">
+    <div class="row mt-3 calendar-sections ">
+        <div  class="col-lg-4 left-section">
             <div class="calendar p-3">
                 <mat-calendar #calendar color="primary" [(selected)]="selectedDate"></mat-calendar>
             </div>
@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        <div fxFlex="65%" class="right-section ml-3">
+        <div  class="col-lg-8 right-section">
             <div id="example-calendar"></div>
 
         </div>

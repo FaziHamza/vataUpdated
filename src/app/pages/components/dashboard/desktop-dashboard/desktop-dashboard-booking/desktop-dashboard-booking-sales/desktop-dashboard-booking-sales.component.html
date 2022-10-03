@@ -1,8 +1,9 @@
 <div class="desktop-dashboard-booking-sales mt-4">
-    <div fxLayout="row">
+    <div class="row date-header-bar p-3 mt-4">
 
-        <div fxFlex="35%" class="left-side p-3">
-            <div fxLayout="row" class="client border-bottom pb-2">
+        <div class="col-lg-4">
+            <div class="left-side">
+            <div fxLayout="row" class="client border-bottom p-4 pb-2">
                 <div fxFlex="15%">
                     <div class="client-img">
                         <img src="../../../../../../../assets/img/Oval-user.png">
@@ -22,11 +23,12 @@
                     </div>
                 </div>
             </div>
+     
 
             <div class="client-service-tabs">
                 <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
                     <mat-tab label="To be Charged">
-                        <div class="charged-tab">
+                        <div class="charged-tab p-3">
                             <div class="fields-scroll pr-3">
                                 <div class="charged-fields">
                                     <div fxLayout="row" class="heading py-3">
@@ -171,8 +173,9 @@
                 </mat-tab-group>
             </div>
         </div>
+    </div>
 
-        <div fxFlex="65%" class="right-side p-3 ml-3">
+        <div class="col-lg-8 right-side p-3 ">
             <div class="summary-details-view">
                 <div fxLayout="row" class="header-row pb-3 border-bottom">
                     <div fxFlex="50%">
