@@ -3,356 +3,212 @@
 
         <div class="col-lg-4">
             <div class="left-side">
-            <div fxLayout="row" class="client border-bottom p-4 pb-2">
-                <div fxFlex="15%">
-                    <div class="client-img">
-                        <img src="../../../../../../../assets/img/Oval-user.png">
+                <div fxLayout="row" class="client border-bottom p-3 pb-2">
+                    <div fxFlex="15%">
+                        <div class="client-img">
+                            <img src="../../../../../../../assets/img/Oval-user.png">
+                        </div>
+                    </div>
+
+                    <div fxFlex="85%" class="input-toggle ml-2">
+                        <div fxLayout="row" class="input-field">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Client Name</mat-label>
+                                <input matInput type="text">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="toggle">
+                            <span>Quick Booking</span>
+                            <mat-slide-toggle></mat-slide-toggle>
+                        </div>
                     </div>
                 </div>
 
-                <div fxFlex="85%" class="input-toggle ml-2">
-                    <div fxLayout="row" class="input-field">
-                        <mat-form-field class="form-section w-100">
-                            <mat-label>Client Name</mat-label>
-                            <input matInput type="text">
-                        </mat-form-field>
-                    </div>
 
-                    <div class="toggle">
-                        <span>Quick Booking</span> <mat-slide-toggle></mat-slide-toggle>
-                    </div>
+                <div class="client-service-tabs">
+                    <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+                        <mat-tab label="To be Charged">
+                            <div class="charged-tab p-3">
+                                <div class="fields-scroll pr-3">
+                                    <div class="charged-fields">
+                                        <div fxLayout="row" class="heading py-3">
+                                            <div fxFlex="50%">
+                                                <p>March 27, 2019</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <p>2 Vists</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Men's Haircut with Hot towel Shave</p>
+                                            <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                            <span class="float-right">From Misha</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Barber hair</p>
+                                            <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                            <span class="float-right">From Andrew</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="charged-fields">
+                                        <div fxLayout="row" class="heading py-3">
+                                            <div fxFlex="50%">
+                                                <p>Today</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <p class="pink-text">3 Vists</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Men's Haircut with Hot towel Shave</p>
+                                            <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                            <span class="float-right">From Misha</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Barber hair</p>
+                                            <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                            <span class="float-right">From Andrew</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="charged-fields">
+                                        <div fxLayout="row" class="heading py-3">
+                                            <div fxFlex="50%">
+                                                <p>Yesterday</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <p>5 Vists</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Men's Haircut with Hot towel Shave</p>
+                                            <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                            <span class="float-right">From Misha</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Barber hair</p>
+                                            <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                            <span class="float-right">From Andrew</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Service List">
+                            <div class="service-tab">
+                                <div class="search-bar my-2">
+                                    <span class="icon-search-1"></span>
+                                    <input type="text" placeholder="Search Services">
+                                </div>
+
+                                <div class="fields-scroll pr-3">
+                                    <div class="service-fields">
+                                        <div fxLayout="row" class="heading pt-3 pb-2">
+                                            <div fxFlex="50%">
+                                                <p>For Woman (2)</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Massage</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="service-fields">
+                                        <div fxLayout="row" class="heading pt-3 pb-2">
+                                            <div fxFlex="50%">
+                                                <p>For Man (4)</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Men's Haircut with Hot towel Shave</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Barber hair</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="service-fields">
+                                        <div fxLayout="row" class="heading pt-3 pb-2">
+                                            <div fxFlex="50%">
+                                                <p>For Woman (2)</p>
+                                            </div>
+                                            <div fxFlex="50%" class="text-right">
+                                                <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Acrylic Full Set Pearl/ French Tips</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                        <div class="field-detail p-3 mt-4">
+                                            <p>Massage</p>
+                                            <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
-            </div>
-     
-
-            <div class="client-service-tabs">
-                <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
-                    <mat-tab label="To be Charged">
-                        <div class="charged-tab p-3">
-                            <div class="fields-scroll pr-3">
-                                <div class="charged-fields">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>March 27, 2019</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p>2 Vists</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Men's Haircut with Hot towel Shave</p>
-                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                        <span class="float-right">From Misha</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Barber hair</p>
-                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                        <span class="float-right">From Andrew</span>
-                                    </div>
-                                </div>
-
-                                <div class="charged-fields">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>Today</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p class="pink-text">3 Vists</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Men's Haircut with Hot towel Shave</p>
-                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                        <span class="float-right">From Misha</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Barber hair</p>
-                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                        <span class="float-right">From Andrew</span>
-                                    </div>
-                                </div>
-
-                                <div class="charged-fields">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>Yesterday</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p>5 Vists</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Men's Haircut with Hot towel Shave</p>
-                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                        <span class="float-right">From Misha</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Barber hair</p>
-                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                        <span class="float-right">From Andrew</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </mat-tab>
-
-                    <mat-tab label="Service List">
-                        <div class="service-tab">
-                            <div class="search-bar my-2">
-                                <span class="icon-search-1"></span>
-                                <input type="text" placeholder="Search Services">
-                            </div>
-
-                            <div class="fields-scroll pr-3">
-                                <div class="service-fields">
-                                    <div fxLayout="row" class="heading pt-3 pb-2">
-                                        <div fxFlex="50%">
-                                            <p>For Woman (2)</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Acrylic Full Set Pearl/ French Tips</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Massage</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                </div>
-
-                                <div class="service-fields">
-                                    <div fxLayout="row" class="heading pt-3 pb-2">
-                                        <div fxFlex="50%">
-                                            <p>For Man (4)</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Men's Haircut with Hot towel Shave</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Barber hair</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                </div>
-
-                                <div class="service-fields">
-                                    <div fxLayout="row" class="heading pt-3 pb-2">
-                                        <div fxFlex="50%">
-                                            <p>For Woman (2)</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Acrylic Full Set Pearl/ French Tips</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4">
-                                        <p>Massage</p>
-                                        <span class="pr-3">30min</span> <span class="pink-text">$55.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
             </div>
         </div>
-    </div>
-
-        <div class="col-lg-8 right-side p-3 ">
-            <div class="summary-details-view">
-                <div fxLayout="row" class="header-row pb-3 border-bottom">
-                    <div fxFlex="50%">
-                        <h6>Summary</h6>
-                    </div>
-                    <div fxFlex="50%" class="text-right">
-                        <p>Amount</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="service-price-row py-3 border-bottom">
-                    <div fxFlex="50%" class="left-side">
-                        <p>Acrylic Full Set Pearl/French Tips</p>
-                        <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span> <span>Caneron Deas</span>
-                    </div>
-                    <div fxFlex="50%" class="right-side text-right">
-                        <p>$55.00</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="service-price-row py-3 border-bottom">
-                    <div fxFlex="50%" class="left-side">
-                        <p>Acrylic Full Set Pearl/French Tips</p>
-                        <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span> <span>Caneron Deas</span>
-                    </div>
-                    <div fxFlex="50%" class="right-side text-right">
-                        <p>$55.00</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="tap-modify py-4 border-bottom">
-                    <a class="tap">
-                        <img src="../../../../../../../assets/img/tap.png">
-                        <span class="tap-text">
-                            Tap on item to modify
-                        </span>
-                    </a>
-                </div>
-
-                <div fxLayout="row" class="discount-amount py-3 border-bottom">
-                    <div fxFlex="60%"></div>
-
-                    <div fxFlex="20%" class="subtotal">
-                        <p>Subtotal</p>
-                        <p class="discount pt-4">
-                            Discount <span class="icon-add-button-inside-black-circle-1"></span>
-                        </p>
-                    </div>
-
-                    <div fxFlex="20%" class="price text-right">
-                        <p>$135.00</p>
-                        <p class="pt-4">-$135.00 (10%)</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="tip-bar pt-3 border-bottom">
-                    <div fxFlex="60%" class="left-side">
-                        <ul>
-                            <li><p>No Tip</p></li>
-                            <li class="active"><p>10%</p></li>
-                            <li><p>15%</p></li>
-                            <li><p>20%</p></li>
-                            <li><p><img src="../../../../../../../assets/img/circlebtns.png"></p></li>
-                        </ul>
-                    </div>
-
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="tip-text">Tip Amount</p>
-                            </div>
-                            <div fxFlex="50%">
-                                <p class="amount text-right">$12.15</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="payment-method pt-3">
-                    <div fxFlex="60%" class="left-side">
-
-                    </div>
-
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="total">Total</p>
-                            </div>
-                            <div fxFlex="50%">
-                                <p class="price text-right">$133.36</p>
-                            </div>
-                        </div>
-                        <div class="charge-btn mt-4">
-                            <a mat-button class="pink-b d-block py-0 rounded-bt px-5">Charge</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="summary-edit-view">
-                <div fxLayout="row" class="header-row pb-3 border-bottom">
-                    <div fxFlex="50%">
-                        <h6>Summary</h6>
-                    </div>
-                    <div fxFlex="50%" class="text-right">
-                        <p>Amount</p>
-                    </div>
-                </div>
-
-                <div class="edit-inputs my-4 pt-2 pb-3 px-3">
-                    <div fxLayout="row" class="service-input">
-                        <mat-form-field class="form-section w-100">
-                            <mat-label>Service</mat-label>
-                            <input matInput type="text">
-                        </mat-form-field>
-
-                        <div class="amount">
-                            <span class="time pr-3">90min</span> <span class="price">$55.00</span>
-                        </div>
-                    </div>
-
-                    <div fxLayout="row" class="date-dropdowns">
-                        <div fxFlex="50%" class="mr-3">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Date</mat-label>
-                                <mat-select>
-                                    <mat-option value="27">March 27</mat-option>
-                                    <mat-option value="02">April 02</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div fxFlex="24%" class="mr-3">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Time From</mat-label>
-                                <mat-select>
-                                    <mat-option value="10">10:00</mat-option>
-                                    <mat-option value="12">12:30</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div fxFlex="24%">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Time From</mat-label>
-                                <mat-select>
-                                    <mat-option value="11">11:30</mat-option>
-                                    <mat-option value="11">03:30</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div>
-
-                    <div fxLayout="row" class="remove-apply-btns mt-3">
+        <div class="col-lg-8">
+            <div class=" right-side p-3 ">
+                <div class="summary-details-view">
+                    <div fxLayout="row" class="header-row pb-3 border-bottom">
                         <div fxFlex="50%">
-                            <div class="remove">
-                                <a mat-button class="px-4">
-                                    <span class="icon-baseline-close-24px-1"></span>
-                                    Remove Service
-                                </a>
-                            </div>
+                            <h6>Summary</h6>
                         </div>
                         <div fxFlex="50%" class="text-right">
-                            <a mat-button class="pink-b rounded-bt py-0 px-5">Apply Changes Booking</a>
+                            <p>Amount</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="service-bar-tap">
-                    <div fxLayout="row" class="service-price-row py-3 border-top border-bottom">
+                    <div fxLayout="row" class="service-price-row py-3 border-bottom">
                         <div fxFlex="50%" class="left-side">
-                            <p>Barber Hair</p>
-                            <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span> <span>Caneron Deas</span>
+                            <p>Acrylic Full Set Pearl/French Tips</p>
+                            <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span>
+                            <span>Caneron Deas</span>
                         </div>
                         <div fxFlex="50%" class="right-side text-right">
                             <p>$55.00</p>
                         </div>
                     </div>
-    
+
+                    <div fxLayout="row" class="service-price-row py-3 border-bottom">
+                        <div fxFlex="50%" class="left-side">
+                            <p>Acrylic Full Set Pearl/French Tips</p>
+                            <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span>
+                            <span>Caneron Deas</span>
+                        </div>
+                        <div fxFlex="50%" class="right-side text-right">
+                            <p>$55.00</p>
+                        </div>
+                    </div>
+
                     <div fxLayout="row" class="tap-modify py-4 border-bottom">
                         <a class="tap">
                             <img src="../../../../../../../assets/img/tap.png">
@@ -361,84 +217,253 @@
                             </span>
                         </a>
                     </div>
-                </div>
 
-                <div fxLayout="row" class="tip-bar pt-3 border-bottom">
-                    <div fxFlex="60%" class="left-side mr-3">
-                        <ul>
-                            <li><p>No Tip</p></li>
-                            <li><p>10%</p></li>
-                            <li><p>15%</p></li>
-                            <li><p>20%</p></li>
-                            <li class="active"><p>Custom</p></li>
-                        </ul>
+                    <div fxLayout="row" class="discount-amount py-3 border-bottom">
+                        <div fxFlex="60%"></div>
+
+                        <div fxFlex="20%" class="subtotal">
+                            <p>Subtotal</p>
+                            <p class="discount pt-4">
+                                Discount <span class="icon-add-button-inside-black-circle-1"></span>
+                            </p>
+                        </div>
+
+                        <div fxFlex="20%" class="price text-right">
+                            <p>$135.00</p>
+                            <p class="pt-4">-$135.00 (10%)</p>
+                        </div>
                     </div>
 
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="tip-text">Tip Amount</p>
+                    <div fxLayout="row" class="tip-bar pt-3 border-bottom">
+                        <div fxFlex="60%" class="left-side">
+                            <ul>
+                                <li>
+                                    <p>No Tip</p>
+                                </li>
+                                <li class="active">
+                                    <p>10%</p>
+                                </li>
+                                <li>
+                                    <p>15%</p>
+                                </li>
+                                <li>
+                                    <p>20%</p>
+                                </li>
+                                <li>
+                                    <p><img src="../../../../../../../assets/img/circlebtns.png"></p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div fxFlex="40%" class="right-side">
+                            <div fxLayout="row">
+                                <div fxFlex="50%">
+                                    <p class="tip-text">Tip Amount</p>
+                                </div>
+                                <div fxFlex="50%">
+                                    <p class="amount text-right">$12.15</p>
+                                </div>
                             </div>
-                            <div fxFlex="50%">
-                                <p class="amount text-right">$25.65 (22%)</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="payment-method pt-3">
+                        <div fxFlex="60%" class="left-side">
+
+                        </div>
+
+                        <div fxFlex="40%" class="right-side">
+                            <div fxLayout="row">
+                                <div fxFlex="50%">
+                                    <p class="total">Total</p>
+                                </div>
+                                <div fxFlex="50%">
+                                    <p class="price text-right">$133.36</p>
+                                </div>
+                            </div>
+                            <div class="charge-btn mt-4">
+                                <a mat-button class="pink-b d-block py-0 rounded-bt px-5">Charge</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div fxLayout="row" class="tips-conditions py-4 border-bottom">
-                    <div fxFlex="50%" class="field p-2 left-side mr-3">
-                        <div fxLayout="row">
-                            <div fxFlex="60%" class="input mr-3">
+                <div class="summary-edit-view">
+                    <div fxLayout="row" class="header-row pb-3 border-bottom">
+                        <div fxFlex="50%">
+                            <h6>Summary</h6>
+                        </div>
+                        <div fxFlex="50%" class="text-right">
+                            <p>Amount</p>
+                        </div>
+                    </div>
+
+                    <div class="edit-inputs my-4 pt-2 pb-3 px-3">
+                        <div fxLayout="row" class="service-input">
+                            <mat-form-field class="form-section w-100">
+                                <mat-label>Service</mat-label>
+                                <input matInput type="text">
+                            </mat-form-field>
+
+                            <div class="amount">
+                                <span class="time pr-3">90min</span> <span class="price">$55.00</span>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" class="date-dropdowns">
+                            <div fxFlex="50%" class="mr-3">
                                 <mat-form-field class="form-section w-100">
-                                    <mat-label>Custom Tip in Progress</mat-label>
-                                    <input matInput type="text">
+                                    <mat-label>Date</mat-label>
+                                    <mat-select>
+                                        <mat-option value="27">March 27</mat-option>
+                                        <mat-option value="02">April 02</mat-option>
+                                    </mat-select>
                                 </mat-form-field>
                             </div>
-
-                            <div fxFlex="40%" class="btn text-right">
-                                <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4">Apply Tip</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div fxFlex="50%" class="field p-2 right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="60%" class="input mr-3">
+                            <div fxFlex="24%" class="mr-3">
                                 <mat-form-field class="form-section w-100">
-                                    <mat-label>Custom Tip in Cash</mat-label>
-                                    <input matInput type="text">
+                                    <mat-label>Time From</mat-label>
+                                    <mat-select>
+                                        <mat-option value="10">10:00</mat-option>
+                                        <mat-option value="12">12:30</mat-option>
+                                    </mat-select>
                                 </mat-form-field>
                             </div>
+                            <div fxFlex="24%">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Time From</mat-label>
+                                    <mat-select>
+                                        <mat-option value="11">11:30</mat-option>
+                                        <mat-option value="11">03:30</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
 
-                            <div fxFlex="40%" class="btn text-right">
-                                <a mat-button class="white-b rounded-bt mt-2 py-0 px-4">Apply Tip</a>
+                        <div fxLayout="row" class="remove-apply-btns mt-3">
+                            <div fxFlex="50%">
+                                <div class="remove">
+                                    <a mat-button class="px-4">
+                                        <span class="icon-baseline-close-24px-1"></span>
+                                        Remove Service
+                                    </a>
+                                </div>
+                            </div>
+                            <div fxFlex="50%" class="text-right">
+                                <a mat-button class="pink-b rounded-bt py-0 px-5">Apply Changes Booking</a>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div fxLayout="row" class="payment-method pt-3">
-                    <div fxFlex="60%" class="left-side">
-
-                    </div>
-
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="total">Total</p>
+                    <div class="service-bar-tap">
+                        <div fxLayout="row" class="service-price-row py-3 border-top border-bottom">
+                            <div fxFlex="50%" class="left-side">
+                                <p>Barber Hair</p>
+                                <span class="pr-2">March 27, 2019</span> <span class="pr-4">14:00 - 14:30</span>
+                                <span>Caneron Deas</span>
                             </div>
-                            <div fxFlex="50%">
-                                <p class="price text-right">$133.36</p>
+                            <div fxFlex="50%" class="right-side text-right">
+                                <p>$55.00</p>
                             </div>
                         </div>
-                        <div class="charge-btn mt-4">
-                            <a mat-button class="pink-b d-block py-0 rounded-bt px-5">Charge</a>
+
+                        <div fxLayout="row" class="tap-modify py-4 border-bottom">
+                            <a class="tap">
+                                <img src="../../../../../../../assets/img/tap.png">
+                                <span class="tap-text">
+                                    Tap on item to modify
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="tip-bar pt-3 border-bottom">
+                        <div fxFlex="60%" class="left-side mr-3">
+                            <ul>
+                                <li>
+                                    <p>No Tip</p>
+                                </li>
+                                <li>
+                                    <p>10%</p>
+                                </li>
+                                <li>
+                                    <p>15%</p>
+                                </li>
+                                <li>
+                                    <p>20%</p>
+                                </li>
+                                <li class="active">
+                                    <p>Custom</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div fxFlex="40%" class="right-side">
+                            <div fxLayout="row">
+                                <div fxFlex="50%">
+                                    <p class="tip-text">Tip Amount</p>
+                                </div>
+                                <div fxFlex="50%">
+                                    <p class="amount text-right">$25.65 (22%)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="tips-conditions py-4 border-bottom">
+                        <div fxFlex="50%" class="field p-2 left-side mr-3">
+                            <div fxLayout="row">
+                                <div fxFlex="60%" class="input mr-3">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Custom Tip in Progress</mat-label>
+                                        <input matInput type="text">
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="40%" class="btn text-right">
+                                    <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4">Apply Tip</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div fxFlex="50%" class="field p-2 right-side">
+                            <div fxLayout="row">
+                                <div fxFlex="60%" class="input mr-3">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Custom Tip in Cash</mat-label>
+                                        <input matInput type="text">
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="40%" class="btn text-right">
+                                    <a mat-button class="white-b rounded-bt mt-2 py-0 px-4">Apply Tip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="payment-method pt-3">
+                        <div fxFlex="60%" class="left-side">
+
+                        </div>
+
+                        <div fxFlex="40%" class="right-side">
+                            <div fxLayout="row">
+                                <div fxFlex="50%">
+                                    <p class="total">Total</p>
+                                </div>
+                                <div fxFlex="50%">
+                                    <p class="price text-right">$133.36</p>
+                                </div>
+                            </div>
+                            <div class="charge-btn mt-4">
+                                <a mat-button class="pink-b d-block py-0 rounded-bt px-5">Charge</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
