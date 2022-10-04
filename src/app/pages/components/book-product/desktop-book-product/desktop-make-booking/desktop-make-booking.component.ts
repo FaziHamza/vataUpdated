@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookProductService } from '../../book-product.service';
 import { AddServiceComponent } from 'src/app/shared/components/add-service/add-service.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-desktop-make-booking',
@@ -20,7 +21,7 @@ export class DesktopMakeBookingComponent implements OnInit {
   selectedServiceIndex;
   dialogRef;
   staffMembers = [];
-  constructor(private activeRoute: ActivatedRoute, private bookProductService: BookProductService, private dialog: MatDialog) { }
+  constructor(  private userService: UserService,    private activeRoute: ActivatedRoute, private bookProductService: BookProductService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.identifyBookingType();
@@ -141,6 +142,7 @@ export class DesktopMakeBookingComponent implements OnInit {
   }
 
   addAnotherService() {
+    debugger
     let allServices = [];
     this.bookProductService.getServicesByCategory(this.shopId).subscribe((response) => {
       if (response.Status == "Success") {
@@ -168,7 +170,22 @@ export class DesktopMakeBookingComponent implements OnInit {
         this.services.push(newService)
       })
     }
-    
+    confirmPay(){
+      let obj ={
+        "total_payment": this.calculateTotal(),
+        "paid": true,
+        "stripe_pay_intent": "",
+        "stripe_fee_percent": 1,
+        "user_id": this.userService.getUser().user_details.id,
+        "booking_status": "paid",
+        "promo_code": ""
+      }
+      debugger
+      this.bookProductService.checkout(obj).subscribe((res=>{
+        debugger
+
+      }))
+    }
 
     
 

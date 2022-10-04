@@ -4,7 +4,7 @@
             <h5 class="heading position-relative" [ngClass]="{ 'bordered-header': dialogData.type == 'border' }">{{dialogData.title}}</h5>
         </div>
     </div>
-    <div class="booking-fields">
+    <div class="booking-fields" *ngIf="services">
         <div fxLayout="row" class="pb-3" *ngFor="let service of services">
             <div fxFlex="64%" class="heading">
                 <h6 class="pb-2">{{ service.service_name }}</h6>
@@ -22,4 +22,5 @@
             </div>
         </div>
     </div>
+    <h3 class="alrtNoRecord" *ngIf="services.length==0"> There is no serive avalibe for this shope</h3>
 </div>

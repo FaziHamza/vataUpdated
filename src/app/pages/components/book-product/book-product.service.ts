@@ -55,6 +55,9 @@ export class BookProductService {
   addToFavourites(shopId, userId) {
     return this.apiService.post(ApiEndPoints.BOOK_PRODUCT.ADD_TO_FAVOURITES, { shop: shopId, user: userId });
   }
+  checkout(obj:any) {
+    return this.apiService.post(ApiEndPoints.BOOK_PRODUCT.CHECKOUT_PAY, obj);
+  }
 
   getServiceDetails(serviceId) {
     return this.apiService.get(sprintf(ApiEndPoints.BOOK_PRODUCT.SERVICE_DETAILS, serviceId));
