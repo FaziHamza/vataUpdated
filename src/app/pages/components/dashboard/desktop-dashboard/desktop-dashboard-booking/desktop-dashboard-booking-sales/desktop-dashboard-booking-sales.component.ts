@@ -21,10 +21,12 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
   upcomingHistory: any;
   summaryData: any;
   addSummaryData: any;
+  checkClient: boolean = true;
   shopId;
   services;
   removeSummary;
   formType;
+  allClients: any;
   constructor(
     private route: ActivatedRoute,
     private dashboardService: DashboardService,
@@ -56,6 +58,12 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
       clientName: ['', Validators.required],
       booking_options: [true],
     });
+  }
+  getAllClients() {
+    this.dashboardService.getClients(this.shopId).subscribe(res => {
+      this.allClients = res;
+      console.log(this.allClients);
+    })
   }
   formEditSummary() {
     this.editSummaryForm = this.fb.group({
@@ -149,7 +157,6 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
         timeTo: this.addSummaryData?.to_time,
       });
     }
-
   }
   saveServices() {
     let date = moment(this.editSummaryForm.value.date).format('YYYY-MM-DD');
@@ -164,20 +171,22 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
         "client": this.clientDetail.id,
         "cancel": false
       }
-      this.dashboardService.postOfflineModifiedService(param).subscribe(res => {
-        this.resetSummaryForm();
-        if (res.status == "Success") {
-          this.toastrService.success("Information update successfully!", "Success");
-          var parav1 = {
-            "client": this.clientDetail.id,
+      if (this.editSummaryForm.valid) {
+        this.dashboardService.postOfflineModifiedService(param).subscribe(res => {
+          this.resetSummaryForm();
+          if (res.status == "Success") {
+            this.toastrService.success("Information update successfully!", "Success");
+            var parav1 = {
+              "client": this.clientDetail.id,
+            }
+            this.dashboardService.postOfflineOncart(parav1).subscribe(resv1 => {
+              this.summaryData = resv1;
+            });
           }
-          this.dashboardService.postOfflineOncart(parav1).subscribe(resv1 => {
-            this.summaryData = resv1;
-          });
-        }
-      });
-
-    } else {
+        });
+      }
+    }
+    else {
 
       let param = {
         "service": this.addSummaryData.id,
@@ -187,21 +196,21 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
         "to_time": this.editSummaryForm.value.timeTo,
         "client": this.clientDetail?.id,
       }
-      debugger
-      this.dashboardService.postOfflineAddService(param).subscribe(res => {
-        this.resetSummaryForm();
-        if (res.status == "Success") {
-          this.toastrService.success("Information save successfully!", "Success");
-          var parav1 = {
-            "client": this.clientDetail.id,
+      if (this.editSummaryForm.valid) {
+        this.dashboardService.postOfflineAddService(param).subscribe(res => {
+          this.resetSummaryForm();
+          if (res.status == "Success") {
+            this.toastrService.success("Information save successfully!", "Success");
+            var parav1 = {
+              "client": this.clientDetail.id,
+            }
+            this.dashboardService.postOfflineOncart(parav1).subscribe(resv1 => {
+              this.summaryData = resv1;
+            });
           }
-          this.dashboardService.postOfflineOncart(parav1).subscribe(resv1 => {
-            this.summaryData = resv1;
-          });
-        }
-      });
+        });
+      }
     }
-
   }
   removeServices() {
     this.dashboardService.postOfflineDeleteService(this.clientDetail.id, this.addSummaryData.id).subscribe(res => {
@@ -254,9 +263,11 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
   onChanges() {
     this.clientForm.get('booking_options').valueChanges.subscribe(option => {
       if (option === false) {
-        this.clientForm.get("clientName").disable();
+        // this.clientForm.get("clientName").disable();
+        this.checkClient = false;
       } else {
-        this.clientForm.get("clientName").enable();
+        // this.clientForm.get("clientName").enable();
+        this.checkClient = true
       }
       this.resetClient();
     });
