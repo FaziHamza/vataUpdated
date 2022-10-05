@@ -1,0 +1,14 @@
+# stage 1
+FROM node:14.19 as builder
+WORKDIR /app
+COPY . .
+RUN npm install  && node --max-old-space-size=4096 node_modules/@angular/cli/bin/ng build --prod
+
+# stage 2
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /app/dist/survey .
+CMD nginx -g "daemon off;"
+# Dqwerty123455
+# Faizan0909

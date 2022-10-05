@@ -7,7 +7,7 @@
     </div>
     <section id="demos" class="mb-5">
       <div class="row">
-        {{bestBookings | json}}
+        <!-- {{bestBookings | json}} -->
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
       <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookings; let i = index" [booking]="bestBooking">
       </app-booking-card>

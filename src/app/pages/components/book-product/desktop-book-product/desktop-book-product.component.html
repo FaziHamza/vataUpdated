@@ -1,11 +1,455 @@
+<style>
+  
+.container_left {
+    border-right: 1px solid #d3d3d3;
+}
+.layout_header_left {
+    padding: 20px 0;
+    margin-right: 80px;
+    border-bottom: 1px solid #d3d3d3;
+}
+.layout_header_left .header_left {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.layout_header_left .header_left h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+.layout_header_left .header_left img {
+    padding: 0 10px;
+}
+.layout_header_left .header_left button {
+    font-size: 12px;
+    color: #fff;
+    background-color: #06b906;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+.layout_header_left .header_left_bottom {
+    display: flex;
+    align-items: center;
+}
+.layout_header_left .header_left_bottom i {
+    font-size: 1rem;
+    color: #d3d3d3;
+    padding-right: 10px;
+}
+.layout_header_left .header_left_bottom p {
+    font-size: 1rem;
+    margin: 0;
+}
+.layout_content_left {
+    padding: 40px 80px 40px 0;
+}
+.layout_content_left img {
+    width: 100%;
+}
+.layout_content_left .layout_content_images {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+.layout_content_left .layout_content_images .layout_content_images_1 {
+    width: 100%;
+    padding-right: 25px;
+    height: 90px;
+}
+.layout_content_left .layout_content_images .layout_content_images_1 img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.layout_content_left .layout_content_images .layout_content_images_2 {
+    width: 100%;
+    height: 90px;
+}
+.layout_content_left .layout_content_images .layout_content_images_2 img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.layout_content_left .search_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.layout_content_left .search_btn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: gray;
+    border: none;
+    outline: none;
+}
+.layout_content_left .search_btn button i {
+    font-size: 14px;
+    color: gray;
+    margin-right: 10px;
+}
+@media only screen and (max-width: 678px) {
+    .layout_content {
+        padding: 20px !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .container_left {
+        border-right: none !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .layout_content_left {
+        padding: 20px !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .layout_content_right {
+        padding: 20px !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .layout_header_left {
+        margin: 0 !important;
+        padding: 20px !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .layout_header_right {
+        padding: 20px !important;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .layout_header_right .header_right .header_ratings {
+        padding-right: 20px !important;
+    }
+}
+.layout_header_right {
+    padding: 30px 0 24px 0;
+    border-bottom: 1px solid #d3d3d3;
+}
+.layout_header_right .header_right {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    justify-content: right;
+}
+.layout_header_right .header_right button {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    outline: none;
+    color: #000;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+.layout_header_right .header_right button i {
+    color: #fd4876;
+    margin-right: 10px;
+}
+.layout_header_right .header_right .header_ratings {
+    padding-right: 100px;
+}
+.layout_header_right .header_right .header_ratings .rattings_stars {
+    display: flex;
+    align-items: center;
+}
+.layout_header_right .header_right .header_ratings .rattings_stars i {
+    color: #fd4876;
+    font-size: 14px;
+}
+.layout_header_right .header_right .header_ratings .ratings_reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.layout_header_right .header_right .header_ratings .ratings_reviews h4 {
+    color: gray;
+    font-size: 14px;
+    margin: 0;
+}
+.layout_header_right .header_right .header_ratings .ratings_reviews p {
+    font-size: 12px;
+    color: #fd4876;
+    margin: 0;
+    padding-left: 10px;
+}
+.layout_content_right {
+    padding: 40px 0px 40px 50px;
+}
+.layout_content_right iframe {
+    width: 100%;
+    border-radius: 10px;
+    min-height: 200px;
+}
+.layout_content_right .map_address {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.layout_content_right .map_address h4 {
+    font-size: 14px;
+    color: gray;
+    margin: 0;
+    margin-right: 5px;
+}
+.layout_content_right .map_address p {
+    color: #000;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 600;
+}
+.layout_content_right .site_direction {
+    color: #fd4876;
+    font-size: 14px;
+    border-bottom: 1px solid #d3d3d3;
+    margin: 0;
+    padding-bottom: 10px;
+}
+.layout_content_right .right_text {
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 0 20px;
+}
+.layout_content_right .right_content_images {
+    display: flex;
+    padding: 30px 25px 45px;
+    background-color: #f6f4f4;
+    border-radius: 10px;
+}
+.layout_content_right .right_content_images .layout_content_images_2 {
+    padding-right: 25px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+}
+.layout_content_right .right_content_images .layout_content_images_2 img {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.layout_content_right .right_footer {
+    justify-content: space-between;
+    padding-top: 40px;
+}
+.layout_content_right .right_footer .footer_left {
+    display: flex;
+    align-items: center;
+}
+.layout_content_right .right_footer .footer_left ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.layout_content_right .right_footer .footer_left .footer_days {
+    font-size: 14px;
+    padding-right: 10px;
+}
+.layout_content_right .right_footer .footer_left .footer_days .days_child_01 {
+    color: #d3d3d3;
+}
+.layout_content_right .right_footer .footer_left .footer_days .days_child_02 {
+    color: #fd4876;
+}
+.layout_content_right .right_footer .footer_left .footer_time {
+    font-size: 14px;
+}
+.layout_content_right .right_footer .footer_right {
+    text-align: center;
+}
+.layout_content_right .right_footer .footer_right .booking_btn {
+    padding: 10px 70px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #fd4876;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    border: none;
+    outline: none;
+}
+.layout_content_right .right_footer .footer_right .footer_right_options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.layout_content_right .right_footer .footer_right .footer_right_options button {
+    padding: 0;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    padding: 15px 0;
+    align-items: center;
+    display: flex;
+}
+.layout_content_right .right_footer .footer_right .footer_right_options button i {
+    color: #fd4876;
+    margin-right: 5px;
+}
+@media only screen and (max-width: 600px) {
+    .layout_content_right .right_footer .footer_left {
+        justify-content: space-between;
+        padding-bottom: 20px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .footer_right {
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .layout_content_right .right_footer .footer_right .booking_btn {
+        padding: 10px 30px;
+    }
+}
 
+</style>
 <div class="product-page clearfix container-fluid main-size">
+  <!-- product-deatil -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="container_left">
+          <div class="layout_header_left">
+            <div class="header_left">
+              <h1>Fashionable haircut</h1>
+              <img src="/assets/img/product-booking2.png">
+              <button>99.2%</button>
+            </div>
+            <div class="header_left_bottom">
+              <i class="fa-light fa-location-dot"></i>
+              <p>Revine, Liberty, 33 Street Ukrain</p>
+            </div>
+          </div>
+          <div class="layout_content_left">
+            <img src="/assets/img/book-product1.png">
+            <div class="layout_content_images">
+              <div class="layout_content_images_1">
+                <img src="/assets/img/book-product1.png">
+              </div>
+              <div class="layout_content_images_1">
+                <img src="/assets/img/book-product1.png">
+              </div>
+              <div class="layout_content_images_1">
+                <img src="/assets/img/book-product1.png">
+              </div>
+              <div class="layout_content_images_2">
+                <img src="/assets/img/book-product1.png">
+              </div>
+
+            </div>
+
+            <div class="search_btn">
+              <button><i class="fa-regular fa-magnifying-glass"></i> Mouse hover to zoom</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="container_right">
+          <div class="layout_header_right">
+            <div class="header_right">
+              <div class="header_ratings">
+                <div class="rattings_stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-duotone fa-star"></i>
+                </div>
+                <div class="ratings_reviews">
+                  <h4>2k+ Reviews</h4>
+                  <p>(Show all)</p>
+                </div>
+              </div>
+              <button><i class="fa-solid fa-heart"></i> Add to Favorite</button>
+            </div>
+          </div>
+
+          <div class="layout_content_right">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d435518.6817818138!2d74.0541943155462!3d31.48322087539438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1664868100808!5m2!1sen!2s"
+              style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map_address">
+              <h4>Address: </h4>
+              <p>Revine, Liberty, 33 Street Ukrain</p>
+            </div>
+            <p class="site_direction">Show Direction</p>
+            <p class="right_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nemo
+              animi officiis laboriosam, inventore doloremque similique deserunt sapiente vel ab
+              suscipit dolorum voluptates. Atque aliquid facilis inventore aperiam illo quibusdam.</p>
+            <div class="right_content_images">
+              <div class="layout_content_images_2">
+                <img src="/assets/img/book-product1.png">
+                manual
+              </div>
+              <div class="layout_content_images_2">
+                <img src="/assets/img/book-product1.png">
+                rebert
+              </div>
+              <div class="layout_content_images_2">
+                <img src="/assets/img/book-product1.png">
+                jhon
+              </div>
+
+            </div>
+
+            <div class="right_footer">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="footer_left">
+                    <ul class="footer_days">
+                      <li class="days_child_01">Monday-Friday:</li>
+                      <li class="days_child_02">Saturday</li>
+                      <li class="days_child_02">Sunday</li>
+                    </ul>
+                    <ul class="footer_time">
+                      <li>08 AM - 6 PM</li>
+                      <li>08 AM - 4 PM</li>
+                      <li>Weekend</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="footer_right">
+                    <button class="booking_btn">Book a visit</button>
+                    <div class="footer_right_options">
+                      <button><i class="fa-sharp fa-solid fa-share-nodes"></i> Share in
+                        social</button>
+                      <button><i class="fa-solid fa-heart"></i> Add to Favorite</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- product-deatil -->
   <div class="clearfix">
     <div class="clearfix supstoners">
       <div class="supstoners-left">
         <div class="whatsupper clearfix">
           <h2 class="single-product-title">Fashionable haircut</h2>
-          <a href="#" class="hide-on-mobile"><img src="img/product-booking2.png"/></a>
+          <a href="#" class="hide-on-mobile"><img src="img/product-booking2.png" /></a>
           <a href="#" class="green-button hide-on-mobile">99%</a>
         </div>
         <div class="clearfix hide-on-mobile">
@@ -13,7 +457,7 @@
             Rivne, Liberty 33 Street, Ukraine
           </div>
           <div class="fright">
-            <a href="#" class="show-on-mobile"><img src="img/product-booking2.png"/></a>
+            <a href="#" class="show-on-mobile"><img src="img/product-booking2.png" /></a>
             <a href="#" class="green-button show-on-mobile">99%</a>
           </div>
         </div>
@@ -56,59 +500,69 @@
     </div>
     <div class="product-page-left">
       <div class="product-slider">
-        <div class="item">            
+        <div class="item">
           <div class="clearfix big-item-cont" style="max-width:90%;">
             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-              <li data-thumb="img/book-product1.png"> 
+              <li data-thumb="img/book-product1.png">
                 <img src="img/book-product1.png" />
-               </li>
-              <li data-thumb="img/book-product1.png"> 
+              </li>
+              <li data-thumb="img/book-product1.png">
                 <img src="img/book-product1.png" />
-               </li>
-              <li data-thumb="img/book-product1.png"> 
+              </li>
+              <li data-thumb="img/book-product1.png">
                 <img src="img/book-product1.png" />
-               </li>
-              <li data-thumb="img/book-product1.png"> 
+              </li>
+              <li data-thumb="img/book-product1.png">
                 <img src="img/book-product1.png" />
-               </li>
-              <li data-thumb="img/book-product1.png"> 
+              </li>
+              <li data-thumb="img/book-product1.png">
                 <img src="img/book-product1.png" />
-               </li>
+              </li>
             </ul>
           </div>
         </div>
         <div class="zoom-container">
           <a href="#">
-            <img src="img/zoom.png"/>
+            <img src="img/zoom.png" />
             <span>Mouse over to zoom</span>
           </a>
         </div>
       </div>
-      <p class="show-on-mobile">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
+      <p class="show-on-mobile">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque
+        laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae
+        dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia
+        consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem
+        ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
     </div>
     <div class="product-page-right">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d40509.77826728003!2d26.209563947822115!3d50.61111771842393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRivne%2C+Liberty+33+Street%2C+Ukraine!5e0!3m2!1sen!2s!4v1556532343751!5m2!1sen!2s" width="100%" height="305" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d40509.77826728003!2d26.209563947822115!3d50.61111771842393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRivne%2C+Liberty+33+Street%2C+Ukraine!5e0!3m2!1sen!2s!4v1556532343751!5m2!1sen!2s"
+        width="100%" height="305" frameborder="0" style="border:0" allowfullscreen></iframe>
       <div class="map-info">
         <h3>Address:<span>Rivne, Liberty 33 Street, Ukraine</span></h3>
-        
+
         <a href="#" class="show-direction">Show direction</a>
-        <p class="hide-on-mobile">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
+        <p class="hide-on-mobile">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque
+          laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae
+          dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia
+          consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem
+          ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
         <div class="product-booking-description">
           <div class="product-booking-description-top clearfix">
             <div class="product-booking-description-img">
-              <img src="img/manuel.png"/>
+              <img src="img/manuel.png" />
               <h6>Manuel</h6>
             </div>
             <div class="product-booking-description-img">
-              <img src="img/adrian.png"/>
+              <img src="img/adrian.png" />
               <h6>Adrian</h6>
             </div>
             <div class="product-booking-description-img">
-              <img src="img/manuel.png"/>
+              <img src="img/manuel.png" />
               <h6>Manuel</h6>
             </div>
             <div class="product-booking-description-img">
-              <img src="img/adrian.png"/>
+              <img src="img/adrian.png" />
               <h6>Adrian</h6>
             </div>
           </div>
@@ -128,17 +582,17 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
-  
+
   <section class="book-a-visit">
     <h2 class="main-title">Book a Visit</h2>
     <div class="clearfix reviev-text show-reviev-text woman">
       <div class="clearfix">
         <h3 class="book-visit-subtitle">For Woman (2)</h3>
         <a href="JavaScript:void(0);" class="book-a-visit-dropdown">
-          <img class="hide-on-click" src="img/down33.png"/>
-          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png"/>
+          <img class="hide-on-click" src="img/down33.png" />
+          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png" />
         </a>
       </div>
       <div class="show-hide-book-a-visit">
@@ -164,8 +618,16 @@
             </div>
           </div>
         </div>
-        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!</p>
-        
+        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail
+          art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!
+        </p>
+
         <div class="clearfix ">
           <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
           <a href="JavaScript:void(0);" class="reply">Read More</a>
@@ -199,8 +661,16 @@
             </div>
           </div>
         </div>
-        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!</p>
-        
+        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail
+          art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!
+        </p>
+
         <div class="clearfix ">
           <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
           <a href="JavaScript:void(0);" class="reply">Read More</a>
@@ -216,8 +686,8 @@
       <div class="clearfix">
         <h3 class="book-visit-subtitle">Man Style (1)</h3>
         <a href="JavaScript:void(0);" class="book-a-visit-dropdown">
-          <img class="hide-on-click" src="img/down33.png"/>
-          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png"/>
+          <img class="hide-on-click" src="img/down33.png" />
+          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png" />
         </a>
       </div>
       <div class="show-hide-book-a-visit">
@@ -243,8 +713,16 @@
             </div>
           </div>
         </div>
-        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!</p>
-        
+        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail
+          art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
+          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
+          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
+          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!
+        </p>
+
         <div class="clearfix ">
           <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
           <a href="JavaScript:void(0);" class="reply">Read More</a>
@@ -262,31 +740,31 @@
     <div class="hide-on-mobile">
       <div class="clearfix works-img-cont">
         <a href="#">
-          <img src="img/w1.png"/>
+          <img src="img/w1.png" />
           <div class="liked-count">
             1
           </div>
         </a>
         <a href="#">
-          <img src="img/w2.png"/>
+          <img src="img/w2.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w3.png"/>
+          <img src="img/w3.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w4.png"/>
+          <img src="img/w4.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w5.png"/>
+          <img src="img/w5.png" />
           <div class="liked-count">
             22
           </div>
@@ -294,31 +772,31 @@
       </div>
       <div class="clearfix works-img-cont">
         <a href="#">
-          <img src="img/w1.png"/>
+          <img src="img/w1.png" />
           <div class="liked-count">
             1
           </div>
         </a>
         <a href="#">
-          <img src="img/w2.png"/>
+          <img src="img/w2.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w3.png"/>
+          <img src="img/w3.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w4.png"/>
+          <img src="img/w4.png" />
           <div class="liked-count">
             22
           </div>
         </a>
         <a href="#">
-          <img src="img/w5.png"/>
+          <img src="img/w5.png" />
           <div class="liked-count">
             22
           </div>
@@ -329,61 +807,61 @@
       </div>
     </div>
     <section id="demos">
-    <div class="row works-img-cont show-on-mobile">
-      <div class="owl-carousel owl-theme">
-        <div class="item">
-          <a href="#">
-            <img src="img/w1.png"/>
-            <div class="liked-count">
-              1
-            </div>
-          </a>
+      <div class="row works-img-cont show-on-mobile">
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <a href="#">
+              <img src="img/w1.png" />
+              <div class="liked-count">
+                1
+              </div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="img/w2.png" />
+              <div class="liked-count">
+                22
+              </div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="img/w3.png" />
+              <div class="liked-count">
+                22
+              </div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="img/w4.png" />
+              <div class="liked-count">
+                22
+              </div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="img/w5.png" />
+              <div class="liked-count">
+                22
+              </div>
+            </a>
+          </div>
         </div>
-        <div class="item">
-          <a href="#">
-            <img src="img/w2.png"/>
-            <div class="liked-count">
-              22
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <img src="img/w3.png"/>
-            <div class="liked-count">
-              22
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <img src="img/w4.png"/>
-            <div class="liked-count">
-              22
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <img src="img/w5.png"/>
-            <div class="liked-count">
-              22
-            </div>
-          </a>
-        </div>
-      </div>
       </div>
       <div class="see-all-comments show-on-mobile">
         <a href="#">See all Works ></a>
       </div>
-  </section>
+    </section>
   </section>
   <section class="customer-reviews">
     <div class="clearfix btn-title">
       <h2 class="main-title">Customer Reviews</h2>
       <span class="arrow-up-down-btn"></span>
       <div class="fright book-product-reviewbtn">
-        <div class="fleft have-you-been" >Have you been here?</div>
+        <div class="fleft have-you-been">Have you been here?</div>
         <a href="#" id="write-review" class="comment-btn">Write Review</a>
       </div>
     </div>
@@ -399,10 +877,17 @@
           <span class="fa fa-star"></span>
         </div>
       </div>
-      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!</p>
+      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium
+        products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also
+        available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle
+        treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!, Welcome
+        to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium
+        products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also
+        available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle
+        treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!</p>
       <div class="clearfix coment-images">
-        <img src="img/comm1.png"/>
-        <img src="img/comm2.png"/>
+        <img src="img/comm1.png" />
+        <img src="img/comm2.png" />
       </div>
       <div class="clearfix ">
         <a href="#" class="reply">Reply</a>
@@ -420,7 +905,10 @@
           <span class="fa fa-star"></span>
         </div>
       </div>
-      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. </p>
+      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium
+        products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also
+        available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle
+        treatment. Removals are available with new sets of dips and gel manicures. </p>
       <div class="clearfix ">
         <a href="#" class="comment">1 Comment</a>
         <a href="#" class="reply">Reply</a>
@@ -438,10 +926,13 @@
           <span class="fa fa-star"></span>
         </div>
       </div>
-      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle treatment. Removals are available with new sets of dips and gel manicures. </p>
+      <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers premium
+        products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is also
+        available. All full sets and fills include desired nail shapes with up to medium nail length, and a cuticle
+        treatment. Removals are available with new sets of dips and gel manicures. </p>
       <div class="clearfix coment-images">
-        <img src="img/comm1.png"/>
-        <img src="img/comm2.png"/>
+        <img src="img/comm1.png" />
+        <img src="img/comm2.png" />
       </div>
       <div class="clearfix ">
         <a href="#" class="comment">2 Comments</a>
@@ -452,7 +943,7 @@
       <a href="#">See all 23 Customer Reviews ></a>
     </div>
   </section>
-  <section class="similar-to-this">	
+  <section class="similar-to-this">
     <h2 class="main-title">Similar to This</h2>
     <div class="popular-goods-bottom clearfix">
       <div class="product-item-cont">
@@ -602,24 +1093,18 @@
             <h6>
               {{ shopDetails?.shop_name }}
               <span class="icon-Subtraction-9"></span>
-              <span class="ml-3 profile"
-                >{{ shopDetails?.overall_rating_percentage }}%</span
-              >
+              <span class="ml-3 profile">{{ shopDetails?.overall_rating_percentage }}%</span>
             </h6>
             <p class="location pt-2">
               <span class="icon-location1"></span>
-              <span class="text"
-                >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
-                {{ shopDetails?.state }}</span
-              >
+              <span class="text">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                {{ shopDetails?.state }}</span>
             </p>
           </div>
 
           <div class="imgs-section pt-4">
             <div class="main-img">
-              <app-product-preview
-                [slides]="[shopDetails?.business_logo]"
-              ></app-product-preview>
+              <app-product-preview [slides]="[shopDetails?.business_logo]"></app-product-preview>
             </div>
           </div>
         </div>
@@ -637,18 +1122,14 @@
                 </h6>
                 <p class="location pt-2">
                   <span class="icon-location1"></span>
-                  <span class="text"
-                    >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
-                    {{ shopDetails?.state }}</span
-                  >
+                  <span class="text">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                    {{ shopDetails?.state }}</span>
                 </p>
               </div>
 
               <div class="imgs-section pt-4">
                 <div class="main-img">
-                  <app-product-preview
-                    [slides]="[shopDetails?.business_logo]"
-                  ></app-product-preview>
+                  <app-product-preview [slides]="[shopDetails?.business_logo]"></app-product-preview>
                 </div>
               </div>
             </div>
@@ -657,11 +1138,7 @@
               <div fxLayout="row" class="border-bottom pb-2">
                 <div fxFlex="65%" class="rating mr-4">
                   <div fxLayout="row">
-                    <app-star-rating
-                      [maxScore]="5"
-                      [score]="4"
-                      [forDisplay]="true"
-                    ></app-star-rating>
+                    <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
                   </div>
                   <div fxLayout="row">
                     <p>
@@ -673,43 +1150,23 @@
                   </div>
                 </div>
 
-                <div
-                  fxFlex="35%"
-                  class="favourite border-left pl-5 text-right"
-                  *ngIf="userInfo"
-                >
-                  <a
-                    mat-button
-                    class="rounded-bt white-b px-3"
-                    (click)="addToFavourites()"
-                  >
-                    <span class="icon-like pr-3"></span> Add to Favourite</a
-                  >
+                <div fxFlex="35%" class="favourite border-left pl-5 text-right" *ngIf="userInfo">
+                  <a mat-button class="rounded-bt white-b px-3" (click)="addToFavourites()">
+                    <span class="icon-like pr-3"></span> Add to Favourite</a>
                 </div>
               </div>
 
               <div class="shop-detail-section pt-4">
                 <div class="location-row border-bottom pb-2">
                   <!-- <img class="map" src="../../../../../assets/img/Rectangle-map.png"> -->
-                  <div
-                    #mapElement
-                    class="map"
-                    id="map"
-                    class="match-parent"
-                  ></div>
+                  <div #mapElement class="map" id="map" class="match-parent"></div>
                   <p class="silver-text pt-3">
                     Address:
-                    <span class="black-text pl-2"
-                      >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
-                      {{ shopDetails?.state }}</span
-                    >
+                    <span class="black-text pl-2">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                      {{ shopDetails?.state }}</span>
                   </p>
-                  <a
-                    mat-button
-                    (click)="showDirection()"
-                    class="direction-btn pink-text"
-                    >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
-                  >
+                  <a mat-button (click)="showDirection()" class="direction-btn pink-text">{{ !isShowDirection ? "Show" :
+                    "Hide" }} direction</a>
                 </div>
 
                 <div class="info-shop-row pt-3">
@@ -717,10 +1174,7 @@
                 </div>
 
                 <div fxLayout="row" class="workers-img-row my-4 p-4">
-                  <div
-                    class="worker1 mr-4"
-                    *ngFor="let member of shopDetails?.members"
-                  >
+                  <div class="worker1 mr-4" *ngFor="let member of shopDetails?.members">
                     <img src="{{ member.photo }}" />
                     <p>{{ member.name }}</p>
                   </div>
@@ -757,12 +1211,7 @@
                   </div>
                   <div fxFlex="60%" class="right-section pl-5">
                     <div class="book-btn" *ngIf="userInfo">
-                      <a
-                        mat-button
-                        class="pink-b rounded-bt w-100"
-                        (click)="navigateToMakeBooking()"
-                        >Book a Visit</a
-                      >
+                      <a mat-button class="pink-b rounded-bt w-100" (click)="navigateToMakeBooking()">Book a Visit</a>
                     </div>
 
                     <div class="social-favourite pt-4">
@@ -781,18 +1230,9 @@
             </div>
           </div>
 
-          <div
-            fxFlex="35%"
-            class="favourite border-left pl-5 text-right"
-            *ngIf="userInfo"
-          >
-            <a
-              mat-button
-              class="rounded-bt white-b px-3"
-              (click)="addToFavourites()"
-            >
-              <span class="icon-like pr-3"></span> Add to Favourite</a
-            >
+          <div fxFlex="35%" class="favourite border-left pl-5 text-right" *ngIf="userInfo">
+            <a mat-button class="rounded-bt white-b px-3" (click)="addToFavourites()">
+              <span class="icon-like pr-3"></span> Add to Favourite</a>
           </div>
         </div>
 
@@ -802,17 +1242,11 @@
             <div #mapElement class="map" id="map" class="match-parent"></div>
             <p class="silver-text pt-3">
               Address:
-              <span class="black-text pl-2"
-                >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
-                {{ shopDetails?.state }}</span
-              >
+              <span class="black-text pl-2">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                {{ shopDetails?.state }}</span>
             </p>
-            <a
-              mat-button
-              (click)="showDirection()"
-              class="direction-btn pink-text"
-              >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
-            >
+            <a mat-button (click)="showDirection()" class="direction-btn pink-text">{{ !isShowDirection ? "Show" :
+              "Hide" }} direction</a>
           </div>
 
           <div class="info-shop-row pt-3">
@@ -820,10 +1254,7 @@
           </div>
 
           <div fxLayout="row" class="workers-img-row my-4 p-4">
-            <div
-              class="worker1 mr-4"
-              *ngFor="let member of shopDetails?.members"
-            >
+            <div class="worker1 mr-4" *ngFor="let member of shopDetails?.members">
               <img src="{{ member.photo }}" />
               <p>{{ member.name }}</p>
             </div>
@@ -860,12 +1291,7 @@
             </div>
             <div fxFlex="60%" class="right-section pl-5">
               <div class="book-btn" *ngIf="userInfo">
-                <a
-                  mat-button
-                  class="pink-b rounded-bt w-100"
-                  (click)="navigateToMakeBooking()"
-                  >Book a Visit</a
-                >
+                <a mat-button class="pink-b rounded-bt w-100" (click)="navigateToMakeBooking()">Book a Visit</a>
               </div>
 
               <div class="social-favourite pt-4">
@@ -881,17 +1307,12 @@
           </div>
         </div>
       </div>
-      
+
     </div>
 
-    <div
-      fxFlex="35%"
-      class="favourite border-left pl-5 text-right"
-      *ngIf="userInfo"
-    >
+    <div fxFlex="35%" class="favourite border-left pl-5 text-right" *ngIf="userInfo">
       <a mat-button class="rounded-bt white-b px-3" (click)="addToFavourites()">
-        <span class="icon-like pr-3"></span> Add to Favourite</a
-      >
+        <span class="icon-like pr-3"></span> Add to Favourite</a>
     </div>
   </div>
 
@@ -901,14 +1322,11 @@
       <div #mapElement class="map" id="map" class="match-parent"></div>
       <p class="silver-text pt-3">
         Address:
-        <span class="black-text pl-2"
-          >{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
-          {{ shopDetails?.state }}</span
-        >
+        <span class="black-text pl-2">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+          {{ shopDetails?.state }}</span>
       </p>
-      <a mat-button (click)="showDirection()" class="direction-btn pink-text"
-        >{{ !isShowDirection ? "Show" : "Hide" }} direction</a
-      >
+      <a mat-button (click)="showDirection()" class="direction-btn pink-text">{{ !isShowDirection ? "Show" : "Hide" }}
+        direction</a>
     </div>
 
     <div class="info-shop-row pt-3">
@@ -953,12 +1371,7 @@
       </div>
       <div fxFlex="60%" class="right-section pl-5">
         <div class="book-btn" *ngIf="userInfo">
-          <a
-            mat-button
-            class="pink-b rounded-bt w-100"
-            (click)="navigateToMakeBooking()"
-            >Book a Visit</a
-          >
+          <a mat-button class="pink-b rounded-bt w-100" (click)="navigateToMakeBooking()">Book a Visit</a>
         </div>
 
         <div class="social-favourite pt-4">
@@ -982,59 +1395,35 @@
       <h3 class="heading">Book a Visit</h3>
     </div>
     <div *ngFor="let service of services">
-      <div
-        class="book-appointment"
-        *ngIf="
+      <div class="book-appointment" *ngIf="
           service.category__name == 'For Women' && service.services.length > 0
-        "
-      >
+        ">
         <div fxLayout="row" class="pt-4">
           <p class="heading">
             For Women {{ service.services.length }}
-            <span
-              [appToggleSectionAccordian]="servicesForWomen"
-              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
-            ></span>
+            <span [appToggleSectionAccordian]="servicesForWomen"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
           </p>
         </div>
 
         <div #servicesForWomen>
           <ng-container>
-            <div
-              class="booking-fields p-3 mt-4"
-              *ngFor="let subService of service.services"
-            >
+            <div class="booking-fields p-3 mt-4" *ngFor="let subService of service.services">
               <div fxLayout="row" class="pb-3">
                 <div fxFlex="64%" class="heading">
                   <h6 class="pb-2">{{ subService.service_name }}</h6>
-                  <app-star-rating
-                    [maxScore]="5"
-                    [score]="subService.avg_rating"
-                    [forDisplay]="true"
-                  ></app-star-rating>
-                  <span class="star-text pl-3"
-                    >{{ subService.rating_count }} Book Ratings</span
-                  >
+                  <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
                 </div>
                 <div fxFlex="16%" class="time-price border-left px-4">
                   <p class="wrapper">
                     <span class="time">{{ subService.duration }}</span>
-                    <span class="text float-right"
-                      >${{ subService.total }}</span
-                    >
+                    <span class="text float-right">${{ subService.total }}</span>
                   </p>
                 </div>
-                <div
-                  fxFlex="20%"
-                  class="book-btn border-left pl-5"
-                  *ngIf="userInfo"
-                >
-                  <a
-                    mat-button
-                    class="rounded-bt pink-b px-5"
-                    (click)="navigateToMakeBooking(subService.id)"
-                    >Book Now</a
-                  >
+                <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+                  <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book
+                    Now</a>
                 </div>
               </div>
               <div class="details border-top pt-3">
@@ -1054,60 +1443,35 @@
           </ng-container>
         </div>
       </div>
-      <div
-        class="book-appointment"
-        *ngIf="
+      <div class="book-appointment" *ngIf="
           service.category__name == 'For Men' && service.services.length > 0
-        "
-      >
+        ">
         <div fxLayout="row" class="pt-4">
           <p class="heading">
             For Men {{ service.services.length }}
-            <span
-              [appToggleSectionAccordian]="servicesForMen"
-              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
-            >
+            <span [appToggleSectionAccordian]="servicesForMen" class="icon-baseline-keyboard_arrow_down-24px-1 ml-3">
             </span>
           </p>
         </div>
 
         <div #servicesForMen>
           <ng-container>
-            <div
-              class="booking-fields p-3 mt-4"
-              *ngFor="let subService of service.services"
-            >
+            <div class="booking-fields p-3 mt-4" *ngFor="let subService of service.services">
               <div fxLayout="row" class="pb-3">
                 <div fxFlex="64%" class="heading">
                   <h6 class="pb-2">{{ subService.service_name }}</h6>
-                  <app-star-rating
-                    [maxScore]="5"
-                    [score]="subService.avg_rating"
-                    [forDisplay]="true"
-                  ></app-star-rating>
-                  <span class="star-text pl-3"
-                    >{{ subService.rating_count }} Book Ratings</span
-                  >
+                  <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
                 </div>
                 <div fxFlex="16%" class="time-price border-left px-4">
                   <p class="wrapper">
                     <span class="time">{{ subService.duration }}</span>
-                    <span class="text float-right"
-                      >${{ subService.total }}</span
-                    >
+                    <span class="text float-right">${{ subService.total }}</span>
                   </p>
                 </div>
-                <div
-                  fxFlex="20%"
-                  class="book-btn border-left pl-5"
-                  *ngIf="userInfo"
-                >
-                  <a
-                    mat-button
-                    class="rounded-bt pink-b px-5"
-                    (click)="navigateToMakeBooking(subService.id)"
-                    >Book Now</a
-                  >
+                <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+                  <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book
+                    Now</a>
                 </div>
               </div>
               <div class="details border-top pt-3">
@@ -1128,71 +1492,57 @@
         </div>
       </div>
 
-      <div
-        class="book-appointment"
-        *ngIf="service.category__name == 'All' && service.services.length > 0"
-      >
+      <div class="book-appointment" *ngIf="service.category__name == 'All' && service.services.length > 0">
         <div fxLayout="row" class="pt-4">
           <p class="heading">
             For All {{ service.services.length }}
-            <span
-              [appToggleSectionAccordian]="servicesForAll"
-              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"
-            ></span>
+            <span [appToggleSectionAccordian]="servicesForAll"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
           </p>
         </div>
 
-            <div fxLayout="row" class="similar-services pt-5">
-                <div fxFlex="" class="mr-3" *ngFor="let shop of similarShops">
-                    <div class="card border">
-                        <div class="card-body p-0">
-                            <img class="main-img" src="{{ shop.shop_image }}">
-                            <h5 class="border-bottom text-center p-2">{{ shop.shopname }}</h5>
-                            <div class="rating border-bottom p-1 justify-content-center">
-                                <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
-                                <span class="star-text">{{ shop.tot_ratings }} Book Ratings</span>
-                            </div>
-                            <div class="location p-3 text-center">
-                                <h4>{{ shop.place }}</h4>
-                            </div>
-                        </div>
-                    </div>
+        <div fxLayout="row" class="similar-services pt-5">
+          <div fxFlex="" class="mr-3" *ngFor="let shop of similarShops">
+            <div class="card border">
+              <div class="card-body p-0">
+                <img class="main-img" src="{{ shop.shop_image }}">
+                <h5 class="border-bottom text-center p-2">{{ shop.shopname }}</h5>
+                <div class="rating border-bottom p-1 justify-content-center">
+                  <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text">{{ shop.tot_ratings }} Book Ratings</span>
                 </div>
-                <div
-                  fxFlex="20%"
-                  class="book-btn border-left pl-5"
-                  *ngIf="userInfo"
-                >
-                  <a
-                    mat-button
-                    class="rounded-bt pink-b px-5"
-                    (click)="navigateToMakeBooking(subService.id)"
-                    >Book Now</a
-                  >
+                <div class="location p-3 text-center">
+                  <h4>{{ shop.place }}</h4>
                 </div>
-              </div>
-              <div class="details border-top pt-3">
-                <p class="pb-2">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
-                  Many desktop publishing packages and web page editors now use
-                  Lorem Ipsum as their default model text, and a search for
-                  'lorem ipsum' will uncover many web sites still in their
-                  infancy.
-                </p>
               </div>
             </div>
-         
+          </div>
+          <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+            <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
+          </div>
+        </div>
+        <div class="details border-top pt-3">
+          <p class="pb-2">
+            It is a long established fact that a reader will be distracted
+            by the readable content of a page when looking at its layout.
+            The point of using Lorem Ipsum is that it has a more-or-less
+            normal distribution of letters, as opposed to using 'Content
+            here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use
+            Lorem Ipsum as their default model text, and a search for
+            'lorem ipsum' will uncover many web sites still in their
+            infancy.
+          </p>
         </div>
       </div>
+
     </div>
-    <div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
-      <h4>No services to show</h4>
-    </div>
-  
+  </div>
+</div>
+<div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
+  <h4>No services to show</h4>
+</div>
+
 
 <div class="our-works border-top" *ngIf="ourWorks && ourWorks.length > 0">
   <div class="container pt-5 pb-4">
@@ -1203,10 +1553,7 @@
       <div fxFlex="" class="work mr-3" *ngFor="let work of ourWorks">
         <img src="{{ work.image }}" />
         <div class="like-chip" (click)="updateLikes(work)">
-          <span
-            class="icon-like1 pr-2 heart active"
-            *ngIf="work.is_liked"
-          ></span>
+          <span class="icon-like1 pr-2 heart active" *ngIf="work.is_liked"></span>
           <span class="icon-like1 pr-2 heart" *ngIf="!work.is_liked"></span>
           <span class="count-like">{{ work.total_likes_count }}</span>
         </div>
@@ -1228,12 +1575,7 @@
       </h3>
     </div>
   </div>
-  <mat-tab-group
-    *ngIf="reviews && reviews.length > 0"
-    selectedIndex="0"
-    animationDuration="0ms"
-    class="w-100"
-  >
+  <mat-tab-group *ngIf="reviews && reviews.length > 0" selectedIndex="0" animationDuration="0ms" class="w-100">
     <mat-tab label="All Reviews">
       <div class="all-review-tab p-3" *ngFor="let review of reviews">
         <div fxLayout="row" class="border-bottom" *ngIf="!review.parent">
@@ -1244,17 +1586,10 @@
               </div>
               <div fxFlex="40%" class="right-side text-right">
                 <p class="date-rating">
-                  <span class="name-date"
-                    >{{ review.user_fullname }},
-                    {{ review.pub_date | date }}</span
-                  >
-                  <app-star-rating
-                    class="rate-stars"
-                    [maxScore]="5"
-                    [score]="4.0"
-                    [forDisplay]="true"
-                    size="15px"
-                  ></app-star-rating>
+                  <span class="name-date">{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span>
+                  <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
+                  </app-star-rating>
                 </p>
               </div>
             </div>
@@ -1266,22 +1601,14 @@
             </div>
             <div class="comment-reply pt-2 pb-3">
               <a mat-button class="text-muted">Comment (Hire)</a>
-              <a
-                mat-button
-                class="pink-text"
-                (click)="reply(review.service, review.id)"
-                >Reply</a
-              >
+              <a mat-button class="pink-text" (click)="reply(review.service, review.id)">Reply</a>
             </div>
           </div>
         </div>
         <!-- REPLY SECTION -->
         <div fxLayout="row" class="border-bottom">
           <div fxFlex="90%" class="content-right-side ml-4">
-            <div
-              class="reply-section border-top pt-4"
-              *ngFor="let reply of findRepliesForReview(review.id, reviews)"
-            >
+            <div class="reply-section border-top pt-4" *ngFor="let reply of findRepliesForReview(review.id, reviews)">
               <div class="reply p-3">
                 <h6 class="user">
                   {{ reply.user_fullname }}
@@ -1304,17 +1631,10 @@
               </div>
               <div fxFlex="40%" class="right-side text-right">
                 <p class="date-rating">
-                  <span class="name-date"
-                    >{{ review.user_fullname }},
-                    {{ review.pub_date | date }}</span
-                  >
-                  <app-star-rating
-                    class="rate-stars"
-                    [maxScore]="5"
-                    [score]="4.0"
-                    [forDisplay]="true"
-                    size="15px"
-                  ></app-star-rating>
+                  <span class="name-date">{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span>
+                  <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
+                  </app-star-rating>
                 </p>
               </div>
             </div>
@@ -1326,24 +1646,16 @@
             </div>
             <div class="comment-reply pt-2 pb-3">
               <a mat-button class="text-muted">Comment (Hire)</a>
-              <a
-                mat-button
-                class="pink-text"
-                (click)="reply(review.service, review.id)"
-                >Reply</a
-              >
+              <a mat-button class="pink-text" (click)="reply(review.service, review.id)">Reply</a>
             </div>
           </div>
         </div>
         <!-- REPLY SECTION -->
         <div fxLayout="row" class="border-bottom">
           <div fxFlex="90%" class="content-right-side ml-4">
-            <div
-              class="reply-section border-top pt-4"
-              *ngFor="
+            <div class="reply-section border-top pt-4" *ngFor="
                 let reply of findRepliesForReview(review.id, newestReviews)
-              "
-            >
+              ">
               <div class="reply p-3">
                 <h6 class="user">
                   {{ reply.user_fullname }}
@@ -1357,21 +1669,12 @@
       </div>
     </mat-tab>
     <mat-tab label="Need to Review">
-      <div
-        fxLayout="row"
-        *ngFor="let service of servicesThatNeedReview"
-        class="margin-bottom"
-      >
+      <div fxLayout="row" *ngFor="let service of servicesThatNeedReview" class="margin-bottom">
         <div fxflex="60">
           {{ service.title }}
         </div>
         <div fxflex="40">
-          <a
-            mat-button
-            class="pink-b px-3 ml-3"
-            (click)="writeReview(service.id)"
-            >Write Review</a
-          >
+          <a mat-button class="pink-b px-3 ml-3" (click)="writeReview(service.id)">Write Review</a>
         </div>
       </div>
     </mat-tab>
@@ -1390,18 +1693,9 @@
 
     <section id="demos" class="mb-5">
       <div class="row">
-        <ngx-slick-carousel
-          class="carousel"
-          #slickModal="slick-carousel"
-          [config]="config"
-        >
-          <app-booking-card
-            [routerLink]="['/book-product', bestBooking.shopID]"
-            class="slide"
-            ngxSlickItem
-            *ngFor="let bestBooking of similarShops; let i = index"
-            [booking]="bestBooking"
-          >
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+          <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem
+            *ngFor="let bestBooking of similarShops; let i = index" [booking]="bestBooking">
           </app-booking-card>
         </ngx-slick-carousel>
       </div>

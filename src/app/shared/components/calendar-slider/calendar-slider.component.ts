@@ -105,6 +105,7 @@ export class CalendarSliderComponent implements OnInit, OnChanges {
   }
 
   getAfternoonTimes(times){
+    debugger
     let afternoonTimes = [];
     let noon = moment().toDate();
     let evening = moment().toDate();

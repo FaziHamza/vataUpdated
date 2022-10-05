@@ -1,39 +1,31 @@
 <div class="desktop-dashboard-booking-clients mt-4">
     <div class="container">
-        <div fxLayout="row">
-            <div fxFlex="30%" class="left-side p-3 mr-3">
-                <app-desktop-dashboard-all-clients 
-                    (selectType)="typeChange($event)" 
-                    (sendData)="getDataClient($event)"
-                >
-                </app-desktop-dashboard-all-clients>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class=" left-side p-3 mb-3 ">
+                    <app-desktop-dashboard-all-clients (selectType)="typeChange($event)"
+                        (sendData)="getDataClient($event)">
+                    </app-desktop-dashboard-all-clients>
+                </div>
             </div>
-
-            <div fxFlex="70%" class="right-side p-3">
-                <!-- <router-outlet></router-outlet> -->
-                <!-- <app-desktop-dashboard-client-details></app-desktop-dashboard-client-details>
+            <div class="col-lg-8">
+                <div class=" right-side p-3">
+                    <!-- <router-outlet></router-outlet> -->
+                    <!-- <app-desktop-dashboard-client-details></app-desktop-dashboard-client-details>
                 <app-desktop-dashboard-client-edit-profile></app-desktop-dashboard-client-edit-profile>
                 <app-desktop-dashboard-new-client></app-desktop-dashboard-new-client> -->
 
-                <app-desktop-dashboard-client-details 
-                    *ngIf="loadType == 'details'" 
-                    (selectType)="typeChange($event)"
-                    [clientData]="clientData"
-                >
-                </app-desktop-dashboard-client-details>
+                    <app-desktop-dashboard-client-details *ngIf="loadType == 'details'"
+                        (selectType)="typeChange($event)" [clientData]="clientData">
+                    </app-desktop-dashboard-client-details>
 
-                <app-desktop-dashboard-client-edit-profile
-                    *ngIf="loadType == 'edit'"
-                    (selectType)="typeChange($event)"
-                    [clientData]="clientData"
-                >
-                </app-desktop-dashboard-client-edit-profile>
-                
-                <app-desktop-dashboard-new-client 
-                    *ngIf="loadType == 'new'" 
-                    (selectType)="typeChange($event)"
-                >
-                </app-desktop-dashboard-new-client>
+                    <app-desktop-dashboard-client-edit-profile *ngIf="loadType == 'edit'"
+                        (selectType)="typeChange($event)" [clientData]="clientData">
+                    </app-desktop-dashboard-client-edit-profile>
+
+                    <app-desktop-dashboard-new-client *ngIf="loadType == 'new'" (selectType)="typeChange($event)">
+                    </app-desktop-dashboard-new-client>
+                </div>
             </div>
         </div>
     </div>

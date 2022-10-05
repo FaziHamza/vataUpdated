@@ -1,11 +1,37 @@
 <div class="desktop-dashboard-booking-statistics mt-4">
-    <div fxLayout="row" class="time-summary-sections">
-        <div fxFlex="65%" class="duration-time p-3 mr-4">
-            <div fxLayout="row" class="pb-3 border-bottom">
-                <div fxFlex="40%">
-                    <div class="leftside-heading">
-                        <p>Statistics</p>
+    <div class="container">
+        <div class=" row time-summary-sections">
+            <div class="col-lg-7 mb-3">
+                <div class="duration-time p-3 ">
+                    <div fxLayout="row" class="pb-3 border-bottom">
+                        <div fxFlex="40%">
+                            <div class="leftside-heading">
+                                <p>Statistics</p>
+                            </div>
+                        </div>
+                        <div fxFlex="60%">
+                            <div class="rightside-tabs float-right">
+                                <ul>
+                                    <li>
+                                        <p>Day</p>
+                                    </li>
+                                    <li>
+                                        <p>Week</p>
+                                    </li>
+                                    <li>
+                                        <p>Month</p>
+                                    </li>
+                                    <li>
+                                        <p>Year</p>
+                                    </li>
+                                    <li>
+                                        <p>All Time</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <div fxFlex="60%">
                     <div class="rightside-tabs float-right">
@@ -116,32 +142,131 @@
                 <div class="row" class="client py-3 border-bottom" *ngFor="let item of topClients.data">
                     <div fxFlex="10%">
                         <!-- <img src="{{item.client_pic}}"> -->
+=======
+                    <div fxLayout="row">
+                        <div fxFlex="100%" class="m-2" id="chart1">
+                            <apx-chart #chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                [xaxis]="chartOptions.xaxis" [tooltip]="chartOptions.tooltip"
+                                [dataLabels]="chartOptions.dataLabels" [legend]="chartOptions.legend"
+                                [markers]="chartOptions.markers" [grid]="chartOptions.grid" [yaxis]="chartOptions.yaxis"
+                                [title]="chartOptions.title"></apx-chart>
+                        </div>
+>>>>>>> 0493a6d193cfd3330c11b9de1cbbf0ee60a742ac
                     </div>
-                
-                    <div fxFlex="90%" class="pl-3">
-                        <p class="text">{{item.client_name}}</p>
-                        <p class="visit">Last Vist - {{item.last_visit}}</p>
+
+                </div>
+            </div>
+            <div class="col-lg-5 mb-3">
+                <div class="summary-section p-3" *ngIf="bookingStatistics">
+                    <div fxLayout="row" class="heading pb-3 border-bottom">
+                        <p>Summary</p>
+                    </div>
+
+                    <div fxLayout="row" class="visits-earnings pt-3">
+                        <div fxFlex="32%" class="section">
+                            <span>Total Vists</span>
+                            <p>{{bookingStatistics.data.summary.total_visits}}</p>
+                        </div>
+                        <div fxFlex="36%" class="section text-center">
+                            <span>Total Earnings</span>
+                            <p>{{bookingStatistics.data.summary.total_earnings}}</p>
+                        </div>
+                        <div fxFlex="32%" class="section text-right">
+                            <span>Time Bookes</span>
+                            <p>{{bookingStatistics.data.summary.times_books}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="status pt-4">
+                        <div fxFlex="25%" class="field py-3 px-2 text-center mr-3">
+                            <span>{{bookingStatistics.data.summary.bookings_count}}</span>
+                            <p>Bookings</p>
+                        </div>
+                        <div fxFlex="25%" class="field py-3 px-2 text-center mr-3">
+                            <span>{{bookingStatistics.data.summary.finished_count}}</span>
+                            <p>finished</p>
+                        </div>
+                        <div fxFlex="25%" class="field py-3 px-2 text-center mr-3">
+                            <span>{{bookingStatistics.data.summary.cancelled_count}}</span>
+                            <p>Cancelled</p>
+                        </div>
+                        <div fxFlex="25%" class="field py-3 px-2 text-center">
+                            <span>{{bookingStatistics.data.summary.no_shows}}</span>
+                            <p>No-Shows</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="total-growth py-4 border-bottom">
+                        <div fxFlex="50%" class="field p-3 mr-2">
+                            <span class="text">Total Sold</span>
+                            <span class="sub-text float-right">{{bookingStatistics.data.summary.total_sold}}</span>
+                        </div>
+                        <div fxFlex="50%" class="field p-3 ml-2">
+                            <span class="text" class="text">Growth Rate</span>
+                            <span class="sub-text float-right">{{bookingStatistics.data.summary.growth}}</span>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="clients pt-4">
+                        <div fxFlex="33.3%" class="mr-2">
+                            <span class="text">Clients</span>
+                            <p class="sub-text">{{bookingStatistics.data.summary.new_clients +
+                                bookingStatistics.data.summary.returned_clients}}</p>
+                        </div>
+                        <div fxFlex="33.3%" class="field p-3 mr-3">
+                            <span class="text">New</span>
+                            <span class="sub-text float-right">{{bookingStatistics.data.summary.new_clients}}</span>
+                        </div>
+                        <div fxFlex="33.3%" class="field p-3">
+                            <span class="text" class="text">Returns</span>
+                            <span
+                                class="sub-text float-right">{{bookingStatistics.data.summary.returned_clients}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div fxFlex="50%" class="team-performance p-3 ml-2" *ngIf="topMembers">
-                <div class="heading pb-3 border-bottom">
-                    <p>Team Performance</p>
-                </div>
+            <div class="clients-performance-sections mt-4">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <div class="top-clients p-3 " *ngIf="topClients">
+                            <div class="heading pb-3 border-bottom">
+                                <p>Top 5 Clients</p>
+                            </div>
 
-                <div class="row" class="member py-3 border-bottom" *ngFor="let item of topMembers.data">
-                    <div fxFlex="10%">
-                        <img src="../../../../../../../assets/img/add-photo.png">
+                            <div class="row" class="client py-3 border-bottom" *ngFor="let item of topClients.data">
+                                <div fxFlex="10%">
+                                    <!-- <img src="{{item.client_pic}}"> -->
+                                </div>
+
+                                <div fxFlex="90%" class="pl-3">
+                                    <p class="text">{{item.client_name}}</p>
+                                    <p class="visit">Last Vist - {{item.last_visit}}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                
-                    <div fxFlex="90%" class="pl-3">
-                        <p class="text">{{item.member_name}}</p>
-                        <span>Vists: {{item.visit_count}}  |</span> <span class="pl-1">Time: {{item.serving_time}}  |</span> <span class="pl-1">Earnings: {{item.total_earnings}}</span>
+                    <div class="col-lg-6 mb-3">
+
+                        <div class="team-performance p-3 " *ngIf="topMembers">
+                            <div class="heading pb-3 border-bottom">
+                                <p>Team Performance</p>
+                            </div>
+
+                            <div class="row" class="member py-3 border-bottom" *ngFor="let item of topMembers.data">
+                                <div fxFlex="10%">
+                                    <img src="../../../../../../../assets/img/add-photo.png">
+                                </div>
+
+                                <div fxFlex="90%" class="pl-3">
+                                    <p class="text">{{item.member_name}}</p>
+                                    <span>Vists: {{item.visit_count}} |</span> <span class="pl-1">Time:
+                                        {{item.serving_time}} |</span> <span class="pl-1">Earnings:
+                                        {{item.total_earnings}}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</div>

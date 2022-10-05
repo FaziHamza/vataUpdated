@@ -2,266 +2,318 @@
     <div fxLayout="row" class="marketing-tabs">
         <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
             <mat-tab label="Push in Booking Categories">
-                <div class="push-booking-categories mt-4">
-                    <div fxFlex="30%" class="left-side p-3 mr-3">
-                        <form [formGroup]="pushOnBookingForm">
-                            <div class="push-booking p-3">
-                                <div fxLayout="row" class="heading-row">
-                                    <div fxFlex="70%">
-                                        <p>Push on Home Booking</p>
-                                    </div>
-                                    <div fxFlex="30%" class="text-right">
-                                        <mat-checkbox value="Push Home Booking" [checked]="pushOnBookingForm.get('pushHomeBooking').value" formControlName="pushHomeBooking" (change)="changeSelectBox($event)"></mat-checkbox>
-                                    </div>
-                                </div>
-    
-                                <div fxLayout="row" class="pt-2">
-                                    <mat-form-field class="w-100">
-                                        <mat-label>Select Duration</mat-label>
-                                        <mat-select formControlName="duration">
-                                            <mat-option value="1">1 day</mat-option>
-                                            <mat-option value="5">5 days</mat-option>
-                                            <mat-option value="10">10 days</mat-option>
-                                        </mat-select>
-                                        <mat-error *ngIf="pushOnBookingForm.get('duration').hasError('required')">
-                                            Select Duration is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-    
-                                <div fxLayout="row">
-                                    <mat-form-field class="w-100">
-                                        <mat-label>Start Date</mat-label>
-                                        <input matInput [matDatepicker]="picker" formControlName="startDate">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                        <mat-error *ngIf="pushOnBookingForm.get('startDate').hasError('required')">
-                                            Start Date is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-    
-                                <div fxLayout="row">
-                                    <mat-form-field class="w-100">
-                                        <mat-label>Description</mat-label>
-                                        <textarea matInput type="text" formControlName="description"></textarea>
-                                        <mat-error *ngIf="pushOnBookingForm.get('description').hasError('required')">
-                                            Description is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-    
-                            <div fxLayout="row" class="checkbox-row p-3 mt-3">
-                                <div fxFlex="70%" class="heading">
-                                    <p>Push on Best Booking</p>
-                                </div>
-                                <div fxFlex="30%" class="text-right">
-                                    <mat-checkbox value="Push Best Booking" [checked]="pushOnBookingForm.get('pushHomeBooking').value" formControlName="pushBestBooking" (change)="changeSelectBox($event)"></mat-checkbox>
-                                </div>
-                            </div>
-    
-                            <div fxLayout="row" class="checkbox-row p-3 my-3">
-                                <div fxFlex="70%" class="heading">
-                                    <p>Pay per for Near by You</p>
-                                </div>
-                                <div fxFlex="30%" class="text-right">
-                                    <mat-checkbox value="Pay Per For Near" [checked]="pushOnBookingForm.get('payPerForNear').value" formControlName="payPerForNear" (change)="changeSelectBox($event)"></mat-checkbox>
-                                </div>
-                            </div>
-    
-                            <div fxLayout="row" class="total-price border-top pt-3">
-                                <div fxFlex="30%">
-                                    <p class="text">Total</p>
-                                </div>
-                                <div fxFlex="20%">
-                                    <p class="amount">${{fees}}</p>
-                                </div>
-                                <div fxFlex="50%" class="text-right">
-                                    <a mat-button class="pink-b rounded-bt" (click)="postPushBooking()">Confirm & Pay</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <div class="container">
+                    <div class="row push-booking-categories mt-4">
+                        <div class="col-lg-4 mb-3">
+                            <div class="left-side p-3 ">
+                                <form [formGroup]="pushOnBookingForm">
+                                    <div class="push-booking p-3">
+                                        <div fxLayout="row" class="heading-row">
+                                            <div fxFlex="70%">
+                                                <p>Push on Home Booking</p>
+                                            </div>
+                                            <div fxFlex="30%" class="text-right">
+                                                <mat-checkbox value="Push Home Booking"
+                                                    [checked]="pushOnBookingForm.get('pushHomeBooking').value"
+                                                    formControlName="pushHomeBooking"
+                                                    (change)="changeSelectBox($event)">
+                                                </mat-checkbox>
+                                            </div>
+                                        </div>
 
-                    <div fxFlex="70%" class="right-side p-3 ml-3">
-                        <app-desktop-dashboard-all-services
-                            [allServices]="allServices"
-                            [categorizedServices]="categorizedServices"
-                            (selectServices)="getServices($event)"
-                        ></app-desktop-dashboard-all-services>
+                                        <div fxLayout="row" class="pt-2">
+                                            <mat-form-field class="w-100">
+                                                <mat-label>Select Duration</mat-label>
+                                                <mat-select formControlName="duration">
+                                                    <mat-option value="1">1 day</mat-option>
+                                                    <mat-option value="5">5 days</mat-option>
+                                                    <mat-option value="10">10 days</mat-option>
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="pushOnBookingForm.get('duration').hasError('required')">
+                                                    Select Duration is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div fxLayout="row">
+                                            <mat-form-field class="w-100">
+                                                <mat-label>Start Date</mat-label>
+                                                <input matInput [matDatepicker]="picker" formControlName="startDate">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                                <mat-error
+                                                    *ngIf="pushOnBookingForm.get('startDate').hasError('required')">
+                                                    Start Date is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div fxLayout="row">
+                                            <mat-form-field class="w-100">
+                                                <mat-label>Description</mat-label>
+                                                <textarea matInput type="text" formControlName="description"></textarea>
+                                                <mat-error
+                                                    *ngIf="pushOnBookingForm.get('description').hasError('required')">
+                                                    Description is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div fxLayout="row" class="checkbox-row p-3 mt-3">
+                                        <div fxFlex="70%" class="heading">
+                                            <p>Push on Best Booking</p>
+                                        </div>
+                                        <div fxFlex="30%" class="text-right">
+                                            <mat-checkbox value="Push Best Booking"
+                                                [checked]="pushOnBookingForm.get('pushHomeBooking').value"
+                                                formControlName="pushBestBooking" (change)="changeSelectBox($event)">
+                                            </mat-checkbox>
+                                        </div>
+                                    </div>
+
+                                    <div fxLayout="row" class="checkbox-row p-3 my-3">
+                                        <div fxFlex="70%" class="heading">
+                                            <p>Pay per for Near by You</p>
+                                        </div>
+                                        <div fxFlex="30%" class="text-right">
+                                            <mat-checkbox value="Pay Per For Near"
+                                                [checked]="pushOnBookingForm.get('payPerForNear').value"
+                                                formControlName="payPerForNear" (change)="changeSelectBox($event)">
+                                            </mat-checkbox>
+                                        </div>
+                                    </div>
+
+                                    <div fxLayout="row" class="total-price border-top pt-3">
+                                        <div fxFlex="30%">
+                                            <p class="text">Total</p>
+                                        </div>
+                                        <div fxFlex="20%">
+                                            <p class="amount">${{fees}}</p>
+                                        </div>
+                                        <div fxFlex="50%" class="text-right">
+                                            <a mat-button class="pink-b rounded-bt" (click)="postPushBooking()">Confirm
+                                                &
+                                                Pay</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="right-side p-3">
+                                <app-desktop-dashboard-all-services [allServices]="allServices"
+                                    [categorizedServices]="categorizedServices" (selectServices)="getServices($event)">
+                                </app-desktop-dashboard-all-services>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </mat-tab>
 
             <mat-tab label="Invite Clients">
-                <div class="invite-clients mt-4">
-                    <div fxFlex="30%" class="left-side p-3 mr-3">
-                        <div class="heading-row pb-3 border-bottom">
-                            <p>Select Method</p>
-                        </div>
+                <div class="container">
+                    <div class="row invite-clients mt-4">
+                        <div class="col-lg-4 mb-3">
+                            <div class="left-side p-3 ">
+                                <div class="heading-row pb-3 border-bottom">
+                                    <p>Select Method</p>
+                                </div>
 
-                        <div class="methods pt-4">
-                            <div fxLayout="row">
-                                <a mat-button class="method-field py-2 text-left w-100">
-                                    <span class="icon-add-button-inside-black-circle-1"></span>
-                                    On Demand
-                                </a>
-                            </div>
-                            <div fxLayout="row" class="mt-4">
-                                <a mat-button class="method-field text-left py-2 w-100">
-                                    <img src="../../../../../../../assets/img/email-passive-m.png">
-                                    By Your Address Book (e-mails)
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div fxFlex="70%" class="right-side p-3 ml-3">
-                        <div class="content-section">
-                            <div fxLayout="row" class="heading justify-content-center">
-                                <h6>Let your clients know you are booking online!</h6>
-                            </div>
-                            <div fxLayout="row" class="sub-heading justify-content-center pt-3">
-                                <p>So they can self book appointements with you using Free Book Client App</p>
-                            </div>
-                            <div fxLayout="row" class="title justify-content-center mt-3"></div>
-
-                            <div fxLayout="row" class="email-address justify-content-center mt-4">
-                                <a mat-button class="email-btn py-2">
-                                    Client Email Address or Phone Number
-                                </a>
-                            </div>
-
-                            <div fxLayout="row" class="invite-btn justify-content-center mt-4">
-                                <a mat-button class="pink-b rounded-bt px-5">Send Invite</a>
+                                <div class="methods pt-4">
+                                    <div fxLayout="row">
+                                        <a mat-button class="method-field py-2 text-left w-100">
+                                            <span class="icon-add-button-inside-black-circle-1"></span>
+                                            On Demand
+                                        </a>
+                                    </div>
+                                    <div fxLayout="row" class="mt-4">
+                                        <a mat-button class="method-field text-left py-2 w-100">
+                                            <img src="../../../../../../../assets/img/email-passive-m.png">
+                                            By Your Address Book (e-mails)
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-lg-8">
+                            <div class="right-side p-3 ">
+                                <div class="content-section">
+                                    <div fxLayout="row" class="heading justify-content-center">
+                                        <h6>Let your clients know you are booking online!</h6>
+                                    </div>
+                                    <div fxLayout="row" class="sub-heading justify-content-center pt-3">
+                                        <p>So they can self book appointements with you using Free Book Client App</p>
+                                    </div>
+                                    <div fxLayout="row" class="title justify-content-center mt-3"></div>
+
+                                    <div fxLayout="row" class="email-address justify-content-center mt-4">
+                                        <a mat-button class="email-btn py-2">
+                                            Client Email Address or Phone Number
+                                        </a>
+                                    </div>
+
+                                    <div fxLayout="row" class="invite-btn justify-content-center mt-4">
+                                        <a mat-button class="pink-b rounded-bt px-5">Send Invite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </mat-tab>
 
             <mat-tab label="Last Minute Discount">
-                <div class="last-minute mt-4">
-                    <div fxFlex="30%" class="left-side p-3 mr-3">
-                        <form [formGroup]="lastMinDiscountForm">
-                            <div class="input-fields pt-3 px-3">
-                                <p>Last Minute Discount</p>
-                                <div fxLayout="row" class="pt-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Type Discount Percent</mat-label>
-                                        <input matInput type="text" formControlName="discountPercent">
-                                        <mat-error *ngIf="lastMinDiscountForm.get('discountPercent').hasError('required')">
-                                            Discount Percent is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-    
-                            <div class="input-fields pt-3 px-3 mt-3">
-                                <p class="pb-3">Your clients must book no more than</p>
-                                <span>Type Time</span>
-                                <div fxLayout="row" class="pt-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Time before the visit to quality for the discount</mat-label>
-                                        <input matInput type="time" formControlName="timeLimit">
-                                        <mat-error *ngIf="lastMinDiscountForm.get('timeLimit').hasError('required')">
-                                            Time is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-    
-                            <div class="note pt-4">
-                                <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                <p class="pb-4">When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            </div>
-    
-                            <div class="confirm-btn text-center py-3 border-top">
-                                <a mat-button class="pink-b rounded-bt px-5" (click)="postLastMinDiscount()">Confirm & Start</a>
-                            </div>
-                        </form>
-                    </div>
+                <div class="container">
 
-                    <div fxFlex="70%" class="right-side p-3 ml-3">
-                        <app-desktop-dashboard-all-services
-                            [allServices]="allServices"
-                            [categorizedServices]="categorizedServices"
-                            (selectServices)="getServices($event)"
-                        ></app-desktop-dashboard-all-services>
+                    <div class="row last-minute mt-4">
+                        <div class="col-lg-4 mb-3">
+                            <div class="left-side p-3 ">
+                                <form [formGroup]="lastMinDiscountForm">
+                                    <div class="input-fields pt-3 px-3">
+                                        <p>Last Minute Discount</p>
+                                        <div fxLayout="row" class="pt-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Type Discount Percent</mat-label>
+                                                <input matInput type="text" formControlName="discountPercent">
+                                                <mat-error
+                                                    *ngIf="lastMinDiscountForm.get('discountPercent').hasError('required')">
+                                                    Discount Percent is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-fields pt-3 px-3 mt-3">
+                                        <p class="pb-3">Your clients must book no more than</p>
+                                        <span>Type Time</span>
+                                        <div fxLayout="row" class="pt-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Time before the visit to quality for the discount</mat-label>
+                                                <input matInput type="time" formControlName="timeLimit">
+                                                <mat-error
+                                                    *ngIf="lastMinDiscountForm.get('timeLimit').hasError('required')">
+                                                    Time is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="note pt-4">
+                                        <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                            industry Lorem Ipsum.</p>
+                                        <p class="pb-4">When an unknown printer took a galley of type and scrambled it
+                                            to make a
+                                            type specimen book. It has survived not only five centuries, but also the
+                                            leap into
+                                            electronic typesetting, remaining essentially unchanged.</p>
+                                    </div>
+
+                                    <div class="confirm-btn text-center py-3 border-top">
+                                        <a mat-button class="pink-b rounded-bt px-5"
+                                            (click)="postLastMinDiscount()">Confirm &
+                                            Start</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="right-side p-3">
+                                <app-desktop-dashboard-all-services [allServices]="allServices"
+                                    [categorizedServices]="categorizedServices" (selectServices)="getServices($event)">
+                                </app-desktop-dashboard-all-services>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </mat-tab>
 
             <mat-tab label="Happy Hours">
-                <div class="happy-hours mt-4">
-                    <div fxFlex="30%" class="left-side p-3 mr-3">
+                <div class="container">
+                    <div class="row happy-hours mt-4">
+                        <div class="col-lg-4 mb-3">
+                            <div class="left-side p-3 ">
 
-                        <form [formGroup]="happyHoursForm">
-                            <div class="input-fields pt-2 px-3">
-                                <p>Happy Hours Discount</p>
-                                <div fxLayout="row" class="pt-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Type Discount Percent</mat-label>
-                                        <input matInput type="text" formControlName="discountPercent">
-                                        <mat-error *ngIf="happyHoursForm.get('discountPercent').hasError('required')">
-                                            Discount Percent is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
+                                <form [formGroup]="happyHoursForm">
+                                    <div class="input-fields pt-2 px-3">
+                                        <p>Happy Hours Discount</p>
+                                        <div fxLayout="row" class="pt-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Type Discount Percent</mat-label>
+                                                <input matInput type="text" formControlName="discountPercent">
+                                                <mat-error
+                                                    *ngIf="happyHoursForm.get('discountPercent').hasError('required')">
+                                                    Discount Percent is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="discount-checkboxes p-3 mt-4">
+                                    <p>Use discounted price during</p>
+
+                                    <div class="day-checkbox py-3 border-bottom"
+                                        *ngFor="let item of happyHourDiscountSelectDays">
+                                        <mat-checkbox [value]="item.day_name" (change)="selectDays(item.id)">
+                                        </mat-checkbox>
+                                        <span class="pl-3">{{item.day_name}}</span> <span
+                                            class="float-right">{{item.from_time}}
+                                            - {{item.to_time}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="note pt-4">
+                                    <p class="pb-3">When an unknown printer took a galley of type and scrambled it to
+                                        make a
+                                        type specimen book. It has survived not only five centuries, but also the leap
+                                        into
+                                        electronic typesetting, remaining essentially unchanged.</p>
+                                    <p class="pb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry
+                                        Lorem Ipsum.</p>
+                                </div>
+
+                                <div class="confirm-btn text-center pt-3 border-top">
+                                    <a mat-button class="pink-b rounded-bt" (click)="postHappyHourDiscount()">Confirm &
+                                        Start</a>
                                 </div>
                             </div>
-                        </form>
-
-                        <div class="discount-checkboxes p-3 mt-4">
-                            <p>Use discounted price during</p>
-
-                            <div class="day-checkbox py-3 border-bottom" *ngFor="let item of happyHourDiscountSelectDays">
-                                <mat-checkbox 
-                                    [value]="item.day_name"
-                                    (change)="selectDays(item.id)"
-                                ></mat-checkbox>
-                                <span class="pl-3">{{item.day_name}}</span> <span class="float-right">{{item.from_time}} - {{item.to_time}}</span>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="right-side p-3 ">
+                                <app-desktop-dashboard-all-services [allServices]="allServices"
+                                    [categorizedServices]="categorizedServices" (selectServices)="getServices($event)">
+                                </app-desktop-dashboard-all-services>
                             </div>
                         </div>
-
-                        <div class="note pt-4">
-                            <p class="pb-3">When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <p class="pb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                        </div>
-
-                        <div class="confirm-btn text-center pt-3 border-top">
-                            <a mat-button class="pink-b rounded-bt" (click)="postHappyHourDiscount()">Confirm & Start</a>
-                        </div>
-                    </div>
-
-                    <div fxFlex="70%" class="right-side p-3 ml-3">
-                        <app-desktop-dashboard-all-services
-                            [allServices]="allServices"
-                            [categorizedServices]="categorizedServices"
-                            (selectServices)="getServices($event)"
-                        ></app-desktop-dashboard-all-services>
                     </div>
                 </div>
             </mat-tab>
 
             <mat-tab label="Flash Sale">
-                <div class="flash-sale mt-4">
-                    <div fxFlex="30%" class="left-side p-3 mr-3">
-                        <form [formGroup]="flashSaleForm">
-                            <div class="input-field pt-2 px-3">
-                                <p>Flash Sale Discount</p>
-                                <div fxLayout="row" class="pt-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Type Discount Percent</mat-label>
-                                        <input matInput type="text" formControlName="discountPercent">
-                                        <mat-error *ngIf="flashSaleForm.get('discountPercent').hasError('required')">
-                                            Type Discount Percent is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                <div class="container">
+                    <div class=" row flash-sale mt-4">
+                        <div class="col-lg-4 mb-3">
+                            <div class="left-side p-3">
+                                <form [formGroup]="flashSaleForm">
+                                    <div class="input-field pt-2 px-3">
+                                        <p>Flash Sale Discount</p>
+                                        <div fxLayout="row" class="pt-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Type Discount Percent</mat-label>
+                                                <input matInput type="text" formControlName="discountPercent">
+                                                <mat-error
+                                                    *ngIf="flashSaleForm.get('discountPercent').hasError('required')">
+                                                    Type Discount Percent is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
 
-                            <!-- <div class="dropdown-field pt-2 px-3 mt-4">
+                                    <!-- <div class="dropdown-field pt-2 px-3 mt-4">
                                 <p>Offer the Sale</p>
                                 <div fxLayout="row" class="pt-3">
                                     <mat-form-field class="w-100">
@@ -275,21 +327,21 @@
                                 </div>
                             </div> -->
 
-                            <div class="dropdown-field pt-2 px-3 mt-4">
-                                <div fxLayout="row" class="pt-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>End Time</mat-label>
-                                        <input matInput type="time" formControlName="endTime">
-                                        <mat-error *ngIf="flashSaleForm.get('endTime').hasError('required')">
-                                            End Time is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                                    <div class="dropdown-field pt-2 px-3 mt-4">
+                                        <div fxLayout="row" class="pt-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>End Time</mat-label>
+                                                <input matInput type="time" formControlName="endTime">
+                                                <mat-error *ngIf="flashSaleForm.get('endTime').hasError('required')">
+                                                    End Time is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
 
-                            <div class="radio-btn p-3 mt-4">
-                                <p>Booking date to qualify</p>
-                                <!-- <div fxLayout="row" class="pt-3 d-flex">
+                                    <div class="radio-btn p-3 mt-4">
+                                        <p>Booking date to qualify</p>
+                                        <!-- <div fxLayout="row" class="pt-3 d-flex">
                                     <mat-radio-group aria-label="Select an option">
                                         <div class="radio">
                                             <mat-radio-button value="1">Today Only</mat-radio-button>
@@ -299,32 +351,39 @@
                                         </div>
                                     </mat-radio-group>
                                 </div> -->
-                                <div class="day-checkbox py-3 border-bottom" *ngFor="let item of happyHourDiscountSelectDays">
-                                    <mat-checkbox 
-                                        [value]="item.day_name"
-                                        (change)="selectDays(item.id)"
-                                    ></mat-checkbox>
-                                    <span class="pl-3">{{item.day_name}}</span> <span class="float-right">{{item.from_time}} - {{item.to_time}}</span>
-                                </div>
-                            </div>
+                                        <div class="day-checkbox py-3 border-bottom"
+                                            *ngFor="let item of happyHourDiscountSelectDays">
+                                            <mat-checkbox [value]="item.day_name" (change)="selectDays(item.id)">
+                                            </mat-checkbox>
+                                            <span class="pl-3">{{item.day_name}}</span> <span
+                                                class="float-right">{{item.from_time}} - {{item.to_time}}</span>
+                                        </div>
+                                    </div>
 
-                            <div class="note pt-4">
-                                <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                <p class="pb-4">When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            </div>
+                                    <div class="note pt-4">
+                                        <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                            industry Lorem Ipsum.</p>
+                                        <p class="pb-4">When an unknown printer took a galley of type and scrambled it
+                                            to make a
+                                            type specimen book. It has survived not only five centuries, but also the
+                                            leap into
+                                            electronic typesetting, remaining essentially unchanged.</p>
+                                    </div>
 
-                            <div class="confirm-btn text-center pt-3 border-top">
-                                <a mat-button class="pink-b rounded-bt" (click)="postFlashSale()">Confirm & Start</a>
+                                    <div class="confirm-btn text-center pt-3 border-top">
+                                        <a mat-button class="pink-b rounded-bt" (click)="postFlashSale()">Confirm &
+                                            Start</a>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
-
-                    <div fxFlex="70%" class="right-side p-3 ml-3">
-                        <app-desktop-dashboard-all-services
-                            [allServices]="allServices"
-                            [categorizedServices]="categorizedServices"
-                            (selectServices)="getServices($event)"
-                        ></app-desktop-dashboard-all-services>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="right-side p-3">
+                                <app-desktop-dashboard-all-services [allServices]="allServices"
+                                    [categorizedServices]="categorizedServices" (selectServices)="getServices($event)">
+                                </app-desktop-dashboard-all-services>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </mat-tab>

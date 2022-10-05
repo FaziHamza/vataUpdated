@@ -15,6 +15,10 @@
                     // &:nth-last-child(3) {
                     //     border-left: 0px;
                     // }
+                    @media only screen and (max-width: 991px) {
+                        padding: 0 10px 0 10px;
+
+                    }
                     a {
                         color: $dark-gray;
                         font-size: 13px;
@@ -224,4 +228,12 @@
 ::ng-deep .tui-full-calendar-timegrid-container {
     overflow: visible !important;
     overflow-y: unset !important;
+}
+@media only screen and (max-width: 991px) {
+    .xs-mb-20 {
+        margin-bottom: 20px !important;
+    }
+    .text-right {
+        text-align: left !important;
+    }
 }

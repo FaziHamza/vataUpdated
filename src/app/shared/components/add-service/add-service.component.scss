@@ -3,6 +3,7 @@
 .booking-fields {
     border: 1px solid $light-gray;
     border-radius: 6px;
+
     .heading {
         h6 {
             color: $black;
@@ -23,12 +24,14 @@
             &.wrapper {
                 position: relative;
                 top: 8px;
+
                 span {
                     &.time {
                         color: $dark-gray;
                         font-size: 17px;
                     }
                 }
+
                 span {
                     &.text {
                         color: $black;
@@ -49,4 +52,9 @@
             color: $black;
         }
     }
+}
+
+.alrtNoRecord {
+    text-align: center;
+    color: #ff0000d1;
 }

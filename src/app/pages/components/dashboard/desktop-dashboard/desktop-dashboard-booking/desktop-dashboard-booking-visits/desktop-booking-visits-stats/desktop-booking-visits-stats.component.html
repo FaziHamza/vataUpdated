@@ -1,156 +1,164 @@
 <div class="desktop-booking-visits-stats">
+    <div class="container">
+        <div class=" date-header-bar p-3 mt-4">
+            <div class="row">
+                <div class="col-lg-7 left-side pt-2 xs-mb-20">
+                    <ul>
+                        <li *ngIf="isDayActive"><a class="date">{{moment().format('LLLL')}}</a></li>
+                        <li *ngIf="!isDayActive"><a class="date">{{moment().startOf('week').format('MMMM DD')}} -
+                                {{moment().endOf('week').format('MMMM DD YYYY')}}</a></li>
 
-    <div fxLayout="row" class="date-header-bar p-3 mt-4">
-        <div fxFlex="55%" class="left-side pt-2">
-            <ul>
-                <li *ngIf="isDayActive"><a class="date">{{moment().format('LLLL')}}</a></li>
-                <li *ngIf="!isDayActive"><a class="date">{{moment().startOf('week').format('MMMM DD')}} - {{moment().endOf('week').format('MMMM DD YYYY')}}</a></li>
-
-                <li (click)="toggleDayWeek()"><a [class]="isDayActive ? 'active': ''">Day</a></li>
-                <li (click)="toggleDayWeek()"><a [class]="!isDayActive ? 'active': ''">Week</a></li>
-            </ul>
-        </div>
-
-        <div fxFlex="45%" class="right-side text-right">
-            <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Back to Home</a>
-            <a mat-button class="pink-b rounded-bt py-0 px-5" (click)="routeToNewVisit()" >Add Visit</a>
-        </div>
-    </div>
-
-    <div fxLayout="row" class="calendar-sections mt-4">
-        <div fxFlex="35%" class="left-section">
-            <div class="calendar p-3">
-                <mat-calendar #calendar color="primary" [(selected)]="selectedDate"></mat-calendar>
-            </div>
-
-            <div *ngIf="visitData" class="visits p-3 mt-4">
-                <div class="header-bar border-bottom pb-3">
-                    <div fxFlex="60%">
-                        <p *ngIf="isDayActive">Today</p>
-                        <p *ngIf="!isDayActive">{{moment().startOf('week').format('MMMM DD')}} - {{moment().endOf('week').format('MMMM DD YYYY')}}</p>
-
-                    </div>
-
-                    <div fxFlex="40%" class="text-right">
-                        <p class="pink-text">{{visitData.total_visits}} Visits</p>
-                    </div>
-                </div>
-                
-                <div class="users-scroll border-bottom pb-3 pr-3">
-                    <div *ngFor="let member of visitData.member_visit_counts | keyvalue" class="user">
-                        <div fxFlex="60%">
-                            <p>{{item.key}}</p>
-                        </div>
-
-                        <div fxFlex="40%" class="text-right">
-                            <p>({{item.value}})</p>
-                        </div>
-                    </div>
-                    <p *ngIf="!visitData.total_visits">No visits available</p>
+                        <li (click)="toggleDayWeek()"><a [class]="isDayActive ? 'active': ''">Day</a></li>
+                        <li (click)="toggleDayWeek()"><a [class]="!isDayActive ? 'active': ''">Week</a></li>
+                    </ul>
                 </div>
 
-                <div class="fields-scroll pr-3">
-                    <div class="visit-field">
-                        <div *ngFor="let service of visitData.booked_services" class="field-detail p-3 mt-4">
-                            <p>{{service.service_name}}</p>
-                            <span class="pr-3">{{service.from_time}} - {{service.to_time}}</span> <span>{{service.client_name}}</span> 
-                            <span class="float-right">{{service.member_name}}</span>
-                        </div>
-                        <p *ngIf="!visitData.booked_services.length">No services available</p>
-                    </div>
-                </div>
-
-                <div class="week" *ngIf="false">
-                    <div class="fields-scroll pr-3">
-                        <div class="visit-field">
-                            <div class="header-bar border-bottom pt-4 pb-3">
-                                <div fxFlex="60%">
-                                    <p>Tuesday, 9</p> <span class="online"></span>
-                                </div>
-            
-                                <div fxFlex="40%" class="text-right">
-                                    <p class="pink-text">3 Visits</p>
-                                </div>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Men's Haircut with Hot towel Shave</p>
-                                <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                <span class="float-right">From Misha</span>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Barber hair</p>
-                                <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                <span class="float-right">From Andrew</span>
-                            </div>
-
-                            <div class="header-bar border-bottom pt-4 pb-3">
-                                <div fxFlex="60%">
-                                    <p>Wednesday, 15</p>
-                                </div>
-            
-                                <div fxFlex="40%" class="text-right">
-                                    <p>3 Visits</p>
-                                </div>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Men's Haircut with Hot towel Shave</p>
-                                <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                <span class="float-right">From Misha</span>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Barber hair</p>
-                                <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                <span class="float-right">From Andrew</span>
-                            </div>
-
-                            <div class="header-bar border-bottom pt-4 pb-3">
-                                <div fxFlex="60%">
-                                    <p>Friday, 29</p>
-                                </div>
-            
-                                <div fxFlex="40%" class="text-right">
-                                    <p>3 Visits</p>
-                                </div>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Men's Haircut with Hot towel Shave</p>
-                                <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                <span class="float-right">From Misha</span>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Barber hair</p>
-                                <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                <span class="float-right">From Andrew</span>
-                            </div>
-
-                            <div class="header-bar border-bottom pt-4 pb-3">
-                                <div fxFlex="60%">
-                                    <p>Tuesday, 31</p>
-                                </div>
-            
-                                <div fxFlex="40%" class="text-right">
-                                    <p>3 Visits</p>
-                                </div>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Men's Haircut with Hot towel Shave</p>
-                                <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span> 
-                                <span class="float-right">From Misha</span>
-                            </div>
-                            <div class="field-detail p-3 mt-4">
-                                <p>Barber hair</p>
-                                <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span> 
-                                <span class="float-right">From Andrew</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-5 right-side text-right">
+                    <a mat-button class="white-b rounded-bt py-0 px-5 mr-4">Back to Home</a>
+                    <a mat-button class="pink-b rounded-bt py-0 px-5" (click)="routeToNewVisit()">Add Visit</a>
                 </div>
             </div>
         </div>
 
-        <div fxFlex="65%" class="right-section ml-3">
-            <div id="example-calendar"></div>
+        <div class="row mt-3 calendar-sections ">
+            <div class="col-lg-4">
+                <div class=" left-section">
+                    <div class="calendar p-2">
+                        <mat-calendar #calendar color="primary" [(selected)]="selectedDate"></mat-calendar>
+                    </div>
 
+                    <div *ngIf="visitData" class="visits p-3 mt-3">
+                        <div class="header-bar border-bottom pb-3">
+                            <div fxFlex="60%">
+                                <p *ngIf="isDayActive">Today</p>
+                                <p *ngIf="!isDayActive">{{moment().startOf('week').format('MMMM DD')}} -
+                                    {{moment().endOf('week').format('MMMM DD YYYY')}}</p>
+
+                            </div>
+
+                            <div fxFlex="40%" class="text-right">
+                                <p class="pink-text">{{visitData.total_visits}} Visits</p>
+                            </div>
+                        </div>
+
+                        <div class="users-scroll border-bottom pb-3 pr-3">
+                            <div *ngFor="let member of visitData.member_visit_counts | keyvalue" class="user">
+                                <div fxFlex="60%">
+                                    <p>{{item.key}}</p>
+                                </div>
+
+                                <div fxFlex="40%" class="text-right">
+                                    <p>({{item.value}})</p>
+                                </div>
+                            </div>
+                            <p *ngIf="!visitData.total_visits " class="mt-2">No visits available</p>
+                        </div>
+
+                        <div class="fields-scroll pr-3">
+                            <div class="visit-field">
+                                <div *ngFor="let service of visitData.booked_services" class="field-detail p-3 mt-4">
+                                    <p>{{service.service_name}}</p>
+                                    <span class="pr-3">{{service.from_time}} - {{service.to_time}}</span>
+                                    <span>{{service.client_name}}</span>
+                                    <span class="float-right">{{service.member_name}}</span>
+                                </div>
+                                <p *ngIf="!visitData.booked_services.length " class="mt-2">No services available</p>
+                            </div>
+                        </div>
+
+                        <div class="week" *ngIf="false">
+                            <div class="fields-scroll pr-3">
+                                <div class="visit-field">
+                                    <div class="header-bar border-bottom pt-4 pb-3">
+                                        <div fxFlex="60%">
+                                            <p>Tuesday, 9</p> <span class="online"></span>
+                                        </div>
+
+                                        <div fxFlex="40%" class="text-right">
+                                            <p class="pink-text">3 Visits</p>
+                                        </div>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Men's Haircut with Hot towel Shave</p>
+                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                        <span class="float-right">From Misha</span>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Barber hair</p>
+                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                        <span class="float-right">From Andrew</span>
+                                    </div>
+
+                                    <div class="header-bar border-bottom pt-4 pb-3">
+                                        <div fxFlex="60%">
+                                            <p>Wednesday, 15</p>
+                                        </div>
+
+                                        <div fxFlex="40%" class="text-right">
+                                            <p>3 Visits</p>
+                                        </div>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Men's Haircut with Hot towel Shave</p>
+                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                        <span class="float-right">From Misha</span>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Barber hair</p>
+                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                        <span class="float-right">From Andrew</span>
+                                    </div>
+
+                                    <div class="header-bar border-bottom pt-4 pb-3">
+                                        <div fxFlex="60%">
+                                            <p>Friday, 29</p>
+                                        </div>
+
+                                        <div fxFlex="40%" class="text-right">
+                                            <p>3 Visits</p>
+                                        </div>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Men's Haircut with Hot towel Shave</p>
+                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                        <span class="float-right">From Misha</span>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Barber hair</p>
+                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                        <span class="float-right">From Andrew</span>
+                                    </div>
+
+                                    <div class="header-bar border-bottom pt-4 pb-3">
+                                        <div fxFlex="60%">
+                                            <p>Tuesday, 31</p>
+                                        </div>
+
+                                        <div fxFlex="40%" class="text-right">
+                                            <p>3 Visits</p>
+                                        </div>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Men's Haircut with Hot towel Shave</p>
+                                        <span class="pr-3">14:00 - 14:30</span> <span>Caneron Deas</span>
+                                        <span class="float-right">From Misha</span>
+                                    </div>
+                                    <div class="field-detail p-3 mt-4">
+                                        <p>Barber hair</p>
+                                        <span class="pr-3">16:00 - 16:30</span> <span>Bredly James</span>
+                                        <span class="float-right">From Andrew</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class=" right-section">
+                    <div id="example-calendar"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

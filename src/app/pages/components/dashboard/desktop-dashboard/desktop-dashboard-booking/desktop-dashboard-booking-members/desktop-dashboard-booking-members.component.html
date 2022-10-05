@@ -1,36 +1,29 @@
 <div class="desktop-dashboard-booking-members mt-4">
-    <div fxLayout="row">
-        <div fxFlex="30%" class="left-side p-3">
-            <app-desktop-booking-all-members
-                (selectType)="typeChange($event)" 
-                (sendData)="getDataMember($event)"
-            >
-            </app-desktop-booking-all-members>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <div class="left-side p-3">
+                    <app-desktop-booking-all-members (selectType)="typeChange($event)"
+                        (sendData)="getDataMember($event)">
+                    </app-desktop-booking-all-members>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="right-side p-3">
+                    <!-- <router-outlet></router-outlet> -->
 
-        <div fxFlex="70%" class="right-side p-3 ml-3">
-            <!-- <router-outlet></router-outlet> -->
+                    <app-desktop-booking-member-details *ngIf="loadType == 'details'" (selectType)="typeChange($event)"
+                        [memberData]="memberData">
+                    </app-desktop-booking-member-details>
 
-            <app-desktop-booking-member-details
-                *ngIf="loadType == 'details'" 
-                (selectType)="typeChange($event)"
-                [memberData]="memberData"
-            >
-            </app-desktop-booking-member-details>
+                    <app-desktop-booking-edit-member *ngIf="loadType == 'edit'" (selectType)="typeChange($event)"
+                        [memberData]="memberData">
+                    </app-desktop-booking-edit-member>
 
-            <app-desktop-booking-edit-member
-                *ngIf="loadType == 'edit'"
-                (selectType)="typeChange($event)"
-                [memberData]="memberData"
-            >
-            </app-desktop-booking-edit-member>
-
-            <app-desktop-booking-new-member
-                *ngIf="loadType == 'new'"
-                (selectType)="typeChange($event)"
-            >
-            </app-desktop-booking-new-member>
-
+                    <app-desktop-booking-new-member *ngIf="loadType == 'new'" (selectType)="typeChange($event)">
+                    </app-desktop-booking-new-member>
+                </div>
+            </div>
         </div>
     </div>
 </div>
