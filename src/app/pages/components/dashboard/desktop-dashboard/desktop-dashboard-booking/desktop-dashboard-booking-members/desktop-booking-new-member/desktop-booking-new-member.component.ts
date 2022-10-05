@@ -32,6 +32,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   ngOnInit() {
     this.newMemberBookingForminIt();
     this.getAllServices();
+
   }
 
   onFileUpload(data) {
@@ -44,7 +45,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   }
 
   getAllServices() {
-    debugger
+    
     let shopId = this.userService.getUser().shop_details.id;
     this.dashboardService.getServicesList(shopId).subscribe(res => {
       this.servicesList = res?.data;
@@ -70,7 +71,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   }
 
   addNewMember() {
-      debugger
+      
       this.params.append("member_name",this.newMemberBookingForm.value.memberName);
       this.params.append("member_surname",this.newMemberBookingForm.value.memberSurname);
       this.params.append("phone_isd",this.newMemberBookingForm.value.phoneCode);
@@ -126,7 +127,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   }
 
   selectAllMembers(select) {
-    debugger
+    
     this.categoryList = [];
     this.selectAll = !this.selectAll;
 

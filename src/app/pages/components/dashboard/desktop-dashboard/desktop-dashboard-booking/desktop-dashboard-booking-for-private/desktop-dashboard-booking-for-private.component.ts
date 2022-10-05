@@ -56,7 +56,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     }
 
     this.dashboardService.currentHistory(params.limit, params.offset, params.user_book_services__user_id, params.finished, params.cancel, params.get_date).subscribe(res => {
-      debugger
+      
       this.currentHistory = res;
       console.log(this.currentHistory);
     })
@@ -81,7 +81,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   }
 
   datedData(dateParam) {
-    debugger
+    
     let date = new Date(dateParam);
     let formattedDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
     
@@ -95,7 +95,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     }
 
     this.dashboardService.currentHistory(params.limit, params.offset, params.user_book_services__user_id, params.finished, params.cancel, params.get_date).subscribe(res => {
-      debugger
+      
       this.datedHistory = res;
       console.log(this.datedHistory);
     })
@@ -106,7 +106,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     this.dateSelected.emit(this.privateSelectedDate);
     if (this._datePicker) {
       this._datePicker.selectedChange.subscribe(x => {
-        debugger
+        
         var date = moment(x).format('YYYY-MM-DD');
         this.datedData(date);
       });

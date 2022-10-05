@@ -126,7 +126,8 @@
                         <h3 class="text-center no-data" *ngIf="productData && !productData.length">Oops, No products found.</h3>
                         <div *ngFor="let product of productData">
                             <div class="card-block">
-                                <app-marketplace-card-list-view [routerLink]="['/product', product.id]" [product]="product"></app-marketplace-card-list-view>
+                                <!-- <app-marketplace-card-list-view [routerLink]="['/product', product.id]" [product]="product"></app-marketplace-card-list-view> -->
+                                <app-marketplace-card-list-view  [product]="product"></app-marketplace-card-list-view>
                             </div>
                           </div>
                     </div>

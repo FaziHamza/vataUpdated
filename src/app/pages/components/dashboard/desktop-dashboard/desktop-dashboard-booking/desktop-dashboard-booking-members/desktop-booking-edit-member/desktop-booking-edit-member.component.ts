@@ -32,7 +32,7 @@ export class DesktopBookingEditMemberComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
+    
     this.dataMember;
     this.editMemberBookingForminIt();
     this.dataCheck();

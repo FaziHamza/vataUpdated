@@ -92,7 +92,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
 
     if (this.newClientBookingForm.valid) {
       this.dashboardService.addClient(params).subscribe(res => {
-        debugger
+        
         console.log(res);
 
         if (res) {

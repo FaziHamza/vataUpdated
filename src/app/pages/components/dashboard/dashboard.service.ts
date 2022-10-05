@@ -274,5 +274,39 @@ export class DashboardService {
   deleteBookingMember(id) {
     return this.apiService.delete(sprintf(ApiEndPoints.DASHBOARD.DELETE_BOOKINGMEMBER, id));
   }
-  
+
+  postOfflineQuickBookingClient(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_QUICKBOOKINGCLIENT, params);
+  }
+  postOfflineMyHistoryUpcoming(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_MYHISTORYUPCOMING, params);
+  }
+  postOfflineMyHistoryCurrent(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_MYHISTORCURRENT, params);
+  }
+  postOfflineMyHistoryPrevious(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_MYHISTORYPREVIOUS, params);
+  }
+  postOfflineAddService(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_ADDSERVICE, params);
+  }
+  postOfflineModifiedService(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_MODIFIEDSERVICE, params);
+  }
+  postOfflineApplyDiscount(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_APPLYDISCOUNT, params);
+  }
+  postOfflineTipCash(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_APPLYTIPCASH, params);
+  }
+  postOfflineTipPercent(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_APPLYTIPPERCENT, params);
+  }
+  postOfflineOncart(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_ONCART, params);
+  }
+  postOfflineDeleteService(clientId,serviceId) {
+    return this.apiService.delete(sprintf(ApiEndPoints.DASHBOARD.POST_OFFLINE_DELETESERVICE, clientId,serviceId));
+  }
+
 }

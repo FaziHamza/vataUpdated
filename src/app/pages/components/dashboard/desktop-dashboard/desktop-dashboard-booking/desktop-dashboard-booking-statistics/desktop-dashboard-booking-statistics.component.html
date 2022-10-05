@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div fxLayout="row" >
-                <div fxFlex="100%" class="m-2" id="chart1">
+                <div fxFlex="100%" class="m-2" id="chart1" *ngIf="chartOptions">
                     <apx-chart
                     #chart
                     [series]="chartOptions.series"

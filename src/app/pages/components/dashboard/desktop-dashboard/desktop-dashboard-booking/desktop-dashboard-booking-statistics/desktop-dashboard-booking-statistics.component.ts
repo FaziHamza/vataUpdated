@@ -53,7 +53,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
   ngOnInit() {
     // this.bookingStats();
     this.dashboardService.getBookingStats().subscribe(res => {
-      debugger
+      
       this.bookingStatistics = res;
       this.chartOptions = {
         series: [
@@ -144,7 +144,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
 
   bookingStats() {
     this.dashboardService.getBookingStats().subscribe(res => {
-      debugger
+      
       this.bookingStatistics = res;
 
       // console.log(res);

@@ -196,5 +196,17 @@ export class ApiEndPoints {
         //booking    
         PUT_UPDATE_BOOKINGMEMBER: '/user/dashboard/EditMember/%s/',
 
+        //offline
+        POST_OFFLINE_QUICKBOOKINGCLIENT: '/booking/cart/offline/quickBookingClient/',
+        POST_OFFLINE_MYHISTORYUPCOMING: '/booking/cart/offline/myHistoryUpcoming/',
+        POST_OFFLINE_MYHISTORCURRENT: '/booking/cart/offline/myHistoryCurrent/',
+        POST_OFFLINE_MYHISTORYPREVIOUS: '/booking/cart/offline/myHistoryPrevious/',
+        POST_OFFLINE_ADDSERVICE: '/booking/cart/offline/addService/',
+        POST_OFFLINE_MODIFIEDSERVICE: '/booking/cart/offline/modifyService/',
+        POST_OFFLINE_DELETESERVICE: '/booking/cart/offline/deleteService/%s/%s/',
+        POST_OFFLINE_APPLYDISCOUNT: '/booking/cart/offline/applyDiscount/',
+        POST_OFFLINE_APPLYTIPCASH: '/booking/cart/offline/applyTipCash/',
+        POST_OFFLINE_APPLYTIPPERCENT: '/booking/cart/offline/applyTipPercent/',
+        POST_OFFLINE_ONCART: '/booking/cart/offline/oncart/',
     };
 }
