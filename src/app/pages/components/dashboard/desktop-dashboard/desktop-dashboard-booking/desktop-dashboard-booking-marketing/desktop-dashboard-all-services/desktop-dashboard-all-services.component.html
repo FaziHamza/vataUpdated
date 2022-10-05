@@ -8,23 +8,23 @@
     <div class="services" *ngIf="allServices">
         <div class="all-services">
             <div fxLaytout="row" class="heading-bar py-3 border-bottom">
-                <div fxFlex="85%" class="left-side">
+                <div fxFlex="75%" class="left-side">
                     <p>All Categories</p>
                 </div>
-                <div fxFlex="15%" class="right-side text-right">
+                <div fxFlex="25%" class="right-side text-right">
                     <span>Select All</span>
                     <mat-checkbox (change)="selectAllServices('all')"></mat-checkbox>
                 </div>
             </div>
             <div fxLaytout="row" class="field py-3 border-bottom" *ngFor="let service of allServices">
-                <div fxFlex="85%" class="left-side">
+                <div fxFlex="75%" class="left-side">
                     <p>{{service.service_name}}</p>
                     <div class="time-price">
                         <span class="pl-4">{{service.duration}} {{service.rate_unit}}</span>
                         <span class="pink-text pl-3">${{service.total}}</span>
                     </div>
                 </div>
-                <div fxFlex="15%" class="right-side text-right">
+                <div fxFlex="25%" class="right-side text-right">
                     <mat-checkbox [checked]="selectAll" (change)="selectService(service.id)"></mat-checkbox>
                 </div>
             </div>
@@ -33,10 +33,10 @@
         <div *ngIf="categorizedServices">
             <div class="service" *ngFor="let categorizedService of categorizedServices">
                 <div fxLaytout="row" class="heading-bar py-3 border-bottom">
-                    <div fxFlex="85%" class="left-side">
+                    <div fxFlex="75%" class="left-side">
                         <p>{{categorizedService.name}}</p>
                     </div>
-                    <div fxFlex="15%" class="right-side text-right">
+                    <div fxFlex="25%" class="right-side text-right">
                         <span>Select All</span>
                         <mat-checkbox
                             [disabled]="categorizedService.services.length == 0"
@@ -48,14 +48,14 @@
                     <p class="text-muted"><small>No Services Found</small></p>
                 </div>
                 <div fxLaytout="row" class="field py-3 border-bottom" *ngFor="let service of categorizedService.services">
-                    <div fxFlex="85%" class="left-side">
+                    <div fxFlex="75%" class="left-side">
                         <p>{{service.service_name}}</p>
                         <div class="time-price">
                             <span class="pl-4">{{service.duration}} {{service.rate_unit}}</span>
                             <span class="pink-text pl-3">${{service.total}}</span>
                         </div>
                     </div>
-                    <div fxFlex="15%" class="right-side text-right">
+                    <div fxFlex="25%" class="right-side text-right">
                         <mat-checkbox 
                             (change)="selectService(service.id)"
                             [checked]="categorizedService.name==service.category.name && selectAll"
