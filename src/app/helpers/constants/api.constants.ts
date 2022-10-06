@@ -200,6 +200,7 @@ export class ApiEndPoints {
 
         //offline
         POST_OFFLINE_QUICKBOOKINGCLIENT: '/booking/cart/offline/quickBookingClient/',
+        PATCH_OFFLINE_QUICKBOOKINGCLIENT: '/booking/cart/offline/quickBookingClient/%s/',
         POST_OFFLINE_MYHISTORYUPCOMING: '/booking/cart/offline/myHistoryUpcoming/',
         POST_OFFLINE_MYHISTORCURRENT: '/booking/cart/offline/myHistoryCurrent/',
         POST_OFFLINE_MYHISTORYPREVIOUS: '/booking/cart/offline/myHistoryPrevious/',
@@ -210,5 +211,7 @@ export class ApiEndPoints {
         POST_OFFLINE_APPLYTIPCASH: '/booking/cart/offline/applyTipCash/',
         POST_OFFLINE_APPLYTIPPERCENT: '/booking/cart/offline/applyTipPercent/',
         POST_OFFLINE_ONCART: '/booking/cart/offline/oncart/',
+        POST_OFFLINE_CONFIRM: '/booking/cart/offline/confirm/',
+        POST_OFFLINE_CANCELCART: '/booking/cart/offline/cancelCart/',
     };
 }

@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-3">
                     <div class="calendar p-3 ">
-                        <mat-calendar #calendar color="primary" [(selected)]="privateSelectedDate"></mat-calendar>
+                        <mat-calendar #calendar color="primary" (selectedChange)="dateChanged($event)" [(selected)]="privateSelectedDate"></mat-calendar>
                     </div>
                 </div>
 
@@ -63,6 +63,11 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class=" right-section">
+                        <div id="example-calendar1"></div>
                     </div>
                 </div>
             </div>

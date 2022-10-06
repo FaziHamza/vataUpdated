@@ -278,6 +278,9 @@ export class DashboardService {
   postOfflineQuickBookingClient(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_QUICKBOOKINGCLIENT, params);
   }
+  patchOfflineQuickBookingClient(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.PATCH_OFFLINE_QUICKBOOKINGCLIENT, params);
+  }
   postOfflineMyHistoryUpcoming(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_MYHISTORYUPCOMING, params);
   }
@@ -304,6 +307,12 @@ export class DashboardService {
   }
   postOfflineOncart(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_ONCART, params);
+  }
+  postOfflineConfirm(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_CONFIRM, params);
+  }
+  postOfflineCancelCart(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_OFFLINE_CANCELCART, params);
   }
   postOfflineDeleteService(clientId,serviceId) {
     return this.apiService.delete(sprintf(ApiEndPoints.DASHBOARD.POST_OFFLINE_DELETESERVICE, clientId,serviceId));

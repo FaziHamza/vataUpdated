@@ -142,7 +142,7 @@ export class DesktopMakeBookingComponent implements OnInit {
   }
 
   addAnotherService() {
-    debugger
+    
     let allServices = [];
     this.bookProductService.getServicesByCategory(this.shopId).subscribe((response) => {
       if (response.Status == "Success") {
@@ -180,9 +180,9 @@ export class DesktopMakeBookingComponent implements OnInit {
         "booking_status": "paid",
         "promo_code": ""
       }
-      debugger
+      
       this.bookProductService.checkout(obj).subscribe((res=>{
-        debugger
+        
 
       }))
     }

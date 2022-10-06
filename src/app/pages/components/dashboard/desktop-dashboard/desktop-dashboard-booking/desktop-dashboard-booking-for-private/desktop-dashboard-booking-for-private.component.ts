@@ -30,7 +30,8 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.calendar = this.dashboardService.getCalendar('#example-calendar');
+    debugger
+    this.calendar = this.dashboardService.getCalendar('#example-calendar1');
     this.privateCurrentHistory();
     this.calendar.setOptions({
       usageStatistics: false,
@@ -41,7 +42,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     this.datedData(new Date());
  
     
-    this.calendar.clear();
+    // this.calendar.clear();
 
   }
 
@@ -101,16 +102,18 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
     })
 
   }
-  dateChanged() {
-    this._datePicker.activeDate = this.privateSelectedDate;
-    this.dateSelected.emit(this.privateSelectedDate);
-    if (this._datePicker) {
-      this._datePicker.selectedChange.subscribe(x => {
+  dateChanged(event) {
+    var date = moment(event).format('YYYY-MM-DD');
+    this.today = date;
+    this.datedData(date);
+    // this._datePicker.activeDate = this.privateSelectedDate;
+    // this.dateSelected.emit(this.privateSelectedDate);
+    // if (this._datePicker) {
+    //   this._datePicker.selectedChange.subscribe(x => {
         
-        var date = moment(x).format('YYYY-MM-DD');
-        this.datedData(date);
-      });
-    }
+       
+    //   });
+    // }
   }
 
 }

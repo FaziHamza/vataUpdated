@@ -31,7 +31,7 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
   }
 
   ngOnInit() {
-  this.calendar = this.dashboardService.getCalendar('#example-calendar');
+    this.calendar = this.dashboardService.getCalendar('#example-calendar');
   
     if (this._datePicker) {
       this._datePicker.selectedChange.subscribe(x => {
