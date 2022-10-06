@@ -131,6 +131,7 @@ export class ApiEndPoints {
         CHECKOUT_PAY: '/cart/online/checkout',
         
         SERVICE_DETAILS: '/booking/addService/?id=%s',
+        SERVICE_DETAILS_BY_SHOP: '/booking/addService/?shop_id=%s',
         ALL_SERVICE_BY_SHOP: '/booking/ListShopServices/?seller_id=%s'
 
     }

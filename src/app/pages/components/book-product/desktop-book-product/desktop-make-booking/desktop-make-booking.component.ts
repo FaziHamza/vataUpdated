@@ -61,13 +61,21 @@ export class DesktopMakeBookingComponent implements OnInit {
   }
 
   prepareData() {
-    if (this.serviceId) {
-      this.bookProductService.getServiceDetails(this.serviceId).subscribe((response) => {
+    debugger
+    if (this.shopId) {
+      this.bookProductService.getServiceDetailByShop(this.shopId).subscribe((response) => {
+       debugger
         if (response) {
           this.services = response;
           this.services.forEach((service) => service.member = "Any Available")
         }
       })
+      // this.bookProductService.getServiceDetails(this.serviceId).subscribe((response) => {
+      //   if (response) {
+      //     this.services = response;
+      //     this.services.forEach((service) => service.member = "Any Available")
+      //   }
+      // })
     } else {
       this.bookProductService.getServicesByCategory(this.shopId).subscribe((response) => {
         if (response.Status == "Success") {
@@ -95,9 +103,9 @@ export class DesktopMakeBookingComponent implements OnInit {
   removeService(index) {
     this.services.splice(index, 1);
     this.selectedServiceIndex = -1;
-    this.selectedService.preferredDate = null;
-    this.selectedService.preferredTime = "";
-    this.updateDataSentToChild();
+    // this.selectedService.preferredDate = null;
+    // this.selectedService.preferredTime = "";
+    // this.updateDataSentToChild();
     this.selectedService = null;
   }
 
@@ -166,6 +174,7 @@ export class DesktopMakeBookingComponent implements OnInit {
   
       this.dialogRef.componentInstance.onFormSubmit.subscribe((data) => {
         this.dialogRef.close();
+        debugger
         const newService = {...data};
         this.services.push(newService)
       })

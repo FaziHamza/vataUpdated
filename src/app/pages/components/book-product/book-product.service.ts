@@ -62,5 +62,8 @@ export class BookProductService {
   getServiceDetails(serviceId) {
     return this.apiService.get(sprintf(ApiEndPoints.BOOK_PRODUCT.SERVICE_DETAILS, serviceId));
   }
+  getServiceDetailByShop(shopId) {
+    return this.apiService.get(sprintf(ApiEndPoints.BOOK_PRODUCT.SERVICE_DETAILS_BY_SHOP, shopId));
+  }
 
 }
