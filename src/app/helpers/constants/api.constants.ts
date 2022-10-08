@@ -132,7 +132,12 @@ export class ApiEndPoints {
         
         SERVICE_DETAILS: '/booking/addService/?id=%s',
         SERVICE_DETAILS_BY_SHOP: '/booking/addService/?shop_id=%s',
-        ALL_SERVICE_BY_SHOP: '/booking/ListShopServices/?seller_id=%s'
+        ALL_SERVICE_BY_SHOP: '/booking/ListShopServices/?seller_id=%s',
+
+        // online 
+        BOOKING_ONLINE_ADDSERVICE: '/booking/cart/online/addService/',
+        BOOKING_ONLINE_ONCART: '/booking/cart/online/oncart/',
+
 
     }
     public static DASHBOARD = {

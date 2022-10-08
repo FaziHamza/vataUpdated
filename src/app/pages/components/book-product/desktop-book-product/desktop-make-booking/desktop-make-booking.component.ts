@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookProductService } from '../../book-product.service';
 import { AddServiceComponent } from 'src/app/shared/components/add-service/add-service.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from 'src/app/core';
+import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-make-booking',
   templateUrl: './desktop-make-booking.component.html',
   styleUrls: ['./desktop-make-booking.component.scss']
 })
-export class DesktopMakeBookingComponent implements OnInit {
+export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   shopId;
   serviceId;
   shopDetails;
   services = [];
   timingDetails;
   selectedService;
+  servicebtnVisible : boolean = false;
   selectedServicePreferredDateAndTime = { preferredDate: null, preferredTiming: '' };
   selectedServiceIndex;
   dialogRef;
   staffMembers = [];
-  constructor(  private userService: UserService,    private activeRoute: ActivatedRoute, private bookProductService: BookProductService, private dialog: MatDialog) { }
+  constructor(  private userService: UserService,   
+    private toastrService:ToastrService,
+     private activeRoute: ActivatedRoute,
+      private bookProductService: BookProductService, 
+      private dialog: MatDialog) { }
 
   ngOnInit() {
     this.identifyBookingType();
@@ -29,6 +38,7 @@ export class DesktopMakeBookingComponent implements OnInit {
   }
 
   serviceSelected(index) {
+    this.servicebtnVisible = true;
     this.selectedService = this.services[index];
     this.selectedServiceIndex = index;
     this.updateDataSentToChild();
@@ -54,8 +64,9 @@ export class DesktopMakeBookingComponent implements OnInit {
   getData() {
     this.bookProductService.getShopDetails(this.shopId).subscribe((response) => {
       if (response.Status == 'Success') {
+        debugger
         this.shopDetails = response.data;
-        this.prepareData();
+        // this.prepareData();
       }
     })
   }
@@ -107,9 +118,12 @@ export class DesktopMakeBookingComponent implements OnInit {
     // this.selectedService.preferredTime = "";
     // this.updateDataSentToChild();
     this.selectedService = null;
+    this.servicebtnVisible= false;
+
   }
 
   dateSelected(dateEvent) {
+    debugger
     if (this.selectedService) {
       let selectedDate = new Date(dateEvent);
       // This is done because the datepicker returns the wrong month
@@ -196,7 +210,33 @@ export class DesktopMakeBookingComponent implements OnInit {
       }))
     }
 
-    
+    addService(){
+      debugger
+      let date = moment(this.services[0].preferredDate).format('YYYY-MM-DD');
+      let param = {
+        "service": this.selectedService.id,
+        "member": this.selectedService.members[0].id,
+        "book_date":date,
+        "from_time": this.services[0].preferredTiming,
+        "to_time": this.services[0].preferredTiming,
+        "price": this.services[0].total,
+      }
+      this.bookProductService.postOnlineAddService(param).subscribe(res => {
+        debugger
+        if (res.status == "Success") {
+          this.toastrService.success("Information save successfully!", "Success");
+          this.onCart();
+        }
+      });
+    }
+    onCart(){
+      this.bookProductService.postOnlineOnCart().subscribe(res => {
+        debugger
+        if (res.status == "Success") {
+          // this.toastrService.success("Information save successfully!", "Success");
+        }
+      });
+    }
 
   // Move to utils if possible
   // getDayNameFromDayNumber(dayNumber) {
@@ -205,5 +245,8 @@ export class DesktopMakeBookingComponent implements OnInit {
 
   //   return dayName;
   // }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 
 }

@@ -66,4 +66,10 @@ export class BookProductService {
     return this.apiService.get(sprintf(ApiEndPoints.BOOK_PRODUCT.SERVICE_DETAILS_BY_SHOP, shopId));
   }
 
+  postOnlineAddService(obj:any) {
+    return this.apiService.post(ApiEndPoints.BOOK_PRODUCT.BOOKING_ONLINE_ADDSERVICE, obj);
+  }
+  postOnlineOnCart() {
+    return this.apiService.get(ApiEndPoints.BOOK_PRODUCT.BOOKING_ONLINE_ONCART);
+  }
 }

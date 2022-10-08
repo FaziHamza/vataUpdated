@@ -11,6 +11,9 @@
                 </div>
 
                 <div class="booking-fields mt-5 p-3 border-top">
+                    <div class="add-service-btn mt-3 text-right pb-3" *ngIf="servicebtnVisible">
+                        <a mat-button class="rounded-bt pink-b mt-2 py-0 px-4 " (click)="addService()" >Apply Changes Booking</a>
+                    </div>
                     <div fxLayout="row" class="field-bar p-3" [ngClass]="selectedService === service ? 'border-pink' : 'border-gray'" 
                         *ngFor="let service of services; let i = index" (click)="serviceSelected(i)">
                         <div fxFlex="95%">
@@ -33,7 +36,7 @@
                             </div>
                             <div fxLayout="row" class="second-row pt-1">
                                 <div fxFlex="85%" class="star">
-                                    <app-star-rating [maxScore]="5" [score]="service.rating_data.avg_rating" [forDisplay]="true"></app-star-rating> <span class="star-text pl-3">
+                                    <app-star-rating [maxScore]="5" [score]="service.avg_rating" [forDisplay]="true"></app-star-rating> <span class="star-text pl-3">
                                         {{ service.description }}
                                     </span>
                                 </div>

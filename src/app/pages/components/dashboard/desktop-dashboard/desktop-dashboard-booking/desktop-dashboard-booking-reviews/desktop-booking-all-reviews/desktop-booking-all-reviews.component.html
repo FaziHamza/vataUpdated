@@ -1,29 +1,31 @@
 <div class="dashboard-booking-all-reviews">
     <div class="review-scroll px-3 mt-4">
-        <div class="review-field pb-4 border-bottom">
+        <div class="review-field pb-4 border-bottom" *ngFor="let item of reviews">
             <div fxLayout="row" class="heading">
-                <h6>Acrylic Full Set Pearl/French Tips</h6>
+                <h6>{{item.title}}</h6>
             </div>
 
             <div fxLayout="row" class="date-time pt-2">
-                <span class="pr-1">John Doe,</span> <span class="pr-3">September 11, 2018</span> <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
+                <span class="pr-1">{{item.user_fullname}}</span> <span class="pr-3">{{item.pub_date | date}}</span> 
+                <app-star-rating [maxScore]="item.rating" [score]="item.rating" [forDisplay]="true"></app-star-rating>
             </div>
 
             <div fxLayout="row" class="detail pt-2">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p>{{item.feedback}}</p>
             </div>
 
             <div fxLayout="row" class="img-review pt-3">
-                <img src="../../../../../../../../assets//img/comm1.png">
-                <img src="../../../../../../../../assets//img/comm2.png">
+                <div *ngFor="let image of item.image">
+                    <img src="{{image}}">
+                </div>
             </div>
 
             <div fxLayout="row" class="reply-comment-btn border-bottom py-3">
-                <a mat-button class="comment px-4 mr-2">1 Comment</a>
+                <a mat-button class="comment px-4 mr-2" *ngIf="item.comment_count > 0">{{item.comment_count}} Comment</a>
                 <a mat-button class="reply pink-text px-4">Reply</a>
             </div>
 
-            <div class="responses mt-3 px-4">
+            <div class="responses mt-3 px-4" *ngIf="item.comment_count > 0">
                 <div class="msg p-3">
                     <p class="heading">
                         John Doe
@@ -42,88 +44,6 @@
             </div>
         </div>
 
-        <div class="review-field py-4 border-bottom">
-            <div fxLayout="row" class="heading">
-                <h6>Braids</h6>
-            </div>
-
-            <div fxLayout="row" class="date-time pt-2">
-                <span class="pr-1">John Doe,</span> <span class="pr-3">September 11, 2018</span> <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-            </div>
-
-            <div fxLayout="row" class="detail pt-2">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-
-            <!-- <div fxLayout="row" class="img-review pt-3">
-                <img src="../../../../../../../../assets//img/comm1.png">
-                <img src="../../../../../../../../assets//img/comm2.png">
-            </div> -->
-
-            <div fxLayout="row" class="reply-comment-btn pt-3">
-                <!-- <a mat-button class="comment px-4 mr-2">1 Comment</a> -->
-                <a mat-button class="reply pink-text px-4">Reply</a>
-            </div>
-
-            <!-- <div class="responses mt-3 px-4">
-                <div class="msg p-3">
-                    <p class="heading">
-                        John Doe
-                        <span>January 11, 2019</span>
-                    </p>
-                    <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                </div>
-
-                <div class="msg p-3 mt-3">
-                    <p class="heading">
-                        John Doe
-                        <span>January 11, 2019</span>
-                    </p>
-                    <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                </div>
-            </div> -->
-        </div>
-
-        <div class="review-field py-4 border-bottom">
-            <div fxLayout="row" class="heading">
-                <h6>Removals are available with new sets of dips</h6>
-            </div>
-
-            <div fxLayout="row" class="date-time pt-2">
-                <span class="pr-1">John Doe,</span> <span class="pr-3">September 11, 2018</span> <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-            </div>
-
-            <div fxLayout="row" class="detail pt-2">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-
-            <div fxLayout="row" class="img-review pt-3">
-                <img src="../../../../../../../../assets//img/comm1.png">
-                <!-- <img src="../../../../../../../../assets//img/comm2.png"> -->
-            </div>
-
-            <div fxLayout="row" class="reply-comment-btn border-bottom py-3">
-                <a mat-button class="comment px-4 mr-2">2 Comment</a>
-                <a mat-button class="reply pink-text px-4">Reply</a>
-            </div>
-
-            <div class="responses mt-3 px-4">
-                <div class="msg p-3">
-                    <p class="heading">
-                        John Doe
-                        <span>January 11, 2019</span>
-                    </p>
-                    <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                </div>
-
-                <div class="msg p-3 mt-3">
-                    <p class="heading">
-                        John Doe
-                        <span>January 11, 2019</span>
-                    </p>
-                    <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../../../dashboard.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/core';
+import { BookProductService } from 'src/app/pages/components/book-product/book-product.service';
 
 @Component({
   selector: 'app-desktop-booking-all-reviews',
@@ -8,9 +10,25 @@ import { DashboardService } from '../../../../dashboard.service';
 })
 export class DesktopBookingAllReviewsComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService) { }
+  shopId;
+  reviews;
+  constructor(private route: ActivatedRoute,  private userService: UserService,private bookProductService: BookProductService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getShopId();
+    this.getAllReviews();
+  }
+  getShopId() {
+    this.shopId = this.userService.getUser().shop_details.id;
+  
   }
 
+  getAllReviews() {
+    debugger
+    this.bookProductService.getShopReviews(this.shopId).subscribe((response) => {
+      if (response.Status === 'Success') {
+        this.reviews = response.data;
+      }
+    })
+  }
 }
