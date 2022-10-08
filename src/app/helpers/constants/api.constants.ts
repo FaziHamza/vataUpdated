@@ -137,7 +137,7 @@ export class ApiEndPoints {
         // online 
         BOOKING_ONLINE_ADDSERVICE: '/booking/cart/online/addService/',
         BOOKING_ONLINE_ONCART: '/booking/cart/online/oncart/',
-
+        POST_ONLINE_DELETESERVICE: '/booking/cart/online/deleteService/%s/',
 
     }
     public static DASHBOARD = {

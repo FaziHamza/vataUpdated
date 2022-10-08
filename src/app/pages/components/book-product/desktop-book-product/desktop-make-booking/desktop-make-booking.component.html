@@ -4,17 +4,18 @@
         <div fxFlex="70%" class="left-side">
             <div class="container">
                 <div class="calendar p-4">
-                    <app-calendar-slider (dateSelected)="dateSelected($event)" (timeSelected)="timeSelected($event)" 
-                        [shopTimings]="timingDetails" 
-                        [selectedValues]="selectedServicePreferredDateAndTime">
+                    <app-calendar-slider (dateSelected)="dateSelected($event)" (timeSelected)="timeSelected($event)"
+                        [shopTimings]="timingDetails" [selectedValues]="selectedServicePreferredDateAndTime">
                     </app-calendar-slider>
                 </div>
 
                 <div class="booking-fields mt-5 p-3 border-top">
                     <div class="add-service-btn mt-3 text-right pb-3" *ngIf="servicebtnVisible">
-                        <a mat-button class="rounded-bt pink-b mt-2 py-0 px-4 " (click)="addService()" >Apply Changes Booking</a>
+                        <a mat-button class="rounded-bt pink-b mt-2 py-0 px-4 " (click)="addService()">Apply Changes
+                            Booking</a>
                     </div>
-                    <div fxLayout="row" class="field-bar p-3" [ngClass]="selectedService === service ? 'border-pink' : 'border-gray'" 
+                    <div fxLayout="row" class="field-bar p-3"
+                        [ngClass]="selectedService === service ? 'border-pink' : 'border-gray'"
                         *ngFor="let service of services; let i = index" (click)="serviceSelected(i)">
                         <div fxFlex="95%">
                             <div fxLayout="row" class="first-row">
@@ -22,26 +23,63 @@
                                     <h6>{{ service.service_name }}</h6>
                                 </div>
                                 <div fxFlex="8%" class="price">
-                                    <span class="amount">${{ service.total }}</span>
+                                    <span class="amount" *ngIf="service.total">${{ service.total }}</span>
+                                    <span class="amount" *ngIf="service.price">${{ service.price }}</span>
                                 </div>
                             </div>
-                            <div fxLayout="row" class="first-row" *ngIf="service.members.length > 0">
-                                <div fxFlex="92%">
-                                    <label style="margin-right: 10px;">Select Staff Member</label>
-                                    <select class="form-control" [(ngModel)]="service.member">
-                                        <option>Any Available</option>
-                                        <option *ngFor="let staffMember of service.members">{{ staffMember.name }}</option>
-                                      </select>
+                            <div *ngIf="service.service_member_name">
+                                <div fxLayout="row" class="first-row">
+                                    <div fxFlex="92%">
+                                        <label style="margin-right: 10px;">{{service.service_member_name}}</label>
+                                        <!-- <select class="form-control" [(ngModel)]="service.member">
+                                            <option *ngFor="let staffMember of service.members">{{ staffMember.name }}
+                                            </option>
+                                        </select> -->
+                                    </div>
                                 </div>
                             </div>
+                            <div *ngIf="service.members">
+                                <div fxLayout="row" class="first-row" *ngIf="service.members.length > 0">
+                                    <div fxFlex="92%">
+                                        <label style="margin-right: 10px;">Select Staff Member</label>
+                                        <select class="form-control" [(ngModel)]="service.member">
+                                            <option>Any Available</option>
+                                            <option *ngFor="let staffMember of service.members">{{ staffMember.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div fxLayout="row" class="second-row pt-1">
-                                <div fxFlex="85%" class="star">
-                                    <app-star-rating [maxScore]="5" [score]="service.avg_rating" [forDisplay]="true"></app-star-rating> <span class="star-text pl-3">
+                                <div fxFlex="85%" class="star" *ngIf="service.avg_rating">
+                                    <app-star-rating [maxScore]="5" [score]="service.avg_rating" [forDisplay]="true">
+                                    </app-star-rating>
+                                    <span class="star-text pl-3">
                                         {{ service.description }}
                                     </span>
                                 </div>
+                                <div fxFlex="85%" class="star" *ngIf="service.avg_rating == 0">
+                                    <app-star-rating [maxScore]="5" [score]="service.avg_rating" [forDisplay]="true">
+                                    </app-star-rating>
+                                    <span class="star-text pl-3">
+                                        {{ service.description }}
+                                    </span>
+                                </div>
+                                <div fxFlex="85%" class="star" *ngIf="service.service_rating == 0">
+                                    <app-star-rating [maxScore]="5" [score]="service.service_rating"
+                                        [forDisplay]="true">
+                                    </app-star-rating>
+                                </div>
+                                <div fxFlex="85%" class="star" *ngIf="service.service_rating">
+                                    <app-star-rating [maxScore]="5" [score]="service.service_rating"
+                                        [forDisplay]="true">
+                                    </app-star-rating>
+                                </div>
                                 <div fxFlex="15%" class="time text-center">
-                                    <span class="time">17:00 - 17:30</span>
+                                    <span class="time" *ngIf="!service.from_time">17:00 - 17:30</span>
+                                    <span class="time" *ngIf="service.from_time">{{service.from_time}} -
+                                        {{service.to_time}}</span>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +87,9 @@
                             <span class="icon-baseline-close-24px-1" (click)="removeService(i)"></span>
                         </div>
                     </div>
+                   
                     <div class="add-service-btn mt-3">
-                        <a mat-button class="pink-text" (click)="addAnotherService()">+  Add another service</a>
+                        <a mat-button class="pink-text" (click)="addAnotherService()">+ Add another service</a>
                     </div>
                 </div>
 
@@ -67,11 +106,22 @@
                         </div>
 
                         <div fxFlex="70%" class="payment-icons text-right">
-                            <span class="icon-Group-1295 icon-xs mr-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
-                            <span class="icon-Card-networks-MC-Horizontal mx-2 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+                            <span class="icon-Group-1295 icon-xs mr-3"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                    class="path5"></span></span>
+                            <span class="icon-Card-networks-MC-Horizontal mx-2 icon-s"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span></span>
                             <span class="icon-Visa icon-m mx-3"></span>
-                            <span class="icon-PayPal-FullColor-Horizontal icon-m mx-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
-                            <span class="icon-Group-1296 icon-s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span></span>
+                            <span class="icon-PayPal-FullColor-Horizontal icon-m mx-3"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                    class="path5"></span><span class="path6"></span><span class="path7"></span><span
+                                    class="path8"></span><span class="path9"></span></span>
+                            <span class="icon-Group-1296 icon-s"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                    class="path5"></span><span class="path6"></span><span class="path7"></span><span
+                                    class="path8"></span><span class="path9"></span><span class="path10"></span><span
+                                    class="path11"></span><span class="path12"></span><span class="path13"></span><span
+                                    class="path14"></span><span class="path15"></span></span>
                         </div>
                     </div>
                 </div>
@@ -86,7 +136,7 @@
                 <div class="form">
                     <mat-form-field class="w-100">
                         <mat-label>Promo-code</mat-label>
-                        <input matInput type="text" />
+                        <input matInput type="text" [(ngModel)]="promoCode" />
                     </mat-form-field>
                 </div>
             </div>
@@ -99,7 +149,8 @@
                         <p class="silver-text">{{ service.service_name }}</p>
                     </div>
                     <div fxFlex="50%" class="right text-right">
-                        <p class="black-text">${{ service.total }}</p>
+                        <p class="black-text" *ngIf="service.total">${{ service.total }}</p>
+                        <p class="black-text" *ngIf="service.price">${{ service.price }}</p>
                     </div>
                 </div>
 
@@ -113,7 +164,7 @@
                 </div>
 
                 <div fxLayout="row" class="confirm-pay-btn justify-content-center pt-5">
-                    <a mat-button class="rounded-bt pink-b w-100" (click)="confirmPay()" >Confirm & Pay</a>
+                    <a mat-button class="rounded-bt pink-b w-100" (click)="confirmPay()">Confirm & Pay</a>
                 </div>
 
                 <div fxLayout="row" class="book-visit-btn justify-content-center pt-4">

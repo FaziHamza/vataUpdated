@@ -24,7 +24,7 @@ export class DesktopBookingAllReviewsComponent implements OnInit {
   }
 
   getAllReviews() {
-    debugger
+    
     this.bookProductService.getShopReviews(this.shopId).subscribe((response) => {
       if (response.Status === 'Success') {
         this.reviews = response.data;

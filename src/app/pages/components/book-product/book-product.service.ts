@@ -72,4 +72,7 @@ export class BookProductService {
   postOnlineOnCart() {
     return this.apiService.get(ApiEndPoints.BOOK_PRODUCT.BOOKING_ONLINE_ONCART);
   }
+  postOnlineDeleteService(serviceId) {
+    return this.apiService.delete(sprintf(ApiEndPoints.BOOK_PRODUCT.POST_ONLINE_DELETESERVICE,serviceId));
+  }
 }

@@ -53,6 +53,7 @@ export class CalendarSliderComponent implements OnInit, OnChanges {
   }
 
   generateTimeArray(shopTimings) {
+    
     this.times = [];
     let startTime = moment(shopTimings.startTime, "HH:mm:ss");
     startTime.format("HH:mm")

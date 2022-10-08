@@ -30,7 +30,7 @@ export class DesktopDashboardBookingForPrivateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
+    
     this.calendar = this.dashboardService.getCalendar('#example-calendar1');
     this.privateCurrentHistory();
     this.calendar.setOptions({

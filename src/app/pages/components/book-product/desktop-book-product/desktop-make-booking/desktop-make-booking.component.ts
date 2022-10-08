@@ -17,8 +17,10 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
   subscriptions: Array<Subscription> = [];
   shopId;
   serviceId;
+  promoCode;
   shopDetails;
-  services = [];
+  services;
+  servicesList;
   timingDetails;
   selectedService;
   servicebtnVisible : boolean = false;
@@ -50,37 +52,41 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
   }
 
   identifyBookingType() {
+    this.subscriptions.push(
     this.activeRoute.parent.params.subscribe(params => {
       this.shopId = params['id'];
-    })
-
+    }))
+    this.subscriptions.push(
     this.activeRoute.params.subscribe(params => {
       if (params['serviceId']) {
         this.serviceId = params['serviceId'];
       }
-    })
+    }))
   }
 
   getData() {
+    this.subscriptions.push(
     this.bookProductService.getShopDetails(this.shopId).subscribe((response) => {
       if (response.Status == 'Success') {
-        debugger
+        
         this.shopDetails = response.data;
+        this.onCart();
         // this.prepareData();
       }
-    })
+    }))
   }
 
   prepareData() {
-    debugger
+    
     if (this.shopId) {
+      this.subscriptions.push(
       this.bookProductService.getServiceDetailByShop(this.shopId).subscribe((response) => {
-       debugger
+       
         if (response) {
           this.services = response;
           this.services.forEach((service) => service.member = "Any Available")
         }
-      })
+      }))
       // this.bookProductService.getServiceDetails(this.serviceId).subscribe((response) => {
       //   if (response) {
       //     this.services = response;
@@ -88,6 +94,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
       //   }
       // })
     } else {
+      this.subscriptions.push(
       this.bookProductService.getServicesByCategory(this.shopId).subscribe((response) => {
         if (response.Status == "Success") {
           response.data.forEach((category) => {
@@ -98,20 +105,24 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
           // TODO 
           // Toast ?
         }
-      })
+      }))
     }
   }
 
   calculateTotal() {
     let total = 0;
     this.services.forEach((service) => {
+      if(service.total)
       total = total + service.total;
+      else
+      total = total + service.price;
     })
 
     return total;
   }
 
   removeService(index) {
+    this.deleteService(index);
     this.services.splice(index, 1);
     this.selectedServiceIndex = -1;
     // this.selectedService.preferredDate = null;
@@ -123,7 +134,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
   }
 
   dateSelected(dateEvent) {
-    debugger
+    
     if (this.selectedService) {
       let selectedDate = new Date(dateEvent);
       // This is done because the datepicker returns the wrong month
@@ -166,6 +177,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
   addAnotherService() {
     
     let allServices = [];
+    this.subscriptions.push(
     this.bookProductService.getServicesByCategory(this.shopId).subscribe((response) => {
       if (response.Status == "Success") {
         response.data.forEach((category) => {
@@ -173,7 +185,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
         })
         this.openAddServiceDialog(allServices);
       }
-    })
+    }))
   }
 
     openAddServiceDialog(allServices) {
@@ -185,56 +197,81 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
           services: allServices
         }
       });
-  
+      this.subscriptions.push(
       this.dialogRef.componentInstance.onFormSubmit.subscribe((data) => {
         this.dialogRef.close();
-        debugger
+        
         const newService = {...data};
         this.services.push(newService)
-      })
+      }))
     }
     confirmPay(){
-      let obj ={
-        "total_payment": this.calculateTotal(),
-        "paid": true,
-        "stripe_pay_intent": "",
-        "stripe_fee_percent": 1,
-        "user_id": this.userService.getUser().user_details.id,
-        "booking_status": "paid",
-        "promo_code": ""
+      if(!this.services){
+        this.toastrService.error("Please select at least one service!", "Error");
+        return false;
       }
-      
-      this.bookProductService.checkout(obj).subscribe((res=>{
+      let obj ={
+        "total_payment": this.services.total_payment,
+        "paid": true,
+        "stripe_pay_intent": this.services.stripe_pay_intent,
+        "stripe_fee_percent": this.services.stripe_fee_percent,
+        "user_id": this.userService.getUser().user_details.id,
+        "booking_status": this.services.booking_status.id,
+        "promo_code": this.promoCode
+      }
+      console.log(this.promoCode);
+      // this.subscriptions.push(
+      // this.bookProductService.checkout(obj).subscribe((res=>{
         
 
-      }))
+      // })))
     }
 
     addService(){
-      debugger
-      let date = moment(this.services[0].preferredDate).format('YYYY-MM-DD');
+      
+      if(this.selectedService.preferredTiming == '' && this.selectedService.preferredTiming == undefined)
+      {
+        this.toastrService.error("Please select from time first!", "Error");
+        return false;
+      }
+
+      let times=[];
+      let startTime = moment(this.selectedService.preferredTiming, "HH:mm:ss");
+      let toTime= startTime.add(1,'hours');
+      times.push(toTime.format("HH:mm"));
+      let date = moment(this.selectedService.preferredDate).format('YYYY-MM-DD');
       let param = {
         "service": this.selectedService.id,
         "member": this.selectedService.members[0].id,
         "book_date":date,
-        "from_time": this.services[0].preferredTiming,
-        "to_time": this.services[0].preferredTiming,
-        "price": this.services[0].total,
+        "from_time": this.selectedService.preferredTiming,
+        "to_time": times[0],
+        "price": this.selectedService.total,
       }
+      this.subscriptions.push(
       this.bookProductService.postOnlineAddService(param).subscribe(res => {
-        debugger
+        
         if (res.status == "Success") {
           this.toastrService.success("Information save successfully!", "Success");
-          this.onCart();
+          this.services = res.service_items
+          this.servicesList = res
         }
-      });
+      }));
     }
     onCart(){
+      this.subscriptions.push(
       this.bookProductService.postOnlineOnCart().subscribe(res => {
-        debugger
-        if (res.status == "Success") {
-          // this.toastrService.success("Information save successfully!", "Success");
-        }
+        this.services = res.service_items
+        this.servicesList = res
+      }));
+    }
+    deleteService(index){
+      let serviceId= this.services[index].service;
+      this.bookProductService.postOnlineDeleteService(serviceId).subscribe(res => {
+        
+        if(res.status == 'Success')
+        this.toastrService.success("Information delete successfully!", "Success");
+       this.onCart();
       });
     }
 
