@@ -5,20 +5,18 @@
 
     <form [formGroup]="editMemberBookingForm">
 
-        <div fxlayout="row" class="edit-section border-bottom mt-4 pb-3">
-            <div fxFlex="25%" class="left-img text-center py-4 px-3 mr-4">
+        <div class="row edit-section border-bottom mt-4 pb-3">
+            <div class="col-lg-4">
+                <div class="left-img text-center py-4 px-3">
 
-                <div class="left-imgs" *ngIf="preview.length > 0">
-                    <ng-container *ngFor="let preview of preview; let i = index">
-                        <span
-                        (click)="removeImage(i)"
-                        class="icon-baseline-close-24px-11 close"
-                        ></span>
-                        <img class="mr-2 mt-3" [src]="preview.data" />
-                    </ng-container>
-                </div>
+                    <div class="left-imgs" *ngIf="preview.length > 0">
+                        <ng-container *ngFor="let preview of preview; let i = index">
+                            <span (click)="removeImage(i)" class="icon-baseline-close-24px-11 close"></span>
+                            <img class="mr-2 mt-3" [src]="preview.data" />
+                        </ng-container>
+                    </div>
 
-                <!-- <img src="../../../../../../../../assets/img/w2.png">
+                    <!-- <img src="../../../../../../../../assets/img/w2.png">
                 <a class="add-btn">
                     <span class="icon-add-button-inside-black-circle-1"></span>
                 </a>
@@ -27,98 +25,100 @@
                 <div class="upload-btn border-top pt-3">
                     <a mat-button class="pink-b outlined rounded-bt d-block">Upload</a>
                 </div> -->
-                <app-file-upload
-                    *ngIf="preview.length == 0"
-                    (uploadData)="onFileUpload($event)"
-                    template="lg">
-                </app-file-upload>
-                
+                    <app-file-upload *ngIf="preview.length == 0" (uploadData)="onFileUpload($event)" template="lg">
+                    </app-file-upload>
+
+                </div>
             </div>
 
-            <div fxFlex="35%" class="center-inputs mr-4">
-                <div fxLayout="row" class="input-fields">
-                    <mat-form-field class="form-section w-100">
-                        <mat-label>Member Name</mat-label>
-                        <input matInput type="text" formControlName="memberName">
-                        <mat-error *ngIf="editMemberBookingForm.get('memberName').hasError('required')">
-                            Member Name is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div fxLayout="row" class="input-fields">
-                    <mat-form-field class="form-section w-100">
-                        <mat-label>Member Surname</mat-label>
-                        <input matInput type="text" formControlName="memberSurname">
-                        <mat-error *ngIf="editMemberBookingForm.get('memberSurname').hasError('required')">
-                            Member Surname is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="input-fields">
-                    <p class="input-heading py-2">Phone Number</p>
-                    <div fxLayout="row">
-                        <div fxFlex="28%" class="mr-3">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Code</mat-label>
-                                <mat-select formControlName="phoneCode" [(ngModel)]="selectedPhoneCode">
-                                    <mat-option value="+41">+41</mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="editMemberBookingForm.get('phoneCode').hasError('required')">
-                                    Code is <strong>required</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div fxFlex="65%">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Number</mat-label>
-                                <input matInput type="number" formControlName="phoneNumber">
-                                <mat-error *ngIf="editMemberBookingForm.get('phoneNumber').hasError('required')">
-                                    Number is <strong>required</strong>
-                                </mat-error>
-                            </mat-form-field>
+            <div class="col-lg-4">
+
+                <div class="center-inputs ">
+                    <div fxLayout="row" class="input-fields">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Member Name</mat-label>
+                            <input matInput type="text" formControlName="memberName">
+                            <mat-error *ngIf="editMemberBookingForm.get('memberName').hasError('required')">
+                                Member Name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" class="input-fields">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Member Surname</mat-label>
+                            <input matInput type="text" formControlName="memberSurname">
+                            <mat-error *ngIf="editMemberBookingForm.get('memberSurname').hasError('required')">
+                                Member Surname is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="input-fields">
+                        <p class="input-heading py-2">Phone Number</p>
+                        <div fxLayout="row">
+                            <div fxFlex="28%" class="mr-3">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Code</mat-label>
+                                    <mat-select formControlName="phoneCode" [(ngModel)]="selectedPhoneCode">
+                                        <mat-option value="+41">+41</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="editMemberBookingForm.get('phoneCode').hasError('required')">
+                                        Code is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="65%">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Number</mat-label>
+                                    <input matInput type="number" formControlName="phoneNumber">
+                                    <mat-error *ngIf="editMemberBookingForm.get('phoneNumber').hasError('required')">
+                                        Number is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div fxLayout="row" class="input-fields">
-                    <mat-form-field class="form-section w-100">
-                        <mat-label>Email Address</mat-label>
-                        <input matInput type="text" formControlName="email">
-                        <mat-error *ngIf="editMemberBookingForm.get('email').hasError('required')">
-                            Email is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div fxFlex="40%" class="right-input-fields ml-1">
-                <div fxLayout="row" class="text-area">
-                    <mat-form-field class="w-100">
-                        <mat-label>Describe staffer position or skills</mat-label>
-                        <textarea matInput type="text" formControlName="position_skills"></textarea>
-                        <mat-error *ngIf="editMemberBookingForm.get('position_skills').hasError('required')">
-                            Staffer position or skills is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    <span class="words">100/500</span>
+                    <div fxLayout="row" class="input-fields">
+                        <mat-form-field class="form-section w-100">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput type="text" formControlName="email">
+                            <mat-error *ngIf="editMemberBookingForm.get('email').hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="col-lg-4">
 
-    </form>
-    
-    <div fxLayout="row" class="bottom-btns-bar pt-4">
-        <div fxFlex="45%" class="left-side">
-            <div class="delete">
-                <a (click)="deleteMember()" mat-button class="px-4">
-                    <span class="icon-baseline-close-24px-1"></span>
-                    Delete User
-                </a>
+                <div class="right-input-fields ">
+                    <div fxLayout="row" class="text-area">
+                        <mat-form-field class="w-100">
+                            <mat-label>Describe staffer position or skills</mat-label>
+                            <textarea matInput type="text" formControlName="position_skills"></textarea>
+                            <mat-error *ngIf="editMemberBookingForm.get('position_skills').hasError('required')">
+                                Staffer position or skills is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <span class="words">100/500</span>
+                    </div>
+                </div>
             </div>
-        </div>
+</div>
+</form>
 
-        <div fxFlex="55%" class="right-side text-right">
-            <a mat-button class="white-b rounded-bt px-5 py-0 mr-4" (click)="onSelectType('details')">Cancel</a>
-            <a mat-button class="pink-b rounded-bt px-5 py-0" (click)="updateMember()">Update Changes</a>
+<div fxLayout="row" class="bottom-btns-bar pt-4">
+    <div fxFlex="45%" class="left-side">
+        <div class="delete">
+            <a (click)="deleteMember()" mat-button class="px-4">
+                <span class="icon-baseline-close-24px-1"></span>
+                Delete User
+            </a>
         </div>
     </div>
+
+    <div fxFlex="55%" class="right-side text-right">
+        <a mat-button class="white-b rounded-bt px-5 py-0 mr-4" (click)="onSelectType('details')">Cancel</a>
+        <a mat-button class="pink-b rounded-bt px-5 py-0" (click)="updateMember()">Update Changes</a>
+    </div>
+</div>
 </div>

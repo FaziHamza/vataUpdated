@@ -4,6 +4,7 @@
     background: $ligher-gray;
     .portfolio {
         background: $white;
+            height: 270px;
         border-radius: 10px;
         .card {
             position: relative;
@@ -49,12 +50,13 @@
         .cross {
             background: #ccccccbf;
             border: 1px solid #ccccccbf;
-            border-radius: 25px;
-            padding: 1px 2px 1px 2px;
-            width: 19px;
+            border-radius: 100px;
+            width: 30px;
+            padding: 5px;
+            height: 30px;
             position: absolute;
             top: 10px;
-            right: 10px;
+            right: 20px;
             span {
                 &.icon-baseline-close-24px-1 {
                     font-size: 19px;

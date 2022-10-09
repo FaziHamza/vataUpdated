@@ -43,47 +43,52 @@
                             <p>Message Templates & Settings</p>
                         </div>
 
-                        <div fxLayout="row" class="pt-3">
-                            <div fxFlex="25%" class="left-side pr-4">
-                                <p class="text">Event</p>
-                                <div class="btn p-3 mt-3">
-                                    <a>Email Footer</a>
-                                </div>
-                                <div class="btn p-3 mt-3">
-                                    <a>Message Footer</a>
+                        <div class="row pt-3">
+                            <div class="col-lg-4">
+                                <div class="left-side">
+                                    <p class="text">Event</p>
+                                    <div class="btn p-3 mt-3">
+                                        <a>Email Footer</a>
+                                    </div>
+                                    <div class="btn p-3 mt-3">
+                                        <a>Message Footer</a>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-lg-8">
 
-                            <div fxFlex="75%" class="right-side pl-4 border-left">
-                                <div fxLayout="row" class="text-area">
-                                    <mat-form-field class="w-100">
-                                        <mat-label>E-mail footer content</mat-label>
-                                        <textarea matInput type="text" formControlName="emailFooter"></textarea>
-                                        <mat-error
-                                            *ngIf="messageTemplateSettingForm.get('emailFooter').hasError('required')">
-                                            Email is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <span class="words">50/180</span>
-                                </div>
-
-                                <div fxLayout="row" class="mail mt-5">
-                                    <div fxFlex="85%" class="mail-input mr-3">
+                                <div class="right-side ">
+                                    <div fxLayout="row" class="text-area">
                                         <mat-form-field class="w-100">
-                                            <mat-label>Send preview of the message</mat-label>
-                                            <input matInput type="text" formControlName="previewMessage">
+                                            <mat-label>E-mail footer content</mat-label>
+                                            <textarea matInput type="text" formControlName="emailFooter"></textarea>
                                             <mat-error
-                                                *ngIf="messageTemplateSettingForm.get('previewMessage').hasError('required')">
-                                                Preview Message is <strong>required</strong>
+                                                *ngIf="messageTemplateSettingForm.get('emailFooter').hasError('required')">
+                                                Email is <strong>required</strong>
                                             </mat-error>
                                         </mat-form-field>
-                                    </div>
-                                    <div fxFlex="15%" class="send-btn">
-                                        <a (click)="postBasicSettings()">Send</a>
+                                        <span class="words">50/180</span>
                                     </div>
 
+                                    <div fxLayout="row" class="mail mt-3">
+                                        <div fxFlex="60%" class="mail-input mr-3">
+                                            <mat-form-field class="w-100">
+                                                <mat-label>Send preview of the message</mat-label>
+                                                <input matInput type="text" formControlName="previewMessage">
+                                                <mat-error
+                                                    *ngIf="messageTemplateSettingForm.get('previewMessage').hasError('required')">
+                                                    Preview Message is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="40%" class="send-btn">
+                                            <a (click)="postBasicSettings()">Send</a>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
 
                     </div>

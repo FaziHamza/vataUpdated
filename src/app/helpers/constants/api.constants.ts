@@ -128,7 +128,7 @@ export class ApiEndPoints {
         SUBMIT_REVIEW: '/booking/addreview/',
         CHECK_REVIEWS: '/booking/getServicesNeedToReview/%s/%s',
         ADD_TO_FAVOURITES: '/booking/favShop',
-        CHECKOUT_PAY: '/cart/online/checkout',
+        CHECKOUT_PAY: '/booking/cart/online/checkout/',
         
         SERVICE_DETAILS: '/booking/addService/?id=%s',
         SERVICE_DETAILS_BY_SHOP: '/booking/addService/?shop_id=%s',

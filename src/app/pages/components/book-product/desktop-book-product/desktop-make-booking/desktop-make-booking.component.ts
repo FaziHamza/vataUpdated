@@ -210,21 +210,25 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
         this.toastrService.error("Please select at least one service!", "Error");
         return false;
       }
+      debugger
       let obj ={
-        "total_payment": this.services.total_payment,
+        "total_payment": this.servicesList.total_payment,
         "paid": true,
-        "stripe_pay_intent": this.services.stripe_pay_intent,
-        "stripe_fee_percent": this.services.stripe_fee_percent,
+        "stripe_pay_intent": this.servicesList.stripe_pay_intent,
+        "stripe_fee_percent": this.servicesList.stripe_fee_percent,
         "user_id": this.userService.getUser().user_details.id,
-        "booking_status": this.services.booking_status.id,
-        "promo_code": this.promoCode
+        "booking_status": this.servicesList.booking_status.id,
+        "promo_code": this.promoCode,
+        "card_id": this.servicesList.id
+
       }
       console.log(this.promoCode);
-      // this.subscriptions.push(
-      // this.bookProductService.checkout(obj).subscribe((res=>{
+      this.subscriptions.push(
+      this.bookProductService.checkout(obj).subscribe((res=>{
+        this.toastrService.success("Information save successfully!", "Success");
         
 
-      // })))
+      })))
     }
 
     addService(){

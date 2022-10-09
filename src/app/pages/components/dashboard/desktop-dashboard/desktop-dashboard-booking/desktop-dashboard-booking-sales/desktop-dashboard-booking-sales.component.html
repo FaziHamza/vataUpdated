@@ -1,373 +1,242 @@
 <div class="desktop-dashboard-booking-sales mt-4">
-    <div fxLayout="row">
-
-        <div fxFlex="35%" class="left-side p-3">
-
-
-            <form [formGroup]="clientForm">
-                <div fxLayout="row" class="client border-bottom pb-2">
-                    <div fxFlex="15%">
-                        <div class="client-img">
-                            <img src="../../../../../../../assets/img/Oval-user.png">
-                        </div>
-                    </div>
-                    <div fxFlex="60%" class="input-toggle ml-2">
-                        <div fxLayout="row" class="input-field" *ngIf="checkClient">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Client Name</mat-label>
-                                <input matInput type="text" formControlName="clientName">
-                                <mat-error *ngIf="clientForm.get('clientName').hasError('required')">
-                                    Client Name is <strong>required</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div fxLayout="row" class="input-field" *ngIf="!checkClient">
-                            <mat-form-field class="form-section w-100">
-                                <mat-label>Client</mat-label>
-                                <mat-select formControlName="clientId">
-                                    <mat-option [value]="item.id" *ngFor="let item of allClients">{{item.client_name}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="clientForm.get('clientId').hasError('required')">
-                                    Client is <strong>required</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="toggle">
-                            <span>Quick Booking</span>
-                            <mat-slide-toggle formControlName="booking_options" (change)="onChanges()">
-                            </mat-slide-toggle>
-                        </div>
-                    </div>
-                    <div fxFlex="25%" class="btn text-right">
-                        <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4" (click)="getClientData()">Send</a>
-                    </div>
-                </div>
-
-            </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="left-side p-3">
 
 
-            <div class="client-service-tabs">
-                <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
-                    <mat-tab label="To be Charged" class="active" *ngIf="!checkClient">
-                        <div class="charged-tab">
-                            <div class="fields-scroll pr-3">
-                                <div class="charged-fields" *ngIf="upcomingHistory">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>{{currentDate | date}}</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p>2 Vists</p>
-                                        </div>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4" *ngFor="let item of upcomingHistory">
-                                        <p>{{item.service_name}}</p>
-                                        <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
-                                        <span>{{item.member_name}}</span>
-                                        <span class="float-right">From {{item.client_name}}</span>
-                                    </div>
-                                </div>
-
-                                <div class="charged-fields" *ngIf="currentHistory">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>Today</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p class="pink-text">3 Vists</p>
-                                        </div>
-                                    </div>
-                                    <div class="field-detail p-3 mt-4" *ngFor="let item of currentHistory">
-                                        <p>{{item.service_name}}</p>
-                                        <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
-                                        <span>{{item.member_name}}</span>
-                                        <span class="float-right">From {{item.client_name}}</span>
-                                    </div>
-                                </div>
-
-                                <div class="charged-fields" *ngIf="previousHistory">
-                                    <div fxLayout="row" class="heading py-3">
-                                        <div fxFlex="50%">
-                                            <p>Yesterday</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <p>5 Vists</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="field-detail p-3 mt-4" *ngFor="let item of previousHistory">
-                                        <p>{{item.service_name}}</p>
-                                        <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
-                                        <span>{{item.member_name}}</span>
-                                        <span class="float-right">From {{item.client_name}}</span>
-                                    </div>
+                    <form [formGroup]="clientForm">
+                        <div fxLayout="row" class="client border-bottom pb-2">
+                            <div fxFlex="15%">
+                                <div class="client-img">
+                                    <img src="../../../../../../../assets/img/Oval-user.png">
                                 </div>
                             </div>
-                        </div>
-                    </mat-tab>
-
-                    <mat-tab label="Service List">
-                        <div class="service-tab">
-                            <div class="search-bar my-2">
-                                <span class="icon-search-1"></span>
-                                <input type="text" placeholder="Search Services">
-                            </div>
-
-                            <div class="pr-3" *ngFor="let item of services">
-                                <div class="service-fields ">
-                                    <div fxLayout="row" class="heading pt-3 pb-2">
-                                        <div fxFlex="50%">
-                                            <p>{{item.category__name}} ({{item.services_count}})</p>
-                                        </div>
-                                        <div fxFlex="50%" class="text-right">
-                                            <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
-                                        </div>
-                                    </div>
-                                    <div class="fields-scroll" *ngIf="item.services.length > 0">
-                                        <div fxLayout="row" class="field-detail p-3 mt-4"
-                                            *ngFor="let service of item.services">
-                                            <div fxFlex="70%">
-                                                <p>{{service.service_name}}</p>
-                                                <span class="pr-3">{{service.duration}} ${{service.rate_unit}}</span>
-                                                <span class="pink-text">${{service.total}}</span>
-                                            </div>
-                                            <div fxFlex="30%" class="btn text-right">
-                                                <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
-                                                    (click)="addUpdateSummary(service,'add')">Add</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
-            </div>
-        </div>
-
-        <div fxFlex="65%" class="right-side p-3 ml-3">
-            <div class="summary-details-view" *ngIf="summaryDataVisible">
-                <div fxLayout="row" class="header-row pb-3 border-bottom">
-                    <div fxFlex="50%">
-                        <h6>Summary</h6>
-                    </div>
-                    <div fxFlex="50%" class="text-right">
-                        <p>Amount</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="service-price-row py-3 border-bottom tap-text"
-                    *ngFor="let service of summaryData.service_items" (click)="addUpdateSummary(service,'update')">
-                    <div fxFlex="50%" class="left-side">
-                        <p>{{service.service_name}}</p>
-                        <span class="pr-2">{{service.book_date | date}}</span>
-                        <span class="pr-4">{{service.from_time}} - {{service.to_time}}</span>
-                        <span>{{service.member_name}}</span>
-                    </div>
-                    <div fxFlex="50%" class="right-side text-right">
-                        <p>{{service.service_duration}} ${{service.price}}</p>
-                    </div>
-                </div>
-
-                <div fxLayout="row" class="tap-modify py-4 border-bottom">
-                    <a class="tap">
-                        <img src="../../../../../../../assets/img/tap.png">
-                        <span class="tap-text">
-                            click on item to modify
-                        </span>
-                    </a>
-                </div>
-
-                <div fxLayout="row" class="discount-amount py-3 border-bottom">
-                    <div fxFlex="60%"></div>
-
-                    <div fxFlex="20%" class="subtotal">
-                        <p>Subtotal</p>
-                        <p class="discount pt-4" *ngIf="!discountVisible">
-                            Discount <span class="icon-add-button-inside-black-circle-1" (click)="addDiscount()"></span>
-                        </p>
-                    </div>
-                    <div fxFlex="20%" class="price text-right">
-                        <p>${{subTotal}}</p>
-                        <p class="pt-4" *ngIf="!discountVisible">-${{summaryData.discount_amount}}
-                            ({{summaryData.discount_percent}}%)</p>
-                    </div>
-
-                </div>
-                <div class="row" *ngIf="discountVisible">
-                    
-                    <form [formGroup]="discountForm">
-                        <div fxFlex="60%"></div>
-                        <div fxFlex="40%" class="discount-center my-4 pt-2 pb-3 px-3">
-                            <div fxLayout="row">
-                                <div fxFlex="100%">
+                            <div fxFlex="60%" class="input-toggle ml-2">
+                                <div fxLayout="row" class="input-field" *ngIf="checkClient">
                                     <mat-form-field class="form-section w-100">
-                                        <mat-label>Discount %</mat-label>
-                                        <input matInput type="text" formControlName="discount">
-                                        <mat-error *ngIf="discountForm.get('discount').hasError('required')">
-                                            Discount <strong>required</strong>
+                                        <mat-label>Client Name</mat-label>
+                                        <input matInput type="text" formControlName="clientName">
+                                        <mat-error *ngIf="clientForm.get('clientName').hasError('required')">
+                                            Client Name is <strong>required</strong>
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div fxLayout="row">
-                                <div fxFlex="100%" class="btn text-center">
-                                    <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
-                                        (click)="applydiscount()">Apply Discount</a>
+                                <div fxLayout="row" class="input-field" *ngIf="!checkClient">
+                                    <mat-form-field class="form-section w-100">
+                                        <mat-label>Client</mat-label>
+                                        <mat-select formControlName="clientId">
+                                            <mat-option [value]="item.id" *ngFor="let item of allClients">
+                                                {{item.client_name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="clientForm.get('clientId').hasError('required')">
+                                            Client is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
                                 </div>
-
+                                <div class="toggle">
+                                    <span>Quick Booking</span>
+                                    <mat-slide-toggle formControlName="booking_options" (change)="onChanges()">
+                                    </mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div fxFlex="25%" class="btn text-right">
+                                <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
+                                    (click)="getClientData()">Send</a>
                             </div>
                         </div>
+
                     </form>
 
-                </div>
 
-                <div fxLayout="row" class="tip-bar pt-3 border-bottom">
-                    <div fxFlex="60%" class="left-side">
-                        <ul>
-                            <li class="active">
-                                <p>{{summaryData.tip_percent}}%</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="client-service-tabs">
+                        <mat-tab-group selectedIndex="0" animationDuration="0ms" class="w-100">
+                            <mat-tab label="To be Charged" class="active" *ngIf="!checkClient">
+                                <div class="charged-tab">
+                                    <div class="fields-scroll pr-3">
+                                        <div class="charged-fields" *ngIf="upcomingHistory">
+                                            <div fxLayout="row" class="heading py-3">
+                                                <div fxFlex="50%">
+                                                    <p>{{currentDate | date}}</p>
+                                                </div>
+                                                <div fxFlex="50%" class="text-right">
+                                                    <p>2 Vists</p>
+                                                </div>
+                                            </div>
+                                            <div class="field-detail p-3 mt-4" *ngFor="let item of upcomingHistory">
+                                                <p>{{item.service_name}}</p>
+                                                <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
+                                                <span>{{item.member_name}}</span>
+                                                <span class="float-right">From {{item.client_name}}</span>
+                                            </div>
+                                        </div>
 
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="tip-text">Tip Amount</p>
-                            </div>
-                            <div fxFlex="50%">
-                                <p class="amount text-right">${{summaryData.tip_amount}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        <div class="charged-fields" *ngIf="currentHistory">
+                                            <div fxLayout="row" class="heading py-3">
+                                                <div fxFlex="50%">
+                                                    <p>Today</p>
+                                                </div>
+                                                <div fxFlex="50%" class="text-right">
+                                                    <p class="pink-text">3 Vists</p>
+                                                </div>
+                                            </div>
+                                            <div class="field-detail p-3 mt-4" *ngFor="let item of currentHistory">
+                                                <p>{{item.service_name}}</p>
+                                                <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
+                                                <span>{{item.member_name}}</span>
+                                                <span class="float-right">From {{item.client_name}}</span>
+                                            </div>
+                                        </div>
 
-                <div fxLayout="row" class="payment-method pt-3">
-                    <div fxFlex="60%" class="left-side">
+                                        <div class="charged-fields" *ngIf="previousHistory">
+                                            <div fxLayout="row" class="heading py-3">
+                                                <div fxFlex="50%">
+                                                    <p>Yesterday</p>
+                                                </div>
+                                                <div fxFlex="50%" class="text-right">
+                                                    <p>5 Vists</p>
+                                                </div>
+                                            </div>
 
-                    </div>
+                                            <div class="field-detail p-3 mt-4" *ngFor="let item of previousHistory">
+                                                <p>{{item.service_name}}</p>
+                                                <span class="pr-3">{{item.from_time}} - {{item.to_time}}</span>
+                                                <span>{{item.member_name}}</span>
+                                                <span class="float-right">From {{item.client_name}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
 
-                    <div fxFlex="40%" class="right-side">
-                        <div fxLayout="row">
-                            <div fxFlex="50%">
-                                <p class="total">Total</p>
-                            </div>
-                            <div fxFlex="50%">
-                                <p class="price text-right">${{totalAmount}}</p>
-                            </div>
-                        </div>
-                        <div class="charge-btn mt-4">
-                            <a mat-button class="pink-b d-block py-0 rounded-bt px-5" (click)="SaveCart()">Charge</a>
-                        </div>
+                            <mat-tab label="Service List">
+                                <div class="service-tab">
+                                    <div class="search-bar my-2">
+                                        <span class="icon-search-1"></span>
+                                        <input type="text" placeholder="Search Services">
+                                    </div>
+
+                                    <div class="pr-3" *ngFor="let item of services">
+                                        <div class="service-fields ">
+                                            <div fxLayout="row" class="heading pt-3 pb-2">
+                                                <div fxFlex="50%">
+                                                    <p>{{item.category__name}} ({{item.services_count}})</p>
+                                                </div>
+                                                <div fxFlex="50%" class="text-right">
+                                                    <span class="icon-baseline-keyboard_arrow_down-24px-12"></span>
+                                                </div>
+                                            </div>
+                                            <div class="fields-scroll" *ngIf="item.services.length > 0">
+                                                <div fxLayout="row" class="field-detail p-3 mt-4"
+                                                    *ngFor="let service of item.services">
+                                                    <div fxFlex="70%">
+                                                        <p>{{service.service_name}}</p>
+                                                        <span class="pr-3">{{service.duration}}
+                                                            ${{service.rate_unit}}</span>
+                                                        <span class="pink-text">${{service.total}}</span>
+                                                    </div>
+                                                    <div fxFlex="30%" class="btn text-right">
+                                                        <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
+                                                            (click)="addUpdateSummary(service,'add')">Add</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
                     </div>
                 </div>
             </div>
-
-            <div class="summary-edit-view">
-                <div *ngIf="visibleAddSummaryData">
-                    <div fxLayout="row" class="header-row pb-3 border-bottom">
-                        <div fxFlex="50%">
-                            <h6>Summary</h6>
+            <div class="col-lg-8">
+                <div class="right-side p-3">
+                    <div class="summary-details-view" *ngIf="summaryDataVisible">
+                        <div fxLayout="row" class="header-row pb-3 border-bottom">
+                            <div fxFlex="50%">
+                                <h6>Summary</h6>
+                            </div>
+                            <div fxFlex="50%" class="text-right">
+                                <p>Amount</p>
+                            </div>
                         </div>
-                        <div fxFlex="50%" class="text-right">
-                            <p>Amount</p>
+
+                        <div fxLayout="row" class="service-price-row py-3 border-bottom tap-text"
+                            *ngFor="let service of summaryData.service_items"
+                            (click)="addUpdateSummary(service,'update')">
+                            <div fxFlex="50%" class="left-side">
+                                <p>{{service.service_name}}</p>
+                                <span class="pr-2">{{service.book_date | date}}</span>
+                                <span class="pr-4">{{service.from_time}} - {{service.to_time}}</span>
+                                <span>{{service.member_name}}</span>
+                            </div>
+                            <div fxFlex="50%" class="right-side text-right">
+                                <p>{{service.service_duration}} ${{service.price}}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="edit-inputs my-4 pt-2 pb-3 px-3">
+                        <div fxLayout="row" class="tap-modify py-4 border-bottom">
+                            <a class="tap">
+                                <img src="../../../../../../../assets/img/tap.png">
+                                <span class="tap-text">
+                                    click on item to modify
+                                </span>
+                            </a>
+                        </div>
 
-                        <form [formGroup]="editSummaryForm">
-                            <div fxLayout="row" class="service-input">
-                                <mat-form-field class="form-section w-100">
-                                    <mat-label></mat-label>
-                                    <input matInput type="text" readonly formControlName="serviceName">
-                                </mat-form-field>
+                        <div fxLayout="row" class="discount-amount py-3 border-bottom">
+                            <div fxFlex="60%"></div>
 
-                                <div class="amount">
-                                    <span class="time pr-3">{{addSummaryData.service_duration_minutes}}</span> <span
-                                        class="price">${{addSummaryData.rate_unit}}</span>
-                                </div>
+                            <div fxFlex="20%" class="subtotal">
+                                <p>Subtotal</p>
+                                <p class="discount pt-4" *ngIf="!discountVisible">
+                                    Discount <span class="icon-add-button-inside-black-circle-1"
+                                        (click)="addDiscount()"></span>
+                                </p>
                             </div>
-                            <div fxLayout="row">
-
+                            <div fxFlex="20%" class="price text-right">
+                                <p>${{subTotal}}</p>
+                                <p class="pt-4" *ngIf="!discountVisible">-${{summaryData.discount_amount}}
+                                    ({{summaryData.discount_percent}}%)</p>
                             </div>
-                            <div fxLayout="row" class="date-dropdowns">
-                                <div fxFlex="50%" class="mr-3">
-                                    <mat-form-field class="w-100">
-                                        <mat-label>Date</mat-label>
-                                        <input matInput [matDatepicker]="picker" formControlName="date">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                        <mat-error *ngIf="editSummaryForm.get('date').hasError('required')">
-                                            Date is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
 
-                                </div>
-                                <div fxFlex="24%" class="mr-3">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Time From</mat-label>
-                                        <input matInput type="time" formControlName="timeFrom">
-                                        <mat-error *ngIf="editSummaryForm.get('timeFrom').hasError('required')">
-                                            Time From is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
+                        </div>
+                        <div class="row" *ngIf="discountVisible">
 
-                                </div>
-                                <div fxFlex="24%">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Time To</mat-label>
-                                        <input matInput type="time" formControlName="timeTo">
-                                        <mat-error *ngIf="editSummaryForm.get('timeTo').hasError('required')">
-                                            Time To is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
+                            <form [formGroup]="discountForm">
+                                <div fxFlex="60%"></div>
+                                <div fxFlex="40%" class="discount-center my-4 pt-2 pb-3 px-3">
+                                    <div fxLayout="row">
+                                        <div fxFlex="100%">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Discount %</mat-label>
+                                                <input matInput type="text" formControlName="discount">
+                                                <mat-error *ngIf="discountForm.get('discount').hasError('required')">
+                                                    Discount <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row">
+                                        <div fxFlex="100%" class="btn text-center">
+                                            <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
+                                                (click)="applydiscount()">Apply Discount</a>
+                                        </div>
 
-                                </div>
-                            </div>
-                            <div fxLayout="row" class="remove-apply-btns mt-3">
-                                <div fxFlex="50%">
-                                    <div class="remove">
-                                        <a mat-button class="px-4" (click)="removeServices()">
-                                            <span class="icon-baseline-close-24px-1"></span>
-                                            Remove Service
-                                        </a>
                                     </div>
                                 </div>
-                                <div fxFlex="50%" class="text-right">
-                                    <a mat-button class="pink-b rounded-bt py-0 px-5" (click)="saveServices()">Apply
-                                        Changes
-                                        Booking</a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
 
-
-                    </div>
-                </div>
-
-                <div *ngIf="summaryDataVisible">
-                    <form [formGroup]="tipForm">
-
+                        </div>
 
                         <div fxLayout="row" class="tip-bar pt-3 border-bottom">
-                            <div fxFlex="60%" class="left-side mr-3">
-                                <mat-tab-group selectedIndex="0" animationDuration="0ms"
-                                    (selectedTabChange)="getTip($event)">
-                                    <mat-tab label="No Tip" class="active">
-
-                                    </mat-tab>
-                                    <mat-tab label="10%">
-                                    </mat-tab>
-                                    <mat-tab label="15%">
-                                    </mat-tab>
-                                    <mat-tab label="20%">
-                                    </mat-tab>
-                                    <mat-tab label="Custom">
-                                    </mat-tab>
-                                </mat-tab-group>
+                            <div fxFlex="60%" class="left-side">
+                                <ul>
+                                    <li class="active">
+                                        <p>{{summaryData.tip_percent}}%</p>
+                                    </li>
+                                </ul>
                             </div>
 
                             <div fxFlex="40%" class="right-side">
@@ -376,53 +245,193 @@
                                         <p class="tip-text">Tip Amount</p>
                                     </div>
                                     <div fxFlex="50%">
-                                        <!-- {{summaryData.discount_amount}} -->
-                                        <p class="amount text-right">${{summaryData.tip_amount}}
-                                            ({{summaryData.tip_percent}}%)</p>
+                                        <p class="amount text-right">${{summaryData.tip_amount}}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div fxFlex="40%" class="btn text-right" *ngIf="!applyTipVisible">
-                                <a mat-button class="white-b rounded-bt mt-2 py-0 px-4"
-                                    (click)="applyTipCash()">Apply Tip</a>
                             </div>
                         </div>
 
-                        <div fxLayout="row" class="tips-conditions py-4 border-bottom" *ngIf="applyTipVisible">
-                            <div fxFlex="50%" class="field p-2 left-side mr-3">
-                                <div fxLayout="row">
-                                    <div fxFlex="60%" class="input mr-3">
-                                        <mat-form-field class="form-section w-100">
-                                            <mat-label>Custom Tip in Percent</mat-label>
-                                            <input matInput type="number" formControlName="tipPercent">
-                                        </mat-form-field>
-                                    </div>
+                        <div fxLayout="row" class="payment-method pt-3">
+                            <div fxFlex="60%" class="left-side">
 
-                                    <div fxFlex="40%" class="btn text-right">
-                                        <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
-                                            (click)="applyTipPercent()">Apply Tip</a>
+                            </div>
+
+                            <div fxFlex="40%" class="right-side">
+                                <div fxLayout="row">
+                                    <div fxFlex="50%">
+                                        <p class="total">Total</p>
                                     </div>
+                                    <div fxFlex="50%">
+                                        <p class="price text-right">${{totalAmount}}</p>
+                                    </div>
+                                </div>
+                                <div class="charge-btn mt-4">
+                                    <a mat-button class="pink-b d-block py-0 rounded-bt px-5"
+                                        (click)="SaveCart()">Charge</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-edit-view">
+                        <div *ngIf="visibleAddSummaryData">
+                            <div fxLayout="row" class="header-row pb-3 border-bottom">
+                                <div fxFlex="50%">
+                                    <h6>Summary</h6>
+                                </div>
+                                <div fxFlex="50%" class="text-right">
+                                    <p>Amount</p>
                                 </div>
                             </div>
 
-                            <div fxFlex="50%" class="field p-2 right-side">
-                                <div fxLayout="row">
-                                    <div fxFlex="60%" class="input mr-3">
+                            <div class="edit-inputs my-4 pt-2 pb-3 px-3">
+
+                                <form [formGroup]="editSummaryForm">
+                                    <div fxLayout="row" class="service-input">
                                         <mat-form-field class="form-section w-100">
-                                            <mat-label>Custom Tip in Cash</mat-label>
-                                            <input matInput type="number" formControlName="tipAmount">
+                                            <mat-label></mat-label>
+                                            <input matInput type="text" readonly formControlName="serviceName">
                                         </mat-form-field>
+
+                                        <div class="amount">
+                                            <span class="time pr-3">{{addSummaryData.service_duration_minutes}}</span>
+                                            <span class="price">${{addSummaryData.rate_unit}}</span>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row">
+
+                                    </div>
+                                    <div fxLayout="row" class="date-dropdowns">
+                                        <div fxFlex="50%" class="mr-3">
+                                            <mat-form-field class="w-100">
+                                                <mat-label>Date</mat-label>
+                                                <input matInput [matDatepicker]="picker" formControlName="date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                                <mat-error *ngIf="editSummaryForm.get('date').hasError('required')">
+                                                    Date is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div fxFlex="24%" class="mr-3">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Time From</mat-label>
+                                                <input matInput type="time" formControlName="timeFrom">
+                                                <mat-error *ngIf="editSummaryForm.get('timeFrom').hasError('required')">
+                                                    Time From is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div fxFlex="24%">
+                                            <mat-form-field class="form-section w-100">
+                                                <mat-label>Time To</mat-label>
+                                                <input matInput type="time" formControlName="timeTo">
+                                                <mat-error *ngIf="editSummaryForm.get('timeTo').hasError('required')">
+                                                    Time To is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row" class="remove-apply-btns mt-3">
+                                        <div fxFlex="50%">
+                                            <div class="remove">
+                                                <a mat-button class="px-4" (click)="removeServices()">
+                                                    <span class="icon-baseline-close-24px-1"></span>
+                                                    Remove Service
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div fxFlex="50%" class="text-right">
+                                            <a mat-button class="pink-b rounded-bt py-0 px-5"
+                                                (click)="saveServices()">Apply
+                                                Changes
+                                                Booking</a>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+                        <div *ngIf="summaryDataVisible">
+                            <form [formGroup]="tipForm">
+
+
+                                <div fxLayout="row" class="tip-bar pt-3 border-bottom">
+                                    <div fxFlex="60%" class="left-side mr-3">
+                                        <mat-tab-group selectedIndex="0" animationDuration="0ms"
+                                            (selectedTabChange)="getTip($event)">
+                                            <mat-tab label="No Tip" class="active">
+
+                                            </mat-tab>
+                                            <mat-tab label="10%">
+                                            </mat-tab>
+                                            <mat-tab label="15%">
+                                            </mat-tab>
+                                            <mat-tab label="20%">
+                                            </mat-tab>
+                                            <mat-tab label="Custom">
+                                            </mat-tab>
+                                        </mat-tab-group>
                                     </div>
 
-                                    <div fxFlex="40%" class="btn text-right">
+                                    <div fxFlex="40%" class="right-side">
+                                        <div fxLayout="row">
+                                            <div fxFlex="50%">
+                                                <p class="tip-text">Tip Amount</p>
+                                            </div>
+                                            <div fxFlex="50%">
+                                                <!-- {{summaryData.discount_amount}} -->
+                                                <p class="amount text-right">${{summaryData.tip_amount}}
+                                                    ({{summaryData.tip_percent}}%)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxFlex="40%" class="btn text-right" *ngIf="!applyTipVisible">
                                         <a mat-button class="white-b rounded-bt mt-2 py-0 px-4"
                                             (click)="applyTipCash()">Apply Tip</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- <div fxLayout="row" class="payment-method pt-3">
+
+                                <div fxLayout="row" class="tips-conditions py-4 border-bottom" *ngIf="applyTipVisible">
+                                    <div fxFlex="50%" class="field p-2 left-side mr-3">
+                                        <div fxLayout="row">
+                                            <div fxFlex="60%" class="input mr-3">
+                                                <mat-form-field class="form-section w-100">
+                                                    <mat-label>Custom Tip in Percent</mat-label>
+                                                    <input matInput type="number" formControlName="tipPercent">
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div fxFlex="40%" class="btn text-right">
+                                                <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
+                                                    (click)="applyTipPercent()">Apply Tip</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div fxFlex="50%" class="field p-2 right-side">
+                                        <div fxLayout="row">
+                                            <div fxFlex="60%" class="input mr-3">
+                                                <mat-form-field class="form-section w-100">
+                                                    <mat-label>Custom Tip in Cash</mat-label>
+                                                    <input matInput type="number" formControlName="tipAmount">
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div fxFlex="40%" class="btn text-right">
+                                                <a mat-button class="white-b rounded-bt mt-2 py-0 px-4"
+                                                    (click)="applyTipCash()">Apply Tip</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- <div fxLayout="row" class="payment-method pt-3">
                         <div fxFlex="60%" class="left-side">
 
                         </div>
@@ -441,10 +450,11 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
