@@ -11,23 +11,19 @@
                         </div>
                         <div fxFlex="60%">
                             <div class="rightside-tabs float-right">
-                                <ul>
-                                    <li>
-                                        <p>Day</p>
-                                    </li>
-                                    <li>
-                                        <p>Week</p>
-                                    </li>
-                                    <li>
-                                        <p>Month</p>
-                                    </li>
-                                    <li>
-                                        <p>Year</p>
-                                    </li>
-                                    <li>
-                                        <p>All Time</p>
-                                    </li>
-                                </ul>
+                                <mat-tab-group selectedIndex="0" animationDuration="0ms"
+                                    (selectedTabChange)="getType($event)">
+                                    <mat-tab label="Day" class="active">
+                                    </mat-tab>
+                                    <mat-tab label="Week">
+                                    </mat-tab>
+                                    <mat-tab label="Month">
+                                    </mat-tab>
+                                    <mat-tab label="Year">
+                                    </mat-tab>
+                                    <mat-tab label="All Time">
+                                    </mat-tab>
+                                </mat-tab-group>
                             </div>
                         </div>
                     </div>

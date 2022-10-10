@@ -204,6 +204,9 @@ export class DashboardService {
   postLastMinuteDiscount(params) {
     return this.apiService.post(ApiEndPoints.DASHBOARD.POST_LAST_MINUTE_DISCOUNT, params);
   }
+  postInviteSend(params) {
+    return this.apiService.post(ApiEndPoints.DASHBOARD.POST_INVITE_SEND, params);
+  }
 
   getHappyHourDiscountSelectDay() {
     return this.apiService.get(ApiEndPoints.DASHBOARD.GET_HAPPY_HOUR_DISCOUNT_SELECT_DAY);

@@ -137,8 +137,10 @@
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="col-lg-8">
                             <div class="right-side p-3 ">
+                                <form [formGroup]="inviteSendForm">
                                 <div class="content-section">
                                     <div fxLayout="row" class="heading justify-content-center">
                                         <h6>Let your clients know you are booking online!</h6>
@@ -149,17 +151,28 @@
                                     <div fxLayout="row" class="title justify-content-center mt-3"></div>
 
                                     <div fxLayout="row" class="email-address justify-content-center mt-4">
-                                        <a mat-button class="email-btn py-2">
-                                            Client Email Address or Phone Number
-                                        </a>
+                                        <div fxFlex="22%" >
+                                            <mat-form-field class="form-section">
+                                                <mat-label>Client Email</mat-label>
+                                                <input matInput type="text" formControlName="email">
+                                                <mat-error
+                                                    *ngIf="inviteSendForm.get('email').hasError('required')">
+                                                    Email is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                       
                                     </div>
 
                                     <div fxLayout="row" class="invite-btn justify-content-center mt-4">
-                                        <a mat-button class="pink-b rounded-bt px-5">Send Invite</a>
+                                        <a mat-button class="pink-b rounded-bt px-5" (click)="postInviteSend()">
+                                            Send Invite</a>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
+                   
 
                     </div>
                 </div>

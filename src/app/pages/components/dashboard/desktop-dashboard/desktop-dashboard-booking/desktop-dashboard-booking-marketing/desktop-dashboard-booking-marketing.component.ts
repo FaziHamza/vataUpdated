@@ -15,6 +15,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
   lastMinDiscountForm: FormGroup;
   happyHoursForm: FormGroup;
   flashSaleForm: FormGroup;
+  inviteSendForm: FormGroup;
 
   serviceCategory: any;
   servicesByCategory: any;
@@ -39,6 +40,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
     this.postLastMinDiscountFormInIt();
     this.happyHoursFormInIt();
     this.flashSaleFormInIt();
+    this.inviteClientsFormInIt();
     this.getAllServices();
     this.getServiceCategory();
     this.getHappyHourDiscountSelectDays();
@@ -72,6 +74,11 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
     this.flashSaleForm = this.fb.group({
       discountPercent: ['', Validators.required],
       endTime: ['', Validators.required],
+    });
+  }
+  inviteClientsFormInIt() {
+    this.inviteSendForm = this.fb.group({
+      email: ['', Validators.required],
     });
   }
 
@@ -193,6 +200,26 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         this.lastMinDiscountForm.reset();
       }
     });
+  }
+  postInviteSend() {
+    debugger
+    let userId = this.userService.getUser().user_details.id;
+
+   let para={
+    "user":userId,
+    "email":this.inviteSendForm.value.email
+   }
+   if(this.inviteSendForm.valid){
+    this.dashboardService.postInviteSend(para).subscribe(res => {
+      console.log(res);
+
+      if (res) {
+        this.toastrService.success('Invitation Send Successfully!');
+        this.inviteSendForm.reset();
+      }
+    });
+   }
+    
   }
 
   getHappyHourDiscountSelectDays() {

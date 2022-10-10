@@ -177,6 +177,7 @@ export class ApiEndPoints {
         GET_SHOP_RATING_INFO: '/user/shopRatingInfo/%s/',
         POST_PUSH_BOOKING: '/booking/dash/pushBooking/',
         POST_LAST_MINUTE_DISCOUNT: '/booking/dash/lastMinuteDiscount/',
+        POST_INVITE_SEND: '/booking/iviteClient/',
         GET_HAPPY_HOUR_DISCOUNT_SELECT_DAY: '/booking/dash/happyHourDiscountSelectDay/',
         POST_HAPPY_HOUR_DISCOUNT: '/booking/dash/happyHourDiscount/',
         POST_FLASH_SALE: '/booking/dash/flashDiscount/',

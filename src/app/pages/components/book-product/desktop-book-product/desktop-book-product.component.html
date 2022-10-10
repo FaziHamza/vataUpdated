@@ -385,12 +385,10 @@
             </div>
             <p class="right_text"> <a mat-button (click)="showDirection()" class="direction-btn pink-text">{{ !isShowDirection ? "Show" :
               "Hide" }} direction</a></p>
-              <div fxLayout="row" class="workers-img-row my-4 p-4">
-                <div class="worker1 mr-4" >
-                  <img src="" />
-                  <p></p>
-                </div>
-              </div>
+              <p class="right_text">
+                {{ shopDetails?.shop_description }}
+              </p>
+           
             <div class="right_content_images">
               <div class="layout_content_images_2" *ngFor="let member of shopDetails?.members">
                 <img src="{{ member.photo }}">
@@ -434,217 +432,224 @@
 
   </div>
 
+</div>
 
-  <section class="book-a-visit">
-    <h2 class="main-title">Book a Visit</h2>
+<div class="book-visit border-top">
+  <div class="container py-5">
+    <div class="heading-bar">
+      <h3 class="heading">Book a Visit</h3>
+    </div>
     <div *ngFor="let service of services">
-      <div class="clearfix reviev-text show-reviev-text woman" *ngIf="
-      service.category__name == 'For Women' && service.services.length > 0
-    ">
-        <div class="clearfix">
-          <h3 class="book-visit-subtitle">For Women {{ service.services_count }}
+      <div class="book-appointment" *ngIf="
+          service.category__name == 'For Women' && service.services.length > 0
+        ">
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For Women {{ service.services.length }}
             <span [appToggleSectionAccordian]="servicesForWomen"
-              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span></h3>
-          <!-- <a href="JavaScript:void(0);" class="book-a-visit-dropdown">
-            <img class="hide-on-click" src="img/down33.png" />
-            <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png" />
-          </a> -->
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
+          </p>
         </div>
+
         <div #servicesForWomen>
           <ng-container>
-            <div class="show-hide-book-a-visit" *ngFor="let subService of service.services">
-              <div class="clearfix">
-                <div class="fleft">
-                  <h2 class="review-subtitle">{{ subService.service_name }}</h2>
-                  <div class="supstoners-right clearfix">
-                    <div class="rate-stars">
-                      <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
-                    </div>
-                    <h6>{{ subService.rating_count }} Book ratings</h6>
-                  </div>
+            <div class="booking-fields p-3 mt-4" *ngFor="let subService of service.services">
+              <div fxLayout="row" class="pb-3">
+                <div fxFlex="64%" class="heading">
+                  <h6 class="pb-2">{{ subService.service_name }}</h6>
+                  <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
                 </div>
-                <div class="fright">
-                  <div class="clearfix hide-on-mobile">
-                    <div class="min-cont">{{ subService.duration }}</div>
-                    <div class="proce-cont">${{ subService.total }}</div>
-                    <a  class="pink-book-now" *ngIf="userInfo" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
-                  </div>
+                <div fxFlex="16%" class="time-price border-left px-4">
+                  <p class="wrapper">
+                    <span class="time">{{ subService.duration }}</span>
+                    <span class="text float-right">${{ subService.total }}</span>
+                  </p>
+                </div>
+                <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+                  <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book
+                    Now</a>
                 </div>
               </div>
-              <p>{{subService.description}}</p>
-      
-              <!-- <div class="clearfix ">
-                <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
-                <a href="JavaScript:void(0);" class="reply">Read More</a>
+              <div class="details border-top pt-3">
+                <p class="pb-2">
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
+                </p>
               </div>
-              <div class="clearfix show-on-mobile">
-                <div class="min-cont">30min</div>
-                <div class="proce-cont">$109</div>
-                <a  class="pink-book-now fright">Book Now</a>
-              </div> -->
             </div>
           </ng-container>
         </div>
       </div>
-      <div class="clearfix reviev-text show-reviev-text man" *ngIf="
-    service.category__name == 'For Men' && service.services.length > 0
-  ">
-      <div class="clearfix">
-        <h3 class="book-visit-subtitle">Man Style {{ service.services.length }}
-          <span [appToggleSectionAccordian]="servicesForMen" class="icon-baseline-keyboard_arrow_down-24px-1 ml-3">
-          </span>
-        </h3>
-        <!-- <a href="JavaScript:void(0);" class="book-a-visit-dropdown">
-          <img class="hide-on-click" src="img/down33.png" />
-          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png" />
-        </a> -->
-      </div>
-      <div #servicesForMen>
-        <ng-container>
-          <div class="show-hide-book-a-visit" *ngFor="let subService of service.services">
-            <div class="clearfix">
-              <div class="fleft">
-                <h2 class="review-subtitle">{{ subService.service_name }}</h2>
-                <div class="supstoners-right clearfix">
-                  <div class="rate-stars">
-                    <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
-                  </div>
-                  <h2>{{ subService.rating_count }} product raitings</h2>
-                </div>
-              </div>
-              <div class="fright">
-                <div class="clearfix hide-on-mobile">
-                  <div class="min-cont">{{ subService.duration }}</div>
-                  <div class="proce-cont">${{ subService.total }}</div>
-                  <a  class="pink-book-now"  *ngIf="userInfo"
-                  (click)="navigateToMakeBooking(subService.id)"
-                  >Book Now</a>
-                </div>
-              </div>
-            </div>
-            <p>{{subService.description}}</p>
-    
-            <!-- <div class="clearfix ">
-              <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
-              <a href="JavaScript:void(0);" class="reply">Read More</a>
-            </div>
-            <div class="clearfix show-on-mobile">
-              <div class="min-cont">30min</div>
-              <div class="proce-cont">$109</div>
-              <a  class="pink-book-now fright">Book Now</a>
-            </div> -->
-          </div>
-        </ng-container>
-      </div>
-      
-    </div>
-    <div class="clearfix reviev-text show-reviev-text man" *ngIf="service.category__name == 'All' 
-    && service.services.length > 0">
-      <div class="clearfix">
-        <h3 class="book-visit-subtitle">For All {{ service.services.length }}
-          <span [appToggleSectionAccordian]="servicesForAll" class="icon-baseline-keyboard_arrow_down-24px-1 ml-3">
-          </span>
-        </h3>
-        <!-- <a href="JavaScript:void(0);" class="book-a-visit-dropdown">
-          <img class="hide-on-click" src="img/down33.png" />
-          <img class="show-on-click" src="img/baseline-keyboard_arrow_down-24px (1).png" />
-        </a> -->
-      </div>
-      <div class="show-hide-book-a-visit" *ngFor="let shop of similarShops">
-        <div class="clearfix">
-          <div class="fleft">
-            <!-- <img class="main-img" src="{{ shop.shop_image }}"> -->
-            <h2 class="review-subtitle">{{ shop.shopname }}</h2>
-            <div class="supstoners-right clearfix">
-              <div class="rate-stars">
-                <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
-              </div>
-              <h2>{{ shop.tot_ratings }} product raitings</h2>
-            </div>
-          </div>
-          <div class="fright">
-            <div class="clearfix hide-on-mobile">
-              <!-- <div class="min-cont">{{ shop.duration }}</div> -->
-              <!-- <div class="proce-cont">${{ shop.total }}</div> -->
-              <a  class="pink-book-now"  *ngIf="userInfo"
-              (click)="navigateToMakeBooking(shop.id)"
-              >Book Now</a>
-            </div>
-          </div>
+      <div class="book-appointment" *ngIf="
+          service.category__name == 'For Men' && service.services.length > 0
+        ">
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For Men {{ service.services.length }}
+            <span [appToggleSectionAccordian]="servicesForMen" class="icon-baseline-keyboard_arrow_down-24px-1 ml-3">
+            </span>
+          </p>
         </div>
-        <p>Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
-          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
-          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
-          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail
-          art!, Welcome to Haus Of Polish! We are a full service nail salon and boutique beauty destination that offers
-          premium products, one-time use pedi kits, over 600 gels, and regular color. Affordable, transparent pricing is
-          also available. All full sets and fills include desired nail shapes with up to medium nail length, and a
-          cuticle treatment. Removals are available with new sets of dips and gel manicures. Pricing varies on nail art!
-        </p>
 
-        <!-- <div class="clearfix ">
-          <a href="JavaScript:void(0);" class="reply show-on-click">Read Less</a>
-          <a href="JavaScript:void(0);" class="reply">Read More</a>
+        <div #servicesForMen>
+          <ng-container>
+            <div class="booking-fields p-3 mt-4" *ngFor="let subService of service.services">
+              <div fxLayout="row" class="pb-3">
+                <div fxFlex="64%" class="heading">
+                  <h6 class="pb-2">{{ subService.service_name }}</h6>
+                  <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
+                </div>
+                <div fxFlex="16%" class="time-price border-left px-4">
+                  <p class="wrapper">
+                    <span class="time">{{ subService.duration }}</span>
+                    <span class="text float-right">${{ subService.total }}</span>
+                  </p>
+                </div>
+                <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+                  <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book
+                    Now</a>
+                </div>
+              </div>
+              <div class="details border-top pt-3">
+                <p class="pb-2">
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
+                </p>
+              </div>
+            </div>
+          </ng-container>
         </div>
-        <div class="clearfix show-on-mobile">
-          <div class="min-cont">30min</div>
-          <div class="proce-cont">$109</div>
-          <a  class="pink-book-now fright">Book Now</a>
-        </div> -->
       </div>
-      
+
+      <div class="book-appointment" *ngIf="service.category__name == 'All' && service.services.length > 0">
+        <div fxLayout="row" class="pt-4">
+          <p class="heading">
+            For All {{ service.services.length }}
+            <span [appToggleSectionAccordian]="servicesForAll"
+              class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
+          </p>
+        </div>
+
+        <div fxLayout="row" class="similar-services pt-5">
+          <div fxFlex="" class="mr-3" *ngFor="let shop of similarShops">
+            <div class="card border">
+              <div class="card-body p-0">
+                <img class="main-img" src="{{ shop.shop_image }}">
+                <h5 class="border-bottom text-center p-2">{{ shop.shopname }}</h5>
+                <div class="rating border-bottom p-1 justify-content-center">
+                  <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
+                  <span class="star-text">{{ shop.tot_ratings }} Book Ratings</span>
+                </div>
+                <div class="location p-3 text-center">
+                  <h4>{{ shop.place }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="20%" class="book-btn border-left pl-5" *ngIf="userInfo">
+            <a mat-button class="rounded-bt pink-b px-5" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
+          </div>
+        </div>
+        <div class="details border-top pt-3">
+          <p class="pb-2">
+            It is a long established fact that a reader will be distracted
+            by the readable content of a page when looking at its layout.
+            The point of using Lorem Ipsum is that it has a more-or-less
+            normal distribution of letters, as opposed to using 'Content
+            here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use
+            Lorem Ipsum as their default model text, and a search for
+            'lorem ipsum' will uncover many web sites still in their
+            infancy.
+          </p>
+        </div>
+      </div>
+
     </div>
-    </div>
-  </section>
-  <div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
-    <h4>No services to show</h4>
   </div>
+</div>
+<div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
+  <h4>No services to show</h4>
+</div>
 
-  <section class="our-works" *ngIf="ourWorks && ourWorks.length > 0">
-    <h2 class="main-title">Works</h2>
-    <div class="hide-on-mobile">
-      <div class="clearfix works-img-cont" *ngFor="let work of ourWorks">
-        <p></p>
-        <a  (click)="updateLikes(work)">
-          <img src="{{ work.image }}" height="250" width="250"/>
-          <span class="liked-count heart active" *ngIf="work.is_liked">1</span>
-          <span class="liked-count" *ngIf="!work.is_liked">1</span>
-          <span class="liked-count">{{ work.total_likes_count }}</span>
-        </a>
-      </div>
-      <div class="see-all-comments">
-        <a >See all Works ></a>
+
+<div class="our-works border-top" *ngIf="ourWorks && ourWorks.length > 0">
+  <div class="container pt-5 pb-4">
+    <div fxLayout="row" class="heading-bar">
+      <h3 class="heading">Our Works</h3>
+    </div>
+    <div fxLayout="row" class="works-imgs w-100 pt-5">
+      <div fxFlex="" class="work mr-3" *ngFor="let work of ourWorks">
+        <img src="{{ work.image }}" height="250" width="250" />
+        <div class="like-chip" (click)="updateLikes(work)">
+          <span class="icon-like1 pr-2 heart active" *ngIf="work.is_liked"></span>
+          <span class="icon-like1 pr-2 heart" *ngIf="!work.is_liked"></span>
+          <span class="count-like">{{ work.total_likes_count }}</span>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section class="customer-reviews" *ngIf="reviews && reviews.length > 0">
-    <div class="clearfix btn-title">
-      <h2 class="main-title">Customer Reviews</h2>
-      <span class="arrow-up-down-btn"></span>
-      <div class="fright book-product-reviewbtn">
-        <div class="fleft have-you-been">Have you been here?</div>
-        <a  id="write-review" class="comment-btn">Write Review</a>
-      </div>
+    <div fxLayout="row" class="more-works-btn border-top pt-2">
+      <a mat-button class="pink-text">See all works</a>
     </div>
-    <div *ngFor="let review of reviews">
-      <div class="clearfix reviev-text" *ngIf="!review.parent">
-        <h2 class="review-subtitle">{{ review.title }}</h2>
-        <div class="supstoners-right clearfix">
-          <h2>2 product raitings</h2>
-          <div class="rate-stars">
-            <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
-            </app-star-rating>
+  </div>
+</div>
+
+<!-- New Review Section -->
+<div class="container py-5">
+  <div fxLayout="row" class="heading-bar">
+    <div fxFlex="70%">
+      <h3 class="heading">
+        Customer Reviews
+        <span class="icon-baseline-keyboard_arrow_down-24px-1 ml-3"></span>
+      </h3>
+    </div>
+  </div>
+  <mat-tab-group *ngIf="reviews && reviews.length > 0" selectedIndex="0" animationDuration="0ms" class="w-100">
+    <mat-tab label="All Reviews">
+      <div class="all-review-tab p-3" *ngFor="let review of reviews">
+        <div fxLayout="row" class="border-bottom" *ngIf="!review.parent">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div class="heading-row">
+              <div fxFlex="60%" class="left-side">
+                <h5>{{ review.title }}</h5>
+              </div>
+              <div fxFlex="40%" class="right-side text-right">
+                <p class="date-rating">
+                  <span class="name-date">{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span>
+                  <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
+                  </app-star-rating>
+                </p>
+              </div>
+            </div>
+            <div class="answer-text pt-2">
+              <p>{{ review.feedback }}</p>
+            </div>
+            <div class="img-section pt-4">
+              <img *ngFor="let image of review.image" src="{{ image }}" />
+            </div>
+            <div class="comment-reply pt-2 pb-3">
+              <a mat-button class="text-muted">Comment (Hire)</a>
+              <a mat-button class="pink-text" (click)="reply(review.service, review.id)">Reply</a>
+            </div>
           </div>
         </div>
-        <p>{{ review.feedback }}</p>
-        <div class="clearfix coment-images">
-          <img *ngFor="let image of review.image" src="{{ image }}" />
-        </div>
-        <div class="clearfix ">
-          <a  class="reply" (click)="reply(review.service, review.id)">Reply</a>
-        </div>
-      </div>
         <!-- REPLY SECTION -->
         <div fxLayout="row" class="border-bottom">
           <div fxFlex="90%" class="content-right-side ml-4">
@@ -659,61 +664,80 @@
             </div>
           </div>
         </div>
-
-    </div>
-    <div *ngFor="let review of newestReviews">
-      <div class="clearfix reviev-text" *ngIf="!review.parent">
-        <h2 class="review-subtitle">{{ review.title }}</h2>
-        <div class="supstoners-right clearfix">
-          <h2>2 product raitings</h2>
-          <div class="rate-stars">
-            <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
-            </app-star-rating>
+      </div>
+    </mat-tab>
+    <mat-tab label="Newest Review">
+      <div class="all-review-tab p-3" *ngFor="let review of newestReviews">
+        <div fxLayout="row" class="border-bottom" *ngIf="!review.parent">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div class="heading-row">
+              <div fxFlex="60%" class="left-side">
+                <h5>{{ review.title }}</h5>
+              </div>
+              <div fxFlex="40%" class="right-side text-right">
+                <p class="date-rating">
+                  <span class="name-date">{{ review.user_fullname }},
+                    {{ review.pub_date | date }}</span>
+                  <app-star-rating class="rate-stars" [maxScore]="5" [score]="4.0" [forDisplay]="true" size="15px">
+                  </app-star-rating>
+                </p>
+              </div>
+            </div>
+            <div class="answer-text pt-2">
+              <p>{{ review.feedback }}</p>
+            </div>
+            <div class="img-section pt-4">
+              <img *ngFor="let image of review.image" src="{{ image }}" />
+            </div>
+            <div class="comment-reply pt-2 pb-3">
+              <a mat-button class="text-muted">Comment (Hire)</a>
+              <a mat-button class="pink-text" (click)="reply(review.service, review.id)">Reply</a>
+            </div>
           </div>
         </div>
-        <p>{{ review.feedback }}</p>
-        <div class="clearfix coment-images">
-          <img *ngFor="let image of review.image" src="{{ image }}" />
-        </div>
-        <div class="clearfix ">
-          <a  class="reply" (click)="reply(review.service, review.id)">Reply</a>
-        </div>
-      </div>
-      <!-- REPLY SECTION -->
-      <div fxLayout="row" class="border-bottom">
-        <div fxFlex="90%" class="content-right-side ml-4">
-          <div class="reply-section border-top pt-4" *ngFor="
-              let reply of findRepliesForReview(review.id, newestReviews)
-            ">
-            <div class="reply p-3">
-              <h6 class="user">
-                {{ reply.user_fullname }}
-                <span class="date pl-4">{{ reply.pub_date | date }}</span>
-              </h6>
-              <p class="text pt-3">{{ reply.feedback }}</p>
+        <!-- REPLY SECTION -->
+        <div fxLayout="row" class="border-bottom">
+          <div fxFlex="90%" class="content-right-side ml-4">
+            <div class="reply-section border-top pt-4" *ngFor="
+                let reply of findRepliesForReview(review.id, newestReviews)
+              ">
+              <div class="reply p-3">
+                <h6 class="user">
+                  {{ reply.user_fullname }}
+                  <span class="date pl-4">{{ reply.pub_date | date }}</span>
+                </h6>
+                <p class="text pt-3">{{ reply.feedback }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-   
-    <div *ngFor="let review of servicesThatNeedReview">
-      <div fxflex="60">
-        {{ review.title }}
+    </mat-tab>
+    <mat-tab label="Need to Review">
+      <div fxLayout="row" *ngFor="let service of servicesThatNeedReview" class="margin-bottom">
+        <div fxflex="60">
+          {{ service.title }}
+        </div>
+        <div fxflex="40">
+          <a mat-button class="pink-b px-3 ml-3" (click)="writeReview(service.id)">Write Review</a>
+        </div>
       </div>
-      <div fxflex="40">
-        <a mat-button class="pink-b px-3 ml-3" (click)="writeReview(review.id)">Write Review</a>
-      </div>
-    </div>  
-   
-    <div *ngIf="reviews.length == 0" class="no-data" fxLayout="row">
-      <h4>No reviews to show</h4>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div *ngIf="reviews.length == 0" class="no-data" fxLayout="row">
+    <h4>No reviews to show</h4>
+  </div>
+</div>
+
+<div class="similar-this border-top" *ngIf="similarShops">
+  <div class="container py-5">
+    <div fxLayout="row" class="heading-bar">
+      <h3 class="heading">Similar to This</h3>
     </div>
-  </section>
-  <section class="similar-to-this" *ngIf="similarShops">
-    <h2 class="main-title">Similar to This</h2>
-    <div class="popular-goods-bottom clearfix">
-      <div class="product-item-cont row">
+
+    <section id="demos" class="mb-5">
+      <div class="row">
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
           <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem
             *ngFor="let bestBooking of similarShops; let i = index" [booking]="bestBooking">
@@ -723,6 +747,6 @@
       <div *ngIf="!similarShops?.length" class="row">
         <h3>Sorry, no shops are available</h3>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
