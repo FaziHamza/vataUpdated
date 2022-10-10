@@ -6,47 +6,50 @@
 
 
                     <form [formGroup]="clientForm">
-                        <div fxLayout="row" class="client border-bottom pb-2">
-                            <div fxFlex="15%">
-                                <div class="client-img">
-                                    <img src="../../../../../../../assets/img/Oval-user.png">
+                        <div class="row client border-bottom pb-2">
+                            <div class="col-lg-3">
+                                <div>
+                                    <div class="client-img">
+                                        <img src="../../../../../../../assets/img/Oval-user.png">
+                                    </div>
                                 </div>
                             </div>
-                            <div fxFlex="60%" class="input-toggle ml-2">
-                                <div fxLayout="row" class="input-field" *ngIf="checkClient">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Client Name</mat-label>
-                                        <input matInput type="text" formControlName="clientName">
-                                        <mat-error *ngIf="clientForm.get('clientName').hasError('required')">
-                                            Client Name is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div fxLayout="row" class="input-field" *ngIf="!checkClient">
-                                    <mat-form-field class="form-section w-100">
-                                        <mat-label>Client</mat-label>
-                                        <mat-select formControlName="clientId">
-                                            <mat-option [value]="item.id" *ngFor="let item of allClients">
-                                                {{item.client_name}}
-                                            </mat-option>
-                                        </mat-select>
-                                        <mat-error *ngIf="clientForm.get('clientId').hasError('required')">
-                                            Client is <strong>required</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="toggle">
-                                    <span>Quick Booking</span>
-                                    <mat-slide-toggle formControlName="booking_options" (change)="onChanges()">
-                                    </mat-slide-toggle>
+                            <div class="col-lg-9">
+                                <div class="input-toggle ">
+                                    <div fxLayout="row" class="input-field" *ngIf="checkClient">
+                                        <mat-form-field class="form-section w-100">
+                                            <mat-label>Client Name</mat-label>
+                                            <input matInput type="text" formControlName="clientName">
+                                            <mat-error *ngIf="clientForm.get('clientName').hasError('required')">
+                                                Client Name is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" class="input-field" *ngIf="!checkClient">
+                                        <mat-form-field class="form-section w-100">
+                                            <mat-label>Client</mat-label>
+                                            <mat-select formControlName="clientId">
+                                                <mat-option [value]="item.id" *ngFor="let item of allClients">
+                                                    {{item.client_name}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="clientForm.get('clientId').hasError('required')">
+                                                Client is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="toggle">
+                                        <span>Quick Booking</span>
+                                        <mat-slide-toggle formControlName="booking_options" (change)="onChanges()">
+                                        </mat-slide-toggle>
+                                    </div>
                                 </div>
                             </div>
-                            <div fxFlex="25%" class="btn text-right">
+                            <div class="col-lg-12">
                                 <a mat-button class="pink-b rounded-bt mt-2 py-0 px-4"
                                     (click)="getClientData()">Send</a>
                             </div>
                         </div>
-
                     </form>
 
 
