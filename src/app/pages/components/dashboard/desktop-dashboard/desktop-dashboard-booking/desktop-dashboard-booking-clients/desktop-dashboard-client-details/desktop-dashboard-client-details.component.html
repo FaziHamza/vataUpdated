@@ -1,11 +1,11 @@
 <div class="desktop-dashboard-client-details" *ngIf="dataClient">
     <div class=" row client-info">
-        <div class="col-lg-2">
-            <div class="img-section mr-4">
+        <div class="col-lg-2 col-4 mb-2">
+            <div class="img-section">
                 <img src="{{dataClient.client_pic}}">
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3 col-8 mb-2">
             <div class="detail-section">
                 <h6>{{dataClient.client_name}}</h6>
                 <a class="edit-btn" (click)="onSelectType('edit')">
@@ -15,24 +15,35 @@
                 <p class="pt-1">{{dataClient.email}}</p>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="product-brief-section">
-                <div fxLayout="row">
-                    <div fxFlex="25%" class="product-box p-3 mr-3">
-                        <h6>{{dataClient.bookings_count}}</h6>
-                        <p>Bookings</p>
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <div class="product-box pt-3 pb-3 mb-2">
+                            <h6>{{dataClient.bookings_count}}</h6>
+                            <p>Bookings</p>
+                        </div>
                     </div>
-                    <div fxFlex="25%" class="product-box p-3 mr-3">
-                        <h6>{{dataClient.finished}}</h6>
-                        <p>Finished</p>
+                    <div class="col-lg-3 col-6">
+
+                        <div class="product-box pt-3 pb-3 mb-2">
+                            <h6>{{dataClient.finished}}</h6>
+                            <p>Finished</p>
+                        </div>
                     </div>
-                    <div fxFlex="25%" class="product-box p-3 mr-3">
-                        <h6>{{dataClient.cancelled}}</h6>
-                        <p>Cancelled</p>
+                    <div class="col-lg-3 col-6">
+
+                        <div class="product-box pt-3 pb-3 mb-2">
+                            <h6>{{dataClient.cancelled}}</h6>
+                            <p>Cancelled</p>
+                        </div>
+
                     </div>
-                    <div fxFlex="25%" class="product-box p-3">
-                        <h6>{{dataClient.no_shows}}</h6>
-                        <p>No Shows</p>
+                    <div class="col-lg-3 col-6">
+                        <div class="product-box pt-3 pb-3 mb-2">
+                            <h6>{{dataClient.no_shows}}</h6>
+                            <p>No Shows</p>
+                        </div>
                     </div>
                 </div>
             </div>

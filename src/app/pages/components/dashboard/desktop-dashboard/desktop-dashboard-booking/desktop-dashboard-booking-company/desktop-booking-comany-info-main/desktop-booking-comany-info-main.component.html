@@ -378,15 +378,15 @@
 						</div>
 					</div>
 
-					<div fxLayout="row" class="bottom-btns pt-4 border-top">
-						<div fxFlex="40%">
+					<div  class="row bottom-btns pt-4 border-top">
+						<div class="col-lg-5">
 							<a mat-button class="delete-btn px-5" *ngIf="formType == 'edit'">
 								<span class="icon-baseline-close-24px-1 pr-2"></span>
 								Delete
 							</a>
 						</div>
 
-						<div fxFlex="60%" class="text-right">
+						<div class="col-lg-7 text-right">
 							<a mat-button class="white-b rounded-bt px-5 mr-3">Cancel</a>
 							<a (click)="postAddService()" mat-button class="pink-b rounded-bt px-5"
 								*ngIf="formType == 'new'">Save Changes</a>
