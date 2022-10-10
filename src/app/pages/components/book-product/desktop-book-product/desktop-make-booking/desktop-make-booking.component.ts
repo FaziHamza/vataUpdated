@@ -111,12 +111,15 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
 
   calculateTotal() {
     let total = 0;
-    this.services.forEach((service) => {
-      if(service.total)
-      total = total + service.total;
-      else
-      total = total + service.price;
-    })
+    if(this.services !=undefined){
+      this.services.forEach((service) => {
+        if(service.total !=undefined)
+        total = total + service.total;
+        else
+        total = total + service.price;
+      })
+    }
+    
 
     return total;
   }
@@ -230,7 +233,10 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
 
       })))
     }
-
+    clearForm(){
+      this.services=[]
+      this.servicesList = [];
+    }
     addService(){
       
       if(this.selectedService.preferredTiming == '' && this.selectedService.preferredTiming == undefined)

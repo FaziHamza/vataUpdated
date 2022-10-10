@@ -1,7 +1,8 @@
 # Icomoon
 https://icomoon.io
-awaisshaikh.official@gmail.com
-Asdf12@
+<!-- awaisshaikh.official@gmail.com -->
+<!-- Asdf12@ -->
+faizanofficial09@gmail.com
 https://icomoon.io/app/#/projects
 
 # inline svg
