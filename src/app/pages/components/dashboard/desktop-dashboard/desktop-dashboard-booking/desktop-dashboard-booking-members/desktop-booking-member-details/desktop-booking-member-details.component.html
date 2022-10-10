@@ -1,29 +1,27 @@
 <div class="dashboard-booking-member-details" *ngIf="dataMember">
     <div class=" row profile">
-        <div class="col-lg-2 col-3">
-            <div class="member-img">
-                <img src="{{dataMember.photo}}">
-            </div>
-        </div>
-        <div class="col-lg-4 col-7 mb-3">
+        <div class="col-lg-6 col-7 mb-3">
 
-            <div class="contact ml-1">
-                <h6>{{dataMember.member_name}}</h6>
-                <p>{{dataMember.phone_isd}} {{dataMember.phone_number}}</p>
-                <p>{{dataMember.email}}</p>
+            <div class="d-flex contact ml-1">
+                <div class="member-img mr-3">
+                    <img src="{{dataMember.photo}}">
+                </div>
+                <div class="mr-3">
+                    <h6>{{dataMember.member_name}}</h6>
+                    <p>{{dataMember.phone_isd}} {{dataMember.phone_number}}</p>
+                    <p>{{dataMember.email}}</p>
+                </div>
+                <div class="edit" (click)="onSelectType('edit')">
+                    <img src="../../../../../../../../assets/img/writing-public.png">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-1 col-2">
 
-            <div class="edit" (click)="onSelectType('edit')">
-                <img src="../../../../../../../../assets/img/writing-public.png">
-            </div>
         </div>
-        <div class="col-lg-5 col-12">
+        <div class="col-lg-6 col-12">
 
             <div class=" text-right">
                 <a>
-                    <img src="../../../../../../../../assets/img/calendar-pink.png">
+                    <img class="mr-2" src="../../../../../../../../assets/img/calendar-pink.png">
                     <span>Show Calendar</span>
                 </a>
             </div>
