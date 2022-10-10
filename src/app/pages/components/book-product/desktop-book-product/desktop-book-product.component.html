@@ -582,11 +582,13 @@
       </div>
 
     </div>
+    <div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
+      <h4>No services to show</h4>
+    </div>
   </div>
+  
 </div>
-<div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
-  <h4>No services to show</h4>
-</div>
+
 
 
 <div class="our-works border-top" *ngIf="ourWorks && ourWorks.length > 0">

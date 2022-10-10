@@ -5,11 +5,11 @@
         </div>
 
         <div class="booking-cards pt-4">
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
-                <app-booking-card class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookingsData; let i = index;" [booking]="bestBooking">
+              <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                <app-booking-card class="slide" ngxSlickItem *ngFor="let bestBooking of bestBookingsData; let i = index;" 
+                  [booking]="bestBooking" (click)="showProductDetails(i)">
                 </app-booking-card>
               </ngx-slick-carousel>
-            
         </div>
     </div>
 </div>

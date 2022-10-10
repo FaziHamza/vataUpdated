@@ -17,12 +17,15 @@ export class MobileBestBookingsComponent extends DesktopBestBookingsComponent im
     "nextArrow": false,
     "prevArrow": false
   };
-  constructor(homepageService: HomeService, router: Router) {
+  constructor(homepageService: HomeService, router: Router,private route: Router) {
     super(homepageService, router);
   }
 
   ngOnInit() {
     super.ngOnInit();
   }
-
+  showProductDetails(index) {
+    const selectedProduct = this.bestBookingsData[index];
+    this.route.navigate([`book-product/${selectedProduct.shopID}`])
+  }
 }
