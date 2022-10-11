@@ -32,7 +32,7 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
 
   ngOnInit() {
     this.calendar = this.dashboardService.getCalendar('#example-calendar');
-  
+    debugger
     if (this._datePicker) {
       this._datePicker.selectedChange.subscribe(x => {
         this.dashboardService.getDailyVisits(moment(x).format('YYYY-MM-DD')).subscribe(res => {

@@ -217,6 +217,10 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
     }
   }
   saveServices() {
+    let client_Id=!this.checkClient ? this.clientForm.value.clientId : this.clientDetail.id;
+    if(!client_Id){
+      this.toastrService.error("Enter Client Name First");
+    }
     let date = moment(this.editSummaryForm.value.date).format('YYYY-MM-DD');
     if (this.formType == 'update') {
 
