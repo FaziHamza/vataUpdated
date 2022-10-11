@@ -1,15 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,OnDestroy } from '@angular/core';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { DataHoldingService } from '../../../../../../../shared/services/data-holding.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-all-members',
   templateUrl: './desktop-booking-all-members.component.html',
   styleUrls: ['./desktop-booking-all-members.component.scss']
 })
-export class DesktopBookingAllMembersComponent implements OnInit {
-
+export class DesktopBookingAllMembersComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   @Output() selectType = new EventEmitter<string>();
   @Output() sendData = new EventEmitter<any>();
 
@@ -32,10 +33,11 @@ export class DesktopBookingAllMembersComponent implements OnInit {
   }
 
   getAllMembers() {
+    this.subscriptions.push(
     this.dashboardService.getListMembers().subscribe(res => {
       this.allMembers = res;
       console.log("allMembers", this.allMembers);
-    })
+    }))
   }
 
   setGetMember(data) {
@@ -44,5 +46,7 @@ export class DesktopBookingAllMembersComponent implements OnInit {
 
     this.sendData.emit(this.getDataMember);
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

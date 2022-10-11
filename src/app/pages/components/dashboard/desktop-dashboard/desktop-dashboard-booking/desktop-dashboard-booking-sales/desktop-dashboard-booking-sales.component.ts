@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
@@ -6,13 +6,16 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService, UserService } from 'src/app/core';
 import { BookProductService } from 'src/app/pages/components/book-product/book-product.service';
 import { DashboardService } from '../../../dashboard.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-dashboard-booking-sales',
   templateUrl: './desktop-dashboard-booking-sales.component.html',
   styleUrls: ['./desktop-dashboard-booking-sales.component.scss']
 })
-export class DesktopDashboardBookingSalesComponent implements OnInit {
+export class DesktopDashboardBookingSalesComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
+
   clientForm: FormGroup;
   discountForm: FormGroup;
   tipForm: FormGroup;
@@ -96,11 +99,12 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
     });
   }
   getAllClients() {
+    this.subscriptions.push(
     this.dashboardService.getClients(this.shopId).subscribe(res => {
       this.allClients = res;
       console.log(this.allClients);
      
-    })
+    }))
   }
   formEditSummary() {
     this.editSummaryForm = this.fb.group({
@@ -130,10 +134,11 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
         client_name: this.clientForm.value.clientName,
       }
       if (this.clientForm.valid) {
+        this.subscriptions.push(
         this.dashboardService.postOfflineQuickBookingClient(param).subscribe(res => {
           
           this.clientDetail = res;
-        });
+        }));
       }
     }
   }
@@ -153,23 +158,25 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
       client: id,
       date: date,
     }
-
+    this.subscriptions.push(
     this.dashboardService.postOfflineMyHistoryUpcoming(param).subscribe(res => {
       
       if (res.status = "Success")
         this.upcomingHistory = res.booking_data;
-    });
+    }));
+    this.subscriptions.push(
     this.dashboardService.postOfflineMyHistoryCurrent(param).subscribe(res => {
       
       this.currentHistory = res.booking_data;
-    });
+    }));
+    this.subscriptions.push(
     this.dashboardService.postOfflineMyHistoryPrevious(param).subscribe(res => {
       
       this.previousHistory = res.booking_data;
-    });
+    }));
   }
   getServicesByCategory() {
-
+    this.subscriptions.push(
     this.bookProductService
       .getServicesByCategory(this.shopId)
       .subscribe((response) => {
@@ -181,7 +188,7 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
           // TODO
           // Toast ?
         }
-      });
+      }));
   }
 
   resetSummaryForm() {
@@ -234,13 +241,14 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
         "cancel": false
       }
       if (this.editSummaryForm.valid) {
+        this.subscriptions.push(
         this.dashboardService.postOfflineModifiedService(param).subscribe(res => {
           this.resetSummaryForm();
           if (res.status == "Success") {
             this.toastrService.success("Information update successfully!", "Success");
             this.onCart()
           }
-        });
+        }));
       }
     }
     else {
@@ -255,36 +263,39 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
 
       }
       if (this.editSummaryForm.valid) {
+        this.subscriptions.push(
         this.dashboardService.postOfflineAddService(param).subscribe(res => {
           this.resetSummaryForm();
           if (res.status == "Success") {
             this.toastrService.success("Information save successfully!", "Success");
             this.onCart();
           }
-        });
+        }));
       }
     }
   }
   removeServices() {
     let id = !this.checkClient ? this.clientForm.value.clientId : this.clientDetail.id;
+    this.subscriptions.push(
     this.dashboardService.postOfflineDeleteService(id, this.addSummaryData.service).subscribe(res => {
       if (res.status == "Success") {
         this.resetSummaryForm();
         this.toastrService.success("Information save successfully!", "Success");
         this.onCart();
       }
-    });
+    }));
   }
   onCart() {
     this.summaryDataVisible = true;
     var parav1 = {
       "client": !this.checkClient ? this.clientForm.value.clientId : this.clientDetail.id,
     }
+    this.subscriptions.push(
     this.dashboardService.postOfflineOncart(parav1).subscribe(resv1 => {
       this.summaryData = resv1;
      
       this.calculateTotal(this.summaryData);
-    });
+    }));
   }
   addDiscount() {
     this.discountVisible = true;
@@ -296,11 +307,12 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
     }
     
     if (this.discountForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.postOfflineApplyDiscount(param).subscribe(res => {
         this.onCart();
         console.log("Apply Discount" + res);
         this.discountVisible = false;
-      });
+      }));
     }
 
   }
@@ -322,22 +334,22 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
       "client": !this.checkClient ? this.clientForm.value.clientId : this.clientDetail.id,
       "value": this.tipForm.value.tipAmount
     }
-    
+    this.subscriptions.push(
     this.dashboardService.postOfflineTipCash(param).subscribe(res => {
       this.onCart();
       console.log("Apply Tip Cash" + res);
-    });
+    }));
   }
   applyTipPercent() {
     let param = {
       "client": !this.checkClient ? this.clientForm.value.clientId : this.clientDetail.id,
       "value": this.tipForm.value.tipPercent
     }
-    
+    this.subscriptions.push(
     this.dashboardService.postOfflineTipPercent(param).subscribe(res => {
       this.onCart();
       console.log("Apply Tip Percent" + res);
-    });
+    }));
   }
   onChanges() {
     
@@ -368,10 +380,13 @@ export class DesktopDashboardBookingSalesComponent implements OnInit {
       "stripe_pay_intent": "",
       "booking_status": this.summaryData.booking_status.id
     }
-
+    this.subscriptions.push(
     this.dashboardService.postOfflineConfirm(parav1).subscribe(resv1 => {
       this.toastrService.success("Information save successfully!","Success");
       this.clearPage();
-    });
+    }));
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }

@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-dashboard-client-edit-profile',
   templateUrl: './desktop-dashboard-client-edit-profile.component.html',
   styleUrls: ['./desktop-dashboard-client-edit-profile.component.scss']
 })
-export class DesktopDashboardClientEditProfileComponent implements OnInit {
-
+export class DesktopDashboardClientEditProfileComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   @Output() selectType = new EventEmitter<string>();
   @Input('clientData') dataClient: any;
   
@@ -119,6 +120,7 @@ export class DesktopDashboardClientEditProfileComponent implements OnInit {
     }
 
     if (this.editProfileClientBookingForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.updateClient(this.dataClient.id, params).subscribe(res => {
         console.log(res);
         
@@ -126,7 +128,7 @@ export class DesktopDashboardClientEditProfileComponent implements OnInit {
           this.editProfileClientBookingForm.reset();
           this.onSelectType('details');
         }
-      });
+      }));
       
     } else {
       console.log('Form is not completely filled up');
@@ -134,13 +136,16 @@ export class DesktopDashboardClientEditProfileComponent implements OnInit {
   }
 
   deleteClient() {
+    this.subscriptions.push(
     this.dashboardService.deleteClient(this.dataClient.id).subscribe(res => {
       console.log(res);
 
       if(res) {
         this.onSelectType('details');
       }
-    })
+    }))
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

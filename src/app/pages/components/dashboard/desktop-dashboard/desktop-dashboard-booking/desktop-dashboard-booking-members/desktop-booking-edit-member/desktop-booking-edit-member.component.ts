@@ -1,16 +1,17 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output ,OnDestroy} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-edit-member',
   templateUrl: './desktop-booking-edit-member.component.html',
   styleUrls: ['./desktop-booking-edit-member.component.scss']
 })
-export class DesktopBookingEditMemberComponent implements OnInit {
-
+export class DesktopBookingEditMemberComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   @Output() selectType = new EventEmitter<string>();
   @Input('memberData') dataMember: any;
 
@@ -96,6 +97,7 @@ export class DesktopBookingEditMemberComponent implements OnInit {
     }
 
     if (this.editMemberBookingForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.putUpdateBookingMember(this.dataMember.id, params).subscribe(res => {
         console.log(res);
         
@@ -103,7 +105,7 @@ export class DesktopBookingEditMemberComponent implements OnInit {
           this.editMemberBookingForm.reset();
           this.onSelectType('details');
         }
-      });
+      }));
       
     } else {
       console.log('Form is not completely filled up');
@@ -111,6 +113,7 @@ export class DesktopBookingEditMemberComponent implements OnInit {
   }
 
   deleteMember() {
+    this.subscriptions.push(
     this.dashboardService.deleteBookingMember(this.dataMember.id).subscribe(res => {
       console.log(res);
 
@@ -118,7 +121,9 @@ export class DesktopBookingEditMemberComponent implements OnInit {
         this.toaster.success("Information deleted successfully!")
         this.onSelectType('details');
       }
-    })
+    }))
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

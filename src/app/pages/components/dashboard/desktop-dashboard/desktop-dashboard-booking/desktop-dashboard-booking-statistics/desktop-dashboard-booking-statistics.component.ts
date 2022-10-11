@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,OnDestroy } from '@angular/core';
 import { DashboardService } from '../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import {
@@ -14,6 +14,7 @@ import {
   ApexTitleSubtitle,
   ApexLegend
 } from "ng-apexcharts";
+import { Subscription } from 'rxjs';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -37,7 +38,8 @@ export type ChartOptions = {
 })
 
 
-export class DesktopDashboardBookingStatisticsComponent implements OnInit {
+export class DesktopDashboardBookingStatisticsComponent implements OnInit,OnDestroy  {
+  subscriptions: Array<Subscription> = [];
 
   bookingStatistics: any;
   topClients: any;
@@ -52,6 +54,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
 
   ngOnInit() {
     // this.bookingStats();
+    this.subscriptions.push(
     this.dashboardService.getBookingStats().subscribe(res => {
       debugger
       this.bookingStatistics = res;
@@ -135,7 +138,7 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
         }
       };
       // console.log(res);
-    });
+    }));
     this.getTopClients();
     this.getTopMembers();
 
@@ -143,12 +146,13 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
   }
 
   bookingStats() {
+    this.subscriptions.push(
     this.dashboardService.getBookingStats().subscribe(res => {
       
       this.bookingStatistics = res;
 
       // console.log(res);
-    });
+    }));
   }
   getType(id){
     console.log(id.index)
@@ -157,19 +161,23 @@ export class DesktopDashboardBookingStatisticsComponent implements OnInit {
   }
 
   getTopClients() {
+    this.subscriptions.push(
     this.dashboardService.getTopClients().subscribe(res => {
 
       this.topClients = res;
       // console.log(res);
-    });
+    }));
   }
 
   getTopMembers() {
+    this.subscriptions.push(
     this.dashboardService.getTopMembers().subscribe(res => {
 
       this.topMembers = res;
       // console.log(res);
-    });
+    }));
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

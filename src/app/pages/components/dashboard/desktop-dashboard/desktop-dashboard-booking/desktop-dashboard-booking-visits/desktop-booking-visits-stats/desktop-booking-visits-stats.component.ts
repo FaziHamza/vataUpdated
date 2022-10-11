@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { NgxTuiCalendarComponent } from 'ngx-tui-calendar';
 import { DashboardService } from '../../../../dashboard.service';
 import Calendar from 'tui-calendar';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-visits-stats',
@@ -13,6 +14,7 @@ import Calendar from 'tui-calendar';
   styleUrls: ['./desktop-booking-visits-stats.component.scss']
 })
 export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentInit, OnDestroy {
+  subscriptions: Array<Subscription> = [];
   moment = moment;
   @ViewChild(MatCalendar, {static: true}) _datePicker: MatCalendar<Moment>;
   @Output()
@@ -34,22 +36,25 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
     this.calendar = this.dashboardService.getCalendar('#example-calendar');
     debugger
     if (this._datePicker) {
+      this.subscriptions.push(
       this._datePicker.selectedChange.subscribe(x => {
+        this.subscriptions.push(
         this.dashboardService.getDailyVisits(moment(x).format('YYYY-MM-DD')).subscribe(res => {
           
           this.visitData = res;
-        });
-      });
+        }));
+      }));
     }
     this.calendar.setOptions({
       usageStatistics: false,
       defaultView: 'week',
       isReadOnly: true,
     });
+    this.subscriptions.push(
     this.dashboardService.getDailyVisits(moment().format('YYYY-MM-DD')).subscribe(res => {
       
       this.visitData = res;
-    });
+    }));
     this.calendar.clear();
     // this.calendar.createSchedules([
     //   {
@@ -71,17 +76,16 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
   ngAfterContentInit() {
   }
 
-  ngOnDestroy() {
-  }
-
   toggleDayWeek() {
     this.isDayActive = !this.isDayActive;
     if (!this.isDayActive) {
+      this.subscriptions.push(
       this.dashboardService.getWeeklyVisits(moment().startOf('week').format('YYYY-MM-DD'),
+      
       moment().endOf('week').format('YYYY-MM-DD')).subscribe(res => {
         
         this.visitData = res;
-      });
+      }));
     }
   }
 
@@ -93,5 +97,8 @@ export class DesktopBookingVisitsStatsComponent implements OnInit, AfterContentI
   routeToNewVisit()
   {
     this.router.navigateByUrl('/dashboard/dashboard-booking/visits/new-visit');
+  }
+   ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }

@@ -1,15 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-new-member',
   templateUrl: './desktop-booking-new-member.component.html',
   styleUrls: ['./desktop-booking-new-member.component.scss']
 })
-export class DesktopBookingNewMemberComponent implements OnInit {
-
+export class DesktopBookingNewMemberComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   @Output() selectType = new EventEmitter<string>();
 
   selectedPhoneCode: string = '+41';
@@ -47,10 +48,11 @@ export class DesktopBookingNewMemberComponent implements OnInit {
   getAllServices() {
     
     let shopId = this.userService.getUser().shop_details.id;
+    this.subscriptions.push(
     this.dashboardService.getServicesList(shopId).subscribe(res => {
       this.servicesList = res?.data;
       console.log("services List", this.servicesList);
-    })
+    }))
   }
 
   removeImage(i) {
@@ -98,6 +100,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
     // }
 
     if (this.newMemberBookingForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.postAddBookingMember(this.params).subscribe(res => {
         console.log(res);
         
@@ -105,7 +108,7 @@ export class DesktopBookingNewMemberComponent implements OnInit {
           this.newMemberBookingForm.reset();
           this.onSelectType('details');
         }
-      });
+      }));
     } else {
       console.log('Form is not completely filled up');
     }
@@ -140,5 +143,8 @@ export class DesktopBookingNewMemberComponent implements OnInit {
     }
 
     console.log(this.categoryList);    
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }

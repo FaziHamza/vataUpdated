@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-dashboard-booking-marketing',
   templateUrl: './desktop-dashboard-booking-marketing.component.html',
   styleUrls: ['./desktop-dashboard-booking-marketing.component.scss']
 })
-export class DesktopDashboardBookingMarketingComponent implements OnInit {
-  
+export class DesktopDashboardBookingMarketingComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   pushOnBookingForm: FormGroup;
   lastMinDiscountForm: FormGroup;
   happyHoursForm: FormGroup;
@@ -91,7 +92,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
 
   getServiceCategory() {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getServiceCategory(shopId).subscribe(res => {
       this.serviceCategory = res; 
       // console.log("serviceCategory  > Marketing", res);
@@ -100,12 +101,12 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         this.getServicesByCategory(element.name);
       });
 
-    })
+    }))
   }
 
   getServicesByCategory(categoryName) {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getAddService(shopId, categoryName).subscribe(
       (res) => {
         this.servicesByCategory = res;
@@ -115,20 +116,20 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         // console.log("categorizedServices > Marketing", this.categorizedServices);
       },
       (error) => { console.log(error); }
-    );
+    ));
   }
 
   getAllServices() {
     let shopId = this.userService.getUser().shop_details.id;
     let categoryName = '';
-
+    this.subscriptions.push(
     this.dashboardService.getAddService(shopId, categoryName).subscribe(
       (res) => {
         this.allServices = res;
         // console.log("AllServices > Marketing", this.servicesByCategory);
       },
       (error) => { console.log(error); }
-    );
+    ));
   }
 
   postPushBooking() {
@@ -146,7 +147,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
     formData.append('pushTypes', this.pushType);
     formData.append('fees', this.fees);
     formData.append('service', JSON.stringify(this.selectedServices));
-    
+    this.subscriptions.push(
     this.dashboardService.postPushBooking(formData).subscribe(res => {
       console.log(res);
 
@@ -154,7 +155,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         this.toastrService.success('Push On Home Successfully Added');
         this.pushOnBookingForm.reset();
       }
-    })
+    }))
   }
 
   changeSelectBox(event) {
@@ -191,7 +192,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
     formData.append('service', JSON.stringify(this.selectedServices));
     formData.append('discount', this.lastMinDiscountForm.value.discountPercent);
     formData.append('enable_limit', this.lastMinDiscountForm.value.timeLimit);
-    
+    this.subscriptions.push(
     this.dashboardService.postLastMinuteDiscount(formData).subscribe(res => {
       console.log(res);
 
@@ -199,7 +200,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         this.toastrService.success('Last Minute Discount Successfully Added');
         this.lastMinDiscountForm.reset();
       }
-    });
+    }));
   }
   postInviteSend() {
     debugger
@@ -210,6 +211,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
     "email":this.inviteSendForm.value.email
    }
    if(this.inviteSendForm.valid){
+    this.subscriptions.push(
     this.dashboardService.postInviteSend(para).subscribe(res => {
       console.log(res);
 
@@ -217,7 +219,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
         this.toastrService.success('Invitation Send Successfully!');
         this.inviteSendForm.reset();
       }
-    });
+    }));
    }
     
   }
@@ -279,5 +281,7 @@ export class DesktopDashboardBookingMarketingComponent implements OnInit {
       }
     })
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

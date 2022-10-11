@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { ApiEndPoints } from 'src/app/helpers/constants/api.constants';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-company-add-edit-service',
   templateUrl: './desktop-booking-company-add-edit-service.component.html',
   styleUrls: ['./desktop-booking-company-add-edit-service.component.scss']
 })
-export class DesktopBookingCompanyAddEditServiceComponent implements OnInit {
-
+export class DesktopBookingCompanyAddEditServiceComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   addEditServiceBookingForm: FormGroup;
   serviceCategories: any;
   members: any;
@@ -60,10 +61,10 @@ export class DesktopBookingCompanyAddEditServiceComponent implements OnInit {
 
   getServiceCategory() {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getServiceCategory(shopId).subscribe(res => {
       this.serviceCategories = res; 
-    })
+    }))
   }
 
   postAddService() {
@@ -85,7 +86,7 @@ export class DesktopBookingCompanyAddEditServiceComponent implements OnInit {
     formData.append('interval', this.addEditServiceBookingForm.value.intervalHours + ':' + this.addEditServiceBookingForm.value.intervalMins);
     formData.append('duration', this.addEditServiceBookingForm.value.duration_hours + ':' + this.addEditServiceBookingForm.value.duration_mins);
     formData.append('members', JSON.stringify(this.membersList));
-
+    this.subscriptions.push(
     this.apiService.post(ApiEndPoints.DASHBOARD.POST_ADD_SERVICE, formData).subscribe(res => {
       // console.log(res);
       
@@ -94,16 +95,16 @@ export class DesktopBookingCompanyAddEditServiceComponent implements OnInit {
         this.addEditServiceBookingForm.reset();
         this.router.navigateByUrl('/dashboard/dashboard-booking/company-info/');
       }
-    });
+    }));
   }
 
   getMembers() {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getAddMember(shopId).subscribe(res => {
       this.members = res; 
       console.log("Members", this.members);
-    })
+    }))
   }
 
   selectMember(id) {
@@ -130,5 +131,7 @@ export class DesktopBookingCompanyAddEditServiceComponent implements OnInit {
 
     console.log(this.membersList);    
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

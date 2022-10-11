@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-booking-new-visit',
   templateUrl: './desktop-booking-new-visit.component.html',
   styleUrls: ['./desktop-booking-new-visit.component.scss']
 })
-export class DesktopBookingNewVisitComponent implements OnInit {
+export class DesktopBookingNewVisitComponent implements OnInit , OnDestroy{
+  subscriptions: Array<Subscription> = [];
 
   newVisitBookingForm: FormGroup;
 
@@ -40,16 +42,19 @@ export class DesktopBookingNewVisitComponent implements OnInit {
     }
 
     if (this.newVisitBookingForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.addClient(params).subscribe(res => {
         console.log(res);
         
         if(res) {
           this.newVisitBookingForm.reset();
         }
-      });
+      }));
     } else {
       console.log('Form is not completely filled up');
     }
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

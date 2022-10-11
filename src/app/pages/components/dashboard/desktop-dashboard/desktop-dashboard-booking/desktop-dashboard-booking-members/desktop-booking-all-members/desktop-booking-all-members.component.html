@@ -6,12 +6,12 @@
 
     <div class="members">
         <div class="members-scroll pr-3">
-            <div class="member-row py-3 border-bottom" (click)="onSelectType('details'); setGetMember(item)" *ngFor="let item of allMembers.data">
-                <div fxFlex="20%" class="img-side">
+            <div class="member-row py-3 border-bottom row" (click)="onSelectType('details'); setGetMember(item)" *ngFor="let item of allMembers.data">
+                <div class="img-side col-3">
                     <img src="{{item.photo}}">
                 </div>
 
-                <div fxFlex="80%" class="name-side">
+                <div  class="name-side col-9">
                     <h6>{{item.member_name}}</h6>
                     <p>{{item.phone_isd}} {{item.phone_number}}</p>
                 </div>

@@ -1,15 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output,OnDestroy, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-dashboard-booking-settings',
   templateUrl: './desktop-dashboard-booking-settings.component.html',
   styleUrls: ['./desktop-dashboard-booking-settings.component.scss']
 })
-export class DesktopDashboardBookingSettingsComponent implements OnInit {
+export class DesktopDashboardBookingSettingsComponent implements OnInit,OnDestroy  {
+  subscriptions: Array<Subscription> = [];
 
   @Input('allServices') allServices: any;
   @Input('categorizedServices') categorizedServices: any;
@@ -57,12 +59,12 @@ export class DesktopDashboardBookingSettingsComponent implements OnInit {
 
   getBasicSettings() {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getBasicSettings(shopId).subscribe( res => {
       this.basicSettings = res;
 
       console.log("BasicSettings", this.basicSettings);
-    })
+    }))
   }
 
   postBasicSettings() {
@@ -78,7 +80,7 @@ export class DesktopDashboardBookingSettingsComponent implements OnInit {
     formData.append('lead_time', this.messageTemplateSettingForm.value.clientBookAppointment);
     formData.append('confirmation_mode', this.messageTemplateSettingForm.value.confirmationMode);
     formData.append('message_template', JSON.stringify(messageTem));
-
+    this.subscriptions.push(
     this.dashboardService.postBasicSettings(formData).subscribe(res => {
       // console.log(res);
 
@@ -86,7 +88,7 @@ export class DesktopDashboardBookingSettingsComponent implements OnInit {
         this.toastrService.success('Basic Settings Successfully Added');
         this.messageTemplateSettingForm.reset();
       }
-    });
+    }));
   }
 
   copyText(text) {
@@ -97,25 +99,25 @@ export class DesktopDashboardBookingSettingsComponent implements OnInit {
 
   getServiceCategory() {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getServiceCategory(shopId).subscribe(res => {
       // console.log("serviceCategory", res);
       this.serviceCategory = res; 
 
       this.getServicesByCategory(this.serviceCategory[0].name);
-    })
+    }))
   }
 
   getServicesByCategory(categoryName) {
     let shopId = this.userService.getUser().shop_details.id;
-
+    this.subscriptions.push(
     this.dashboardService.getAddService(shopId, categoryName).subscribe(
       res => {
         this.servicesByCategory = res;
         // console.log("servicesByCategory ", this.servicesByCategory);
       },
       error => { console.log(error); }
-    );
+    ));
   }
 
   selectService(service_id) {
@@ -148,5 +150,7 @@ export class DesktopDashboardBookingSettingsComponent implements OnInit {
     this.selectServices.emit(this.selectedServices);
     // console.log(this.selectedServices);
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }

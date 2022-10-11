@@ -1,16 +1,17 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-desktop-dashboard-new-client',
   templateUrl: './desktop-dashboard-new-client.component.html',
   styleUrls: ['./desktop-dashboard-new-client.component.scss']
 })
-export class DesktopDashboardNewClientComponent implements OnInit {
-
+export class DesktopDashboardNewClientComponent implements OnInit,OnDestroy {
+  subscriptions: Array<Subscription> = [];
   @Output() selectType = new EventEmitter<string>();
 
   newClientBookingForm: FormGroup;
@@ -91,6 +92,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
     }
 
     if (this.newClientBookingForm.valid) {
+      this.subscriptions.push(
       this.dashboardService.addClient(params).subscribe(res => {
         
         console.log(res);
@@ -99,7 +101,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
           this.newClientBookingForm.reset();
           this.onSelectType('details');
         }
-      });
+      }));
     } else {
       console.log('Form is not completely filled up');
     }
@@ -108,5 +110,7 @@ export class DesktopDashboardNewClientComponent implements OnInit {
   onSelectType(type) {
     this.selectType.emit(type);
   }
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }
