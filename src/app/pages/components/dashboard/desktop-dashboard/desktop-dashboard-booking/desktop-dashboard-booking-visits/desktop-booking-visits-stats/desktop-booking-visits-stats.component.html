@@ -44,11 +44,11 @@
                         <div class="users-scroll border-bottom pb-3 pr-3">
                             <div *ngFor="let member of visitData.member_visit_counts | keyvalue" class="user">
                                 <div fxFlex="60%">
-                                    <p>{{item.key}}</p>
+                                    <p>{{item?.key}}</p>
                                 </div>
 
                                 <div fxFlex="40%" class="text-right">
-                                    <p>({{item.value}})</p>
+                                    <p>({{item?.value}})</p>
                                 </div>
                             </div>
                             <p *ngIf="!visitData.total_visits " class="mt-2">No visits available</p>
