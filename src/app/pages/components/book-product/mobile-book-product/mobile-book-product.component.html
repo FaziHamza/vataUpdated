@@ -3,21 +3,24 @@
 
     <div class="seller-info">
         <div class="container border-bottom">
+            <span class="mr-2">Booking ></span>
+            <span class="mr-2">Hair Saloon ></span>
             <div fxLayout="row" class="seller-profile-heading pt-4">
-                <h6>Fashionable haircut</h6>
+                <h6>{{ shopDetails?.shop_name }}</h6>
             </div>
 
             <div fxLayout="row" class="location-rating py-2 border-bottom">
                 <div fxFlex="70%">
                     <p class="location">
                         <span class="icon-location1"></span>
-                        <span class="text">24500 Lindon, Ukraine</span>
+                        <span class="text">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                            {{ shopDetails?.state }}</span>
                     </p>
                 </div>
                 <div fxFlex="30%">
                     <p class="rating-chip text-right">
                         <span class="icon-Subtraction-9"></span>
-                        <span class="ml-3 profile">99.2%</span>
+                        <span class="ml-3 profile">{{ shopDetails?.overall_rating_percentage }}%</span>
                     </p>
                 </div>
             </div>
@@ -25,86 +28,58 @@
             <div fxLayout="row" class="favourite-rating pt-3">
                 <div fxFlex="60%">
                     <div class="star-rating">
-                        <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                        <span class="ml-2 start-text">2k service Ratings</span>
+                        <app-star-rating [maxScore]="5" [score]="shopDetails?.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
+                        <span class="ml-2 start-text">{{ shopDetails?.rating_data.total_reviews }} Ratings</span>
                     </div>
                 </div>
                 <div fxFlex="40%" class="favourite">
                     <p>
                         <span class="icon-like"></span>
-                        <span class="ml-2 like-text">Add to Favourite</span>
+                        <span class="ml-2 like-text" *ngIf="userInfo" (click)="addToFavourites()">Add to Favourite</span>
                     </p>
                 </div>
             </div>
 
             <div fxLayout="row" class="main-img py-4">
-                <img src="../../../../../assets/img/private-12.png">
+                <app-product-preview [slides]="[shopDetails?.business_logo]"></app-product-preview>
             </div>
 
             <div fxLayout="row" class="info-shop-row">
-                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,</span>
+                <span> {{ shopDetails?.shop_description }}</span>
             </div>
 
             <div class="location-row py-4">
-                <img class="map" src="../../../../../assets/img/Rectangle-map.png">
-                <p class="silver-text py-3">Address: <span class="black-text pl-2">Rivne, Liberty, 33 Street, Ukraine</span></p>
-                <span class="direction-btn pink-text">Show direction</span>
+                <div #mapElement class="map" id="map" class="match-parent"></div>
+                <p class="silver-text py-3">Address: <span class="black-text pl-2">{{ shopDetails?.street }}, {{ shopDetails?.street_num }}
+                    {{ shopDetails?.state }}</span></p>
+                <span class="direction-btn pink-text"> <a mat-button (click)="showDirection()" class="direction-btn pink-text">{{ !isShowDirection ? "Show" :
+                    "Hide" }} direction</a></span>
             </div>
 
             <div fxLayout="row" class="workers-img-section my-4 p-3">
-                <div class="worker1 mr-3">
-                    <img src="../../../../../assets/img/w2.png">
-                    <p>Manuel</p>
-                </div>
-                <div class="worker2 mr-3">
-                    <img src="../../../../../assets/img/w4.png">
-                    <p>Adrain</p>
-                </div>
-                <div class="worker3 mr-3">
-                    <img src="../../../../../assets/img/w2.png">
-                    <p>Manuel</p>
-                </div>
-                <div class="worker4">
-                    <img src="../../../../../assets/img/w4.png">
-                    <p>Adrain</p>
+                <div class="worker1 mr-3"  *ngFor="let member of shopDetails?.members">
+                    <img src="{{ member.photo }}">
+                    <p> {{ member.name }}</p>
                 </div>
             </div>
 
             <div class="shop-timing my-5 p-3">
                 <div class="date-time border-bottom pb-3">
-                    <div fxLayout="row" class="w-100">
+                    <div fxLayout="row" class="w-100 py-4" *ngFor="let timing of shopDetails?.timings">
                         <div fxFlex="50%">
-                            <span class="silver-text">Monday-Friday</span>
+                            <span class="silver-text">{{timing?.day_name}}</span>
                         </div>
                         <div fxFlex="50%">
-                            <span class="black-text">8 AM - 6 PM</span>
-                        </div>
-                    </div>
-
-                    <div fxLayout="row" class="w-100 py-4">
-                        <div fxFlex="50%">
-                            <span class="pink-text">Saturday</span>
-                        </div>
-                        <div fxFlex="50%">
-                            <span class="black-text">8 AM - 4 PM</span>
-                        </div>
-                    </div>
-
-                    <div fxLayout="row" class="w-100">
-                        <div fxFlex="50%">
-                            <span class="pink-text">Sunday</span>
-                        </div>
-                        <div fxFlex="50%">
-                            <span class="black-text">Weekend</span>
+                            <span class="black-text">{{timing?.open_times}} - {{timing?.closed_times}}</span>
                         </div>
                     </div>
                 </div>
                 <div fxLayout="row" class="social-favourite pt-4">
-                    <div fxFlex="50%" class="border-right">
-                        <p><span class="icon-share-1 pr-2"></span>Share in social</p>
+                    <div fxFlex="50%" class="border-right"  *ngIf="userInfo">
+                        <p (click)="openShareLink()"><span class="icon-share-1 pr-2"></span>Share in social</p>
                     </div>
                     <div fxFlex="50%" class="ml-3">
-                        <p><span class="icon-like pr-2"></span>Add to Favourite</p>
+                        <p *ngIf="userInfo" (click)="addToFavourites()"><span class="icon-like pr-2"></span>Add to Favourite</p>
                     </div>
                 </div>
             </div>
@@ -116,145 +91,157 @@
             <div class="heading-bar">
                 <h3 class="heading">Book a Visit</h3>
             </div>
-
-            <div class="book-appointment">
-                <!-- for woman  -->
-                <div fxLayout="row" class="pt-4 heading-dropdown-row">
-                    <div fxFlex="80%" class="left">
-                        <p class="heading">For Woman (2)</p>
-                    </div>
-                    <div fxFlex="20%" class="right text-right">
-                        <span class="icon-baseline-keyboard_arrow_down-24px-1"></span>
-                    </div>
-                </div>
-
-                <div class="booking-fields mt-4">
-                    <div fxLayout="row" class="p-3">
-                        <div class="heading">
-                            <h6 class="pb-2">Acrylic Full Set Pearl/ French Tips</h6>
-                            <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                            <span class="star-text pl-3">2 Book Ratings</span>
+            <div *ngFor="let service of services">
+                <div class="book-appointment" *ngIf="
+                service.category__name == 'For Women' && service.services.length > 0
+              ">
+                    <!-- for woman  -->
+                    <div fxLayout="row" class="pt-4 heading-dropdown-row">
+                        <div fxFlex="80%" class="left">
+                            <p class="heading">For Women {{ service.services.length }}</p>
+                        </div>
+                        <div fxFlex="20%" class="right text-right">
+                            <span [appToggleSectionAccordian]="servicesForWomen" class="icon-baseline-keyboard_arrow_down-24px-1"></span>
                         </div>
                     </div>
-                    <div class="details pb-3 px-3">
-                        <p class="pb-1">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                        <a mat-button class="pink-text">Read Less</a>
+                    <div #servicesForWomen>
+                        <ng-container>
+                            <div class="booking-fields mt-4" *ngFor="let subService of service.services">
+                                <div fxLayout="row" class="p-3">
+                                    <div class="heading">
+                                        <h6 class="pb-2">{{ subService.service_name }}</h6>
+                                        <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                                        <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
+                                    </div>
+                                </div>
+                                <div class="details pb-3 px-3">
+                                    <p class="pb-1">{{subService.description}}</p>
+                                    <a mat-button class="pink-text">Read Less</a>
+                                </div>
+                                <div fxLayout="row" class="time-book-btn p-3 border-top">
+                                    <div fxFlex="40%" class="time-price text-left">
+                                        <p class="wrapper">
+                                            <span class="time mr-4">{{ subService.duration }}</span>
+                                            <span class="text">${{ subService.total }}</span>
+                                        </p>
+                                    </div>
+                                    <div fxFlex="60%" class="book-btn text-right" *ngIf="userInfo">
+                                        <a mat-button class="rounded-bt pink-b px-4 py-2" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
                     </div>
-                    <div fxLayout="row" class="time-book-btn p-3 border-top">
-                        <div fxFlex="40%" class="time-price text-left">
-                            <p class="wrapper">
-                                <span class="time mr-4">30min</span>
-                                <span class="text">$109</span>
-                            </p>
+                    <div class="book-appointment" *ngIf="
+                    service.category__name == 'For Men' && service.services.length > 0
+                  ">
+                        <!-- for woman  -->
+                        <div fxLayout="row" class="pt-4 heading-dropdown-row">
+                            <div fxFlex="80%" class="left">
+                                <p class="heading">For Women {{ service.services.length }}</p>
+                            </div>
+                            <div fxFlex="20%" class="right text-right">
+                                <span [appToggleSectionAccordian]="servicesForMen" class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+                            </div>
                         </div>
-                        <div fxFlex="60%" class="book-btn text-right">
-                            <a mat-button class="rounded-bt pink-b px-4 py-2">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="booking-fields mt-4">
-                    <div fxLayout="row" class="p-3">
-                        <div class="heading">
-                            <h6 class="pb-2">Acrylic Full Set Pearl/ French Tips</h6>
-                            <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                            <span class="star-text pl-3">2 Book Ratings</span>
-                        </div>
-                    </div>
-                    <div class="details pb-3 px-3">
-                        <p class="pb-1">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                        <a mat-button class="pink-text">Read More</a>
-                    </div>
-                    <div fxLayout="row" class="time-book-btn p-3 border-top">
-                        <div fxFlex="40%" class="time-price text-left">
-                            <p class="wrapper">
-                                <span class="time mr-4">30min</span>
-                                <span class="text">$109</span>
-                            </p>
-                        </div>
-                        <div fxFlex="60%" class="book-btn text-right">
-                            <a mat-button class="rounded-bt pink-b px-4 py-2">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- for man  -->
-                <div fxLayout="row" class="pt-5 heading-dropdown-row">
-                    <div fxFlex="80%" class="left">
-                        <p class="heading">For Man (1)</p>
-                    </div>
-                    <div fxFlex="20%" class="right text-right">
-                        <span class="icon-baseline-keyboard_arrow_down-24px-1"></span>
-                    </div>
-                </div>
-
-                <div class="booking-fields mt-4">
-                    <div fxLayout="row" class="p-3">
-                        <div class="heading">
-                            <h6 class="pb-2">Acrylic Full Set Pearl/ French Tips</h6>
-                            <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                            <span class="star-text pl-3">2 Book Ratings</span>
-                        </div>
-                    </div>
-
-                    <div class="details pb-3 px-3">
-                        <p class="pb-1">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                        <a mat-button class="pink-text">Read Less</a>
-                    </div>
-
-                    <div fxLayout="row" class="time-book-btn p-3 border-top">
-                        <div fxFlex="40%" class="time-price text-left">
-                            <p class="wrapper">
-                                <span class="time mr-4">30min</span>
-                                <span class="text">$109</span>
-                            </p>
-                        </div>
-                        <div fxFlex="60%" class="book-btn text-right">
-                            <a mat-button class="rounded-bt pink-b px-4 py-2">Book Now</a>
+                        <div #servicesForMen>
+                            <ng-container>
+                                <div class="booking-fields mt-4" *ngFor="let subService of service.services">
+                                    <div fxLayout="row" class="p-3">
+                                        <div class="heading">
+                                            <h6 class="pb-2">{{ subService.service_name }}</h6>
+                                            <app-star-rating [maxScore]="5" [score]="subService.avg_rating" [forDisplay]="true"></app-star-rating>
+                                            <span class="star-text pl-3">{{ subService.rating_count }} Book Ratings</span>
+                                        </div>
+                                    </div>
+                                    <div class="details pb-3 px-3">
+                                        <p class="pb-1">{{subService.description}}</p>
+                                        <a mat-button class="pink-text">Read Less</a>
+                                    </div>
+                                    <div fxLayout="row" class="time-book-btn p-3 border-top">
+                                        <div fxFlex="40%" class="time-price text-left">
+                                            <p class="wrapper">
+                                                <span class="time mr-4">{{ subService.duration }}</span>
+                                                <span class="text">${{ subService.total }}</span>
+                                            </p>
+                                        </div>
+                                        <div fxFlex="60%" class="book-btn text-right" *ngIf="userInfo">
+                                            <a mat-button class="rounded-bt pink-b px-4 py-2" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </ng-container>
                         </div>
                     </div>
+                    <div class="book-appointment" *ngIf="
+                    service.category__name == 'All' && service.services.length > 0
+                  ">
+                        <!-- for woman  -->
+                        <div fxLayout="row" class="pt-4 heading-dropdown-row">
+                            <div fxFlex="80%" class="left">
+                                <p class="heading">For Women {{ service.services.length }}</p>
+                            </div>
+                            <div fxFlex="20%" class="right text-right">
+                                <span [appToggleSectionAccordian]="servicesForAll" class="icon-baseline-keyboard_arrow_down-24px-1"></span>
+                            </div>
+                        </div>
+                        <div #servicesForAll>
+                            <ng-container>
+                                <div class="booking-fields mt-4" *ngFor="let shop of similarShops">
+                                    <div fxLayout="row" class="time-book-btn p-3 border-top">
+                                        <div fxFlex="" class="time-price text-left">
+                                            <div class="card border">
+                                                <div class="card-body p-0">
+                                                  <img class="main-img" src="{{ shop.shop_image }}">
+                                                  <h5 class="border-bottom text-center p-2">{{ shop.shopname }}</h5>
+                                                  <div class="rating border-bottom p-1 justify-content-center">
+                                                    <app-star-rating [maxScore]="5" [score]="shop.rating_count" [forDisplay]="true"></app-star-rating>
+                                                    <span class="star-text">{{ shop.tot_ratings }} Book Ratings</span>
+                                                  </div>
+                                                  <div class="location p-3 text-center">
+                                                    <h4>{{ shop.place }}</h4>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div fxFlex="60%" class="book-btn text-right" *ngIf="userInfo">
+                                            <a mat-button class="rounded-bt pink-b px-4 py-2" (click)="navigateToMakeBooking(subService.id)">Book Now</a>
+                                        </div>
+                                    </div>
+                                    <div class="details border-top pt-3">
+                                        <p class="pb-2">
+                                          {{shop.description}}
+                                        </p>
+                                      </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                  
                 </div>
             </div>
+            <div *ngIf="!areServicesAvailable()" class="no-data" fxLayout="row">
+                <h4>No services to show</h4>
+              </div>
 
         </div>
     </div>
 
-    <div class="our-works border-top">
+    <div class="our-works border-top" *ngIf="ourWorks && ourWorks.length > 0">
         <div class="container py-5">
             <div fxLayout="row" class="heading-bar">
                 <h3 class="heading">Our Works</h3>
             </div>
             <div fxLayout="row" class="works-imgs w-100 pt-5 pb-3">
-                <div fxFlex="" class="work mr-3"><img src="../../../../../assets/img/private-12.png"> 
-                    <div class="like-chip">
-                        <span class="icon-like1 pr-2 heart active"></span>
-                        <span class="count-like">56</span>
+                <div fxFlex="" class="work mr-3" *ngFor="let work of ourWorks">
+                    <img src="{{ work.image }}"  height="250" width="250" > 
+                    <div class="like-chip" (click)="updateLikes(work)">
+                        <span class="icon-like1 pr-2 heart active" *ngIf="work.is_liked"></span>
+                        <span class="icon-like1 pr-2 heart" *ngIf="!work.is_liked"></span>
+                        <span class="count-like">{{ work.total_likes_count }}</span>
                     </div>
                 </div>
-                <!-- <div fxFlex="" class="work mr-3"><img src="../../../../../assets/img/private-8.png"> 
-                    <div class="like-chip">
-                        <span class="icon-like1 pr-2 heart"></span>
-                        <span class="count-like">54</span>
-                    </div>
-                </div>
-                <div fxFlex="" class="work mr-3"><img src="../../../../../assets/img/private-9.png"> 
-                    <div class="like-chip">
-                        <span class="icon-like1 pr-2 heart active"></span>
-                        <span class="count-like">43</span>
-                    </div>
-                </div>
-                <div fxFlex="" class="work mr-3"><img src="../../../../../assets/img/private-11.png"> 
-                    <div class="like-chip">
-                        <span class="icon-like1 pr-2 heart"></span>
-                        <span class="count-like">34</span>
-                    </div>
-                </div>
-                <div fxFlex="" class="work mr-3"><img src="../../../../../assets/img/private-10.png"> 
-                    <div class="like-chip">
-                        <span class="icon-like1 pr-2 heart active"></span>
-                        <span class="count-like">23</span>
-                    </div>
-                </div> -->
             </div>
             <div fxLayout="row" class="more-works-btn">
                 <a mat-button class="pink-text">See all works</a>
@@ -274,90 +261,39 @@
                     </div>
                 </div>
             </div>
+            
             <div fxLayout="row" class="review-btn-bar pt-3">
                 <a mat-button class="pink-text">Write Review</a>
             </div>
-
-            <div class="review-fields mt-4 border-bottom">
-                <div class="heading">
-                    <h6>Acrylic Full Set Pearl/ French Extention Tips</h6>
-                </div>
-                <div fxLayout="row" class="w-100 pt-2">
-                    <div fxFlex="50%" class="left">
-                    <span class="name-date">John Doe, January 11, 2019</span>
+            <div *ngIf="reviews && reviews.length > 0">
+                <div class="review-fields mt-4 border-bottom" *ngFor="let review of reviews">
+                    <div *ngIf="!review.parent">
+                        <div class="heading">
+                            <h6>{{ review.title }}</h6>
+                        </div>
+                        <div fxLayout="row" class="w-100 pt-2">
+                            <div fxFlex="50%" class="left">
+                            <span class="name-date">{{ review.user_fullname }},
+                                {{ review.pub_date | date }}</span>
+                            </div>
+                            <div fxFlex="50%" class="right">
+                            <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
+                            </div>
+                        </div>
+                        <div class="details py-4">
+                            <p>{{ review.feedback }}</p>
+                            
+                            <div class="review-imgs pt-3">
+                                <img class="mr-3"  *ngFor="let image of review.image" src="{{ image }}">
+                            </div>
+        
+                            <div class="reply-comment-btns pt-3">
+                                <!-- <a mat-button class="comment">1 Comment</a> -->
+                                <a mat-button class="pink-text" (click)="reply(review.service, review.id)">Reply</a>
+                            </div>
+                        </div>
                     </div>
-                    <div fxFlex="50%" class="right">
-                    <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                    </div>
-                </div>
-                <div class="details py-4">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                    
-                    <div class="review-imgs pt-3">
-                        <img class="mr-3" src="../../../../../assets/img/comm1.png">
-                        <img class="mr-3" src="../../../../../assets/img/comm2.png">
-                        <img class="mr-3" src="../../../../../assets/img/comm1.png">
-                    </div>
-
-                    <div class="reply-comment-btns pt-3">
-                        <!-- <a mat-button class="comment">1 Comment</a> -->
-                        <a mat-button class="pink-text">Reply</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="review-fields mt-5 border-bottom">
-                <div class="heading">
-                    <h6>Braids Veelz's</h6>
-                </div>
-                <div fxLayout="row" class="w-100 pt-2">
-                    <div fxFlex="50%" class="left">
-                    <span class="name-date">John Doe, January 11, 2019</span>
-                    </div>
-                    <div fxFlex="50%" class="right">
-                    <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                    </div>
-                </div>
-                <div class="details py-4">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                    
-                    <!-- <div class="review-imgs pt-3">
-                        <img class="mr-3" src="../../../../../assets/img/comm1.png">
-                        <img class="mr-3" src="../../../../../assets/img/comm2.png">
-                        <img class="mr-3" src="../../../../../assets/img/comm1.png">
-                    </div> -->
-
-                    <div class="reply-comment-btns pt-3">
-                        <a mat-button class="comment">1 Comment</a>
-                        <a mat-button class="pink-text">Reply</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="review-fields mt-5 border-bottom">
-                <div class="heading">
-                    <h6>Acrylic Full Set Pearl/ French Extention Tips</h6>
-                </div>
-                <div fxLayout="row" class="w-100 pt-2">
-                    <div fxFlex="50%" class="left">
-                    <span class="name-date">John Doe, January 11, 2019</span>
-                    </div>
-                    <div fxFlex="50%" class="right">
-                    <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
-                    </div>
-                </div>
-                <div class="details py-4">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                    
-                    <div class="review-imgs pt-3">
-                        <!-- <img class="mr-3" src="../../../../../assets/img/comm1.png"> -->
-                        <img class="mr-3" src="../../../../../assets/img/comm2.png">
-                    </div>
-
-                    <div class="reply-comment-btns pt-3">
-                        <a mat-button class="comment">1 Comment</a>
-                        <a mat-button class="pink-text">Reply</a>
-                    </div>
+                   
                 </div>
             </div>
 
@@ -373,105 +309,18 @@
                 <h3 class="heading">Similar to This</h3>
             </div>
 
-            <div fxLayout="row" class="similar-cards pt-4">
-                <div class="card-body border mr-2">
-                    <div class="image-sec">
-                        <div class="top-action">
-                            <div fxLayout="row" class="w-100">
-                                <div fxFlex="50%" class="ml-3">
-                                    <div class="img-icons rounded-bt border">
-                                        <div class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
-                                        <div class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
-                                    </div>
-                                </div>
-                                <div fxFlex="50%" class="mr-3">
-                                    <div class="img-user border">
-                                        <img src="../../../assets/img/SVG-hp/private-active.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <div class="time-bids">
-                            <div fxLayout="row" class="mx-2">
-                                <div class="rounded-bt border time-content px-3 py-2">
-                                    <p class="main pink-text">1h 02m 32s <span class="text-muted">43 bids</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <img class="main-img" src="../../../assets/img/SVG-hp/man1.png">
-                    </div>
-            
-                    <h5 class="border-bottom p-2">Leather feltcase for 9,7' tabletLeather</h5>
-
-                    <div fxLayout="row" class="py-3">
-                        <div fxFlex="70%" class="mx-2">
-                            <p class="text text-muted pb-1">Customer bid</p>
-                        </div>
-                        <div fxFlex="30%" class="mx-2">
-                            <h3>$1098</h3>
-                        </div>
-                    </div>
-                    <div fxLayout="row" class="pb-2">
-                        <div fxFlex="70%" class="mx-2">
-                            <p class="text text-muted pb-1">Fixed price</p>
-                        </div>
-                        <div fxFlex="30%" class="mx-2">
-                            <h3 class="pink-text">$1123</h3>
-                        </div>
-                    </div>
+            <section id="demos" class="mb-5">
+                <div class="row">
+                  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
+                    <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem
+                      *ngFor="let bestBooking of similarShops; let i = index" [booking]="bestBooking">
+                    </app-booking-card>
+                  </ngx-slick-carousel>
                 </div>
-
-                <div class="card-body border">
-                    <div class="image-sec">
-                        <div class="top-action">
-                            <div fxLayout="row" class="w-100">
-                                <div fxFlex="50%" class="ml-3">
-                                    <div class="img-icons rounded-bt border">
-                                        <div class="image"><img src="../../../assets/img/SVG-hp/change-active.svg"></div>
-                                        <div class="image"><img src="../../../assets/img/SVG-hp/bidding-active.svg"></div>
-                                    </div>
-                                </div>
-                                <div fxFlex="50%" class="mr-3">
-                                    <div class="img-user border">
-                                        <img src="../../../assets/img/SVG-hp/private-active.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <div class="time-bids">
-                            <div fxLayout="row" class="mx-2">
-                                <div class="rounded-bt border time-content px-3 py-2">
-                                    <p class="main pink-text">1h 02m 32s <span class="text-muted">43 bids</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <img class="main-img" src="../../../assets/img/SVG-hp/man1.png">
-                    </div>
-            
-                    <h5 class="border-bottom p-2">Leather feltcase for 9,7' tablet Leather</h5>
-
-                    <div fxLayout="row" class="py-3">
-                        <div fxFlex="70%" class="mx-2">
-                            <p class="text text-muted pb-1">Customer bid</p>
-                        </div>
-                        <div fxFlex="30%" class="mx-2">
-                            <h3>$1098</h3>
-                        </div>
-                    </div>
-                    <div fxLayout="row" class="pb-2">
-                        <div fxFlex="70%" class="mx-2">
-                            <p class="text text-muted pb-1">Fixed price</p>
-                        </div>
-                        <div fxFlex="30%" class="mx-2">
-                            <h3 class="pink-text">$1123</h3>
-                        </div>
-                    </div>
+                <div *ngIf="!similarShops?.length" class="row">
+                  <h3>Sorry, no shops are available</h3>
                 </div>
-            </div>
+              </section>
         </div>
     </div>
 

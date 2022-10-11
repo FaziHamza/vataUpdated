@@ -360,7 +360,7 @@
             <div class="header_right">
               <div class="header_ratings">
                 <div class="rattings_stars">
-                  <app-star-rating [maxScore]="5" [score]="4" [forDisplay]="true"></app-star-rating>
+                  <app-star-rating [maxScore]="5" [score]="shopDetails?.rating_data.avg_rating" [forDisplay]="true"></app-star-rating>
                 </div>
                 <div class="ratings_reviews">
                   <h4> {{ shopDetails?.rating_data.total_reviews }} Reviews</h4>
@@ -398,17 +398,14 @@
             <div class="right_footer">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="footer_left">
+                  <div class="footer_left" *ngFor="let timing of shopDetails?.timings">
                     <ul class="footer_days">
-                      <li class="days_child_01">Monday-Friday:</li>
-                      <li class="days_child_02">Saturday</li>
-                      <li class="days_child_02">Sunday</li>
+                      <li class="days_child_02">{{timing?.day_name}}</li>
                     </ul>
                     <ul class="footer_time">
-                      <li>08 AM - 6 PM</li>
-                      <li>08 AM - 4 PM</li>
-                      <li>Weekend</li>
+                      <li>{{timing?.open_times}} - {{timing?.closed_times}}</li>
                     </ul>
+                 
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -473,15 +470,7 @@
               </div>
               <div class="details border-top pt-3">
                 <p class="pb-2">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
-                  Many desktop publishing packages and web page editors now use
-                  Lorem Ipsum as their default model text, and a search for
-                  'lorem ipsum' will uncover many web sites still in their
-                  infancy.
+                  {{subService.description}}
                 </p>
               </div>
             </div>
@@ -521,15 +510,7 @@
               </div>
               <div class="details border-top pt-3">
                 <p class="pb-2">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
-                  Many desktop publishing packages and web page editors now use
-                  Lorem Ipsum as their default model text, and a search for
-                  'lorem ipsum' will uncover many web sites still in their
-                  infancy.
+                 {{subService.description}}
                 </p>
               </div>
             </div>
@@ -568,15 +549,7 @@
         </div>
         <div class="details border-top pt-3">
           <p class="pb-2">
-            It is a long established fact that a reader will be distracted
-            by the readable content of a page when looking at its layout.
-            The point of using Lorem Ipsum is that it has a more-or-less
-            normal distribution of letters, as opposed to using 'Content
-            here, content here', making it look like readable English.
-            Many desktop publishing packages and web page editors now use
-            Lorem Ipsum as their default model text, and a search for
-            'lorem ipsum' will uncover many web sites still in their
-            infancy.
+            {{shop.description}}
           </p>
         </div>
       </div>
