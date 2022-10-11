@@ -22,7 +22,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-3">
                     <div class="calendar p-3 ">
-                        <mat-calendar #calendar color="primary" (selectedChange)="dateChanged($event)" [(selected)]="privateSelectedDate"></mat-calendar>
+                        <mat-calendar #calendar color="primary" (selectedChange)="dateChanged($event)"
+                            [(selected)]="privateSelectedDate"></mat-calendar>
                     </div>
                 </div>
 
@@ -74,25 +75,28 @@
         </div>
 
         <div class="history p-3 mt-4">
-            <div fxLayout="row" class="heading-bar border-bottom">
-                <div fxFlex="40%" class="left-side">
-                    <p>History</p>
+            <div class="row heading-bar border-bottom">
+                <div class="col-lg-4">
+                    <div class="left-side">
+                        <p>History</p>
+                    </div>
                 </div>
-                <div fxFlex="60%" class="tabs">
-                    <div class="float-right">
-                        <ul>
-                            <li [ngClass]="{'active': cancel == false && finish == false }"><a
-                                    (click)='allHistory()'>All</a></li>
-                            <li [ngClass]="{'active': cancel == false && finish == true }"><a
-                                    (click)='finishHistory()'>Completed</a></li>
-                            <li [ngClass]="{'active': cancel == true && finish == false }"><a
-                                    (click)='cancelHistory()'>Cancelled</a></li>
-                        </ul>
+                <div class="col-lg-8">
+                    <div class="tabs float-right">
+                        <div >
+                            <ul>
+                                <li [ngClass]="{'active': cancel == false && finish == false }"><a
+                                        (click)='allHistory()'>All</a></li>
+                                <li [ngClass]="{'active': cancel == false && finish == true }"><a
+                                        (click)='finishHistory()'>Completed</a></li>
+                                <li [ngClass]="{'active': cancel == true && finish == false }"><a
+                                        (click)='cancelHistory()'>Cancelled</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="fields-scroll px-3">
+            <div class="fields-scroll px-1">
                 <div class="category-field p-3 mt-3" *ngFor="let item of currentHistory.results">
                     <div fxLayout="row">
                         <div fxFlex="70%" class="service">

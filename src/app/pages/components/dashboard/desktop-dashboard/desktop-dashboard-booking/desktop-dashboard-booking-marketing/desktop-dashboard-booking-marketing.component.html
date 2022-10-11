@@ -141,18 +141,17 @@
                         <div class="col-lg-8">
                             <div class="right-side p-3 ">
                                 <form [formGroup]="inviteSendForm">
-                                <div class="content-section">
+                                <div class="content-section" style="text-align:center ;">
                                     <div fxLayout="row" class="heading justify-content-center">
                                         <h6>Let your clients know you are booking online!</h6>
                                     </div>
                                     <div fxLayout="row" class="sub-heading justify-content-center pt-3">
                                         <p>So they can self book appointements with you using Free Book Client App</p>
                                     </div>
-                                    <div fxLayout="row" class="title justify-content-center mt-3"></div>
-
-                                    <div fxLayout="row" class="email-address justify-content-center mt-4">
-                                        <div fxFlex="22%" >
-                                            <mat-form-field class="form-section">
+                               
+                                    <div class="email-address  mt-4">
+                                        <div >
+                                            <mat-form-field class="form-section" style="width:270px !important">
                                                 <mat-label>Client Email</mat-label>
                                                 <input matInput type="text" formControlName="email">
                                                 <mat-error
