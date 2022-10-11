@@ -76,22 +76,24 @@
 
         <div class="history p-3 mt-4">
             <div class="row heading-bar border-bottom">
-                <div class="col-lg-4">
+                <div class="col-lg-4 mb-2">
                     <div class="left-side">
                         <p>History</p>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="tabs float-right">
-                        <div >
-                            <ul>
-                                <li [ngClass]="{'active': cancel == false && finish == false }"><a
-                                        (click)='allHistory()'>All</a></li>
-                                <li [ngClass]="{'active': cancel == false && finish == true }"><a
-                                        (click)='finishHistory()'>Completed</a></li>
-                                <li [ngClass]="{'active': cancel == true && finish == false }"><a
-                                        (click)='cancelHistory()'>Cancelled</a></li>
-                            </ul>
+                <div class="col-lg-8 ">
+                    <div class="float-right">
+                        <div class="tabs ">
+                            <div>
+                                <ul>
+                                    <li [ngClass]="{'active': cancel == false && finish == false }"><a
+                                            (click)='allHistory()'>All</a></li>
+                                    <li [ngClass]="{'active': cancel == false && finish == true }"><a
+                                            (click)='finishHistory()'>Completed</a></li>
+                                    <li [ngClass]="{'active': cancel == true && finish == false }"><a
+                                            (click)='cancelHistory()'>Cancelled</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
