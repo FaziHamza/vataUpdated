@@ -109,6 +109,7 @@ input {
     }
 
     .mat-tab-label {
+        // min-width: 100% !important;
         .mat-tab-label-content {
             color: $black;
         }

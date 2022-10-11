@@ -3,14 +3,9 @@
         <div class=" row time-summary-sections">
             <div class="col-lg-7 mb-3">
                 <div class="duration-time p-3 ">
-                    <div fxLayout="row" class="pb-3 border-bottom">
-                        <div fxFlex="40%">
-                            <div class="leftside-heading">
-                                <p>Statistics</p>
-                            </div>
-                        </div>
-                        <div fxFlex="60%">
-                            <div class="rightside-tabs float-right">
+                    <div class="pb-3 border-bottom">
+                        <div>
+                            <div class="rightside-tabs">
                                 <mat-tab-group selectedIndex="0" animationDuration="0ms"
                                     (selectedTabChange)="getType($event)">
                                     <mat-tab label="Day" class="active">
