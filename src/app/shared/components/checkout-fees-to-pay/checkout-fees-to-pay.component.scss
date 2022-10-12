@@ -1,0 +1,110 @@
+@import '../../../../styles.scss';
+
+.desktop-dashboard-profile-fees-to-pay-negative-payment-modal {
+    .heading {
+        h6 {
+            color: $black;
+            font-size: 22px;
+        }
+    }
+
+    .credit-card-tab {
+        .keep-remember {
+            span {
+                color: $black;
+                font-size: 15px;
+            }
+        }
+    
+        .total {
+            .left-side {
+                p {
+                    color: $dark-gray;
+                    font-size: 17px;
+                }
+            }
+            .right-side {
+                p {
+                    color: $black;
+                    font-size: 21px;
+                    text-align: center;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .bank-transfer-tab {
+        .address {
+            p {
+                &.heading {
+                    font-size: 16px;
+                    color: $black;
+                }
+                &.text {
+                    color: $dark-gray;
+                    padding-top: 8px;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .account {
+            p {
+                &.text {
+                    color: $dark-gray;
+                    font-size: 12px;
+                }
+                &.sub-text {
+                    color: $black;
+                    padding-top: 8px;
+                    font-size: 16px;
+                }
+                &.copy {
+                    font-size: 15px;
+                    padding-top: 10px;
+                    color: $pink;
+                    img {
+                        position: relative;
+                        top: 3px;
+                        width: 15px;
+                        height: auto;
+                        padding-right: 9px;
+                        &::before {
+                            color: $purple;
+                        }
+                    }
+                }
+            }
+        }
+
+        .reference {
+            p {
+                &.text {
+                    color: $dark-gray;
+                    font-size: 12px;
+                }
+                &.sub-text {
+                    color: $black;
+                    padding-top: 8px;
+                    font-size: 16px;
+                }
+                &.copy {
+                    font-size: 15px;
+                    padding-top: 10px;
+                    color: $pink;
+                    img {
+                        position: relative;
+                        top: 3px;
+                        width: 15px;
+                        height: auto;
+                        padding-right: 9px;
+                        &::before {
+                            color: $purple;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -55,6 +55,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LightboxModule } from 'ngx-lightbox';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { CheckoutFeesToPayComponent } from './components/checkout-fees-to-pay/checkout-fees-to-pay.component';
 
 @NgModule({
   imports: [
@@ -119,7 +120,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     BookingsFilterModalComponent,
     CalendarSliderComponent,
     AddServiceComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    CheckoutFeesToPayComponent
   ],
   exports: [
     CommonModule,
@@ -164,7 +166,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     CalendarSliderComponent,
     AddServiceComponent,
     Ng5SliderModule,
-    MenuItemComponent
+    MenuItemComponent,
+    CheckoutFeesToPayComponent,
   ],
   providers: [
     ThemeService

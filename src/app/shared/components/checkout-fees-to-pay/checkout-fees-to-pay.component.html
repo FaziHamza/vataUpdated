@@ -1,0 +1,78 @@
+<div class="desktop-dashboard-profile-fees-to-pay-negative-payment-modal">
+    <div class="heading text-center pb-4">
+        <h6>Make Payment</h6>
+    </div>
+    <form [formGroup]="addCheckoutForm">
+        <div class="credit-card-tab">
+            <div fxLayout="row" class="pt-3">
+                <mat-form-field class="form-section w-100">
+                    <mat-label>Card holder Name</mat-label>
+                    <input matInput type="text" formControlName="cardHolder">
+                    <div *ngIf="addCheckoutForm.get('cardHolder').touched || submitted">
+                        <mat-error *ngIf="
+                      addCheckoutForm.controls['cardHolder'].errors?.required
+                      ">
+                            Card holder Name is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row">
+                <mat-form-field class="form-section w-100">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput type="number" placeholder="0000 0000 0000 0000" formControlName="cardNumber">
+                    <div *ngIf="addCheckoutForm.get('cardNumber').touched || submitted">
+                        <mat-error *ngIf="
+                      addCheckoutForm.controls['cardNumber'].errors?.required
+                      ">
+                            Card Number is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="45%" class="mr-4">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>MM/YY</mat-label>
+                        <input matInput type="text" formControlName="month">
+                        <div *ngIf="addCheckoutForm.get('month').touched || submitted">
+                            <mat-error *ngIf="
+                          addCheckoutForm.controls['month'].errors?.required
+                          ">
+                                MM/YY Number is <strong>required</strong>
+                            </mat-error>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="45%">
+                    <mat-form-field class="form-section w-100">
+                        <mat-label>CVC</mat-label>
+                        <input matInput type="text " formControlName="cvc">
+                        <div *ngIf="addCheckoutForm.get('cvc').touched || submitted">
+                            <mat-error *ngIf="
+                          addCheckoutForm.controls['cvc'].errors?.required
+                          ">
+                                CVC Number is <strong>required</strong>
+                            </mat-error>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" class="keep-remember border-bottom pb-3 pt-1">
+                <mat-checkbox formControlName="remember"></mat-checkbox> <span class="pl-4">Keep me Remember</span>
+            </div>
+            <div fxLayout="row" class="total py-4">
+                <div fxFlex="50%" class="left-side">
+                    <p>Total</p>
+                </div>
+                <div fxFlex="50%" class="right-side">
+                    <p>$56,890</p>
+                </div>
+            </div>
+            <div class="confirm-btn">
+                <a mat-button class="rounded-bt pink-b w-100" (click)="create(addCheckoutForm)">Confirm and Pay</a>
+            </div>
+        </div>
+    </form>
+
+</div>

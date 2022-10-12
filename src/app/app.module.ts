@@ -12,6 +12,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ThemeService } from './shared/services/theme/theme.service';
+import { CheckoutFeesToPayComponent } from './shared/components/checkout-fees-to-pay/checkout-fees-to-pay.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { ThemeService } from './shared/services/theme/theme.service';
   entryComponents: [
     BasketComponent,
     BasketItemComponent,
-    DashboardFeesToPayNegativePaymentComponent
+    DashboardFeesToPayNegativePaymentComponent,
+    CheckoutFeesToPayComponent,
   ]
 })
 

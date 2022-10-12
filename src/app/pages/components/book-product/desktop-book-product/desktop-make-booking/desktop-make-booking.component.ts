@@ -7,6 +7,7 @@ import { UserService } from 'src/app/core';
 import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs';
+import { CheckoutFeesToPayComponent } from 'src/app/shared/components/checkout-fees-to-pay/checkout-fees-to-pay.component';
 
 @Component({
   selector: 'app-desktop-make-booking',
@@ -295,5 +296,17 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach((s) => s.unsubscribe());
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CheckoutFeesToPayComponent, {
+      width: '30%',
+      data: {
+        name: 'filter modal'
+      },
+      
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
 }
