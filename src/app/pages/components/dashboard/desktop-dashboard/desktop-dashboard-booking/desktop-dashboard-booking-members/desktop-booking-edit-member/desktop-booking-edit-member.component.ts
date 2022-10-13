@@ -4,6 +4,8 @@ import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'app-desktop-booking-edit-member',
@@ -29,11 +31,13 @@ export class DesktopBookingEditMemberComponent implements OnInit,OnDestroy {
     private dashboardService: DashboardService,
     private apiService: ApiService,
     private userService: UserService,
-    private toaster:ToastrService
+    private toaster:ToastrService,
+    private router: Router,
+    private memberService:MemberService,
   ) { }
 
   ngOnInit() {
-    
+    debugger
     this.dataMember;
     this.editMemberBookingForminIt();
     this.dataCheck();
@@ -104,6 +108,16 @@ export class DesktopBookingEditMemberComponent implements OnInit,OnDestroy {
         if(res) {
           this.editMemberBookingForm.reset();
           this.onSelectType('details');
+
+        //   this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        //     this.router.navigate(['Your actualComponent']);
+        // });
+        this.dataMember =this.editMemberBookingForm.value
+        this.dashboardService.getListMembers().subscribe(res => {
+          this.memberService.allMembersList = res;
+          // console.log("allMembers", this.allMembers);
+        })
+          // this.router.navigateByUrl('/dashboard/dashboard-booking/visits/member')
         }
       }));
       

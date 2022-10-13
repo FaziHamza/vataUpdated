@@ -29,6 +29,9 @@ import { UserDataResolverService } from 'src/app/core/services/user-data-resolve
 import { DesktopBookingEditMemberComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-members/desktop-booking-edit-member/desktop-booking-edit-member.component';
 import { DesktopBookingNewMemberComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-members/desktop-booking-new-member/desktop-booking-new-member.component';
 import { DesktopBookingMemberDetailsComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-members/desktop-booking-member-details/desktop-booking-member-details.component';
+import { DesktopDashboardBookingSalesComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-sales/desktop-dashboard-booking-sales.component';
+import { DesktopDashboardBookingMembersComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-members/desktop-dashboard-booking-members.component';
+import { DesktopDashboardBookingForPrivateComponent } from './desktop-dashboard/desktop-dashboard-booking/desktop-dashboard-booking-for-private/desktop-dashboard-booking-for-private.component';
 
 const routes: Routes = [
   {
@@ -99,13 +102,62 @@ const routes: Routes = [
               },
             ]
           },
+          // {
+          //   path: 'visits',
+          //   component: DesktopDashboardBookingVisitsComponent,
+          //   children: [
+          //     {
+          //       path: '',
+          //       redirectTo: 'visit-stats',
+          //     },
+          //     {
+          //       path: 'visit-stats',
+          //       component: DesktopBookingVisitsStatsComponent,
+          //     },
+          //     {
+          //       path: 'new-visit',
+          //       component: DesktopBookingNewVisitComponent,
+          //     },
+          //     {
+          //       path: 'new-client',
+          //       component: DesktopBookingNewClientComponent,
+          //     },
+          //     {
+          //       path: 'confirm-visit',
+          //       component: DesktopBookingConfirmVisitComponent,
+          //     },
+          //   ]
+          // },
+          {
+            path: 'clients',
+
+            component: DesktopDashboardClientDetailsComponent,
+            children: [
+              {
+                path: '',
+
+                component: DesktopDashboardClientDetailsComponent,
+              },
+              {
+                path: 'new-client',
+
+                component: DesktopDashboardNewClientComponent,
+              },
+              {
+                path: 'edit-client',
+
+                component: DesktopDashboardClientEditProfileComponent,
+              },
+            ]
+
+          },
           {
             path: 'visits',
             component: DesktopDashboardBookingVisitsComponent,
             children: [
               {
                 path: '',
-                redirectTo: 'visit-stats',
+                component: DesktopBookingVisitsStatsComponent,
               },
               {
                 path: 'visit-stats',
@@ -116,12 +168,16 @@ const routes: Routes = [
                 component: DesktopBookingNewVisitComponent,
               },
               {
-                path: 'new-client',
-                component: DesktopBookingNewClientComponent,
+                path: 'booking-sale',
+                component: DesktopDashboardBookingSalesComponent,
               },
               {
-                path: 'confirm-visit',
-                component: DesktopBookingConfirmVisitComponent,
+                path: 'member',
+                component: DesktopDashboardBookingMembersComponent,
+              },
+              {
+                path: 'private',
+                component: DesktopDashboardBookingForPrivateComponent,
               },
             ]
           },

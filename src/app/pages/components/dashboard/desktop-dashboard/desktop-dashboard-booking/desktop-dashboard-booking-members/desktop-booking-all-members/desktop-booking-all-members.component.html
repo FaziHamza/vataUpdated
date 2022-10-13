@@ -1,4 +1,4 @@
-<div class="dashboard-booking-all-members"*ngIf="allMembers">
+<div class="dashboard-booking-all-members"*ngIf="this.memberService.allMembersList">
     <div class="search-bar">
         <span class="icon-search-1"></span>
         <input type="text" placeholder="Search Member">
@@ -6,7 +6,7 @@
 
     <div class="members">
         <div class="members-scroll pr-3">
-            <div class="member-row py-3 border-bottom row" (click)="onSelectType('details'); setGetMember(item)" *ngFor="let item of allMembers.data">
+            <div class="member-row py-3 border-bottom row" (click)="onSelectType('details'); setGetMember(item)" *ngFor="let item of this.memberService.allMembersList.data">
                 <div class="img-side col-3">
                     <img src="{{item.photo}}">
                 </div>

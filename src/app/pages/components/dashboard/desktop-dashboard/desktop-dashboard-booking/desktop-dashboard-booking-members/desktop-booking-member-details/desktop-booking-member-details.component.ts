@@ -31,6 +31,7 @@ export class DesktopBookingMemberDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    debugger
     console.log(this.dataMember);
   }
 

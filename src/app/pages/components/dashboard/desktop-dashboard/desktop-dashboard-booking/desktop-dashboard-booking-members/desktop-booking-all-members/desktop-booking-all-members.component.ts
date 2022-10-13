@@ -3,6 +3,7 @@ import { DashboardService } from '../../../../dashboard.service';
 import { ApiService, UserService } from 'src/app/core';
 import { DataHoldingService } from '../../../../../../../shared/services/data-holding.service';
 import { Subscription } from 'rxjs';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'app-desktop-booking-all-members',
@@ -14,7 +15,7 @@ export class DesktopBookingAllMembersComponent implements OnInit,OnDestroy {
   @Output() selectType = new EventEmitter<string>();
   @Output() sendData = new EventEmitter<any>();
 
-  allMembers: any;
+  // allMembers: any;
   getDataMember: any;
 
   constructor(
@@ -22,6 +23,7 @@ export class DesktopBookingAllMembersComponent implements OnInit,OnDestroy {
     private apiService: ApiService,
     private dataHolder: DataHoldingService,
     private userService: UserService,
+    public memberService:MemberService
   ) { }
 
   ngOnInit() {
@@ -33,10 +35,12 @@ export class DesktopBookingAllMembersComponent implements OnInit,OnDestroy {
   }
 
   getAllMembers() {
+
     this.subscriptions.push(
     this.dashboardService.getListMembers().subscribe(res => {
-      this.allMembers = res;
-      console.log("allMembers", this.allMembers);
+      this.memberService.allMembersList=[];
+      this.memberService.allMembersList = res; 
+      console.log("allMembers", this.memberService.allMembersList);
     }))
   }
 

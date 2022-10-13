@@ -20,6 +20,7 @@ export class DesktopDashboardBookingMembersComponent implements OnInit {
   }
 
   getDataMember(data) {
+    debugger
     this.memberData = data;
   }
 

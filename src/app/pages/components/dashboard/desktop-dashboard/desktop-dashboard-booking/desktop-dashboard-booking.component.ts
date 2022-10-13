@@ -18,8 +18,13 @@ export class DesktopDashboardBookingComponent implements OnInit {
 
   routeTo(routeParam) {
     if (routeParam == 0) this.router.navigateByUrl('/dashboard/dashboard-booking/visits/visit-stats');
+    else if (routeParam == 1) this.router.navigateByUrl('/dashboard/dashboard-booking/visits/booking-sale');
     else if (routeParam == 2) this.router.navigateByUrl('/dashboard/dashboard-booking/clients');
+    else if (routeParam == 3) this.router.navigateByUrl('/dashboard/dashboard-booking/visits/private');
     else if (routeParam == 4) this.router.navigateByUrl('/dashboard/dashboard-booking/company-info');
+    else if (routeParam == 5) this.router.navigateByUrl('/dashboard/dashboard-booking/visits/member');
+    else if (routeParam == 6) this.router.navigateByUrl('/dashboard/dashboard-booking/visits/member');
+    
     else this.router.navigateByUrl('/dashboard/dashboard-booking');
 
     console.log(routeParam);
