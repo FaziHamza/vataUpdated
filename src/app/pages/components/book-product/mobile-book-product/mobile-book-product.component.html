@@ -41,7 +41,8 @@
             </div>
 
             <div fxLayout="row" class="main-img py-4">
-                <app-product-preview [slides]="[shopDetails?.business_logo]"></app-product-preview>
+                <img class="img-fluid" [src]="[shopDetails?.business_logo]" width="100%">
+                <!-- <app-product-preview [slides]="[shopDetails?.business_logo]"></app-product-preview> -->
             </div>
 
             <div fxLayout="row" class="info-shop-row">
@@ -303,7 +304,7 @@
         </div>
     </div>
 
-    <div class="similar-this border-top">
+    <div class="similar-this border-top" *ngIf="false">
         <div class="container py-5">
             <div fxLayout="row" class="heading-bar">
                 <h3 class="heading">Similar to This</h3>
@@ -312,7 +313,8 @@
             <section id="demos" class="mb-5">
                 <div class="row">
                   <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="config">
-                    <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]" class="slide" ngxSlickItem
+                    <app-booking-card [routerLink]="['/book-product', bestBooking.shopID]"
+                     class="slide" ngxSlickItem
                       *ngFor="let bestBooking of similarShops; let i = index" [booking]="bestBooking">
                     </app-booking-card>
                   </ngx-slick-carousel>

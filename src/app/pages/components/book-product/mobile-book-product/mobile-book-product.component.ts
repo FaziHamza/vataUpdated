@@ -72,6 +72,7 @@ export class MobileBookProductComponent implements OnInit {
       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     });
   }
+  
 
   showDirection() {
     this.isShowDirection = !this.isShowDirection;
