@@ -1,13 +1,34 @@
+<style>
+    .form-section {
+        max-width: 500px !important;
+        display: flex !important;
+        justify-content: center;
+        flex-direction: column !important;
+        align-items: center !important;
+        height: 100vh !important;
+        margin: auto;
+    }
 
-<div class="form-section w-50"
-style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); text-align: center;" 
-*ngIf="password !== value">
-    <label style="display: block;">Enter Password</label>
-    <input style="display: block; width: 80%; margin: 15px auto; padding: 5px 10px;" #pass type="password" />
-    <button style="display: block; width: 80%; margin: 5px auto; border: none; outline: none; background-color: #fb3b71; padding: 7px 20px; color: white;"  (click)="submit(pass.value)">Submit</button>
+    .form-section .btn {
+        display: block;
+        width: 85%;
+        margin: 0px auto;
+        border: none;
+        outline: none;
+        background-color: #fb3b71;
+        padding: 8px 20px;
+        color: white;
+        border-radius: 6px;
+    }
+</style>
+<div class="form-section" *ngIf="password !== value">
+    <label style="display: block; ">Enter Password</label>
+    <input class="form-control" style="display: block;  width: 85%; margin: 15px auto; padding: 5px 10px;" #pass
+        type="password" />
+    <button class="btn" (click)="submit(pass.value)">Submit</button>
+
 </div>
 <div *ngIf="password === value">
     <app-loader></app-loader>
     <router-outlet></router-outlet>
 </div>
-
