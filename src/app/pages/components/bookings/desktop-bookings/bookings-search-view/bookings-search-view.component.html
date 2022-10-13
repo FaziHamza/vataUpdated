@@ -137,8 +137,12 @@
     </div>
     <div class="sub-categories-mobile">
         <div *ngIf="appSize.getIsMobileResolution()">
-            <app-booking-categories-mobile (catData)="onCatSelect($event)" categoryType="bookings" *ngIf="!subCategoryId && categoryData.childrens.length > 0" [data]="categoryData.childrens" [isSubcategory]="true">
-            </app-booking-categories-mobile>
+            <div class="stepper">
+                <p style="cursor: pointer;"> <span (click)="_router.navigateByUrl('/bookings')">Bookings</span> <span *ngFor="let parent of categoryData.ancestors" [routerLink]="['/bookings', parent.id]"> &nbsp; > &nbsp;{{parent.name}}</span> &nbsp; > &nbsp; <span class="active-cat">{{categoryData.name}}</span> </p>
+            </div>
+            <app-booking-categories (catData)="onCatSelect($event)" categoryType="bookings" *ngIf="!subCategoryId && categoryData.childrens.length > 0" [data]="categoryData.childrens" [isSubcategory]="true">
+            </app-booking-categories>
+        
             <div class="chips-row">
                 <div class="container">
                     <div fxLayout="row">
@@ -198,7 +202,7 @@
             <div class="price-filter py-3">
                 <div class="container" fxLayoutAlign="center">
                     <div fxFlex="30%" class="mx-2">
-                        <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view>
+                        <!-- <app-toggle-view (viewType)="onViewSelect($event)"></app-toggle-view> -->
                     </div>
                     <div fxLayout="row">
                         <div fxFlex="70%" class="mx-2">
@@ -221,10 +225,10 @@
                 </div>
             </div>
             <div class="products">
-                    <div *ngIf="viewType === 'card'" fxLayout="row wrap" class="marketplace-cards border-top pt-5 px-2">
-                        <app-booking-card class="p-3" fxFlex="50%" *ngFor="let product of productData" [booking]="product"></app-booking-card>
+                    <div  fxLayout="row wrap" class="marketplace-cards border-top pt-5 px-2">
+                        <app-booking-card class="p-3" fxFlex="70%" *ngFor="let product of productData" [booking]="product"></app-booking-card>
                     </div>
-                    <!-- <div *ngIf="viewType === 'list'"  fxLayout="column" class="px-2">
+                    <!-- <div *ngIf="viewType === 'card'"  fxLayout="column" class="px-2">
                         <div *ngFor="let product of productData">
                             <div class="card-block">
                                 <app-marketplace-card-list-view [product]="product"></app-marketplace-card-list-view>

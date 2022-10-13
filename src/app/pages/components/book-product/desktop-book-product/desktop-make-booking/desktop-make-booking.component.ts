@@ -230,8 +230,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
       this.subscriptions.push(
       this.bookProductService.checkout(obj).subscribe((res=>{
         this.toastrService.success("Information save successfully!", "Success");
-        
-
+        this.onCart();
       })))
     }
     clearForm(){

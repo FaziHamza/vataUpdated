@@ -4,7 +4,7 @@
   border-radius: 9px;
   margin: 15px;
   position: relative;
-  max-width: 340px;
+  // max-width: 340px;
   .image-sec {
     position: relative;
   }
@@ -46,6 +46,57 @@
     p {
       font-size: 15px;
       font-weight: 600;
+      color: $black;
+    }
+  }
+}
+
+.card-body-mobile {
+  border-radius: 3px;
+  margin: 5px;
+  position: relative;
+   max-width: 150px;
+  .image-sec {
+    position: relative;
+  }
+  .main-img {
+    width: 100%;
+    object-fit: contain;
+    height: 150px;
+    border-radius: 3px 3px 0 0;
+  }
+  h5 {
+    font-size: 12px;
+    font-weight: 300;
+    color: $black;
+  }
+  p {
+    &.text {
+      font-size: 10px;
+    }
+  }
+  h3 {
+    font-weight: 300;
+    font-size: 1px;
+    float: right;
+  }
+  .rating {
+    span {
+      font-size: 12px;
+      color: $light-gray;
+      &.checked {
+        color: $pink-dark;
+      }
+      &.number {
+        font-size: 8px;
+        color: $dark-gray;
+      }
+    }
+  }
+  .location {
+    p {
+      font-size: 12px;
+      font-weight: 300;
       color: $black;
     }
   }
