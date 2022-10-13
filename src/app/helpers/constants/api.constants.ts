@@ -127,7 +127,7 @@ export class ApiEndPoints {
         SHOP_WORK_IMAGES: '/booking/shopWorkImage/?shop_id=%s',
         SUBMIT_REVIEW: '/booking/addreview/',
         CHECK_REVIEWS: '/booking/getServicesNeedToReview/%s/%s',
-        ADD_TO_FAVOURITES: '/booking/favShop',
+        ADD_TO_FAVOURITES: '/booking/favShop/',
         CHECKOUT_PAY: '/booking/cart/online/checkout/',
         
         SERVICE_DETAILS: '/booking/addService/?id=%s',
