@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppSizeStateService } from 'src/app/core';
 
 @Component({
   selector: 'app-booking-card',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BookingCardComponent implements OnInit {
   @Input() booking;
 
-  constructor() { }
+  constructor(public appSize: AppSizeStateService,) { }
 
   ngOnInit() {
   }

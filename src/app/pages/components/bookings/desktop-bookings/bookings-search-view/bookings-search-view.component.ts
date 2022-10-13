@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { createQueryString } from 'src/app/shared/utils/querystring-generator';
 import { FilterModalComponent, SaveSearchModalComponent, BookingsFilterModalComponent } from 'src/app/shared';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -15,7 +15,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './bookings-search-view.component.html',
   styleUrls: ['./bookings-search-view.component.scss']
 })
-export class BookingsSearchViewComponent implements OnInit {
+export class BookingsSearchViewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatMenuTrigger, { static: false }) trigger: MatMenuTrigger;
 
   isThemeDark: Observable<boolean>;
@@ -89,7 +89,9 @@ export class BookingsSearchViewComponent implements OnInit {
     public appSize: AppSizeStateService
   ) {
   }
-
+  ngAfterViewInit() {
+   
+  }
   ngOnInit() {
     this.saveSearchForm = this.fb.group({
       searchTitle: [null, [Validators.required]]

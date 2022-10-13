@@ -222,7 +222,7 @@
                         <h2>{{booking_cat.name}}</h2>
                       </div>
                       <div class="home-cat-links" *ngIf="booking_cat">
-                        <a [routerLink]="['/bookings',booking_cat.name,booking_subcat.name]"
+                        <a [routerLink]="['/bookings',booking_cat.id,booking_subcat.id]"
                           *ngFor="let booking_subcat of booking_cat.childrens">{{booking_subcat.name}}</a>
                         <a [routerLink]="['/bookings',booking_cat.id]" class="see-all">View all</a>
                       </div>

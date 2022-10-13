@@ -94,7 +94,8 @@
   <mat-tab-group selectedIndex="0" mat-stretch-tabs (click)="stopGoodMenuClosing($event)">
     <mat-tab label="Marketplace">
       <section class="home-categories catalog-of-goods">
-        <div class="clearfix">
+         <!-- FaziComment -->
+        <div class="clearfix" *ngIf="false"><!-- FaziComment --> 
           <div class="home-cat-cont" *ngFor="let marketplace_cat of marketplace_categories">
             <div class="home-cat-inner">
               <div class="home-cat-title clearfix">
@@ -103,7 +104,7 @@
                 <h2>{{marketplace_cat.name}}</h2>
               </div>
               <div class="home-cat-links" *ngIf="marketplace_cat">
-                <a [routerLink]="['/booking',marketplace_cat.id,marketplace_subcat.id]"
+                <a [routerLink]="['/marketplace',marketplace_cat.id,marketplace_subcat.id]"
                   *ngFor="let marketplace_subcat of marketplace_cat.childrens">{{marketplace_subcat.name}}</a>
                 <a [routerLink]="['/marketplace',marketplace_cat.id]" class="see-all">View all</a>
               </div>
@@ -123,9 +124,9 @@
                 <h2>{{booking_cat.name}}</h2>
               </div>
               <div class="home-cat-links" *ngIf="booking_cat">
-                <a [routerLink]="['/booking',booking_cat.name,booking_subcat.name]"
+                <a [routerLink]="['/bookings',booking_cat.id,booking_subcat.id]"
                   *ngFor="let booking_subcat of booking_cat.childrens">{{booking_subcat.name}}</a>
-                <a [routerLink]="['/booking',booking_cat.id]" class="see-all">View all</a>
+                <a [routerLink]="['/bookings',booking_cat.id]" class="see-all">View all</a>
               </div>
             </div>
           </div>
