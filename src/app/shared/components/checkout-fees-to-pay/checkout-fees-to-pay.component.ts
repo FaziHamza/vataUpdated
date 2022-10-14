@@ -47,10 +47,10 @@ export class CheckoutFeesToPayComponent implements OnInit, AfterContentInit {
   }
   IntilizeForm() {
     this.addCheckoutForm = this.formBuilder.group({
-      cardNumber: ['', [Validators.maxLength(16), Validators.required]],
       cardHolder: ['', Validators.required],
       month: ['', Validators.required],
       cvc: ['', Validators.required],
+      cardNumber: [null, [Validators.required, Validators.maxLength(16)]],
       remember: [false],
     })
   }

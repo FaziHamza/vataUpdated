@@ -5,7 +5,7 @@
         <h6>$66787</h6>
         <p class="silver-text">Total Donates</p>
       </div>
-      <div fxFlex="100%" class="m-5" id="chart1">
+      <div fxFlex="100%" class="m-5" id="chart1" *ngIf="chartOptionsTotal">
         <apx-chart
           #chartTotalDonate
           [series]="chartOptionsTotal.series"
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div fxLayout="row">
-        <div fxFlex="100%" class="m-5" id="chart">
+        <div fxFlex="100%" class="m-5" id="chart" *ngIf="chartOptions">
           <apx-chart
             #chart
             [series]="chartOptions.series"

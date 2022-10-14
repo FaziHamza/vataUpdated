@@ -97,7 +97,8 @@
               >
             </div>
           </div>
-          <div fxLayout="row" class="forgot text-center">
+          <!-- FaziComment -->
+          <div fxLayout="row" class="forgot text-center"*ngIf="false"><!-- FaziComment -->
             <div routerLink="/auth/forgot-password" fxFlex="100%">
               <a href="javascript:void(0)">Forgot password?</a>
             </div>
@@ -106,8 +107,8 @@
       </div>
     </div>
   </div>
-
-  <div class="dont-have-account">
+<!-- FaziComment -->
+  <div class="dont-have-account"*ngIf="false"><!-- FaziComment -->
     <div class="container text-center">
       <p>Don't have an account? <a routerLink="/auth/signup">Signup</a></p>
     </div>

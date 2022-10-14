@@ -101,7 +101,7 @@
           <div class="border-cont" *ngIf="!user">
             <div class="account text-right">
               <a routerLink="/auth/login" class="btn white-b rounded-bt my-0 py-2">Log In</a>
-              <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2">Sign Up</a>
+              <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2"*ngIf="false"><!-- FaziComment -->Sign Up</a>
             </div>
           </div>
           <div *ngIf="user" class="border-cont">

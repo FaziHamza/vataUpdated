@@ -2,93 +2,94 @@
     <div class="top-bar">
         <div class="container">
             <div fxLayout="row">
-    
+
                 <div routerLink="/home" fxFlex="25%">
                     <img *ngIf="!logoDark" class="logo" src="/assets/img/logo.svg" />
                     <img *ngIf="logoDark" class="logo" src="/assets/img/logo-white.svg" />
                 </div>
-                
+
                 <div fxFlex="75%" class="float-right" *ngIf="false">
                     <div class="text-right">
                         <div class="custom-control custom-switch">
-                            <mat-checkbox type="checkbox" 
-                                class="custom-control-input" 
-                                id="darkMode" 
-                                [checked]="!isThemeDark"
-                                (change)="toggleDarkTheme($event)">
-                            <label class="custom-control-label" for="darkMode"></label>
-                            <a class="text-capitalize">Dark Mode</a>
-                        </mat-checkbox>
+                            <mat-checkbox type="checkbox" class="custom-control-input" id="darkMode"
+                                [checked]="!isThemeDark" (change)="toggleDarkTheme($event)">
+                                <label class="custom-control-label" for="darkMode"></label>
+                                <a class="text-capitalize">Dark Mode</a>
+                            </mat-checkbox>
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         </div>
     </div>
-        
-    
-        <div class="login-form py-5">
-            <div class="container">
-                <div fxLayout="row" class="justify-content-center">
-                        <div fxFlex="340px" class="text-center">
-                            <div class="form">
-                                <img class="corner-t" src="../../../assets/img/dots.svg">
-            
-                                <h2 class="title">Welcome</h2>
-                                <p class="sub-title">To keep connected with us,<br>please login with your personal info</p>
-                                
-                                <form class="pt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                                    <div fxLayout="row">
-                                        <mat-form-field class="form-section w-100">
-                                            <mat-label>Email/ Username</mat-label>
-                                            <input matInput type="text" class="form-control form-control-sm" autocomplete="off" formControlName="email">
-                                            <mat-error *ngIf="loginForm.controls['email'].errors?.required">
-                                                Email is <strong>required</strong>
-                                            </mat-error>
-                                            <mat-error *ngIf="loginForm.controls['email'].invalid">
-                                                Email is <strong>invalid</strong>
-                                            </mat-error>
-                                        </mat-form-field>
-                                    </div>
-            
-                                    <div fxLayout="row">
-                                        <mat-form-field class="form-section position-relative w-100">
-                                            <mat-label>Password</mat-label>
-                                            <input type="password" #password matInput class="form-control form-control-sm" 
-                                                formControlName="password" autocomplete="off">
-                                            <mat-error *ngIf="loginForm.controls['password'].errors?.required">
-                                                Password is <strong>required</strong>
-                                            </mat-error>
-                                            <a class="eye-b">
-                                                <i [appPasswordToggle]="password" class="fas fa-eye"></i>
-                                            </a>
-                                        </mat-form-field>
-                                    </div>
-            
-                                    <div fxLayout="row">
-                                        <button type="submit" class="btn submit-b btn-block rounded-bt p-0 login-button" mat-button [disabled]="loginForm.invalid">Login</button>
-                                    </div>
-                                </form>
-            
-                                <div fxLayout="row" class="forgot">
-                                    <div fxFlex="50%">
-                                        <mat-checkbox class="checkbox-custom">Keep me logged in</mat-checkbox>
-                                    </div>
-            
-                                    <div routerLink="/auth/forgot-password" fxFlex="50%">
-                                        <a href="javascript:void(0)">Forgot password?</a>
-                                    </div>
-                                </div>
-            
-                                <img class="corner-b" src="../../../assets/img/dots.svg">
+
+
+    <div class="login-form py-5">
+        <div class="container">
+            <div fxLayout="row" class="justify-content-center">
+                <div fxFlex="340px" class="text-center">
+                    <div class="form">
+                        <img class="corner-t" src="../../../assets/img/dots.svg">
+
+                        <h2 class="title">Welcome</h2>
+                        <p class="sub-title">To keep connected with us,<br>please login with your personal info</p>
+
+                        <form class="pt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div fxLayout="row">
+                                <mat-form-field class="form-section w-100">
+                                    <mat-label>Email/ Username</mat-label>
+                                    <input matInput type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="email">
+                                    <mat-error *ngIf="loginForm.controls['email'].errors?.required">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="loginForm.controls['email'].invalid">
+                                        Email is <strong>invalid</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="row">
+                                <mat-form-field class="form-section position-relative w-100">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" #password matInput class="form-control form-control-sm"
+                                        formControlName="password" autocomplete="off">
+                                    <mat-error *ngIf="loginForm.controls['password'].errors?.required">
+                                        Password is <strong>required</strong>
+                                    </mat-error>
+                                    <a class="eye-b">
+                                        <i [appPasswordToggle]="password" class="fas fa-eye"></i>
+                                    </a>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="row">
+                                <button type="submit" class="btn submit-b btn-block rounded-bt p-0 login-button"
+                                    mat-button [disabled]="loginForm.invalid">Login</button>
+                            </div>
+                        </form>
+
+                        <div fxLayout="row" class="forgot">
+                            <div fxFlex="50%">
+                                <mat-checkbox class="checkbox-custom">Keep me logged in</mat-checkbox>
+                            </div>
+                            <!-- FaziComment -->
+                            <div routerLink="/auth/forgot-password" fxFlex="50%" *ngIf="false">
+                                <!-- FaziComment -->
+                                <a href="javascript:void(0)">Forgot password?</a>
                             </div>
                         </div>
+
+                        <img class="corner-b" src="../../../assets/img/dots.svg">
+                    </div>
                 </div>
             </div>
         </div>
-    
-    <div class="dont-have-account">
+    </div>
+    <!-- FaziComment -->
+    <div class="dont-have-account" *ngIf="false">
+        <!-- FaziComment -->
         <div class="container text-center">
             <p>Don't have an account? <a routerLink="/auth/signup">Signup</a></p>
         </div>

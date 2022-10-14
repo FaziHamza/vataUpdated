@@ -20,7 +20,8 @@
             <div fxLayout="row">
                 <mat-form-field class="form-section w-100">
                     <mat-label>Card Number</mat-label>
-                    <input matInput type="number" placeholder="0000 0000 0000 0000" formControlName="cardNumber">
+                    
+                    <input matInput type="number"  maxlength="16" placeholder="0000 0000 0000 0000" formControlName="cardNumber">
                     <div *ngIf="addCheckoutForm.get('cardNumber').touched || submitted">
                         <mat-error *ngIf="
                       addCheckoutForm.controls['cardNumber'].errors?.required

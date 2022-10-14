@@ -46,18 +46,18 @@
           Home
         </a>
       </li>
-      <li routerLink="/marketplace" mat-menu-item routerLinkActive="active">
+      <!-- <li routerLink="/marketplace" mat-menu-item routerLinkActive="active">
         <span class="icon icon-marketplace"></span>
         <a>
           Marketplace
         </a>
-      </li>
-      <li *ngIf="user" routerLink="/dashboard/public-profile" mat-menu-item routerLinkActive="active">
+      </li> -->
+      <!-- <li *ngIf="user" routerLink="/dashboard/public-profile" mat-menu-item routerLinkActive="active">
         <span class="icon icon-marketplace"></span>
         <a>
           Public profile
         </a>
-      </li>
+      </li> -->
       <li mat-menu-item routerLinkActive="active">
         <span class="icon icon-booking"></span>
         <a>
@@ -70,16 +70,16 @@
             Deals
           </a>
         </li> -->
-      <li *ngIf="user" mat-menu-item routerLinkActive="active">
+      <!-- <li *ngIf="user" mat-menu-item routerLinkActive="active">
         <span class="icon icon-basket1"></span>
         <a (click)="basketDialog()">
           Basket
         </a>
-      </li>
+      </li> -->
       <div fxLayout="row" class="justify-content-center" *ngIf="!user">
         <div class="account text-right">
           <a routerLink="/auth/login" class="btn white-b rounded-bt my-0 py-2">Log In</a>
-          <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2">Sign Up</a>
+          <a routerLink="/auth/signup" class="btn pink-b rounded-bt my-0 py-2"*ngIf="false"><!-- FaziComment -->Sign Up</a>
         </div>
       </div>
     </ul>

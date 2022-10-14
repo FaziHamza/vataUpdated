@@ -41,7 +41,7 @@
               <div class="m-widget7 m-widget7--skin-dark">
                   <div class="m-widget7__desc mt-0">
                     <h4 class="text-center">Transaction Failed</h4>
-                    <div class="login-btn-wrapper">
+                    <div class="login-btn-wrapper"*ngIf="false"><!-- FaziComment -->
                       <input class="go-to-login" type="button" value="Try Again" [routerLink]="'/auth/signup/payment?planId=' + subscriptionId">
                     </div>
                   </div>

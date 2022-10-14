@@ -24,13 +24,14 @@ export class MobileHeaderComponent implements OnInit {
   }
 
   onBackStep() {
-    if (this.router.url === '/auth/signup') {
-      let getStep = parseInt(localStorage.getItem('step'));
-      getStep = getStep-1;
-      this.backStep.emit(getStep);
-    } else {
-      this.location.back();
-    }
+   //FaziComment
+    // if (this.router.url === '/auth/signup') {
+    //   let getStep = parseInt(localStorage.getItem('step'));
+    //   getStep = getStep-1;
+    //   this.backStep.emit(getStep);
+    // } else {
+    //   this.location.back();
+    // }
   }
 
   checkDarkMode() {
