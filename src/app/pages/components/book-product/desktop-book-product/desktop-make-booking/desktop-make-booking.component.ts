@@ -210,6 +210,7 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
       }))
     }
     confirmPay(){
+      debugger
       if(!this.services){
         this.toastrService.error("Please select at least one service!", "Error");
         return false;
@@ -238,8 +239,8 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
       this.servicesList = [];
     }
     addService(){
-      
-      if(this.selectedService.preferredTiming == '' && this.selectedService.preferredTiming == undefined)
+      debugger
+      if(this.selectedService.preferredTiming == '' || this.selectedService.preferredTiming == undefined)
       {
         this.toastrService.error("Please select from time first!", "Error");
         return false;
@@ -271,8 +272,13 @@ export class DesktopMakeBookingComponent implements OnInit,OnDestroy {
     onCart(){
       this.subscriptions.push(
       this.bookProductService.postOnlineOnCart().subscribe(res => {
-        this.services = res.service_items
-        this.servicesList = res
+        this.services = res.service_items;
+        this.servicesList = res;
+        if(this.servicesList.paid){
+          this.servicebtnVisible = false;
+          this.services = [];
+        this.servicesList = [];
+        }
       }));
     }
     deleteService(index){
