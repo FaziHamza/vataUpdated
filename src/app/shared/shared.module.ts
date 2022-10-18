@@ -152,6 +152,7 @@ import { CheckoutFeesToPayComponent } from './components/checkout-fees-to-pay/ch
     MarketplaceCardListViewComponent,
     ToggleViewComponent,
     FilterModalComponent,
+    BookingsFilterModalComponent,
     SearchDropdownComponent,
     MidBarComponent,
     ProductPreviewComponent,

@@ -8,28 +8,30 @@
             <p class="heading">Section</p>
 
             <div class="field pt-3">
-                <mat-checkbox>GShock</mat-checkbox> <span>32</span>
+                <mat-checkbox (change)="onGShock($event)" [(checked)]="selectedFilter.gShock">
+                    GShock
+                </mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Casio</mat-checkbox> <span>23</span>
+                <mat-checkbox (change)="onCasio($event)" [(checked)]="selectedFilter.casio">Casio</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Hublot</mat-checkbox> <span>06</span>
+                <mat-checkbox (change)="onHublot($event)" [(checked)]="selectedFilter.gShock">Hublot</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Daniel Clein</mat-checkbox> <span>21</span>
+                <mat-checkbox (change)="onDanielClein($event)" [(checked)]="selectedFilter.danielClein">Daniel Clein</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Orient</mat-checkbox> <span>78</span>
+                <mat-checkbox (change)="onOrient($event)" [(checked)]="selectedFilter.orient">Orient</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Rolex</mat-checkbox> <span>96</span>
+                <mat-checkbox (change)="onRolex($event)" [(checked)]="selectedFilter.rolex">Rolex</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Tissot</mat-checkbox> <span>54</span>
+                <mat-checkbox (change)="onTissot($event)" [(checked)]="selectedFilter.tissot">Tissot</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>TimeX</mat-checkbox> <span>12</span>
+                <mat-checkbox (change)="onTimeX($event)" [(checked)]="selectedFilter.timeX">TimeX</mat-checkbox>
             </div>
         </div>
 
@@ -37,27 +39,27 @@
             <p class="heading">Material</p>
 
             <div class="field pt-3">
-                <mat-checkbox>Metal</mat-checkbox> <span>30</span>
+                <mat-checkbox (change)="onMetal($event)" [(checked)]="selectedFilter.metal">Metal</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>Plastic</mat-checkbox> <span>01</span>
+                <mat-checkbox (change)="onPlastic($event)" [(checked)]="selectedFilter.plastic">Plastic</mat-checkbox>
             </div>
 
             <p class="heading pt-4">Type</p>
             <div class="field pt-3">
-                <mat-checkbox>For Man</mat-checkbox> <span>23</span>
+                <mat-checkbox (change)="onMan($event)" [(checked)]="selectedFilter.forMan">For Man</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>For Woman</mat-checkbox> <span>84</span>
+                <mat-checkbox (change)="onWoman($event)" [(checked)]="selectedFilter.forWoman">For Woman</mat-checkbox>
             </div>
 
-            <p class="heading pt-4">Type</p>
+            <!-- <p class="heading pt-4">Type</p>
             <div class="field pt-3">
-                <mat-checkbox>For Man</mat-checkbox> <span>70</span>
+                <mat-checkbox>For Man</mat-checkbox>
             </div>
             <div class="field pt-3">
-                <mat-checkbox>For Woman</mat-checkbox> <span>09</span>
-            </div>
+                <mat-checkbox>For Woman</mat-checkbox> 
+            </div> -->
         </div>
 
         <div fxFlex="25%" class="price mr-5">
@@ -66,31 +68,37 @@
             <div class="field pt-3">
                 <div fxFlex="50%">
                     <p>
-                      From: <span>93</span>
+                        From: <span>{{ selectedFilter.price_range.min }}</span>
                     </p>
                 </div>
                 <div fxFlex="50%" class="text-right">
                     <p>
-                      To: <span>976</span>
+                        To: <span>{{ selectedFilter.price_range.max }}</span>
                     </p>
                 </div>
             </div>
-            <div class="price-bar mt-3">
-                <mat-slider class="w-100"></mat-slider>
+            <div fxLayout="row">
+                <ng5-slider [(value)]="selectedFilter.price_range.min" [(highValue)]="selectedFilter.price_range.max"
+                    [options]="{
+                    floor: 0,
+                    ceil: 100000,
+                    hideLimitLabels: true,
+                    hidePointerLabels: true
+                  }"></ng5-slider>
             </div>
 
             <div class="pt-3">
                 <mat-form-field class="w-100">
-                  <mat-label>Location</mat-label>
-                  <mat-select>
-                    <mat-option value="option1">Ukarine</mat-option>
-                    <mat-option value="option2">Location 2</mat-option>
-                    <mat-option value="option3">Location 3</mat-option>
-                  </mat-select>
+                    <mat-label>Location</mat-label>
+                    <mat-select>
+                        <mat-option value="Ukarine">Ukarine</mat-option>
+                        <!-- <mat-option value="option2">Location 2</mat-option> -->
+                        <!-- <mat-option value="option3">Location 3</mat-option> -->
+                    </mat-select>
                 </mat-form-field>
             </div>
 
-            <div class="pt-1">
+            <!-- <div class="pt-1">
                 <mat-form-field class="w-100">
                   <mat-label>Section</mat-label>
                   <mat-select>
@@ -110,10 +118,10 @@
                     <mat-option value="option3">Section</mat-option>
                   </mat-select>
                 </mat-form-field>
-            </div>
+            </div> -->
         </div>
 
-        <div fxFlex="25%" class="section">
+        <!-- <div fxFlex="25%" class="section">
             <p class="heading">Section</p>
 
             <div class="field pt-3">
@@ -180,10 +188,11 @@
                     <mat-slide-toggle></mat-slide-toggle>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div fxLayout="row" class="justify-content-center mt-5">
-        <a mat-button class="pink-b rounded-bt p-0 btn-block w-50">Apply Changes Booking v</a>
+        <a mat-button class="pink-b rounded-bt p-0 btn-block w-50"   (click)="applyChanges()"
+        >Apply Changes Booking v</a>
     </div>
 </div>

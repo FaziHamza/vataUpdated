@@ -32,7 +32,7 @@ export class ApiEndPoints {
         EDIT_SERVICE_CATEGORIES: '/booking/modifyServiceCategory/%d/',
         ADD_SHOP: '/booking/addShop/',
         NEAR_YOU: '/booking/nearbyshops/',
-        BOOKINGS_BY_CATEGORY: '/booking/shopFilters/?category=%s',
+        BOOKINGS_BY_CATEGORY: '/booking/shopFilters/',
         BOOKINGS_BY_ALPHA: '/booking/categories/?startswith=%s',
         GET_SERVICES_LIST: '/booking/serviceList/%s/',
 

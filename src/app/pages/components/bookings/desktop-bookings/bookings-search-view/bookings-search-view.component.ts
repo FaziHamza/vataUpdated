@@ -137,10 +137,11 @@ export class BookingsSearchViewComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if (result) {
+        debugger
         this.currentFilters = result;
-        this.filterTags = this.generateTagsArray(result);
-        this.currentFilterQueryStr = createQueryString(result, 'id');
-        this.getProduct(this.categoryId);
+        // this.filterTags = this.generateTagsArray(result);
+        // this.currentFilterQueryStr = createQueryString(result, 'id');
+        // this.getProduct(this.categoryId);
       }
     });
   }
